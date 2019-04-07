@@ -24,5 +24,10 @@
         public const string Pages_Administration_Customer_Edit = "Pages.Administration.Customer.Edit";
         public const string Pages_Administration_Customer_Delete = "Pages.Administration.Customer.Delete";
 
+        public const string Pages_Administration_ShoppingPlan = "Pages.Administration.ShoppingPlan";
+        public const string Pages_Administration_ShoppingPlan_Create = "Pages.Administration.ShoppingPlan.Create";
+        public const string Pages_Administration_ShoppingPlan_Edit = "Pages.Administration.ShoppingPlan.Edit";
+        public const string Pages_Administration_ShoppingPlan_Delete = "Pages.Administration.ShoppingPlan.Delete";
+
     }
 }
