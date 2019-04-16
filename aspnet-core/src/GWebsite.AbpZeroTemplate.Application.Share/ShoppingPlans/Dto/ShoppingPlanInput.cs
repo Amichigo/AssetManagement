@@ -15,4 +15,4 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.ShoppingPlans.Dto
         public string KinhPhi { get; set; }
     }
 }
-}
+
