@@ -24,4 +24,9 @@
     <ProjectReference Include="..\GSoft.AbpZeroTemplate.Core.Shared\GSoft.AbpZeroTemplate.Core.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\RealEstasAsset\QuanLyToaNha\" />
+    <Folder Include="Models\RealEstasAsset\QuanLyCongTrinhXayDung\" />
+  </ItemGroup>
+
 </Project>

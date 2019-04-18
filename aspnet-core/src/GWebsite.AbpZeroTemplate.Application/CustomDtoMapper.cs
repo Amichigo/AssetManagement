@@ -2,6 +2,7 @@ using AutoMapper;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.LoaiBatDongSan.DTO;
 using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Applications
@@ -26,6 +27,12 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<CustomerInput, Customer>();
             configuration.CreateMap<Customer, CustomerInput>();
             configuration.CreateMap<Customer, CustomerForViewDto>();
+
+            // LoaiBDS
+            configuration.CreateMap<LoaiBatDongSan, LoaiBatDongSanDto>();
+            configuration.CreateMap<LoaiBatDongSanInput, LoaiBatDongSan>();
+            configuration.CreateMap<LoaiBatDongSan, LoaiBatDongSanInput>();
+            configuration.CreateMap<LoaiBatDongSan, LoaiBatDongSanForViewDto>();
         }
     }
 }

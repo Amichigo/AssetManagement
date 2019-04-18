@@ -17,6 +17,7 @@ export class CreateOrEditCustomerModalComponent extends AppComponentBase {
     @ViewChild('dateInput') dateInput: ElementRef;
 
 
+     
     /**
      * @Output dùng để public event cho component khác xử lý
      */

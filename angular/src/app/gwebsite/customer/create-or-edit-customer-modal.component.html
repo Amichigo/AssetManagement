@@ -16,22 +16,36 @@
                     <div class="form-group">
                         <label>Tên khách hàng *</label>
                         <input #nameInput="ngModel" class="form-control" type="text" name="Name"
-                            [(ngModel)]="customer.name" required maxlength="64">
+                               [(ngModel)]="customer.name" required maxlength="64">
                         <validation-messages [formCtrl]="nameInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Địa chỉ *</label>
                         <input #addressInput="ngModel" class="form-control" type="text" name="Address"
-                            [(ngModel)]="customer.address" required maxlength="64">
+                               [(ngModel)]="customer.address" required maxlength="64">
                         <validation-messages [formCtrl]="addressInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Thông tin *</label>
                         <input #addressInput="ngModel" class="form-control" type="text" name="Info"
-                            [(ngModel)]="customer.info" required maxlength="64">
+                               [(ngModel)]="customer.info" required maxlength="64">
                         <validation-messages [formCtrl]="infoInput"></validation-messages>
                     </div>
+
+                    <div class="form-group">
+                        <label for="checkbox-inline">
+                        </label>
+                        <select id="isActive" name="isActive" [(ngModel)]="isActive" class="form-group"></select>
+                    </div>
                 </div>
+
+
+
+
+
+
+
+
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default"
                         (click)="close()">{{l("Cancel")}}</button>
