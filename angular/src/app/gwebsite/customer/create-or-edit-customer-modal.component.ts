@@ -2,7 +2,7 @@ import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
 import { CustomerServiceProxy, CustomerInput } from '@shared/service-proxies/service-proxies';
-import { Department } from './department.model';
+
 
 @Component({
     selector: 'createOrEditCustomerModal',

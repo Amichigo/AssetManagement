@@ -29,39 +29,5 @@
         public const string Pages_Administration_LoaiBatDongSan_Edit = "Pages.Administration.LoaiBatDongSan.Edit";
         public const string Pages_Administration_LoaiBatDongSan_Delete = "Pages.Administration.LoaiBatDongSan.Delete";
 
-<<<<<<< HEAD
-
-        public const string Pages_Administration_LoaiSoHuu = "Pages.Administration.LoaiSoHuu";
-        public const string Pages_Administration_LoaiSoHuu_Create = "Pages.Administration.LoaiSoHuu.Create";
-        public const string Pages_Administration_LoaiSoHuu_Edit = "Pages.Administration.LoaiSoHuu.Edit";
-        public const string Pages_Administration_LoaiSoHuu_Delete = "Pages.Administration.LoaiSoHuu.Delete";
-        //Khu Vuc
-        public const string Pages_Administration_KhuVuc = "Pages.Administration.KhuVuc";
-        public const string Pages_Administration_KhuVuc_Create = "Pages.Administration.KhuVuc.Create";
-        public const string Pages_Administration_KhuVuc_Edit = "Pages.Administration.KhuVuc.Edit";
-        public const string Pages_Administration_KhuVuc_Delete = "Pages.Administration.KhuVuc.Delete";
-
-        //Tinh trang su dung dat
-        public const string Pages_Administration_TinhTrangSuDungDat = "Pages.Administration.TinhTrangSuDungDat";
-        public const string Pages_Administration_TinhTrangSuDungDat_Create = "Pages.Administration.TinhTrangSuDungDat.Create";
-        public const string Pages_Administration_TinhTrangSuDungDat_Edit = "Pages.Administration.TinhTrangSuDungDat.Edit";
-        public const string Pages_Administration_TinhTrangSuDungDat_Delete = "Pages.Administration.TinhTrangSuDungDat.Delete";
-        //Tinh trang xay dung 
-        public const string Pages_Administration_TinhTrangXayDung = "Pages.Administration.TinhTrangXayDung";
-        public const string Pages_Administration_TinhTrangXayDung_Create = "Pages.Administration.TinhTrangXayDung.Create";
-        public const string Pages_Administration_TinhTrangXayDung_Edit = "Pages.Administration.TinhTrangXayDung.Edit";
-        public const string Pages_Administration_TinhTrangXayDung_Delete = "Pages.Administration.TinhTrangXayDung.Delete";
-        // Hien trang phap ly
-        public const string Pages_Administration_HienTrangPhapLy = "Pages.Administration.HienTrangPhapLy";
-        public const string Pages_Administration_HienTrangPhapLy_Create = "Pages.Administration.HienTrangPhapLy.Create";
-        public const string Pages_Administration_HienTrangPhapLy_Edit = "Pages.Administration.HienTrangPhapLy.Edit";
-        public const string Pages_Administration_HienTrangPhapLy_Delete = "Pages.Administration.HienTrangPhapLy.Delete";
-        // Muc dich su dung dat
-        public const string Pages_Administration_MucDichSuDungDat = "Pages.Administration.MucDichSuDungDat";
-        public const string Pages_Administration_MucDichSuDungDat_Create = "Pages.Administration.MucDichSuDungDat.Create";
-        public const string Pages_Administration_MucDichSuDungDat_Edit = "Pages.Administration.MucDichSuDungDat.Edit";
-        public const string Pages_Administration_MucDichSuDungDat_Delete = "Pages.Administration.MucDichSuDungDat.Delete";
-=======
->>>>>>> 89aa32dd1a69060e244752ec0b1b37fed4ad9028
     }
 }
