@@ -4,14 +4,16 @@ using GSoft.AbpZeroTemplate.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    partial class AbpZeroTemplateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190417132541_AddCategoryType")]
+    partial class AddCategoryType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1549,37 +1551,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasIndex("IdentityRoleId");
 
                     b.ToTable("AppUserRoles");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CategoryId");
-
-                    b.Property<int>("CategoryTypeId");
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("Description");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Symbol");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.CategoryType", b =>

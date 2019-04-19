@@ -46,6 +46,15 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             customer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Customer_Edit, L("EditingCustomer"));
             customer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Customer_Delete, L("DeletingCustomer"));
 
+            var categoryType = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_CategoryTypes_General, L("CategoryType"));
+            categoryType.CreateChildPermission(GWebsitePermissions.Pages_CategoryTypes_General_Create, L("CreatingNewCategoryType"));
+            categoryType.CreateChildPermission(GWebsitePermissions.Pages_CategoryTypes_General_Edit, L("EditingCategoryType"));
+            categoryType.CreateChildPermission(GWebsitePermissions.Pages_CategoryTypes_General_Delete, L("DeletingCategoryType"));
+
+            var category = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Categories_General, L("Category"));
+            category.CreateChildPermission(GWebsitePermissions.Pages_Categories_General_Create, L("CreatingNewCategory"));
+            category.CreateChildPermission(GWebsitePermissions.Pages_Categories_General_Edit, L("EditingCategory"));
+            category.CreateChildPermission(GWebsitePermissions.Pages_Categories_General_Delete, L("DeletingCategory"));
         }
 
         private static ILocalizableString L(string name)

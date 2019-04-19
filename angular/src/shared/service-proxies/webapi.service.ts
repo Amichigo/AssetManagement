@@ -200,7 +200,7 @@ export class WebApiServiceProxy {
     public delete(url: string, id: number | null | undefined): Observable<void> {
         let url_ = `${this.baseUrl}/${url}`;
         if (id !== undefined) {
-            url_ += 'Id=' + encodeURIComponent('' + id) + '&';
+            url_ += encodeURIComponent('' + id) + '&';
         }
         url_ = url_.replace(/[?&]$/, '');
 
