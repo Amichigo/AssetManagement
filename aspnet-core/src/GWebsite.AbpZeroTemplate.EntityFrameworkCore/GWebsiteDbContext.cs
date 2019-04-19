@@ -24,6 +24,9 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<MenuClient> MenuClients { get; set; }
         public virtual DbSet<DemoModel> DemoModels { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+
+        public virtual DbSet<AssetActivity> AssetActivities { get; set; }
+
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>

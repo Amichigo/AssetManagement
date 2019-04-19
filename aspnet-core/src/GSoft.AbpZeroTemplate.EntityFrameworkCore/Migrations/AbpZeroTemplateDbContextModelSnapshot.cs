@@ -1551,6 +1551,35 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("AppUserRoles");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.AssetActivity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AssetActivityType");
+
+                    b.Property<string>("AssetId");
+
+                    b.Property<double>("Cost");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<DateTime>("ExecutionTime");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssetActivities");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
@@ -1691,31 +1720,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MenuClients");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.ModelDemo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<int>("Value");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ModelDemos");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Permission", b =>
