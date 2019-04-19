@@ -9815,3 +9815,188 @@ DEBUG 2019-04-18 19:32:25,746 [15   ] enancy.SubscriptionExpirationCheckWorker -
 DEBUG 2019-04-18 19:32:25,746 [15   ] cy.SubscriptionExpireEmailNotifierWorker - WaitToStop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpireEmailNotifierWorker
 DEBUG 2019-04-18 19:32:25,746 [15   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
 >>>>>>> 89aa32dd1a69060e244752ec0b1b37fed4ad9028
+DEBUG 2019-04-20 02:20:50,736 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-04-20 02:20:50,898 [1    ] Abp.Modules.AbpModuleManager             - Found 27 ABP modules in total.
+DEBUG 2019-04-20 02:20:50,931 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.Startup.AbpZeroTemplateWebHostModule, GSoft.AbpZeroTemplate.Web.Host, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,934 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.AbpZeroTemplateWebCoreModule, GSoft.AbpZeroTemplate.Web.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,935 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateApplicationModule, GSoft.AbpZeroTemplate.Application, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,935 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateCoreModule, GSoft.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,935 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,935 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,936 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,936 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,937 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,937 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.AbpAspNetZeroCoreModule, Abp.AspNetZeroCore, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,937 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.MailKit.AbpMailKitModule, Abp.MailKit, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,938 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteApplicationModule, GWebsite.AbpZeroTemplate.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,938 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateEntityFrameworkCoreModule, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,938 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.EntityFrameworkCore.GWebsiteEntityFrameworkCoreModule, GWebsite.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,939 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,939 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,939 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,939 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerEntityFrameworkCoreModule, Abp.ZeroCore.IdentityServer4.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,940 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerModule, Abp.ZeroCore.IdentityServer4, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,940 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteCoreModule, GWebsite.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,940 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.Web.AbpAspNetZeroCoreWebModule, Abp.AspNetZeroCore.Web, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,940 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,940 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,941 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,941 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Runtime.Caching.Redis.AbpRedisCacheModule, Abp.RedisCache, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,941 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,941 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Web.Core.GWebsiteWebCoreModule, GWebsite.AbpZeroTemplate.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:50,945 [1    ] Abp.Modules.AbpModuleManager             - 27 modules loaded.
+DEBUG 2019-04-20 02:20:51,155 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-20 02:20:51,155 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-20 02:20:51,155 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZeroTemplate (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-20 02:20:51,155 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-20 02:20:51,854 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateDbContext, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:20:53,123 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-04-20 02:20:53,170 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-04-20 02:20:53,185 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-04-20 02:20:53,215 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZeroTemplate
+DEBUG 2019-04-20 02:20:53,221 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-04-20 02:20:53,390 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-04-20 02:20:53,443 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 2 classes define auto mapping attributes
+DEBUG 2019-04-20 02:20:53,443 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-04-20 02:20:53,446 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Friendships.Cache.FriendCacheItem
+DEBUG 2019-04-20 02:20:54,162 [3    ] oCore.Licensing.AspNetZeroLicenseChecker - C:\Users\lordp\AppData\Local\Temp\4348ea276e115abbb75d3c34164a05d7.tmp
+FATAL 2019-04-20 02:20:54,164 [3    ] oCore.Licensing.AspNetZeroLicenseChecker - Failed to validate project name. Should not rename a project downloaded from aspnetzero.com. You can contact to info@aspnetzero.com if you are using a licensed product.
+StartIndex cannot be less than zero.
+Parameter name: startIndex
+System.ArgumentOutOfRangeException: StartIndex cannot be less than zero.
+Parameter name: startIndex
+   at System.String.Substring(Int32 startIndex, Int32 length)
+   at Abp.AspNetZeroCore.Licensing.AspNetZeroLicenseChecker.hm6KbyFNGd6mE4M4H9(Object , Int32 , Int32 )
+   at Abp.AspNetZeroCore.Licensing.AspNetZeroLicenseChecker.GetHashedProjectName()
+   at Abp.AspNetZeroCore.Licensing.AspNetZeroLicenseChecker.IsProjectNameValid()
+   at Abp.AspNetZeroCore.Licensing.AspNetZeroLicenseChecker.CheckInternal()
+DEBUG 2019-04-20 02:21:19,174 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-04-20 02:21:19,219 [1    ] Abp.Modules.AbpModuleManager             - Found 27 ABP modules in total.
+DEBUG 2019-04-20 02:21:19,249 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.Startup.AbpZeroTemplateWebHostModule, GSoft.AbpZeroTemplate.Web.Host, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,252 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.AbpZeroTemplateWebCoreModule, GSoft.AbpZeroTemplate.Web.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,252 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateApplicationModule, GSoft.AbpZeroTemplate.Application, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,252 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateCoreModule, GSoft.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,253 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,253 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,253 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,253 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,254 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,254 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.AbpAspNetZeroCoreModule, Abp.AspNetZeroCore, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,254 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.MailKit.AbpMailKitModule, Abp.MailKit, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,255 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteApplicationModule, GWebsite.AbpZeroTemplate.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,255 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateEntityFrameworkCoreModule, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,255 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.EntityFrameworkCore.GWebsiteEntityFrameworkCoreModule, GWebsite.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,255 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,255 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,256 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,256 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerEntityFrameworkCoreModule, Abp.ZeroCore.IdentityServer4.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,256 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerModule, Abp.ZeroCore.IdentityServer4, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,256 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteCoreModule, GWebsite.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,257 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.Web.AbpAspNetZeroCoreWebModule, Abp.AspNetZeroCore.Web, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,257 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,257 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,257 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,258 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Runtime.Caching.Redis.AbpRedisCacheModule, Abp.RedisCache, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,258 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,259 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Web.Core.GWebsiteWebCoreModule, GWebsite.AbpZeroTemplate.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:19,262 [1    ] Abp.Modules.AbpModuleManager             - 27 modules loaded.
+DEBUG 2019-04-20 02:21:19,424 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-20 02:21:19,424 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-20 02:21:19,424 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZeroTemplate (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-20 02:21:19,424 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-20 02:21:19,861 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateDbContext, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:21:20,847 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-04-20 02:21:20,901 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-04-20 02:21:20,924 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-04-20 02:21:20,968 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZeroTemplate
+DEBUG 2019-04-20 02:21:20,978 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-04-20 02:21:21,033 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-04-20 02:21:21,104 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 2 classes define auto mapping attributes
+DEBUG 2019-04-20 02:21:21,104 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-04-20 02:21:21,109 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Friendships.Cache.FriendCacheItem
+DEBUG 2019-04-20 02:22:25,591 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-04-20 02:22:25,634 [1    ] Abp.Modules.AbpModuleManager             - Found 27 ABP modules in total.
+DEBUG 2019-04-20 02:22:25,692 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.Startup.AbpZeroTemplateWebHostModule, GSoft.AbpZeroTemplate.Web.Host, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,696 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.AbpZeroTemplateWebCoreModule, GSoft.AbpZeroTemplate.Web.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,696 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateApplicationModule, GSoft.AbpZeroTemplate.Application, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,696 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateCoreModule, GSoft.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,697 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,697 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,697 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,698 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,698 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,698 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.AbpAspNetZeroCoreModule, Abp.AspNetZeroCore, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,699 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.MailKit.AbpMailKitModule, Abp.MailKit, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,699 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteApplicationModule, GWebsite.AbpZeroTemplate.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,699 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateEntityFrameworkCoreModule, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,700 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.EntityFrameworkCore.GWebsiteEntityFrameworkCoreModule, GWebsite.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,700 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,700 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,701 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,701 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerEntityFrameworkCoreModule, Abp.ZeroCore.IdentityServer4.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,702 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerModule, Abp.ZeroCore.IdentityServer4, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,702 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteCoreModule, GWebsite.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,703 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.Web.AbpAspNetZeroCoreWebModule, Abp.AspNetZeroCore.Web, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,703 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,704 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,704 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Runtime.Caching.Redis.AbpRedisCacheModule, Abp.RedisCache, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Web.Core.GWebsiteWebCoreModule, GWebsite.AbpZeroTemplate.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:25,709 [1    ] Abp.Modules.AbpModuleManager             - 27 modules loaded.
+DEBUG 2019-04-20 02:22:25,860 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-20 02:22:25,860 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-20 02:22:25,860 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZeroTemplate (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-20 02:22:25,860 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-20 02:22:26,229 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateDbContext, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-20 02:22:26,984 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-04-20 02:22:27,030 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-04-20 02:22:27,049 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-04-20 02:22:27,087 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZeroTemplate
+DEBUG 2019-04-20 02:22:27,096 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-04-20 02:22:27,143 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-04-20 02:22:27,197 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 2 classes define auto mapping attributes
+DEBUG 2019-04-20 02:22:27,197 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-04-20 02:22:27,203 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Friendships.Cache.FriendCacheItem
+DEBUG 2019-04-20 02:22:31,699 [1    ] enancy.SubscriptionExpirationCheckWorker - Start background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpirationCheckWorker
+DEBUG 2019-04-20 02:22:31,701 [1    ] cy.SubscriptionExpireEmailNotifierWorker - Start background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpireEmailNotifierWorker
+INFO  2019-04-20 02:22:33,139 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/  
+INFO  2019-04-20 02:22:33,824 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action GSoft.AbpZeroTemplate.Web.Controllers.HomeController.Index (GSoft.AbpZeroTemplate.Web.Host)
+INFO  2019-04-20 02:22:33,925 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GSoft.AbpZeroTemplate.Web.Controllers.HomeController.Index (GSoft.AbpZeroTemplate.Web.Host) - Validation state: Valid
+INFO  2019-04-20 02:22:33,930 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GSoft.AbpZeroTemplate.Web.Controllers.HomeController.Index (GSoft.AbpZeroTemplate.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 2.0482ms.
+INFO  2019-04-20 02:22:33,951 [9    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-04-20 02:22:33,964 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GSoft.AbpZeroTemplate.Web.Controllers.HomeController.Index (GSoft.AbpZeroTemplate.Web.Host) in 134.9509ms
+INFO  2019-04-20 02:22:34,038 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 904.288ms 302 
+INFO  2019-04-20 02:22:34,052 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger  
+INFO  2019-04-20 02:22:34,062 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 10.2665ms 301 
+INFO  2019-04-20 02:22:34,076 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html  
+INFO  2019-04-20 02:22:34,110 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 34.0106ms 200 text/html
+INFO  2019-04-20 02:22:34,201 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui.css  
+INFO  2019-04-20 02:22:34,204 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/ui/abp.js  
+INFO  2019-04-20 02:22:34,205 [3    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/ui/abp.swagger.js  
+INFO  2019-04-20 02:22:34,240 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-bundle.js  
+INFO  2019-04-20 02:22:34,252 [8    ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-bundle.js was not modified
+INFO  2019-04-20 02:22:34,256 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 16.178ms 304 application/javascript
+INFO  2019-04-20 02:22:34,263 [11   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger/ui/abp.js'. Physical path: 'C:\Users\lordp\Documents\GitHub\hgl\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Web.Host\wwwroot\swagger\ui\abp.js'
+INFO  2019-04-20 02:22:34,263 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger/ui/abp.swagger.js'. Physical path: 'C:\Users\lordp\Documents\GitHub\hgl\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Web.Host\wwwroot\swagger\ui\abp.swagger.js'
+INFO  2019-04-20 02:22:34,270 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 65.2645ms 200 application/javascript
+INFO  2019-04-20 02:22:34,270 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 64.3163ms 200 application/javascript
+INFO  2019-04-20 02:22:34,271 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-standalone-preset.js  
+INFO  2019-04-20 02:22:34,272 [11   ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-standalone-preset.js was not modified
+INFO  2019-04-20 02:22:34,272 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.4077ms 304 application/javascript
+INFO  2019-04-20 02:22:34,276 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+INFO  2019-04-20 02:22:34,287 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 86.2039ms 200 text/css
+INFO  2019-04-20 02:22:34,567 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/favicon-16x16.png  
+INFO  2019-04-20 02:22:34,569 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon-16x16.png'. Physical path: 'N/A'
+INFO  2019-04-20 02:22:34,570 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.8809ms 200 image/png
+INFO  2019-04-20 02:22:34,723 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json  
+INFO  2019-04-20 02:22:34,731 [11   ] uthentication.JwtBearer.JwtBearerHandler - Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+INFO  2019-04-20 02:22:35,350 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 627.7252ms 200 application/json;charset=utf-8
+DEBUG 2019-04-20 02:22:59,042 [15   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-04-20 02:22:59,043 [15   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-04-20 02:22:59,043 [15   ] enancy.SubscriptionExpirationCheckWorker - Stop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpirationCheckWorker
+DEBUG 2019-04-20 02:22:59,043 [15   ] cy.SubscriptionExpireEmailNotifierWorker - Stop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpireEmailNotifierWorker
+DEBUG 2019-04-20 02:22:59,044 [15   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-04-20 02:22:59,044 [15   ] enancy.SubscriptionExpirationCheckWorker - WaitToStop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpirationCheckWorker
+DEBUG 2019-04-20 02:22:59,044 [15   ] cy.SubscriptionExpireEmailNotifierWorker - WaitToStop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpireEmailNotifierWorker
+DEBUG 2019-04-20 02:22:59,044 [15   ] Abp.Modules.AbpModuleManager             - Shutting down completed.

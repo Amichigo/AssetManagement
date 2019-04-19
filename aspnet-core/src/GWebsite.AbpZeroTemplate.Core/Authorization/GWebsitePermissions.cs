@@ -29,8 +29,6 @@
         public const string Pages_Administration_LoaiBatDongSan_Edit = "Pages.Administration.LoaiBatDongSan.Edit";
         public const string Pages_Administration_LoaiBatDongSan_Delete = "Pages.Administration.LoaiBatDongSan.Delete";
 
-<<<<<<< HEAD
-
         public const string Pages_Administration_LoaiSoHuu = "Pages.Administration.LoaiSoHuu";
         public const string Pages_Administration_LoaiSoHuu_Create = "Pages.Administration.LoaiSoHuu.Create";
         public const string Pages_Administration_LoaiSoHuu_Edit = "Pages.Administration.LoaiSoHuu.Edit";
@@ -61,7 +59,16 @@
         public const string Pages_Administration_MucDichSuDungDat_Create = "Pages.Administration.MucDichSuDungDat.Create";
         public const string Pages_Administration_MucDichSuDungDat_Edit = "Pages.Administration.MucDichSuDungDat.Edit";
         public const string Pages_Administration_MucDichSuDungDat_Delete = "Pages.Administration.MucDichSuDungDat.Delete";
-=======
->>>>>>> 89aa32dd1a69060e244752ec0b1b37fed4ad9028
+
+        public const string Pages_Administration_LoaiTaiSan = "Pages.Administration.LoaiTaiSan";
+        public const string Pages_Administration_LoaiTaiSan_Create = "Pages.Administration.LoaiTaiSan.Create";
+        public const string Pages_Administration_LoaiTaiSan_Edit = "Pages.Administration.LoaiTaiSan.Edit";
+        public const string Pages_Administration_LoaiTaiSan_Delete = "Pages.Administration.LoaiTaiSan.Delete";
+
+        public const string Pages_Administration_NhomTaiSan = "Pages.Administration.NhomTaiSan";
+        public const string Pages_Administration_NhomTaiSan_Create = "Pages.Administration.NhomTaiSan.Create";
+        public const string Pages_Administration_NhomTaiSan_Edit = "Pages.Administration.NhomTaiSan.Edit";
+        public const string Pages_Administration_NhomTaiSan_Delete = "Pages.Administration.NhomTaiSan.Delete";
+
     }
 }

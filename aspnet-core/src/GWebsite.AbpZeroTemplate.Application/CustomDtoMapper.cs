@@ -2,7 +2,7 @@ using AutoMapper;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
-<<<<<<< HEAD
+
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.HienTrangPhapLy.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.KhuVuc.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.LoaiBatDongSan.DTO;
@@ -11,9 +11,10 @@ using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.LoaiSoHuu.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.MucDichSuDungDat.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.TinhTrangSuDungDat.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.TinhTrangXayDung.DTO;
-=======
-using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.LoaiBatDongSan.DTO;
->>>>>>> 89aa32dd1a69060e244752ec0b1b37fed4ad9028
+
+using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.LoaiTaiSan.DTO;
+using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.NhomTaiSan.DTO;
+
 using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Applications
@@ -44,7 +45,6 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<LoaiBatDongSanInput, LoaiBatDongSan>();
             configuration.CreateMap<LoaiBatDongSan, LoaiBatDongSanInput>();
             configuration.CreateMap<LoaiBatDongSan, LoaiBatDongSanForViewDto>();
-<<<<<<< HEAD
 
             // LoaiSH
             configuration.CreateMap<LoaiSoHuu, LoaiSoHuuDto>();
@@ -78,8 +78,16 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<MucDichSuDungDat, MucDichSuDungDatInput>();
             configuration.CreateMap<MucDichSuDungDat, MucDichSuDungDatForViewDto>();
 
-=======
->>>>>>> 89aa32dd1a69060e244752ec0b1b37fed4ad9028
+            configuration.CreateMap<LoaiTaiSan, LoaiTaiSanDto>();
+            configuration.CreateMap<LoaiTaiSanInput, LoaiTaiSan>();
+            configuration.CreateMap<LoaiTaiSan, LoaiTaiSanInput>();
+            configuration.CreateMap<LoaiTaiSan, LoaiTaiSanForViewDto>();
+
+            configuration.CreateMap<NhomTaiSan, NhomTaiSanDto>();
+            configuration.CreateMap<NhomTaiSanInput, NhomTaiSan>();
+            configuration.CreateMap<NhomTaiSan, NhomTaiSanInput>();
+            configuration.CreateMap<NhomTaiSan, NhomTaiSanForViewDto>();
+
         }
     }
 }

@@ -50,11 +50,6 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             loaibds.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiBatDongSan_Create, L("CreatingNewLoaiBatDongSan"));
             loaibds.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiBatDongSan_Edit, L("EditingLoaiBatDongSan"));
             loaibds.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiBatDongSan_Delete, L("DeletingLoaiBatDongSan"));
-<<<<<<< HEAD
-=======
-
-        }
->>>>>>> 89aa32dd1a69060e244752ec0b1b37fed4ad9028
 
             var loaish = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiSoHuu, L("LoaiSoHuu"));
             loaish.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiSoHuu_Create, L("CreatingNewLoaiSoHuu"));
@@ -85,6 +80,16 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             mdsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_MucDichSuDungDat_Create, L("CreatingNewMucDichSuDungDat"));
             mdsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_MucDichSuDungDat_Edit, L("EditingMucDichSuDungDat"));
             mdsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_MucDichSuDungDat_Delete, L("DeletingMucDichSuDungDat"));
+
+            var loaits = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiTaiSan, L("LoaiTaiSan"));
+            loaits.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiTaiSan_Create, L("CreatingNewLoaiTaiSan"));
+            loaits.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiTaiSan_Edit, L("EditingLoaiTaiSan"));
+            loaits.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiTaiSan_Delete, L("DeletingLoaiTaiSan"));
+
+            var nhomts = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhomTaiSan, L("NhomTaiSan"));
+            nhomts.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhomTaiSan_Create, L("CreatingNewNhomTaiSan"));
+            nhomts.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhomTaiSan_Edit, L("EditingNhomTaiSan"));
+            nhomts.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhomTaiSan_Delete, L("DeletingNhomTaiSan"));
         }
         private static ILocalizableString L(string name)
         {
