@@ -50,9 +50,42 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             loaibds.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiBatDongSan_Create, L("CreatingNewLoaiBatDongSan"));
             loaibds.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiBatDongSan_Edit, L("EditingLoaiBatDongSan"));
             loaibds.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiBatDongSan_Delete, L("DeletingLoaiBatDongSan"));
+<<<<<<< HEAD
+=======
 
         }
+>>>>>>> 89aa32dd1a69060e244752ec0b1b37fed4ad9028
 
+            var loaish = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiSoHuu, L("LoaiSoHuu"));
+            loaish.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiSoHuu_Create, L("CreatingNewLoaiSoHuu"));
+            loaish.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiSoHuu_Edit, L("EditingLoaiSoHuu"));
+            loaish.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiSoHuu_Delete, L("DeletingLoaiSoHuu"));
+            //Khu Vuc
+            var kv = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_KhuVuc, L("KhuVuc"));
+            kv.CreateChildPermission(GWebsitePermissions.Pages_Administration_KhuVuc_Create, L("CreatingNewKhuVuc"));
+            kv.CreateChildPermission(GWebsitePermissions.Pages_Administration_KhuVuc_Edit, L("EditingKhuVuc"));
+            kv.CreateChildPermission(GWebsitePermissions.Pages_Administration_KhuVuc_Delete, L("DeletingKhuVuc"));
+            //Tinh trang su dung dat
+            var ttsdd = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangSuDungDat, L("TinhTrangSuDungDat"));
+            ttsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangSuDungDat_Create, L("CreatingNewTinhTrangSuDungDat"));
+            ttsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangSuDungDat_Edit, L("EditingTinhTrangSuDungDat"));
+            ttsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangSuDungDat_Delete, L("DeletingTinhTrangSuDungDat"));
+            //Tinh trang xay dung 
+            var ttxd = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangXayDung, L("TinhTrangXayDung"));
+            ttxd.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangXayDung_Create, L("CreatingNewTinhTrangXayDung"));
+            ttxd.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangXayDung_Edit, L("EditingTinhTrangXayDung"));
+            ttxd.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangXayDung_Delete, L("DeletingTinhTrangXayDung"));
+            //Hien trang phap ly
+            var htpl = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_HienTrangPhapLy, L("HienTrangPhapLy"));
+            htpl.CreateChildPermission(GWebsitePermissions.Pages_Administration_HienTrangPhapLy_Create, L("CreatingNewHienTrangPhapLy"));
+            htpl.CreateChildPermission(GWebsitePermissions.Pages_Administration_HienTrangPhapLy_Edit, L("EditingHienTrangPhapLy"));
+            htpl.CreateChildPermission(GWebsitePermissions.Pages_Administration_HienTrangPhapLy_Delete, L("DeletingHienTrangPhapLy"));
+            //Muc dich su dung dat
+            var mdsdd = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_MucDichSuDungDat, L("MucDichSuDungDat"));
+            mdsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_MucDichSuDungDat_Create, L("CreatingNewMucDichSuDungDat"));
+            mdsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_MucDichSuDungDat_Edit, L("EditingMucDichSuDungDat"));
+            mdsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_MucDichSuDungDat_Delete, L("DeletingMucDichSuDungDat"));
+        }
         private static ILocalizableString L(string name)
         {
             return new LocalizableString(name, AbpZeroTemplateConsts.LocalizationSourceName);
