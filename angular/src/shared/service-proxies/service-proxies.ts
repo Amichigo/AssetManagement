@@ -6694,6 +6694,295 @@ export class SubscriptionServiceProxy {
 }
 
 @Injectable()
+export class SupplierServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @name (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getSuppliersByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfSupplierDto> {
+        let url_ = this.baseUrl + "/api/Supplier/GetSuppliersByFilter?";
+        if (name !== undefined)
+            url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetSuppliersByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetSuppliersByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfSupplierDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfSupplierDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetSuppliersByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfSupplierDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfSupplierDto.fromJS(resultData200) : new PagedResultDtoOfSupplierDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfSupplierDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getSupplierForEdit(id: number | null | undefined): Observable<SupplierInput> {
+        let url_ = this.baseUrl + "/api/Supplier/GetSupplierForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetSupplierForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetSupplierForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<SupplierInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SupplierInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetSupplierForEdit(response: HttpResponseBase): Observable<SupplierInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? SupplierInput.fromJS(resultData200) : new SupplierInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SupplierInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditSupplier(input: SupplierInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/Supplier/CreateOrEditSupplier";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditSupplier(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditSupplier(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditSupplier(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteSupplier(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/Supplier/DeleteSupplier/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteSupplier(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteSupplier(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteSupplier(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getSupplierForView(id: number | null | undefined): Observable<SupplierForViewDto> {
+        let url_ = this.baseUrl + "/api/Supplier/GetSupplierForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetSupplierForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetSupplierForView(<any>response_);
+                } catch (e) {
+                    return <Observable<SupplierForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SupplierForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetSupplierForView(response: HttpResponseBase): Observable<SupplierForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? SupplierForViewDto.fromJS(resultData200) : new SupplierForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SupplierForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class TenantServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -16917,6 +17206,206 @@ export interface IUpdateUserSignInTokenOutput {
     signInToken: string | undefined;
     encodedUserId: string | undefined;
     encodedTenantId: string | undefined;
+}
+
+export class PagedResultDtoOfSupplierDto implements IPagedResultDtoOfSupplierDto {
+    totalCount!: number | undefined;
+    items!: SupplierDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfSupplierDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(SupplierDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfSupplierDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfSupplierDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfSupplierDto {
+    totalCount: number | undefined;
+    items: SupplierDto[] | undefined;
+}
+
+export class SupplierDto implements ISupplierDto {
+    name!: string | undefined;
+    address!: string | undefined;
+    phoneNumber!: string | undefined;
+    email!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: ISupplierDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.name = data["name"];
+            this.address = data["address"];
+            this.phoneNumber = data["phoneNumber"];
+            this.email = data["email"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): SupplierDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new SupplierDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["address"] = this.address;
+        data["phoneNumber"] = this.phoneNumber;
+        data["email"] = this.email;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface ISupplierDto {
+    name: string | undefined;
+    address: string | undefined;
+    phoneNumber: string | undefined;
+    email: string | undefined;
+    id: number | undefined;
+}
+
+export class SupplierInput implements ISupplierInput {
+    name!: string | undefined;
+    address!: string | undefined;
+    phoneNumber!: string | undefined;
+    email!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: ISupplierInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.name = data["name"];
+            this.address = data["address"];
+            this.phoneNumber = data["phoneNumber"];
+            this.email = data["email"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): SupplierInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new SupplierInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["address"] = this.address;
+        data["phoneNumber"] = this.phoneNumber;
+        data["email"] = this.email;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface ISupplierInput {
+    name: string | undefined;
+    address: string | undefined;
+    phoneNumber: string | undefined;
+    email: string | undefined;
+    id: number | undefined;
+}
+
+export class SupplierForViewDto implements ISupplierForViewDto {
+    name!: string | undefined;
+    address!: string | undefined;
+    phoneNumber!: string | undefined;
+    email!: string | undefined;
+
+    constructor(data?: ISupplierForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.name = data["name"];
+            this.address = data["address"];
+            this.phoneNumber = data["phoneNumber"];
+            this.email = data["email"];
+        }
+    }
+
+    static fromJS(data: any): SupplierForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new SupplierForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["address"] = this.address;
+        data["phoneNumber"] = this.phoneNumber;
+        data["email"] = this.email;
+        return data; 
+    }
+}
+
+export interface ISupplierForViewDto {
+    name: string | undefined;
+    address: string | undefined;
+    phoneNumber: string | undefined;
+    email: string | undefined;
 }
 
 export class PagedResultDtoOfTenantListDto implements IPagedResultDtoOfTenantListDto {
