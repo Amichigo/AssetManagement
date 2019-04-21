@@ -40,8 +40,8 @@ import { SupplierComponent } from './supplier/supplier.component';
                 children: [
                     {
                         path: 'supplier', component: SupplierComponent,
-                        data: { permission: 'Pages.Administration.Supplier' }
-                    },
+                        data: { permission: 'Pages.Administration.Supplier'}
+                    }
                 ]
             }
         ])
