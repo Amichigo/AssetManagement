@@ -2064,61 +2064,6 @@ export class DemoModelServiceProxy {
         }
         return _observableOf<void>(<any>null);
     }
-
-    /**
-     * @id (optional) 
-     * @return Success
-     */
-    getDemoModelForView(id: number | null | undefined): Observable<DemoModelForViewDto> {
-        let url_ = this.baseUrl + "/api/DemoModel/GetDemoModelForView?";
-        if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetDemoModelForView(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetDemoModelForView(<any>response_);
-                } catch (e) {
-                    return <Observable<DemoModelForViewDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<DemoModelForViewDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetDemoModelForView(response: HttpResponseBase): Observable<DemoModelForViewDto> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? DemoModelForViewDto.fromJS(resultData200) : new DemoModelForViewDto();
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<DemoModelForViewDto>(<any>null);
-    }
 }
 
 @Injectable()
@@ -2472,6 +2417,295 @@ export class DemoUiComponentsServiceProxy {
             }));
         }
         return _observableOf<StringOutput>(<any>null);
+    }
+}
+
+@Injectable()
+export class DuAnServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @tenDuAn (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getDuAnsByFilter(tenDuAn: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfDuAnDto> {
+        let url_ = this.baseUrl + "/api/DuAn/GetDuAnsByFilter?";
+        if (tenDuAn !== undefined)
+            url_ += "TenDuAn=" + encodeURIComponent("" + tenDuAn) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetDuAnsByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetDuAnsByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfDuAnDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfDuAnDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetDuAnsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfDuAnDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfDuAnDto.fromJS(resultData200) : new PagedResultDtoOfDuAnDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfDuAnDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getDuAnForEdit(id: number | null | undefined): Observable<DuAnInput> {
+        let url_ = this.baseUrl + "/api/DuAn/GetDuAnForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetDuAnForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetDuAnForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<DuAnInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<DuAnInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetDuAnForEdit(response: HttpResponseBase): Observable<DuAnInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? DuAnInput.fromJS(resultData200) : new DuAnInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<DuAnInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditDuAn(input: DuAnInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/DuAn/CreateOrEditDuAn";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditDuAn(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditDuAn(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditDuAn(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteDuAn(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/DuAn/DeleteDuAn/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteDuAn(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteDuAn(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteDuAn(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getDuAnForView(id: number | null | undefined): Observable<DuAnForViewDto> {
+        let url_ = this.baseUrl + "/api/DuAn/GetDuAnForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetDuAnForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetDuAnForView(<any>response_);
+                } catch (e) {
+                    return <Observable<DuAnForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<DuAnForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetDuAnForView(response: HttpResponseBase): Observable<DuAnForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? DuAnForViewDto.fromJS(resultData200) : new DuAnForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<DuAnForViewDto>(<any>null);
     }
 }
 
@@ -3039,6 +3273,801 @@ export class FriendshipServiceProxy {
             }));
         }
         return _observableOf<void>(<any>null);
+    }
+}
+
+@Injectable()
+export class HopDongThauServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @tenHopDong (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getHopDongThausByFilter(tenHopDong: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfHopDongThauDto> {
+        let url_ = this.baseUrl + "/api/HopDongThau/GetHopDongThausByFilter?";
+        if (tenHopDong !== undefined)
+            url_ += "TenHopDong=" + encodeURIComponent("" + tenHopDong) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetHopDongThausByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetHopDongThausByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfHopDongThauDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfHopDongThauDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetHopDongThausByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfHopDongThauDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfHopDongThauDto.fromJS(resultData200) : new PagedResultDtoOfHopDongThauDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfHopDongThauDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getHopDongThauForEdit(id: number | null | undefined): Observable<HopDongThauInput> {
+        let url_ = this.baseUrl + "/api/HopDongThau/GetHopDongThauForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetHopDongThauForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetHopDongThauForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<HopDongThauInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<HopDongThauInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetHopDongThauForEdit(response: HttpResponseBase): Observable<HopDongThauInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? HopDongThauInput.fromJS(resultData200) : new HopDongThauInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<HopDongThauInput>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getHoSoThauComboboxForEditAsync(id: number | null | undefined): Observable<HoSoThauOutput> {
+        let url_ = this.baseUrl + "/api/HopDongThau/GetHoSoThauComboboxForEditAsync?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetHoSoThauComboboxForEditAsync(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetHoSoThauComboboxForEditAsync(<any>response_);
+                } catch (e) {
+                    return <Observable<HoSoThauOutput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<HoSoThauOutput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetHoSoThauComboboxForEditAsync(response: HttpResponseBase): Observable<HoSoThauOutput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? HoSoThauOutput.fromJS(resultData200) : new HoSoThauOutput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<HoSoThauOutput>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getNhaCungCapComboboxForEditAsync(id: number | null | undefined): Observable<NhaCungCapOutput> {
+        let url_ = this.baseUrl + "/api/HopDongThau/GetNhaCungCapComboboxForEditAsync?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetNhaCungCapComboboxForEditAsync(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetNhaCungCapComboboxForEditAsync(<any>response_);
+                } catch (e) {
+                    return <Observable<NhaCungCapOutput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<NhaCungCapOutput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetNhaCungCapComboboxForEditAsync(response: HttpResponseBase): Observable<NhaCungCapOutput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? NhaCungCapOutput.fromJS(resultData200) : new NhaCungCapOutput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<NhaCungCapOutput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditHopDongThau(input: HopDongThauInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/HopDongThau/CreateOrEditHopDongThau";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditHopDongThau(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditHopDongThau(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditHopDongThau(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteHopDongThau(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/HopDongThau/DeleteHopDongThau/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteHopDongThau(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteHopDongThau(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteHopDongThau(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getHopDongThauForView(id: number | null | undefined): Observable<HopDongThauForViewDto> {
+        let url_ = this.baseUrl + "/api/HopDongThau/GetHopDongThauForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetHopDongThauForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetHopDongThauForView(<any>response_);
+                } catch (e) {
+                    return <Observable<HopDongThauForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<HopDongThauForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetHopDongThauForView(response: HttpResponseBase): Observable<HopDongThauForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? HopDongThauForViewDto.fromJS(resultData200) : new HopDongThauForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<HopDongThauForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
+export class HoSoThauServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @maHoSo (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getHoSoThausByFilter(maHoSo: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfHoSoThauDto> {
+        let url_ = this.baseUrl + "/api/HoSoThau/GetHoSoThausByFilter?";
+        if (maHoSo !== undefined)
+            url_ += "MaHoSo=" + encodeURIComponent("" + maHoSo) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetHoSoThausByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetHoSoThausByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfHoSoThauDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfHoSoThauDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetHoSoThausByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfHoSoThauDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfHoSoThauDto.fromJS(resultData200) : new PagedResultDtoOfHoSoThauDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfHoSoThauDto>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getDuAnLienQuanHoSos(): Observable<ListResultDtoOfDuAnDto> {
+        let url_ = this.baseUrl + "/api/HoSoThau/GetDuAnLienQuanHoSos";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetDuAnLienQuanHoSos(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetDuAnLienQuanHoSos(<any>response_);
+                } catch (e) {
+                    return <Observable<ListResultDtoOfDuAnDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ListResultDtoOfDuAnDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetDuAnLienQuanHoSos(response: HttpResponseBase): Observable<ListResultDtoOfDuAnDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? ListResultDtoOfDuAnDto.fromJS(resultData200) : new ListResultDtoOfDuAnDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ListResultDtoOfDuAnDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getHoSoThauForEdit(id: number | null | undefined): Observable<HoSoThauInput> {
+        let url_ = this.baseUrl + "/api/HoSoThau/GetHoSoThauForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetHoSoThauForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetHoSoThauForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<HoSoThauInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<HoSoThauInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetHoSoThauForEdit(response: HttpResponseBase): Observable<HoSoThauInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? HoSoThauInput.fromJS(resultData200) : new HoSoThauInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<HoSoThauInput>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getDuAnComboboxForEditAsync(id: number | null | undefined): Observable<DuAnOutput> {
+        let url_ = this.baseUrl + "/api/HoSoThau/GetDuAnComboboxForEditAsync?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetDuAnComboboxForEditAsync(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetDuAnComboboxForEditAsync(<any>response_);
+                } catch (e) {
+                    return <Observable<DuAnOutput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<DuAnOutput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetDuAnComboboxForEditAsync(response: HttpResponseBase): Observable<DuAnOutput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? DuAnOutput.fromJS(resultData200) : new DuAnOutput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<DuAnOutput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditHoSoThau(input: HoSoThauInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/HoSoThau/CreateOrEditHoSoThau";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditHoSoThau(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditHoSoThau(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditHoSoThau(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteHoSoThau(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/HoSoThau/DeleteHoSoThau/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteHoSoThau(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteHoSoThau(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteHoSoThau(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getHoSoThauForView(id: number | null | undefined): Observable<HoSoThauForViewDto> {
+        let url_ = this.baseUrl + "/api/HoSoThau/GetHoSoThauForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetHoSoThauForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetHoSoThauForView(<any>response_);
+                } catch (e) {
+                    return <Observable<HoSoThauForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<HoSoThauForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetHoSoThauForView(response: HttpResponseBase): Observable<HoSoThauForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? HoSoThauForViewDto.fromJS(resultData200) : new HoSoThauForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<HoSoThauForViewDto>(<any>null);
     }
 }
 
@@ -4107,58 +5136,6 @@ export class MenuClientServiceProxy {
     /**
      * @return Success
      */
-    getTest(): Observable<string> {
-        let url_ = this.baseUrl + "/api/MenuClient/GetTest";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetTest(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetTest(<any>response_);
-                } catch (e) {
-                    return <Observable<string>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<string>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetTest(response: HttpResponseBase): Observable<string> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 !== undefined ? resultData200 : <any>null;
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<string>(<any>null);
-    }
-
-    /**
-     * @return Success
-     */
     getMenuClients(): Observable<ListResultDtoOfMenuClientDto> {
         let url_ = this.baseUrl + "/api/MenuClient/GetMenuClients";
         url_ = url_.replace(/[?&]$/, "");
@@ -4270,58 +5247,6 @@ export class MenuClientServiceProxy {
             }));
         }
         return _observableOf<PagedResultDtoOfMenuClientListDto>(<any>null);
-    }
-
-    /**
-     * @return Success
-     */
-    demoWebApi(): Observable<string> {
-        let url_ = this.baseUrl + "/api/MenuClient/DemoWebApi";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processDemoWebApi(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processDemoWebApi(<any>response_);
-                } catch (e) {
-                    return <Observable<string>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<string>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processDemoWebApi(response: HttpResponseBase): Observable<string> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 !== undefined ? resultData200 : <any>null;
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<string>(<any>null);
     }
 
     /**
@@ -4540,6 +5465,295 @@ export class MenuClientServiceProxy {
             }));
         }
         return _observableOf<void>(<any>null);
+    }
+}
+
+@Injectable()
+export class NhaCungCapServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @tenNhaCungCap (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getNhaCungCapsByFilter(tenNhaCungCap: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfNhaCungCapDto> {
+        let url_ = this.baseUrl + "/api/NhaCungCap/GetNhaCungCapsByFilter?";
+        if (tenNhaCungCap !== undefined)
+            url_ += "TenNhaCungCap=" + encodeURIComponent("" + tenNhaCungCap) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetNhaCungCapsByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetNhaCungCapsByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfNhaCungCapDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfNhaCungCapDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetNhaCungCapsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfNhaCungCapDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfNhaCungCapDto.fromJS(resultData200) : new PagedResultDtoOfNhaCungCapDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfNhaCungCapDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getNhaCungCapForEdit(id: number | null | undefined): Observable<NhaCungCapInput> {
+        let url_ = this.baseUrl + "/api/NhaCungCap/GetNhaCungCapForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetNhaCungCapForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetNhaCungCapForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<NhaCungCapInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<NhaCungCapInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetNhaCungCapForEdit(response: HttpResponseBase): Observable<NhaCungCapInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? NhaCungCapInput.fromJS(resultData200) : new NhaCungCapInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<NhaCungCapInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditNhaCungCap(input: NhaCungCapInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/NhaCungCap/CreateOrEditNhaCungCap";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditNhaCungCap(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditNhaCungCap(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditNhaCungCap(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteNhaCungCap(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/NhaCungCap/DeleteNhaCungCap/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteNhaCungCap(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteNhaCungCap(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteNhaCungCap(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getNhaCungCapForView(id: number | null | undefined): Observable<NhaCungCapForViewDto> {
+        let url_ = this.baseUrl + "/api/NhaCungCap/GetNhaCungCapForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetNhaCungCapForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetNhaCungCapForView(<any>response_);
+                } catch (e) {
+                    return <Observable<NhaCungCapForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<NhaCungCapForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetNhaCungCapForView(response: HttpResponseBase): Observable<NhaCungCapForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? NhaCungCapForViewDto.fromJS(resultData200) : new NhaCungCapForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<NhaCungCapForViewDto>(<any>null);
     }
 }
 
@@ -5642,6 +6856,350 @@ export class PermissionServiceProxy {
             }));
         }
         return _observableOf<ListResultDtoOfFlatPermissionWithLevelDto>(<any>null);
+    }
+}
+
+@Injectable()
+export class PhieuGoiHangServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @tenKeHoach (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getPhieuGoiHangsByFilter(tenKeHoach: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfPhieuGoiHangDto> {
+        let url_ = this.baseUrl + "/api/PhieuGoiHang/GetPhieuGoiHangsByFilter?";
+        if (tenKeHoach !== undefined)
+            url_ += "TenKeHoach=" + encodeURIComponent("" + tenKeHoach) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetPhieuGoiHangsByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetPhieuGoiHangsByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfPhieuGoiHangDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfPhieuGoiHangDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetPhieuGoiHangsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfPhieuGoiHangDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfPhieuGoiHangDto.fromJS(resultData200) : new PagedResultDtoOfPhieuGoiHangDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfPhieuGoiHangDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getPhieuGoiHangForEdit(id: number | null | undefined): Observable<PhieuGoiHangInput> {
+        let url_ = this.baseUrl + "/api/PhieuGoiHang/GetPhieuGoiHangForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetPhieuGoiHangForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetPhieuGoiHangForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<PhieuGoiHangInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PhieuGoiHangInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetPhieuGoiHangForEdit(response: HttpResponseBase): Observable<PhieuGoiHangInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PhieuGoiHangInput.fromJS(resultData200) : new PhieuGoiHangInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PhieuGoiHangInput>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getHopDongThauComboboxForEditAsync(id: number | null | undefined): Observable<HopDongThauOutput> {
+        let url_ = this.baseUrl + "/api/PhieuGoiHang/GetHopDongThauComboboxForEditAsync?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetHopDongThauComboboxForEditAsync(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetHopDongThauComboboxForEditAsync(<any>response_);
+                } catch (e) {
+                    return <Observable<HopDongThauOutput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<HopDongThauOutput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetHopDongThauComboboxForEditAsync(response: HttpResponseBase): Observable<HopDongThauOutput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? HopDongThauOutput.fromJS(resultData200) : new HopDongThauOutput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<HopDongThauOutput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditPhieuGoiHang(input: PhieuGoiHangInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/PhieuGoiHang/CreateOrEditPhieuGoiHang";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditPhieuGoiHang(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditPhieuGoiHang(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditPhieuGoiHang(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deletePhieuGoiHang(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/PhieuGoiHang/DeletePhieuGoiHang/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeletePhieuGoiHang(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeletePhieuGoiHang(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeletePhieuGoiHang(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getPhieuGoiHangForView(id: number | null | undefined): Observable<PhieuGoiHangForViewDto> {
+        let url_ = this.baseUrl + "/api/PhieuGoiHang/GetPhieuGoiHangForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetPhieuGoiHangForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetPhieuGoiHangForView(<any>response_);
+                } catch (e) {
+                    return <Observable<PhieuGoiHangForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PhieuGoiHangForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetPhieuGoiHangForView(response: HttpResponseBase): Observable<PhieuGoiHangForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PhieuGoiHangForViewDto.fromJS(resultData200) : new PhieuGoiHangForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PhieuGoiHangForViewDto>(<any>null);
     }
 }
 
@@ -11408,8 +12966,7 @@ export interface IPagedResultDtoOfDemoModelDto {
 export class DemoModelDto implements IDemoModelDto {
     value!: number | undefined;
     info!: string | undefined;
-    date!: string | undefined;
-    id!: number | undefined;
+    date!: moment.Moment | undefined;
 
     constructor(data?: IDemoModelDto) {
         if (data) {
@@ -11424,8 +12981,7 @@ export class DemoModelDto implements IDemoModelDto {
         if (data) {
             this.value = data["value"];
             this.info = data["info"];
-            this.date = data["date"];
-            this.id = data["id"];
+            this.date = data["date"] ? moment(data["date"].toString()) : <any>undefined;
         }
     }
 
@@ -11440,8 +12996,7 @@ export class DemoModelDto implements IDemoModelDto {
         data = typeof data === 'object' ? data : {};
         data["value"] = this.value;
         data["info"] = this.info;
-        data["date"] = this.date;
-        data["id"] = this.id;
+        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
         return data; 
     }
 }
@@ -11449,14 +13004,13 @@ export class DemoModelDto implements IDemoModelDto {
 export interface IDemoModelDto {
     value: number | undefined;
     info: string | undefined;
-    date: string | undefined;
-    id: number | undefined;
+    date: moment.Moment | undefined;
 }
 
 export class DemoModelInput implements IDemoModelInput {
     value!: number | undefined;
     info!: string | undefined;
-    date!: string | undefined;
+    date!: moment.Moment | undefined;
     id!: number | undefined;
 
     constructor(data?: IDemoModelInput) {
@@ -11472,7 +13026,7 @@ export class DemoModelInput implements IDemoModelInput {
         if (data) {
             this.value = data["value"];
             this.info = data["info"];
-            this.date = data["date"];
+            this.date = data["date"] ? moment(data["date"].toString()) : <any>undefined;
             this.id = data["id"];
         }
     }
@@ -11488,7 +13042,7 @@ export class DemoModelInput implements IDemoModelInput {
         data = typeof data === 'object' ? data : {};
         data["value"] = this.value;
         data["info"] = this.info;
-        data["date"] = this.date;
+        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
         data["id"] = this.id;
         return data; 
     }
@@ -11497,52 +13051,8 @@ export class DemoModelInput implements IDemoModelInput {
 export interface IDemoModelInput {
     value: number | undefined;
     info: string | undefined;
-    date: string | undefined;
+    date: moment.Moment | undefined;
     id: number | undefined;
-}
-
-export class DemoModelForViewDto implements IDemoModelForViewDto {
-    value!: number | undefined;
-    info!: string | undefined;
-    date!: string | undefined;
-
-    constructor(data?: IDemoModelForViewDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.value = data["value"];
-            this.info = data["info"];
-            this.date = data["date"];
-        }
-    }
-
-    static fromJS(data: any): DemoModelForViewDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new DemoModelForViewDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["value"] = this.value;
-        data["info"] = this.info;
-        data["date"] = this.date;
-        return data; 
-    }
-}
-
-export interface IDemoModelForViewDto {
-    value: number | undefined;
-    info: string | undefined;
-    date: string | undefined;
 }
 
 export class DateToStringOutput implements IDateToStringOutput {
@@ -11655,6 +13165,194 @@ export class StringOutput implements IStringOutput {
 
 export interface IStringOutput {
     output: string | undefined;
+}
+
+export class PagedResultDtoOfDuAnDto implements IPagedResultDtoOfDuAnDto {
+    totalCount!: number | undefined;
+    items!: DuAnDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfDuAnDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(DuAnDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfDuAnDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfDuAnDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfDuAnDto {
+    totalCount: number | undefined;
+    items: DuAnDto[] | undefined;
+}
+
+export class DuAnDto implements IDuAnDto {
+    maDuAn!: string | undefined;
+    tenDuAn!: string | undefined;
+    ngayTaoDuAn!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IDuAnDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maDuAn = data["maDuAn"];
+            this.tenDuAn = data["tenDuAn"];
+            this.ngayTaoDuAn = data["ngayTaoDuAn"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): DuAnDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new DuAnDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maDuAn"] = this.maDuAn;
+        data["tenDuAn"] = this.tenDuAn;
+        data["ngayTaoDuAn"] = this.ngayTaoDuAn;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IDuAnDto {
+    maDuAn: string | undefined;
+    tenDuAn: string | undefined;
+    ngayTaoDuAn: string | undefined;
+    id: number | undefined;
+}
+
+export class DuAnInput implements IDuAnInput {
+    maDuAn!: string | undefined;
+    tenDuAn!: string | undefined;
+    ngayTaoDuAn!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IDuAnInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maDuAn = data["maDuAn"];
+            this.tenDuAn = data["tenDuAn"];
+            this.ngayTaoDuAn = data["ngayTaoDuAn"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): DuAnInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new DuAnInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maDuAn"] = this.maDuAn;
+        data["tenDuAn"] = this.tenDuAn;
+        data["ngayTaoDuAn"] = this.ngayTaoDuAn;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IDuAnInput {
+    maDuAn: string | undefined;
+    tenDuAn: string | undefined;
+    ngayTaoDuAn: string | undefined;
+    id: number | undefined;
+}
+
+export class DuAnForViewDto implements IDuAnForViewDto {
+    maDuAn!: string | undefined;
+    tenDuAn!: string | undefined;
+    ngayTaoDuAn!: string | undefined;
+
+    constructor(data?: IDuAnForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maDuAn = data["maDuAn"];
+            this.tenDuAn = data["tenDuAn"];
+            this.ngayTaoDuAn = data["ngayTaoDuAn"];
+        }
+    }
+
+    static fromJS(data: any): DuAnForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new DuAnForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maDuAn"] = this.maDuAn;
+        data["tenDuAn"] = this.tenDuAn;
+        data["ngayTaoDuAn"] = this.ngayTaoDuAn;
+        return data; 
+    }
+}
+
+export interface IDuAnForViewDto {
+    maDuAn: string | undefined;
+    tenDuAn: string | undefined;
+    ngayTaoDuAn: string | undefined;
 }
 
 export class ListResultDtoOfEditionListDto implements IListResultDtoOfEditionListDto {
@@ -12371,6 +14069,754 @@ export class AcceptFriendshipRequestInput implements IAcceptFriendshipRequestInp
 export interface IAcceptFriendshipRequestInput {
     userId: number | undefined;
     tenantId: number | undefined;
+}
+
+export class PagedResultDtoOfHopDongThauDto implements IPagedResultDtoOfHopDongThauDto {
+    totalCount!: number | undefined;
+    items!: HopDongThauDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfHopDongThauDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(HopDongThauDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfHopDongThauDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfHopDongThauDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfHopDongThauDto {
+    totalCount: number | undefined;
+    items: HopDongThauDto[] | undefined;
+}
+
+export class HopDongThauDto implements IHopDongThauDto {
+    maHopDong!: string | undefined;
+    maHoSo!: string | undefined;
+    tenHopDong!: string | undefined;
+    tenNhaCungCap!: string | undefined;
+    ngayTaoHopDong!: string | undefined;
+    trangThaiDuyet!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IHopDongThauDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maHopDong = data["maHopDong"];
+            this.maHoSo = data["maHoSo"];
+            this.tenHopDong = data["tenHopDong"];
+            this.tenNhaCungCap = data["tenNhaCungCap"];
+            this.ngayTaoHopDong = data["ngayTaoHopDong"];
+            this.trangThaiDuyet = data["trangThaiDuyet"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): HopDongThauDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new HopDongThauDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maHopDong"] = this.maHopDong;
+        data["maHoSo"] = this.maHoSo;
+        data["tenHopDong"] = this.tenHopDong;
+        data["tenNhaCungCap"] = this.tenNhaCungCap;
+        data["ngayTaoHopDong"] = this.ngayTaoHopDong;
+        data["trangThaiDuyet"] = this.trangThaiDuyet;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IHopDongThauDto {
+    maHopDong: string | undefined;
+    maHoSo: string | undefined;
+    tenHopDong: string | undefined;
+    tenNhaCungCap: string | undefined;
+    ngayTaoHopDong: string | undefined;
+    trangThaiDuyet: string | undefined;
+    id: number | undefined;
+}
+
+export class HopDongThauInput implements IHopDongThauInput {
+    maHopDong!: string | undefined;
+    maHoSo!: string | undefined;
+    tenHopDong!: string | undefined;
+    tenNhaCungCap!: string | undefined;
+    ngayTaoHopDong!: string | undefined;
+    trangThaiDuyet!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IHopDongThauInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maHopDong = data["maHopDong"];
+            this.maHoSo = data["maHoSo"];
+            this.tenHopDong = data["tenHopDong"];
+            this.tenNhaCungCap = data["tenNhaCungCap"];
+            this.ngayTaoHopDong = data["ngayTaoHopDong"];
+            this.trangThaiDuyet = data["trangThaiDuyet"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): HopDongThauInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new HopDongThauInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maHopDong"] = this.maHopDong;
+        data["maHoSo"] = this.maHoSo;
+        data["tenHopDong"] = this.tenHopDong;
+        data["tenNhaCungCap"] = this.tenNhaCungCap;
+        data["ngayTaoHopDong"] = this.ngayTaoHopDong;
+        data["trangThaiDuyet"] = this.trangThaiDuyet;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IHopDongThauInput {
+    maHopDong: string | undefined;
+    maHoSo: string | undefined;
+    tenHopDong: string | undefined;
+    tenNhaCungCap: string | undefined;
+    ngayTaoHopDong: string | undefined;
+    trangThaiDuyet: string | undefined;
+    id: number | undefined;
+}
+
+export class HoSoThauOutput implements IHoSoThauOutput {
+    hoSoThau!: HoSoThauDto | undefined;
+    hoSoThaus!: ComboboxItemDto[] | undefined;
+
+    constructor(data?: IHoSoThauOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.hoSoThau = data["hoSoThau"] ? HoSoThauDto.fromJS(data["hoSoThau"]) : <any>undefined;
+            if (data["hoSoThaus"] && data["hoSoThaus"].constructor === Array) {
+                this.hoSoThaus = [];
+                for (let item of data["hoSoThaus"])
+                    this.hoSoThaus.push(ComboboxItemDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): HoSoThauOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new HoSoThauOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["hoSoThau"] = this.hoSoThau ? this.hoSoThau.toJSON() : <any>undefined;
+        if (this.hoSoThaus && this.hoSoThaus.constructor === Array) {
+            data["hoSoThaus"] = [];
+            for (let item of this.hoSoThaus)
+                data["hoSoThaus"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IHoSoThauOutput {
+    hoSoThau: HoSoThauDto | undefined;
+    hoSoThaus: ComboboxItemDto[] | undefined;
+}
+
+export class HoSoThauDto implements IHoSoThauDto {
+    maHoSo!: string | undefined;
+    hangMucThau!: string | undefined;
+    hinhThucThau!: string | undefined;
+    soTienBaoLanh!: string | undefined;
+    trangThaiDuyet!: string | undefined;
+    ngayBatDauHoSo!: string | undefined;
+    ngayKetThucHoSo!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IHoSoThauDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maHoSo = data["maHoSo"];
+            this.hangMucThau = data["hangMucThau"];
+            this.hinhThucThau = data["hinhThucThau"];
+            this.soTienBaoLanh = data["soTienBaoLanh"];
+            this.trangThaiDuyet = data["trangThaiDuyet"];
+            this.ngayBatDauHoSo = data["ngayBatDauHoSo"];
+            this.ngayKetThucHoSo = data["ngayKetThucHoSo"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): HoSoThauDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new HoSoThauDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maHoSo"] = this.maHoSo;
+        data["hangMucThau"] = this.hangMucThau;
+        data["hinhThucThau"] = this.hinhThucThau;
+        data["soTienBaoLanh"] = this.soTienBaoLanh;
+        data["trangThaiDuyet"] = this.trangThaiDuyet;
+        data["ngayBatDauHoSo"] = this.ngayBatDauHoSo;
+        data["ngayKetThucHoSo"] = this.ngayKetThucHoSo;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IHoSoThauDto {
+    maHoSo: string | undefined;
+    hangMucThau: string | undefined;
+    hinhThucThau: string | undefined;
+    soTienBaoLanh: string | undefined;
+    trangThaiDuyet: string | undefined;
+    ngayBatDauHoSo: string | undefined;
+    ngayKetThucHoSo: string | undefined;
+    id: number | undefined;
+}
+
+export class ComboboxItemDto implements IComboboxItemDto {
+    value!: string | undefined;
+    displayText!: string | undefined;
+    isSelected!: boolean | undefined;
+
+    constructor(data?: IComboboxItemDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.value = data["value"];
+            this.displayText = data["displayText"];
+            this.isSelected = data["isSelected"];
+        }
+    }
+
+    static fromJS(data: any): ComboboxItemDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ComboboxItemDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["value"] = this.value;
+        data["displayText"] = this.displayText;
+        data["isSelected"] = this.isSelected;
+        return data; 
+    }
+}
+
+export interface IComboboxItemDto {
+    value: string | undefined;
+    displayText: string | undefined;
+    isSelected: boolean | undefined;
+}
+
+export class NhaCungCapOutput implements INhaCungCapOutput {
+    nhaCungCap!: NhaCungCapDto | undefined;
+    nhaCungCaps!: ComboboxItemDto[] | undefined;
+
+    constructor(data?: INhaCungCapOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.nhaCungCap = data["nhaCungCap"] ? NhaCungCapDto.fromJS(data["nhaCungCap"]) : <any>undefined;
+            if (data["nhaCungCaps"] && data["nhaCungCaps"].constructor === Array) {
+                this.nhaCungCaps = [];
+                for (let item of data["nhaCungCaps"])
+                    this.nhaCungCaps.push(ComboboxItemDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): NhaCungCapOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new NhaCungCapOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["nhaCungCap"] = this.nhaCungCap ? this.nhaCungCap.toJSON() : <any>undefined;
+        if (this.nhaCungCaps && this.nhaCungCaps.constructor === Array) {
+            data["nhaCungCaps"] = [];
+            for (let item of this.nhaCungCaps)
+                data["nhaCungCaps"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface INhaCungCapOutput {
+    nhaCungCap: NhaCungCapDto | undefined;
+    nhaCungCaps: ComboboxItemDto[] | undefined;
+}
+
+export class NhaCungCapDto implements INhaCungCapDto {
+    maNhaCungCap!: string | undefined;
+    tenNhaCungCap!: string | undefined;
+    diaChi!: string | undefined;
+    soDienThoai!: string | undefined;
+    email!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: INhaCungCapDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maNhaCungCap = data["maNhaCungCap"];
+            this.tenNhaCungCap = data["tenNhaCungCap"];
+            this.diaChi = data["diaChi"];
+            this.soDienThoai = data["soDienThoai"];
+            this.email = data["email"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): NhaCungCapDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new NhaCungCapDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maNhaCungCap"] = this.maNhaCungCap;
+        data["tenNhaCungCap"] = this.tenNhaCungCap;
+        data["diaChi"] = this.diaChi;
+        data["soDienThoai"] = this.soDienThoai;
+        data["email"] = this.email;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface INhaCungCapDto {
+    maNhaCungCap: string | undefined;
+    tenNhaCungCap: string | undefined;
+    diaChi: string | undefined;
+    soDienThoai: string | undefined;
+    email: string | undefined;
+    id: number | undefined;
+}
+
+export class HopDongThauForViewDto implements IHopDongThauForViewDto {
+    maHopDong!: string | undefined;
+    maHoSo!: string | undefined;
+    tenHopDong!: string | undefined;
+    tenNhaCungCap!: string | undefined;
+    ngayTaoHopDong!: string | undefined;
+    trangThaiDuyet!: string | undefined;
+
+    constructor(data?: IHopDongThauForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maHopDong = data["maHopDong"];
+            this.maHoSo = data["maHoSo"];
+            this.tenHopDong = data["tenHopDong"];
+            this.tenNhaCungCap = data["tenNhaCungCap"];
+            this.ngayTaoHopDong = data["ngayTaoHopDong"];
+            this.trangThaiDuyet = data["trangThaiDuyet"];
+        }
+    }
+
+    static fromJS(data: any): HopDongThauForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new HopDongThauForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maHopDong"] = this.maHopDong;
+        data["maHoSo"] = this.maHoSo;
+        data["tenHopDong"] = this.tenHopDong;
+        data["tenNhaCungCap"] = this.tenNhaCungCap;
+        data["ngayTaoHopDong"] = this.ngayTaoHopDong;
+        data["trangThaiDuyet"] = this.trangThaiDuyet;
+        return data; 
+    }
+}
+
+export interface IHopDongThauForViewDto {
+    maHopDong: string | undefined;
+    maHoSo: string | undefined;
+    tenHopDong: string | undefined;
+    tenNhaCungCap: string | undefined;
+    ngayTaoHopDong: string | undefined;
+    trangThaiDuyet: string | undefined;
+}
+
+export class PagedResultDtoOfHoSoThauDto implements IPagedResultDtoOfHoSoThauDto {
+    totalCount!: number | undefined;
+    items!: HoSoThauDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfHoSoThauDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(HoSoThauDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfHoSoThauDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfHoSoThauDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfHoSoThauDto {
+    totalCount: number | undefined;
+    items: HoSoThauDto[] | undefined;
+}
+
+export class ListResultDtoOfDuAnDto implements IListResultDtoOfDuAnDto {
+    items!: DuAnDto[] | undefined;
+
+    constructor(data?: IListResultDtoOfDuAnDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(DuAnDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): ListResultDtoOfDuAnDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ListResultDtoOfDuAnDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IListResultDtoOfDuAnDto {
+    items: DuAnDto[] | undefined;
+}
+
+export class HoSoThauInput implements IHoSoThauInput {
+    maHoSo!: string | undefined;
+    hangMucThau!: string | undefined;
+    hinhThucThau!: string | undefined;
+    soTienBaoLanh!: string | undefined;
+    trangThaiDuyet!: string | undefined;
+    ngayBatDauHoSo!: string | undefined;
+    ngayKetThucHoSo!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IHoSoThauInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maHoSo = data["maHoSo"];
+            this.hangMucThau = data["hangMucThau"];
+            this.hinhThucThau = data["hinhThucThau"];
+            this.soTienBaoLanh = data["soTienBaoLanh"];
+            this.trangThaiDuyet = data["trangThaiDuyet"];
+            this.ngayBatDauHoSo = data["ngayBatDauHoSo"];
+            this.ngayKetThucHoSo = data["ngayKetThucHoSo"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): HoSoThauInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new HoSoThauInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maHoSo"] = this.maHoSo;
+        data["hangMucThau"] = this.hangMucThau;
+        data["hinhThucThau"] = this.hinhThucThau;
+        data["soTienBaoLanh"] = this.soTienBaoLanh;
+        data["trangThaiDuyet"] = this.trangThaiDuyet;
+        data["ngayBatDauHoSo"] = this.ngayBatDauHoSo;
+        data["ngayKetThucHoSo"] = this.ngayKetThucHoSo;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IHoSoThauInput {
+    maHoSo: string | undefined;
+    hangMucThau: string | undefined;
+    hinhThucThau: string | undefined;
+    soTienBaoLanh: string | undefined;
+    trangThaiDuyet: string | undefined;
+    ngayBatDauHoSo: string | undefined;
+    ngayKetThucHoSo: string | undefined;
+    id: number | undefined;
+}
+
+export class DuAnOutput implements IDuAnOutput {
+    duAn!: DuAnDto | undefined;
+    duAns!: ComboboxItemDto[] | undefined;
+
+    constructor(data?: IDuAnOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.duAn = data["duAn"] ? DuAnDto.fromJS(data["duAn"]) : <any>undefined;
+            if (data["duAns"] && data["duAns"].constructor === Array) {
+                this.duAns = [];
+                for (let item of data["duAns"])
+                    this.duAns.push(ComboboxItemDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): DuAnOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new DuAnOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["duAn"] = this.duAn ? this.duAn.toJSON() : <any>undefined;
+        if (this.duAns && this.duAns.constructor === Array) {
+            data["duAns"] = [];
+            for (let item of this.duAns)
+                data["duAns"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IDuAnOutput {
+    duAn: DuAnDto | undefined;
+    duAns: ComboboxItemDto[] | undefined;
+}
+
+export class HoSoThauForViewDto implements IHoSoThauForViewDto {
+    maHoSo!: string | undefined;
+    hangMucThau!: string | undefined;
+    hinhThucThau!: string | undefined;
+    soTienBaoLanh!: string | undefined;
+    trangThaiDuyet!: string | undefined;
+    ngayBatDauHoSo!: string | undefined;
+    ngayKetThucHoSo!: string | undefined;
+
+    constructor(data?: IHoSoThauForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maHoSo = data["maHoSo"];
+            this.hangMucThau = data["hangMucThau"];
+            this.hinhThucThau = data["hinhThucThau"];
+            this.soTienBaoLanh = data["soTienBaoLanh"];
+            this.trangThaiDuyet = data["trangThaiDuyet"];
+            this.ngayBatDauHoSo = data["ngayBatDauHoSo"];
+            this.ngayKetThucHoSo = data["ngayKetThucHoSo"];
+        }
+    }
+
+    static fromJS(data: any): HoSoThauForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new HoSoThauForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maHoSo"] = this.maHoSo;
+        data["hangMucThau"] = this.hangMucThau;
+        data["hinhThucThau"] = this.hinhThucThau;
+        data["soTienBaoLanh"] = this.soTienBaoLanh;
+        data["trangThaiDuyet"] = this.trangThaiDuyet;
+        data["ngayBatDauHoSo"] = this.ngayBatDauHoSo;
+        data["ngayKetThucHoSo"] = this.ngayKetThucHoSo;
+        return data; 
+    }
+}
+
+export interface IHoSoThauForViewDto {
+    maHoSo: string | undefined;
+    hangMucThau: string | undefined;
+    hinhThucThau: string | undefined;
+    soTienBaoLanh: string | undefined;
+    trangThaiDuyet: string | undefined;
+    ngayBatDauHoSo: string | undefined;
+    ngayKetThucHoSo: string | undefined;
 }
 
 export class HostDashboardData implements IHostDashboardData {
@@ -13840,50 +16286,6 @@ export interface IApplicationLanguageEditDto {
     isEnabled: boolean | undefined;
 }
 
-export class ComboboxItemDto implements IComboboxItemDto {
-    value!: string | undefined;
-    displayText!: string | undefined;
-    isSelected!: boolean | undefined;
-
-    constructor(data?: IComboboxItemDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.value = data["value"];
-            this.displayText = data["displayText"];
-            this.isSelected = data["isSelected"];
-        }
-    }
-
-    static fromJS(data: any): ComboboxItemDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ComboboxItemDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["value"] = this.value;
-        data["displayText"] = this.displayText;
-        data["isSelected"] = this.isSelected;
-        return data; 
-    }
-}
-
-export interface IComboboxItemDto {
-    value: string | undefined;
-    displayText: string | undefined;
-    isSelected: boolean | undefined;
-}
-
 export class CreateOrUpdateLanguageInput implements ICreateOrUpdateLanguageInput {
     language!: ApplicationLanguageEditDto;
 
@@ -14565,6 +16967,162 @@ export interface IUpdateMenuClientInput {
     metaKeyword: string | undefined;
     metaDescription: string | undefined;
     status: boolean | undefined;
+}
+
+export class PagedResultDtoOfNhaCungCapDto implements IPagedResultDtoOfNhaCungCapDto {
+    totalCount!: number | undefined;
+    items!: NhaCungCapDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfNhaCungCapDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(NhaCungCapDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfNhaCungCapDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfNhaCungCapDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfNhaCungCapDto {
+    totalCount: number | undefined;
+    items: NhaCungCapDto[] | undefined;
+}
+
+export class NhaCungCapInput implements INhaCungCapInput {
+    maNhaCungCap!: string | undefined;
+    tenNhaCungCap!: string | undefined;
+    diaChi!: string | undefined;
+    soDienThoai!: string | undefined;
+    email!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: INhaCungCapInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maNhaCungCap = data["maNhaCungCap"];
+            this.tenNhaCungCap = data["tenNhaCungCap"];
+            this.diaChi = data["diaChi"];
+            this.soDienThoai = data["soDienThoai"];
+            this.email = data["email"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): NhaCungCapInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new NhaCungCapInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maNhaCungCap"] = this.maNhaCungCap;
+        data["tenNhaCungCap"] = this.tenNhaCungCap;
+        data["diaChi"] = this.diaChi;
+        data["soDienThoai"] = this.soDienThoai;
+        data["email"] = this.email;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface INhaCungCapInput {
+    maNhaCungCap: string | undefined;
+    tenNhaCungCap: string | undefined;
+    diaChi: string | undefined;
+    soDienThoai: string | undefined;
+    email: string | undefined;
+    id: number | undefined;
+}
+
+export class NhaCungCapForViewDto implements INhaCungCapForViewDto {
+    maNhaCungCap!: string | undefined;
+    tenNhaCungCap!: string | undefined;
+    diaChi!: string | undefined;
+    soDienThoai!: string | undefined;
+    email!: string | undefined;
+
+    constructor(data?: INhaCungCapForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maNhaCungCap = data["maNhaCungCap"];
+            this.tenNhaCungCap = data["tenNhaCungCap"];
+            this.diaChi = data["diaChi"];
+            this.soDienThoai = data["soDienThoai"];
+            this.email = data["email"];
+        }
+    }
+
+    static fromJS(data: any): NhaCungCapForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new NhaCungCapForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maNhaCungCap"] = this.maNhaCungCap;
+        data["tenNhaCungCap"] = this.tenNhaCungCap;
+        data["diaChi"] = this.diaChi;
+        data["soDienThoai"] = this.soDienThoai;
+        data["email"] = this.email;
+        return data; 
+    }
+}
+
+export interface INhaCungCapForViewDto {
+    maNhaCungCap: string | undefined;
+    tenNhaCungCap: string | undefined;
+    diaChi: string | undefined;
+    soDienThoai: string | undefined;
+    email: string | undefined;
 }
 
 export class GetNotificationsOutput implements IGetNotificationsOutput {
@@ -15925,6 +18483,326 @@ export interface IFlatPermissionWithLevelDto {
     displayName: string | undefined;
     description: string | undefined;
     isGrantedByDefault: boolean | undefined;
+}
+
+export class PagedResultDtoOfPhieuGoiHangDto implements IPagedResultDtoOfPhieuGoiHangDto {
+    totalCount!: number | undefined;
+    items!: PhieuGoiHangDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfPhieuGoiHangDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(PhieuGoiHangDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfPhieuGoiHangDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfPhieuGoiHangDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfPhieuGoiHangDto {
+    totalCount: number | undefined;
+    items: PhieuGoiHangDto[] | undefined;
+}
+
+export class PhieuGoiHangDto implements IPhieuGoiHangDto {
+    maKeHoach!: string | undefined;
+    tenKeHoach!: string | undefined;
+    tenHopDong!: string | undefined;
+    tenDonVi!: string | undefined;
+    tenHangHoa!: string | undefined;
+    soLuong!: string | undefined;
+    donGia!: string | undefined;
+    quaTrinhThanhToan!: string | undefined;
+    tienDoGiaoHang!: string | undefined;
+    tinhTrangHoaDon!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IPhieuGoiHangDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maKeHoach = data["maKeHoach"];
+            this.tenKeHoach = data["tenKeHoach"];
+            this.tenHopDong = data["tenHopDong"];
+            this.tenDonVi = data["tenDonVi"];
+            this.tenHangHoa = data["tenHangHoa"];
+            this.soLuong = data["soLuong"];
+            this.donGia = data["donGia"];
+            this.quaTrinhThanhToan = data["quaTrinhThanhToan"];
+            this.tienDoGiaoHang = data["tienDoGiaoHang"];
+            this.tinhTrangHoaDon = data["tinhTrangHoaDon"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): PhieuGoiHangDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PhieuGoiHangDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maKeHoach"] = this.maKeHoach;
+        data["tenKeHoach"] = this.tenKeHoach;
+        data["tenHopDong"] = this.tenHopDong;
+        data["tenDonVi"] = this.tenDonVi;
+        data["tenHangHoa"] = this.tenHangHoa;
+        data["soLuong"] = this.soLuong;
+        data["donGia"] = this.donGia;
+        data["quaTrinhThanhToan"] = this.quaTrinhThanhToan;
+        data["tienDoGiaoHang"] = this.tienDoGiaoHang;
+        data["tinhTrangHoaDon"] = this.tinhTrangHoaDon;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IPhieuGoiHangDto {
+    maKeHoach: string | undefined;
+    tenKeHoach: string | undefined;
+    tenHopDong: string | undefined;
+    tenDonVi: string | undefined;
+    tenHangHoa: string | undefined;
+    soLuong: string | undefined;
+    donGia: string | undefined;
+    quaTrinhThanhToan: string | undefined;
+    tienDoGiaoHang: string | undefined;
+    tinhTrangHoaDon: string | undefined;
+    id: number | undefined;
+}
+
+export class PhieuGoiHangInput implements IPhieuGoiHangInput {
+    maKeHoach!: string | undefined;
+    tenKeHoach!: string | undefined;
+    tenHopDong!: string | undefined;
+    tenDonVi!: string | undefined;
+    tenHangHoa!: string | undefined;
+    soLuong!: string | undefined;
+    donGia!: string | undefined;
+    quaTrinhThanhToan!: string | undefined;
+    tienDoGiaoHang!: string | undefined;
+    tinhTrangHoaDon!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IPhieuGoiHangInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maKeHoach = data["maKeHoach"];
+            this.tenKeHoach = data["tenKeHoach"];
+            this.tenHopDong = data["tenHopDong"];
+            this.tenDonVi = data["tenDonVi"];
+            this.tenHangHoa = data["tenHangHoa"];
+            this.soLuong = data["soLuong"];
+            this.donGia = data["donGia"];
+            this.quaTrinhThanhToan = data["quaTrinhThanhToan"];
+            this.tienDoGiaoHang = data["tienDoGiaoHang"];
+            this.tinhTrangHoaDon = data["tinhTrangHoaDon"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): PhieuGoiHangInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PhieuGoiHangInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maKeHoach"] = this.maKeHoach;
+        data["tenKeHoach"] = this.tenKeHoach;
+        data["tenHopDong"] = this.tenHopDong;
+        data["tenDonVi"] = this.tenDonVi;
+        data["tenHangHoa"] = this.tenHangHoa;
+        data["soLuong"] = this.soLuong;
+        data["donGia"] = this.donGia;
+        data["quaTrinhThanhToan"] = this.quaTrinhThanhToan;
+        data["tienDoGiaoHang"] = this.tienDoGiaoHang;
+        data["tinhTrangHoaDon"] = this.tinhTrangHoaDon;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IPhieuGoiHangInput {
+    maKeHoach: string | undefined;
+    tenKeHoach: string | undefined;
+    tenHopDong: string | undefined;
+    tenDonVi: string | undefined;
+    tenHangHoa: string | undefined;
+    soLuong: string | undefined;
+    donGia: string | undefined;
+    quaTrinhThanhToan: string | undefined;
+    tienDoGiaoHang: string | undefined;
+    tinhTrangHoaDon: string | undefined;
+    id: number | undefined;
+}
+
+export class HopDongThauOutput implements IHopDongThauOutput {
+    hopDongThau!: HopDongThauDto | undefined;
+    hopDongThaus!: ComboboxItemDto[] | undefined;
+
+    constructor(data?: IHopDongThauOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.hopDongThau = data["hopDongThau"] ? HopDongThauDto.fromJS(data["hopDongThau"]) : <any>undefined;
+            if (data["hopDongThaus"] && data["hopDongThaus"].constructor === Array) {
+                this.hopDongThaus = [];
+                for (let item of data["hopDongThaus"])
+                    this.hopDongThaus.push(ComboboxItemDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): HopDongThauOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new HopDongThauOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["hopDongThau"] = this.hopDongThau ? this.hopDongThau.toJSON() : <any>undefined;
+        if (this.hopDongThaus && this.hopDongThaus.constructor === Array) {
+            data["hopDongThaus"] = [];
+            for (let item of this.hopDongThaus)
+                data["hopDongThaus"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IHopDongThauOutput {
+    hopDongThau: HopDongThauDto | undefined;
+    hopDongThaus: ComboboxItemDto[] | undefined;
+}
+
+export class PhieuGoiHangForViewDto implements IPhieuGoiHangForViewDto {
+    maKeHoach!: string | undefined;
+    tenKeHoach!: string | undefined;
+    tenHopDong!: string | undefined;
+    tenDonVi!: string | undefined;
+    tenHangHoa!: string | undefined;
+    soLuong!: string | undefined;
+    donGia!: string | undefined;
+    quaTrinhThanhToan!: string | undefined;
+    tienDoGiaoHang!: string | undefined;
+    tinhTrangHoaDon!: string | undefined;
+
+    constructor(data?: IPhieuGoiHangForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maKeHoach = data["maKeHoach"];
+            this.tenKeHoach = data["tenKeHoach"];
+            this.tenHopDong = data["tenHopDong"];
+            this.tenDonVi = data["tenDonVi"];
+            this.tenHangHoa = data["tenHangHoa"];
+            this.soLuong = data["soLuong"];
+            this.donGia = data["donGia"];
+            this.quaTrinhThanhToan = data["quaTrinhThanhToan"];
+            this.tienDoGiaoHang = data["tienDoGiaoHang"];
+            this.tinhTrangHoaDon = data["tinhTrangHoaDon"];
+        }
+    }
+
+    static fromJS(data: any): PhieuGoiHangForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PhieuGoiHangForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maKeHoach"] = this.maKeHoach;
+        data["tenKeHoach"] = this.tenKeHoach;
+        data["tenHopDong"] = this.tenHopDong;
+        data["tenDonVi"] = this.tenDonVi;
+        data["tenHangHoa"] = this.tenHangHoa;
+        data["soLuong"] = this.soLuong;
+        data["donGia"] = this.donGia;
+        data["quaTrinhThanhToan"] = this.quaTrinhThanhToan;
+        data["tienDoGiaoHang"] = this.tienDoGiaoHang;
+        data["tinhTrangHoaDon"] = this.tinhTrangHoaDon;
+        return data; 
+    }
+}
+
+export interface IPhieuGoiHangForViewDto {
+    maKeHoach: string | undefined;
+    tenKeHoach: string | undefined;
+    tenHopDong: string | undefined;
+    tenDonVi: string | undefined;
+    tenHangHoa: string | undefined;
+    soLuong: string | undefined;
+    donGia: string | undefined;
+    quaTrinhThanhToan: string | undefined;
+    tienDoGiaoHang: string | undefined;
+    tinhTrangHoaDon: string | undefined;
 }
 
 export class CurrentUserProfileEditDto implements ICurrentUserProfileEditDto {

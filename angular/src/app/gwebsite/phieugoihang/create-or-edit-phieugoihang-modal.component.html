@@ -1,0 +1,121 @@
+<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #editForm="ngForm" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="phieugoihang.id">Cập nhật phiếu gọi hàng: {{phieugoihang.maHoSo}}</span>
+                        <span *ngIf="!phieugoihang.id">Tạo mới phiếu gọi hàng</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mã kế hoạch *</label>
+                        <input #addressInput="ngModel" class="form-control" type="text" name="maKeHoach"
+                               [(ngModel)]="phieugoihang.maKeHoach" required maxlength="64">
+                        <validation-messages [formCtrl]="addressInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên kế hoạch *</label>
+                        <input #addressInput="ngModel" class="form-control" type="text" name="tenKeHoach"
+                               [(ngModel)]="phieugoihang.tenKeHoach" required maxlength="64">
+                        <validation-messages [formCtrl]="addressInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên hợp đồng *</label>
+                        <select #hopdongthauCombobox name="tenHopDong" class="form-control" [(ngModel)]="phieugoihang.tenHopDong"
+                                [attr.data-live-search]="true" jq-plugin="selectpicker" required>
+                            <option selected disabled value="">---Chọn Hợp Đồng Thầu---</option>
+                            <optgroup label="Hợp đồng mua lẻ">
+                                <option>Tài sản thông thường</option>
+                                <option>Công cụ lao động</option>
+                            </optgroup>
+                            <optgroup label="Hợp đồng thầu">
+                                <option *ngFor="let item of hopDongThaus" [value]="item.displayText">{{item.displayText}}</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên đơn vị *</label>
+                        <select #donvithauCombobox name="tenDonVi" class="form-control" [(ngModel)]="phieugoihang.tenDonVi"
+                                [attr.data-live-search]="true" jq-plugin="selectpicker" required>
+                            <option selected disabled value="">---Chọn Đơn Vị---</option>
+                            <option [value]="">Hà Nội</option>
+                            <option [value]="">Thành Phố Hồ Chí Minh</option>
+                            <option [value]="">Đà Nẵng</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên hàng hóa *</label>
+                        <input #addressInput="ngModel" class="form-control" type="text" name="tenHangHoa"
+                               [(ngModel)]="phieugoihang.tenHangHoa" required maxlength="64">
+                        <validation-messages [formCtrl]="addressInput"></validation-messages>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label>Số lượng *</label>
+                            <input #addressInput="ngModel" class="form-control" type="number" name="soLuong" min="1"
+                                   [(ngModel)]="phieugoihang.soLuong" required maxlength="64">
+                            <validation-messages [formCtrl]="addressInput"></validation-messages>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Đơn giá *</label>
+                            <input #addressInput="ngModel" class="form-control" type="text" name="donGia"
+                                    [(ngModel)]="phieugoihang.donGia" required maxlength="64">
+                            <validation-messages [formCtrl]="addressInput"></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            <label>Quá trình thanh toán *</label>
+                            <select #quatrinhthanhtoanCombobox name="quaTrinhThanhToan" class="form-control" [(ngModel)]="phieugoihang.quaTrinhThanhToan"
+                                    [attr.data-live-search]="true" jq-plugin="selectpicker" required>
+                                <option selected disabled value="">---Quá Trình Thanh Toán---</option>
+                                <option [value]="">Thanh toán trực tiếp</option>
+                                <option [value]="">Thanh toán bằng thẻ ngân hàng</option>
+                                <option [value]="">Thanh toán bằng thẻ giao dịch quốc tế (VISA/MASTER CARD)</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Tiến độ giao hàng *</label>
+                            <select #tiendogiaohangCombobox name="tienDoGiaoHang" class="form-control" [(ngModel)]="phieugoihang.tienDoGiaoHang"
+                                    [attr.data-live-search]="true" jq-plugin="selectpicker" required>
+                                <option selected disabled value="">---Tiến Độ Giao Hàng---</option>
+                                <option [value]="">Đang giao hàng</option>
+                                <option [value]="">Đang chờ</option>
+                                <option [value]="">Đã hủy hàng</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Tình trạng hóa đơn *</label>
+                            <select #tinhtranghoadonCombobox name="tinhTrangHoaDon" class="form-control" [(ngModel)]="phieugoihang.tinhTrangHoaDon"
+                                    [attr.data-live-search]="true" jq-plugin="selectpicker" required>
+                                <option selected disabled value="">---Tình Trạng Hóa Đơn---</option>
+                                <option [value]="">Đang thanh toán</option>
+                                <option [value]="">Chưa thanh toán</option>
+                                <option [value]="">Đã hủy hóa đơn</option>
+                            </select>
+                        </div>
+                    </div> 
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default"
+                            (click)="close()">
+                        {{l("Cancel")}}
+                    </button>
+                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                            [busyText]="l('SavingWithThreeDot')">
+                        <i class="fa fa-save"></i>
+                        <span>{{l("Save")}}</span>
+                    </button>
+                </div>
+            </form>
+            <p>Form Error:</p>
+            <pre>{{editForm.controls.email?.errors | json}}</pre>
+        </div>
+    </div>
+</div>

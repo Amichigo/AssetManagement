@@ -1,0 +1,65 @@
+<div bsModal #viewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="viewModal"
+    aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <span *ngIf="phieugoihang.id">{{l("EditPhieuGoiHang")}}: {{duan.tenDuAn}}</span>
+                    <span *ngIf="!phieugoihang.id">{{l("CreateNewPhieuGoiHang")}}</span>
+                </h4>
+                <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã kế hoạch</label>
+                    <p>{{phieugoihang.maKeHoach}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Tên kế hoạch</label>
+                    <p>{{phieugoihang.tenKeHoach}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Tên hợp đồng</label>
+                    <p>{{phieugoihang.tenHopDong}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Tên đơn vị</label>
+                    <p>{{phieugoihang.tenDonVi}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Tên hàng hóa</label>
+                    <p>{{phieugoihang.tenHangHoa}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Số lượng</label>
+                    <p>{{phieugoihang.soLuong}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Đơn giá</label>
+                    <p>{{phieugoihang.donGia}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Quá trình thanh toán</label>
+                    <p>{{phieugoihang.quaTrinhThanhToan}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Tiến độ giao hàng</label>
+                    <p>{{phieugoihang.tienDoGiaoHang}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Tình trạng hóa đơn</label>
+                    <p>{{phieugoihang.tinhTrangHoaDon}}</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button [disabled]="saving" type="button" class="btn btn-default"
+                    (click)="close()">{{l("Cancel")}}</button>
+                <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                    [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                    <span>{{l("Save")}}</span></button>
+            </div>
+        </div>
+    </div>
+</div>

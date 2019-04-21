@@ -1,0 +1,79 @@
+<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #editForm="ngForm" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="hosothau.id">Cập nhật hồ sơ: {{hosothau.maHoSo}}</span>
+                        <span *ngIf="!hosothau.id">Tạo mới hồ sơ</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mã hồ sơ *</label>
+                        <input #addressInput="ngModel" class="form-control" type="text" name="MaHoSo"
+                               [(ngModel)]="hosothau.maHoSo" required maxlength="64">
+                        <validation-messages [formCtrl]="addressInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Hạng mục thầu *</label>
+                        <select #hosothauCombobox name="duanName" class="form-control" [(ngModel)]="hosothau.hangMucThau"
+                                [attr.data-live-search]="true" jq-plugin="selectpicker" required>
+                            <option selected disabled value="">---Chọn Hạng Mục Thầu---</option>
+                            <option *ngFor="let item of duAns" [value]="item.displayText">{{item.displayText}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Hình thức thầu *</label>
+                        <select #trangthaiduyetCombobox name="HinhThucThau" class="form-control" [(ngModel)]="hosothau.hinhThucThau"
+                                [attr.data-live-search]="true" jq-plugin="selectpicker" required>
+                            <option selected disabled value="">---Chọn Hình Thức Thầu---</option>
+                            <option [value]="">Đấu thầu qua mạng</option>
+                            <option [value]="">Đấu thầu quốc tế</option>
+                            <option [value]="">Đấu thầu trong nước</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Số tiền bảo lãnh *</label>
+                        <input #addressInput="ngModel" class="form-control" type="text" name="SoTienBaoLanh"
+                               [(ngModel)]="hosothau.soTienBaoLanh" required maxlength="64">
+                        <validation-messages [formCtrl]="addressInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Trạng thái duyệt *</label>
+                        <select #trangthaiduyetCombobox name="TrangThaiDuyet" class="form-control" [(ngModel)]="hosothau.trangThaiDuyet"
+                                [attr.data-live-search]="true" jq-plugin="selectpicker" required>
+                            <option selected disabled value="">---Chọn Trạng Thái Duyệt---</option>
+                            <option [value]="">Đang chờ</option>
+                            <option [value]="">Đã duyệt</option>
+                            <option [value]="">Đã hủy</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày bắt đầu hồ sơ *</label>
+                        <input #addressInput="ngModel" class="form-control" type="date" name="NgayBatDauHoSo"
+                               [(ngModel)]="hosothau.ngayBatDauHoSo" required maxlength="64">
+                        <validation-messages [formCtrl]="addressInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày kết thúc hồ sơ *</label>
+                        <input #addressInput="ngModel" class="form-control" type="date" name="NgayKetThucHoSo"
+                               [(ngModel)]="hosothau.ngayKetThucHoSo" required maxlength="64">
+                        <validation-messages [formCtrl]="infoInput"></validation-messages>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default"
+                        (click)="close()">{{l("Cancel")}}</button>
+                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                        [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                        <span>{{l("Save")}}</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

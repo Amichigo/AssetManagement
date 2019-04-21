@@ -1,0 +1,64 @@
+<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form novalidate #editForm="ngForm" (ngSubmit)="save()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="nhacungcap.id">Cập nhật nhà cung cấp: {{nhacungcap.tenNhaCungCap}}</span>
+                        <span *ngIf="!nhacungcap.id">Tạo mới nhà cung cấp</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Tên nhà cung cấp *</label>
+                        <input #addressInput="ngModel" class="form-control" type="text" name="tenNhaCungCap"
+                               [(ngModel)]="nhacungcap.tenNhaCungCap" required maxlength="64">
+                        <validation-messages [formCtrl]="addressInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ *</label>
+                        <input #nameInput="ngModel" class="form-control" type="text" name="diaChi"
+                               [(ngModel)]="nhacungcap.diaChi" required maxlength="64">
+                        <validation-messages [formCtrl]="nameInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại *</label>
+                        <input #addressInput="ngModel" class="form-control" type="tel" name="soDienThoai" tel
+                               [(ngModel)]="nhacungcap.soDienThoai" required maxlength="64">
+                        <div class="col alert alert-warning" style="background-color: #f8d7da;" role="alert" *ngIf="editForm.controls.soDienThoai.errors?.required &&
+                         editForm.controls.soDienThoai.touched">Phone Number is required</div>
+                        <validation-messages [formCtrl]="infoInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input #addressInput="ngModel" class="form-control" type="text" name="email" email
+                               [(ngModel)]="nhacungcap.email" required maxlength="64">
+                        <div class="col alert alert-warning" style="background-color: #f8d7da;" role="alert" *ngIf="editForm.controls.email.errors?.required &&
+                         editForm.controls.email.touched">Email is required</div>
+                        <div class="col alert alert-warning" style="background-color: #f8d7da;" role="alert" *ngIf="editForm.controls.email.invalid &&
+                         editForm.controls.email.touched && editForm.controls.email.errors?.required==null">Email is invalid</div>
+                        <validation-messages [formCtrl]="infoInput"></validation-messages>
+                    </div> 
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default"
+                            (click)="close()">
+                        {{l("Cancel")}}
+                    </button>
+                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                            [busyText]="l('SavingWithThreeDot')">
+                        <i class="fa fa-save"></i>
+                        <span>{{l("Save")}}</span>
+                    </button>
+                </div>
+            </form>
+            <p>Form Error:</p>
+            <pre>{{editForm.controls.email?.errors | json}}</pre>
+        </div>
+    </div>
+</div>
+
