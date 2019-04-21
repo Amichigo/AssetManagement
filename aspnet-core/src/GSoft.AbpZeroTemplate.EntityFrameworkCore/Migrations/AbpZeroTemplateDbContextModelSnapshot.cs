@@ -1569,6 +1569,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime>("ExecutionTime");
 
+                    b.Property<string>("InvestmentType");
+
                     b.Property<bool>("IsDelete");
 
                     b.Property<string>("UpdatedBy");

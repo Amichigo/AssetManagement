@@ -77,15 +77,22 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.AssetActivities
                 query = query.Where(x => x.AssetActivityType.ToLower().Equals(input.AssetActivityType));
             }
 
+            if (input.InvestmentType != null)
+            {
+                query = query.Where(x => x.InvestmentType.ToLower().Equals(input.InvestmentType));
+            }
+
             if (input.AssetId != null)
             {
                 query = query.Where(x => x.AssetId.ToLower().Equals(input.AssetId));
             }
 
-            if (input.StartingExecutionTime != null && input.EndingExecutionTime != null)
+            /*
+            if (input.StartingExecutionTime && input.EndingExecutionTime)
             {
                 query = query.Where(x => x.ExecutionTime >= input.StartingExecutionTime && x.ExecutionTime <= input.EndingExecutionTime);
             }
+            */
 
             var totalCount = query.Count();
 
@@ -96,7 +103,8 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.AssetActivities
             }
 
             // paging
-            var items = query.PageBy(input).ToList();
+            // var items = query.PageBy(input).ToList();
+            var items = query.ToList();
 
             // result
             return new PagedResultDto<AssetActivityDto>(
