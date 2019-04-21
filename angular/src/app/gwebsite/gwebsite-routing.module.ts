@@ -1,43 +1,55 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.component';
-import { DemoModelComponent } from './demo-model/demo-model.component';
-import { CustomerComponent } from './customer/customer.component';
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
+import { MenuClientComponent } from "@app/gwebsite/menu-client/menu-client.component";
+import { DemoModelComponent } from "./demo-model/demo-model.component";
+import { CustomerComponent } from "./customer/customer.component";
+import { VehicleComponent } from "./vehicle/vehicle.component";
 
 @NgModule({
     imports: [
         RouterModule.forChild([
             {
-                path: '',
+                path: "",
                 children: [
                     {
-                        path: 'menu-client', component: MenuClientComponent,
-                        data: { permission: 'Pages.Administration.MenuClient' }
-                    },
+                        path: "menu-client",
+                        component: MenuClientComponent,
+                        data: { permission: "Pages.Administration.MenuClient" }
+                    }
                 ]
             },
             {
-                path: '',
+                path: "",
                 children: [
                     {
-                        path: 'demo-model', component: DemoModelComponent,
-                        data: { permission: 'Pages.Administration.DemoModel' }
-                    },
+                        path: "demo-model",
+                        component: DemoModelComponent,
+                        data: { permission: "Pages.Administration.DemoModel" }
+                    }
                 ]
             },
             {
-                path: '',
+                path: "",
                 children: [
                     {
-                        path: 'customer', component: CustomerComponent,
-                        data: { permission: 'Pages.Administration.Customer' }
-                    },
+                        path: "customer",
+                        component: CustomerComponent,
+                        data: { permission: "Pages.Administration.Customer" }
+                    }
+                ]
+            },
+            {
+                path: "",
+                children: [
+                    {
+                        path: "vehicle",
+                        component: VehicleComponent,
+                        data: { permission: "Pages.Administration.Vehicle" }
+                    }
                 ]
             }
         ])
     ],
-    exports: [
-        RouterModule
-    ]
+    exports: [RouterModule]
 })
-export class GWebsiteRoutingModule { }
+export class GWebsiteRoutingModule {}
