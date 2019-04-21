@@ -33,6 +33,7 @@ using GSoft.AbpZeroTemplate.MultiTenancy.Payments.Dto;
 using GSoft.AbpZeroTemplate.Notifications.Dto;
 using GSoft.AbpZeroTemplate.Organizations.Dto;
 using GSoft.AbpZeroTemplate.Sessions.Dto;
+using System;
 
 namespace GSoft.AbpZeroTemplate
 {
@@ -54,6 +55,13 @@ namespace GSoft.AbpZeroTemplate
             configuration.CreateMap<LocalizableComboboxItem, LocalizableComboboxItemDto>();
             configuration.CreateMap<ILocalizableComboboxItem, LocalizableComboboxItemDto>()
                 .Include<LocalizableComboboxItem, LocalizableComboboxItemDto>();
+
+            configuration.CreateMap<string, DateTime?>()
+                .ConvertUsing(x => DateTime.ParseExact(x, "dd/MM/yyyy",
+                                       System.Globalization.CultureInfo.InvariantCulture));
+
+            configuration.CreateMap<DateTime?, string>()
+                .ConvertUsing(x => x?.ToString("dd/MM/yyyy"));
 
             //Chat
             configuration.CreateMap<ChatMessage, ChatMessageDto>();

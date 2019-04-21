@@ -12,7 +12,6 @@ namespace GSoft.AbpZeroTemplate.Migrator
     {
         private static bool _skipConnVerification;
 
-        [STAThread]
         public static void Main(string[] args)
         {
             ParseArgs(args);

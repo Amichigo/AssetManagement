@@ -17,6 +17,12 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
+        public string GetTest()
+        {
+            return "Test";
+        }
+
+        [HttpGet]
         public async Task<ListResultDto<MenuClientDto>> GetMenuClients()
         {
             return await _menuClientAppService.GetMenuClientsAsync();
@@ -26,6 +32,12 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         public async Task<PagedResultDto<MenuClientListDto>> GetMenuClientsByFilter(string name, string sorting, int skipCount = 0, int maxResultCount = 1)
         {
             return await _menuClientAppService.GetMenuClientsAsync(new GetMenuClientInput() { Name = name, Sorting = sorting, SkipCount = skipCount, MaxResultCount = maxResultCount });
+        }
+
+        [HttpGet]
+        public string DemoWebApi()
+        {
+            return "Abcdezz";
         }
 
         [HttpGet]
