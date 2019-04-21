@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.component';
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
+import { ComputerComponent } from './computer/computer.component';
 
 @NgModule({
     imports: [
@@ -32,6 +33,15 @@ import { CustomerComponent } from './customer/customer.component';
                         path: 'customer', component: CustomerComponent,
                         data: { permission: 'Pages.Administration.Customer' }
                     },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'computer', component: ComputerComponent,
+                        data: { permission: 'Pages.Administration.Computer'}
+                    }
                 ]
             }
         ])

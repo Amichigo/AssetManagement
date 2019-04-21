@@ -1,4 +1,4 @@
-import { CustomerServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, ComputerServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,6 +18,9 @@ import { DemoModelServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CustomerComponent } from './customer/customer.component';
 import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
 import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
+import { ComputerComponent } from './computer/computer.component';
+import { CreateOrEditComputerModalComponent } from './computer/create-or-edit-computer-modal.component';
+import { ViewComputerModalComponent } from './computer/view-computer-modal.component';
 
 @NgModule({
     imports: [
@@ -42,10 +45,12 @@ import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-cu
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
+        ComputerComponent, CreateOrEditComputerModalComponent, ViewComputerModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
-        CustomerServiceProxy
+        CustomerServiceProxy,
+        ComputerServiceProxy
     ]
 })
 export class GWebsiteModule { }

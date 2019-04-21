@@ -1551,6 +1551,67 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("AppUserRoles");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Computer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Cpuname");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("DNSHostName");
+
+                    b.Property<string>("Domain1");
+
+                    b.Property<string>("HDD1Size");
+
+                    b.Property<string>("HDD1Type");
+
+                    b.Property<string>("HDD2Size");
+
+                    b.Property<string>("HDD2Type");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("LocalIp");
+
+                    b.Property<string>("Manufacturer");
+
+                    b.Property<string>("Model");
+
+                    b.Property<string>("MonitorType");
+
+                    b.Property<string>("OS");
+
+                    b.Property<string>("OSA");
+
+                    b.Property<string>("Ram1Manufacturer");
+
+                    b.Property<string>("Ram1PartNumber");
+
+                    b.Property<string>("Ram1Total");
+
+                    b.Property<string>("Ram2Manufacturer");
+
+                    b.Property<string>("Ram2PartNumber");
+
+                    b.Property<string>("Ram2Total");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Computers");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
@@ -1691,31 +1752,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MenuClients");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.ModelDemo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<int>("Value");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ModelDemos");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Permission", b =>

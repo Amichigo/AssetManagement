@@ -1,5 +1,6 @@
 using AutoMapper;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Computers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
@@ -26,6 +27,13 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<CustomerInput, Customer>();
             configuration.CreateMap<Customer, CustomerInput>();
             configuration.CreateMap<Customer, CustomerForViewDto>();
+
+            //computer
+            configuration.CreateMap<Computer, ComputerDto>();
+            configuration.CreateMap<ComputerInput, Computer>();
+            configuration.CreateMap<Computer, ComputerInput>();
+            configuration.CreateMap<Computer, ComputerInput>();
+
         }
     }
 }
