@@ -19,6 +19,12 @@ import { CustomerComponent } from './customer/customer.component';
 import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
 import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
 
+import { AssetActivityComponent } from './asset-activity/asset-activity.component';
+import { CreateOrEditAssetActivityModalComponent } from './asset-activity/create-or-edit-asset-activity-modal.component';
+import { ViewAssetActivityModalComponent } from './asset-activity/view-asset-activity-modal.component';
+import { AssetActivityServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
     imports: [
         FormsModule,
@@ -36,16 +42,19 @@ import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-cu
         PrimeNgFileUploadModule,
         AutoCompleteModule,
         EditorModule,
-        InputMaskModule
+        InputMaskModule,
+        ChartsModule
     ],
     declarations: [
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
+        AssetActivityComponent, CreateOrEditAssetActivityModalComponent, ViewAssetActivityModalComponent
     ],
     providers: [
         DemoModelServiceProxy,
-        CustomerServiceProxy
+        CustomerServiceProxy,
+        AssetActivityServiceProxy
     ]
 })
 export class GWebsiteModule { }

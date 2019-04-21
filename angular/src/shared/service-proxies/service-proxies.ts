@@ -2122,6 +2122,303 @@ export class DemoModelServiceProxy {
 }
 
 @Injectable()
+export class AssetActivityServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @name (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getAssetActivitiesByFilter(assetId : string | null | undefined, assetActivityType : string | null | undefined, investmentType: string | null | undefined, startingExecutionTime : string | null | undefined, endingExecutionTime : string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfAssetActivityDto> {
+        let url_ = this.baseUrl + "/api/AssetActivity/GetAssetActivitiesByFilter?";
+        if (assetId !== undefined)
+            url_ += "AssetId=" + encodeURIComponent("" + assetId) + "&"; 
+        if (assetActivityType !== undefined)
+            url_ += "AssetActivityType=" + encodeURIComponent("" + assetActivityType) + "&";
+        if (investmentType !== undefined)
+            url_ += "InvestmentType=" + encodeURIComponent("" + investmentType) + "&";
+        // if (startingExecutionTime !== undefined)
+        //     url_ += "StartingExecutionTime=" + encodeURIComponent("" + startingExecutionTime) + "&";
+        // if (endingExecutionTime !== undefined)
+        //     url_ += "EndingExecutionTime=" + encodeURIComponent("" + endingExecutionTime) + "&";
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        // if (maxResultCount !== undefined)
+        //     url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAssetActivitiesByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAssetActivitiesByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfAssetActivityDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfAssetActivityDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAssetActivitiesByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfAssetActivityDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfAssetActivityDto.fromJS(resultData200) : new PagedResultDtoOfAssetActivityDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfAssetActivityDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getAssetActivityForEdit(id: number | null | undefined): Observable<AssetActivityInput> {
+        let url_ = this.baseUrl + "/api/AssetActivity/GetAssetActivityForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAssetActivityForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAssetActivityForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<AssetActivityInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<AssetActivityInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAssetActivityForEdit(response: HttpResponseBase): Observable<AssetActivityInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? AssetActivityInput.fromJS(resultData200) : new AssetActivityInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<AssetActivityInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditAssetActivity(input: AssetActivityInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/AssetActivity/CreateOrEditAssetActivity";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditAssetActivity(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditAssetActivity(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditAssetActivity(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteAssetActivity(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/AssetActivity/DeleteAssetActivity/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteAssetActivity(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteAssetActivity(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteAssetActivity(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getAssetActivityForView(id: number | null | undefined): Observable<AssetActivityForViewDto> {
+        let url_ = this.baseUrl + "/api/AssetActivity/GetAssetActivityForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAssetActivityForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAssetActivityForView(<any>response_);
+                } catch (e) {
+                    return <Observable<AssetActivityForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<AssetActivityForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAssetActivityForView(response: HttpResponseBase): Observable<AssetActivityForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? AssetActivityForViewDto.fromJS(resultData200) : new AssetActivityForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<AssetActivityForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class DemoUiComponentsServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -11212,9 +11509,57 @@ export class PagedResultDtoOfCustomerDto implements IPagedResultDtoOfCustomerDto
     }
 }
 
+export class PagedResultDtoOfAssetActivityDto implements IPagedResultDtoOfAssetActivityDto {
+    totalCount!: number | undefined;
+    items!: AssetActivityDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfAssetActivityDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(AssetActivityDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfAssetActivityDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfAssetActivityDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
 export interface IPagedResultDtoOfCustomerDto {
     totalCount: number | undefined;
     items: CustomerDto[] | undefined;
+}
+
+export interface IPagedResultDtoOfAssetActivityDto {
+    totalCount: number | undefined;
+    items: AssetActivityDto[] | undefined;
 }
 
 export class CustomerDto implements ICustomerDto {
@@ -11258,10 +11603,66 @@ export class CustomerDto implements ICustomerDto {
     }
 }
 
+export class AssetActivityDto implements IAssetActivityDto {
+    assetId: string | undefined;
+    assetActivityType: string | undefined;
+    investmentType: string | undefined;
+    cost: number | undefined;
+    executionTime: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IAssetActivityDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.assetId = data["assetId"];
+            this.assetActivityType = data["assetActivityType"];
+            this.investmentType = data["investmentType"];
+            this.cost = data["cost"];
+            this.executionTime = data["executionTime"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): AssetActivityDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new AssetActivityDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["assetId"] = this.assetId;
+        data["assetActivityType"] = this.assetActivityType;
+        data["investmentType"] = this.investmentType;
+        data["cost"] = this.cost;
+        data["executionTime"] = this.executionTime;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
 export interface ICustomerDto {
     name: string | undefined;
     address: string | undefined;
     info: string | undefined;
+    id: number | undefined;
+}
+
+export interface IAssetActivityDto {
+    assetId: string | undefined;
+    assetActivityType: string | undefined;
+    investmentType: string | undefined;
+    cost: number | undefined;
+    executionTime: string | undefined;
     id: number | undefined;
 }
 
@@ -11306,10 +11707,66 @@ export class CustomerInput implements ICustomerInput {
     }
 }
 
+export class AssetActivityInput implements IAssetActivityInput {
+    assetId: string | undefined;
+    assetActivityType: string | undefined;
+    investmentType: string | undefined;
+    cost: number | undefined;
+    executionTime: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IAssetActivityInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.assetId = data["assetId"];
+            this.assetActivityType = data["assetActivityType"];
+            this.investmentType = data["investmentType"];
+            this.cost = data["cost"];
+            this.executionTime = data["executionTime"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): AssetActivityInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new AssetActivityInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["assetId"] = this.assetId;
+        data["assetActivityType"] = this.assetActivityType;
+        data["investmentType"] = this.investmentType;
+        data["cost"] = this.cost;
+        data["executionTime"] = this.executionTime;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
 export interface ICustomerInput {
     name: string | undefined;
     address: string | undefined;
     info: string | undefined;
+    id: number | undefined;
+}
+
+export interface IAssetActivityInput {
+    assetId: string | undefined;
+    assetActivityType: string | undefined;
+    investmentType: string | undefined;
+    cost: number | undefined;
+    executionTime: string | undefined;
     id: number | undefined;
 }
 
@@ -11351,10 +11808,66 @@ export class CustomerForViewDto implements ICustomerForViewDto {
     }
 }
 
+export class AssetActivityForViewDto implements IAssetActivityForViewDto {
+    assetId: string | undefined;
+    assetActivityType: string | undefined;
+    investmentType: string | undefined;
+    cost: number | undefined;
+    executionTime: string | undefined;
+    id: string | undefined;
+
+    constructor(data?: IAssetActivityForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.assetId = data["assetId"];
+            this.assetActivityType = data["assetActivityType"];
+            this.investmentType = data["investmentType"];
+            this.cost = data["cost"];
+            this.executionTime = data["executionTime"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): AssetActivityForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new AssetActivityForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["assetId"] = this.assetId;
+        data["assetActivityType"] = this.assetActivityType;
+        data["investmentType"] = this.investmentType;
+        data["cost"] = this.cost;
+        data["executionTime"] = this.executionTime;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
 export interface ICustomerForViewDto {
     name: string | undefined;
     address: string | undefined;
     info: string | undefined;
+}
+
+export interface IAssetActivityForViewDto {
+    assetId: string | undefined;
+    assetActivityType: string | undefined;
+    investmentType: string | undefined;
+    cost: number | undefined;
+    executionTime: string | undefined;
+    id: string | undefined;
 }
 
 export class PagedResultDtoOfDemoModelDto implements IPagedResultDtoOfDemoModelDto {
