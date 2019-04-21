@@ -1033,24 +1033,15 @@ export class BatDongSanServiceProxy {
 
     /**
      * @maBatDongSan (optional) 
-     * @maPhongGiaoDich (optional) 
-     * @maTaiSan (optional) 
-     * @maLoaiBDS (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getBatDongSansByFilter(maBatDongSan: string | null | undefined, maPhongGiaoDich: string | null | undefined, maTaiSan: string | null | undefined, maLoaiBDS: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfBatDongSanDto> {
+    getBatDongSansByFilter(maBatDongSan: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfBatDongSanDto> {
         let url_ = this.baseUrl + "/api/BatDongSan/GetBatDongSansByFilter?";
         if (maBatDongSan !== undefined)
             url_ += "MaBatDongSan=" + encodeURIComponent("" + maBatDongSan) + "&"; 
-        if (maPhongGiaoDich !== undefined)
-            url_ += "MaPhongGiaoDich=" + encodeURIComponent("" + maPhongGiaoDich) + "&"; 
-        if (maTaiSan !== undefined)
-            url_ += "MaTaiSan=" + encodeURIComponent("" + maTaiSan) + "&"; 
-        if (maLoaiBDS !== undefined)
-            url_ += "MaLoaiBDS=" + encodeURIComponent("" + maLoaiBDS) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)

@@ -26,7 +26,7 @@
                             <div class="col-sm-12">
                                 <div class="input-group">
                                     <input [(ngModel)]="batdongsanName" name="batdongsanName" autoFocus class="form-control"
-                                        placeholder="Nhập tên khách hàng" type="text">
+                                        placeholder="Nhập mã BĐS" type="text">
                                     <span class="input-group-btn">
                                         <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
                                                 class="icon-refresh"></i>
@@ -46,49 +46,88 @@
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th pSortableColumn="mataisan">
-                                        Tên khách hàng
+                                        Mã tài sản
                                         <p-sortIcon field="mataisan"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="chieudai">
+                                    <th pSortableColumn="mabatdongsan">
+                                        Mã bất động sản
+                                        <p-sortIcon field="mabatdongsan"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="nguyengiataisan">
+                                        Loại sở hữu
+                                    </th>
+                                    <th pSortableColumn="loaibatdongsan">
+                                        Loại Bất động sản
+                                    </th>
+                                    <th pSortableColumn="maphonggiaodich">
+                                        Tên Địa điểm
+                                    </th>
+                                    <th pSortableColumn="diachi">
                                         Địa chỉ
                                     </th>
-                                    <th pSortableColumn="maloaibds">
-                                        Thông tin
-                                        <p-sortIcon field="maloaibds"></p-sortIcon>
+                                    <th pSortableColumn="chusohuu">
+                                       Chủ sở hữu
                                     </th>
+
+                                    <th pSortableColumn="ghichu">
+                                        Ghi chú
+                                    </th>
+                                    <!--<th pSortableColumn="info">
+        Thông tin
+        <p-sortIcon field="info"></p-sortIcon>
+    </th>-->
                                     <th>{{l('Edit')}}</th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-record="$implicit">
                                 <tr>
+
                                     <td>
-                                        <span class="ui-column-title">Tên khách hàng</span>
-                                        <span title="{{record.mataisan}}">{{truncateString(record.mataisan)}}</span>
+                                        <span class="ui-column-title">Mã tài sản</span>
+                                        <span title="{{record.maTaiSan}}">{{truncateString(record.maTaiSan)}}</span>
+                                    </td>
+
+                                    <td>
+                                        <span class="ui-column-title">Mã bất động sản</span>
+                                        <span title="{{record.maBatDongSan}}">{{truncateString(record.maBatDongSan)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Loại sở hữu</span>
+                                        <span title="{{record.maLoaiSoHuu}}">{{truncateString(record.maLoaiSoHuu)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Loại Bất động sản</span>
+                                        <span title="{{record.maLoaiBDS}}">{{truncateString(record.maLoaiBDS)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Tên địa điểm</span>
+                                        <span title="{{record.maPhongGiaoDich}}">{{truncateString(record.maPhongGiaoDich)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Địa chỉ</span>
-                                        <span title="{{record.maloaibds}}">{{truncateString(record.maloaibds)}}</span>
+                                        <span title="{{record.diaChi}}">{{truncateString(record.diaChi)}}</span>
                                     </td>
                                     <td>
-                                        <span class="ui-column-title">Thông tin</span>
-                                        <span title="{{record.chieudai}}">{{truncateString(record.chieudai)}}</span>
+                                        <span class="ui-column-title">Chủ sở hữu</span>
+                                        <span title="{{record.chuSoHuu}}">{{truncateString(record.chuSoHuu)}}</span>
                                     </td>
                                     <td>
-                                        <button
-                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">
+                                        <span class="ui-column-title">Ghi chú</span>
+                                        <span title="{{record.ghiChu}}">{{truncateString(record.ghiChu)}}</span>
+                                    </td>
+                                    <td>
+                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">
                                             <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
                                         </button>
 
-                                        <button
-                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="deleteBatDongSan(record.id)" title="{{l('Delete')}}">
+                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                (click)="deleteBatDongSan(record.id)" title="{{l('Delete')}}">
                                             <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                         </button>
 
-                                        <button
-                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="viewBatDongSanModal.show(record.id)" title="{{l('View')}}">
+                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                (click)="viewBatDongSanModal.show(record.id)" title="{{l('View')}}">
                                             <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
                                         </button>
                                     </td>

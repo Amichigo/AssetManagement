@@ -68,20 +68,20 @@ export class BatDongSanComponent extends AppComponentBase implements AfterViewIn
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-     //   this.reloadList(null, event);
+        this.reloadList(null, event);
 
     }
 
-    //reloadList(batdongsanName, event?: LazyLoadEvent) {
-    //    this._batdongsanService.getBatDongSansByFilter(batdongsanName, this.primengTableHelper.getSorting(this.dataTable),
-    //        this.primengTableHelper.getMaxResultCount(this.paginator, event),
-    //        this.primengTableHelper.getSkipCount(this.paginator, event),"","","")
-    //    ).subscribe(result => {
-    //        this.primengTableHelper.totalRecordsCount = result.totalCount;
-    //        this.primengTableHelper.records = result.items;
-    //        this.primengTableHelper.hideLoadingIndicator();
-    //    });
-    //}
+    reloadList(batdongsanName, event?: LazyLoadEvent) {
+        this._batdongsanService.getBatDongSansByFilter(batdongsanName, this.primengTableHelper.getSorting(this.dataTable),
+            this.primengTableHelper.getMaxResultCount(this.paginator, event),
+            this.primengTableHelper.getSkipCount(this.paginator, event),
+        ).subscribe(result => {
+            this.primengTableHelper.totalRecordsCount = result.totalCount;
+            this.primengTableHelper.records = result.items;
+            this.primengTableHelper.hideLoadingIndicator();
+        });
+    }
 
     deleteBatDongSan(id): void {
         this._batdongsanService.deleteBatDongSan(id).subscribe(() => {
@@ -89,13 +89,11 @@ export class BatDongSanComponent extends AppComponentBase implements AfterViewIn
         })
     }
 
-
-
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
-            this.batdongsanName = params['name'] || '';
-         //   this.reloadList(this.batdongsanName, null);
+            this.batdongsanName = params['MaBatDongSan'] || '';
+            this.reloadList(this.batdongsanName, null);
         });
     }
 
@@ -105,7 +103,7 @@ export class BatDongSanComponent extends AppComponentBase implements AfterViewIn
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-      //  this.reloadList(this.batdongsanName, null);
+        this.reloadList(this.batdongsanName, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);

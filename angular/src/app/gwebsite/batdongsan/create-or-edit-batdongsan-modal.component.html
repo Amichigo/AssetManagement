@@ -5,8 +5,8 @@
             <form #editForm="ngForm" novalidate (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <span *ngIf="batdongsan.id">Cập nhật khách hàng: {{batdongsan.name}}</span>
-                        <span *ngIf="!batdongsan.id">Tạo mới khách hàng</span>
+                        <span *ngIf="batdongsan.id">Cập nhật bất động sản mới: {{batdongsan.mabatdongsan}}</span>
+                        <span *ngIf="!batdongsan.id">Tạo mới bất động sản</span>
                     </h4>
                     <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
                         <span aria-hidden="true">&times;</span>
@@ -14,24 +14,120 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Tên khách hàng *</label>
-                        <input #nameInput="ngModel" class="form-control" type="text" name="Name"
-                               [(ngModel)]="batdongsan.name" required maxlength="64">
-                        <!--<validation-messages [formCtrl]="nameInput"></validation-messages>-->
+                        <label>Mã Tài sản*</label>
+                        <input #mataisanInput="ngModel" class="form-control" type="text" name="MaTaiSan"
+                               [(ngModel)]="batdongsan.maTaiSan" required maxlength="64">
+                        <validation-messages [formCtrl]="mataisanInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Địa chỉ *</label>
-                        <input #addressInput="ngModel" class="form-control" type="text" name="Address"
-                               [(ngModel)]="batdongsan.address" required maxlength="64">
-                        <!--<validation-messages [formCtrl]="addressInput"></validation-messages>-->
+                        <label>Địa chỉ*</label>
+                        <input #diachiInput="ngModel" class="form-control" type="text" name="DiaChi"
+                               [(ngModel)]="batdongsan.diaChi" required maxlength="64">
+                        <validation-messages [formCtrl]="diachiInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Thông tin *</label>
-                        <input #addressInput="ngModel" class="form-control" type="text" name="Info"
-                               [(ngModel)]="batdongsan.info" required maxlength="64">
-                        <!--<validation-messages [formCtrl]="infoInput"></validation-messages>-->
+                        <label>Mã Phòng giao dịch*</label>
+                        <input #phonggiaodichInput="ngModel" class="form-control" type="text" name="PhongGiaoDich"
+                               [(ngModel)]="batdongsan.maPhongGiaoDich" required maxlength="64">
+                        <validation-messages [formCtrl]="phonggiaodichInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Hiện trạng bất động sản*</label>
+                        <input #hientrangInput="ngModel" class="form-control" type="text" name="HienTrang"
+                               [(ngModel)]="batdongsan.hienTrangBDS" required maxlength="64">
+                        <validation-messages [formCtrl]="hientrangInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Loại Bất động sản*</label>
+                        <input #maloaibdsInput="ngModel" class="form-control" type="text" name="LoaiBDS"
+                               [(ngModel)]="batdongsan.maLoaiBDS" required maxlength="64">
+                        <validation-messages [formCtrl]="maloaibdsInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Chiều dài*</label>
+                        <input #chieudaiInput="ngModel" class="form-control" type="number" name="ChieuDai"
+                               [(ngModel)]="batdongsan.chieuDai" required maxlength="64">
+                        <validation-messages [formCtrl]="chieudaiInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Chiều Rộng*</label>
+                        <input #chieurongInput="ngModel" class="form-control" type="number" name="ChieuRong"
+                               [(ngModel)]="batdongsan.chieuRong" required maxlength="64">
+                        <validation-messages [formCtrl]="chieurongInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Diện tích đất nền*</label>
+                        <input #dientichdatnenInput="ngModel" class="form-control" type="number" name="DienTichDatNen"
+                               [(ngModel)]="batdongsan.dienTichDatNen" required maxlength="64">
+                        <validation-messages [formCtrl]="dientichdatnenInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Diện tích xây dựng*</label>
+                        <input #dientichxaydungInput="ngModel" class="form-control" type="number" name="DienTichXayDung"
+                               [(ngModel)]="batdongsan.dienTichXayDung" required maxlength="64">
+                        <validation-messages [formCtrl]="dientichxaydungInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Tình trạng sử dụng đất*</label>
+                        <input #tinhtrangsudungdatInput="ngModel" class="form-control" type="number" name="MaTinhTrangSuDungDat"
+                               [(ngModel)]="batdongsan.maTinhTrangSuDungDat" required maxlength="64">
+                        <validation-messages [formCtrl]="tinhtrangsudungdatInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Tình trạng xây dựng*</label>
+                        <input #tinhtrangxaydungInput="ngModel" class="form-control" type="number" name="MaTinhTrangXayDung"
+                               [(ngModel)]="batdongsan.maTinhTrangXayDung" required maxlength="64">
+                        <validation-messages [formCtrl]="tinhtrangxaydungInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Công năng sử dụng *</label>
+                        <input #congnangsudungInput="ngModel" class="form-control" type="text" name="CongNangSuDung"
+                               [(ngModel)]="batdongsan.congNangSuDung" required maxlength="64">
+                        <validation-messages [formCtrl]="congnangsudungInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Kết cấu nhà *</label>
+                        <input #ketcaunhaInput="ngModel" class="form-control" type="text" name="KetCauNha"
+                               [(ngModel)]="batdongsan.ketCauNha" required maxlength="64">
+                        <validation-messages [formCtrl]="ketcaunhaInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Ranh giới*</label>
+                        <input #ranhgioiInput="ngModel" class="form-control" type="text" name="RanhGioi"
+                               [(ngModel)]="batdongsan.ranhGioi" required maxlength="64">
+                        <validation-messages [formCtrl]="ranhgioiInput"></validation-messages>
                     </div>
 
+                    <div class="form-group">
+                        <label>Hiện trạng pháp lý*</label>
+                        <input #mahientranphaplyInput="ngModel" class="form-control" type="text" name="MaHienTrangPhapLy"
+                               [(ngModel)]="batdongsan.maHienTrangPhapLy" required maxlength="64">
+                        <validation-messages [formCtrl]="mahientranphaplyInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Loại sở hữu*</label>
+                        <input #loaisohuuInput="ngModel" class="form-control" type="text" name="MaLoaiSoHuu"
+                               [(ngModel)]="batdongsan.maLoaiSoHuu" required maxlength="64">
+                        <validation-messages [formCtrl]="loaisohuuInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Chủ sở hữu*</label>
+                        <input #chusohuuInput="ngModel" class="form-control" type="text" name="ChuSoHuu"
+                               [(ngModel)]="batdongsan.chuSoHuu" required maxlength="64">
+                        <validation-messages [formCtrl]="chusohuuInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Ghi chú *</label>
+                        <input #addghiChuInput="ngModel" class="form-control" type="text" name="GhiChu"
+                               [(ngModel)]="batdongsan.ghiChu" required maxlength="64">
+                        <validation-messages [formCtrl]="ghiChuInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>file đính kèm *</label>
+                        <input #addfiledinhkemInput="ngModel" class="form-control" type="text" name="FileDinhKem"
+                               [(ngModel)]="batdongsan.fileDinhKem" required maxlength="64">
+                        <validation-messages [formCtrl]="filedinhkemInput"></validation-messages>
+                    </div>
                     <div class="form-group">
                         <label for="checkbox-inline">
                         </label>

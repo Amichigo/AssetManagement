@@ -26,8 +26,8 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 
         public float DienTichXayDung { set; get; }
 
-        public float MaTinhTrangSuDungDat { set; get; }
-        public float MaTinhTrangXayDung { set; get; }
+        public string MaTinhTrangSuDungDat { set; get; }
+        public string MaTinhTrangXayDung { set; get; }
         public string CongNangSuDung { set; get; }
 
         public string KetCauNha { set; get; }

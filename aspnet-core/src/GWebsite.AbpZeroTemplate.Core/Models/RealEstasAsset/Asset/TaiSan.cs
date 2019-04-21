@@ -8,12 +8,13 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 {
     public class TaiSan : FullAuditModel
     {
+        public string MaTaiSan { set; get; }
         public string Name { set; get; }
         public string DiaChi { set; get; }
         public string ThongTinMoTa { set; get; }
-        public int MaLoaiTaiSan { set; get; }
+        public string MaLoaiTaiSan { set; get; }
 
-        public int MaNhomTaiSan { set; get; }
+        public string MaNhomTaiSan { set; get; }
 
         public long NguyenGiaTaiSan { set; get; }
 

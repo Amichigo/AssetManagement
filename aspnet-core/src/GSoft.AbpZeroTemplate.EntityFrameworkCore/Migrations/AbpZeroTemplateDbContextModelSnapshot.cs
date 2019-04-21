@@ -1597,9 +1597,9 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<string>("MaTaiSan");
 
-                    b.Property<float>("MaTinhTrangSuDungDat");
+                    b.Property<string>("MaTinhTrangSuDungDat");
 
-                    b.Property<float>("MaTinhTrangXayDung");
+                    b.Property<string>("MaTinhTrangXayDung");
 
                     b.Property<string>("RanhGioi");
 
@@ -1964,9 +1964,11 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<bool>("IsDelete");
 
-                    b.Property<int>("MaLoaiTaiSan");
+                    b.Property<string>("MaLoaiTaiSan");
 
-                    b.Property<int>("MaNhomTaiSan");
+                    b.Property<string>("MaNhomTaiSan");
+
+                    b.Property<string>("MaTaiSan");
 
                     b.Property<string>("Name");
 

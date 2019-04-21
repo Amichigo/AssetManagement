@@ -75,22 +75,6 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
         {
             var query = batdongsanRepository.GetAll().Where(x => !x.IsDelete);
 
-            // filter by mts
-            if (input.MaTaiSan != null)
-            {
-                query = query.Where(x => x.MaTaiSan.ToLower().Equals(input.MaTaiSan));
-            }
-            // filter by loaibds
-            if (input.MaLoaiBDS != null)
-            {
-                query = query.Where(x => x.MaLoaiBDS.ToLower().Equals(input.MaLoaiBDS));
-            }
-            // filter by mts
-            if (input.MaPhongGiaoDich != null)
-            {
-                query = query.Where(x => x.MaPhongGiaoDich.ToLower().Equals(input.MaTaiSan));
-            }
-
             // filter by value
             if (input.MaBatDongSan != null)
             {
@@ -119,10 +103,10 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
         #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
-        private void Create(BatDongSanInput input)
+        private void Create(BatDongSanInput batdongsanInput)
         {
-             input.MaBatDongSan= "BDS" + DateTime.Now.ToString("yyyyMMddHHmmss");
-            var batdongsanEntity = ObjectMapper.Map<BatDongSan>(input);
+            batdongsanInput.MaBatDongSan = "BDS"+ DateTime.Now.ToString("yyyyMMddHHmmss");
+            var batdongsanEntity = ObjectMapper.Map<BatDongSan>(batdongsanInput);
             SetAuditInsert(batdongsanEntity);
             batdongsanRepository.Insert(batdongsanEntity);
             CurrentUnitOfWork.SaveChanges();
