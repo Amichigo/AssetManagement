@@ -20,8 +20,20 @@ export class AppNavigationService {
                 new AppMenuItem('MenuClient', 'Pages.Administration.MenuClient', 'flaticon-menu-1', '/app/gwebsite/menu-client'),
                 new AppMenuItem('DemoModel', 'Pages.Administration.DemoModel', 'flaticon-menu-1', '/app/gwebsite/demo-model'),
                 new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer'),
-                  new AppMenuItem('LoaiBatDongSan', 'Pages.Administration.LoaiBatDongSan', 'flaticon-menu-1', '/app/gwebsite/loaibatdongsan')
+                new AppMenuItem('LoaiBatDongSan', 'Pages.Administration.LoaiBatDongSan', 'flaticon-menu-1', '/app/gwebsite/loaibatdongsan'),
+                new AppMenuItem('NhomTaiSan', 'Pages.Administration.NhomTaiSan', 'flaticon-menu-1', '/app/gwebsite/nhomtaisan'),
+                new AppMenuItem('LoaiSoHuu', 'Pages.Administration.LoaiSoHuu', 'flaticon-menu-1', '/app/gwebsite/loaisohuu'),
+               
+                new AppMenuItem('BatDongSan', 'Pages.Administration.BatDongSan', 'flaticon-menu-1', '/app/gwebsite/batdongsan'),
+                new AppMenuItem('HienTrangPhapLy', 'Pages.Administration.HienTrangPhapLy', 'flaticon-menu-1', '/app/gwebsite/hientrangphaply'),
+                new AppMenuItem('TinhTrangSuDungDat', 'Pages.Administration.TinhTrangSuDungDat', 'flaticon-menu-1', '/app/gwebsite/tinhtrangsudungdat'),
             ]),
+            new AppMenuItem('Categories', '', 'flaticon-interface-8', '', [
+                new AppMenuItem('Generals', 'Pages.Categories.General', 'flaticon-menu-1', '')
+            ]),
+            //new AppMenuItem('Tester', '', 'flaticon-grid-menu', '', [
+            //    new AppMenuItem('MucDichSuDungDat', 'Pages.QuanLyBatDongSan.MucDichSuDungDat', 'flaticon-menu-1', '/app/gwebsite/mucdichsudungdat')
+            //]),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),
                 new AppMenuItem('Roles', 'Pages.Administration.Roles', 'flaticon-suitcase', '/app/admin/roles'),

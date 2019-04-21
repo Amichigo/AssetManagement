@@ -8,11 +8,15 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 {
     public class BatDongSan : FullAuditModel
     {
+        public string MaBatDongSan { set; get; }
 
+        public string MaPhongGiaoDich { set; get; }
+
+        public string DiaChi { set; get; }
         public string MaTaiSan { set; get; }
         public string HienTrangBDS { set; get; }
 
-        public int MaLoaiBDS { set; get; }
+        public string MaLoaiBDS { set; get; }
 
         public float ChieuDai { set; get; }
 
@@ -30,9 +34,9 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 
         public string RanhGioi { set; get; }
 
-        public int MaHienTrangPhapLy { set; get; }
+        public string MaHienTrangPhapLy { set; get; }
 
-        public int MaLoaiSoHuu { set; get; }
+        public string MaLoaiSoHuu { set; get; }
 
         public string ChuSoHuu { set; get; }
 
@@ -40,10 +44,5 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 
         public string FileDinhKem { set; get; }
 
-
-
-
-
-   
     }
 }

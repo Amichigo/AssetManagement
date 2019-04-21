@@ -70,5 +70,9 @@
         public const string Pages_Administration_NhomTaiSan_Edit = "Pages.Administration.NhomTaiSan.Edit";
         public const string Pages_Administration_NhomTaiSan_Delete = "Pages.Administration.NhomTaiSan.Delete";
 
+        public const string Pages_Administration_BatDongSan = "Pages.Administration.BatDongSan";
+        public const string Pages_Administration_BatDongSan_Create = "Pages.Administration.BatDongSan.Create";
+        public const string Pages_Administration_BatDongSan_Edit = "Pages.Administration.BatDongSan.Edit";
+        public const string Pages_Administration_BatDongSan_Delete = "Pages.Administration.BatDongSan.Delete";
     }
 }

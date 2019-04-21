@@ -1569,6 +1569,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime?>("CreatedDate");
 
+                    b.Property<string>("DiaChi");
+
                     b.Property<float>("DienTichDatNen");
 
                     b.Property<float>("DienTichXayDung");
@@ -1583,11 +1585,15 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<string>("KetCauNha");
 
-                    b.Property<int>("MaHienTrangPhapLy");
+                    b.Property<string>("MaBatDongSan");
 
-                    b.Property<int>("MaLoaiBDS");
+                    b.Property<string>("MaHienTrangPhapLy");
 
-                    b.Property<int>("MaLoaiSoHuu");
+                    b.Property<string>("MaLoaiBDS");
+
+                    b.Property<string>("MaLoaiSoHuu");
+
+                    b.Property<string>("MaPhongGiaoDich");
 
                     b.Property<string>("MaTaiSan");
 
@@ -1976,7 +1982,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TaiSans");
+                    b.ToTable("TaiSan");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.TinhTrangSuDungDat", b =>

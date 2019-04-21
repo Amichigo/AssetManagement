@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.LoaiTaiSans
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_LoaiTaiSan)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
     public class LoaiTaiSanAppService : GWebsiteAppServiceBase, IPropertyTypeAppService
     {
         private readonly IRepository<LoaiTaiSan> loaiTaiSanRepository;
@@ -98,7 +98,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.LoaiTaiSans
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_LoaiTaiSan_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
         private void Create(LoaiTaiSanInput loaiTaiSanInput)
         {
             var loaiTaiSanEntity = ObjectMapper.Map<LoaiTaiSan>(loaiTaiSanInput);
@@ -107,7 +107,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.LoaiTaiSans
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_LoaiTaiSan_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
         private void Update(LoaiTaiSanInput loaiTaiSanInput)
         {
             var loaiTaiSanEntity = loaiTaiSanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == loaiTaiSanInput.Id);

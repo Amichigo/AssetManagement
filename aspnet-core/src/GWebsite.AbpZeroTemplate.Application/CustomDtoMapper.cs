@@ -16,6 +16,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.LoaiTaiSan.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.NhomTaiSan.DTO;
 
 using GWebsite.AbpZeroTemplate.Core.Models;
+using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.BatDongSan.DTO;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {
@@ -87,6 +88,11 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<NhomTaiSanInput, NhomTaiSan>();
             configuration.CreateMap<NhomTaiSan, NhomTaiSanInput>();
             configuration.CreateMap<NhomTaiSan, NhomTaiSanForViewDto>();
+
+            configuration.CreateMap<BatDongSan, BatDongSanDto>();
+            configuration.CreateMap<BatDongSanInput, BatDongSan>();
+            configuration.CreateMap<BatDongSan, BatDongSanInput>();
+            configuration.CreateMap<BatDongSan, BatDongSanForViewDto>();
 
         }
     }

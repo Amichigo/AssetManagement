@@ -90,6 +90,12 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             nhomts.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhomTaiSan_Create, L("CreatingNewNhomTaiSan"));
             nhomts.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhomTaiSan_Edit, L("EditingNhomTaiSan"));
             nhomts.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhomTaiSan_Delete, L("DeletingNhomTaiSan"));
+
+
+            var bds = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_BatDongSan, L("BatDongSan"));
+            bds.CreateChildPermission(GWebsitePermissions.Pages_Administration_BatDongSan_Create, L("CreatingNewBatDongSan"));
+            bds.CreateChildPermission(GWebsitePermissions.Pages_Administration_BatDongSan_Edit, L("EditingBatDongSan"));
+            bds.CreateChildPermission(GWebsitePermissions.Pages_Administration_BatDongSan_Delete, L("DeletingBatDongSan"));
         }
         private static ILocalizableString L(string name)
         {

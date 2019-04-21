@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.NhomTaiSans
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_NhomTaiSan)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
     public class NhomTaiSanAppService : GWebsiteAppServiceBase, IPropertyGroupAppService
     {
         private readonly IRepository<NhomTaiSan> nhomTaiSanRepository;

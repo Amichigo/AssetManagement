@@ -25,7 +25,7 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<DemoModel> DemoModels { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
 
-        public virtual DbSet<TaiSan> TaiSans { get; set; }
+        public virtual DbSet<TaiSan> TaiSan { get; set; }
         public virtual DbSet<NhomTaiSan> NhomTaiSans { get; set; }
         public virtual DbSet<LoaiTaiSan> LoaiTaiSans { get; set; }
         public virtual DbSet<BatDongSan> BatDongSans { get; set; }
@@ -35,7 +35,7 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
 
         public virtual DbSet<LoaiSoHuu> LoaiSoHuus { get; set; }
 
-        public virtual DbSet<MucDichSuDungDat> MucDinhSuDungDats { get; set; }
+        public virtual DbSet<MucDinhSuDungDat> MucDinhSuDungDats { get; set; }
 
         public virtual DbSet<TinhTrangSuDungDat> TinhTrangSuDungDats { get; set; }
 

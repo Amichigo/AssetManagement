@@ -29,4 +29,9 @@
     <None Remove="yarn.lock" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="src\app\gwebsite\mucdichsudungdat\" />
+    <Folder Include="src\app\gwebsite\NewFolder\" />
+  </ItemGroup>
+
 </Project>
