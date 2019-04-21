@@ -12,6 +12,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
             AppUserClaims = new HashSet<AppUserClaim>();
             AppUserLogins = new HashSet<AppUserLogin>();
             AppUserRoles = new HashSet<AppUserRole>();
+            Orders = new HashSet<Order>();
         }
 
         public string Id { get; set; }
@@ -73,5 +74,6 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public ICollection<AppUserClaim> AppUserClaims { get; set; }
         public ICollection<AppUserLogin> AppUserLogins { get; set; }
         public ICollection<AppUserRole> AppUserRoles { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }
