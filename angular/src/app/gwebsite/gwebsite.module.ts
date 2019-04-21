@@ -45,7 +45,7 @@ import { ViewSupplierModalComponent } from './supplier/view-supplier-modal.compo
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
-        SupplierComponent, CreateOrEditSupplierModalComponent, ViewSupplierModalComponent
+        SupplierComponent, CreateOrEditSupplierModalComponent, ViewSupplierModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
