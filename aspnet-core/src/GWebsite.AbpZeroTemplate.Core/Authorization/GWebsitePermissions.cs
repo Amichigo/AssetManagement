@@ -24,5 +24,9 @@
         public const string Pages_Administration_Customer_Edit = "Pages.Administration.Customer.Edit";
         public const string Pages_Administration_Customer_Delete = "Pages.Administration.Customer.Delete";
 
+        public const string Pages_Administration_TaiSan = "Pages.Administration.TaiSan";
+        public const string Pages_Administration_TaiSan_Create = "Pages.Administration.TaiSan.Create";
+        public const string Pages_Administration_TaiSan_Edit = "Pages.Administration.TaiSan.Edit";
+        public const string Pages_Administration_TaiSan_Delete = "Pages.Administration.TaiSan.Delete";
     }
 }

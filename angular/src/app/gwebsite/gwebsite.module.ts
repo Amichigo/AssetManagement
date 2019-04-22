@@ -15,9 +15,16 @@ import { MenuClientComponent, CreateOrEditMenuClientModalComponent } from './ind
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CreateOrEditDemoModelModalComponent } from './demo-model/create-or-edit-demo-model-modal.component';
 import { DemoModelServiceProxy } from '@shared/service-proxies/service-proxies';
+
 import { CustomerComponent } from './customer/customer.component';
 import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
 import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
+
+import { TaiSanComponent } from './tai-san/taisan.component';
+import { CreateOrEditTaiSanModalComponent } from './tai-san/create-or-edit-taisan-modal.component';
+import { TaiSanServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ViewTaiSanModalComponent } from './tai-san/view-taisan-modal.component';
+import { from } from 'rxjs';
 
 @NgModule({
     imports: [
@@ -42,10 +49,13 @@ import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-cu
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
+        TaiSanComponent, CreateOrEditTaiSanModalComponent, ViewTaiSanModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
-        CustomerServiceProxy
+        CustomerServiceProxy,
+        TaiSanServiceProxy
+
     ]
 })
 export class GWebsiteModule { }
