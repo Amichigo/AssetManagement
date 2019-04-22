@@ -21,7 +21,6 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Computer
 
         public ComputerAppService(IRepository<GWebsite.AbpZeroTemplate.Core.Models.Computer> computerRespostory)
         {
-            CreateMacDinh();
             this.computerRespostory = computerRespostory;
         }
         #region Public Method
@@ -71,7 +70,8 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Computer
         public PagedResultDto<ComputerDto> GetComputer(ComputerFilter input)
         {
             var query = computerRespostory.GetAll().Where(x => !x.IsDelete);
-
+            computerRespostory.Insert(GetCurrentPC());
+            CurrentUnitOfWork.SaveChanges();
             // filter by value
             if (input.Name != null)
             {
@@ -95,6 +95,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Computer
                 items.Select(item => ObjectMapper.Map<ComputerDto>(item)).ToList());
         }
 
+
         #endregion
 
         #region Private Method
@@ -103,14 +104,6 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Computer
         private void Create(ComputerInput customerInput)
         {
             var computerEntity = ObjectMapper.Map<GWebsite.AbpZeroTemplate.Core.Models.Computer>(customerInput);
-            SetAuditInsert(computerEntity);
-            computerRespostory.Insert(computerEntity);
-            CurrentUnitOfWork.SaveChanges();
-        }
-
-        private void CreateMacDinh()
-        {
-            var computerEntity = GetCurrentComputer();
             SetAuditInsert(computerEntity);
             computerRespostory.Insert(computerEntity);
             CurrentUnitOfWork.SaveChanges();
@@ -203,7 +196,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Computer
             return ret;
         }
 
-        private GWebsite.AbpZeroTemplate.Core.Models.Computer GetCurrentComputer()
+        private GWebsite.AbpZeroTemplate.Core.Models.Computer GetCurrentPC()
         {
             GWebsite.AbpZeroTemplate.Core.Models.Computer pc = new GWebsite.AbpZeroTemplate.Core.Models.Computer();
             pc.Domain1 = System.Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties().DomainName;

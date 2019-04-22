@@ -45,5 +45,11 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         {
             return computerAppService.GetComputerForView(id);
         }
+
+        //[HttpGet]
+        //public ComputerForViewDto GetCurrentComputer()
+        //{
+        //    return computerAppService.GetCurrentComputer();
+        //}
     }
 }

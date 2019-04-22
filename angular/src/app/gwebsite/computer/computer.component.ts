@@ -40,6 +40,16 @@ export class ComputerComponent extends AppComponentBase implements AfterViewInit
         } );
     }
 
+    getcurrentComputer(event?: LazyLoadEvent) {
+        if (!this.paginator || !this.dataTable) {
+            return;
+        }
+
+        this.primengTableHelper.showLoadingIndicator();
+
+        this.reloadList(null, event);
+    }
+
     getComputers(event?: LazyLoadEvent) {
         if (!this.paginator || !this.dataTable) {
             return;
