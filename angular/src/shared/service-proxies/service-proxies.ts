@@ -1963,7 +1963,7 @@ export class AssetServiceProxy {
      * @return Success
      */
     createOrEditAsset(input: AssetInput | null | undefined): Observable<void> {
-        let url_ = this.baseUrl + "/api/Customer/CreateOrEditAsset";
+        let url_ = this.baseUrl + "/api/Asset/CreateOrEditAsset";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -11701,7 +11701,7 @@ export class AssetDto implements IAssetDto {
     id!: number | undefined;
     name!: string | undefined;
     description!: string | undefined;
-    typeOfAsset!: string | undefined;
+    typeofAsset!: string | undefined;
     operatingCosts!: number | undefined;
     depreciationValue!: number | undefined;
     quantity!: number | undefined;
@@ -11713,7 +11713,7 @@ export class AssetDto implements IAssetDto {
     categocy!: string | undefined;
     location!: string | undefined;
     pONumber!: string | undefined;
-    linkOfImage!: string | undefined;
+    linkofImage!: string | undefined;
 
 
     constructor(data?: IAssetDto) {
@@ -11728,9 +11728,9 @@ export class AssetDto implements IAssetDto {
     init(data?: any) {
         if (data) {
             this.id = data["id"];
-            this.name = data["address"];
+            this.name = data["name"];
             this.description = data["description"];
-            this.typeOfAsset = data["typeOfAsset"];
+            this.typeofAsset = data["typeofAsset"];
             this.operatingCosts = data["operatingCosts"];
             this.depreciationValue = data["depreciationValue"];
             this.quantity = data["quantity"];
@@ -11742,7 +11742,7 @@ export class AssetDto implements IAssetDto {
             this.categocy = data["categocy"];
             this.location = data["location"];
             this.pONumber = data["pONumber"];
-            this.linkOfImage = data["linkOfImage"];
+            this.linkofImage = data["linkofImage"];
         }
     }
 
@@ -11758,7 +11758,7 @@ export class AssetDto implements IAssetDto {
         data["id"] = this.id;
         data["name"] = this.name ;
         data["description"] = this.description;
-        data["typeOfAsset"] = this.typeOfAsset;
+        data["typeofAsset"] = this.typeofAsset;
         data["operatingCosts"] = this.operatingCosts;
         data["depreciationValue"] = this.depreciationValue;
         data["quantity"] = this.quantity;
@@ -11770,7 +11770,7 @@ export class AssetDto implements IAssetDto {
         data["categocy"] = this.categocy;
         data["location"] = this.location;
         data["pONumber"] = this.pONumber;
-        data["linkOfImage"] = this.linkOfImage;
+        data["linkofImage"] = this.linkofImage;
         return data;
     }
 }
@@ -11779,7 +11779,7 @@ export interface IAssetDto {
     id: number | undefined;
     name: string | undefined;
     description: string | undefined;
-    typeOfAsset: string | undefined;
+    typeofAsset: string | undefined;
     operatingCosts: number | undefined;
     depreciationValue: number | undefined;
     quantity: number | undefined;
@@ -11791,14 +11791,14 @@ export interface IAssetDto {
     categocy: string |undefined;
     location: string | undefined;
     pONumber: string | undefined;
-    linkOfImage: string | undefined;
+    linkofImage: string | undefined;
 }
 
 export class AssetInput implements IAssetInput {
     id!: number | undefined;
     name!: string | undefined;
     description!: string | undefined;
-    typeOfAsset!: string | undefined;
+    typeofAsset!: string | undefined;
     operatingCosts!: number | undefined;
     depreciationValue: number | undefined;
     quantity!: number | undefined;
@@ -11810,7 +11810,7 @@ export class AssetInput implements IAssetInput {
     categocy!: string | undefined;
     location!: string | undefined;
     pONumber!: string | undefined;
-    linkOfImage!: string | undefined;
+    linkofImage!: string | undefined;
 
     constructor(data?: IAssetInput) {
         if (data) {
@@ -11826,7 +11826,7 @@ export class AssetInput implements IAssetInput {
             data["id"] = this.id  ;
             data["name"] = this.name  ;
             data["description"] = this.description;
-            data["typeOfAsset"] = this.typeOfAsset;
+            data["typeofAsset"] = this.typeofAsset;
             data["operatingCosts"] = this.operatingCosts;
             data["depreciationValue"] = this.depreciationValue;
             data["quantity"] = this.quantity;
@@ -11838,7 +11838,7 @@ export class AssetInput implements IAssetInput {
             data["categocy"] = this.categocy;
             data["location"] = this.location;
             data["pONumber"] = this.pONumber;
-            data["linkOfImage"] = this.linkOfImage;
+            data["linkofImage"] = this.linkofImage;
         }
     }
 
@@ -11854,7 +11854,7 @@ export class AssetInput implements IAssetInput {
         data["id"] = this.id;
         data["name"] = this.name;
         data["description"] = this.description;
-        data["typeOfAsset"] = this.typeOfAsset;
+        data["typeofAsset"] = this.typeofAsset;
         data["operatingCosts"] = this.operatingCosts;
         data["depreciationValue"] = this.depreciationValue;
         data["quantity"] = this.quantity;
@@ -11866,7 +11866,7 @@ export class AssetInput implements IAssetInput {
         data["categocy"] = this.categocy;
         data["location"] = this.location;
         data["pONumber"] = this.pONumber;
-        data["linkOfImage"] = this.linkOfImage;
+        data["linkofImage"] = this.linkofImage;
         return data;
     }
 }
@@ -11875,7 +11875,7 @@ export interface IAssetInput {
     id: number | undefined;
     name: string | undefined;
     description: string | undefined;
-    typeOfAsset: string | undefined;
+    typeofAsset: string | undefined;
     operatingCosts: number | undefined;
     depreciationValue: number | undefined;
     quantity: number | undefined;
@@ -11887,14 +11887,13 @@ export interface IAssetInput {
     categocy: string | undefined;
     location: string | undefined;
     pONumber: string | undefined;
-    linkOfImage: string | undefined;
+    linkofImage: string | undefined;
 }
 
 export class AssetForViewDto implements IAssetForViewDto {
-    id!: number | undefined;
     name!: string | undefined;
     description!: string | undefined;
-    typeOfAsset!: string | undefined;
+    typeofAsset!: string | undefined;
     operatingCosts!: number | undefined;
     depreciationValue: number | undefined;
     quantity!: number | undefined;
@@ -11906,7 +11905,7 @@ export class AssetForViewDto implements IAssetForViewDto {
     categocy!: string | undefined;
     location!: string | undefined;
     pONumber!: string | undefined;
-    linkOfImage!: string | undefined;
+    linkofImage!: string | undefined;
 
     constructor(data?: IAssetForViewDto) {
         if (data) {
@@ -11921,7 +11920,7 @@ export class AssetForViewDto implements IAssetForViewDto {
         if (data) {
             this.name = data["name"];
             this.description = data["description"];
-            this.typeOfAsset = data["typeOfAsset"];
+            this.typeofAsset = data["typeofAsset"];
             this.operatingCosts = data["operatingCosts"];
             this.depreciationValue = data["depreciationValue"];
             this.quantity = data["quantity"];
@@ -11933,7 +11932,7 @@ export class AssetForViewDto implements IAssetForViewDto {
             this.categocy = data["categocy"];
             this.location = data["location"];
             this.pONumber = data["pONumber"];
-            this.linkOfImage = data["linkOfImage"];
+            this.linkofImage = data["linkofImage"];
         }
     }
 
@@ -11948,7 +11947,7 @@ export class AssetForViewDto implements IAssetForViewDto {
         data = typeof data === 'object' ? data : {};
         this.name = data["name"];
         this.description = data["description"];
-        this.typeOfAsset = data["typeOfAsset"];
+        this.typeofAsset = data["typeofAsset"];
         this.operatingCosts = data["operatingCosts"];
         this.depreciationValue = data["depreciationValue"];
         this.quantity = data["quantity"];
@@ -11960,7 +11959,7 @@ export class AssetForViewDto implements IAssetForViewDto {
         this.categocy = data["categocy"];
         this.location = data["location"];
         this.pONumber = data["pONumber"];
-        this.linkOfImage = data["linkOfImage"];
+        this.linkofImage = data["linkofImage"];
         return data;
     }
 }
@@ -11968,7 +11967,7 @@ export class AssetForViewDto implements IAssetForViewDto {
 export interface IAssetForViewDto {
     name: string | undefined;
     description: string | undefined;
-    typeOfAsset: string | undefined;
+    typeofAsset: string | undefined;
     operatingCosts: number | undefined;
     depreciationValue: number | undefined;
     quantity: number | undefined;
@@ -11980,10 +11979,8 @@ export interface IAssetForViewDto {
     categocy: string | undefined;
     location: string | undefined;
     pONumber: string | undefined;
-    linkOfImage: string | undefined;
+    linkofImage: string | undefined;
 }
-
-
 
 export class PagedResultDtoOfDemoModelDto implements IPagedResultDtoOfDemoModelDto {
     totalCount!: number | undefined;

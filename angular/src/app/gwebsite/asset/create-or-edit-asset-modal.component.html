@@ -24,8 +24,8 @@
                     </div>
                     <div class="form-group">
                         <label>Loại tài sản *</label>
-                        <input #typeOfAssetInput="ngModel" class="form-control" type="text" name="TypeOfAsset" [(ngModel)]="asset.typeOfAsset" required maxlength="64">
-                        <validation-messages [formCtrl]="typeOfAssetInput"></validation-messages>
+                        <input #typeofAssetInput="ngModel" class="form-control" type="text" name="TypeofAsset" [(ngModel)]="asset.typeofAsset" required maxlength="64">
+                        <validation-messages [formCtrl]="typeofAssetInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Chi phí vận hành *</label>
@@ -43,7 +43,7 @@
                         <validation-messages [formCtrl]="quantityInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Mã thẻ tài sản</label>
+                        <label>Mã thẻ tài sản *</label>
                         <input #assetTagInput="ngModel" class="form-control" type="text" name="AssetTag" [(ngModel)]="asset.assetTag" required maxlength="64">
                         <validation-messages [formCtrl]="assetTagInput"></validation-messages>
                     </div>
@@ -53,39 +53,39 @@
                         <validation-messages [formCtrl]="purchaseDateInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Nơi mua</label>
+                        <label>Nơi mua *</label>
                         <input #purchaseFromInput="ngModel" class="form-control" type="text" name="PurchaseFrom" [(ngModel)]="asset.purchaseFrom" required maxlength="64">
                         <validation-messages [formCtrl]="purchaseFromInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Giá</label>
+                        <label>Giá *</label>
                         <input #costInput="ngModel" class="form-control" type="text" name="Cost" [(ngModel)]="asset.cost" required maxlength="64">
                         <validation-messages [formCtrl]="costInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Trạng thái đang hoạt động</label>
+                        <label>Trạng thái đang hoạt động *</label>
                         <input #isActiveInput="ngModel" class="form-control" type="text" name="isActive" [(ngModel)]="asset.isActive" required maxlength="64">
                         <validation-messages [formCtrl]="isActiveInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Thể loại</label>
+                        <label>Thể loại *</label>
                         <input #categocyInput="ngModel" class="form-control" type="text" name="Categocy" [(ngModel)]="asset.categocy" required maxlength="64">
                         <validation-messages [formCtrl]="categocyInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Vị trí</label>
-                        <input #locationInput="ngModel" class="form-control" type="text" name="Area" [(ngModel)]="asset.location" required maxlength="64">
+                        <label>Vị trí *</label>
+                        <input #locationInput="ngModel" class="form-control" type="text" name="Location" [(ngModel)]="asset.location" required maxlength="64">
                         <validation-messages [formCtrl]="locationInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Mã đặt hàng (PO Number)</label>
-                        <input #pONumberInput="ngModel" class="form-control" type="text" name="Area" [(ngModel)]="asset.pONumber" required maxlength="64">
+                        <label>Mã đặt hàng (PO Number) *</label>
+                        <input #pONumberInput="ngModel" class="form-control" type="text" name="PONumber" [(ngModel)]="asset.pONumber" required maxlength="64">
                         <validation-messages [formCtrl]="pONumberInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Ảnh</label>
-                        <input #linkOfImageInput="ngModel" class="form-control" type="text" name="Area" [(ngModel)]="asset.linkOfImage" required maxlength="64">
-                        <validation-messages [formCtrl]="linkOfImageInput"></validation-messages>
+                        <input #linkofImageInput="ngModel" class="form-control" type="text" name="LinkofImage" [(ngModel)]="asset.linkofImage" required maxlength="64">
+                        <validation-messages [formCtrl]="linkofImageInput"></validation-messages>
                     </div>
                 </div>
                 <div class="modal-footer">
