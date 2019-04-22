@@ -1891,7 +1891,7 @@ export class AssetServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
                 let result200: any = null;
                 let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-                result200 = resultData200 ? PagedResultDtoOfCustomerDto.fromJS(resultData200) : new PagedResultDtoOfAssetDto();
+                result200 = resultData200 ? PagedResultDtoOfAssetDto.fromJS(resultData200) : new PagedResultDtoOfAssetDto();
                 return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -11701,7 +11701,7 @@ export class AssetDto implements IAssetDto {
     id!: number | undefined;
     name!: string | undefined;
     description!: string | undefined;
-    typeOfAsset!: number | undefined;
+    typeOfAsset!: string | undefined;
     operatingCosts!: number | undefined;
     depreciationValue!: number | undefined;
     quantity!: number | undefined;
@@ -11779,7 +11779,7 @@ export interface IAssetDto {
     id: number | undefined;
     name: string | undefined;
     description: string | undefined;
-    typeOfAsset: number | undefined;
+    typeOfAsset: string | undefined;
     operatingCosts: number | undefined;
     depreciationValue: number | undefined;
     quantity: number | undefined;
@@ -11798,7 +11798,7 @@ export class AssetInput implements IAssetInput {
     id!: number | undefined;
     name!: string | undefined;
     description!: string | undefined;
-    typeOfAsset!: number | undefined;
+    typeOfAsset!: string | undefined;
     operatingCosts!: number | undefined;
     depreciationValue: number | undefined;
     quantity!: number | undefined;
@@ -11875,7 +11875,7 @@ export interface IAssetInput {
     id: number | undefined;
     name: string | undefined;
     description: string | undefined;
-    typeOfAsset: number | undefined;
+    typeOfAsset: string | undefined;
     operatingCosts: number | undefined;
     depreciationValue: number | undefined;
     quantity: number | undefined;
@@ -11894,7 +11894,7 @@ export class AssetForViewDto implements IAssetForViewDto {
     id!: number | undefined;
     name!: string | undefined;
     description!: string | undefined;
-    typeOfAsset!: number | undefined;
+    typeOfAsset!: string | undefined;
     operatingCosts!: number | undefined;
     depreciationValue: number | undefined;
     quantity!: number | undefined;
@@ -11968,7 +11968,7 @@ export class AssetForViewDto implements IAssetForViewDto {
 export interface IAssetForViewDto {
     name: string | undefined;
     description: string | undefined;
-    typeOfAsset: number | undefined;
+    typeOfAsset: string | undefined;
     operatingCosts: number | undefined;
     depreciationValue: number | undefined;
     quantity: number | undefined;
