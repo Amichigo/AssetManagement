@@ -11736,7 +11736,7 @@ export class AssetDto implements IAssetDto {
             this.quantity = data["quantity"];
             this.assetTag = data["assetTag"];
             this.purchaseDate = data["purchaseDate"];
-            this.purchaseFrom = data["purchaseDate"];
+            this.purchaseFrom = data["purchaseFrom"];
             this.cost = data["cost"];
             this.isActive = data["isActive"];
             this.categocy = data["categocy"];
@@ -11832,7 +11832,7 @@ export class AssetInput implements IAssetInput {
             data["quantity"] = this.quantity;
             data["assetTag"] = this.assetTag;
             data["purchaseDate"] = this.purchaseDate;
-            data["purchaseDate"] = this.purchaseFrom;
+            data["purchaseFrom"] = this.purchaseFrom;
             data["cost"] = this.cost;
             data["isActive"] = this.isActive;
             data["categocy"] = this.categocy;
@@ -11860,7 +11860,7 @@ export class AssetInput implements IAssetInput {
         data["quantity"] = this.quantity;
         data["assetTag"] = this.assetTag;
         data["purchaseDate"] = this.purchaseDate;
-        data["purchaseDate"] = this.purchaseFrom;
+        data["purchaseFrom"] = this.purchaseFrom;
         data["cost"] = this.cost;
         data["isActive"] = this.isActive;
         data["categocy"] = this.categocy;
@@ -11927,7 +11927,7 @@ export class AssetForViewDto implements IAssetForViewDto {
             this.quantity = data["quantity"];
             this.assetTag = data["assetTag"];
             this.purchaseDate = data["purchaseDate"];
-            this.purchaseFrom = data["purchaseDate"];
+            this.purchaseFrom = data["purchaseFrom"];
             this.cost = data["cost"];
             this.isActive = data["isActive"];
             this.categocy = data["categocy"];
@@ -11954,7 +11954,7 @@ export class AssetForViewDto implements IAssetForViewDto {
         this.quantity = data["quantity"];
         this.assetTag = data["assetTag"];
         this.purchaseDate = data["purchaseDate"];
-        this.purchaseFrom = data["purchaseDate"];
+        this.purchaseFrom = data["purchaseFrom"];
         this.cost = data["cost"];
         this.isActive = data["isActive"];
         this.categocy = data["categocy"];

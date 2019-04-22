@@ -1,0 +1,12 @@
+D:\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.deps.json
+D:\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.dll
+D:\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.pdb
+D:\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.dll
+D:\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.pdb
+D:\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.csprojAssemblyReference.cache
+D:\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.csproj.CoreCompileInputs.cache
+D:\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.AssemblyInfoInputs.cache
+D:\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.AssemblyInfo.cs
+D:\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.csproj.CopyComplete
+D:\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.dll
+D:\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.pdb
