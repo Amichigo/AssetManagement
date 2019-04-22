@@ -4,14 +4,16 @@ using GSoft.AbpZeroTemplate.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    partial class AbpZeroTemplateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190418113531_DuAn")]
+    partial class DuAn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1665,74 +1667,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("Functions");
                 });
 
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.HopDongThau", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("MaHoSo");
-
-                    b.Property<string>("MaHopDong");
-
-                    b.Property<string>("NgayTaoHopDong");
-
-                    b.Property<string>("TenHopDong");
-
-                    b.Property<string>("TenNhaCungCap");
-
-                    b.Property<string>("TrangThaiDuyet");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HopDongThau");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.HoSoThau", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("HangMucThau");
-
-                    b.Property<string>("HinhThucThau");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("MaHoSo");
-
-                    b.Property<string>("NgayBatDauHoSo");
-
-                    b.Property<string>("NgayKetThucHoSo");
-
-                    b.Property<string>("SoTienBaoLanh");
-
-                    b.Property<string>("TrangThaiDuyet");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HoSoThau");
-                });
-
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.MenuClient", b =>
                 {
                     b.Property<int>("Id")
@@ -1788,37 +1722,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("MenuClients");
                 });
 
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.NhaCungCap", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("DiaChi");
-
-                    b.Property<string>("Email");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("MaNhaCungCap");
-
-                    b.Property<string>("SoDienThoai");
-
-                    b.Property<string>("TenNhaCungCap");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("NhaCungCap");
-                });
-
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Permission", b =>
                 {
                     b.Property<int>("Id")
@@ -1848,47 +1751,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("GPermissions");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.PhieuGoiHang", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("DonGia");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("MaKeHoach");
-
-                    b.Property<string>("QuaTrinhThanhToan");
-
-                    b.Property<string>("SoLuong");
-
-                    b.Property<string>("TenDonVi");
-
-                    b.Property<string>("TenHangHoa");
-
-                    b.Property<string>("TenHopDong");
-
-                    b.Property<string>("TenKeHoach");
-
-                    b.Property<string>("TienDoGiaoHang");
-
-                    b.Property<string>("TinhTrangHoaDon");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PhieuGoiHang");
                 });
 
             modelBuilder.Entity("GSoft.AbpZeroTemplate.Editions.SubscribableEdition", b =>

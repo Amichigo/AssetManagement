@@ -4,14 +4,16 @@ using GSoft.AbpZeroTemplate.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    partial class AbpZeroTemplateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190420171456_HopDongThau")]
+    partial class HopDongThau
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1848,47 +1850,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("GPermissions");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.PhieuGoiHang", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("DonGia");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("MaKeHoach");
-
-                    b.Property<string>("QuaTrinhThanhToan");
-
-                    b.Property<string>("SoLuong");
-
-                    b.Property<string>("TenDonVi");
-
-                    b.Property<string>("TenHangHoa");
-
-                    b.Property<string>("TenHopDong");
-
-                    b.Property<string>("TenKeHoach");
-
-                    b.Property<string>("TienDoGiaoHang");
-
-                    b.Property<string>("TinhTrangHoaDon");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PhieuGoiHang");
                 });
 
             modelBuilder.Entity("GSoft.AbpZeroTemplate.Editions.SubscribableEdition", b =>
