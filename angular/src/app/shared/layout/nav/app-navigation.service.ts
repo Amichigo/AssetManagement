@@ -18,8 +18,12 @@ export class AppNavigationService {
             new AppMenuItem('Editions', 'Pages.Editions', 'flaticon-app', '/app/admin/editions'),
             new AppMenuItem('Administration', '', 'flaticon-interface-8', '', [
                 new AppMenuItem('MenuClient', 'Pages.Administration.MenuClient', 'flaticon-menu-1', '/app/gwebsite/menu-client'),
-                new AppMenuItem('DemoModel', 'Pages.Administration.DemoModel', 'flaticon-menu-1', '/app/gwebsite/demo-model'),
-                new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer')
+                new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer'),
+                new AppMenuItem('DuAn', 'Pages.Administration.DuAn', 'flaticon-menu-1', '/app/gwebsite/duan'),
+                new AppMenuItem('HoSoThau', 'Pages.Administration.HoSoThau', 'flaticon-menu-1', '/app/gwebsite/hosothau'),
+                new AppMenuItem('NhaCungCap', 'Pages.Administration.NhaCungCap', 'flaticon-menu-1', '/app/gwebsite/nhacungcap'),
+                new AppMenuItem('HopDongThau', 'Pages.Administration.HopDongThau', 'flaticon-menu-1', '/app/gwebsite/hopdongthau'),
+                new AppMenuItem('PhieuGoiHang', 'Pages.Administration.PhieuGoiHang', 'flaticon-menu-1', '/app/gwebsite/phieugoihang'),
             ]),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),
