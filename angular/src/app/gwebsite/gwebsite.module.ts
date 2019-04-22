@@ -21,9 +21,7 @@ import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-cu
 import { LoaiBatDongSanComponent } from './loaibatdongsan/loaibatdongsan.component';
 import { CreateOrEditLoaiBatDongSanModalComponent } from './loaibatdongsan/create-or-edit-loaibatdongsan-modal.component';
 import { ViewLoaiBatDongSanModalComponent } from './loaibatdongsan/view-loaibatdongsan-modal.component';
-import { NhomTaiSanComponent } from './nhomtaisan/nhomtaisan.component';
-import { CreateOrEditNhomTaiSanModalComponent } from './nhomtaisan/create-or-edit-nhomtaisan-modal.component';
-import { ViewNhomTaiSanModalComponent } from './nhomtaisan/view-nhomtaisan-modal.component';
+
 import { LoaiSoHuuComponent } from './loaisohuu/loaisohuu.component';
 import { CreateOrEditLoaiSoHuuModalComponent } from './loaisohuu/create-or-edit-loaisohuu-modal.component';
 import { ViewLoaiSoHuuModalComponent } from './loaisohuu/view-loaisohuu-modal.component';
@@ -62,7 +60,6 @@ import { ViewTinhTrangSuDungDatModalComponent } from './tinhtrangsudungdat/view-
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
         LoaiBatDongSanComponent, CreateOrEditLoaiBatDongSanModalComponent, ViewLoaiBatDongSanModalComponent,
-        NhomTaiSanComponent, CreateOrEditNhomTaiSanModalComponent, ViewNhomTaiSanModalComponent,
         LoaiSoHuuComponent, CreateOrEditLoaiSoHuuModalComponent, ViewLoaiSoHuuModalComponent,
         BatDongSanComponent, CreateOrEditBatDongSanModalComponent, ViewBatDongSanModalComponent,
         HienTrangPhapLyComponent, CreateOrEditHienTrangPhapLyModalComponent, ViewHienTrangPhapLyModalComponent,
@@ -72,7 +69,6 @@ import { ViewTinhTrangSuDungDatModalComponent } from './tinhtrangsudungdat/view-
         DemoModelServiceProxy,
         CustomerServiceProxy,
         LoaiBatDongSanServiceProxy,
-        NhomTaiSanServiceProxy,
         LoaiSoHuuServiceProxy,
         MucDichSuDungDatServiceProxy,
         BatDongSanServiceProxy,

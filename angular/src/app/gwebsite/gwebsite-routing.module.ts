@@ -4,7 +4,6 @@ import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.compo
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
 import { LoaiBatDongSanComponent } from './loaibatdongsan/loaibatdongsan.component';
-import { NhomTaiSanComponent } from './nhomtaisan/nhomtaisan.component';
 import { LoaiSoHuuComponent } from './loaisohuu/loaisohuu.component';
 import { HienTrangPhapLyComponent } from './hientrangphaply/hientrangphaply.component';
 import { BatDongSanComponent } from './batdongsan/batdongsan.component';
@@ -48,15 +47,7 @@ import { TinhTrangSuDungDatComponent } from './tinhtrangsudungdat/tinhtrangsudun
                     },
                 ]
             },
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'nhomtaisan', component: NhomTaiSanComponent,
-                        data: { permission: 'Pages.Administration.NhomTaiSan' }
-                    },
-                ]
-            },
+    
             {
                 path: '',
                 children: [

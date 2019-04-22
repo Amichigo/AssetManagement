@@ -21,7 +21,7 @@ export class AppNavigationService {
                 new AppMenuItem('DemoModel', 'Pages.Administration.DemoModel', 'flaticon-menu-1', '/app/gwebsite/demo-model'),
                 new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer'),
                 new AppMenuItem('LoaiBatDongSan', 'Pages.Administration.LoaiBatDongSan', 'flaticon-menu-1', '/app/gwebsite/loaibatdongsan'),
-                new AppMenuItem('NhomTaiSan', 'Pages.Administration.NhomTaiSan', 'flaticon-menu-1', '/app/gwebsite/nhomtaisan'),
+               
                 new AppMenuItem('LoaiSoHuu', 'Pages.Administration.LoaiSoHuu', 'flaticon-menu-1', '/app/gwebsite/loaisohuu'),
                
                 new AppMenuItem('BatDongSan', 'Pages.Administration.BatDongSan', 'flaticon-menu-1', '/app/gwebsite/batdongsan'),
