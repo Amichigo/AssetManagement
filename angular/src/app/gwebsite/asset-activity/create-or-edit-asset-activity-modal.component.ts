@@ -41,11 +41,10 @@ export class CreateOrEditAssetActivityModalComponent extends AppComponentBase {
     show(assetActivityId?: number | null | undefined): void {
         this.saving = false;
 
-
         this._assetActivityService.getAssetActivityForEdit(assetActivityId).subscribe(result => {
             this.assetActivity = result;
-            const executionTime = new Date(this.assetActivity.executionTime);
-            this.assetActivity.executionTime = `${ executionTime.getFullYear() }-${ this.pad(executionTime.getMonth() + 1, 2) }-${ this.pad(executionTime.getDate(), 2) }`;;
+            // const executionTime = new Date(this.assetActivity.executionTime);
+            // this.assetActivity.executionTime = `${ executionTime.getFullYear() }-${ this.pad(executionTime.getMonth() + 1, 2) }-${ this.pad(executionTime.getDate(), 2) }`;;
             this.modal.show();
 
         })
