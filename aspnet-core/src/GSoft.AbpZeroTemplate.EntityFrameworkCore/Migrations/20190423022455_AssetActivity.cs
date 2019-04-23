@@ -6,17 +6,12 @@ namespace GSoft.AbpZeroTemplate.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "InvestmentType",
-                table: "AssetActivities",
-                nullable: true);
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "InvestmentType",
-                table: "AssetActivities");
+
         }
     }
 }
