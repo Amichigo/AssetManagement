@@ -3,8 +3,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    <span *ngIf="fixedAsset.id">{{l("EditFixedAsset")}}: {{fixedAsset.name}}</span>
-                    <span *ngIf="!fixedAsset.id">{{l("CreateNewFixedAsset")}}</span>
+                    <span *ngIf="fixedAsset.id">{{l("EditFixedAssset")}}: {{fixedAsset.name}}</span>
+                    <span *ngIf="!fixedAsset.id">{{l("CreateNewCustomer")}}</span>
                 </h4>
                 <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
                     <span aria-hidden="true">&times;</span>
@@ -75,7 +75,6 @@
                     <label>Ảnh</label>
                     <p>{{fixedAsset.linkofImage}}</p>
                 </div>
-
             </div>
             <div class="modal-footer">
                 <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>

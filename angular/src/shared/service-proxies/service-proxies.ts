@@ -11795,7 +11795,7 @@ export class FixedAssetInput implements IFixedAssetInput {
     description!: string | undefined;
     typeofAsset!: string | undefined;
     operatingCosts!: number | undefined;
-    depreciationValue: number | undefined;
+    depreciationValue!: number | undefined;
     quantity!: number | undefined;
     assetTag!: number | undefined;
     purchaseDate!: string | undefined;
@@ -11891,7 +11891,7 @@ export class FixedAssetForViewDto implements IFixedAssetForViewDto {
     description!: string | undefined;
     typeofAsset!: string | undefined;
     operatingCosts!: number | undefined;
-    depreciationValue: number | undefined;
+    depreciationValue!: number | undefined;
     quantity!: number | undefined;
     assetTag!: number | undefined;
     purchaseDate!: string | undefined;

@@ -43,6 +43,7 @@
                                 <tr>
                                     <th pSortableColumn="id">
                                         Mã tài sản
+                                        <p-sortIcon field="name"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="name">
                                         Tên tài sản
@@ -53,9 +54,6 @@
                                     </th>
                                     <th pSortableColumn="typeofAsset">
                                         Loại tài sản
-                                    </th>
-                                    <th pSortableColumn="operatingCosts">
-                                        Chi phí vận hành
                                     </th>
                                     <th pSortableColumn="depreciationValue">
                                         Giá trị khấu hao
@@ -91,10 +89,6 @@
                                         <span title="{{record.typeofAsset}}">{{truncateString(record.typeofAsset)}}</span>
                                     </td>
                                     <td>
-                                        <span class="ui-column-title">Chi phí vận hành</span>
-                                        <span title="{{record.operatingCosts}}">{{truncateString(record.operatingCosts)}}</span>
-                                    </td>
-                                    <td>
                                         <span class="ui-column-title">Giá trị khấu hao</span>
                                         <span title="{{record.depreciationValue}}">{{truncateString(record.depreciationValue)}}</span>
                                     </td>
@@ -111,7 +105,7 @@
                                         <span title="{{record.isActive}}">{{truncateString(record.isActive)}}</span>
                                     </td>
                                     <td>
-                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" (click)="createOrEditModal.show()" title="{{l('Edit')}}">
+                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">
                                             <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
                                         </button>
 
