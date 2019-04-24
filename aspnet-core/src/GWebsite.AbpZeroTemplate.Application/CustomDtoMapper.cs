@@ -2,7 +2,8 @@ using AutoMapper;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.Assets.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.FixedAssets.Dto;
+
 using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Applications
@@ -29,10 +30,10 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<Customer, CustomerForViewDto>();
 
             // Asset
-            configuration.CreateMap<Asset, AssetDto>();
-            configuration.CreateMap<AssetInput, Asset>();
-            configuration.CreateMap<Asset, AssetInput>();
-            configuration.CreateMap<Asset, AssetForViewDto>();
+            configuration.CreateMap<FixedAsset, FixedAssetDto>();
+            configuration.CreateMap<FixedAssetInput, FixedAsset>();
+            configuration.CreateMap<FixedAsset, FixedAssetInput>();
+            configuration.CreateMap<FixedAsset, FixedAssetForViewDto>();
         }
     }
 }

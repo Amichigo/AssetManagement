@@ -16,7 +16,6 @@ export class CreateOrEditCustomerModalComponent extends AppComponentBase {
     @ViewChild('iconCombobox') iconCombobox: ElementRef;
     @ViewChild('dateInput') dateInput: ElementRef;
 
-
     /**
      * @Output dùng để public event cho component khác xử lý
      */
@@ -35,8 +34,6 @@ export class CreateOrEditCustomerModalComponent extends AppComponentBase {
 
     show(customerId?: number | null | undefined): void {
         this.saving = false;
-
-
         this._customerService.getCustomerForEdit(customerId).subscribe(result => {
             this.customer = result;
             this.modal.show();
@@ -58,4 +55,4 @@ export class CreateOrEditCustomerModalComponent extends AppComponentBase {
         this.modal.hide();
         this.modalSave.emit(null);
     }
-}
+}   

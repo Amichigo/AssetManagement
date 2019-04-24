@@ -1826,7 +1826,7 @@ export class CustomerServiceProxy {
 }
 
 @Injectable()
-export class AssetServiceProxy {
+export class FixedAssetServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
@@ -1843,8 +1843,8 @@ export class AssetServiceProxy {
      * @skipCount (optional) 
      * @return Success
      */
-    getAssetsByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfAssetDto> {
-        let url_ = this.baseUrl + "/api/Asset/GetAssetsByFilter?";
+    getFixedAssetsByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfFixedAssetDto> {
+        let url_ = this.baseUrl + "/api/FixedAsset/GetFixedAssetsByFilter?";
         if (name !== undefined)
             url_ += "Name=" + encodeURIComponent("" + name) + "&";
         if (sorting !== undefined)
@@ -1865,22 +1865,20 @@ export class AssetServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAssetsByFilter(response_);
+            return this.processGetFixedAssetsByFilter(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAssetsByFilter(<any>response_);
+                    return this.processGetFixedAssetsByFilter(<any>response_);
                 } catch (e) {
-                    return <Observable<PagedResultDtoOfAssetDto>><any>_observableThrow(e);
+                    return <Observable<PagedResultDtoOfFixedAssetDto>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<PagedResultDtoOfAssetDto>><any>_observableThrow(response_);
+                return <Observable<PagedResultDtoOfFixedAssetDto>><any>_observableThrow(response_);
         }));
-        
-       
     }
 
-    protected processGetAssetsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfAssetDto> {
+    protected processGetFixedAssetsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfFixedAssetDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -1891,7 +1889,7 @@ export class AssetServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
                 let result200: any = null;
                 let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-                result200 = resultData200 ? PagedResultDtoOfAssetDto.fromJS(resultData200) : new PagedResultDtoOfAssetDto();
+                result200 = resultData200 ? PagedResultDtoOfFixedAssetDto.fromJS(resultData200) : new PagedResultDtoOfFixedAssetDto();
                 return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -1899,7 +1897,7 @@ export class AssetServiceProxy {
                 return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<PagedResultDtoOfAssetDto>(<any>null);
+        return _observableOf<PagedResultDtoOfFixedAssetDto>(<any>null);
     }
 
 
@@ -1907,8 +1905,8 @@ export class AssetServiceProxy {
      * @id (optional) 
      * @return Success
      */
-    getAssetForEdit(id: number | null | undefined): Observable<AssetInput> {
-        let url_ = this.baseUrl + "/api/Asset/GetAssetForEdit?";
+    getFixedAssetForEdit(id: number | null | undefined): Observable<FixedAssetInput> {
+        let url_ = this.baseUrl + "/api/FixedAsset/GetFixedAssetForEdit?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
@@ -1923,20 +1921,20 @@ export class AssetServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_: any) => {
-            return this.processGetAssetForEdit(response_);
+            return this.processGetFixedAssetForEdit(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAssetForEdit(<any>response_);
+                    return this.processGetFixedAssetForEdit(<any>response_);
                 } catch (e) {
-                    return <Observable<AssetInput>><any>_observableThrow(e);
+                    return <Observable<FixedAssetInput>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<AssetInput>><any>_observableThrow(response_);
+                return <Observable<FixedAssetInput>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetAssetForEdit(response: HttpResponseBase): Observable<AssetInput> {
+    protected processGetFixedAssetForEdit(response: HttpResponseBase): Observable<FixedAssetInput> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -1947,7 +1945,7 @@ export class AssetServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
                 let result200: any = null;
                 let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-                result200 = resultData200 ? AssetInput.fromJS(resultData200) : new AssetInput();
+                result200 = resultData200 ? FixedAssetInput.fromJS(resultData200) : new FixedAssetInput();
                 return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -1955,15 +1953,15 @@ export class AssetServiceProxy {
                 return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<AssetInput>(<any>null);
+        return _observableOf<FixedAssetInput>(<any>null);
     }
 
     /**
      * @input (optional) 
      * @return Success
      */
-    createOrEditAsset(input: AssetInput | null | undefined): Observable<void> {
-        let url_ = this.baseUrl + "/api/Asset/CreateOrEditAsset";
+    createOrEditFixedAsset(input: FixedAssetInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/FixedAsset/CreateOrEditFixedAsset";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -1978,11 +1976,11 @@ export class AssetServiceProxy {
         };
 
         return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_: any) => {
-            return this.processCreateOrEditAsset(response_);
+            return this.processCreateOrEditFixedAsset(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processCreateOrEditAsset(<any>response_);
+                    return this.processCreateOrEditFixedAsset(<any>response_);
                 } catch (e) {
                     return <Observable<void>><any>_observableThrow(e);
                 }
@@ -1991,7 +1989,7 @@ export class AssetServiceProxy {
         }));
     }
 
-    protected processCreateOrEditAsset(response: HttpResponseBase): Observable<void> {
+    protected processCreateOrEditFixedAsset(response: HttpResponseBase): Observable<void> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -2013,8 +2011,8 @@ export class AssetServiceProxy {
     /**
      * @return Success
      */
-    deleteAsset(id: number): Observable<void> {
-        let url_ = this.baseUrl + "/api/Asset/DeleteAsset/{id}";
+    deleteFixedAsset(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/FixedAsset/DeleteFixedAsset/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
         url_ = url_.replace("{id}", encodeURIComponent("" + id));
@@ -2029,11 +2027,11 @@ export class AssetServiceProxy {
         };
 
         return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_: any) => {
-            return this.processDeleteAsset(response_);
+            return this.processDeleteFixedAsset(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processDeleteAsset(<any>response_);
+                    return this.processDeleteFixedAsset(<any>response_);
                 } catch (e) {
                     return <Observable<void>><any>_observableThrow(e);
                 }
@@ -2042,7 +2040,7 @@ export class AssetServiceProxy {
         }));
     }
 
-    protected processDeleteAsset(response: HttpResponseBase): Observable<void> {
+    protected processDeleteFixedAsset(response: HttpResponseBase): Observable<void> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -2065,8 +2063,8 @@ export class AssetServiceProxy {
      * @id (optional) 
      * @return Success
      */
-    getAssetForView(id: number | null | undefined): Observable<AssetForViewDto> {
-        let url_ = this.baseUrl + "/api/Asset/GetAssetForView?";
+    getFixedAssetForView(id: number | null | undefined): Observable<FixedAssetForViewDto> {
+        let url_ = this.baseUrl + "/api/FixedAsset/GetFixedAssetForView?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
@@ -2081,20 +2079,20 @@ export class AssetServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_: any) => {
-            return this.processGetAssetForView(response_);
+            return this.processGetFixedAssetForView(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAssetForView(<any>response_);
+                    return this.processGetFixedAssetForView(<any>response_);
                 } catch (e) {
-                    return <Observable<AssetForViewDto>><any>_observableThrow(e);
+                    return <Observable<FixedAssetForViewDto>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<AssetForViewDto>><any>_observableThrow(response_);
+                return <Observable<FixedAssetForViewDto>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetAssetForView(response: HttpResponseBase): Observable<AssetForViewDto> {
+    protected processGetFixedAssetForView(response: HttpResponseBase): Observable<FixedAssetForViewDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -2105,7 +2103,7 @@ export class AssetServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
                 let result200: any = null;
                 let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-                result200 = resultData200 ? AssetForViewDto.fromJS(resultData200) : new AssetForViewDto();
+                result200 = resultData200 ? FixedAssetForViewDto.fromJS(resultData200) : new FixedAssetForViewDto();
                 return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -2113,7 +2111,7 @@ export class AssetServiceProxy {
                 return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<AssetForViewDto>(<any>null);
+        return _observableOf<FixedAssetForViewDto>(<any>null);
     }
 }
 
@@ -11460,7 +11458,6 @@ export class GetDefaultEditionNameOutput implements IGetDefaultEditionNameOutput
 export interface IGetDefaultEditionNameOutput {
     name: string | undefined;
 }
-////////////////////////////////
 export class PagedResultDtoOfCustomerDto implements IPagedResultDtoOfCustomerDto {
     totalCount!: number | undefined;
     items!: CustomerDto[] | undefined;
@@ -11648,12 +11645,12 @@ export interface ICustomerForViewDto {
     address: string | undefined;
     info: string | undefined;
 }
-////////////////////////////////////////////////
-export class PagedResultDtoOfAssetDto implements IPagedResultDtoOfAssetDto {
-    totalCount!: number | undefined;
-    items!: AssetDto[] | undefined;
 
-    constructor(data?: IPagedResultDtoOfAssetDto) {
+export class PagedResultDtoOfFixedAssetDto implements IPagedResultDtoOfFixedAssetDto {
+    totalCount!: number | undefined;
+    items!: FixedAssetDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfFixedAssetDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -11668,14 +11665,14 @@ export class PagedResultDtoOfAssetDto implements IPagedResultDtoOfAssetDto {
             if (data["items"] && data["items"].constructor === Array) {
                 this.items = [];
                 for (let item of data["items"])
-                    this.items.push(AssetDto.fromJS(item));
+                    this.items.push(FixedAssetDto.fromJS(item));
             }
         }
     }
 
-    static fromJS(data: any): PagedResultDtoOfAssetDto {
+    static fromJS(data: any): PagedResultDtoOfFixedAssetDto {
         data = typeof data === 'object' ? data : {};
-        let result = new PagedResultDtoOfAssetDto();
+        let result = new PagedResultDtoOfFixedAssetDto();
         result.init(data);
         return result;
     }
@@ -11692,13 +11689,12 @@ export class PagedResultDtoOfAssetDto implements IPagedResultDtoOfAssetDto {
     }
 }
 
-export interface IPagedResultDtoOfAssetDto {
+export interface IPagedResultDtoOfFixedAssetDto {
     totalCount: number | undefined;
-    items: AssetDto[] | undefined;
+    items: FixedAssetDto[] | undefined;
 }
 
-export class AssetDto implements IAssetDto {
-    id!: number | undefined;
+export class FixedAssetDto implements IFixedAssetDto {
     name!: string | undefined;
     description!: string | undefined;
     typeofAsset!: string | undefined;
@@ -11714,9 +11710,9 @@ export class AssetDto implements IAssetDto {
     location!: string | undefined;
     pONumber!: string | undefined;
     linkofImage!: string | undefined;
+    id!: number | undefined;
 
-
-    constructor(data?: IAssetDto) {
+    constructor(data?: IFixedAssetDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -11727,7 +11723,6 @@ export class AssetDto implements IAssetDto {
 
     init(data?: any) {
         if (data) {
-            this.id = data["id"];
             this.name = data["name"];
             this.description = data["description"];
             this.typeofAsset = data["typeofAsset"];
@@ -11743,19 +11738,19 @@ export class AssetDto implements IAssetDto {
             this.location = data["location"];
             this.pONumber = data["pONumber"];
             this.linkofImage = data["linkofImage"];
+            this.id = data["id"];
         }
     }
 
-    static fromJS(data: any): AssetDto {
+    static fromJS(data: any): FixedAssetDto {
         data = typeof data === 'object' ? data : {};
-        let result = new AssetDto();
+        let result = new FixedAssetDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
         data["name"] = this.name ;
         data["description"] = this.description;
         data["typeofAsset"] = this.typeofAsset;
@@ -11771,12 +11766,12 @@ export class AssetDto implements IAssetDto {
         data["location"] = this.location;
         data["pONumber"] = this.pONumber;
         data["linkofImage"] = this.linkofImage;
+        data["id"] = this.id;
         return data;
     }
 }
 
-export interface IAssetDto {
-    id: number | undefined;
+export interface IFixedAssetDto {
     name: string | undefined;
     description: string | undefined;
     typeofAsset: string | undefined;
@@ -11792,10 +11787,10 @@ export interface IAssetDto {
     location: string | undefined;
     pONumber: string | undefined;
     linkofImage: string | undefined;
+    id: number | undefined;
 }
 
-export class AssetInput implements IAssetInput {
-    id!: number | undefined;
+export class FixedAssetInput implements IFixedAssetInput {
     name!: string | undefined;
     description!: string | undefined;
     typeofAsset!: string | undefined;
@@ -11811,8 +11806,9 @@ export class AssetInput implements IAssetInput {
     location!: string | undefined;
     pONumber!: string | undefined;
     linkofImage!: string | undefined;
+    id!: number | undefined;
 
-    constructor(data?: IAssetInput) {
+    constructor(data?: IFixedAssetInput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -11823,35 +11819,34 @@ export class AssetInput implements IAssetInput {
 
     init(data?: any) {
         if (data) {
-            data["id"] = this.id  ;
-            data["name"] = this.name  ;
-            data["description"] = this.description;
-            data["typeofAsset"] = this.typeofAsset;
-            data["operatingCosts"] = this.operatingCosts;
-            data["depreciationValue"] = this.depreciationValue;
-            data["quantity"] = this.quantity;
-            data["assetTag"] = this.assetTag;
-            data["purchaseDate"] = this.purchaseDate;
-            data["purchaseFrom"] = this.purchaseFrom;
-            data["cost"] = this.cost;
-            data["isActive"] = this.isActive;
-            data["categocy"] = this.categocy;
-            data["location"] = this.location;
-            data["pONumber"] = this.pONumber;
-            data["linkofImage"] = this.linkofImage;
+            this.name  = data["name"];
+            this.description = data["description"];
+            this.typeofAsset = data["typeofAsset"];
+            this.operatingCosts = data["operatingCosts"];
+            this.depreciationValue = data["depreciationValue"];
+            this.quantity = data["quantity"];
+            this.assetTag = data["assetTag"];
+            this.purchaseDate = data["purchaseDate"];
+            this.purchaseFrom = data["purchaseFrom"];
+            this.cost = data["cost"];
+            this.isActive = data["isActive"];
+            this.categocy = data["categocy"];
+            this.location = data["location"];
+            this.pONumber = data["pONumber"];
+            this.linkofImage = data["linkofImage"];
+            this.id = data["id"];
         }
     }
 
-    static fromJS(data: any): AssetInput {
+    static fromJS(data: any): FixedAssetInput {
         data = typeof data === 'object' ? data : {};
-        let result = new AssetInput();
+        let result = new FixedAssetInput();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
         data["name"] = this.name;
         data["description"] = this.description;
         data["typeofAsset"] = this.typeofAsset;
@@ -11867,12 +11862,12 @@ export class AssetInput implements IAssetInput {
         data["location"] = this.location;
         data["pONumber"] = this.pONumber;
         data["linkofImage"] = this.linkofImage;
+        data["id"] = this.id;
         return data;
     }
 }
 
-export interface IAssetInput {
-    id: number | undefined;
+export interface IFixedAssetInput {
     name: string | undefined;
     description: string | undefined;
     typeofAsset: string | undefined;
@@ -11888,9 +11883,10 @@ export interface IAssetInput {
     location: string | undefined;
     pONumber: string | undefined;
     linkofImage: string | undefined;
+    id: number | undefined;
 }
 
-export class AssetForViewDto implements IAssetForViewDto {
+export class FixedAssetForViewDto implements IFixedAssetForViewDto {
     name!: string | undefined;
     description!: string | undefined;
     typeofAsset!: string | undefined;
@@ -11907,7 +11903,7 @@ export class AssetForViewDto implements IAssetForViewDto {
     pONumber!: string | undefined;
     linkofImage!: string | undefined;
 
-    constructor(data?: IAssetForViewDto) {
+    constructor(data?: IFixedAssetForViewDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -11936,35 +11932,35 @@ export class AssetForViewDto implements IAssetForViewDto {
         }
     }
 
-    static fromJS(data: any): AssetForViewDto {
+    static fromJS(data: any): FixedAssetForViewDto {
         data = typeof data === 'object' ? data : {};
-        let result = new AssetForViewDto();
+        let result = new FixedAssetForViewDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        this.name = data["name"];
-        this.description = data["description"];
-        this.typeofAsset = data["typeofAsset"];
-        this.operatingCosts = data["operatingCosts"];
-        this.depreciationValue = data["depreciationValue"];
-        this.quantity = data["quantity"];
-        this.assetTag = data["assetTag"];
-        this.purchaseDate = data["purchaseDate"];
-        this.purchaseFrom = data["purchaseFrom"];
-        this.cost = data["cost"];
-        this.isActive = data["isActive"];
-        this.categocy = data["categocy"];
-        this.location = data["location"];
-        this.pONumber = data["pONumber"];
-        this.linkofImage = data["linkofImage"];
+        data["name"] = this.name;
+        data["description"] = this.description;
+        data["typeofAsset"] = this.typeofAsset;
+        data["operatingCosts"] = this.operatingCosts;
+        data["depreciationValue"] = this.depreciationValue;
+        data["quantity"] = this.quantity;
+        data["assetTag"] = this.assetTag;
+        data["purchaseDate"] = this.purchaseDate;
+        data["purchaseFrom"] = this.purchaseFrom;
+        data["cost"] = this.cost;
+        data["isActive"] = this.isActive;
+        data["categocy"] = this.categocy;
+        data["location"] =  this.location;
+        data["pONumber"] = this.pONumber;
+        data["linkofImage"] = this.linkofImage;
         return data;
     }
 }
 
-export interface IAssetForViewDto {
+export interface IFixedAssetForViewDto {
     name: string | undefined;
     description: string | undefined;
     typeofAsset: string | undefined;

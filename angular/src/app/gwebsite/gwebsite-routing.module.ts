@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.component';
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
-import { AssetComponent } from './asset/asset.component';
+import { FixedAssetComponent } from './fixed-asset/fixed-asset.component';
 
 @NgModule({
     imports: [
@@ -39,11 +39,11 @@ import { AssetComponent } from './asset/asset.component';
                 path: '',
                 children: [
                     {
-                        path: 'asset', component: AssetComponent,
-                        data: { permission: 'Pages.Administration.Asset' }
+                        path: 'fixed-asset', component: FixedAssetComponent,
+                        data: { permission: 'Pages.Administration.FixedAsset' }
                     },
                 ]
-            }
+            },
         ])
     ],
     exports: [

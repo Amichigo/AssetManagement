@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, AssetServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, FixedAssetServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,9 +18,9 @@ import { DemoModelServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CustomerComponent } from './customer/customer.component';
 import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
 import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
-import { AssetComponent } from './asset/asset.component';
-import { CreateOrEditAssetModalComponent } from './asset/create-or-edit-asset-modal.component';
-import { ViewAssetModalComponent } from './asset/view-asset-modal.component';
+import { FixedAssetComponent } from './fixed-asset/fixed-asset.component'
+import { CreateOrEditFixedAssetModalComponent } from './fixed-asset/create-or-edit-fixed-asset-modal.component';
+import { ViewFixedAssetModalComponent } from './fixed-asset/view-fixed-asset-modal.component';
 
 @NgModule({
     imports: [
@@ -45,12 +45,12 @@ import { ViewAssetModalComponent } from './asset/view-asset-modal.component';
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
-        AssetComponent, CreateOrEditAssetModalComponent, ViewAssetModalComponent,
+        FixedAssetComponent, CreateOrEditFixedAssetModalComponent, ViewFixedAssetModalComponent, 
     ],
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
-        AssetServiceProxy,
+        FixedAssetServiceProxy,
     ]
 })
 export class GWebsiteModule { }
