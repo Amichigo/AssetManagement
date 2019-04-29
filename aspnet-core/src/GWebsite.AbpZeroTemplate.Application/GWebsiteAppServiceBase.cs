@@ -1,15 +1,14 @@
-﻿using Abp.Application.Services;
+﻿using System;
+using System.Threading.Tasks;
+using Abp.Application.Services;
 using Abp.IdentityFramework;
 using Abp.MultiTenancy;
 using Abp.Runtime.Session;
 using Abp.Threading;
-using GSoft.AbpZeroTemplate;
+using Microsoft.AspNetCore.Identity;
 using GSoft.AbpZeroTemplate.Authorization.Users;
 using GSoft.AbpZeroTemplate.MultiTenancy;
-using GWebsite.AbpZeroTemplate.Core.Models;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Threading.Tasks;
+using GSoft.AbpZeroTemplate;
 
 namespace GWebsite.AbpZeroTemplate.Application
 {
@@ -36,31 +35,6 @@ namespace GWebsite.AbpZeroTemplate.Application
             }
 
             return user;
-        }
-
-        protected async Task<string> GetCurrentUserName()
-        {
-            var user = await UserManager.FindByIdAsync(AbpSession.GetUserId().ToString());
-            if(user==null)
-            {
-                return "no-user";
-            }
-
-            return user.Name;
-        }
-
-
-        protected void SetAuditInsert(FullAuditModel entity)
-        {
-            entity.CreatedDate = DateTime.Now;
-            entity.CreatedBy = GetCurrentUser().Name;
-            entity.IsDelete = false;
-        }
-
-        protected void SetAuditEdit(FullAuditModel entity)
-        {
-            entity.UpdatedDate = DateTime.Now;
-            entity.UpdatedBy = GetCurrentUser().Name;
         }
 
         protected virtual User GetCurrentUser()

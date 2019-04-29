@@ -1,29 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Reflection;
 using Abp.AspNetCore;
+using Abp.AspNetCore.Configuration;
+using Abp.AspNetCore.Mvc.Extensions;
+using Abp.AspNetCore.Mvc.Results;
 using Abp.AspNetCore.SignalR.Hubs;
 using Abp.AspNetZeroCore.Web.Authentication.JwtBearer;
+using Abp.Authorization;
 using Abp.Castle.Logging.Log4Net;
 using Abp.Dependency;
+using Abp.Domain.Entities;
+using Abp.Events.Bus;
+using Abp.Events.Bus.Exceptions;
 using Abp.Extensions;
+using Abp.Hangfire;
 using Abp.PlugIns;
+using Abp.Reflection.Extensions;
+using Abp.Runtime.Validation;
+using Abp.Timing;
+using Abp.Web.Models;
+using AutoMapper.Internal;
+using Castle.Core.Logging;
 using Castle.Facilities.Logging;
-using GSoft.AbpZeroTemplate.Configuration;
-using GSoft.AbpZeroTemplate.EntityFrameworkCore;
-using GSoft.AbpZeroTemplate.Identity;
-using GSoft.AbpZeroTemplate.Web.Chat.SignalR;
-using GSoft.AbpZeroTemplate.Web.IdentityServer;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using GSoft.AbpZeroTemplate.Authorization;
+using GSoft.AbpZeroTemplate.Authorization.Roles;
+using GSoft.AbpZeroTemplate.Authorization.Users;
+using GSoft.AbpZeroTemplate.Configuration;
+using GSoft.AbpZeroTemplate.EntityFrameworkCore;
+using GSoft.AbpZeroTemplate.Identity;
+using GSoft.AbpZeroTemplate.Install;
+using GSoft.AbpZeroTemplate.MultiTenancy;
+using GSoft.AbpZeroTemplate.Web.Authentication.JwtBearer;
+using GSoft.AbpZeroTemplate.Web.Chat.SignalR;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using Swashbuckle.AspNetCore.Swagger;
-using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
+using GSoft.AbpZeroTemplate.Web.IdentityServer;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
 using ILoggerFactory = Microsoft.Extensions.Logging.ILoggerFactory;
 
 namespace GSoft.AbpZeroTemplate.Web.Startup
@@ -65,13 +90,11 @@ namespace GSoft.AbpZeroTemplate.Web.Startup
                                 .Select(o => o.RemovePostFix("/"))
                                 .ToArray()
                         )
-                        .SetIsOriginAllowedToAllowWildcardSubdomains()
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials();
                 });
             });
-
 
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
