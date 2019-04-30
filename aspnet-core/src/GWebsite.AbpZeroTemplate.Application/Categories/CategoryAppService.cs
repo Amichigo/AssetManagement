@@ -121,7 +121,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Categories
             input.CategoryId = input.CategoryId + DateTime.Now.ToString("yyyyMMddHHmmss");
 
             var categoryEntity = ObjectMapper.Map<Category>(input);
-            SetAuditInsert(categoryEntity);
+            categoryEntity.CreatedDate = DateTime.Now;
+            categoryEntity.CreatedBy = GetCurrentUser().Name;
+            categoryEntity.IsDelete = false;
             categoryRepository.Insert(categoryEntity);
             CurrentUnitOfWork.SaveChanges();
         }
@@ -134,7 +136,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Categories
             {
             }
             ObjectMapper.Map(categoryInput, categoryEntity);
-            SetAuditEdit(categoryEntity);
+            categoryEntity.CreatedDate = DateTime.Now;
+            categoryEntity.CreatedBy = GetCurrentUser().Name;
+            categoryEntity.IsDelete = false;
             categoryRepository.Update(categoryEntity);
             CurrentUnitOfWork.SaveChanges();
         }

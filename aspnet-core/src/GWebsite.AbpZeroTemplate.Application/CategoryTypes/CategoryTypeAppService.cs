@@ -7,6 +7,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.CategoryTypes;
 using GWebsite.AbpZeroTemplate.Application.Share.CategoryTypes.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
 using GWebsite.AbpZeroTemplate.Core.Models;
+using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 
@@ -106,7 +107,9 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
         private void Create(CategoryTypeInput categoryInput)
         {
             var categoryEntity = ObjectMapper.Map<CategoryType>(categoryInput);
-            SetAuditInsert(categoryEntity);
+            categoryEntity.CreatedDate = DateTime.Now;
+            categoryEntity.CreatedBy = GetCurrentUser().Name;
+            categoryEntity.IsDelete = false;
             categoryRepository.Insert(categoryEntity);
             CurrentUnitOfWork.SaveChanges();
         }
@@ -119,7 +122,9 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
             {
             }
             ObjectMapper.Map(categoryInput, categoryEntity);
-            SetAuditEdit(categoryEntity);
+            categoryEntity.CreatedDate = DateTime.Now;
+            categoryEntity.CreatedBy = GetCurrentUser().Name;
+            categoryEntity.IsDelete = false;
             categoryRepository.Update(categoryEntity);
             CurrentUnitOfWork.SaveChanges();
         }

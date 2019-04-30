@@ -7,6 +7,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.DemoModels;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
 using GWebsite.AbpZeroTemplate.Core.Models;
+using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 
@@ -30,7 +31,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DemoModels
             {
                 // Insert
                 demoModelEntity = ObjectMapper.Map<DemoModel>(demoModelInput);
-                SetAuditInsert(demoModelEntity);
+                demoModelEntity.CreatedDate = DateTime.Now;
+                demoModelEntity.CreatedBy = GetCurrentUser().Name;
+                demoModelEntity.IsDelete = false;
                 demoModelRepository.Insert(demoModelEntity);
                 CurrentUnitOfWork.SaveChanges();
             }
@@ -43,7 +46,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DemoModels
                     return null;
                 }
                 ObjectMapper.Map(demoModelInput, demoModelEntity);
-                SetAuditEdit(demoModelEntity);
+                demoModelEntity.CreatedDate = DateTime.Now;
+                demoModelEntity.CreatedBy = GetCurrentUser().Name;
+                demoModelEntity.IsDelete = false;
                 demoModelRepository.Update(demoModelEntity);
                 CurrentUnitOfWork.SaveChanges();
             }

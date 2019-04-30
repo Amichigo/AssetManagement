@@ -7,6 +7,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.Customers;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
 using GWebsite.AbpZeroTemplate.Core.Models;
+using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 
@@ -102,7 +103,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Customers
         private void Create(CustomerInput customerInput)
         {
             var customerEntity = ObjectMapper.Map<Customer>(customerInput);
-            SetAuditInsert(customerEntity);
+            customerEntity.CreatedDate = DateTime.Now;
+            customerEntity.CreatedBy = GetCurrentUser().Name;
+            customerEntity.IsDelete = false;
             customerRepository.Insert(customerEntity);
             CurrentUnitOfWork.SaveChanges();
         }
@@ -115,7 +118,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Customers
             {
             }
             ObjectMapper.Map(customerInput, customerEntity);
-            SetAuditEdit(customerEntity);
+            customerEntity.CreatedDate = DateTime.Now;
+            customerEntity.CreatedBy = GetCurrentUser().Name;
+            customerEntity.IsDelete = false;
             customerRepository.Update(customerEntity);
             CurrentUnitOfWork.SaveChanges();
         }
