@@ -21,14 +21,16 @@ export class CreateOrEditFixedAssetModalComponent extends AppComponentBase {
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
     saving = false;
-
     fixedAsset: FixedAssetInput = new FixedAssetInput();
+    typeAssets = ["fixed assets", "labor assets"];
+    statusAsset = ["true", "false"];
 
     constructor(
         injector: Injector,
         private _fixedAssetService: FixedAssetServiceProxy
     ) {
         super(injector);
+        this.fixedAsset.typeofAsset = "fixed assets";
     }
 
     show(fixedAssetId?: number | null | undefined): void {

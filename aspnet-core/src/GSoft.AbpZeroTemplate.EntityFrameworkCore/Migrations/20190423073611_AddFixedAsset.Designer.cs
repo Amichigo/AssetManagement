@@ -1553,57 +1553,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("AppUserRoles");
                 });
 
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Asset", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AssetTag");
-
-                    b.Property<string>("Categocy");
-
-                    b.Property<float>("Cost");
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<float>("DepreciationValue");
-
-                    b.Property<string>("Description");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("LinkofImage");
-
-                    b.Property<string>("Location");
-
-                    b.Property<string>("Name");
-
-                    b.Property<float>("OperatingCosts");
-
-                    b.Property<string>("PONumber");
-
-                    b.Property<DateTime>("PurchaseDate");
-
-                    b.Property<string>("PurchaseFrom");
-
-                    b.Property<int>("Quantity");
-
-                    b.Property<string>("TypeofAsset");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<bool>("isActive");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Assets");
-                });
-
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Customer", b =>
                 {
                     b.Property<int>("Id")

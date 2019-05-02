@@ -14,7 +14,6 @@ export class SendTwoFactorCodeComponent extends AppComponentBase implements CanA
 
     selectedTwoFactorProvider: string;
     submitting = false;
-
     constructor(
         injector: Injector,
         public loginService: LoginService,
@@ -29,7 +28,7 @@ export class SendTwoFactorCodeComponent extends AppComponentBase implements CanA
             this.loginService.authenticateResult &&
             this.loginService.authenticateResult.twoFactorAuthProviders &&
             this.loginService.authenticateResult.twoFactorAuthProviders.length
-            ) {
+        ) {
             return true;
         }
 

@@ -3,7 +3,6 @@ import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
 import { CustomerServiceProxy, CustomerInput } from '@shared/service-proxies/service-proxies';
 
-
 @Component({
     selector: 'createOrEditCustomerModal',
     templateUrl: './create-or-edit-customer-modal.component.html'

@@ -11708,7 +11708,7 @@ export class FixedAssetDto implements IFixedAssetDto {
     isActive!: boolean | undefined;
     categocy!: string | undefined;
     location!: string | undefined;
-    pONumber!: string | undefined;
+    poNumber!: string | undefined;
     linkofImage!: string | undefined;
     id!: number | undefined;
 
@@ -11736,7 +11736,7 @@ export class FixedAssetDto implements IFixedAssetDto {
             this.isActive = data["isActive"];
             this.categocy = data["categocy"];
             this.location = data["location"];
-            this.pONumber = data["pONumber"];
+            this.poNumber = data["poNumber"];
             this.linkofImage = data["linkofImage"];
             this.id = data["id"];
         }
@@ -11764,7 +11764,7 @@ export class FixedAssetDto implements IFixedAssetDto {
         data["isActive"] = this.isActive;
         data["categocy"] = this.categocy;
         data["location"] = this.location;
-        data["pONumber"] = this.pONumber;
+        data["poNumber"] = this.poNumber;
         data["linkofImage"] = this.linkofImage;
         data["id"] = this.id;
         return data;
@@ -11785,7 +11785,7 @@ export interface IFixedAssetDto {
     isActive: boolean| undefined;
     categocy: string |undefined;
     location: string | undefined;
-    pONumber: string | undefined;
+    poNumber: string | undefined;
     linkofImage: string | undefined;
     id: number | undefined;
 }
@@ -11804,7 +11804,7 @@ export class FixedAssetInput implements IFixedAssetInput {
     isActive!: boolean | undefined;
     categocy!: string | undefined;
     location!: string | undefined;
-    pONumber!: string | undefined;
+    poNumber!: string | undefined;
     linkofImage!: string | undefined;
     id!: number | undefined;
 
@@ -11832,7 +11832,7 @@ export class FixedAssetInput implements IFixedAssetInput {
             this.isActive = data["isActive"];
             this.categocy = data["categocy"];
             this.location = data["location"];
-            this.pONumber = data["pONumber"];
+            this.poNumber = data["poNumber"];
             this.linkofImage = data["linkofImage"];
             this.id = data["id"];
         }
@@ -11860,7 +11860,7 @@ export class FixedAssetInput implements IFixedAssetInput {
         data["isActive"] = this.isActive;
         data["categocy"] = this.categocy;
         data["location"] = this.location;
-        data["pONumber"] = this.pONumber;
+        data["poNumber"] = this.poNumber;
         data["linkofImage"] = this.linkofImage;
         data["id"] = this.id;
         return data;
@@ -11881,7 +11881,7 @@ export interface IFixedAssetInput {
     isActive: boolean | undefined;
     categocy: string | undefined;
     location: string | undefined;
-    pONumber: string | undefined;
+    poNumber: string | undefined;
     linkofImage: string | undefined;
     id: number | undefined;
 }
@@ -11900,7 +11900,7 @@ export class FixedAssetForViewDto implements IFixedAssetForViewDto {
     isActive!: boolean | undefined;
     categocy!: string | undefined;
     location!: string | undefined;
-    pONumber!: string | undefined;
+    poNumber!: string | undefined;
     linkofImage!: string | undefined;
 
     constructor(data?: IFixedAssetForViewDto) {
@@ -11927,7 +11927,7 @@ export class FixedAssetForViewDto implements IFixedAssetForViewDto {
             this.isActive = data["isActive"];
             this.categocy = data["categocy"];
             this.location = data["location"];
-            this.pONumber = data["pONumber"];
+            this.poNumber = data["poNumber"];
             this.linkofImage = data["linkofImage"];
         }
     }
@@ -11954,7 +11954,7 @@ export class FixedAssetForViewDto implements IFixedAssetForViewDto {
         data["isActive"] = this.isActive;
         data["categocy"] = this.categocy;
         data["location"] =  this.location;
-        data["pONumber"] = this.pONumber;
+        data["poNumber"] = this.poNumber;
         data["linkofImage"] = this.linkofImage;
         return data;
     }
@@ -11974,7 +11974,7 @@ export interface IFixedAssetForViewDto {
     isActive: boolean | undefined;
     categocy: string | undefined;
     location: string | undefined;
-    pONumber: string | undefined;
+    poNumber: string | undefined;
     linkofImage: string | undefined;
 }
 

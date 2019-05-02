@@ -15,7 +15,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.FixedAssets.Dto
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public string TypeofFixedAsset { get; set; }
+        public string TypeofAsset { get; set; }
         public float OperatingCosts { get; set; }
         public float DepreciationValue { get; set; }
         public int Quantity { get; set; }

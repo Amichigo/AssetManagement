@@ -23,9 +23,11 @@
                         <validation-messages [formCtrl]="descriptionInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Loại tài sản *</label>
-                        <input #typeofAssetInput="ngModel" class="form-control" type="text" name="TypeofAsset" [(ngModel)]="fixedAsset.typeofAsset" required maxlength="64">
-                        <validation-messages [formCtrl]="typeofAssetInput"></validation-messages>
+                        <label>Loại tài sản</label>
+                        <select #typeofAssetInput="ngModel" autoFocus size="1" class="form-control" [(ngModel)]="fixedAsset.typeofAsset" name="TypeofAsset" required maxlength="64">
+                            <option *ngFor="let selected of typeAssets" [value]="selected">{{selected}}</option>
+                            <validation-messages [formCtrl]="typeofAssetInput"></validation-messages>  
+                            </select>
                     </div>
                     <div class="form-group">
                         <label>Chi phí vận hành </label>
@@ -44,8 +46,7 @@
                     </div>
                     <div class="form-group">
                         <label>Mã thẻ tài sản *</label>
-                        <input #assetTagInput="ngModel" class="form-control" type="text" name="AssetTag" [(ngModel)]="fixedAsset.assetTag" required maxlength="64">
-                        <validation-messages [formCtrl]="assetTagInput"></validation-messages>
+                        <input class="form-control" type="text" name="AssetTag" [(ngModel)]="fixedAsset.assetTag" required maxlength="64">
                     </div>
                     <div class="form-group">
                         <label>Ngày mua </label>
@@ -63,9 +64,10 @@
                         <validation-messages [formCtrl]="costInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Trạng thái đang hoạt động *</label>
-                        <input #isActiveInput="ngModel" class="form-control" type="text" name="isActive" [(ngModel)]="fixedAsset.isActive" required maxlength="64">
-                        <validation-messages [formCtrl]="isActiveInput"></validation-messages>
+                        <label>Đang hoạt động</label>
+                        <select autoFocus size="1" class="form-control" [(ngModel)]="fixedAsset.isActive" name="IsActive" required maxlength="64">
+                            <option *ngFor="let selected of statusAsset" [value]="selected">{{selected}}</option>
+                            </select>
                     </div>
                     <div class="form-group">
                         <label>Thể loại </label>
@@ -79,8 +81,8 @@
                     </div>
                     <div class="form-group">
                         <label>Mã đặt hàng (PO Number)</label>
-                        <input #pONumberInput="ngModel" class="form-control" type="text" name="PONumber" [(ngModel)]="fixedAsset.pONumber" required maxlength="64">
-                        <validation-messages [formCtrl]="pONumberInput"></validation-messages>
+                        <input #poNumberInput="ngModel" class="form-control" type="text" name="PoNumber" [(ngModel)]="fixedAsset.poNumber" required maxlength="64">
+                        <validation-messages [formCtrl]="poNumberInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Ảnh</label>
