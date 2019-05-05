@@ -72,6 +72,8 @@ export class BatDongSanComponent extends AppComponentBase implements AfterViewIn
 
     }
 
+   
+
     reloadList(batdongsanName, event?: LazyLoadEvent) {
         this._batdongsanService.getBatDongSansByFilter(batdongsanName, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),

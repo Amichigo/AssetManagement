@@ -4,14 +4,14 @@
         <div class="d-flex align-items-center">
             <div class="mr-auto col-xs-6">
                 <h3 class="m-subheader__title m-subheader__title--separator">
-                    <span>{{l("Loại Bất Động Sản")}}</span>
+                    <span>{{l("Hiện trạng pháp lý")}}</span>
                 </h3>
                 <span class="m-section__sub">
                     {{l("Thông tin chi tiết")}}
                 </span>
             </div>
             <div class="col-xs-6 text-right">
-                <button (click)="createHienTrangPhapLy()" *ngIf="isGranted('Pages.Administration.HienTrangPhapLy.Create')"
+                <button (click)="createHienTrangPhapLy()" *ngIf="isGranted('Pages.QuanLyBatDongSan.HienTrangPhapLy.Create')"
                     class="btn btn-primary"><i class="fa fa-plus"></i> {{l("Tạo mới")}}</button>
             </div>
         </div>
@@ -47,7 +47,7 @@
                                 <tr>
                                  
                                     <th pSortableColumn="name">
-                                        Tên Loại Bất động sản
+                                        Tên Hiện trạng pháp lý
                                         <p-sortIcon field="name"></p-sortIcon>
                                     </th>
 

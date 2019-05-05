@@ -16,7 +16,7 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_QuanLyBatDongSan_BatDongSan)]
     public class BatDongSanAppService : GWebsiteAppServiceBase, IBatDongSanAppService
     {
         private readonly IRepository<BatDongSan> batdongsanRepository;
@@ -102,7 +102,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_QuanLyBatDongSan_BatDongSan_Create)]
         private void Create(BatDongSanInput batdongsanInput)
         {
             batdongsanInput.MaBatDongSan = "BDS"+ DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -112,7 +112,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_QuanLyBatDongSan_BatDongSan_Edit)]
         private void Update(BatDongSanInput batdongsanInput)
         {
             var batdongsanEntity = batdongsanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == batdongsanInput.Id);

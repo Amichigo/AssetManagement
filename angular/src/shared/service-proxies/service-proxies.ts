@@ -13498,6 +13498,7 @@ export interface IPagedResultDtoOfBatDongSanDto {
 export class BatDongSanDto implements IBatDongSanDto {
     maBatDongSan!: string | undefined;
     maPhongGiaoDich!: string | undefined;
+    ngayMuaBatDongSan!: moment.Moment | undefined;
     diaChi!: string | undefined;
     maTaiSan!: string | undefined;
     hienTrangBDS!: string | undefined;
@@ -13506,8 +13507,8 @@ export class BatDongSanDto implements IBatDongSanDto {
     chieuRong!: number | undefined;
     dienTichDatNen!: number | undefined;
     dienTichXayDung!: number | undefined;
-    maTinhTrangSuDungDat!: number | undefined;
-    maTinhTrangXayDung!: number | undefined;
+    maTinhTrangSuDungDat!: string | undefined;
+    maTinhTrangXayDung!: string | undefined;
     congNangSuDung!: string | undefined;
     ketCauNha!: string | undefined;
     ranhGioi!: string | undefined;
@@ -13531,6 +13532,7 @@ export class BatDongSanDto implements IBatDongSanDto {
         if (data) {
             this.maBatDongSan = data["maBatDongSan"];
             this.maPhongGiaoDich = data["maPhongGiaoDich"];
+            this.ngayMuaBatDongSan = data["ngayMuaBatDongSan"] ? moment(data["ngayMuaBatDongSan"].toString()) : <any>undefined;
             this.diaChi = data["diaChi"];
             this.maTaiSan = data["maTaiSan"];
             this.hienTrangBDS = data["hienTrangBDS"];
@@ -13564,6 +13566,7 @@ export class BatDongSanDto implements IBatDongSanDto {
         data = typeof data === 'object' ? data : {};
         data["maBatDongSan"] = this.maBatDongSan;
         data["maPhongGiaoDich"] = this.maPhongGiaoDich;
+        data["ngayMuaBatDongSan"] = this.ngayMuaBatDongSan ? this.ngayMuaBatDongSan.toISOString() : <any>undefined;
         data["diaChi"] = this.diaChi;
         data["maTaiSan"] = this.maTaiSan;
         data["hienTrangBDS"] = this.hienTrangBDS;
@@ -13590,6 +13593,7 @@ export class BatDongSanDto implements IBatDongSanDto {
 export interface IBatDongSanDto {
     maBatDongSan: string | undefined;
     maPhongGiaoDich: string | undefined;
+    ngayMuaBatDongSan: moment.Moment | undefined;
     diaChi: string | undefined;
     maTaiSan: string | undefined;
     hienTrangBDS: string | undefined;
@@ -13598,8 +13602,8 @@ export interface IBatDongSanDto {
     chieuRong: number | undefined;
     dienTichDatNen: number | undefined;
     dienTichXayDung: number | undefined;
-    maTinhTrangSuDungDat: number | undefined;
-    maTinhTrangXayDung: number | undefined;
+    maTinhTrangSuDungDat: string | undefined;
+    maTinhTrangXayDung: string | undefined;
     congNangSuDung: string | undefined;
     ketCauNha: string | undefined;
     ranhGioi: string | undefined;
@@ -13622,13 +13626,14 @@ export class BatDongSanInput implements IBatDongSanInput {
     chieuRong!: number | undefined;
     dienTichDatNen!: number | undefined;
     dienTichXayDung!: number | undefined;
-    maTinhTrangSuDungDat!: number | undefined;
-    maTinhTrangXayDung!: number | undefined;
+    maTinhTrangSuDungDat!: string | undefined;
+    maTinhTrangXayDung!: string | undefined;
     congNangSuDung!: string | undefined;
     ketCauNha!: string | undefined;
     ranhGioi!: string | undefined;
     maHienTrangPhapLy!: string | undefined;
     maLoaiSoHuu!: string | undefined;
+    ngayMuaBatDongSan!: moment.Moment | undefined;
     chuSoHuu!: string | undefined;
     ghiChu!: string | undefined;
     fileDinhKem!: string | undefined;
@@ -13662,6 +13667,7 @@ export class BatDongSanInput implements IBatDongSanInput {
             this.ranhGioi = data["ranhGioi"];
             this.maHienTrangPhapLy = data["maHienTrangPhapLy"];
             this.maLoaiSoHuu = data["maLoaiSoHuu"];
+            this.ngayMuaBatDongSan = data["ngayMuaBatDongSan"] ? moment(data["ngayMuaBatDongSan"].toString()) : <any>undefined;
             this.chuSoHuu = data["chuSoHuu"];
             this.ghiChu = data["ghiChu"];
             this.fileDinhKem = data["fileDinhKem"];
@@ -13695,6 +13701,7 @@ export class BatDongSanInput implements IBatDongSanInput {
         data["ranhGioi"] = this.ranhGioi;
         data["maHienTrangPhapLy"] = this.maHienTrangPhapLy;
         data["maLoaiSoHuu"] = this.maLoaiSoHuu;
+        data["ngayMuaBatDongSan"] = this.ngayMuaBatDongSan ? this.ngayMuaBatDongSan.format('YYYY-MM-DD') : <any>undefined;
         data["chuSoHuu"] = this.chuSoHuu;
         data["ghiChu"] = this.ghiChu;
         data["fileDinhKem"] = this.fileDinhKem;
@@ -13714,13 +13721,14 @@ export interface IBatDongSanInput {
     chieuRong: number | undefined;
     dienTichDatNen: number | undefined;
     dienTichXayDung: number | undefined;
-    maTinhTrangSuDungDat: number | undefined;
-    maTinhTrangXayDung: number | undefined;
+    maTinhTrangSuDungDat: string | undefined;
+    maTinhTrangXayDung: string | undefined;
     congNangSuDung: string | undefined;
     ketCauNha: string | undefined;
     ranhGioi: string | undefined;
     maHienTrangPhapLy: string | undefined;
     maLoaiSoHuu: string | undefined;
+    ngayMuaBatDongSan: moment.Moment | undefined;
     chuSoHuu: string | undefined;
     ghiChu: string | undefined;
     fileDinhKem: string | undefined;
@@ -13730,6 +13738,7 @@ export interface IBatDongSanInput {
 export class BatDongSanForViewDto implements IBatDongSanForViewDto {
     maBatDongSan!: string | undefined;
     maPhongGiaoDich!: string | undefined;
+    ngayMuaBatDongSan!: moment.Moment | undefined;
     diaChi!: string | undefined;
     maTaiSan!: string | undefined;
     hienTrangBDS!: string | undefined;
@@ -13738,8 +13747,8 @@ export class BatDongSanForViewDto implements IBatDongSanForViewDto {
     chieuRong!: number | undefined;
     dienTichDatNen!: number | undefined;
     dienTichXayDung!: number | undefined;
-    maTinhTrangSuDungDat!: number | undefined;
-    maTinhTrangXayDung!: number | undefined;
+    maTinhTrangSuDungDat!: string | undefined;
+    maTinhTrangXayDung!: string | undefined;
     congNangSuDung!: string | undefined;
     ketCauNha!: string | undefined;
     ranhGioi!: string | undefined;
@@ -13762,6 +13771,7 @@ export class BatDongSanForViewDto implements IBatDongSanForViewDto {
         if (data) {
             this.maBatDongSan = data["maBatDongSan"];
             this.maPhongGiaoDich = data["maPhongGiaoDich"];
+            this.ngayMuaBatDongSan = data["ngayMuaBatDongSan"] ? moment(data["ngayMuaBatDongSan"].toString()) : <any>undefined;
             this.diaChi = data["diaChi"];
             this.maTaiSan = data["maTaiSan"];
             this.hienTrangBDS = data["hienTrangBDS"];
@@ -13794,6 +13804,7 @@ export class BatDongSanForViewDto implements IBatDongSanForViewDto {
         data = typeof data === 'object' ? data : {};
         data["maBatDongSan"] = this.maBatDongSan;
         data["maPhongGiaoDich"] = this.maPhongGiaoDich;
+        data["ngayMuaBatDongSan"] = this.ngayMuaBatDongSan ? this.ngayMuaBatDongSan.toISOString() : <any>undefined;
         data["diaChi"] = this.diaChi;
         data["maTaiSan"] = this.maTaiSan;
         data["hienTrangBDS"] = this.hienTrangBDS;
@@ -13819,6 +13830,7 @@ export class BatDongSanForViewDto implements IBatDongSanForViewDto {
 export interface IBatDongSanForViewDto {
     maBatDongSan: string | undefined;
     maPhongGiaoDich: string | undefined;
+    ngayMuaBatDongSan: moment.Moment | undefined;
     diaChi: string | undefined;
     maTaiSan: string | undefined;
     hienTrangBDS: string | undefined;
@@ -13827,8 +13839,8 @@ export interface IBatDongSanForViewDto {
     chieuRong: number | undefined;
     dienTichDatNen: number | undefined;
     dienTichXayDung: number | undefined;
-    maTinhTrangSuDungDat: number | undefined;
-    maTinhTrangXayDung: number | undefined;
+    maTinhTrangSuDungDat: string | undefined;
+    maTinhTrangXayDung: string | undefined;
     congNangSuDung: string | undefined;
     ketCauNha: string | undefined;
     ranhGioi: string | undefined;

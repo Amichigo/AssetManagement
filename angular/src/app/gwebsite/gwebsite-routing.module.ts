@@ -43,7 +43,7 @@ import { TinhTrangSuDungDatComponent } from './tinhtrangsudungdat/tinhtrangsudun
                 children: [
                     {
                         path: 'loaibatdongsan', component: LoaiBatDongSanComponent,
-                        data: { permission: 'Pages.Administration.LoaiBatDongSan' }
+                        data: { permission: 'Pages.QuanLyBatDongSan.LoaiBatDongSan' }
                     },
                 ]
             },
@@ -53,7 +53,7 @@ import { TinhTrangSuDungDatComponent } from './tinhtrangsudungdat/tinhtrangsudun
                 children: [
                     {
                         path: 'loaisohuu', component: LoaiSoHuuComponent,
-                        data: { permission: 'Pages.Administration.LoaiSoHuu' }
+                        data: { permission: 'Pages.QuanLyBatDongSan.LoaiSoHuu' }
                     },
                 ]
             },
@@ -72,7 +72,7 @@ import { TinhTrangSuDungDatComponent } from './tinhtrangsudungdat/tinhtrangsudun
                 children: [
                     {
                         path: 'batdongsan', component: BatDongSanComponent,
-                        data: { permission: 'Pages.Administration.BatDongSan' }
+                        data: { permission: 'Pages.QuanLyBatDongSan.BatDongSan' }
                     },
                 ]
 
@@ -82,7 +82,7 @@ import { TinhTrangSuDungDatComponent } from './tinhtrangsudungdat/tinhtrangsudun
                 children: [
                     {
                         path: 'hientrangphaply', component: HienTrangPhapLyComponent,
-                        data: { permission: 'Pages.Administration.HienTrangPhapLy' }
+                        data: { permission: 'Pages.QuanLyBatDongSan.HienTrangPhapLy' }
                     },
                 ]
 
@@ -92,7 +92,7 @@ import { TinhTrangSuDungDatComponent } from './tinhtrangsudungdat/tinhtrangsudun
                 children: [
                     {
                         path: 'tinhtrangsudungdat', component: TinhTrangSuDungDatComponent,
-                        data: { permission: 'Pages.Administration.TinhTrangSuDungDat' }
+                        data: { permission: 'Pages.QuanLyBatDongSan.TinhTrangSuDungDat' }
                     },
                 ]
 

@@ -1,7 +1,8 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { BatDongSanServiceProxy, BatDongSanInput } from '@shared/service-proxies/service-proxies';
+import { BatDongSanServiceProxy, BatDongSanInput, LoaiBatDongSanDto, LoaiSoHuuDto } from '@shared/service-proxies/service-proxies';
+import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
     
 @Component({
     selector: 'createOrEditBatDongSanModal',
@@ -15,8 +16,8 @@ export class CreateOrEditBatDongSanModalComponent extends AppComponentBase {
     @ViewChild('iconCombobox') iconCombobox: ElementRef;
     @ViewChild('dateInput') dateInput: ElementRef;
 
-
-     
+    selectedLBDS: number; //get selectedLBDS id for edit
+    selectedLSH: number;
     /**
      * @Output dùng để public event cho component khác xử lý
      */
@@ -28,10 +29,51 @@ export class CreateOrEditBatDongSanModalComponent extends AppComponentBase {
 
     constructor(
         injector: Injector,
-        private _batdongsanService: BatDongSanServiceProxy
+        private _batdongsanService: BatDongSanServiceProxy,
+        private _apiService: WebApiServiceProxy,
+       
     ) {
         super(injector);
+        this.getListTypes();// fill data to list loaibatdongsan when component created
+        this.getListLoaiSoHuu();// binding data to list loaisohuu when component created
     }
+
+    listItems: Array<LoaiBatDongSanDto> = [];
+    loaibatdongsan: LoaiBatDongSanDto =new LoaiBatDongSanDto();
+    listLSH: Array<LoaiSoHuuDto> =[];
+    loaisohuu: LoaiSoHuuDto=new LoaiSoHuuDto();
+
+    getListTypes(): void {
+        // get loaibatdongsan type
+        this._apiService.get('api/LoaiBatDongSan/GetLoaiBatDongSansByFilter').subscribe(result => {
+            this.listItems = result.items;
+        });
+    }
+
+    getListLoaiSoHuu():void {
+        // get loaibatdongsan type
+        this._apiService.get('api/LoaiSoHuu/GetLoaiSoHuusByFilter').subscribe(result => {
+            this.listLSH = result.items;
+        });
+
+    }
+
+
+
+
+    onChangeType(): void {
+        this._apiService.getForEdit('api/LoaiBatDongSan/GetLoaiBatDongSanForView', this.selectedLBDS).subscribe(result => {
+            this.batdongsan.maLoaiBDS = result.name;
+        });
+    }
+
+    onChangeLSH(): void {
+        this._apiService.getForEdit('api/LoaiSoHuu/GetLoaiSoHuuForView', this.selectedLSH).subscribe(result => {
+            this.batdongsan.maLoaiSoHuu = result.name;
+        });
+    }
+
+   
 
     show(batdongsanId?: number | null | undefined): void {
         this.saving = false;

@@ -5,7 +5,7 @@
             <form #editForm="ngForm" novalidate (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <span *ngIf="batdongsan.id">Cập nhật bất động sản mới: {{batdongsan.mabatdongsan}}</span>
+                        <span *ngIf="batdongsan.id">Cập nhật bất động sản mới: {{batdongsan.maBatDongSan}}</span>
                         <span *ngIf="!batdongsan.id">Tạo mới bất động sản</span>
                     </h4>
                     <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
@@ -15,16 +15,22 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Mã Tài sản*</label>
-                        <input #mataisanInput="ngModel" class="form-control" type="text" name="MaTaiSan"
+                        <input #mataisanInput="ngModel" class="form-control" type="text" name="MaTaiSan" 
                                [(ngModel)]="batdongsan.maTaiSan" required maxlength="64">
+                              
                         <validation-messages [formCtrl]="mataisanInput"></validation-messages>
+                
                     </div>
+                   
                     <div class="form-group">
                         <label>Địa chỉ*</label>
                         <input #diachiInput="ngModel" class="form-control" type="text" name="DiaChi"
                                [(ngModel)]="batdongsan.diaChi" required maxlength="64">
                         <validation-messages [formCtrl]="diachiInput"></validation-messages>
                     </div>
+     
+                   
+
                     <div class="form-group">
                         <label>Mã Phòng giao dịch*</label>
                         <input #phonggiaodichInput="ngModel" class="form-control" type="text" name="PhongGiaoDich"
@@ -37,12 +43,36 @@
                                [(ngModel)]="batdongsan.hienTrangBDS" required maxlength="64">
                         <validation-messages [formCtrl]="hientrangInput"></validation-messages>
                     </div>
+              
                     <div class="form-group">
-                        <label>Loại Bất động sản*</label>
-                        <input #maloaibdsInput="ngModel" class="form-control" type="text" name="LoaiBDS"
-                               [(ngModel)]="batdongsan.maLoaiBDS" required maxlength="64">
-                        <validation-messages [formCtrl]="maloaibdsInput"></validation-messages>
+                        <label>{{l("Loại Bất động sản")}} *</label>
+                        <select *ngIf="!batdongsan.id" #categoryCombobox name="loaibatdongsan" class="form-control"
+                            [(ngModel)]="selectedLBDS" title="Select type..." (change)="this.onChangeType()"
+                            required>
+                            <option *ngFor="let item of listItems" [value]="item.id" >{{item.name}}</option>
+                        </select>
+                        
+                        <select *ngIf="batdongsan.id" #categoryCombobox name="loaibatdongsan"  class="form-control"
+                            title={{batdongsan.maLoaiBDS}} disabled required>
+                        </select>
                     </div>
+                    <br>
+
+                      
+                    <div class="form-group">
+                        <label>Loại Sở hữu*</label>
+                        <select *ngIf="!batdongsan.id" #categoryCombobox name="loaisohuu" class="form-control"
+                            [(ngModel)]="selectedLSH" title="Select loaisohuu..." (change)="this.onChangeLSH()"
+                            required>
+                            <option *ngFor="let item of listLSH" [value]="item.id" >{{item.name}}</option>
+                        </select>
+                        
+                        <select *ngIf="batdongsan.id" #categoryCombobox name="loaisohuu"  class="form-control"
+                            title={{batdongsan.maLoaiSoHuu}} disabled required>
+                        </select>
+                    </div>
+
+
                     <div class="form-group">
                         <label>Chiều dài*</label>
                         <input #chieudaiInput="ngModel" class="form-control" type="number" name="ChieuDai"
@@ -75,7 +105,7 @@
                     </div>
                     <div class="form-group">
                         <label>Tình trạng xây dựng*</label>
-                        <input #tinhtrangxaydungInput="ngModel" class="form-control" type="number" name="MaTinhTrangXayDung"
+                        <input #tinhtrangxaydungInput="ngModel" class="form-control" type="text" name="MaTinhTrangXayDung"
                                [(ngModel)]="batdongsan.maTinhTrangXayDung" required maxlength="64">
                         <validation-messages [formCtrl]="tinhtrangxaydungInput"></validation-messages>
                     </div>
@@ -104,48 +134,52 @@
                                [(ngModel)]="batdongsan.maHienTrangPhapLy" required maxlength="64">
                         <validation-messages [formCtrl]="mahientranphaplyInput"></validation-messages>
                     </div>
-                    <div class="form-group">
-                        <label>Loại sở hữu*</label>
-                        <input #loaisohuuInput="ngModel" class="form-control" type="text" name="MaLoaiSoHuu"
-                               [(ngModel)]="batdongsan.maLoaiSoHuu" required maxlength="64">
-                        <validation-messages [formCtrl]="loaisohuuInput"></validation-messages>
-                    </div>
+
+                 
+
+                   
+
+
                     <div class="form-group">
                         <label>Chủ sở hữu*</label>
                         <input #chusohuuInput="ngModel" class="form-control" type="text" name="ChuSoHuu"
                                [(ngModel)]="batdongsan.chuSoHuu" required maxlength="64">
                         <validation-messages [formCtrl]="chusohuuInput"></validation-messages>
                     </div>
+
+                  
+                    
+
                     <div class="form-group">
-                        <label>Ghi chú *</label>
-                        <input #addghiChuInput="ngModel" class="form-control" type="text" name="GhiChu"
-                               [(ngModel)]="batdongsan.ghiChu" required maxlength="64">
+                        <label>Ghi chú </label>
+                        <p-editor  #ghiChuInput="ngModel" class="form-control" [(ngModel)]="batdongsan.ghiChu" required maxlength="64" name="GhiChu" [style]="{'height':'300px'}"></p-editor>
+                      
                         <validation-messages [formCtrl]="ghiChuInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>file đính kèm *</label>
-                        <input #addfiledinhkemInput="ngModel" class="form-control" type="text" name="FileDinhKem"
+                        <input #filedinhkemInput="ngModel" class="form-control" type="file" name="FileDinhKem"
                                [(ngModel)]="batdongsan.fileDinhKem" required maxlength="64">
                         <validation-messages [formCtrl]="filedinhkemInput"></validation-messages>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="checkbox-inline">
                         </label>
                         <select id="isActive" name="isActive" [(ngModel)]="isActive" class="form-group"></select>
-                    </div>
+                    </div> -->
                 </div>
 
 
 
 
-
+                
 
 
 
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default"
                         (click)="close()">{{l("Cancel")}}</button>
-                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                    <button type="submit" class="btn btn-primary"  [disabled]="!editForm.form.valid"  [buttonBusy]="saving"
                         [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
                         <span>{{l("Save")}}</span></button>
                 </div>

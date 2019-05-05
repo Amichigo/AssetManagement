@@ -11,7 +11,7 @@
                 </span>
             </div>
             <div class="col-xs-6 text-right">
-                <button (click)="createBatDongSan()" *ngIf="isGranted('Pages.Administration.BatDongSan.Create')"
+                <button (click)="createBatDongSan()" *ngIf="isGranted('Pages.QuanLyBatDongSan.BatDongSan.Create')"
                     class="btn btn-primary"><i class="fa fa-plus"></i> {{l("CreateNewBatDongSan")}}</button>
             </div>
         </div>
@@ -53,7 +53,9 @@
                                         Mã bất động sản
                                         <p-sortIcon field="mabatdongsan"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="nguyengiataisan">
+                                  
+                              
+                                    <th pSortableColumn="loaisohuu">
                                         Loại sở hữu
                                     </th>
                                     <th pSortableColumn="loaibatdongsan">
@@ -72,10 +74,7 @@
                                     <th pSortableColumn="ghichu">
                                         Ghi chú
                                     </th>
-                                    <!--<th pSortableColumn="info">
-        Thông tin
-        <p-sortIcon field="info"></p-sortIcon>
-    </th>-->
+                        
                                     <th>{{l('Edit')}}</th>
                                 </tr>
                             </ng-template>
