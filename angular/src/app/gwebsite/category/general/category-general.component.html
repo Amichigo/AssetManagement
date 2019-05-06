@@ -30,16 +30,21 @@
                                             class="btn btn-primary"><i class="fa fa-plus"></i>
                                             {{l("Create")}}
                                         </button>
-                                        <a class="btn btn-success btn-md" data-toggle="collapse"
-                                            href="#categoryCollapseFilter">
-                                            <i class="fa fa-filter"></i>
-                                            Filter
-                                        </a>
                                         <button (click)="categoryRefresh()" name="RefreshButton"
                                             class="btn btn-basic"><i class="fa fa-refresh"></i>
                                             {{l('Refresh')}}
                                         </button>
+                                        <a class="btn btn-success btn-md" data-toggle="collapse" href="#categoryCollapseFilter">
+                                            <i class="fa fa-filter"></i>
+                                            Filter
+                                        </a>
                                         <div class="input-group" id="categoryCollapseFilter">
+                                            <select class="form-control" title="All status" [(ngModel)]="filters.filterStatus" 
+                                            type="text" name="filterStatus">
+                                                <option>All status</option>
+                                                <option>Active</option>
+                                                <option>Inactive</option>
+                                            </select>
                                             <select #typeCombobox [(ngModel)]="filters.filterType" name="filterType"
                                                 class="form-control" title="All types" type="text">
                                                 <option *ngFor="let type of listItems" [value]=type.name>
@@ -93,8 +98,11 @@
                                                 <th style="width: 300px">
                                                     {{l('Description')}}
                                                 </th>
+                                                <th>
+                                                    {{l('Status')}}
+                                                </th>
                                                 <th style="width: 100px">
-                                                    {{l('Edit')}}
+                                                    {{l('Action')}}
                                                 </th>
                                             </tr>
                                         </ng-template>
@@ -123,13 +131,18 @@
                                                         title="{{record.description}}">{{record.description}}</span>
                                                 </td>
                                                 <td>
+                                                    <span class="ui-column-title">{{l('Status')}}</span>
+                                                    <span *ngIf="record.status == true">{{l('Active')}}</span>
+                                                    <span *ngIf="record.status == false">{{l('Inactive')}}</span>
+                                                </td>
+                                                <td>
                                                     <button
                                                         class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                                         title="{{l('Edit')}}" (click)="editCategory(record.id)">
                                                         <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
                                                     </button>
                                                     <button
-                                                        class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                        class="btn btn-danger m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                                         title="{{l('Delete')}}" (click)="deleteCategory(record.id)">
                                                         <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                                     </button>
@@ -177,7 +190,12 @@
                                             {{l('Refresh')}}
                                         </button>
                                         <div class="input-group" id="typeCollapseFilter">
-
+                                            <select class="form-control" title="All status" [(ngModel)]="filterTypes.filterTypeStatus" type="text"
+                                                name="filterTypeStatus">
+                                                <option>All status</option>
+                                                <option>Active</option>
+                                                <option>Inactive</option>
+                                            </select>
                                             <input [(ngModel)]="filterTypes.filterTypeName" name="filterTypeName"
                                                 autoFocus class="form-control" placeholder="{{l('Name...')}}"
                                                 type="text">
@@ -217,8 +235,11 @@
                                                 <th>
                                                     {{l('Description')}}
                                                 </th>
+                                                <th>
+                                                    {{l('Status')}}
+                                                </th>
                                                 <th style="width: 100px">
-                                                    {{l('Edit')}}
+                                                    {{l('Action')}}
                                                 </th>
                                             </tr>
                                         </ng-template>
@@ -239,13 +260,18 @@
                                                         title="{{record.description}}">{{record.description}}</span>
                                                 </td>
                                                 <td>
+                                                    <span class="ui-column-title">{{l('Status')}}</span>
+                                                    <span *ngIf="record.status == true">{{l('Active')}}</span>
+                                                    <span *ngIf="record.status == false">{{l('Inactive')}}</span>
+                                                </td>
+                                                <td>
                                                     <button
                                                         class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                                         title="{{l('Edit')}}" (click)="editType(record.id)">
                                                         <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
                                                     </button>
                                                     <button
-                                                        class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                        class="btn btn-danger m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                                         title="{{l('Delete')}}" (click)="deleteType(record.id)">
                                                         <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                                     </button>

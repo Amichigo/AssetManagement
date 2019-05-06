@@ -41,12 +41,14 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         filterType: string,
         filterId: string,
         filterName: string,
-        filterSymbol: string
+        filterSymbol: string,
+        filterStatus: string
     } = <any>{};
 
     public filterTypes: {
         filterTypeName: string,
-        filterTypePrefix: string
+        filterTypePrefix: string,
+        filterTypeStatus: string,
     } = <any>{};
 
     // Categorytype dropdown list
@@ -65,13 +67,15 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
      * Hàm xử lý trước khi View được init
      */
     ngOnInit(): void {
-        this.filters.filterType = '',
+        this.filters.filterType = 'All types',
         this.filters.filterId = '',
         this.filters.filterName = '',
         this.filters.filterSymbol = '',
+        this.filters.filterStatus = 'All status',
 
         this.filterTypes.filterTypeName = '',
         this.filterTypes.filterTypePrefix = '',
+        this.filterTypes.filterTypeStatus = 'All status',
 
         this.getListTypes();
     }
@@ -87,9 +91,11 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
 
     getListTypes(): void {
         // get category type
-        this._apiService.get('api/CategoryType/GetCategoryTypesByFilter').subscribe(result => {
+        this._apiService.get('api/CategoryType/GetCategoryTypesByFilter')
+        .subscribe(result => {
             this.listItems = result.items;
         });
+        console.log(this.listItems.length);
     }
 
     /**
@@ -112,10 +118,11 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
 
         // filter
         this._apiService.get('api/Category/GetCategoriesByFilter',
-            [{ fieldName: 'CategoryType', value: this.filters.filterType },
+            [{ fieldName: 'CategoryType', value: this.filters.filterType === 'All types' ? '' : this.filters.filterType},
             { fieldName: 'CategoryId', value: this.filters.filterId},
             { fieldName: 'Name', value: this.filters.filterName},
-            { fieldName: 'Symbol', value: this.filters.filterSymbol }],
+            { fieldName: 'Symbol', value: this.filters.filterSymbol},
+            { fieldName: 'Status', value: this.filters.filterStatus }],
             this.primengTableHelperCategories.getSorting(this.categoryTable),
             this.primengTableHelperCategories.getMaxResultCount(this.paginatorCategory, event),
             this.primengTableHelperCategories.getSkipCount(this.paginatorCategory, event),
@@ -143,7 +150,8 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         // filter
         this._apiService.get('api/CategoryType/GetCategoryTypesByFilter',
             [{ fieldName: 'Name', value: this.filterTypes.filterTypeName },
-            { fieldName: 'PrefixWord', value: this.filterTypes.filterTypePrefix }],
+            { fieldName: 'PrefixWord', value: this.filterTypes.filterTypePrefix },
+            { fieldName: 'Status', value: this.filterTypes.filterTypeStatus }],
             this.primengTableHelperTypes.getSorting(this.typeTable),
             this.primengTableHelperTypes.getMaxResultCount(this.paginatorType, event),
             this.primengTableHelperTypes.getSkipCount(this.paginatorType, event),
@@ -161,8 +169,10 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
             this.filters.filterId = params['filterId'] || '';
             this.filters.filterName = params['filterName'] || '';
             this.filters.filterSymbol = params['filterSymbol'] || '';
+            this.filters.filterStatus = params['filterStatus'] || 'All status';
             this.filterTypes.filterTypeName = params['filterTypeName'] || '';
             this.filterTypes.filterTypePrefix = params['filterTypePrefix'] || '';
+            this.filterTypes.filterTypeStatus = params['filterTypeStatus'] || 'All status';
 
             //reload lại gridview
             this.reloadPage();
@@ -179,7 +189,8 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
             filterType: this.filters.filterType,
             filterId: this.filters.filterId,
             filterName: this.filters.filterName,
-            filterSymbol: this.filters.filterSymbol
+            filterSymbol: this.filters.filterSymbol,
+            filterStatus: this.filters.filterStatus
         }]);
 
         // if (this.paginatorCategory.getPage() !== 0) {
@@ -194,16 +205,18 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         this._router.navigate(['app/gwebsite/category', {
             filterTypeName: this.filterTypes.filterTypeName,
             filterTypePrefix: this.filterTypes.filterTypePrefix,
+            filterTypeStatus: this.filterTypes.filterTypeStatus
         }]);
 
         this.getTypes(event);
     }
 
     categoryRefresh(event?: LazyLoadEvent): void {
-        this.filters.filterType = '',
+        this.filters.filterType = 'All types',
         this.filters.filterId = '',
         this.filters.filterName = '',
         this.filters.filterSymbol = '',
+        this.filters.filterStatus = 'All status',
         $(this.typeCombobox.nativeElement).selectpicker('refresh');
 
         //truyền params lên url thông qua router
@@ -211,7 +224,8 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
             filterType: this.filters.filterType,
             filterId: this.filters.filterId,
             filterName: this.filters.filterName,
-            filterSymbol: this.filters.filterSymbol
+            filterSymbol: this.filters.filterSymbol,
+            filterStatus: this.filters.filterStatus
         }]);
 
         // if (this.paginatorCategory.getPage() !== 0) {
@@ -225,11 +239,13 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
     typeRefresh(event?: LazyLoadEvent): void {
         this.filterTypes.filterTypeName = '',
         this.filterTypes.filterTypePrefix = '',
+        this.filterTypes.filterTypeStatus = 'All status',
 
         //truyền params lên url thông qua router
         this._router.navigate(['app/gwebsite/category', {
             filterTypeName: this.filterTypes.filterTypeName,
             filterTypePrefix: this.filterTypes.filterTypePrefix,
+            filterTypeStatus: this.filterTypes.filterTypeStatus
         }]);
 
         // if (this.paginatorType.getPage() !== 0) {
@@ -257,7 +273,9 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
                     return;
                 }
             }
-        } else { this.reloadPage(); }
+        } else {
+            this.reloadPage();
+        }
     }
 
     refreshValueFromTypeModal(): void {
@@ -268,7 +286,9 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
                     return;
                 }
             }
-        } else { this.reloadPage(); }
+        } else {
+            this.reloadPage();
+        }
     }
 
     createCategory(): void {

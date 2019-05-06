@@ -2,6 +2,7 @@ import { ComboboxItemDto } from '@shared/service-proxies/service-proxies';
 
 export class CategoryDto {
     id: number;
+    status: boolean;
     name: string;
     symbol: string;
     description: string;

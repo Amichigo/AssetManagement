@@ -36,18 +36,20 @@ export class CreateOrEditCategoryModalComponent extends AppComponentBase {
         private _apiService: WebApiServiceProxy
     ) {
         super(injector);
-        this.getTypes();
     }
 
     getTypes(): void {
         // get category type
-        this._apiService.get('api/CategoryType/GetCategoryTypesByFilter').subscribe(result => {
+        this._apiService.get('api/CategoryType/GetCategoryTypesByFilter',
+            [{ fieldName: 'Status', value: 'Active' }])
+        .subscribe(result => {
             this.categoryTypes = result.items;
         });
     }
 
     show(categoryId?: number | null | undefined): void {
         this.active = true;
+        this.getTypes();
 
         this._apiService.getForEdit('api/Category/GetCategoryForEdit', categoryId).subscribe(result => {
             this.category = result;

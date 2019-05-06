@@ -5,6 +5,7 @@ export class CategoryTypeDto {
     name: string;
     prefixWord: string;
     description?: string;
+    status: boolean;
 }
 
 export class GetCategoryTypeOutput {

@@ -19,7 +19,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         [HttpGet]
         public PagedResultDto<CategoryDto> GetCategoriesByFilter(CategoryFilter categoryFilter)
         {
-            return categoryAppService.GetCategories(categoryFilter);
+            return categoryAppService.GetCategoriesByFilter(categoryFilter);
         }
 
         [HttpGet]

@@ -48,7 +48,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Categories
 
         public CategoryInput GetCategoryForEdit(int id)
         {
-            var categoryEntity = categoryRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            var categoryEntity = categoryRepository.GetAll().SingleOrDefault(x => x.Id == id);
             if (categoryEntity == null)
             {
                 return null;
@@ -58,7 +58,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Categories
 
         public CategoryForViewDto GetCategoryForView(int id)
         {
-            var categoryEntity = categoryRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            var categoryEntity = categoryRepository.GetAll().SingleOrDefault(x => x.Id == id);
             if (categoryEntity == null)
             {
                 return null;
@@ -66,9 +66,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Categories
             return ObjectMapper.Map<CategoryForViewDto>(categoryEntity);
         }
 
-        public PagedResultDto<CategoryDto> GetCategories(CategoryFilter input)
+        public PagedResultDto<CategoryDto> GetCategoriesByFilter(CategoryFilter input)
         {
-            var query = categoryRepository.GetAll().Where(x => !x.IsDelete);
+            var query = categoryRepository.GetAll();
 
             // filter by type
             if (input.CategoryType != null)
@@ -94,6 +94,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Categories
                 query = query.Where(x => x.Symbol.ToLower().Contains(input.Symbol));
             }
 
+            // filter by Status
+            if (input.Status == "Active")
+            {
+                query = query.Where(x => x.IsDelete == false);
+            }
+            else if (input.Status == "Inactive")
+            {
+                query = query.Where(x => x.IsDelete == true);
+            }
+
             var totalCount = query.Count();
 
             // sorting
@@ -104,11 +114,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Categories
 
             // paging
             var items = query.PageBy(input).ToList();
+            var resultItems = items.Select(item => ObjectMapper.Map<CategoryDto>(item)).ToList();
 
-            // result
+            for (int i = 0; i < resultItems.Count(); i++)
+            {
+                resultItems.ElementAt(i).Status = !items.ElementAt(i).IsDelete;
+            }
+
             return new PagedResultDto<CategoryDto>(
                 totalCount,
-                items.Select(item => ObjectMapper.Map<CategoryDto>(item)).ToList());
+                resultItems);
         }
 
         #endregion

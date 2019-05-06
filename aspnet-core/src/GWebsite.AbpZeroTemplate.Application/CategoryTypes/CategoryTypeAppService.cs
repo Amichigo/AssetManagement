@@ -37,7 +37,7 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
 
         public void DeleteCategoryType(int id)
         {
-            var categoryEntity = categoryRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            var categoryEntity = categoryRepository.GetAll().SingleOrDefault(x => x.Id == id);
             if (categoryEntity != null)
             {
                 categoryEntity.IsDelete = true;
@@ -48,7 +48,7 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
 
         public CategoryTypeInput GetCategoryTypeForEdit(int id)
         {
-            var categoryEntity = categoryRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            var categoryEntity = categoryRepository.GetAll().SingleOrDefault(x => x.Id == id);
             if (categoryEntity == null)
             {
                 return null;
@@ -58,7 +58,7 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
 
         public CategoryTypeForViewDto GetCategoryTypeForView(int id)
         {
-            var categoryEntity = categoryRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            var categoryEntity = categoryRepository.GetAll().SingleOrDefault(x => x.Id == id);
             if (categoryEntity == null)
             {
                 return null;
@@ -68,7 +68,7 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
 
         public PagedResultDto<CategoryTypeDto> GetCategoryTypes(CategoryTypeFilter input)
         {
-            var query = categoryRepository.GetAll().Where(x => !x.IsDelete);
+            var query = categoryRepository.GetAll();
 
             // filter by Name
             if (input.Name != null)
@@ -82,6 +82,16 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
                 query = query.Where(x => x.PrefixWord.ToLower().Contains(input.PrefixWord));
             }
 
+            // filter by Status
+            if (input.Status == "Active")
+            {
+                query = query.Where(x => x.IsDelete == false);
+            }
+            else if (input.Status == "Inactive")
+            {
+                query = query.Where(x => x.IsDelete == true);
+            }
+
             var totalCount = query.Count();
 
             // sorting
@@ -92,11 +102,16 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
 
             // paging
             var items = query.PageBy(input).ToList();
+            var resultItems = items.Select(item => ObjectMapper.Map<CategoryTypeDto>(item)).ToList();
 
-            // result
+            for (int i = 0; i < resultItems.Count(); i++)
+            {
+                resultItems.ElementAt(i).Status = !items.ElementAt(i).IsDelete;
+            }
+
             return new PagedResultDto<CategoryTypeDto>(
                 totalCount,
-                items.Select(item => ObjectMapper.Map<CategoryTypeDto>(item)).ToList());
+                resultItems);
         }
 
         #endregion

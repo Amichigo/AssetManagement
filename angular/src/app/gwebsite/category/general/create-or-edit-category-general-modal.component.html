@@ -42,6 +42,12 @@
                             [(ngModel)]="category.description">
                         <validation-messages [formCtrl]="descriptionInput"></validation-messages>
                     </div>
+                    <div class="form-group">
+                        <label>{{l("Status")}}</label>
+                        <input #statusInput="ngModel" class="form-control" type="text" name="Description"
+                            [(ngModel)]="category.description">
+                        <validation-messages [formCtrl]="descriptionInput"></validation-messages>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
