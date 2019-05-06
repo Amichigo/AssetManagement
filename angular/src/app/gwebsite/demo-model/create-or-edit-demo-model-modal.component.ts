@@ -17,7 +17,6 @@ export class CreateOrEditDemoModelModalComponent extends AppComponentBase implem
     @ViewChild('iconCombobox') iconCombobox: ElementRef;
     @ViewChild('dateInput') dateInput: ElementRef;
 
-
     /**
      * @Output dùng để public event cho component khác xử lý
      */
@@ -55,7 +54,6 @@ export class CreateOrEditDemoModelModalComponent extends AppComponentBase implem
             this.demoModel = result;
             // debugger
             this.modal.show();
-
         })
     }
 

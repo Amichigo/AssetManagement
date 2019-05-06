@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <label>Loại tài sản</label>
-                        <select #typeofAssetInput="ngModel" autoFocus size="1" class="form-control" [(ngModel)]="fixedAsset.typeofAsset" name="TypeofAsset" required maxlength="64">
+                        <select #typeofAssetInput="ngModel" size="1" class="form-control" [(ngModel)]="selected" name="TypeofAsset" required maxlength="64">
                             <option *ngFor="let selected of typeAssets" [value]="selected">{{selected}}</option>
                             <validation-messages [formCtrl]="typeofAssetInput"></validation-messages>  
                             </select>
@@ -64,10 +64,9 @@
                         <validation-messages [formCtrl]="costInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Đang hoạt động</label>
-                        <select autoFocus size="1" class="form-control" [(ngModel)]="fixedAsset.isActive" name="IsActive" required maxlength="64">
-                            <option *ngFor="let selected of statusAsset" [value]="selected">{{selected}}</option>
-                            </select>
+                        <label>Đang hoạt động</label><br />
+                        <mat-slide-toggle #isAcAssetInput="ngModel" color="primary" [(ngModel)]="fixedAsset.isActive" name="IsActive">{{fixedAsset.isActive}}</mat-slide-toggle>
+                        <validation-messages [formCtrl]="typeofAssetInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Thể loại </label>
@@ -86,8 +85,8 @@
                     </div>
                     <div class="form-group">
                         <label>Ảnh</label>
-                        <input #linkofImageInput="ngModel" class="form-control" type="text" name="LinkofImage" [(ngModel)]="fixedAsset.linkofImage" required maxlength="64">
-                        <validation-messages [formCtrl]="linkofImageInput"></validation-messages>
+                        <img [src]="imageURL" height="200" width="200" position="center" *ngIf="imageURL">
+                        <input #file type="file" accept='image/*' (change)="chooseImage(file.files)">
                     </div>
                 </div>
                 <div class="modal-footer">
