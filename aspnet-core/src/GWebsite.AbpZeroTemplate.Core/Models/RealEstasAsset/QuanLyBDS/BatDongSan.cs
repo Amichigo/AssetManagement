@@ -12,9 +12,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 
         public string MaPhongGiaoDich { set; get; }
 
-        public DateTime NgayMuaBatDongSan { set; get; }
+        public string NgayMuaBatDongSan { set; get; }
         public string DiaChi { set; get; }
         public string MaTaiSan { set; get; }
+
+        public float NguyenGiaTaiSan { set; get; }
         public string HienTrangBDS { set; get; }
 
         public string MaLoaiBDS { set; get; }

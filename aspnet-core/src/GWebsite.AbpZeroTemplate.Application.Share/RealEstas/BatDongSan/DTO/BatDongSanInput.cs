@@ -39,11 +39,8 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.RealEstas.BatDongSan.DTO
         public string MaHienTrangPhapLy { set; get; }
 
         public string MaLoaiSoHuu { set; get; }
-
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime NgayMuaBatDongSan { set; get; }
+        public float NguyenGiaTaiSan { set; get; }
+        public string NgayMuaBatDongSan { set; get; }
         public string ChuSoHuu { set; get; }
 
         public string GhiChu { set; get; }

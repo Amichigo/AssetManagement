@@ -62,6 +62,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.LoaiSoHuus
 
         public LoaiSoHuuForViewDto GetLoaiSoHuuForView(int id)
         {
+           
             var loaiSoHuuEntity = loaiSoHuuRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (loaiSoHuuEntity == null)
             {

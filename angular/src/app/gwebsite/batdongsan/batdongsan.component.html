@@ -53,7 +53,14 @@
                                         Mã bất động sản
                                         <p-sortIcon field="mabatdongsan"></p-sortIcon>
                                     </th>
-                                  
+                                    <th pSortableColumn="ngaymuabatdongsan">
+                                            Ngày mua bất động sản
+                                         <p-sortIcon field="ngaymuabatdongsan"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="nguyengiataisan">
+                                        Nguyên giá tài sản
+                                        <p-sortIcon field="nguyengiataisan"></p-sortIcon>
+                                    </th>
                               
                                     <th pSortableColumn="loaisohuu">
                                         Loại sở hữu
@@ -61,6 +68,8 @@
                                     <th pSortableColumn="loaibatdongsan">
                                         Loại Bất động sản
                                     </th>
+
+
                                     <th pSortableColumn="maphonggiaodich">
                                         Tên Địa điểm
                                     </th>
@@ -90,6 +99,20 @@
                                         <span class="ui-column-title">Mã bất động sản</span>
                                         <span title="{{record.maBatDongSan}}">{{truncateString(record.maBatDongSan)}}</span>
                                     </td>
+
+                                    <td>
+                                            <span class="ui-column-title">Mã bất động sản</span>
+                                            <span title="{{record.ngayMuaBatDongSan}}">{{truncateString(record.ngayMuaBatDongSan)}}</span>
+                                    </td>
+    
+
+
+                                    <td>
+                                        <span class="ui-column-title">Nguyên giá tài sản</span>
+                                        <span title="{{record.nguyenGiaTaiSan}}">{{truncateString(record.nguyenGiaTaiSan)}}</span>
+                                    </td>
+
+
                                     <td>
                                         <span class="ui-column-title">Loại sở hữu</span>
                                         <span title="{{record.maLoaiSoHuu}}">{{truncateString(record.maLoaiSoHuu)}}</span>
