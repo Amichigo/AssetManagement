@@ -1,6 +1,7 @@
 using AutoMapper;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.DirectorShoppingPlans.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ShoppingPlans.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
@@ -33,6 +34,12 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<ShoppingPlanInput, ShoppingPlan>();
             configuration.CreateMap<ShoppingPlan, ShoppingPlanInput>();
             configuration.CreateMap<ShoppingPlan, ShoppingPlanForViewDto>();
+
+            //DirectorShoppingPlan
+            configuration.CreateMap<DirectorShoppingPlan, DirectorShoppingPlanDto>();
+            configuration.CreateMap<DirectorShoppingPlanInput, DirectorShoppingPlan>();
+            configuration.CreateMap<DirectorShoppingPlan, DirectorShoppingPlanInput>();
+            configuration.CreateMap<DirectorShoppingPlan, DirectorShoppingPlanForViewDto>();
         }
     }
 }

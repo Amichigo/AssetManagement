@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, ShoppingPlanServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, ShoppingPlanServiceProxy, DirectorShoppingPlanServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -21,6 +21,9 @@ import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-cu
 import { ShoppingPlanComponent } from './shoppingPlan/shoppingPlan.component';
 import { ViewShoppingPlanModalComponent } from './shoppingPlan/view-shoppingPlan-modal.component';
 import { CreateOrEditShoppingPlanModalComponent } from './shoppingPlan/create-or-edit-shoppingPlan-modal.component';
+import { DirectorShoppingPlanComponent } from './directorShoppingPlan/directorShoppingPlan.component';
+import { ViewDirectorShoppingPlanModalComponent } from './directorShoppingPlan/view-directorShoppingPlan-modal.component';
+import { CreateOrEditDirectorShoppingPlanModalComponent } from './directorShoppingPlan/create-or-edit-directorShoppingPlan-modal.component';
 @NgModule({
     imports: [
         FormsModule,
@@ -45,11 +48,13 @@ import { CreateOrEditShoppingPlanModalComponent } from './shoppingPlan/create-or
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
         ShoppingPlanComponent, ViewShoppingPlanModalComponent, CreateOrEditShoppingPlanModalComponent,
+        DirectorShoppingPlanComponent, ViewDirectorShoppingPlanModalComponent, CreateOrEditDirectorShoppingPlanModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
-        ShoppingPlanServiceProxy
+        ShoppingPlanServiceProxy,
+        DirectorShoppingPlanServiceProxy
     ]
 })
 export class GWebsiteModule { }

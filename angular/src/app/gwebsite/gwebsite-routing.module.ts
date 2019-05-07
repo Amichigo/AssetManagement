@@ -4,6 +4,7 @@ import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.compo
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ShoppingPlanComponent } from './shoppingPlan/shoppingPlan.component';
+import { DirectorShoppingPlanComponent } from './directorShoppingPlan/directorShoppingPlan.component';
 
 @NgModule({
     imports: [
@@ -41,6 +42,15 @@ import { ShoppingPlanComponent } from './shoppingPlan/shoppingPlan.component';
                     {
                         path: 'shoppingPlan', component: ShoppingPlanComponent,
                         data: { permission: 'Pages.Administration.ShoppingPlan' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'directorShoppingPlan', component: DirectorShoppingPlanComponent,
+                        data: { permission: 'Pages.Administration.DirectorShoppingPlan' }
                     },
                 ]
             }
