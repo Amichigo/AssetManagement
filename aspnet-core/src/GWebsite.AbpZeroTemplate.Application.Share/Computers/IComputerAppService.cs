@@ -15,6 +15,5 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Computers
         void DeleteComputer(int id);
         PagedResultDto<ComputerDto> GetComputer(ComputerFilter input);
         ComputerForViewDto GetComputerForView(int id);
-        //ComputerForViewDto GetCurrentComputer();
     }
 }

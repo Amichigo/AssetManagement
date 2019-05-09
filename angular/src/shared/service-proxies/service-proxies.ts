@@ -27,7 +27,7 @@ export class AccountServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     isTenantAvailable(input: IsTenantAvailableInput | null | undefined): Observable<IsTenantAvailableOutput> {
@@ -41,7 +41,7 @@ export class AccountServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -62,8 +62,8 @@ export class AccountServiceProxy {
 
     protected processIsTenantAvailable(response: HttpResponseBase): Observable<IsTenantAvailableOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -83,7 +83,7 @@ export class AccountServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     resolveTenantId(input: ResolveTenantIdInput | null | undefined): Observable<number> {
@@ -97,7 +97,7 @@ export class AccountServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -118,8 +118,8 @@ export class AccountServiceProxy {
 
     protected processResolveTenantId(response: HttpResponseBase): Observable<number> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -139,7 +139,7 @@ export class AccountServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     register(input: RegisterInput | null | undefined): Observable<RegisterOutput> {
@@ -153,7 +153,7 @@ export class AccountServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -174,8 +174,8 @@ export class AccountServiceProxy {
 
     protected processRegister(response: HttpResponseBase): Observable<RegisterOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -195,7 +195,7 @@ export class AccountServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     sendPasswordResetCode(input: SendPasswordResetCodeInput | null | undefined): Observable<void> {
@@ -209,7 +209,7 @@ export class AccountServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -229,8 +229,8 @@ export class AccountServiceProxy {
 
     protected processSendPasswordResetCode(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -247,7 +247,7 @@ export class AccountServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     resetPassword(input: ResetPasswordInput | null | undefined): Observable<ResetPasswordOutput> {
@@ -261,7 +261,7 @@ export class AccountServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -282,8 +282,8 @@ export class AccountServiceProxy {
 
     protected processResetPassword(response: HttpResponseBase): Observable<ResetPasswordOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -303,7 +303,7 @@ export class AccountServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     sendEmailActivationLink(input: SendEmailActivationLinkInput | null | undefined): Observable<void> {
@@ -317,7 +317,7 @@ export class AccountServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -337,8 +337,8 @@ export class AccountServiceProxy {
 
     protected processSendEmailActivationLink(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -355,7 +355,7 @@ export class AccountServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     activateEmail(input: ActivateEmailInput | null | undefined): Observable<void> {
@@ -369,7 +369,7 @@ export class AccountServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -389,8 +389,8 @@ export class AccountServiceProxy {
 
     protected processActivateEmail(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -407,7 +407,7 @@ export class AccountServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     impersonate(input: ImpersonateInput | null | undefined): Observable<ImpersonateOutput> {
@@ -421,7 +421,7 @@ export class AccountServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -442,8 +442,8 @@ export class AccountServiceProxy {
 
     protected processImpersonate(response: HttpResponseBase): Observable<ImpersonateOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -473,7 +473,7 @@ export class AccountServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -494,8 +494,8 @@ export class AccountServiceProxy {
 
     protected processBackToImpersonator(response: HttpResponseBase): Observable<ImpersonateOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -515,7 +515,7 @@ export class AccountServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     switchToLinkedAccount(input: SwitchToLinkedAccountInput | null | undefined): Observable<SwitchToLinkedAccountOutput> {
@@ -529,7 +529,7 @@ export class AccountServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -550,8 +550,8 @@ export class AccountServiceProxy {
 
     protected processSwitchToLinkedAccount(response: HttpResponseBase): Observable<SwitchToLinkedAccountOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -583,53 +583,53 @@ export class AuditLogServiceProxy {
     }
 
     /**
-     * @startDate (optional) 
-     * @endDate (optional) 
-     * @userName (optional) 
-     * @serviceName (optional) 
-     * @methodName (optional) 
-     * @browserInfo (optional) 
-     * @hasException (optional) 
-     * @minExecutionDuration (optional) 
-     * @maxExecutionDuration (optional) 
-     * @sorting (optional) 
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
+     * @startDate (optional)
+     * @endDate (optional)
+     * @userName (optional)
+     * @serviceName (optional)
+     * @methodName (optional)
+     * @browserInfo (optional)
+     * @hasException (optional)
+     * @minExecutionDuration (optional)
+     * @maxExecutionDuration (optional)
+     * @sorting (optional)
+     * @maxResultCount (optional)
+     * @skipCount (optional)
      * @return Success
      */
     getAuditLogs(startDate: moment.Moment | null | undefined, endDate: moment.Moment | null | undefined, userName: string | null | undefined, serviceName: string | null | undefined, methodName: string | null | undefined, browserInfo: string | null | undefined, hasException: boolean | null | undefined, minExecutionDuration: number | null | undefined, maxExecutionDuration: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfAuditLogListDto> {
         let url_ = this.baseUrl + "/api/services/app/AuditLog/GetAuditLogs?";
         if (startDate !== undefined)
-            url_ += "StartDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&"; 
+            url_ += "StartDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&";
         if (endDate !== undefined)
-            url_ += "EndDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&"; 
+            url_ += "EndDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&";
         if (userName !== undefined)
-            url_ += "UserName=" + encodeURIComponent("" + userName) + "&"; 
+            url_ += "UserName=" + encodeURIComponent("" + userName) + "&";
         if (serviceName !== undefined)
-            url_ += "ServiceName=" + encodeURIComponent("" + serviceName) + "&"; 
+            url_ += "ServiceName=" + encodeURIComponent("" + serviceName) + "&";
         if (methodName !== undefined)
-            url_ += "MethodName=" + encodeURIComponent("" + methodName) + "&"; 
+            url_ += "MethodName=" + encodeURIComponent("" + methodName) + "&";
         if (browserInfo !== undefined)
-            url_ += "BrowserInfo=" + encodeURIComponent("" + browserInfo) + "&"; 
+            url_ += "BrowserInfo=" + encodeURIComponent("" + browserInfo) + "&";
         if (hasException !== undefined)
-            url_ += "HasException=" + encodeURIComponent("" + hasException) + "&"; 
+            url_ += "HasException=" + encodeURIComponent("" + hasException) + "&";
         if (minExecutionDuration !== undefined)
-            url_ += "MinExecutionDuration=" + encodeURIComponent("" + minExecutionDuration) + "&"; 
+            url_ += "MinExecutionDuration=" + encodeURIComponent("" + minExecutionDuration) + "&";
         if (maxExecutionDuration !== undefined)
-            url_ += "MaxExecutionDuration=" + encodeURIComponent("" + maxExecutionDuration) + "&"; 
+            url_ += "MaxExecutionDuration=" + encodeURIComponent("" + maxExecutionDuration) + "&";
         if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
         if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -650,8 +650,8 @@ export class AuditLogServiceProxy {
 
     protected processGetAuditLogs(response: HttpResponseBase): Observable<PagedResultDtoOfAuditLogListDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -671,53 +671,53 @@ export class AuditLogServiceProxy {
     }
 
     /**
-     * @startDate (optional) 
-     * @endDate (optional) 
-     * @userName (optional) 
-     * @serviceName (optional) 
-     * @methodName (optional) 
-     * @browserInfo (optional) 
-     * @hasException (optional) 
-     * @minExecutionDuration (optional) 
-     * @maxExecutionDuration (optional) 
-     * @sorting (optional) 
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
+     * @startDate (optional)
+     * @endDate (optional)
+     * @userName (optional)
+     * @serviceName (optional)
+     * @methodName (optional)
+     * @browserInfo (optional)
+     * @hasException (optional)
+     * @minExecutionDuration (optional)
+     * @maxExecutionDuration (optional)
+     * @sorting (optional)
+     * @maxResultCount (optional)
+     * @skipCount (optional)
      * @return Success
      */
     getAuditLogsToExcel(startDate: moment.Moment | null | undefined, endDate: moment.Moment | null | undefined, userName: string | null | undefined, serviceName: string | null | undefined, methodName: string | null | undefined, browserInfo: string | null | undefined, hasException: boolean | null | undefined, minExecutionDuration: number | null | undefined, maxExecutionDuration: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<FileDto> {
         let url_ = this.baseUrl + "/api/services/app/AuditLog/GetAuditLogsToExcel?";
         if (startDate !== undefined)
-            url_ += "StartDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&"; 
+            url_ += "StartDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&";
         if (endDate !== undefined)
-            url_ += "EndDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&"; 
+            url_ += "EndDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&";
         if (userName !== undefined)
-            url_ += "UserName=" + encodeURIComponent("" + userName) + "&"; 
+            url_ += "UserName=" + encodeURIComponent("" + userName) + "&";
         if (serviceName !== undefined)
-            url_ += "ServiceName=" + encodeURIComponent("" + serviceName) + "&"; 
+            url_ += "ServiceName=" + encodeURIComponent("" + serviceName) + "&";
         if (methodName !== undefined)
-            url_ += "MethodName=" + encodeURIComponent("" + methodName) + "&"; 
+            url_ += "MethodName=" + encodeURIComponent("" + methodName) + "&";
         if (browserInfo !== undefined)
-            url_ += "BrowserInfo=" + encodeURIComponent("" + browserInfo) + "&"; 
+            url_ += "BrowserInfo=" + encodeURIComponent("" + browserInfo) + "&";
         if (hasException !== undefined)
-            url_ += "HasException=" + encodeURIComponent("" + hasException) + "&"; 
+            url_ += "HasException=" + encodeURIComponent("" + hasException) + "&";
         if (minExecutionDuration !== undefined)
-            url_ += "MinExecutionDuration=" + encodeURIComponent("" + minExecutionDuration) + "&"; 
+            url_ += "MinExecutionDuration=" + encodeURIComponent("" + minExecutionDuration) + "&";
         if (maxExecutionDuration !== undefined)
-            url_ += "MaxExecutionDuration=" + encodeURIComponent("" + maxExecutionDuration) + "&"; 
+            url_ += "MaxExecutionDuration=" + encodeURIComponent("" + maxExecutionDuration) + "&";
         if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
         if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -738,8 +738,8 @@ export class AuditLogServiceProxy {
 
     protected processGetAuditLogsToExcel(response: HttpResponseBase): Observable<FileDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -769,7 +769,7 @@ export class AuditLogServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -790,8 +790,8 @@ export class AuditLogServiceProxy {
 
     protected processGetEntityHistoryObjectTypes(response: HttpResponseBase): Observable<NameValueDto[]> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -815,38 +815,38 @@ export class AuditLogServiceProxy {
     }
 
     /**
-     * @startDate (optional) 
-     * @endDate (optional) 
-     * @userName (optional) 
-     * @entityTypeFullName (optional) 
-     * @sorting (optional) 
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
+     * @startDate (optional)
+     * @endDate (optional)
+     * @userName (optional)
+     * @entityTypeFullName (optional)
+     * @sorting (optional)
+     * @maxResultCount (optional)
+     * @skipCount (optional)
      * @return Success
      */
     getEntityChanges(startDate: moment.Moment | null | undefined, endDate: moment.Moment | null | undefined, userName: string | null | undefined, entityTypeFullName: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfEntityChangeListDto> {
         let url_ = this.baseUrl + "/api/services/app/AuditLog/GetEntityChanges?";
         if (startDate !== undefined)
-            url_ += "StartDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&"; 
+            url_ += "StartDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&";
         if (endDate !== undefined)
-            url_ += "EndDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&"; 
+            url_ += "EndDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&";
         if (userName !== undefined)
-            url_ += "UserName=" + encodeURIComponent("" + userName) + "&"; 
+            url_ += "UserName=" + encodeURIComponent("" + userName) + "&";
         if (entityTypeFullName !== undefined)
-            url_ += "EntityTypeFullName=" + encodeURIComponent("" + entityTypeFullName) + "&"; 
+            url_ += "EntityTypeFullName=" + encodeURIComponent("" + entityTypeFullName) + "&";
         if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
         if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -867,8 +867,8 @@ export class AuditLogServiceProxy {
 
     protected processGetEntityChanges(response: HttpResponseBase): Observable<PagedResultDtoOfEntityChangeListDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -888,38 +888,38 @@ export class AuditLogServiceProxy {
     }
 
     /**
-     * @startDate (optional) 
-     * @endDate (optional) 
-     * @userName (optional) 
-     * @entityTypeFullName (optional) 
-     * @sorting (optional) 
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
+     * @startDate (optional)
+     * @endDate (optional)
+     * @userName (optional)
+     * @entityTypeFullName (optional)
+     * @sorting (optional)
+     * @maxResultCount (optional)
+     * @skipCount (optional)
      * @return Success
      */
     getEntityChangesToExcel(startDate: moment.Moment | null | undefined, endDate: moment.Moment | null | undefined, userName: string | null | undefined, entityTypeFullName: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<FileDto> {
         let url_ = this.baseUrl + "/api/services/app/AuditLog/GetEntityChangesToExcel?";
         if (startDate !== undefined)
-            url_ += "StartDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&"; 
+            url_ += "StartDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&";
         if (endDate !== undefined)
-            url_ += "EndDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&"; 
+            url_ += "EndDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&";
         if (userName !== undefined)
-            url_ += "UserName=" + encodeURIComponent("" + userName) + "&"; 
+            url_ += "UserName=" + encodeURIComponent("" + userName) + "&";
         if (entityTypeFullName !== undefined)
-            url_ += "EntityTypeFullName=" + encodeURIComponent("" + entityTypeFullName) + "&"; 
+            url_ += "EntityTypeFullName=" + encodeURIComponent("" + entityTypeFullName) + "&";
         if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
         if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -940,8 +940,8 @@ export class AuditLogServiceProxy {
 
     protected processGetEntityChangesToExcel(response: HttpResponseBase): Observable<FileDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -961,20 +961,20 @@ export class AuditLogServiceProxy {
     }
 
     /**
-     * @entityChangeId (optional) 
+     * @entityChangeId (optional)
      * @return Success
      */
     getEntityPropertyChanges(entityChangeId: number | null | undefined): Observable<EntityPropertyChangeDto[]> {
         let url_ = this.baseUrl + "/api/services/app/AuditLog/GetEntityPropertyChanges?";
         if (entityChangeId !== undefined)
-            url_ += "entityChangeId=" + encodeURIComponent("" + entityChangeId) + "&"; 
+            url_ += "entityChangeId=" + encodeURIComponent("" + entityChangeId) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -995,8 +995,8 @@ export class AuditLogServiceProxy {
 
     protected processGetEntityPropertyChanges(response: HttpResponseBase): Observable<EntityPropertyChangeDto[]> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1042,7 +1042,7 @@ export class CachingServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -1063,8 +1063,8 @@ export class CachingServiceProxy {
 
     protected processGetAllCaches(response: HttpResponseBase): Observable<ListResultDtoOfCacheDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1084,7 +1084,7 @@ export class CachingServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     clearCache(input: EntityDtoOfString | null | undefined): Observable<void> {
@@ -1098,7 +1098,7 @@ export class CachingServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -1118,8 +1118,8 @@ export class CachingServiceProxy {
 
     protected processClearCache(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1146,7 +1146,7 @@ export class CachingServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -1166,8 +1166,8 @@ export class CachingServiceProxy {
 
     protected processClearAllCaches(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1206,7 +1206,7 @@ export class ChatServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -1227,8 +1227,8 @@ export class ChatServiceProxy {
 
     protected processGetUserChatFriendsWithSettings(response: HttpResponseBase): Observable<GetUserChatFriendsWithSettingsOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1248,26 +1248,26 @@ export class ChatServiceProxy {
     }
 
     /**
-     * @tenantId (optional) 
-     * @userId (optional) 
-     * @minMessageId (optional) 
+     * @tenantId (optional)
+     * @userId (optional)
+     * @minMessageId (optional)
      * @return Success
      */
     getUserChatMessages(tenantId: number | null | undefined, userId: number | null | undefined, minMessageId: number | null | undefined): Observable<ListResultDtoOfChatMessageDto> {
         let url_ = this.baseUrl + "/api/services/app/Chat/GetUserChatMessages?";
         if (tenantId !== undefined)
-            url_ += "TenantId=" + encodeURIComponent("" + tenantId) + "&"; 
+            url_ += "TenantId=" + encodeURIComponent("" + tenantId) + "&";
         if (userId !== undefined)
-            url_ += "UserId=" + encodeURIComponent("" + userId) + "&"; 
+            url_ += "UserId=" + encodeURIComponent("" + userId) + "&";
         if (minMessageId !== undefined)
-            url_ += "MinMessageId=" + encodeURIComponent("" + minMessageId) + "&"; 
+            url_ += "MinMessageId=" + encodeURIComponent("" + minMessageId) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -1288,8 +1288,8 @@ export class ChatServiceProxy {
 
     protected processGetUserChatMessages(response: HttpResponseBase): Observable<ListResultDtoOfChatMessageDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1309,7 +1309,7 @@ export class ChatServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     markAllUnreadMessagesOfUserAsRead(input: MarkAllUnreadMessagesOfUserAsReadInput | null | undefined): Observable<void> {
@@ -1323,7 +1323,7 @@ export class ChatServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -1343,8 +1343,8 @@ export class ChatServiceProxy {
 
     protected processMarkAllUnreadMessagesOfUserAsRead(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1373,20 +1373,20 @@ export class CommonLookupServiceProxy {
     }
 
     /**
-     * @onlyFreeItems (optional) 
+     * @onlyFreeItems (optional)
      * @return Success
      */
     getEditionsForCombobox(onlyFreeItems: boolean | null | undefined): Observable<ListResultDtoOfSubscribableEditionComboboxItemDto> {
         let url_ = this.baseUrl + "/api/services/app/CommonLookup/GetEditionsForCombobox?";
         if (onlyFreeItems !== undefined)
-            url_ += "onlyFreeItems=" + encodeURIComponent("" + onlyFreeItems) + "&"; 
+            url_ += "onlyFreeItems=" + encodeURIComponent("" + onlyFreeItems) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -1407,8 +1407,8 @@ export class CommonLookupServiceProxy {
 
     protected processGetEditionsForCombobox(response: HttpResponseBase): Observable<ListResultDtoOfSubscribableEditionComboboxItemDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1428,7 +1428,7 @@ export class CommonLookupServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     findUsers(input: FindUsersInput | null | undefined): Observable<PagedResultDtoOfNameValueDto> {
@@ -1442,7 +1442,7 @@ export class CommonLookupServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -1463,8 +1463,8 @@ export class CommonLookupServiceProxy {
 
     protected processFindUsers(response: HttpResponseBase): Observable<PagedResultDtoOfNameValueDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1494,7 +1494,7 @@ export class CommonLookupServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -1515,8 +1515,8 @@ export class CommonLookupServiceProxy {
 
     protected processGetDefaultEditionName(response: HttpResponseBase): Observable<GetDefaultEditionNameOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1548,29 +1548,29 @@ export class ComputerServiceProxy {
     }
 
     /**
-     * @name (optional) 
-     * @sorting (optional) 
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
+     * @name (optional)
+     * @sorting (optional)
+     * @maxResultCount (optional)
+     * @skipCount (optional)
      * @return Success
      */
     getComputersByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfComputerDto> {
         let url_ = this.baseUrl + "/api/Computer/GetComputersByFilter?";
         if (name !== undefined)
-            url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+            url_ += "Name=" + encodeURIComponent("" + name) + "&";
         if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
         if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -1591,8 +1591,8 @@ export class ComputerServiceProxy {
 
     protected processGetComputersByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfComputerDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1612,20 +1612,20 @@ export class ComputerServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getComputerForEdit(id: number | null | undefined): Observable<ComputerInput> {
         let url_ = this.baseUrl + "/api/Computer/GetComputerForEdit?";
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -1646,8 +1646,8 @@ export class ComputerServiceProxy {
 
     protected processGetComputerForEdit(response: HttpResponseBase): Observable<ComputerInput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1667,7 +1667,7 @@ export class ComputerServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     createOrEditComputer(input: ComputerInput | null | undefined): Observable<void> {
@@ -1681,7 +1681,7 @@ export class ComputerServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -1701,8 +1701,8 @@ export class ComputerServiceProxy {
 
     protected processCreateOrEditComputer(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1725,14 +1725,14 @@ export class ComputerServiceProxy {
         let url_ = this.baseUrl + "/api/Computer/DeleteCustomer/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -1752,8 +1752,8 @@ export class ComputerServiceProxy {
 
     protected processDeleteCustomer(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1770,20 +1770,20 @@ export class ComputerServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getComputerForView(id: number | null | undefined): Observable<ComputerForViewDto> {
         let url_ = this.baseUrl + "/api/Computer/GetComputerForView?";
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -1804,60 +1804,8 @@ export class ComputerServiceProxy {
 
     protected processGetComputerForView(response: HttpResponseBase): Observable<ComputerForViewDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? ComputerForViewDto.fromJS(resultData200) : new ComputerForViewDto();
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<ComputerForViewDto>(<any>null);
-    }
-
-    /**
-     * @return Success
-     */
-    getCurrentComputer(): Observable<ComputerForViewDto> {
-        let url_ = this.baseUrl + "/api/Computer/GetCurrentComputer";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetCurrentComputer(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetCurrentComputer(<any>response_);
-                } catch (e) {
-                    return <Observable<ComputerForViewDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<ComputerForViewDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetCurrentComputer(response: HttpResponseBase): Observable<ComputerForViewDto> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1889,29 +1837,29 @@ export class CustomerServiceProxy {
     }
 
     /**
-     * @name (optional) 
-     * @sorting (optional) 
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
+     * @name (optional)
+     * @sorting (optional)
+     * @maxResultCount (optional)
+     * @skipCount (optional)
      * @return Success
      */
     getCustomersByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfCustomerDto> {
         let url_ = this.baseUrl + "/api/Customer/GetCustomersByFilter?";
         if (name !== undefined)
-            url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+            url_ += "Name=" + encodeURIComponent("" + name) + "&";
         if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
         if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -1932,8 +1880,8 @@ export class CustomerServiceProxy {
 
     protected processGetCustomersByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfCustomerDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -1953,20 +1901,20 @@ export class CustomerServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getCustomerForEdit(id: number | null | undefined): Observable<CustomerInput> {
         let url_ = this.baseUrl + "/api/Customer/GetCustomerForEdit?";
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -1987,8 +1935,8 @@ export class CustomerServiceProxy {
 
     protected processGetCustomerForEdit(response: HttpResponseBase): Observable<CustomerInput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2008,7 +1956,7 @@ export class CustomerServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     createOrEditCustomer(input: CustomerInput | null | undefined): Observable<void> {
@@ -2022,7 +1970,7 @@ export class CustomerServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -2042,8 +1990,8 @@ export class CustomerServiceProxy {
 
     protected processCreateOrEditCustomer(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2066,14 +2014,14 @@ export class CustomerServiceProxy {
         let url_ = this.baseUrl + "/api/Customer/DeleteCustomer/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -2093,8 +2041,8 @@ export class CustomerServiceProxy {
 
     protected processDeleteCustomer(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2111,20 +2059,20 @@ export class CustomerServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getCustomerForView(id: number | null | undefined): Observable<CustomerForViewDto> {
         let url_ = this.baseUrl + "/api/Customer/GetCustomerForView?";
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -2145,8 +2093,8 @@ export class CustomerServiceProxy {
 
     protected processGetCustomerForView(response: HttpResponseBase): Observable<CustomerForViewDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2178,32 +2126,32 @@ export class DemoModelServiceProxy {
     }
 
     /**
-     * @value (optional) 
-     * @date (optional) 
-     * @sorting (optional) 
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
+     * @value (optional)
+     * @date (optional)
+     * @sorting (optional)
+     * @maxResultCount (optional)
+     * @skipCount (optional)
      * @return Success
      */
     getDemoModelsByFilter(value: number | null | undefined, date: moment.Moment | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfDemoModelDto> {
         let url_ = this.baseUrl + "/api/DemoModel/GetDemoModelsByFilter?";
         if (value !== undefined)
-            url_ += "Value=" + encodeURIComponent("" + value) + "&"; 
+            url_ += "Value=" + encodeURIComponent("" + value) + "&";
         if (date !== undefined)
-            url_ += "Date=" + encodeURIComponent(date ? "" + date.toJSON() : "") + "&"; 
+            url_ += "Date=" + encodeURIComponent(date ? "" + date.toJSON() : "") + "&";
         if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
         if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -2224,8 +2172,8 @@ export class DemoModelServiceProxy {
 
     protected processGetDemoModelsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfDemoModelDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2245,20 +2193,20 @@ export class DemoModelServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getDemoModelForEdit(id: number | null | undefined): Observable<DemoModelInput> {
         let url_ = this.baseUrl + "/api/DemoModel/GetDemoModelForEdit?";
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -2279,8 +2227,8 @@ export class DemoModelServiceProxy {
 
     protected processGetDemoModelForEdit(response: HttpResponseBase): Observable<DemoModelInput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2300,7 +2248,7 @@ export class DemoModelServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     createOrEditDemoModel(input: DemoModelInput | null | undefined): Observable<DemoModelDto> {
@@ -2314,7 +2262,7 @@ export class DemoModelServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -2335,8 +2283,8 @@ export class DemoModelServiceProxy {
 
     protected processCreateOrEditDemoModel(response: HttpResponseBase): Observable<DemoModelDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2362,14 +2310,14 @@ export class DemoModelServiceProxy {
         let url_ = this.baseUrl + "/api/DemoModel/DeleteDemoModel/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -2389,8 +2337,8 @@ export class DemoModelServiceProxy {
 
     protected processDeleteDemoModel(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2407,20 +2355,20 @@ export class DemoModelServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getDemoModelForView(id: number | null | undefined): Observable<DemoModelForViewDto> {
         let url_ = this.baseUrl + "/api/DemoModel/GetDemoModelForView?";
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -2441,8 +2389,8 @@ export class DemoModelServiceProxy {
 
     protected processGetDemoModelForView(response: HttpResponseBase): Observable<DemoModelForViewDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2474,20 +2422,20 @@ export class DemoUiComponentsServiceProxy {
     }
 
     /**
-     * @date (optional) 
+     * @date (optional)
      * @return Success
      */
     sendAndGetDate(date: moment.Moment | null | undefined): Observable<DateToStringOutput> {
         let url_ = this.baseUrl + "/api/services/app/DemoUiComponents/SendAndGetDate?";
         if (date !== undefined)
-            url_ += "date=" + encodeURIComponent(date ? "" + date.toJSON() : "") + "&"; 
+            url_ += "date=" + encodeURIComponent(date ? "" + date.toJSON() : "") + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -2508,8 +2456,8 @@ export class DemoUiComponentsServiceProxy {
 
     protected processSendAndGetDate(response: HttpResponseBase): Observable<DateToStringOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2529,20 +2477,20 @@ export class DemoUiComponentsServiceProxy {
     }
 
     /**
-     * @date (optional) 
+     * @date (optional)
      * @return Success
      */
     sendAndGetDateTime(date: moment.Moment | null | undefined): Observable<DateToStringOutput> {
         let url_ = this.baseUrl + "/api/services/app/DemoUiComponents/SendAndGetDateTime?";
         if (date !== undefined)
-            url_ += "date=" + encodeURIComponent(date ? "" + date.toJSON() : "") + "&"; 
+            url_ += "date=" + encodeURIComponent(date ? "" + date.toJSON() : "") + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -2563,8 +2511,8 @@ export class DemoUiComponentsServiceProxy {
 
     protected processSendAndGetDateTime(response: HttpResponseBase): Observable<DateToStringOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2584,23 +2532,23 @@ export class DemoUiComponentsServiceProxy {
     }
 
     /**
-     * @startDate (optional) 
-     * @endDate (optional) 
+     * @startDate (optional)
+     * @endDate (optional)
      * @return Success
      */
     sendAndGetDateRange(startDate: moment.Moment | null | undefined, endDate: moment.Moment | null | undefined): Observable<DateToStringOutput> {
         let url_ = this.baseUrl + "/api/services/app/DemoUiComponents/SendAndGetDateRange?";
         if (startDate !== undefined)
-            url_ += "startDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&"; 
+            url_ += "startDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&";
         if (endDate !== undefined)
-            url_ += "endDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&"; 
+            url_ += "endDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -2621,8 +2569,8 @@ export class DemoUiComponentsServiceProxy {
 
     protected processSendAndGetDateRange(response: HttpResponseBase): Observable<DateToStringOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2642,20 +2590,20 @@ export class DemoUiComponentsServiceProxy {
     }
 
     /**
-     * @searchTerm (optional) 
+     * @searchTerm (optional)
      * @return Success
      */
     getCountries(searchTerm: string | null | undefined): Observable<NameValueOfString[]> {
         let url_ = this.baseUrl + "/api/services/app/DemoUiComponents/GetCountries?";
         if (searchTerm !== undefined)
-            url_ += "searchTerm=" + encodeURIComponent("" + searchTerm) + "&"; 
+            url_ += "searchTerm=" + encodeURIComponent("" + searchTerm) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -2676,8 +2624,8 @@ export class DemoUiComponentsServiceProxy {
 
     protected processGetCountries(response: HttpResponseBase): Observable<NameValueOfString[]> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2701,7 +2649,7 @@ export class DemoUiComponentsServiceProxy {
     }
 
     /**
-     * @selectedCountries (optional) 
+     * @selectedCountries (optional)
      * @return Success
      */
     sendAndGetSelectedCountries(selectedCountries: NameValueOfString[] | null | undefined): Observable<NameValueOfString[]> {
@@ -2715,7 +2663,7 @@ export class DemoUiComponentsServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -2736,8 +2684,8 @@ export class DemoUiComponentsServiceProxy {
 
     protected processSendAndGetSelectedCountries(response: HttpResponseBase): Observable<NameValueOfString[]> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2761,20 +2709,20 @@ export class DemoUiComponentsServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     sendAndGetValue(input: string | null | undefined): Observable<StringOutput> {
         let url_ = this.baseUrl + "/api/services/app/DemoUiComponents/SendAndGetValue?";
         if (input !== undefined)
-            url_ += "input=" + encodeURIComponent("" + input) + "&"; 
+            url_ += "input=" + encodeURIComponent("" + input) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -2795,8 +2743,8 @@ export class DemoUiComponentsServiceProxy {
 
     protected processSendAndGetValue(response: HttpResponseBase): Observable<StringOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2838,7 +2786,7 @@ export class EditionServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -2859,8 +2807,8 @@ export class EditionServiceProxy {
 
     protected processGetEditions(response: HttpResponseBase): Observable<ListResultDtoOfEditionListDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2880,20 +2828,20 @@ export class EditionServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getEditionForEdit(id: number | null | undefined): Observable<GetEditionEditOutput> {
         let url_ = this.baseUrl + "/api/services/app/Edition/GetEditionForEdit?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -2914,8 +2862,8 @@ export class EditionServiceProxy {
 
     protected processGetEditionForEdit(response: HttpResponseBase): Observable<GetEditionEditOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2935,7 +2883,7 @@ export class EditionServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     createOrUpdateEdition(input: CreateOrUpdateEditionDto | null | undefined): Observable<void> {
@@ -2949,7 +2897,7 @@ export class EditionServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -2969,8 +2917,8 @@ export class EditionServiceProxy {
 
     protected processCreateOrUpdateEdition(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -2987,20 +2935,20 @@ export class EditionServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     deleteEdition(id: number | null | undefined): Observable<void> {
         let url_ = this.baseUrl + "/api/services/app/Edition/DeleteEdition?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -3020,8 +2968,8 @@ export class EditionServiceProxy {
 
     protected processDeleteEdition(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3038,26 +2986,26 @@ export class EditionServiceProxy {
     }
 
     /**
-     * @selectedEditionId (optional) 
-     * @addAllItem (optional) 
-     * @onlyFreeItems (optional) 
+     * @selectedEditionId (optional)
+     * @addAllItem (optional)
+     * @onlyFreeItems (optional)
      * @return Success
      */
     getEditionComboboxItems(selectedEditionId: number | null | undefined, addAllItem: boolean | null | undefined, onlyFreeItems: boolean | null | undefined): Observable<SubscribableEditionComboboxItemDto[]> {
         let url_ = this.baseUrl + "/api/services/app/Edition/GetEditionComboboxItems?";
         if (selectedEditionId !== undefined)
-            url_ += "selectedEditionId=" + encodeURIComponent("" + selectedEditionId) + "&"; 
+            url_ += "selectedEditionId=" + encodeURIComponent("" + selectedEditionId) + "&";
         if (addAllItem !== undefined)
-            url_ += "addAllItem=" + encodeURIComponent("" + addAllItem) + "&"; 
+            url_ += "addAllItem=" + encodeURIComponent("" + addAllItem) + "&";
         if (onlyFreeItems !== undefined)
-            url_ += "onlyFreeItems=" + encodeURIComponent("" + onlyFreeItems) + "&"; 
+            url_ += "onlyFreeItems=" + encodeURIComponent("" + onlyFreeItems) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -3078,8 +3026,8 @@ export class EditionServiceProxy {
 
     protected processGetEditionComboboxItems(response: HttpResponseBase): Observable<SubscribableEditionComboboxItemDto[]> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3115,7 +3063,7 @@ export class FriendshipServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     createFriendshipRequest(input: CreateFriendshipRequestInput | null | undefined): Observable<FriendDto> {
@@ -3129,7 +3077,7 @@ export class FriendshipServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -3150,8 +3098,8 @@ export class FriendshipServiceProxy {
 
     protected processCreateFriendshipRequest(response: HttpResponseBase): Observable<FriendDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3171,7 +3119,7 @@ export class FriendshipServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     createFriendshipRequestByUserName(input: CreateFriendshipRequestByUserNameInput | null | undefined): Observable<FriendDto> {
@@ -3185,7 +3133,7 @@ export class FriendshipServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -3206,8 +3154,8 @@ export class FriendshipServiceProxy {
 
     protected processCreateFriendshipRequestByUserName(response: HttpResponseBase): Observable<FriendDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3227,7 +3175,7 @@ export class FriendshipServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     blockUser(input: BlockUserInput | null | undefined): Observable<void> {
@@ -3241,7 +3189,7 @@ export class FriendshipServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -3261,8 +3209,8 @@ export class FriendshipServiceProxy {
 
     protected processBlockUser(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3279,7 +3227,7 @@ export class FriendshipServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     unblockUser(input: UnblockUserInput | null | undefined): Observable<void> {
@@ -3293,7 +3241,7 @@ export class FriendshipServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -3313,8 +3261,8 @@ export class FriendshipServiceProxy {
 
     protected processUnblockUser(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3331,7 +3279,7 @@ export class FriendshipServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     acceptFriendshipRequest(input: AcceptFriendshipRequestInput | null | undefined): Observable<void> {
@@ -3345,7 +3293,7 @@ export class FriendshipServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -3365,8 +3313,8 @@ export class FriendshipServiceProxy {
 
     protected processAcceptFriendshipRequest(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3395,26 +3343,26 @@ export class HostDashboardServiceProxy {
     }
 
     /**
-     * @incomeStatisticsDateInterval (optional) 
-     * @startDate (optional) 
-     * @endDate (optional) 
+     * @incomeStatisticsDateInterval (optional)
+     * @startDate (optional)
+     * @endDate (optional)
      * @return Success
      */
     getDashboardStatisticsData(incomeStatisticsDateInterval: IncomeStatisticsDateInterval | null | undefined, startDate: moment.Moment | null | undefined, endDate: moment.Moment | null | undefined): Observable<HostDashboardData> {
         let url_ = this.baseUrl + "/api/services/app/HostDashboard/GetDashboardStatisticsData?";
         if (incomeStatisticsDateInterval !== undefined)
-            url_ += "IncomeStatisticsDateInterval=" + encodeURIComponent("" + incomeStatisticsDateInterval) + "&"; 
+            url_ += "IncomeStatisticsDateInterval=" + encodeURIComponent("" + incomeStatisticsDateInterval) + "&";
         if (startDate !== undefined)
-            url_ += "StartDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&"; 
+            url_ += "StartDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&";
         if (endDate !== undefined)
-            url_ += "EndDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&"; 
+            url_ += "EndDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -3435,8 +3383,8 @@ export class HostDashboardServiceProxy {
 
     protected processGetDashboardStatisticsData(response: HttpResponseBase): Observable<HostDashboardData> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3456,26 +3404,26 @@ export class HostDashboardServiceProxy {
     }
 
     /**
-     * @incomeStatisticsDateInterval (optional) 
-     * @startDate (optional) 
-     * @endDate (optional) 
+     * @incomeStatisticsDateInterval (optional)
+     * @startDate (optional)
+     * @endDate (optional)
      * @return Success
      */
     getIncomeStatistics(incomeStatisticsDateInterval: IncomeStatisticsDateInterval2 | null | undefined, startDate: moment.Moment | null | undefined, endDate: moment.Moment | null | undefined): Observable<GetIncomeStatisticsDataOutput> {
         let url_ = this.baseUrl + "/api/services/app/HostDashboard/GetIncomeStatistics?";
         if (incomeStatisticsDateInterval !== undefined)
-            url_ += "IncomeStatisticsDateInterval=" + encodeURIComponent("" + incomeStatisticsDateInterval) + "&"; 
+            url_ += "IncomeStatisticsDateInterval=" + encodeURIComponent("" + incomeStatisticsDateInterval) + "&";
         if (startDate !== undefined)
-            url_ += "StartDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&"; 
+            url_ += "StartDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&";
         if (endDate !== undefined)
-            url_ += "EndDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&"; 
+            url_ += "EndDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -3496,8 +3444,8 @@ export class HostDashboardServiceProxy {
 
     protected processGetIncomeStatistics(response: HttpResponseBase): Observable<GetIncomeStatisticsDataOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3517,23 +3465,23 @@ export class HostDashboardServiceProxy {
     }
 
     /**
-     * @startDate (optional) 
-     * @endDate (optional) 
+     * @startDate (optional)
+     * @endDate (optional)
      * @return Success
      */
     getEditionTenantStatistics(startDate: moment.Moment | null | undefined, endDate: moment.Moment | null | undefined): Observable<GetEditionTenantStatisticsOutput> {
         let url_ = this.baseUrl + "/api/services/app/HostDashboard/GetEditionTenantStatistics?";
         if (startDate !== undefined)
-            url_ += "StartDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&"; 
+            url_ += "StartDate=" + encodeURIComponent(startDate ? "" + startDate.toJSON() : "") + "&";
         if (endDate !== undefined)
-            url_ += "EndDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&"; 
+            url_ += "EndDate=" + encodeURIComponent(endDate ? "" + endDate.toJSON() : "") + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -3554,8 +3502,8 @@ export class HostDashboardServiceProxy {
 
     protected processGetEditionTenantStatistics(response: HttpResponseBase): Observable<GetEditionTenantStatisticsOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3597,7 +3545,7 @@ export class HostSettingsServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -3618,8 +3566,8 @@ export class HostSettingsServiceProxy {
 
     protected processGetAllSettings(response: HttpResponseBase): Observable<HostSettingsEditDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3639,7 +3587,7 @@ export class HostSettingsServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     updateAllSettings(input: HostSettingsEditDto | null | undefined): Observable<void> {
@@ -3653,7 +3601,7 @@ export class HostSettingsServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -3673,8 +3621,8 @@ export class HostSettingsServiceProxy {
 
     protected processUpdateAllSettings(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3691,7 +3639,7 @@ export class HostSettingsServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     sendTestEmail(input: SendTestEmailInput | null | undefined): Observable<void> {
@@ -3705,7 +3653,7 @@ export class HostSettingsServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -3725,8 +3673,8 @@ export class HostSettingsServiceProxy {
 
     protected processSendTestEmail(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3755,7 +3703,7 @@ export class InstallServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     setup(input: InstallDto | null | undefined): Observable<void> {
@@ -3769,7 +3717,7 @@ export class InstallServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -3789,8 +3737,8 @@ export class InstallServiceProxy {
 
     protected processSetup(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3817,7 +3765,7 @@ export class InstallServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -3838,8 +3786,8 @@ export class InstallServiceProxy {
 
     protected processGetAppSettingsJson(response: HttpResponseBase): Observable<AppSettingsJsonDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3869,7 +3817,7 @@ export class InstallServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -3890,8 +3838,8 @@ export class InstallServiceProxy {
 
     protected processCheckDatabase(response: HttpResponseBase): Observable<CheckDatabaseOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3923,20 +3871,20 @@ export class InvoiceServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getInvoiceInfo(id: number | null | undefined): Observable<InvoiceDto> {
         let url_ = this.baseUrl + "/api/services/app/Invoice/GetInvoiceInfo?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -3957,8 +3905,8 @@ export class InvoiceServiceProxy {
 
     protected processGetInvoiceInfo(response: HttpResponseBase): Observable<InvoiceDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -3978,7 +3926,7 @@ export class InvoiceServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     createInvoice(input: CreateInvoiceDto | null | undefined): Observable<void> {
@@ -3992,7 +3940,7 @@ export class InvoiceServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -4012,8 +3960,8 @@ export class InvoiceServiceProxy {
 
     protected processCreateInvoice(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4052,7 +4000,7 @@ export class LanguageServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -4073,8 +4021,8 @@ export class LanguageServiceProxy {
 
     protected processGetLanguages(response: HttpResponseBase): Observable<GetLanguagesOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4094,20 +4042,20 @@ export class LanguageServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getLanguageForEdit(id: number | null | undefined): Observable<GetLanguageForEditOutput> {
         let url_ = this.baseUrl + "/api/services/app/Language/GetLanguageForEdit?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -4128,8 +4076,8 @@ export class LanguageServiceProxy {
 
     protected processGetLanguageForEdit(response: HttpResponseBase): Observable<GetLanguageForEditOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4149,7 +4097,7 @@ export class LanguageServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     createOrUpdateLanguage(input: CreateOrUpdateLanguageInput | null | undefined): Observable<void> {
@@ -4163,7 +4111,7 @@ export class LanguageServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -4183,8 +4131,8 @@ export class LanguageServiceProxy {
 
     protected processCreateOrUpdateLanguage(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4201,20 +4149,20 @@ export class LanguageServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     deleteLanguage(id: number | null | undefined): Observable<void> {
         let url_ = this.baseUrl + "/api/services/app/Language/DeleteLanguage?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -4234,8 +4182,8 @@ export class LanguageServiceProxy {
 
     protected processDeleteLanguage(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4252,7 +4200,7 @@ export class LanguageServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     setDefaultLanguage(input: SetDefaultLanguageInput | null | undefined): Observable<void> {
@@ -4266,7 +4214,7 @@ export class LanguageServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -4286,8 +4234,8 @@ export class LanguageServiceProxy {
 
     protected processSetDefaultLanguage(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4304,43 +4252,43 @@ export class LanguageServiceProxy {
     }
 
     /**
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
-     * @sorting (optional) 
-     * @baseLanguageName (optional) 
-     * @targetValueFilter (optional) 
-     * @filterText (optional) 
+     * @maxResultCount (optional)
+     * @skipCount (optional)
+     * @sorting (optional)
+     * @baseLanguageName (optional)
+     * @targetValueFilter (optional)
+     * @filterText (optional)
      * @return Success
      */
     getLanguageTexts(maxResultCount: number | null | undefined, skipCount: number | null | undefined, sorting: string | null | undefined, sourceName: string, baseLanguageName: string | null | undefined, targetLanguageName: string, targetValueFilter: string | null | undefined, filterText: string | null | undefined): Observable<PagedResultDtoOfLanguageTextListDto> {
         let url_ = this.baseUrl + "/api/services/app/Language/GetLanguageTexts?";
         if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
         if (sourceName === undefined || sourceName === null)
             throw new Error("The parameter 'sourceName' must be defined and cannot be null.");
         else
-            url_ += "SourceName=" + encodeURIComponent("" + sourceName) + "&"; 
+            url_ += "SourceName=" + encodeURIComponent("" + sourceName) + "&";
         if (baseLanguageName !== undefined)
-            url_ += "BaseLanguageName=" + encodeURIComponent("" + baseLanguageName) + "&"; 
+            url_ += "BaseLanguageName=" + encodeURIComponent("" + baseLanguageName) + "&";
         if (targetLanguageName === undefined || targetLanguageName === null)
             throw new Error("The parameter 'targetLanguageName' must be defined and cannot be null.");
         else
-            url_ += "TargetLanguageName=" + encodeURIComponent("" + targetLanguageName) + "&"; 
+            url_ += "TargetLanguageName=" + encodeURIComponent("" + targetLanguageName) + "&";
         if (targetValueFilter !== undefined)
-            url_ += "TargetValueFilter=" + encodeURIComponent("" + targetValueFilter) + "&"; 
+            url_ += "TargetValueFilter=" + encodeURIComponent("" + targetValueFilter) + "&";
         if (filterText !== undefined)
-            url_ += "FilterText=" + encodeURIComponent("" + filterText) + "&"; 
+            url_ += "FilterText=" + encodeURIComponent("" + filterText) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -4361,8 +4309,8 @@ export class LanguageServiceProxy {
 
     protected processGetLanguageTexts(response: HttpResponseBase): Observable<PagedResultDtoOfLanguageTextListDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4382,7 +4330,7 @@ export class LanguageServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     updateLanguageText(input: UpdateLanguageTextInput | null | undefined): Observable<void> {
@@ -4396,7 +4344,7 @@ export class LanguageServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -4416,8 +4364,8 @@ export class LanguageServiceProxy {
 
     protected processUpdateLanguageText(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4456,7 +4404,7 @@ export class MenuClientServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -4477,8 +4425,8 @@ export class MenuClientServiceProxy {
 
     protected processGetTest(response: HttpResponseBase): Observable<string> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4508,7 +4456,7 @@ export class MenuClientServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -4529,8 +4477,8 @@ export class MenuClientServiceProxy {
 
     protected processGetMenuClients(response: HttpResponseBase): Observable<ListResultDtoOfMenuClientDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4550,29 +4498,29 @@ export class MenuClientServiceProxy {
     }
 
     /**
-     * @name (optional) 
-     * @sorting (optional) 
-     * @skipCount (optional) 
-     * @maxResultCount (optional) 
+     * @name (optional)
+     * @sorting (optional)
+     * @skipCount (optional)
+     * @maxResultCount (optional)
      * @return Success
      */
     getMenuClientsByFilter(name: string | null | undefined, sorting: string | null | undefined, skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfMenuClientListDto> {
         let url_ = this.baseUrl + "/api/MenuClient/GetMenuClientsByFilter?";
         if (name !== undefined)
-            url_ += "name=" + encodeURIComponent("" + name) + "&"; 
+            url_ += "name=" + encodeURIComponent("" + name) + "&";
         if (sorting !== undefined)
-            url_ += "sorting=" + encodeURIComponent("" + sorting) + "&"; 
+            url_ += "sorting=" + encodeURIComponent("" + sorting) + "&";
         if (skipCount !== undefined)
-            url_ += "skipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "skipCount=" + encodeURIComponent("" + skipCount) + "&";
         if (maxResultCount !== undefined)
-            url_ += "maxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "maxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -4593,8 +4541,8 @@ export class MenuClientServiceProxy {
 
     protected processGetMenuClientsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfMenuClientListDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4624,7 +4572,7 @@ export class MenuClientServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -4645,8 +4593,8 @@ export class MenuClientServiceProxy {
 
     protected processDemoWebApi(response: HttpResponseBase): Observable<string> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4666,20 +4614,20 @@ export class MenuClientServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getMenuClientForEdit(id: number | null | undefined): Observable<GetMenuClientOutput> {
         let url_ = this.baseUrl + "/api/MenuClient/GetMenuClientForEdit?";
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -4700,8 +4648,8 @@ export class MenuClientServiceProxy {
 
     protected processGetMenuClientForEdit(response: HttpResponseBase): Observable<GetMenuClientOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4721,7 +4669,7 @@ export class MenuClientServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     createMenuClient(input: CreateMenuClientInput | null | undefined): Observable<MenuClientDto> {
@@ -4735,7 +4683,7 @@ export class MenuClientServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -4756,8 +4704,8 @@ export class MenuClientServiceProxy {
 
     protected processCreateMenuClient(response: HttpResponseBase): Observable<MenuClientDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4777,7 +4725,7 @@ export class MenuClientServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     updateMenuClient(input: UpdateMenuClientInput | null | undefined): Observable<MenuClientDto> {
@@ -4791,7 +4739,7 @@ export class MenuClientServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -4812,8 +4760,8 @@ export class MenuClientServiceProxy {
 
     protected processUpdateMenuClient(response: HttpResponseBase): Observable<MenuClientDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4839,14 +4787,14 @@ export class MenuClientServiceProxy {
         let url_ = this.baseUrl + "/api/MenuClient/DeleteMenuClient/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -4866,8 +4814,8 @@ export class MenuClientServiceProxy {
 
     protected processDeleteMenuClient(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4896,26 +4844,26 @@ export class NotificationServiceProxy {
     }
 
     /**
-     * @state (optional) 
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
+     * @state (optional)
+     * @maxResultCount (optional)
+     * @skipCount (optional)
      * @return Success
      */
     getUserNotifications(state: State | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<GetNotificationsOutput> {
         let url_ = this.baseUrl + "/api/services/app/Notification/GetUserNotifications?";
         if (state !== undefined)
-            url_ += "State=" + encodeURIComponent("" + state) + "&"; 
+            url_ += "State=" + encodeURIComponent("" + state) + "&";
         if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -4936,8 +4884,8 @@ export class NotificationServiceProxy {
 
     protected processGetUserNotifications(response: HttpResponseBase): Observable<GetNotificationsOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -4967,7 +4915,7 @@ export class NotificationServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -4987,8 +4935,8 @@ export class NotificationServiceProxy {
 
     protected processSetAllNotificationsAsRead(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5005,7 +4953,7 @@ export class NotificationServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     setNotificationAsRead(input: EntityDtoOfGuid | null | undefined): Observable<void> {
@@ -5019,7 +4967,7 @@ export class NotificationServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -5039,8 +4987,8 @@ export class NotificationServiceProxy {
 
     protected processSetNotificationAsRead(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5067,7 +5015,7 @@ export class NotificationServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -5088,8 +5036,8 @@ export class NotificationServiceProxy {
 
     protected processGetNotificationSettings(response: HttpResponseBase): Observable<GetNotificationSettingsOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5109,7 +5057,7 @@ export class NotificationServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     updateNotificationSettings(input: UpdateNotificationSettingsInput | null | undefined): Observable<void> {
@@ -5123,7 +5071,7 @@ export class NotificationServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -5143,8 +5091,8 @@ export class NotificationServiceProxy {
 
     protected processUpdateNotificationSettings(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5183,7 +5131,7 @@ export class OrganizationUnitServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -5204,8 +5152,8 @@ export class OrganizationUnitServiceProxy {
 
     protected processGetOrganizationUnits(response: HttpResponseBase): Observable<ListResultDtoOfOrganizationUnitDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5225,29 +5173,29 @@ export class OrganizationUnitServiceProxy {
     }
 
     /**
-     * @id (optional) 
-     * @sorting (optional) 
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
+     * @id (optional)
+     * @sorting (optional)
+     * @maxResultCount (optional)
+     * @skipCount (optional)
      * @return Success
      */
     getOrganizationUnitUsers(id: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfOrganizationUnitUserListDto> {
         let url_ = this.baseUrl + "/api/services/app/OrganizationUnit/GetOrganizationUnitUsers?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
         if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -5268,8 +5216,8 @@ export class OrganizationUnitServiceProxy {
 
     protected processGetOrganizationUnitUsers(response: HttpResponseBase): Observable<PagedResultDtoOfOrganizationUnitUserListDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5289,7 +5237,7 @@ export class OrganizationUnitServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     createOrganizationUnit(input: CreateOrganizationUnitInput | null | undefined): Observable<OrganizationUnitDto> {
@@ -5303,7 +5251,7 @@ export class OrganizationUnitServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -5324,8 +5272,8 @@ export class OrganizationUnitServiceProxy {
 
     protected processCreateOrganizationUnit(response: HttpResponseBase): Observable<OrganizationUnitDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5345,7 +5293,7 @@ export class OrganizationUnitServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     updateOrganizationUnit(input: UpdateOrganizationUnitInput | null | undefined): Observable<OrganizationUnitDto> {
@@ -5359,7 +5307,7 @@ export class OrganizationUnitServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -5380,8 +5328,8 @@ export class OrganizationUnitServiceProxy {
 
     protected processUpdateOrganizationUnit(response: HttpResponseBase): Observable<OrganizationUnitDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5401,7 +5349,7 @@ export class OrganizationUnitServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     moveOrganizationUnit(input: MoveOrganizationUnitInput | null | undefined): Observable<OrganizationUnitDto> {
@@ -5415,7 +5363,7 @@ export class OrganizationUnitServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -5436,8 +5384,8 @@ export class OrganizationUnitServiceProxy {
 
     protected processMoveOrganizationUnit(response: HttpResponseBase): Observable<OrganizationUnitDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5457,20 +5405,20 @@ export class OrganizationUnitServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     deleteOrganizationUnit(id: number | null | undefined): Observable<void> {
         let url_ = this.baseUrl + "/api/services/app/OrganizationUnit/DeleteOrganizationUnit?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -5490,8 +5438,8 @@ export class OrganizationUnitServiceProxy {
 
     protected processDeleteOrganizationUnit(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5508,23 +5456,23 @@ export class OrganizationUnitServiceProxy {
     }
 
     /**
-     * @userId (optional) 
-     * @organizationUnitId (optional) 
+     * @userId (optional)
+     * @organizationUnitId (optional)
      * @return Success
      */
     removeUserFromOrganizationUnit(userId: number | null | undefined, organizationUnitId: number | null | undefined): Observable<void> {
         let url_ = this.baseUrl + "/api/services/app/OrganizationUnit/RemoveUserFromOrganizationUnit?";
         if (userId !== undefined)
-            url_ += "UserId=" + encodeURIComponent("" + userId) + "&"; 
+            url_ += "UserId=" + encodeURIComponent("" + userId) + "&";
         if (organizationUnitId !== undefined)
-            url_ += "OrganizationUnitId=" + encodeURIComponent("" + organizationUnitId) + "&"; 
+            url_ += "OrganizationUnitId=" + encodeURIComponent("" + organizationUnitId) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -5544,8 +5492,8 @@ export class OrganizationUnitServiceProxy {
 
     protected processRemoveUserFromOrganizationUnit(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5562,7 +5510,7 @@ export class OrganizationUnitServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     addUsersToOrganizationUnit(input: UsersToOrganizationUnitInput | null | undefined): Observable<void> {
@@ -5576,7 +5524,7 @@ export class OrganizationUnitServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -5596,8 +5544,8 @@ export class OrganizationUnitServiceProxy {
 
     protected processAddUsersToOrganizationUnit(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5614,7 +5562,7 @@ export class OrganizationUnitServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     findUsers(input: FindOrganizationUnitUsersInput | null | undefined): Observable<PagedResultDtoOfNameValueDto> {
@@ -5628,7 +5576,7 @@ export class OrganizationUnitServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -5649,8 +5597,8 @@ export class OrganizationUnitServiceProxy {
 
     protected processFindUsers(response: HttpResponseBase): Observable<PagedResultDtoOfNameValueDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5682,20 +5630,20 @@ export class PaymentServiceProxy {
     }
 
     /**
-     * @upgradeEditionId (optional) 
+     * @upgradeEditionId (optional)
      * @return Success
      */
     getPaymentInfo(upgradeEditionId: number | null | undefined): Observable<PaymentInfoDto> {
         let url_ = this.baseUrl + "/api/services/app/Payment/GetPaymentInfo?";
         if (upgradeEditionId !== undefined)
-            url_ += "UpgradeEditionId=" + encodeURIComponent("" + upgradeEditionId) + "&"; 
+            url_ += "UpgradeEditionId=" + encodeURIComponent("" + upgradeEditionId) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -5716,8 +5664,8 @@ export class PaymentServiceProxy {
 
     protected processGetPaymentInfo(response: HttpResponseBase): Observable<PaymentInfoDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5737,7 +5685,7 @@ export class PaymentServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     createPayment(input: CreatePaymentDto | null | undefined): Observable<any> {
@@ -5751,7 +5699,7 @@ export class PaymentServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -5772,8 +5720,8 @@ export class PaymentServiceProxy {
 
     protected processCreatePayment(response: HttpResponseBase): Observable<any> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5799,7 +5747,7 @@ export class PaymentServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     executePayment(input: ExecutePaymentDto | null | undefined): Observable<any> {
@@ -5813,7 +5761,7 @@ export class PaymentServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -5834,8 +5782,8 @@ export class PaymentServiceProxy {
 
     protected processExecutePayment(response: HttpResponseBase): Observable<any> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5861,26 +5809,26 @@ export class PaymentServiceProxy {
     }
 
     /**
-     * @sorting (optional) 
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
+     * @sorting (optional)
+     * @maxResultCount (optional)
+     * @skipCount (optional)
      * @return Success
      */
     getPaymentHistory(sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfSubscriptionPaymentListDto> {
         let url_ = this.baseUrl + "/api/services/app/Payment/GetPaymentHistory?";
         if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
         if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -5901,8 +5849,8 @@ export class PaymentServiceProxy {
 
     protected processGetPaymentHistory(response: HttpResponseBase): Observable<PagedResultDtoOfSubscriptionPaymentListDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -5944,7 +5892,7 @@ export class PermissionServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -5965,8 +5913,8 @@ export class PermissionServiceProxy {
 
     protected processGetAllPermissions(response: HttpResponseBase): Observable<ListResultDtoOfFlatPermissionWithLevelDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6008,7 +5956,7 @@ export class ProfileServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -6029,8 +5977,8 @@ export class ProfileServiceProxy {
 
     protected processGetCurrentUserProfileForEdit(response: HttpResponseBase): Observable<CurrentUserProfileEditDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6060,7 +6008,7 @@ export class ProfileServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -6081,8 +6029,8 @@ export class ProfileServiceProxy {
 
     protected processUpdateGoogleAuthenticatorKey(response: HttpResponseBase): Observable<UpdateGoogleAuthenticatorKeyOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6112,7 +6060,7 @@ export class ProfileServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -6132,8 +6080,8 @@ export class ProfileServiceProxy {
 
     protected processSendVerificationSms(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6150,7 +6098,7 @@ export class ProfileServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     verifySmsCode(input: VerifySmsCodeInputDto | null | undefined): Observable<void> {
@@ -6164,7 +6112,7 @@ export class ProfileServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -6184,8 +6132,8 @@ export class ProfileServiceProxy {
 
     protected processVerifySmsCode(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6202,7 +6150,7 @@ export class ProfileServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     updateCurrentUserProfile(input: CurrentUserProfileEditDto | null | undefined): Observable<void> {
@@ -6216,7 +6164,7 @@ export class ProfileServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -6236,8 +6184,8 @@ export class ProfileServiceProxy {
 
     protected processUpdateCurrentUserProfile(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6254,7 +6202,7 @@ export class ProfileServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     changePassword(input: ChangePasswordInput | null | undefined): Observable<void> {
@@ -6268,7 +6216,7 @@ export class ProfileServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -6288,8 +6236,8 @@ export class ProfileServiceProxy {
 
     protected processChangePassword(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6306,7 +6254,7 @@ export class ProfileServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     updateProfilePicture(input: UpdateProfilePictureInput | null | undefined): Observable<void> {
@@ -6320,7 +6268,7 @@ export class ProfileServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -6340,8 +6288,8 @@ export class ProfileServiceProxy {
 
     protected processUpdateProfilePicture(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6368,7 +6316,7 @@ export class ProfileServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -6389,8 +6337,8 @@ export class ProfileServiceProxy {
 
     protected processGetPasswordComplexitySetting(response: HttpResponseBase): Observable<GetPasswordComplexitySettingOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6420,7 +6368,7 @@ export class ProfileServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -6441,8 +6389,8 @@ export class ProfileServiceProxy {
 
     protected processGetProfilePicture(response: HttpResponseBase): Observable<GetProfilePictureOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6462,26 +6410,26 @@ export class ProfileServiceProxy {
     }
 
     /**
-     * @profilePictureId (optional) 
-     * @userId (optional) 
-     * @tenantId (optional) 
+     * @profilePictureId (optional)
+     * @userId (optional)
+     * @tenantId (optional)
      * @return Success
      */
     getFriendProfilePictureById(profilePictureId: string | null | undefined, userId: number | null | undefined, tenantId: number | null | undefined): Observable<GetProfilePictureOutput> {
         let url_ = this.baseUrl + "/api/services/app/Profile/GetFriendProfilePictureById?";
         if (profilePictureId !== undefined)
-            url_ += "ProfilePictureId=" + encodeURIComponent("" + profilePictureId) + "&"; 
+            url_ += "ProfilePictureId=" + encodeURIComponent("" + profilePictureId) + "&";
         if (userId !== undefined)
-            url_ += "UserId=" + encodeURIComponent("" + userId) + "&"; 
+            url_ += "UserId=" + encodeURIComponent("" + userId) + "&";
         if (tenantId !== undefined)
-            url_ += "TenantId=" + encodeURIComponent("" + tenantId) + "&"; 
+            url_ += "TenantId=" + encodeURIComponent("" + tenantId) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -6502,8 +6450,8 @@ export class ProfileServiceProxy {
 
     protected processGetFriendProfilePictureById(response: HttpResponseBase): Observable<GetProfilePictureOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6523,20 +6471,20 @@ export class ProfileServiceProxy {
     }
 
     /**
-     * @profilePictureId (optional) 
+     * @profilePictureId (optional)
      * @return Success
      */
     getProfilePictureById(profilePictureId: string | null | undefined): Observable<GetProfilePictureOutput> {
         let url_ = this.baseUrl + "/api/services/app/Profile/GetProfilePictureById?";
         if (profilePictureId !== undefined)
-            url_ += "profilePictureId=" + encodeURIComponent("" + profilePictureId) + "&"; 
+            url_ += "profilePictureId=" + encodeURIComponent("" + profilePictureId) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -6557,8 +6505,8 @@ export class ProfileServiceProxy {
 
     protected processGetProfilePictureById(response: HttpResponseBase): Observable<GetProfilePictureOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6578,7 +6526,7 @@ export class ProfileServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     changeLanguage(input: ChangeUserLanguageDto | null | undefined): Observable<void> {
@@ -6592,7 +6540,7 @@ export class ProfileServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -6612,8 +6560,8 @@ export class ProfileServiceProxy {
 
     protected processChangeLanguage(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6642,20 +6590,20 @@ export class RoleServiceProxy {
     }
 
     /**
-     * @permission (optional) 
+     * @permission (optional)
      * @return Success
      */
     getRoles(permission: string | null | undefined): Observable<ListResultDtoOfRoleListDto> {
         let url_ = this.baseUrl + "/api/services/app/Role/GetRoles?";
         if (permission !== undefined)
-            url_ += "Permission=" + encodeURIComponent("" + permission) + "&"; 
+            url_ += "Permission=" + encodeURIComponent("" + permission) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -6676,8 +6624,8 @@ export class RoleServiceProxy {
 
     protected processGetRoles(response: HttpResponseBase): Observable<ListResultDtoOfRoleListDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6697,20 +6645,20 @@ export class RoleServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getRoleForEdit(id: number | null | undefined): Observable<GetRoleForEditOutput> {
         let url_ = this.baseUrl + "/api/services/app/Role/GetRoleForEdit?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -6731,8 +6679,8 @@ export class RoleServiceProxy {
 
     protected processGetRoleForEdit(response: HttpResponseBase): Observable<GetRoleForEditOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6752,7 +6700,7 @@ export class RoleServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     createOrUpdateRole(input: CreateOrUpdateRoleInput | null | undefined): Observable<void> {
@@ -6766,7 +6714,7 @@ export class RoleServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -6786,8 +6734,8 @@ export class RoleServiceProxy {
 
     protected processCreateOrUpdateRole(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6804,20 +6752,20 @@ export class RoleServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     deleteRole(id: number | null | undefined): Observable<void> {
         let url_ = this.baseUrl + "/api/services/app/Role/DeleteRole?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -6837,8 +6785,8 @@ export class RoleServiceProxy {
 
     protected processDeleteRole(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6877,7 +6825,7 @@ export class SessionServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -6898,8 +6846,8 @@ export class SessionServiceProxy {
 
     protected processGetCurrentLoginInformations(response: HttpResponseBase): Observable<GetCurrentLoginInformationsOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6929,7 +6877,7 @@ export class SessionServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -6950,8 +6898,8 @@ export class SessionServiceProxy {
 
     protected processUpdateUserSignInToken(response: HttpResponseBase): Observable<UpdateUserSignInTokenOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -6983,20 +6931,20 @@ export class SubscriptionServiceProxy {
     }
 
     /**
-     * @upgradeEditionId (optional) 
+     * @upgradeEditionId (optional)
      * @return Success
      */
     upgradeTenantToEquivalentEdition(upgradeEditionId: number | null | undefined): Observable<void> {
         let url_ = this.baseUrl + "/api/services/app/Subscription/UpgradeTenantToEquivalentEdition?";
         if (upgradeEditionId !== undefined)
-            url_ += "upgradeEditionId=" + encodeURIComponent("" + upgradeEditionId) + "&"; 
+            url_ += "upgradeEditionId=" + encodeURIComponent("" + upgradeEditionId) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -7016,8 +6964,8 @@ export class SubscriptionServiceProxy {
 
     protected processUpgradeTenantToEquivalentEdition(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7046,47 +6994,47 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @filter (optional) 
-     * @subscriptionEndDateStart (optional) 
-     * @subscriptionEndDateEnd (optional) 
-     * @creationDateStart (optional) 
-     * @creationDateEnd (optional) 
-     * @editionId (optional) 
-     * @editionIdSpecified (optional) 
-     * @sorting (optional) 
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
+     * @filter (optional)
+     * @subscriptionEndDateStart (optional)
+     * @subscriptionEndDateEnd (optional)
+     * @creationDateStart (optional)
+     * @creationDateEnd (optional)
+     * @editionId (optional)
+     * @editionIdSpecified (optional)
+     * @sorting (optional)
+     * @maxResultCount (optional)
+     * @skipCount (optional)
      * @return Success
      */
     getTenants(filter: string | null | undefined, subscriptionEndDateStart: moment.Moment | null | undefined, subscriptionEndDateEnd: moment.Moment | null | undefined, creationDateStart: moment.Moment | null | undefined, creationDateEnd: moment.Moment | null | undefined, editionId: number | null | undefined, editionIdSpecified: boolean | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfTenantListDto> {
         let url_ = this.baseUrl + "/api/services/app/Tenant/GetTenants?";
         if (filter !== undefined)
-            url_ += "Filter=" + encodeURIComponent("" + filter) + "&"; 
+            url_ += "Filter=" + encodeURIComponent("" + filter) + "&";
         if (subscriptionEndDateStart !== undefined)
-            url_ += "SubscriptionEndDateStart=" + encodeURIComponent(subscriptionEndDateStart ? "" + subscriptionEndDateStart.toJSON() : "") + "&"; 
+            url_ += "SubscriptionEndDateStart=" + encodeURIComponent(subscriptionEndDateStart ? "" + subscriptionEndDateStart.toJSON() : "") + "&";
         if (subscriptionEndDateEnd !== undefined)
-            url_ += "SubscriptionEndDateEnd=" + encodeURIComponent(subscriptionEndDateEnd ? "" + subscriptionEndDateEnd.toJSON() : "") + "&"; 
+            url_ += "SubscriptionEndDateEnd=" + encodeURIComponent(subscriptionEndDateEnd ? "" + subscriptionEndDateEnd.toJSON() : "") + "&";
         if (creationDateStart !== undefined)
-            url_ += "CreationDateStart=" + encodeURIComponent(creationDateStart ? "" + creationDateStart.toJSON() : "") + "&"; 
+            url_ += "CreationDateStart=" + encodeURIComponent(creationDateStart ? "" + creationDateStart.toJSON() : "") + "&";
         if (creationDateEnd !== undefined)
-            url_ += "CreationDateEnd=" + encodeURIComponent(creationDateEnd ? "" + creationDateEnd.toJSON() : "") + "&"; 
+            url_ += "CreationDateEnd=" + encodeURIComponent(creationDateEnd ? "" + creationDateEnd.toJSON() : "") + "&";
         if (editionId !== undefined)
-            url_ += "EditionId=" + encodeURIComponent("" + editionId) + "&"; 
+            url_ += "EditionId=" + encodeURIComponent("" + editionId) + "&";
         if (editionIdSpecified !== undefined)
-            url_ += "EditionIdSpecified=" + encodeURIComponent("" + editionIdSpecified) + "&"; 
+            url_ += "EditionIdSpecified=" + encodeURIComponent("" + editionIdSpecified) + "&";
         if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
         if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -7107,8 +7055,8 @@ export class TenantServiceProxy {
 
     protected processGetTenants(response: HttpResponseBase): Observable<PagedResultDtoOfTenantListDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7128,7 +7076,7 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     createTenant(input: CreateTenantInput | null | undefined): Observable<void> {
@@ -7142,7 +7090,7 @@ export class TenantServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -7162,8 +7110,8 @@ export class TenantServiceProxy {
 
     protected processCreateTenant(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7180,20 +7128,20 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getTenantForEdit(id: number | null | undefined): Observable<TenantEditDto> {
         let url_ = this.baseUrl + "/api/services/app/Tenant/GetTenantForEdit?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -7214,8 +7162,8 @@ export class TenantServiceProxy {
 
     protected processGetTenantForEdit(response: HttpResponseBase): Observable<TenantEditDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7235,7 +7183,7 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     updateTenant(input: TenantEditDto | null | undefined): Observable<void> {
@@ -7249,7 +7197,7 @@ export class TenantServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -7269,8 +7217,8 @@ export class TenantServiceProxy {
 
     protected processUpdateTenant(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7287,20 +7235,20 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     deleteTenant(id: number | null | undefined): Observable<void> {
         let url_ = this.baseUrl + "/api/services/app/Tenant/DeleteTenant?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -7320,8 +7268,8 @@ export class TenantServiceProxy {
 
     protected processDeleteTenant(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7338,20 +7286,20 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getTenantFeaturesForEdit(id: number | null | undefined): Observable<GetTenantFeaturesEditOutput> {
         let url_ = this.baseUrl + "/api/services/app/Tenant/GetTenantFeaturesForEdit?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -7372,8 +7320,8 @@ export class TenantServiceProxy {
 
     protected processGetTenantFeaturesForEdit(response: HttpResponseBase): Observable<GetTenantFeaturesEditOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7393,7 +7341,7 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     updateTenantFeatures(input: UpdateTenantFeaturesInput | null | undefined): Observable<void> {
@@ -7407,7 +7355,7 @@ export class TenantServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -7427,8 +7375,8 @@ export class TenantServiceProxy {
 
     protected processUpdateTenantFeatures(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7445,7 +7393,7 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     resetTenantSpecificFeatures(input: EntityDto | null | undefined): Observable<void> {
@@ -7459,7 +7407,7 @@ export class TenantServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -7479,8 +7427,8 @@ export class TenantServiceProxy {
 
     protected processResetTenantSpecificFeatures(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7497,7 +7445,7 @@ export class TenantServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     unlockTenantAdmin(input: EntityDto | null | undefined): Observable<void> {
@@ -7511,7 +7459,7 @@ export class TenantServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -7531,8 +7479,8 @@ export class TenantServiceProxy {
 
     protected processUnlockTenantAdmin(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7571,7 +7519,7 @@ export class TenantDashboardServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -7592,8 +7540,8 @@ export class TenantDashboardServiceProxy {
 
     protected processGetMemberActivity(response: HttpResponseBase): Observable<GetMemberActivityOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7613,20 +7561,20 @@ export class TenantDashboardServiceProxy {
     }
 
     /**
-     * @salesSummaryDatePeriod (optional) 
+     * @salesSummaryDatePeriod (optional)
      * @return Success
      */
     getDashboardData(salesSummaryDatePeriod: SalesSummaryDatePeriod | null | undefined): Observable<GetDashboardDataOutput> {
         let url_ = this.baseUrl + "/api/services/app/TenantDashboard/GetDashboardData?";
         if (salesSummaryDatePeriod !== undefined)
-            url_ += "SalesSummaryDatePeriod=" + encodeURIComponent("" + salesSummaryDatePeriod) + "&"; 
+            url_ += "SalesSummaryDatePeriod=" + encodeURIComponent("" + salesSummaryDatePeriod) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -7647,8 +7595,8 @@ export class TenantDashboardServiceProxy {
 
     protected processGetDashboardData(response: HttpResponseBase): Observable<GetDashboardDataOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7668,20 +7616,20 @@ export class TenantDashboardServiceProxy {
     }
 
     /**
-     * @salesSummaryDatePeriod (optional) 
+     * @salesSummaryDatePeriod (optional)
      * @return Success
      */
     getSalesSummary(salesSummaryDatePeriod: SalesSummaryDatePeriod2 | null | undefined): Observable<GetSalesSummaryOutput> {
         let url_ = this.baseUrl + "/api/services/app/TenantDashboard/GetSalesSummary?";
         if (salesSummaryDatePeriod !== undefined)
-            url_ += "SalesSummaryDatePeriod=" + encodeURIComponent("" + salesSummaryDatePeriod) + "&"; 
+            url_ += "SalesSummaryDatePeriod=" + encodeURIComponent("" + salesSummaryDatePeriod) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -7702,8 +7650,8 @@ export class TenantDashboardServiceProxy {
 
     protected processGetSalesSummary(response: HttpResponseBase): Observable<GetSalesSummaryOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7723,20 +7671,20 @@ export class TenantDashboardServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     getRegionalStats(input: any | null | undefined): Observable<GetRegionalStatsOutput> {
         let url_ = this.baseUrl + "/api/services/app/TenantDashboard/GetRegionalStats?";
         if (input !== undefined)
-            url_ += "input=" + encodeURIComponent("" + input) + "&"; 
+            url_ += "input=" + encodeURIComponent("" + input) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -7757,8 +7705,8 @@ export class TenantDashboardServiceProxy {
 
     protected processGetRegionalStats(response: HttpResponseBase): Observable<GetRegionalStatsOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7778,20 +7726,20 @@ export class TenantDashboardServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     getGeneralStats(input: any | null | undefined): Observable<GetGeneralStatsOutput> {
         let url_ = this.baseUrl + "/api/services/app/TenantDashboard/GetGeneralStats?";
         if (input !== undefined)
-            url_ += "input=" + encodeURIComponent("" + input) + "&"; 
+            url_ += "input=" + encodeURIComponent("" + input) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -7812,8 +7760,8 @@ export class TenantDashboardServiceProxy {
 
     protected processGetGeneralStats(response: HttpResponseBase): Observable<GetGeneralStatsOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7845,7 +7793,7 @@ export class TenantRegistrationServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     registerTenant(input: RegisterTenantInput | null | undefined): Observable<RegisterTenantOutput> {
@@ -7859,7 +7807,7 @@ export class TenantRegistrationServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -7880,8 +7828,8 @@ export class TenantRegistrationServiceProxy {
 
     protected processRegisterTenant(response: HttpResponseBase): Observable<RegisterTenantOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7911,7 +7859,7 @@ export class TenantRegistrationServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -7932,8 +7880,8 @@ export class TenantRegistrationServiceProxy {
 
     protected processGetEditionsForSelect(response: HttpResponseBase): Observable<EditionsSelectOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -7953,20 +7901,20 @@ export class TenantRegistrationServiceProxy {
     }
 
     /**
-     * @editionId (optional) 
+     * @editionId (optional)
      * @return Success
      */
     getEdition(editionId: number | null | undefined): Observable<EditionSelectDto> {
         let url_ = this.baseUrl + "/api/services/app/TenantRegistration/GetEdition?";
         if (editionId !== undefined)
-            url_ += "editionId=" + encodeURIComponent("" + editionId) + "&"; 
+            url_ += "editionId=" + encodeURIComponent("" + editionId) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -7987,8 +7935,8 @@ export class TenantRegistrationServiceProxy {
 
     protected processGetEdition(response: HttpResponseBase): Observable<EditionSelectDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8030,7 +7978,7 @@ export class TenantSettingsServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -8051,8 +7999,8 @@ export class TenantSettingsServiceProxy {
 
     protected processGetAllSettings(response: HttpResponseBase): Observable<TenantSettingsEditDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8072,7 +8020,7 @@ export class TenantSettingsServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     updateAllSettings(input: TenantSettingsEditDto | null | undefined): Observable<void> {
@@ -8086,7 +8034,7 @@ export class TenantSettingsServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -8106,8 +8054,8 @@ export class TenantSettingsServiceProxy {
 
     protected processUpdateAllSettings(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8134,7 +8082,7 @@ export class TenantSettingsServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -8154,8 +8102,8 @@ export class TenantSettingsServiceProxy {
 
     protected processClearLogo(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8182,7 +8130,7 @@ export class TenantSettingsServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -8202,8 +8150,8 @@ export class TenantSettingsServiceProxy {
 
     protected processClearCustomCss(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8220,7 +8168,7 @@ export class TenantSettingsServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     sendTestEmail(input: SendTestEmailInput | null | undefined): Observable<void> {
@@ -8234,7 +8182,7 @@ export class TenantSettingsServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -8254,8 +8202,8 @@ export class TenantSettingsServiceProxy {
 
     protected processSendTestEmail(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8284,20 +8232,20 @@ export class TimingServiceProxy {
     }
 
     /**
-     * @defaultTimezoneScope (optional) 
+     * @defaultTimezoneScope (optional)
      * @return Success
      */
     getTimezones(defaultTimezoneScope: DefaultTimezoneScope | null | undefined): Observable<ListResultDtoOfNameValueDto> {
         let url_ = this.baseUrl + "/api/services/app/Timing/GetTimezones?";
         if (defaultTimezoneScope !== undefined)
-            url_ += "DefaultTimezoneScope=" + encodeURIComponent("" + defaultTimezoneScope) + "&"; 
+            url_ += "DefaultTimezoneScope=" + encodeURIComponent("" + defaultTimezoneScope) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -8318,8 +8266,8 @@ export class TimingServiceProxy {
 
     protected processGetTimezones(response: HttpResponseBase): Observable<ListResultDtoOfNameValueDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8339,20 +8287,20 @@ export class TimingServiceProxy {
     }
 
     /**
-     * @selectedTimezoneId (optional) 
+     * @selectedTimezoneId (optional)
      * @return Success
      */
     getTimezoneComboboxItems(selectedTimezoneId: string | null | undefined): Observable<ComboboxItemDto[]> {
         let url_ = this.baseUrl + "/api/services/app/Timing/GetTimezoneComboboxItems?";
         if (selectedTimezoneId !== undefined)
-            url_ += "SelectedTimezoneId=" + encodeURIComponent("" + selectedTimezoneId) + "&"; 
+            url_ += "SelectedTimezoneId=" + encodeURIComponent("" + selectedTimezoneId) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -8373,8 +8321,8 @@ export class TimingServiceProxy {
 
     protected processGetTimezoneComboboxItems(response: HttpResponseBase): Observable<ComboboxItemDto[]> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8410,7 +8358,7 @@ export class TokenAuthServiceProxy {
     }
 
     /**
-     * @model (optional) 
+     * @model (optional)
      * @return Success
      */
     authenticate(model: AuthenticateModel | null | undefined): Observable<AuthenticateResultModel> {
@@ -8424,7 +8372,7 @@ export class TokenAuthServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -8445,8 +8393,8 @@ export class TokenAuthServiceProxy {
 
     protected processAuthenticate(response: HttpResponseBase): Observable<AuthenticateResultModel> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8466,7 +8414,7 @@ export class TokenAuthServiceProxy {
     }
 
     /**
-     * @model (optional) 
+     * @model (optional)
      * @return Success
      */
     sendTwoFactorAuthCode(model: SendTwoFactorAuthCodeModel | null | undefined): Observable<void> {
@@ -8480,7 +8428,7 @@ export class TokenAuthServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -8500,8 +8448,8 @@ export class TokenAuthServiceProxy {
 
     protected processSendTwoFactorAuthCode(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8518,20 +8466,20 @@ export class TokenAuthServiceProxy {
     }
 
     /**
-     * @impersonationToken (optional) 
+     * @impersonationToken (optional)
      * @return Success
      */
     impersonatedAuthenticate(impersonationToken: string | null | undefined): Observable<ImpersonatedAuthenticateResultModel> {
         let url_ = this.baseUrl + "/api/TokenAuth/ImpersonatedAuthenticate?";
         if (impersonationToken !== undefined)
-            url_ += "impersonationToken=" + encodeURIComponent("" + impersonationToken) + "&"; 
+            url_ += "impersonationToken=" + encodeURIComponent("" + impersonationToken) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -8552,8 +8500,8 @@ export class TokenAuthServiceProxy {
 
     protected processImpersonatedAuthenticate(response: HttpResponseBase): Observable<ImpersonatedAuthenticateResultModel> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8573,20 +8521,20 @@ export class TokenAuthServiceProxy {
     }
 
     /**
-     * @switchAccountToken (optional) 
+     * @switchAccountToken (optional)
      * @return Success
      */
     linkedAccountAuthenticate(switchAccountToken: string | null | undefined): Observable<SwitchedAccountAuthenticateResultModel> {
         let url_ = this.baseUrl + "/api/TokenAuth/LinkedAccountAuthenticate?";
         if (switchAccountToken !== undefined)
-            url_ += "switchAccountToken=" + encodeURIComponent("" + switchAccountToken) + "&"; 
+            url_ += "switchAccountToken=" + encodeURIComponent("" + switchAccountToken) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -8607,8 +8555,8 @@ export class TokenAuthServiceProxy {
 
     protected processLinkedAccountAuthenticate(response: HttpResponseBase): Observable<SwitchedAccountAuthenticateResultModel> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8638,7 +8586,7 @@ export class TokenAuthServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -8659,8 +8607,8 @@ export class TokenAuthServiceProxy {
 
     protected processGetExternalAuthenticationProviders(response: HttpResponseBase): Observable<ExternalLoginProviderInfoModel[]> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8684,7 +8632,7 @@ export class TokenAuthServiceProxy {
     }
 
     /**
-     * @model (optional) 
+     * @model (optional)
      * @return Success
      */
     externalAuthenticate(model: ExternalAuthenticateModel | null | undefined): Observable<ExternalAuthenticateResultModel> {
@@ -8698,7 +8646,7 @@ export class TokenAuthServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -8719,8 +8667,8 @@ export class TokenAuthServiceProxy {
 
     protected processExternalAuthenticate(response: HttpResponseBase): Observable<ExternalAuthenticateResultModel> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8740,23 +8688,23 @@ export class TokenAuthServiceProxy {
     }
 
     /**
-     * @message (optional) 
-     * @severity (optional) 
+     * @message (optional)
+     * @severity (optional)
      * @return Success
      */
     testNotification(message: string | null | undefined, severity: string | null | undefined): Observable<void> {
         let url_ = this.baseUrl + "/api/TokenAuth/TestNotification?";
         if (message !== undefined)
-            url_ += "message=" + encodeURIComponent("" + message) + "&"; 
+            url_ += "message=" + encodeURIComponent("" + message) + "&";
         if (severity !== undefined)
-            url_ += "severity=" + encodeURIComponent("" + severity) + "&"; 
+            url_ += "severity=" + encodeURIComponent("" + severity) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -8776,8 +8724,8 @@ export class TokenAuthServiceProxy {
 
     protected processTestNotification(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8816,7 +8764,7 @@ export class UiCustomizationSettingsServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -8837,8 +8785,8 @@ export class UiCustomizationSettingsServiceProxy {
 
     protected processGetUiManagementSettings(response: HttpResponseBase): Observable<UiCustomizationSettingsEditDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8858,7 +8806,7 @@ export class UiCustomizationSettingsServiceProxy {
     }
 
     /**
-     * @settings (optional) 
+     * @settings (optional)
      * @return Success
      */
     updateUiManagementSettings(settings: UiCustomizationSettingsEditDto | null | undefined): Observable<void> {
@@ -8872,7 +8820,7 @@ export class UiCustomizationSettingsServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -8892,8 +8840,8 @@ export class UiCustomizationSettingsServiceProxy {
 
     protected processUpdateUiManagementSettings(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8910,7 +8858,7 @@ export class UiCustomizationSettingsServiceProxy {
     }
 
     /**
-     * @settings (optional) 
+     * @settings (optional)
      * @return Success
      */
     updateDefaultUiManagementSettings(settings: UiCustomizationSettingsEditDto | null | undefined): Observable<void> {
@@ -8924,7 +8872,7 @@ export class UiCustomizationSettingsServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -8944,8 +8892,8 @@ export class UiCustomizationSettingsServiceProxy {
 
     protected processUpdateDefaultUiManagementSettings(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -8972,7 +8920,7 @@ export class UiCustomizationSettingsServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -8992,8 +8940,8 @@ export class UiCustomizationSettingsServiceProxy {
 
     protected processUseSystemDefaultSettings(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9022,35 +8970,35 @@ export class UserServiceProxy {
     }
 
     /**
-     * @filter (optional) 
-     * @permission (optional) 
-     * @role (optional) 
-     * @sorting (optional) 
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
+     * @filter (optional)
+     * @permission (optional)
+     * @role (optional)
+     * @sorting (optional)
+     * @maxResultCount (optional)
+     * @skipCount (optional)
      * @return Success
      */
     getUsers(filter: string | null | undefined, permission: string | null | undefined, role: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfUserListDto> {
         let url_ = this.baseUrl + "/api/services/app/User/GetUsers?";
         if (filter !== undefined)
-            url_ += "Filter=" + encodeURIComponent("" + filter) + "&"; 
+            url_ += "Filter=" + encodeURIComponent("" + filter) + "&";
         if (permission !== undefined)
-            url_ += "Permission=" + encodeURIComponent("" + permission) + "&"; 
+            url_ += "Permission=" + encodeURIComponent("" + permission) + "&";
         if (role !== undefined)
-            url_ += "Role=" + encodeURIComponent("" + role) + "&"; 
+            url_ += "Role=" + encodeURIComponent("" + role) + "&";
         if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
         if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -9071,8 +9019,8 @@ export class UserServiceProxy {
 
     protected processGetUsers(response: HttpResponseBase): Observable<PagedResultDtoOfUserListDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9102,7 +9050,7 @@ export class UserServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -9123,8 +9071,8 @@ export class UserServiceProxy {
 
     protected processGetUsersToExcel(response: HttpResponseBase): Observable<FileDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9144,20 +9092,20 @@ export class UserServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getUserForEdit(id: number | null | undefined): Observable<GetUserForEditOutput> {
         let url_ = this.baseUrl + "/api/services/app/User/GetUserForEdit?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -9178,8 +9126,8 @@ export class UserServiceProxy {
 
     protected processGetUserForEdit(response: HttpResponseBase): Observable<GetUserForEditOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9199,20 +9147,20 @@ export class UserServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     getUserPermissionsForEdit(id: number | null | undefined): Observable<GetUserPermissionsForEditOutput> {
         let url_ = this.baseUrl + "/api/services/app/User/GetUserPermissionsForEdit?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -9233,8 +9181,8 @@ export class UserServiceProxy {
 
     protected processGetUserPermissionsForEdit(response: HttpResponseBase): Observable<GetUserPermissionsForEditOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9254,7 +9202,7 @@ export class UserServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     resetUserSpecificPermissions(input: EntityDtoOfInt64 | null | undefined): Observable<void> {
@@ -9268,7 +9216,7 @@ export class UserServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -9288,8 +9236,8 @@ export class UserServiceProxy {
 
     protected processResetUserSpecificPermissions(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9306,7 +9254,7 @@ export class UserServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     updateUserPermissions(input: UpdateUserPermissionsInput | null | undefined): Observable<void> {
@@ -9320,7 +9268,7 @@ export class UserServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -9340,8 +9288,8 @@ export class UserServiceProxy {
 
     protected processUpdateUserPermissions(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9358,7 +9306,7 @@ export class UserServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     createOrUpdateUser(input: CreateOrUpdateUserInput | null | undefined): Observable<void> {
@@ -9372,7 +9320,7 @@ export class UserServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -9392,8 +9340,8 @@ export class UserServiceProxy {
 
     protected processCreateOrUpdateUser(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9410,20 +9358,20 @@ export class UserServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @id (optional)
      * @return Success
      */
     deleteUser(id: number | null | undefined): Observable<void> {
         let url_ = this.baseUrl + "/api/services/app/User/DeleteUser?";
         if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -9443,8 +9391,8 @@ export class UserServiceProxy {
 
     protected processDeleteUser(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9461,7 +9409,7 @@ export class UserServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     unlockUser(input: EntityDtoOfInt64 | null | undefined): Observable<void> {
@@ -9475,7 +9423,7 @@ export class UserServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -9495,8 +9443,8 @@ export class UserServiceProxy {
 
     protected processUnlockUser(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9525,7 +9473,7 @@ export class UserLinkServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     linkToUser(input: LinkToUserInput | null | undefined): Observable<void> {
@@ -9539,7 +9487,7 @@ export class UserLinkServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -9559,8 +9507,8 @@ export class UserLinkServiceProxy {
 
     protected processLinkToUser(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9577,26 +9525,26 @@ export class UserLinkServiceProxy {
     }
 
     /**
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
-     * @sorting (optional) 
+     * @maxResultCount (optional)
+     * @skipCount (optional)
+     * @sorting (optional)
      * @return Success
      */
     getLinkedUsers(maxResultCount: number | null | undefined, skipCount: number | null | undefined, sorting: string | null | undefined): Observable<PagedResultDtoOfLinkedUserDto> {
         let url_ = this.baseUrl + "/api/services/app/UserLink/GetLinkedUsers?";
         if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
         if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
         if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -9617,8 +9565,8 @@ export class UserLinkServiceProxy {
 
     protected processGetLinkedUsers(response: HttpResponseBase): Observable<PagedResultDtoOfLinkedUserDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9648,7 +9596,7 @@ export class UserLinkServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -9669,8 +9617,8 @@ export class UserLinkServiceProxy {
 
     protected processGetRecentlyUsedLinkedUsers(response: HttpResponseBase): Observable<ListResultDtoOfLinkedUserDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9690,7 +9638,7 @@ export class UserLinkServiceProxy {
     }
 
     /**
-     * @input (optional) 
+     * @input (optional)
      * @return Success
      */
     unlinkUser(input: UnlinkUserInput | null | undefined): Observable<void> {
@@ -9704,7 +9652,7 @@ export class UserLinkServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             })
         };
 
@@ -9724,8 +9672,8 @@ export class UserLinkServiceProxy {
 
     protected processUnlinkUser(response: HttpResponseBase): Observable<void> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9764,7 +9712,7 @@ export class UserLoginServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -9785,8 +9733,8 @@ export class UserLoginServiceProxy {
 
     protected processGetRecentUserLoginAttempts(response: HttpResponseBase): Observable<ListResultDtoOfUserLoginAttemptDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9828,7 +9776,7 @@ export class WebLogServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -9849,8 +9797,8 @@ export class WebLogServiceProxy {
 
     protected processGetLatestWebLogs(response: HttpResponseBase): Observable<GetLatestWebLogsOutput> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9880,7 +9828,7 @@ export class WebLogServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -9901,8 +9849,8 @@ export class WebLogServiceProxy {
 
     protected processDownloadWebLogs(response: HttpResponseBase): Observable<FileDto> {
         const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
@@ -9950,7 +9898,7 @@ export class IsTenantAvailableInput implements IIsTenantAvailableInput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["tenancyName"] = this.tenancyName;
-        return data; 
+        return data;
     }
 }
 
@@ -9992,7 +9940,7 @@ export class IsTenantAvailableOutput implements IIsTenantAvailableOutput {
         data["state"] = this.state;
         data["tenantId"] = this.tenantId;
         data["serverRootAddress"] = this.serverRootAddress;
-        return data; 
+        return data;
     }
 }
 
@@ -10030,7 +9978,7 @@ export class ResolveTenantIdInput implements IResolveTenantIdInput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["c"] = this.c;
-        return data; 
+        return data;
     }
 }
 
@@ -10081,7 +10029,7 @@ export class RegisterInput implements IRegisterInput {
         data["emailAddress"] = this.emailAddress;
         data["password"] = this.password;
         data["captchaResponse"] = this.captchaResponse;
-        return data; 
+        return data;
     }
 }
 
@@ -10122,7 +10070,7 @@ export class RegisterOutput implements IRegisterOutput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["canLogin"] = this.canLogin;
-        return data; 
+        return data;
     }
 }
 
@@ -10158,7 +10106,7 @@ export class SendPasswordResetCodeInput implements ISendPasswordResetCodeInput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["emailAddress"] = this.emailAddress;
-        return data; 
+        return data;
     }
 }
 
@@ -10209,7 +10157,7 @@ export class ResetPasswordInput implements IResetPasswordInput {
         data["returnUrl"] = this.returnUrl;
         data["singleSignIn"] = this.singleSignIn;
         data["c"] = this.c;
-        return data; 
+        return data;
     }
 }
 
@@ -10253,7 +10201,7 @@ export class ResetPasswordOutput implements IResetPasswordOutput {
         data = typeof data === 'object' ? data : {};
         data["canLogin"] = this.canLogin;
         data["userName"] = this.userName;
-        return data; 
+        return data;
     }
 }
 
@@ -10290,7 +10238,7 @@ export class SendEmailActivationLinkInput implements ISendEmailActivationLinkInp
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["emailAddress"] = this.emailAddress;
-        return data; 
+        return data;
     }
 }
 
@@ -10332,7 +10280,7 @@ export class ActivateEmailInput implements IActivateEmailInput {
         data["userId"] = this.userId;
         data["confirmationCode"] = this.confirmationCode;
         data["c"] = this.c;
-        return data; 
+        return data;
     }
 }
 
@@ -10373,7 +10321,7 @@ export class ImpersonateInput implements IImpersonateInput {
         data = typeof data === 'object' ? data : {};
         data["tenantId"] = this.tenantId;
         data["userId"] = this.userId;
-        return data; 
+        return data;
     }
 }
 
@@ -10413,7 +10361,7 @@ export class ImpersonateOutput implements IImpersonateOutput {
         data = typeof data === 'object' ? data : {};
         data["impersonationToken"] = this.impersonationToken;
         data["tenancyName"] = this.tenancyName;
-        return data; 
+        return data;
     }
 }
 
@@ -10453,7 +10401,7 @@ export class SwitchToLinkedAccountInput implements ISwitchToLinkedAccountInput {
         data = typeof data === 'object' ? data : {};
         data["targetTenantId"] = this.targetTenantId;
         data["targetUserId"] = this.targetUserId;
-        return data; 
+        return data;
     }
 }
 
@@ -10493,7 +10441,7 @@ export class SwitchToLinkedAccountOutput implements ISwitchToLinkedAccountOutput
         data = typeof data === 'object' ? data : {};
         data["switchAccountToken"] = this.switchAccountToken;
         data["tenancyName"] = this.tenancyName;
-        return data; 
+        return data;
     }
 }
 
@@ -10541,7 +10489,7 @@ export class PagedResultDtoOfAuditLogListDto implements IPagedResultDtoOfAuditLo
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -10620,7 +10568,7 @@ export class AuditLogListDto implements IAuditLogListDto {
         data["exception"] = this.exception;
         data["customData"] = this.customData;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -10676,7 +10624,7 @@ export class FileDto implements IFileDto {
         data["fileName"] = this.fileName;
         data["fileType"] = this.fileType;
         data["fileToken"] = this.fileToken;
-        return data; 
+        return data;
     }
 }
 
@@ -10717,7 +10665,7 @@ export class NameValueDto implements INameValueDto {
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
         data["value"] = this.value;
-        return data; 
+        return data;
     }
 }
 
@@ -10765,7 +10713,7 @@ export class PagedResultDtoOfEntityChangeListDto implements IPagedResultDtoOfEnt
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -10823,7 +10771,7 @@ export class EntityChangeListDto implements IEntityChangeListDto {
         data["changeTypeName"] = this.changeTypeName;
         data["entityChangeSetId"] = this.entityChangeSetId;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -10884,7 +10832,7 @@ export class EntityPropertyChangeDto implements IEntityPropertyChangeDto {
         data["propertyTypeFullName"] = this.propertyTypeFullName;
         data["tenantId"] = this.tenantId;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -10934,7 +10882,7 @@ export class ListResultDtoOfCacheDto implements IListResultDtoOfCacheDto {
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -10970,7 +10918,7 @@ export class CacheDto implements ICacheDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
-        return data; 
+        return data;
     }
 }
 
@@ -11006,7 +10954,7 @@ export class EntityDtoOfString implements IEntityDtoOfString {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -11053,7 +11001,7 @@ export class GetUserChatFriendsWithSettingsOutput implements IGetUserChatFriends
             for (let item of this.friends)
                 data["friends"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -11111,7 +11059,7 @@ export class FriendDto implements IFriendDto {
         data["unreadMessageCount"] = this.unreadMessageCount;
         data["isOnline"] = this.isOnline;
         data["state"] = this.state;
-        return data; 
+        return data;
     }
 }
 
@@ -11162,7 +11110,7 @@ export class ListResultDtoOfChatMessageDto implements IListResultDtoOfChatMessag
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -11228,7 +11176,7 @@ export class ChatMessageDto implements IChatMessageDto {
         data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
         data["sharedMessageId"] = this.sharedMessageId;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -11277,7 +11225,7 @@ export class MarkAllUnreadMessagesOfUserAsReadInput implements IMarkAllUnreadMes
         data = typeof data === 'object' ? data : {};
         data["tenantId"] = this.tenantId;
         data["userId"] = this.userId;
-        return data; 
+        return data;
     }
 }
 
@@ -11322,7 +11270,7 @@ export class ListResultDtoOfSubscribableEditionComboboxItemDto implements IListR
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -11367,7 +11315,7 @@ export class SubscribableEditionComboboxItemDto implements ISubscribableEditionC
         data["value"] = this.value;
         data["displayText"] = this.displayText;
         data["isSelected"] = this.isSelected;
-        return data; 
+        return data;
     }
 }
 
@@ -11415,7 +11363,7 @@ export class FindUsersInput implements IFindUsersInput {
         data["maxResultCount"] = this.maxResultCount;
         data["skipCount"] = this.skipCount;
         data["filter"] = this.filter;
-        return data; 
+        return data;
     }
 }
 
@@ -11465,7 +11413,7 @@ export class PagedResultDtoOfNameValueDto implements IPagedResultDtoOfNameValueD
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -11502,7 +11450,7 @@ export class GetDefaultEditionNameOutput implements IGetDefaultEditionNameOutput
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
-        return data; 
+        return data;
     }
 }
 
@@ -11549,7 +11497,7 @@ export class PagedResultDtoOfComputerDto implements IPagedResultDtoOfComputerDto
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -11646,7 +11594,7 @@ export class ComputerDto implements IComputerDto {
         data["osa"] = this.osa;
         data["localIp"] = this.localIp;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -11762,7 +11710,7 @@ export class ComputerInput implements IComputerInput {
         data["osa"] = this.osa;
         data["localIp"] = this.localIp;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -11875,7 +11823,7 @@ export class ComputerForViewDto implements IComputerForViewDto {
         data["os"] = this.os;
         data["osa"] = this.osa;
         data["localIp"] = this.localIp;
-        return data; 
+        return data;
     }
 }
 
@@ -11941,7 +11889,7 @@ export class PagedResultDtoOfCustomerDto implements IPagedResultDtoOfCustomerDto
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -11987,7 +11935,7 @@ export class CustomerDto implements ICustomerDto {
         data["address"] = this.address;
         data["info"] = this.info;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -12035,7 +11983,7 @@ export class CustomerInput implements ICustomerInput {
         data["address"] = this.address;
         data["info"] = this.info;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -12080,7 +12028,7 @@ export class CustomerForViewDto implements ICustomerForViewDto {
         data["name"] = this.name;
         data["address"] = this.address;
         data["info"] = this.info;
-        return data; 
+        return data;
     }
 }
 
@@ -12129,7 +12077,7 @@ export class PagedResultDtoOfDemoModelDto implements IPagedResultDtoOfDemoModelD
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -12175,7 +12123,7 @@ export class DemoModelDto implements IDemoModelDto {
         data["info"] = this.info;
         data["date"] = this.date;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -12223,7 +12171,7 @@ export class DemoModelInput implements IDemoModelInput {
         data["info"] = this.info;
         data["date"] = this.date;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -12268,7 +12216,7 @@ export class DemoModelForViewDto implements IDemoModelForViewDto {
         data["value"] = this.value;
         data["info"] = this.info;
         data["date"] = this.date;
-        return data; 
+        return data;
     }
 }
 
@@ -12306,7 +12254,7 @@ export class DateToStringOutput implements IDateToStringOutput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["dateString"] = this.dateString;
-        return data; 
+        return data;
     }
 }
 
@@ -12345,7 +12293,7 @@ export class NameValueOfString implements INameValueOfString {
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
         data["value"] = this.value;
-        return data; 
+        return data;
     }
 }
 
@@ -12382,7 +12330,7 @@ export class StringOutput implements IStringOutput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["output"] = this.output;
-        return data; 
+        return data;
     }
 }
 
@@ -12426,7 +12374,7 @@ export class ListResultDtoOfEditionListDto implements IListResultDtoOfEditionLis
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -12471,7 +12419,7 @@ export class EditionListDto implements IEditionListDto {
         data["displayName"] = this.displayName;
         data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -12532,7 +12480,7 @@ export class GetEditionEditOutput implements IGetEditionEditOutput {
             for (let item of this.features)
                 data["features"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -12588,7 +12536,7 @@ export class EditionEditDto implements IEditionEditDto {
         data["trialDayCount"] = this.trialDayCount;
         data["waitingDayAfterExpire"] = this.waitingDayAfterExpire;
         data["expiringEditionId"] = this.expiringEditionId;
-        return data; 
+        return data;
     }
 }
 
@@ -12645,7 +12593,7 @@ export class FlatFeatureDto implements IFlatFeatureDto {
         data["description"] = this.description;
         data["defaultValue"] = this.defaultValue;
         data["inputType"] = this.inputType ? this.inputType.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -12707,7 +12655,7 @@ export class FeatureInputTypeDto implements IFeatureInputTypeDto {
         }
         data["validator"] = this.validator ? this.validator.toJSON() : <any>undefined;
         data["itemSource"] = this.itemSource ? this.itemSource.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -12761,7 +12709,7 @@ export class IValueValidator implements IIValueValidator {
                     data["attributes"][key] = this.attributes[key];
             }
         }
-        return data; 
+        return data;
     }
 }
 
@@ -12806,7 +12754,7 @@ export class LocalizableComboboxItemSourceDto implements ILocalizableComboboxIte
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -12845,7 +12793,7 @@ export class LocalizableComboboxItemDto implements ILocalizableComboboxItemDto {
         data = typeof data === 'object' ? data : {};
         data["value"] = this.value;
         data["displayText"] = this.displayText;
-        return data; 
+        return data;
     }
 }
 
@@ -12897,7 +12845,7 @@ export class CreateOrUpdateEditionDto implements ICreateOrUpdateEditionDto {
             for (let item of this.featureValues)
                 data["featureValues"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -12937,7 +12885,7 @@ export class CreateFriendshipRequestInput implements ICreateFriendshipRequestInp
         data = typeof data === 'object' ? data : {};
         data["userId"] = this.userId;
         data["tenantId"] = this.tenantId;
-        return data; 
+        return data;
     }
 }
 
@@ -12977,7 +12925,7 @@ export class CreateFriendshipRequestByUserNameInput implements ICreateFriendship
         data = typeof data === 'object' ? data : {};
         data["tenancyName"] = this.tenancyName;
         data["userName"] = this.userName;
-        return data; 
+        return data;
     }
 }
 
@@ -13017,7 +12965,7 @@ export class BlockUserInput implements IBlockUserInput {
         data = typeof data === 'object' ? data : {};
         data["userId"] = this.userId;
         data["tenantId"] = this.tenantId;
-        return data; 
+        return data;
     }
 }
 
@@ -13057,7 +13005,7 @@ export class UnblockUserInput implements IUnblockUserInput {
         data = typeof data === 'object' ? data : {};
         data["userId"] = this.userId;
         data["tenantId"] = this.tenantId;
-        return data; 
+        return data;
     }
 }
 
@@ -13097,7 +13045,7 @@ export class AcceptFriendshipRequestInput implements IAcceptFriendshipRequestInp
         data = typeof data === 'object' ? data : {};
         data["userId"] = this.userId;
         data["tenantId"] = this.tenantId;
-        return data; 
+        return data;
     }
 }
 
@@ -13208,7 +13156,7 @@ export class HostDashboardData implements IHostDashboardData {
         data["subscriptionEndDateStart"] = this.subscriptionEndDateStart ? this.subscriptionEndDateStart.toISOString() : <any>undefined;
         data["subscriptionEndDateEnd"] = this.subscriptionEndDateEnd ? this.subscriptionEndDateEnd.toISOString() : <any>undefined;
         data["tenantCreationStartDate"] = this.tenantCreationStartDate ? this.tenantCreationStartDate.toISOString() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -13264,7 +13212,7 @@ export class IncomeStastistic implements IIncomeStastistic {
         data["label"] = this.label;
         data["date"] = this.date ? this.date.toISOString() : <any>undefined;
         data["amount"] = this.amount;
-        return data; 
+        return data;
     }
 }
 
@@ -13305,7 +13253,7 @@ export class TenantEdition implements ITenantEdition {
         data = typeof data === 'object' ? data : {};
         data["label"] = this.label;
         data["value"] = this.value;
-        return data; 
+        return data;
     }
 }
 
@@ -13345,7 +13293,7 @@ export class ExpiringTenant implements IExpiringTenant {
         data = typeof data === 'object' ? data : {};
         data["tenantName"] = this.tenantName;
         data["remainingDayCount"] = this.remainingDayCount;
-        return data; 
+        return data;
     }
 }
 
@@ -13388,7 +13336,7 @@ export class RecentTenant implements IRecentTenant {
         data["id"] = this.id;
         data["name"] = this.name;
         data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -13434,7 +13382,7 @@ export class GetIncomeStatisticsDataOutput implements IGetIncomeStatisticsDataOu
             for (let item of this.incomeStatistics)
                 data["incomeStatistics"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -13478,7 +13426,7 @@ export class GetEditionTenantStatisticsOutput implements IGetEditionTenantStatis
             for (let item of this.editionStatistics)
                 data["editionStatistics"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -13536,7 +13484,7 @@ export class HostSettingsEditDto implements IHostSettingsEditDto {
         data["tenantManagement"] = this.tenantManagement ? this.tenantManagement.toJSON() : <any>undefined;
         data["security"] = this.security ? this.security.toJSON() : <any>undefined;
         data["billing"] = this.billing ? this.billing.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -13580,7 +13528,7 @@ export class GeneralSettingsEditDto implements IGeneralSettingsEditDto {
         data = typeof data === 'object' ? data : {};
         data["timezone"] = this.timezone;
         data["timezoneForComparison"] = this.timezoneForComparison;
-        return data; 
+        return data;
     }
 }
 
@@ -13620,7 +13568,7 @@ export class HostUserManagementSettingsEditDto implements IHostUserManagementSet
         data = typeof data === 'object' ? data : {};
         data["isEmailConfirmationRequiredForLogin"] = this.isEmailConfirmationRequiredForLogin;
         data["smsVerificationEnabled"] = this.smsVerificationEnabled;
-        return data; 
+        return data;
     }
 }
 
@@ -13681,7 +13629,7 @@ export class EmailSettingsEditDto implements IEmailSettingsEditDto {
         data["smtpDomain"] = this.smtpDomain;
         data["smtpEnableSsl"] = this.smtpEnableSsl;
         data["smtpUseDefaultCredentials"] = this.smtpUseDefaultCredentials;
-        return data; 
+        return data;
     }
 }
 
@@ -13734,7 +13682,7 @@ export class TenantManagementSettingsEditDto implements ITenantManagementSetting
         data["isNewRegisteredTenantActiveByDefault"] = this.isNewRegisteredTenantActiveByDefault;
         data["useCaptchaOnRegistration"] = this.useCaptchaOnRegistration;
         data["defaultEditionId"] = this.defaultEditionId;
-        return data; 
+        return data;
     }
 }
 
@@ -13785,7 +13733,7 @@ export class SecuritySettingsEditDto implements ISecuritySettingsEditDto {
         data["defaultPasswordComplexity"] = this.defaultPasswordComplexity ? this.defaultPasswordComplexity.toJSON() : <any>undefined;
         data["userLockOut"] = this.userLockOut ? this.userLockOut.toJSON() : <any>undefined;
         data["twoFactorLogin"] = this.twoFactorLogin ? this.twoFactorLogin.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -13828,7 +13776,7 @@ export class HostBillingSettingsEditDto implements IHostBillingSettingsEditDto {
         data = typeof data === 'object' ? data : {};
         data["legalName"] = this.legalName;
         data["address"] = this.address;
-        return data; 
+        return data;
     }
 }
 
@@ -13877,7 +13825,7 @@ export class PasswordComplexitySetting implements IPasswordComplexitySetting {
         data["requireNonAlphanumeric"] = this.requireNonAlphanumeric;
         data["requireUppercase"] = this.requireUppercase;
         data["requiredLength"] = this.requiredLength;
-        return data; 
+        return data;
     }
 }
 
@@ -13923,7 +13871,7 @@ export class UserLockOutSettingsEditDto implements IUserLockOutSettingsEditDto {
         data["isEnabled"] = this.isEnabled;
         data["maxFailedAccessAttemptsBeforeLockout"] = this.maxFailedAccessAttemptsBeforeLockout;
         data["defaultAccountLockoutSeconds"] = this.defaultAccountLockoutSeconds;
-        return data; 
+        return data;
     }
 }
 
@@ -13976,7 +13924,7 @@ export class TwoFactorLoginSettingsEditDto implements ITwoFactorLoginSettingsEdi
         data["isSmsProviderEnabled"] = this.isSmsProviderEnabled;
         data["isRememberBrowserEnabled"] = this.isRememberBrowserEnabled;
         data["isGoogleAuthenticatorEnabled"] = this.isGoogleAuthenticatorEnabled;
-        return data; 
+        return data;
     }
 }
 
@@ -14017,7 +13965,7 @@ export class SendTestEmailInput implements ISendTestEmailInput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["emailAddress"] = this.emailAddress;
-        return data; 
+        return data;
     }
 }
 
@@ -14071,7 +14019,7 @@ export class InstallDto implements IInstallDto {
         data["defaultLanguage"] = this.defaultLanguage;
         data["smtpSettings"] = this.smtpSettings ? this.smtpSettings.toJSON() : <any>undefined;
         data["billInfo"] = this.billInfo ? this.billInfo.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -14127,7 +14075,7 @@ export class AppSettingsJsonDto implements IAppSettingsJsonDto {
             for (let item of this.languages)
                 data["languages"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -14168,7 +14116,7 @@ export class NameValue implements INameValue {
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
         data["value"] = this.value;
-        return data; 
+        return data;
     }
 }
 
@@ -14205,7 +14153,7 @@ export class CheckDatabaseOutput implements ICheckDatabaseOutput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["isDatabaseExist"] = this.isDatabaseExist;
-        return data; 
+        return data;
     }
 }
 
@@ -14281,7 +14229,7 @@ export class InvoiceDto implements IInvoiceDto {
             for (let item of this.hostAddress)
                 data["hostAddress"].push(item);
         }
-        return data; 
+        return data;
     }
 }
 
@@ -14325,7 +14273,7 @@ export class CreateInvoiceDto implements ICreateInvoiceDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["subscriptionPaymentId"] = this.subscriptionPaymentId;
-        return data; 
+        return data;
     }
 }
 
@@ -14372,7 +14320,7 @@ export class GetLanguagesOutput implements IGetLanguagesOutput {
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -14445,7 +14393,7 @@ export class ApplicationLanguageListDto implements IApplicationLanguageListDto {
         data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
         data["creatorUserId"] = this.creatorUserId;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -14515,7 +14463,7 @@ export class GetLanguageForEditOutput implements IGetLanguageForEditOutput {
             for (let item of this.flags)
                 data["flags"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -14562,7 +14510,7 @@ export class ApplicationLanguageEditDto implements IApplicationLanguageEditDto {
         data["name"] = this.name;
         data["icon"] = this.icon;
         data["isEnabled"] = this.isEnabled;
-        return data; 
+        return data;
     }
 }
 
@@ -14607,7 +14555,7 @@ export class ComboboxItemDto implements IComboboxItemDto {
         data["value"] = this.value;
         data["displayText"] = this.displayText;
         data["isSelected"] = this.isSelected;
-        return data; 
+        return data;
     }
 }
 
@@ -14648,7 +14596,7 @@ export class CreateOrUpdateLanguageInput implements ICreateOrUpdateLanguageInput
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["language"] = this.language ? this.language.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -14684,7 +14632,7 @@ export class SetDefaultLanguageInput implements ISetDefaultLanguageInput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
-        return data; 
+        return data;
     }
 }
 
@@ -14731,7 +14679,7 @@ export class PagedResultDtoOfLanguageTextListDto implements IPagedResultDtoOfLan
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -14774,7 +14722,7 @@ export class LanguageTextListDto implements ILanguageTextListDto {
         data["key"] = this.key;
         data["baseValue"] = this.baseValue;
         data["targetValue"] = this.targetValue;
-        return data; 
+        return data;
     }
 }
 
@@ -14821,7 +14769,7 @@ export class UpdateLanguageTextInput implements IUpdateLanguageTextInput {
         data["sourceName"] = this.sourceName;
         data["key"] = this.key;
         data["value"] = this.value;
-        return data; 
+        return data;
     }
 }
 
@@ -14868,7 +14816,7 @@ export class ListResultDtoOfMenuClientDto implements IListResultDtoOfMenuClientD
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -14937,7 +14885,7 @@ export class MenuClientDto implements IMenuClientDto {
         data["metaDescription"] = this.metaDescription;
         data["status"] = this.status;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -14995,7 +14943,7 @@ export class PagedResultDtoOfMenuClientListDto implements IPagedResultDtoOfMenuC
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -15071,7 +15019,7 @@ export class MenuClientListDto implements IMenuClientListDto {
         data["updatedDate"] = this.updatedDate ? this.updatedDate.toISOString() : <any>undefined;
         data["updatedBy"] = this.updatedBy;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -15131,7 +15079,7 @@ export class GetMenuClientOutput implements IGetMenuClientOutput {
             for (let item of this.menuClients)
                 data["menuClients"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -15201,7 +15149,7 @@ export class CreateMenuClientInput implements ICreateMenuClientInput {
         data["metaKeyword"] = this.metaKeyword;
         data["metaDescription"] = this.metaDescription;
         data["status"] = this.status;
-        return data; 
+        return data;
     }
 }
 
@@ -15281,7 +15229,7 @@ export class UpdateMenuClientInput implements IUpdateMenuClientInput {
         data["metaKeyword"] = this.metaKeyword;
         data["metaDescription"] = this.metaDescription;
         data["status"] = this.status;
-        return data; 
+        return data;
     }
 }
 
@@ -15342,7 +15290,7 @@ export class GetNotificationsOutput implements IGetNotificationsOutput {
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -15392,7 +15340,7 @@ export class UserNotification implements IUserNotification {
         data["state"] = this.state;
         data["notification"] = this.notification ? this.notification.toJSON() : <any>undefined;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -15468,7 +15416,7 @@ export class TenantNotification implements ITenantNotification {
         data["severity"] = this.severity;
         data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -15527,7 +15475,7 @@ export class NotificationData implements INotificationData {
                     data["properties"][key] = this.properties[key];
             }
         }
-        return data; 
+        return data;
     }
 }
 
@@ -15564,7 +15512,7 @@ export class EntityDtoOfGuid implements IEntityDtoOfGuid {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -15611,7 +15559,7 @@ export class GetNotificationSettingsOutput implements IGetNotificationSettingsOu
             for (let item of this.notifications)
                 data["notifications"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -15657,7 +15605,7 @@ export class NotificationSubscriptionWithDisplayNameDto implements INotification
         data["description"] = this.description;
         data["name"] = this.name;
         data["isSubscribed"] = this.isSubscribed;
-        return data; 
+        return data;
     }
 }
 
@@ -15707,7 +15655,7 @@ export class UpdateNotificationSettingsInput implements IUpdateNotificationSetti
             for (let item of this.notifications)
                 data["notifications"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -15747,7 +15695,7 @@ export class NotificationSubscriptionDto implements INotificationSubscriptionDto
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
         data["isSubscribed"] = this.isSubscribed;
-        return data; 
+        return data;
     }
 }
 
@@ -15792,7 +15740,7 @@ export class ListResultDtoOfOrganizationUnitDto implements IListResultDtoOfOrgan
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -15852,7 +15800,7 @@ export class OrganizationUnitDto implements IOrganizationUnitDto {
         data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
         data["creatorUserId"] = this.creatorUserId;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -15907,7 +15855,7 @@ export class PagedResultDtoOfOrganizationUnitUserListDto implements IPagedResult
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -15962,7 +15910,7 @@ export class OrganizationUnitUserListDto implements IOrganizationUnitUserListDto
         data["profilePictureId"] = this.profilePictureId;
         data["addedTime"] = this.addedTime ? this.addedTime.toISOString() : <any>undefined;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -16007,7 +15955,7 @@ export class CreateOrganizationUnitInput implements ICreateOrganizationUnitInput
         data = typeof data === 'object' ? data : {};
         data["parentId"] = this.parentId;
         data["displayName"] = this.displayName;
-        return data; 
+        return data;
     }
 }
 
@@ -16047,7 +15995,7 @@ export class UpdateOrganizationUnitInput implements IUpdateOrganizationUnitInput
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["displayName"] = this.displayName;
-        return data; 
+        return data;
     }
 }
 
@@ -16087,7 +16035,7 @@ export class MoveOrganizationUnitInput implements IMoveOrganizationUnitInput {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["newParentId"] = this.newParentId;
-        return data; 
+        return data;
     }
 }
 
@@ -16135,7 +16083,7 @@ export class UsersToOrganizationUnitInput implements IUsersToOrganizationUnitInp
                 data["userIds"].push(item);
         }
         data["organizationUnitId"] = this.organizationUnitId;
-        return data; 
+        return data;
     }
 }
 
@@ -16181,7 +16129,7 @@ export class FindOrganizationUnitUsersInput implements IFindOrganizationUnitUser
         data["maxResultCount"] = this.maxResultCount;
         data["skipCount"] = this.skipCount;
         data["filter"] = this.filter;
-        return data; 
+        return data;
     }
 }
 
@@ -16223,7 +16171,7 @@ export class PaymentInfoDto implements IPaymentInfoDto {
         data = typeof data === 'object' ? data : {};
         data["edition"] = this.edition ? this.edition.toJSON() : <any>undefined;
         data["additionalPrice"] = this.additionalPrice;
-        return data; 
+        return data;
     }
 }
 
@@ -16287,7 +16235,7 @@ export class EditionSelectDto implements IEditionSelectDto {
         data["waitingDayAfterExpire"] = this.waitingDayAfterExpire;
         data["isFree"] = this.isFree;
         data["additionalData"] = this.additionalData ? this.additionalData.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -16341,7 +16289,7 @@ export class CreatePaymentDto implements ICreatePaymentDto {
         data["editionPaymentType"] = this.editionPaymentType;
         data["paymentPeriodType"] = this.paymentPeriodType;
         data["subscriptionPaymentGatewayType"] = this.subscriptionPaymentGatewayType;
-        return data; 
+        return data;
     }
 }
 
@@ -16404,7 +16352,7 @@ export class ExecutePaymentDto implements IExecutePaymentDto {
                     data["additionalData"][key] = this.additionalData[key];
             }
         }
-        return data; 
+        return data;
     }
 }
 
@@ -16455,7 +16403,7 @@ export class PagedResultDtoOfSubscriptionPaymentListDto implements IPagedResultD
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -16537,7 +16485,7 @@ export class SubscriptionPaymentListDto implements ISubscriptionPaymentListDto {
         data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
         data["creatorUserId"] = this.creatorUserId;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -16596,7 +16544,7 @@ export class ListResultDtoOfFlatPermissionWithLevelDto implements IListResultDto
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -16647,7 +16595,7 @@ export class FlatPermissionWithLevelDto implements IFlatPermissionWithLevelDto {
         data["displayName"] = this.displayName;
         data["description"] = this.description;
         data["isGrantedByDefault"] = this.isGrantedByDefault;
-        return data; 
+        return data;
     }
 }
 
@@ -16712,7 +16660,7 @@ export class CurrentUserProfileEditDto implements ICurrentUserProfileEditDto {
         data["timezone"] = this.timezone;
         data["qrCodeSetupImageUrl"] = this.qrCodeSetupImageUrl;
         data["isGoogleAuthenticatorEnabled"] = this.isGoogleAuthenticatorEnabled;
-        return data; 
+        return data;
     }
 }
 
@@ -16756,7 +16704,7 @@ export class UpdateGoogleAuthenticatorKeyOutput implements IUpdateGoogleAuthenti
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["qrCodeSetupImageUrl"] = this.qrCodeSetupImageUrl;
-        return data; 
+        return data;
     }
 }
 
@@ -16792,7 +16740,7 @@ export class VerifySmsCodeInputDto implements IVerifySmsCodeInputDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
-        return data; 
+        return data;
     }
 }
 
@@ -16831,7 +16779,7 @@ export class ChangePasswordInput implements IChangePasswordInput {
         data = typeof data === 'object' ? data : {};
         data["currentPassword"] = this.currentPassword;
         data["newPassword"] = this.newPassword;
-        return data; 
+        return data;
     }
 }
 
@@ -16880,7 +16828,7 @@ export class UpdateProfilePictureInput implements IUpdateProfilePictureInput {
         data["y"] = this.y;
         data["width"] = this.width;
         data["height"] = this.height;
-        return data; 
+        return data;
     }
 }
 
@@ -16920,7 +16868,7 @@ export class GetPasswordComplexitySettingOutput implements IGetPasswordComplexit
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["setting"] = this.setting ? this.setting.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -16956,7 +16904,7 @@ export class GetProfilePictureOutput implements IGetProfilePictureOutput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["profilePicture"] = this.profilePicture;
-        return data; 
+        return data;
     }
 }
 
@@ -16992,7 +16940,7 @@ export class ChangeUserLanguageDto implements IChangeUserLanguageDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["languageName"] = this.languageName;
-        return data; 
+        return data;
     }
 }
 
@@ -17036,7 +16984,7 @@ export class ListResultDtoOfRoleListDto implements IListResultDtoOfRoleListDto {
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -17087,7 +17035,7 @@ export class RoleListDto implements IRoleListDto {
         data["isDefault"] = this.isDefault;
         data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -17150,7 +17098,7 @@ export class GetRoleForEditOutput implements IGetRoleForEditOutput {
             for (let item of this.grantedPermissionNames)
                 data["grantedPermissionNames"].push(item);
         }
-        return data; 
+        return data;
     }
 }
 
@@ -17194,7 +17142,7 @@ export class RoleEditDto implements IRoleEditDto {
         data["id"] = this.id;
         data["displayName"] = this.displayName;
         data["isDefault"] = this.isDefault;
-        return data; 
+        return data;
     }
 }
 
@@ -17244,7 +17192,7 @@ export class FlatPermissionDto implements IFlatPermissionDto {
         data["displayName"] = this.displayName;
         data["description"] = this.description;
         data["isGrantedByDefault"] = this.isGrantedByDefault;
-        return data; 
+        return data;
     }
 }
 
@@ -17299,7 +17247,7 @@ export class CreateOrUpdateRoleInput implements ICreateOrUpdateRoleInput {
             for (let item of this.grantedPermissionNames)
                 data["grantedPermissionNames"].push(item);
         }
-        return data; 
+        return data;
     }
 }
 
@@ -17342,7 +17290,7 @@ export class GetCurrentLoginInformationsOutput implements IGetCurrentLoginInform
         data["user"] = this.user ? this.user.toJSON() : <any>undefined;
         data["tenant"] = this.tenant ? this.tenant.toJSON() : <any>undefined;
         data["application"] = this.application ? this.application.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -17395,7 +17343,7 @@ export class UserLoginInfoDto implements IUserLoginInfoDto {
         data["emailAddress"] = this.emailAddress;
         data["profilePictureId"] = this.profilePictureId;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -17472,7 +17420,7 @@ export class TenantLoginInfoDto implements ITenantLoginInfoDto {
         data["subscriptionDateString"] = this.subscriptionDateString;
         data["creationTimeString"] = this.creationTimeString;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -17538,7 +17486,7 @@ export class ApplicationInfoDto implements IApplicationInfoDto {
                     data["features"][key] = this.features[key];
             }
         }
-        return data; 
+        return data;
     }
 }
 
@@ -17594,7 +17542,7 @@ export class EditionInfoDto implements IEditionInfoDto {
         data["isHighestEdition"] = this.isHighestEdition;
         data["isFree"] = this.isFree;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -17642,7 +17590,7 @@ export class UpdateUserSignInTokenOutput implements IUpdateUserSignInTokenOutput
         data["signInToken"] = this.signInToken;
         data["encodedUserId"] = this.encodedUserId;
         data["encodedTenantId"] = this.encodedTenantId;
-        return data; 
+        return data;
     }
 }
 
@@ -17691,7 +17639,7 @@ export class PagedResultDtoOfTenantListDto implements IPagedResultDtoOfTenantLis
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -17755,7 +17703,7 @@ export class TenantListDto implements ITenantListDto {
         data["editionId"] = this.editionId;
         data["isInTrialPeriod"] = this.isInTrialPeriod;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -17830,7 +17778,7 @@ export class CreateTenantInput implements ICreateTenantInput {
         data["isActive"] = this.isActive;
         data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc.toISOString() : <any>undefined;
         data["isInTrialPeriod"] = this.isInTrialPeriod;
-        return data; 
+        return data;
     }
 }
 
@@ -17897,7 +17845,7 @@ export class TenantEditDto implements ITenantEditDto {
         data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc.toISOString() : <any>undefined;
         data["isInTrialPeriod"] = this.isInTrialPeriod;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -17959,7 +17907,7 @@ export class GetTenantFeaturesEditOutput implements IGetTenantFeaturesEditOutput
             for (let item of this.features)
                 data["features"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -18010,7 +17958,7 @@ export class UpdateTenantFeaturesInput implements IUpdateTenantFeaturesInput {
             for (let item of this.featureValues)
                 data["featureValues"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -18047,7 +17995,7 @@ export class EntityDto implements IEntityDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -18091,7 +18039,7 @@ export class GetMemberActivityOutput implements IGetMemberActivityOutput {
             for (let item of this.memberActivities)
                 data["memberActivities"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -18139,7 +18087,7 @@ export class MemberActivity implements IMemberActivity {
         data["cases"] = this.cases;
         data["closed"] = this.closed;
         data["rate"] = this.rate;
-        return data; 
+        return data;
     }
 }
 
@@ -18242,7 +18190,7 @@ export class GetDashboardDataOutput implements IGetDashboardDataOutput {
             for (let item of this.profitShares)
                 data["profitShares"].push(item);
         }
-        return data; 
+        return data;
     }
 }
 
@@ -18297,7 +18245,7 @@ export class SalesSummaryData implements ISalesSummaryData {
         data["period"] = this.period;
         data["sales"] = this.sales;
         data["profit"] = this.profit;
-        return data; 
+        return data;
     }
 }
 
@@ -18343,7 +18291,7 @@ export class GetSalesSummaryOutput implements IGetSalesSummaryOutput {
             for (let item of this.salesSummary)
                 data["salesSummary"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -18387,7 +18335,7 @@ export class GetRegionalStatsOutput implements IGetRegionalStatsOutput {
             for (let item of this.stats)
                 data["stats"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -18443,7 +18391,7 @@ export class RegionalStatCountry implements IRegionalStatCountry {
         }
         data["averagePrice"] = this.averagePrice;
         data["totalPrice"] = this.totalPrice;
-        return data; 
+        return data;
     }
 }
 
@@ -18489,7 +18437,7 @@ export class GetGeneralStatsOutput implements IGetGeneralStatsOutput {
         data["transactionPercent"] = this.transactionPercent;
         data["newVisitPercent"] = this.newVisitPercent;
         data["bouncePercent"] = this.bouncePercent;
-        return data; 
+        return data;
     }
 }
 
@@ -18551,7 +18499,7 @@ export class RegisterTenantInput implements IRegisterTenantInput {
         data["gateway"] = this.gateway;
         data["editionId"] = this.editionId;
         data["paymentId"] = this.paymentId;
-        return data; 
+        return data;
     }
 }
 
@@ -18616,7 +18564,7 @@ export class RegisterTenantOutput implements IRegisterTenantOutput {
         data["isTenantActive"] = this.isTenantActive;
         data["isActive"] = this.isActive;
         data["isEmailConfirmationRequired"] = this.isEmailConfirmationRequired;
-        return data; 
+        return data;
     }
 }
 
@@ -18681,7 +18629,7 @@ export class EditionsSelectOutput implements IEditionsSelectOutput {
                 data["editionsWithFeatures"].push(item.toJSON());
         }
         data["tenantEditionId"] = this.tenantEditionId;
-        return data; 
+        return data;
     }
 }
 
@@ -18737,7 +18685,7 @@ export class FlatFeatureSelectDto implements IFlatFeatureSelectDto {
         data["defaultValue"] = this.defaultValue;
         data["inputType"] = this.inputType ? this.inputType.toJSON() : <any>undefined;
         data["textHtmlColor"] = this.textHtmlColor;
-        return data; 
+        return data;
     }
 }
 
@@ -18790,7 +18738,7 @@ export class EditionWithFeaturesDto implements IEditionWithFeaturesDto {
             for (let item of this.featureValues)
                 data["featureValues"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -18845,7 +18793,7 @@ export class IInputType implements IIInputType {
             }
         }
         data["validator"] = this.validator ? this.validator.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -18902,7 +18850,7 @@ export class TenantSettingsEditDto implements ITenantSettingsEditDto {
         data["ldap"] = this.ldap ? this.ldap.toJSON() : <any>undefined;
         data["security"] = this.security ? this.security.toJSON() : <any>undefined;
         data["billing"] = this.billing ? this.billing.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -18952,7 +18900,7 @@ export class TenantUserManagementSettingsEditDto implements ITenantUserManagemen
         data["isNewRegisteredUserActiveByDefault"] = this.isNewRegisteredUserActiveByDefault;
         data["isEmailConfirmationRequiredForLogin"] = this.isEmailConfirmationRequiredForLogin;
         data["useCaptchaOnRegistration"] = this.useCaptchaOnRegistration;
-        return data; 
+        return data;
     }
 }
 
@@ -19003,7 +18951,7 @@ export class LdapSettingsEditDto implements ILdapSettingsEditDto {
         data["domain"] = this.domain;
         data["userName"] = this.userName;
         data["password"] = this.password;
-        return data; 
+        return data;
     }
 }
 
@@ -19049,7 +18997,7 @@ export class TenantBillingSettingsEditDto implements ITenantBillingSettingsEditD
         data["legalName"] = this.legalName;
         data["address"] = this.address;
         data["taxVatNo"] = this.taxVatNo;
-        return data; 
+        return data;
     }
 }
 
@@ -19095,7 +19043,7 @@ export class ListResultDtoOfNameValueDto implements IListResultDtoOfNameValueDto
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -19149,7 +19097,7 @@ export class AuthenticateModel implements IAuthenticateModel {
         data["twoFactorRememberClientToken"] = this.twoFactorRememberClientToken;
         data["singleSignIn"] = this.singleSignIn;
         data["returnUrl"] = this.returnUrl;
-        return data; 
+        return data;
     }
 }
 
@@ -19226,7 +19174,7 @@ export class AuthenticateResultModel implements IAuthenticateResultModel {
         }
         data["twoFactorRememberClientToken"] = this.twoFactorRememberClientToken;
         data["returnUrl"] = this.returnUrl;
-        return data; 
+        return data;
     }
 }
 
@@ -19274,7 +19222,7 @@ export class SendTwoFactorAuthCodeModel implements ISendTwoFactorAuthCodeModel {
         data = typeof data === 'object' ? data : {};
         data["userId"] = this.userId;
         data["provider"] = this.provider;
-        return data; 
+        return data;
     }
 }
 
@@ -19317,7 +19265,7 @@ export class ImpersonatedAuthenticateResultModel implements IImpersonatedAuthent
         data["accessToken"] = this.accessToken;
         data["encryptedAccessToken"] = this.encryptedAccessToken;
         data["expireInSeconds"] = this.expireInSeconds;
-        return data; 
+        return data;
     }
 }
 
@@ -19361,7 +19309,7 @@ export class SwitchedAccountAuthenticateResultModel implements ISwitchedAccountA
         data["accessToken"] = this.accessToken;
         data["encryptedAccessToken"] = this.encryptedAccessToken;
         data["expireInSeconds"] = this.expireInSeconds;
-        return data; 
+        return data;
     }
 }
 
@@ -19402,7 +19350,7 @@ export class ExternalLoginProviderInfoModel implements IExternalLoginProviderInf
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
         data["clientId"] = this.clientId;
-        return data; 
+        return data;
     }
 }
 
@@ -19451,7 +19399,7 @@ export class ExternalAuthenticateModel implements IExternalAuthenticateModel {
         data["providerAccessCode"] = this.providerAccessCode;
         data["returnUrl"] = this.returnUrl;
         data["singleSignIn"] = this.singleSignIn;
-        return data; 
+        return data;
     }
 }
 
@@ -19503,7 +19451,7 @@ export class ExternalAuthenticateResultModel implements IExternalAuthenticateRes
         data["expireInSeconds"] = this.expireInSeconds;
         data["waitingForActivation"] = this.waitingForActivation;
         data["returnUrl"] = this.returnUrl;
-        return data; 
+        return data;
     }
 }
 
@@ -19552,7 +19500,7 @@ export class UiCustomizationSettingsEditDto implements IUiCustomizationSettingsE
         data["header"] = this.header ? this.header.toJSON() : <any>undefined;
         data["menu"] = this.menu ? this.menu.toJSON() : <any>undefined;
         data["footer"] = this.footer ? this.footer.toJSON() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -19597,7 +19545,7 @@ export class UiCustomizationLayoutSettingsEditDto implements IUiCustomizationLay
         data["layoutType"] = this.layoutType;
         data["contentSkin"] = this.contentSkin;
         data["theme"] = this.theme;
-        return data; 
+        return data;
     }
 }
 
@@ -19647,7 +19595,7 @@ export class UiCustomizationHeaderSettingsEditDto implements IUiCustomizationHea
         data["mobileFixedHeader"] = this.mobileFixedHeader;
         data["headerSkin"] = this.headerSkin;
         data["displaySubmenuArrowDesktop"] = this.displaySubmenuArrowDesktop;
-        return data; 
+        return data;
     }
 }
 
@@ -19714,7 +19662,7 @@ export class UiCustomizationMenuSettingsEditDto implements IUiCustomizationMenuS
         data["submenuToggle"] = this.submenuToggle;
         data["dropdownSubmenuSkin"] = this.dropdownSubmenuSkin;
         data["dropdownSubmenuArrow"] = this.dropdownSubmenuArrow;
-        return data; 
+        return data;
     }
 }
 
@@ -19759,7 +19707,7 @@ export class UiCustomizationFooterSettingsEditDto implements IUiCustomizationFoo
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["fixedFooter"] = this.fixedFooter;
-        return data; 
+        return data;
     }
 }
 
@@ -19806,7 +19754,7 @@ export class PagedResultDtoOfUserListDto implements IPagedResultDtoOfUserListDto
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -19884,7 +19832,7 @@ export class UserListDto implements IUserListDto {
         data["isActive"] = this.isActive;
         data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -19934,7 +19882,7 @@ export class UserListRoleDto implements IUserListRoleDto {
         data = typeof data === 'object' ? data : {};
         data["roleId"] = this.roleId;
         data["roleName"] = this.roleName;
-        return data; 
+        return data;
     }
 }
 
@@ -20007,7 +19955,7 @@ export class GetUserForEditOutput implements IGetUserForEditOutput {
             for (let item of this.memberedOrganizationUnits)
                 data["memberedOrganizationUnits"].push(item);
         }
-        return data; 
+        return data;
     }
 }
 
@@ -20077,7 +20025,7 @@ export class UserEditDto implements IUserEditDto {
         data["shouldChangePasswordOnNextLogin"] = this.shouldChangePasswordOnNextLogin;
         data["isTwoFactorEnabled"] = this.isTwoFactorEnabled;
         data["isLockoutEnabled"] = this.isLockoutEnabled;
-        return data; 
+        return data;
     }
 }
 
@@ -20132,7 +20080,7 @@ export class UserRoleDto implements IUserRoleDto {
         data["roleName"] = this.roleName;
         data["roleDisplayName"] = this.roleDisplayName;
         data["isAssigned"] = this.isAssigned;
-        return data; 
+        return data;
     }
 }
 
@@ -20190,7 +20138,7 @@ export class GetUserPermissionsForEditOutput implements IGetUserPermissionsForEd
             for (let item of this.grantedPermissionNames)
                 data["grantedPermissionNames"].push(item);
         }
-        return data; 
+        return data;
     }
 }
 
@@ -20227,7 +20175,7 @@ export class EntityDtoOfInt64 implements IEntityDtoOfInt64 {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -20277,7 +20225,7 @@ export class UpdateUserPermissionsInput implements IUpdateUserPermissionsInput {
             for (let item of this.grantedPermissionNames)
                 data["grantedPermissionNames"].push(item);
         }
-        return data; 
+        return data;
     }
 }
 
@@ -20346,7 +20294,7 @@ export class CreateOrUpdateUserInput implements ICreateOrUpdateUserInput {
             for (let item of this.organizationUnits)
                 data["organizationUnits"].push(item);
         }
-        return data; 
+        return data;
     }
 }
 
@@ -20392,7 +20340,7 @@ export class LinkToUserInput implements ILinkToUserInput {
         data["tenancyName"] = this.tenancyName;
         data["usernameOrEmailAddress"] = this.usernameOrEmailAddress;
         data["password"] = this.password;
-        return data; 
+        return data;
     }
 }
 
@@ -20441,7 +20389,7 @@ export class PagedResultDtoOfLinkedUserDto implements IPagedResultDtoOfLinkedUse
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -20490,7 +20438,7 @@ export class LinkedUserDto implements ILinkedUserDto {
         data["username"] = this.username;
         data["lastLoginTime"] = this.lastLoginTime ? this.lastLoginTime.toISOString() : <any>undefined;
         data["id"] = this.id;
-        return data; 
+        return data;
     }
 }
 
@@ -20538,7 +20486,7 @@ export class ListResultDtoOfLinkedUserDto implements IListResultDtoOfLinkedUserD
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -20577,7 +20525,7 @@ export class UnlinkUserInput implements IUnlinkUserInput {
         data = typeof data === 'object' ? data : {};
         data["tenantId"] = this.tenantId;
         data["userId"] = this.userId;
-        return data; 
+        return data;
     }
 }
 
@@ -20622,7 +20570,7 @@ export class ListResultDtoOfUserLoginAttemptDto implements IListResultDtoOfUserL
             for (let item of this.items)
                 data["items"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -20676,7 +20624,7 @@ export class UserLoginAttemptDto implements IUserLoginAttemptDto {
         data["browserInfo"] = this.browserInfo;
         data["result"] = this.result;
         data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
-        return data; 
+        return data;
     }
 }
 
@@ -20726,7 +20674,7 @@ export class GetLatestWebLogsOutput implements IGetLatestWebLogsOutput {
             for (let item of this.latestWebLogLines)
                 data["latestWebLogLines"].push(item);
         }
-        return data; 
+        return data;
     }
 }
 
@@ -20735,84 +20683,84 @@ export interface IGetLatestWebLogsOutput {
 }
 
 export enum IncomeStatisticsDateInterval {
-    _1 = 1, 
-    _2 = 2, 
-    _3 = 3, 
+    _1 = 1,
+    _2 = 2,
+    _3 = 3,
 }
 
 export enum IncomeStatisticsDateInterval2 {
-    _1 = 1, 
-    _2 = 2, 
-    _3 = 3, 
+    _1 = 1,
+    _2 = 2,
+    _3 = 3,
 }
 
 export enum State {
-    _0 = 0, 
-    _1 = 1, 
+    _0 = 0,
+    _1 = 1,
 }
 
 export enum SalesSummaryDatePeriod {
-    _1 = 1, 
-    _2 = 2, 
-    _3 = 3, 
+    _1 = 1,
+    _2 = 2,
+    _3 = 3,
 }
 
 export enum SalesSummaryDatePeriod2 {
-    _1 = 1, 
-    _2 = 2, 
-    _3 = 3, 
+    _1 = 1,
+    _2 = 2,
+    _3 = 3,
 }
 
 export enum DefaultTimezoneScope {
-    _1 = 1, 
-    _2 = 2, 
-    _4 = 4, 
-    _7 = 7, 
+    _1 = 1,
+    _2 = 2,
+    _4 = 4,
+    _7 = 7,
 }
 
 export enum IsTenantAvailableOutputState {
-    _1 = 1, 
-    _2 = 2, 
-    _3 = 3, 
+    _1 = 1,
+    _2 = 2,
+    _3 = 3,
 }
 
 export enum EntityChangeListDtoChangeType {
-    _0 = 0, 
-    _1 = 1, 
-    _2 = 2, 
+    _0 = 0,
+    _1 = 1,
+    _2 = 2,
 }
 
 export enum FriendDtoState {
-    _1 = 1, 
-    _2 = 2, 
+    _1 = 1,
+    _2 = 2,
 }
 
 export enum ChatMessageDtoSide {
-    _1 = 1, 
-    _2 = 2, 
+    _1 = 1,
+    _2 = 2,
 }
 
 export enum ChatMessageDtoReadState {
-    _1 = 1, 
-    _2 = 2, 
+    _1 = 1,
+    _2 = 2,
 }
 
 export enum ChatMessageDtoReceiverReadState {
-    _1 = 1, 
-    _2 = 2, 
+    _1 = 1,
+    _2 = 2,
 }
 
 export enum UserNotificationState {
-    _0 = 0, 
-    _1 = 1, 
+    _0 = 0,
+    _1 = 1,
 }
 
 export enum TenantNotificationSeverity {
-    _0 = 0, 
-    _1 = 1, 
-    _2 = 2, 
-    _3 = 3, 
-    _4 = 4, 
+    _0 = 0,
+    _1 = 1,
+    _2 = 2,
+    _3 = 3,
+    _4 = 4,
 }
 
 export class AdditionalData implements IAdditionalData {
@@ -20855,7 +20803,7 @@ export class AdditionalData implements IAdditionalData {
                     data["Paypal"][key] = this.paypal[key];
             }
         }
-        return data; 
+        return data;
     }
 }
 
@@ -20864,58 +20812,58 @@ export interface IAdditionalData {
 }
 
 export enum CreatePaymentDtoEditionPaymentType {
-    _0 = 0, 
-    _1 = 1, 
-    _2 = 2, 
-    _3 = 3, 
+    _0 = 0,
+    _1 = 1,
+    _2 = 2,
+    _3 = 3,
 }
 
 export enum CreatePaymentDtoPaymentPeriodType {
-    _30 = 30, 
-    _365 = 365, 
+    _30 = 30,
+    _365 = 365,
 }
 
 export enum CreatePaymentDtoSubscriptionPaymentGatewayType {
-    _1 = 1, 
+    _1 = 1,
 }
 
 export enum ExecutePaymentDtoGateway {
-    _1 = 1, 
+    _1 = 1,
 }
 
 export enum ExecutePaymentDtoEditionPaymentType {
-    _0 = 0, 
-    _1 = 1, 
-    _2 = 2, 
-    _3 = 3, 
+    _0 = 0,
+    _1 = 1,
+    _2 = 2,
+    _3 = 3,
 }
 
 export enum ExecutePaymentDtoPaymentPeriodType {
-    _30 = 30, 
-    _365 = 365, 
+    _30 = 30,
+    _365 = 365,
 }
 
 export enum TenantLoginInfoDtoPaymentPeriodType {
-    _30 = 30, 
-    _365 = 365, 
+    _30 = 30,
+    _365 = 365,
 }
 
 export enum RegisterTenantInputSubscriptionStartType {
-    _1 = 1, 
-    _2 = 2, 
-    _3 = 3, 
+    _1 = 1,
+    _2 = 2,
+    _3 = 3,
 }
 
 export enum RegisterTenantInputGateway {
-    _1 = 1, 
+    _1 = 1,
 }
 
 export class SwaggerException extends Error {
     message: string;
-    status: number; 
-    response: string; 
+    status: number;
+    response: string;
     headers: { [key: string]: any; };
-    result: any; 
+    result: any;
 
     constructor(message: string, status: number, response: string, headers: { [key: string]: any; }, result: any) {
         super();
@@ -20947,12 +20895,12 @@ function blobToText(blob: any): Observable<string> {
             observer.next("");
             observer.complete();
         } else {
-            let reader = new FileReader(); 
-            reader.onload = function() { 
+            let reader = new FileReader();
+            reader.onload = function() {
                 observer.next(this.result);
                 observer.complete();
             }
-            reader.readAsText(blob); 
+            reader.readAsText(blob);
         }
     });
 }

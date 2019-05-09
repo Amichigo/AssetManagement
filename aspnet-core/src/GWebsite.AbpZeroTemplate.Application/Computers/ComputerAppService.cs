@@ -25,7 +25,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Computer
         }
         #region Public Method
         public void CreateOrEditComputer(ComputerInput computerInput)
-        {
+        {          
             if (computerInput.Id == 0)
             {
                 Create(computerInput);
@@ -70,8 +70,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Computer
         public PagedResultDto<ComputerDto> GetComputer(ComputerFilter input)
         {
             var query = computerRespostory.GetAll().Where(x => !x.IsDelete);
-            computerRespostory.Insert(GetCurrentPC());
-            CurrentUnitOfWork.SaveChanges();
+            GWebsite.AbpZeroTemplate.Core.Models.Computer pc = GetCurrentPC();
+            var computerEntity = computerRespostory.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Cpuname == pc.Cpuname);
+            if (computerEntity == null)
+            {
+                computerRespostory.Insert(pc);
+                CurrentUnitOfWork.SaveChanges();
+            }
             // filter by value
             if (input.Name != null)
             {
@@ -198,34 +203,36 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Computer
 
         private GWebsite.AbpZeroTemplate.Core.Models.Computer GetCurrentPC()
         {
-            GWebsite.AbpZeroTemplate.Core.Models.Computer pc = new GWebsite.AbpZeroTemplate.Core.Models.Computer();
-            pc.Domain1 = System.Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties().DomainName;
-            pc.DNSHostName = Dns.GetHostName();
-            pc.Cpuname = DeviceInformation("Win32_Processor", "Name");
-            pc.Manufacturer = DeviceInformation("Win32_ComputerSystem", "Manufacturer");
-            pc.Model = DeviceInformation("Win32_ComputerSystem", "Model");
-            pc.UserName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            pc.Ram1Manufacturer = DeviceInformation2("Win32_PhysicalMemory", "Manufacturer");
-            pc.Ram1PartNumber = DeviceInformation2("Win32_PhysicalMemory", "PartNumber");
-            pc.Ram1Total = DeviceInformation2("Win32_PhysicalMemory", "Capacity");
-            pc.MonitorType = DeviceInformation("Win32_DesktopMonitor", "Caption");
-            pc.HDD1Type = DeviceInformation2("Win32_DiskDrive", "Caption");
+            
+                GWebsite.AbpZeroTemplate.Core.Models.Computer pc = new GWebsite.AbpZeroTemplate.Core.Models.Computer();
+                pc.Domain1 = System.Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties().DomainName;
+                pc.DNSHostName = Dns.GetHostName();
+                pc.Cpuname = DeviceInformation("Win32_Processor", "Name");
+                pc.Manufacturer = DeviceInformation("Win32_ComputerSystem", "Manufacturer");
+                pc.Model = DeviceInformation("Win32_ComputerSystem", "Model");
+                pc.UserName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+                pc.Ram1Manufacturer = DeviceInformation2("Win32_PhysicalMemory", "Manufacturer");
+                pc.Ram1PartNumber = DeviceInformation2("Win32_PhysicalMemory", "PartNumber");
+                pc.Ram1Total = DeviceInformation2("Win32_PhysicalMemory", "Capacity");
+                pc.MonitorType = DeviceInformation("Win32_DesktopMonitor", "Caption");
+                pc.HDD1Type = DeviceInformation2("Win32_DiskDrive", "Caption");
 
-            pc.HDD1Size = DeviceInformation2("Win32_DiskDrive", "Size");
+                pc.HDD1Size = DeviceInformation2("Win32_DiskDrive", "Size");
 
-            pc.OS = DeviceInformation("Win32_OperatingSystem", "Caption");
-            pc.OSA = DeviceInformation("Win32_OperatingSystem", "OSArchitecture");
+                pc.OS = DeviceInformation("Win32_OperatingSystem", "Caption");
+                pc.OSA = DeviceInformation("Win32_OperatingSystem", "OSArchitecture");
 
-            System.Net.IPHostEntry host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
-            foreach (System.Net.IPAddress ip in host.AddressList)
-            {
-                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                System.Net.IPHostEntry host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
+                foreach (System.Net.IPAddress ip in host.AddressList)
                 {
-                    pc.LocalIp = ip.ToString();
-                    break;
+                    if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                    {
+                        pc.LocalIp = ip.ToString();
+                        break;
+                    }
                 }
-            }
-            return pc;
+                return pc;
+            
         }
 
 
