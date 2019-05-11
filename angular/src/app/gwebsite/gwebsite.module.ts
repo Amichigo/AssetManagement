@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, FixedAssetServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, FixedAssetServiceProxy, AssetDashboardServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,6 @@ import { ModalModule, PopoverModule, TabsModule, TooltipModule } from 'ngx-boots
 import { AutoCompleteModule, EditorModule, FileUploadModule as PrimeNgFileUploadModule, InputMaskModule, PaginatorModule } from 'primeng/primeng';
 import { TableModule } from 'primeng/table';
 import { GWebsiteRoutingModule } from './gwebsite-routing.module';
-
 import { MenuClientComponent, CreateOrEditMenuClientModalComponent } from './index';
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CreateOrEditDemoModelModalComponent } from './demo-model/create-or-edit-demo-model-modal.component';
@@ -21,6 +20,8 @@ import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-cu
 import { FixedAssetComponent } from './fixed-asset/fixed-asset.component'
 import { CreateOrEditFixedAssetModalComponent } from './fixed-asset/create-or-edit-fixed-asset-modal.component';
 import { ViewFixedAssetModalComponent } from './fixed-asset/view-fixed-asset-modal.component';
+import { AssetDashboardComponent } from './asset-dashboard/asset-dashboard.component';
+
 import {
     MatAutocompleteModule,
     MatBadgeModule,
@@ -118,11 +119,13 @@ import {
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
         FixedAssetComponent, CreateOrEditFixedAssetModalComponent, ViewFixedAssetModalComponent,
+        AssetDashboardComponent,
     ],
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
         FixedAssetServiceProxy,
+        AssetDashboardServiceProxy,
     ]
 })
 export class GWebsiteModule { }

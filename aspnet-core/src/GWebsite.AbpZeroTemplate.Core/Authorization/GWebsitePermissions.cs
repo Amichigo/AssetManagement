@@ -28,5 +28,7 @@
         public const string Pages_Administration_FixedAsset_Create = "Pages.Administration.FixedAsset.Create";
         public const string Pages_Administration_FixedAsset_Edit = "Pages.Administration.FixedAsset.Edit ";
         public const string Pages_Administration_FixedAsset_Delete = "Pages.Administration.FixedAsset.Delete";
+
+        public const string Pages_Administration_AssetDashboard = "Pages.Administration.AssetDashboard";
     }
 }

@@ -51,6 +51,8 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             fixedAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_FixedAsset_Edit, L("EditingFixedAsset"));
             fixedAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_FixedAsset_Delete, L("DeletingFixedAsset"));
 
+            var assetDashboard = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetDashboard, L("AssetDashboard"));
+
         }
         private static ILocalizableString L(string name)
         {

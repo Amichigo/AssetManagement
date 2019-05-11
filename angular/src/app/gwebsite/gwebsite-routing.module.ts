@@ -4,7 +4,7 @@ import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.compo
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
 import { FixedAssetComponent } from './fixed-asset/fixed-asset.component';
-
+import { AssetDashboardComponent } from './asset-dashboard/asset-dashboard.component';
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -44,6 +44,15 @@ import { FixedAssetComponent } from './fixed-asset/fixed-asset.component';
                     },
                 ]
             },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'asset-dashboard', component: AssetDashboardComponent,
+                        data: { permission: 'Pages.Administration.AssetDashboard' }
+                    },
+                ]
+            }
         ])
     ],
     exports: [
