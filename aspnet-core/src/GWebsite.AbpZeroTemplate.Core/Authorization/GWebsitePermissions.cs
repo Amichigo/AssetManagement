@@ -60,19 +60,24 @@
         public const string Pages_QuanLyBatDongSan_MucDichSuDungDat_Edit = "Pages.QuanLyBatDongSan.MucDichSuDungDat.Edit";
         public const string Pages_QuanLyBatDongSan_MucDichSuDungDat_Delete = "Pages.QuanLyBatDongSan.MucDichSuDungDat.Delete";
 
-        public const string Pages_Administration_LoaiTaiSan = "Pages.QuanLyBatDongSan.LoaiTaiSan";
-        public const string Pages_Administration_LoaiTaiSan_Create = "Pages.QuanLyBatDongSan.LoaiTaiSan.Create";
-        public const string Pages_Administration_LoaiTaiSan_Edit = "Pages.QuanLyBatDongSan.LoaiTaiSan.Edit";
-        public const string Pages_Administration_LoaiTaiSan_Delete = "Pages.QuanLyBatDongSan.LoaiTaiSan.Delete";
+        public const string Pages_QuanLyBatDongSan_LoaiTaiSan = "Pages.QuanLyBatDongSan.LoaiTaiSan";
+        public const string Pages_QuanLyBatDongSan_LoaiTaiSan_Create = "Pages.QuanLyBatDongSan.LoaiTaiSan.Create";
+        public const string Pages_QuanLyBatDongSan_LoaiTaiSan_Edit = "Pages.QuanLyBatDongSan.LoaiTaiSan.Edit";
+        public const string Pages_QuanLyBatDongSan_LoaiTaiSan_Delete = "Pages.QuanLyBatDongSan.LoaiTaiSan.Delete";
 
-        public const string Pages_Administration_NhomTaiSan = "Pages.Administration.NhomTaiSan";
-        public const string Pages_Administration_NhomTaiSan_Create = "Pages.Administration.NhomTaiSan.Create";
-        public const string Pages_Administration_NhomTaiSan_Edit = "Pages.Administration.NhomTaiSan.Edit";
-        public const string Pages_Administration_NhomTaiSan_Delete = "Pages.Administration.NhomTaiSan.Delete";
+        public const string Pages_QuanLyBatDongSan_NhomTaiSan = "Pages.QuanLyBatDongSan.NhomTaiSan";
+        public const string Pages_QuanLyBatDongSan_NhomTaiSan_Create = "Pages.QuanLyBatDongSan.NhomTaiSan.Create";
+        public const string Pages_QuanLyBatDongSan_NhomTaiSan_Edit = "Pages.QuanLyBatDongSan.NhomTaiSan.Edit";
+        public const string Pages_QuanLyBatDongSan_NhomTaiSan_Delete = "Pages.QuanLyBatDongSan.NhomTaiSan.Delete";
 
         public const string Pages_QuanLyBatDongSan_BatDongSan = "Pages.QuanLyBatDongSan.BatDongSan";
         public const string Pages_QuanLyBatDongSan_BatDongSan_Create = "Pages.QuanLyBatDongSan.BatDongSan.Create";
         public const string Pages_QuanLyBatDongSan_BatDongSan_Edit = "Pages.QuanLyBatDongSan.BatDongSan.Edit";
         public const string Pages_QuanLyBatDongSan_BatDongSan_Delete = "Pages.QuanLyBatDongSan.BatDongSan.Delete";
+
+        public const string Pages_QuanLyCongTrinhDoDang_CongTrinhDoDang = "Pages.QuanLyCongTrinhDoDang.CongTrinhDoDang";
+        public const string Pages_QuanLyCongTrinhDoDang_CongTrinhDoDang_Create = "Pages.QuanLyCongTrinhDoDang.CongTrinhDoDang.Create";
+        public const string Pages_QuanLyCongTrinhDoDang_CongTrinhDoDang_Edit = "Pages.QuanLyCongTrinhDoDang.CongTrinhDoDang.Edit";
+        public const string Pages_QuanLyCongTrinhDoDang_CongTrinhDoDang_Delete = "Pages.QuanLyCongTrinhDoDang.CongTrinhDoDang.Delete";
     }
 }

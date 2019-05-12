@@ -12,12 +12,12 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.NhomTaiSans
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
-    public class NhomTaiSanAppService : GWebsiteAppServiceBase, IPropertyGroupAppService
+    [AbpAuthorize(GWebsitePermissions.Pages_QuanLyBatDongSan_NhomTaiSan)]
+    public class CongTrinhDoDangAppService : GWebsiteAppServiceBase, IPropertyGroupAppService
     {
         private readonly IRepository<NhomTaiSan> nhomTaiSanRepository;
 
-        public NhomTaiSanAppService(IRepository<NhomTaiSan> nhomTaiSanRepository)
+        public CongTrinhDoDangAppService(IRepository<NhomTaiSan> nhomTaiSanRepository)
         {
             this.nhomTaiSanRepository = nhomTaiSanRepository;
         }
@@ -98,7 +98,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.NhomTaiSans
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_NhomTaiSan_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_QuanLyBatDongSan_NhomTaiSan_Create)]
         private void Create(NhomTaiSanInput nhomTaiSanInput)
         {
             var nhomTaiSanEntity = ObjectMapper.Map<NhomTaiSan>(nhomTaiSanInput);
@@ -107,7 +107,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.NhomTaiSans
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_NhomTaiSan_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_QuanLyBatDongSan_NhomTaiSan_Edit)]
         private void Update(NhomTaiSanInput nhomTaiSanInput)
         {
             var nhomTaiSanEntity = nhomTaiSanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == nhomTaiSanInput.Id);
