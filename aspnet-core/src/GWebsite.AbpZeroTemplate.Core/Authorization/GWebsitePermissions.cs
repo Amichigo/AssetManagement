@@ -28,5 +28,12 @@
         public const string Pages_Administration_Computer_Create = "Pages.Administration.Computer.Create";
         public const string Pages_Administration_Computer_Edit = "Pages.Administration.Computer.Edit";
         public const string Pages_Administration_Computer_Delete = "Pages.Administration.Computer.Delete";
+
+
+        public const string Pages_Administration_Software = "Pages.Administration.Software";
+        public const string Pages_Administration_Software_Create = "Pages.Administration.Software.Create";
+        public const string Pages_Administration_Software_Edit = "Pages.Administration.Software.Edit";
+        public const string Pages_Administration_Software_Delete = "Pages.Administration.Software.Delete";
+
     }
 }

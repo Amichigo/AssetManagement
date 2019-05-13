@@ -1785,6 +1785,45 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("GPermissions");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Software", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Cpuname");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("DisplayVersion");
+
+                    b.Property<string>("Displayname");
+
+                    b.Property<string>("InstallLocation");
+
+                    b.Property<string>("InstallSource");
+
+                    b.Property<DateTime>("Installdate");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Publisher");
+
+                    b.Property<string>("URLInfoAbout");
+
+                    b.Property<string>("URLUpdateInfo");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Softwares");
+                });
+
             modelBuilder.Entity("GSoft.AbpZeroTemplate.Editions.SubscribableEdition", b =>
                 {
                     b.HasBaseType("Abp.Application.Editions.Edition");

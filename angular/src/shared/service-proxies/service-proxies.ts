@@ -6920,6 +6920,295 @@ export class SessionServiceProxy {
 }
 
 @Injectable()
+export class SoftwareServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @name (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getSoftwaresByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfSoftwareDto> {
+        let url_ = this.baseUrl + "/api/Software/GetSoftwaresByFilter?";
+        if (name !== undefined)
+            url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetSoftwaresByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetSoftwaresByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfSoftwareDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfSoftwareDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetSoftwaresByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfSoftwareDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfSoftwareDto.fromJS(resultData200) : new PagedResultDtoOfSoftwareDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfSoftwareDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getSoftwareForEdit(id: number | null | undefined): Observable<SoftwareInput> {
+        let url_ = this.baseUrl + "/api/Software/GetSoftwareForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetSoftwareForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetSoftwareForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<SoftwareInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SoftwareInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetSoftwareForEdit(response: HttpResponseBase): Observable<SoftwareInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? SoftwareInput.fromJS(resultData200) : new SoftwareInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SoftwareInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditSoftware(input: SoftwareInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/Software/CreateOrEditSoftware";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditSoftware(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditSoftware(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditSoftware(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteSoftware(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/Software/DeleteSoftware/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteSoftware(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteSoftware(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteSoftware(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getSoftwareForView(id: number | null | undefined): Observable<SoftwareForViewDto> {
+        let url_ = this.baseUrl + "/api/Software/GetSoftwareForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetSoftwareForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetSoftwareForView(<any>response_);
+                } catch (e) {
+                    return <Observable<SoftwareForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SoftwareForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetSoftwareForView(response: HttpResponseBase): Observable<SoftwareForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? SoftwareForViewDto.fromJS(resultData200) : new SoftwareForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SoftwareForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class SubscriptionServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -17598,6 +17887,266 @@ export interface IUpdateUserSignInTokenOutput {
     signInToken: string | undefined;
     encodedUserId: string | undefined;
     encodedTenantId: string | undefined;
+}
+
+export class PagedResultDtoOfSoftwareDto implements IPagedResultDtoOfSoftwareDto {
+    totalCount!: number | undefined;
+    items!: SoftwareDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfSoftwareDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(SoftwareDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfSoftwareDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfSoftwareDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfSoftwareDto {
+    totalCount: number | undefined;
+    items: SoftwareDto[] | undefined;
+}
+
+export class SoftwareDto implements ISoftwareDto {
+    cpuname!: string | undefined;
+    displayname!: string | undefined;
+    displayVersion!: string | undefined;
+    publisher!: string | undefined;
+    installdate!: string | undefined;
+    installLocation!: string | undefined;
+    installSource!: string | undefined;
+    urlInfoAbout!: string | undefined;
+    urlUpdateInfo!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: ISoftwareDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.cpuname = data["cpuname"];
+            this.displayname = data["displayname"];
+            this.displayVersion = data["displayVersion"];
+            this.publisher = data["publisher"];
+            this.installdate = data["installdate"];
+            this.installLocation = data["installLocation"];
+            this.installSource = data["installSource"];
+            this.urlInfoAbout = data["urlInfoAbout"];
+            this.urlUpdateInfo = data["urlUpdateInfo"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): SoftwareDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new SoftwareDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["cpuname"] = this.cpuname;
+        data["displayname"] = this.displayname;
+        data["displayVersion"] = this.displayVersion;
+        data["publisher"] = this.publisher;
+        data["installdate"] = this.installdate;
+        data["installLocation"] = this.installLocation;
+        data["installSource"] = this.installSource;
+        data["urlInfoAbout"] = this.urlInfoAbout;
+        data["urlUpdateInfo"] = this.urlUpdateInfo;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface ISoftwareDto {
+    cpuname: string | undefined;
+    displayname: string | undefined;
+    displayVersion: string | undefined;
+    publisher: string | undefined;
+    installdate: string | undefined;
+    installLocation: string | undefined;
+    installSource: string | undefined;
+    urlInfoAbout: string | undefined;
+    urlUpdateInfo: string | undefined;
+    id: number | undefined;
+}
+
+export class SoftwareInput implements ISoftwareInput {
+    cpuname!: string | undefined;
+    displayname!: string | undefined;
+    displayVersion!: string | undefined;
+    publisher!: string | undefined;
+    installdate!: string | undefined;
+    installLocation!: string | undefined;
+    installSource!: string | undefined;
+    urlInfoAbout!: string | undefined;
+    urlUpdateInfo!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: ISoftwareInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.cpuname = data["cpuname"];
+            this.displayname = data["displayname"];
+            this.displayVersion = data["displayVersion"];
+            this.publisher = data["publisher"];
+            this.installdate = data["installdate"];
+            this.installLocation = data["installLocation"];
+            this.installSource = data["installSource"];
+            this.urlInfoAbout = data["urlInfoAbout"];
+            this.urlUpdateInfo = data["urlUpdateInfo"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): SoftwareInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new SoftwareInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["cpuname"] = this.cpuname;
+        data["displayname"] = this.displayname;
+        data["displayVersion"] = this.displayVersion;
+        data["publisher"] = this.publisher;
+        data["installdate"] = this.installdate;
+        data["installLocation"] = this.installLocation;
+        data["installSource"] = this.installSource;
+        data["urlInfoAbout"] = this.urlInfoAbout;
+        data["urlUpdateInfo"] = this.urlUpdateInfo;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface ISoftwareInput {
+    cpuname: string | undefined;
+    displayname: string | undefined;
+    displayVersion: string | undefined;
+    publisher: string | undefined;
+    installdate: string | undefined;
+    installLocation: string | undefined;
+    installSource: string | undefined;
+    urlInfoAbout: string | undefined;
+    urlUpdateInfo: string | undefined;
+    id: number | undefined;
+}
+
+export class SoftwareForViewDto implements ISoftwareForViewDto {
+    cpuname!: string | undefined;
+    displayname!: string | undefined;
+    displayVersion!: string | undefined;
+    publisher!: string | undefined;
+    installdate!: string | undefined;
+    installLocation!: string | undefined;
+    installSource!: string | undefined;
+    urlInfoAbout!: string | undefined;
+    urlUpdateInfo!: string | undefined;
+
+    constructor(data?: ISoftwareForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.cpuname = data["cpuname"];
+            this.displayname = data["displayname"];
+            this.displayVersion = data["displayVersion"];
+            this.publisher = data["publisher"];
+            this.installdate = data["installdate"];
+            this.installLocation = data["installLocation"];
+            this.installSource = data["installSource"];
+            this.urlInfoAbout = data["urlInfoAbout"];
+            this.urlUpdateInfo = data["urlUpdateInfo"];
+        }
+    }
+
+    static fromJS(data: any): SoftwareForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new SoftwareForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["cpuname"] = this.cpuname;
+        data["displayname"] = this.displayname;
+        data["displayVersion"] = this.displayVersion;
+        data["publisher"] = this.publisher;
+        data["installdate"] = this.installdate;
+        data["installLocation"] = this.installLocation;
+        data["installSource"] = this.installSource;
+        data["urlInfoAbout"] = this.urlInfoAbout;
+        data["urlUpdateInfo"] = this.urlUpdateInfo;
+        return data; 
+    }
+}
+
+export interface ISoftwareForViewDto {
+    cpuname: string | undefined;
+    displayname: string | undefined;
+    displayVersion: string | undefined;
+    publisher: string | undefined;
+    installdate: string | undefined;
+    installLocation: string | undefined;
+    installSource: string | undefined;
+    urlInfoAbout: string | undefined;
+    urlUpdateInfo: string | undefined;
 }
 
 export class PagedResultDtoOfTenantListDto implements IPagedResultDtoOfTenantListDto {

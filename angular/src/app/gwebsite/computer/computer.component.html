@@ -45,10 +45,6 @@
                             [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
-                                    <th pSortableColumn="Domain">
-                                        Domain1
-                                        <p-sortIcon field="Domain"></p-sortIcon>
-                                    </th>
                                     <th pSortableColumn="DNSHostName">
                                         DNSHostName
                                     </th>
@@ -130,12 +126,8 @@
                             <ng-template pTemplate="body" let-record="$implicit">
                                 <tr>
                                     <td>
-                                        <span class="ui-column-title">Domain</span>
-                                        <span title="{{record.domain1}}">{{truncateString(record.domain1)}}</span>
-                                    </td>
-                                    <td>
                                         <span class="ui-column-title">DNSHostName</span>
-                                        <span title="{{record.dNSHostName}}">{{truncateString(record.dNSHostName)}}</span>
+                                        <span title="{{record.dnsHostName}}">{{truncateString(record.dnsHostName)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Computer Name</span>
@@ -148,10 +140,6 @@
                                     <td>
                                         <span class="ui-column-title">Model</span>
                                         <span title="{{record.model}}">{{truncateString(record.model)}}</span>
-                                    </td>
-                                    <td>
-                                        <span class="ui-column-title">Manufacturer</span>
-                                        <span title="{{record.manufacturer}}">{{truncateString(record.manufacturer)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">UserName</span>
@@ -187,27 +175,27 @@
                                     </td>
                                     <td>
                                         <span class="ui-column-title">HDD1Type</span>
-                                        <span title="{{record.hDD1Type}}">{{truncateString(record.hDD1Type)}}</span>
+                                        <span title="{{record.hdD1Type}}">{{truncateString(record.hdD1Type)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">HDD1Size</span>
-                                        <span title="{{record.hDD1Size}}">{{truncateString(record.hDD1Size)}}</span>
+                                        <span title="{{record.hdD1Size}}">{{truncateString(record.hdD1Size)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">HDD2Type</span>
-                                        <span title="{{record.hDD2Type}}">{{truncateString(record.hDD2Type)}}</span>
+                                        <span title="{{record.hdD2Type}}">{{truncateString(record.hdD2Type)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">HDD2Size</span>
-                                        <span title="{{record.hDD2Size}}">{{truncateString(record.hDD2Size)}}</span>
+                                        <span title="{{record.hdD2Size}}">{{truncateString(record.hdD2Size)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">OS</span>
-                                        <span title="{{record.oS}}">{{truncateString(record.oS)}}</span>
+                                        <span title="{{record.os}}">{{truncateString(record.os)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">OSA</span>
-                                        <span title="{{record.oSA}}">{{truncateString(record.oSA)}}</span>
+                                        <span title="{{record.osa}}">{{truncateString(record.osa)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">LocalIp</span>

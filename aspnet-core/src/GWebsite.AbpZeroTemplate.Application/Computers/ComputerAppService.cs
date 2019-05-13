@@ -70,10 +70,23 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Computer
         public PagedResultDto<ComputerDto> GetComputer(ComputerFilter input)
         {
             GWebsite.AbpZeroTemplate.Core.Models.Computer pc = GetCurrentPC();
-            var computerEntity = computerRespostory.GetAll().Where(x => !x.IsDelete).Select(x => x.Cpuname == pc.Cpuname);
+            var computerEntity = computerRespostory.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Cpuname == pc.Cpuname);
             if (computerEntity == null)
             {
-                computerRespostory.Insert(pc);
+                var pcEntity = pc;
+                SetAuditInsert(pcEntity);
+                computerRespostory.Insert(pcEntity);
+                CurrentUnitOfWork.SaveChanges();
+            }
+            else
+            {
+                var customerEntity = computerRespostory.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == computerEntity.Id);
+                if (customerEntity == null)
+                {
+                }
+                ObjectMapper.Map(pc, customerEntity);
+                SetAuditEdit(customerEntity);
+                computerRespostory.Update(customerEntity);
                 CurrentUnitOfWork.SaveChanges();
             }
             var query = computerRespostory.GetAll().Where(x => !x.IsDelete);    

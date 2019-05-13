@@ -22,14 +22,10 @@ export class ViewComputerModalComponent extends AppComponentBase {
     }
 
     show(computerId?: number | null | undefined): void {
-        this._computerService.getCurrentComputer().subscribe(result=>{
-            this.computer=result;
+        this._computerService.getComputerForView(computerId).subscribe(result => {
+            this.computer = result;
             this.modal.show();
-        });
-        // this._computerService.getComputerForView(computerId).subscribe(result => {
-        //     this.computer = result;
-        //     this.modal.show();
-        // } );
+        } );
     }
 
     close(): void {

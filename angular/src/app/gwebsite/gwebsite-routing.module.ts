@@ -4,6 +4,7 @@ import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.compo
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ComputerComponent } from './computer/computer.component';
+import { SoftwareComponent } from './software/software.component';
 
 @NgModule({
     imports: [
@@ -41,6 +42,15 @@ import { ComputerComponent } from './computer/computer.component';
                     {
                         path: 'computer', component: ComputerComponent,
                         data: { permission: 'Pages.Administration.Computer'}
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'software', component: SoftwareComponent,
+                        data: { permission: 'Pages.Administration.Software'}
                     }
                 ]
             }

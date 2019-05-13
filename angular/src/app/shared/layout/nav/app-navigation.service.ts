@@ -20,7 +20,8 @@ export class AppNavigationService {
                 new AppMenuItem('MenuClient', 'Pages.Administration.MenuClient', 'flaticon-menu-1', '/app/gwebsite/menu-client'),
                 new AppMenuItem('DemoModel', 'Pages.Administration.DemoModel', 'flaticon-menu-1', '/app/gwebsite/demo-model'),
                 new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer'),
-                new AppMenuItem('Computer', 'Pages.Administration.Computer', 'flaticon-menu-1', '/app/gwebsite/computer')
+                new AppMenuItem('Computer', 'Pages.Administration.Computer', 'flaticon-menu-1', '/app/gwebsite/computer'),
+                new AppMenuItem('Software', 'Pages.Administration.Software', 'flaticon-menu-1', '/app/gwebsite/software')
             ]),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),

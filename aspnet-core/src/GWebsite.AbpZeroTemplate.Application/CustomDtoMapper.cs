@@ -3,6 +3,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Computers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Softwares.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Applications
@@ -32,7 +33,13 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<Computer, ComputerDto>();
             configuration.CreateMap<ComputerInput, Computer>();
             configuration.CreateMap<Computer, ComputerInput>();
-            configuration.CreateMap<Computer, ComputerInput>();
+            configuration.CreateMap<Computer, ComputerForViewDto>();
+
+            //software
+            configuration.CreateMap<Software, SoftwareDto>();
+            configuration.CreateMap<SoftwareInput, Software>();
+            configuration.CreateMap<Software, SoftwareInput>();
+            configuration.CreateMap<Software, SoftwareForViewDto>();
 
         }
     }
