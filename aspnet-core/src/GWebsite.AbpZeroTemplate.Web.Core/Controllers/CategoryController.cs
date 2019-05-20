@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services.Dto;
+using GSoft.AbpZeroTemplate.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Categories;
 using GWebsite.AbpZeroTemplate.Application.Share.Categories.Dto;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,12 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         public CategoryController(ICategoryAppService categoryAppService)
         {
             this.categoryAppService = categoryAppService;
+        }
+
+        [HttpGet]
+        public FileDto GetCategoriesToExcel(CategoryFilter categoryFilter)
+        {
+            return categoryAppService.GetCategoriesToExcel(categoryFilter);
         }
 
         [HttpGet]

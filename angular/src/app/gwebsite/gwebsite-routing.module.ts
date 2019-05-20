@@ -3,7 +3,8 @@ import { RouterModule } from '@angular/router';
 import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.component';
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
-import { CategoryComponent } from './category/general/category-general.component';
+import { CategoryComponent } from './category/category-general.component';
+import { CategoryTypeComponent } from './category-type/category-type-general.component';
 
 @NgModule({
     imports: [
@@ -41,6 +42,15 @@ import { CategoryComponent } from './category/general/category-general.component
                     {
                         path: 'category', component: CategoryComponent,
                         data: { permission: 'Pages.Categories.General' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'category-type', component: CategoryTypeComponent,
+                        data: { permission: 'Pages.CategoryTypes.General' }
                     },
                 ]
             }

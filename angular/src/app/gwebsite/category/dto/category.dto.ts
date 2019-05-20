@@ -8,9 +8,13 @@ export class CategoryDto {
     description: string;
     categoryType: string;
     categoryId: string;
+    createdDate: Date;
+    createdBy: string;
+    updatedDate: Date;
+    updatedBy: string;
 }
 
 export class GetCategoryOutput {
     category: CategoryDto;
-    categorys: ComboboxItemDto[];
+    categories: ComboboxItemDto[];
 }

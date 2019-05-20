@@ -2,6 +2,7 @@
 using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using GSoft.AbpZeroTemplate.Dto;
 using GWebsite.AbpZeroTemplate.Application;
 using GWebsite.AbpZeroTemplate.Application.Share.Categories;
 using GWebsite.AbpZeroTemplate.Application.Share.Categories.Dto;
@@ -11,16 +12,25 @@ using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 
+
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using GWebsite.AbpZeroTemplate.Application.Categories.Exporting;
+
 namespace GWebsite.AbpZeroTemplate.Web.Core.Categories
 {
     [AbpAuthorize(GWebsitePermissions.Pages_Categories_General)]
     public class CategoryAppService : GWebsiteAppServiceBase, ICategoryAppService
     {
         private readonly IRepository<Category> categoryRepository;
+        private readonly CategoryListExcelExporter categoryListExcelExporter;
 
-        public CategoryAppService(IRepository<Category> categoryRepository)
+        public CategoryAppService(
+            IRepository<Category> categoryRepository,
+            CategoryListExcelExporter _categoryListExcelExporter)
         {
             this.categoryRepository = categoryRepository;
+            this.categoryListExcelExporter = _categoryListExcelExporter;
         }
 
         #region Public Method
@@ -126,6 +136,17 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Categories
                 resultItems);
         }
 
+        public FileDto GetCategoriesToExcel(CategoryFilter input)
+        {
+            var categories = CreateCategoriesQuery(input)
+                .AsNoTracking()
+                .ToList();
+
+            var categoryListDtos = categories.Select(item => ObjectMapper.Map<CategoryDto>(item)).ToList();
+
+            return categoryListExcelExporter.ExportToFile(categoryListDtos);
+        }
+
         #endregion
 
         #region Private Method
@@ -156,6 +177,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Categories
             categoryEntity.IsDelete = false;
             categoryRepository.Update(categoryEntity);
             CurrentUnitOfWork.SaveChanges();
+        }
+
+        private IQueryable<Category> CreateCategoriesQuery(CategoryFilter input)
+        {
+            var query = categoryRepository.GetAll();
+
+            //query = query
+            //    .WhereIf(!input.UserName.IsNullOrWhiteSpace(), item => item.User.UserName.Contains(input.UserName))
+                
+            return query;
         }
 
         #endregion

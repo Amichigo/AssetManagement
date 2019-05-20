@@ -6,11 +6,13 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { WebApiServiceProxy, IFilter } from '@shared/service-proxies/webapi.service';
 import { CreateOrEditCategoryModalComponent } from './create-or-edit-category-general-modal.component';
-import { CreateOrEditTypeModalComponent } from './create-or-edit-category-type-general-modal.component';
-import { CategoryTypeDto } from './dto/category-type.dto';
+import { ViewCategoryModalComponent } from './view-category-modal.component';
+import { CategoryTypeDto } from '../category-type/dto/category-type.dto';
 import { PrimengTableHelper } from 'shared/helpers/PrimengTableHelper';
+import { FileDownloadService } from '@shared/utils/file-download.service';
+import { CategoryServiceProxy } from '@shared/service-proxies/service-proxies';
+import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 
 @Component({
     templateUrl: './category-general.component.html',
@@ -23,16 +25,13 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
      */
     @ViewChild('textsTable') textsTable: ElementRef;
     @ViewChild('createOrEditCategoryModal') createOrEditCategoryModal: CreateOrEditCategoryModalComponent;
-    @ViewChild('createOrEditTypeModal') createOrEditTypeModal: CreateOrEditTypeModalComponent;
+    @ViewChild('viewCategoryModal') viewCategoryModal: ViewCategoryModalComponent;
     @ViewChild('categoryTable') categoryTable: Table;
-    @ViewChild('typeTable') typeTable: Table;
     @ViewChild('paginatorCategory') paginatorCategory: Paginator;
-    @ViewChild('paginatorType') paginatorType: Paginator;
     @ViewChild('typeCombobox') typeCombobox: ElementRef;
 
 
     primengTableHelperCategories = new PrimengTableHelper();
-    primengTableHelperTypes = new PrimengTableHelper();
 
     /**
      * tạo các biến dể filters
@@ -45,12 +44,6 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         filterStatus: string
     } = <any>{};
 
-    public filterTypes: {
-        filterTypeName: string,
-        filterTypePrefix: string,
-        filterTypeStatus: string,
-    } = <any>{};
-
     // Categorytype dropdown list
     public listItems: Array<CategoryTypeDto> = [];
 
@@ -58,7 +51,9 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         injector: Injector,
         private _router: Router,
         private _activatedRoute: ActivatedRoute,
-        private _apiService: WebApiServiceProxy
+        private _fileDownloadService: FileDownloadService,
+        private _apiService: WebApiServiceProxy,
+        private _categoryService: CategoryServiceProxy
     ) {
         super(injector);
     }
@@ -73,10 +68,6 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         this.filters.filterSymbol = '',
         this.filters.filterStatus = 'All status',
 
-        this.filterTypes.filterTypeName = '',
-        this.filterTypes.filterTypePrefix = '',
-        this.filterTypes.filterTypeStatus = 'All status',
-
         this.getListTypes();
     }
 
@@ -89,13 +80,12 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         });
     }
 
-    getListTypes(): void {
+    getListTypes(event?: LazyLoadEvent): void {
         // get category type
         this._apiService.get('api/CategoryType/GetCategoryTypesByFilter')
         .subscribe(result => {
             this.listItems = result.items;
         });
-        console.log(this.listItems.length);
     }
 
     /**
@@ -117,12 +107,12 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
          */
 
         // filter
-        this._apiService.get('api/Category/GetCategoriesByFilter',
-            [{ fieldName: 'CategoryType', value: this.filters.filterType === 'All types' ? '' : this.filters.filterType},
-            { fieldName: 'CategoryId', value: this.filters.filterId},
-            { fieldName: 'Name', value: this.filters.filterName},
-            { fieldName: 'Symbol', value: this.filters.filterSymbol},
-            { fieldName: 'Status', value: this.filters.filterStatus }],
+        this._categoryService.getCategoriesByFilter(
+            this.filters.filterType === 'All types' ? '' : this.filters.filterType,
+            this.filters.filterId,
+            this.filters.filterName,
+            this.filters.filterSymbol,
+            this.filters.filterStatus,
             this.primengTableHelperCategories.getSorting(this.categoryTable),
             this.primengTableHelperCategories.getMaxResultCount(this.paginatorCategory, event),
             this.primengTableHelperCategories.getSkipCount(this.paginatorCategory, event),
@@ -130,35 +120,6 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
             this.primengTableHelperCategories.totalRecordsCount = result.totalCount;
             this.primengTableHelperCategories.records = result.items;
             this.primengTableHelperCategories.hideLoadingIndicator();
-        });
-    }
-
-    getTypes(event?: LazyLoadEvent) {
-        if (this.primengTableHelperTypes.shouldResetPaging(event)) {
-            this.paginatorType.changePage(0);
-
-            return;
-        }
-
-        //show loading trong gridview
-        this.primengTableHelperTypes.showLoadingIndicator();
-
-        /**
-         * Sử dụng _apiService để call các api của backend
-         */
-
-        // filter
-        this._apiService.get('api/CategoryType/GetCategoryTypesByFilter',
-            [{ fieldName: 'Name', value: this.filterTypes.filterTypeName },
-            { fieldName: 'PrefixWord', value: this.filterTypes.filterTypePrefix },
-            { fieldName: 'Status', value: this.filterTypes.filterTypeStatus }],
-            this.primengTableHelperTypes.getSorting(this.typeTable),
-            this.primengTableHelperTypes.getMaxResultCount(this.paginatorType, event),
-            this.primengTableHelperTypes.getSkipCount(this.paginatorType, event),
-        ).subscribe(result => {
-            this.primengTableHelperTypes.totalRecordsCount = result.totalCount;
-            this.primengTableHelperTypes.records = result.items;
-            this.primengTableHelperTypes.hideLoadingIndicator();
         });
     }
 
@@ -170,9 +131,6 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
             this.filters.filterName = params['filterName'] || '';
             this.filters.filterSymbol = params['filterSymbol'] || '';
             this.filters.filterStatus = params['filterStatus'] || 'All status';
-            this.filterTypes.filterTypeName = params['filterTypeName'] || '';
-            this.filterTypes.filterTypePrefix = params['filterTypePrefix'] || '';
-            this.filterTypes.filterTypeStatus = params['filterTypeStatus'] || 'All status';
 
             //reload lại gridview
             this.reloadPage();
@@ -200,17 +158,6 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         this.getCategories(event);
     }
 
-    applyTypeFilters(event?: LazyLoadEvent): void {
-        //truyền params lên url thông qua router
-        this._router.navigate(['app/gwebsite/category', {
-            filterTypeName: this.filterTypes.filterTypeName,
-            filterTypePrefix: this.filterTypes.filterTypePrefix,
-            filterTypeStatus: this.filterTypes.filterTypeStatus
-        }]);
-
-        this.getTypes(event);
-    }
-
     categoryRefresh(event?: LazyLoadEvent): void {
         this.filters.filterType = 'All types',
         this.filters.filterId = '',
@@ -236,26 +183,6 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         this.getListTypes();
     }
 
-    typeRefresh(event?: LazyLoadEvent): void {
-        this.filterTypes.filterTypeName = '',
-        this.filterTypes.filterTypePrefix = '',
-        this.filterTypes.filterTypeStatus = 'All status',
-
-        //truyền params lên url thông qua router
-        this._router.navigate(['app/gwebsite/category', {
-            filterTypeName: this.filterTypes.filterTypeName,
-            filterTypePrefix: this.filterTypes.filterTypePrefix,
-            filterTypeStatus: this.filterTypes.filterTypeStatus
-        }]);
-
-        // if (this.paginatorType.getPage() !== 0) {
-        //     this.paginatorType.changePage(0);
-        //     return;
-        // }
-        this.getTypes(event);
-        this.getListTypes();
-    }
-
     /**
      * Tạo pipe thay vì tạo từng hàm truncate như thế này
      * @param text
@@ -278,44 +205,37 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         }
     }
 
-    refreshValueFromTypeModal(): void {
-        if (this.createOrEditTypeModal.categoryType.id) {
-            for (let i = 0; i < this.primengTableHelperTypes.records.length; i++) {
-                if (this.primengTableHelperTypes.records[i].id === this.createOrEditTypeModal.categoryType.id) {
-                    this.primengTableHelperTypes.records[i] = this.createOrEditTypeModal.categoryType;
-                    return;
-                }
-            }
-        } else {
-            this.reloadPage();
-        }
-    }
-
     createCategory(): void {
         this.createOrEditCategoryModal.show();
-    }
-
-    createType(): void {
-        this.createOrEditTypeModal.show();
     }
 
     editCategory(id: number): void {
         this.createOrEditCategoryModal.show(id);
     }
 
-    editType(id: number): void {
-        this.createOrEditTypeModal.show(id);
+    viewCategory(id: number): void {
+        this.viewCategoryModal.show(id);
     }
 
     deleteCategory(id: number): void {
-        this._apiService.delete('api/Category/DeleteCategory/', id).subscribe(() => {
+        this._categoryService.deleteCategory(id).subscribe(() => {
             this.categoryRefresh();
         });
     }
 
-    deleteType(id: number) {
-        this._apiService.delete('api/CategoryType/DeleteCategoryType/', id).subscribe(() => {
-            this.typeRefresh();
-        });
+    exportToExcelCategories(): void {
+        const self = this;
+        self._categoryService.getCategoriesToExcel(
+            self.filters.filterType === 'All types' ? '' : self.filters.filterType,
+            self.filters.filterId,
+            self.filters.filterName,
+            self.filters.filterSymbol,
+            self.filters.filterStatus,
+            undefined,
+            1,
+            0)
+            .subscribe(result => {
+                self._fileDownloadService.downloadTempFile(result);
+            });
     }
 }

@@ -12,13 +12,15 @@ import { TableModule } from 'primeng/table';
 import { GWebsiteRoutingModule } from './gwebsite-routing.module';
 
 import { MenuClientComponent, CreateOrEditMenuClientModalComponent,
-CategoryComponent, CreateOrEditCategoryModalComponent, CreateOrEditTypeModalComponent } from './index';
+CategoryComponent, ViewCategoryModalComponent, CreateOrEditCategoryModalComponent,
+CategoryTypeComponent, CreateOrEditTypeModalComponent } from './index';
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CreateOrEditDemoModelModalComponent } from './demo-model/create-or-edit-demo-model-modal.component';
 import { DemoModelServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CustomerComponent } from './customer/customer.component';
 import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
 import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
+import { CategoryServiceProxy, CategoryTypeServiceProxy } from '@shared/service-proxies/service-proxies';
 
 @NgModule({
     imports: [
@@ -43,11 +45,14 @@ import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-cu
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
-        CategoryComponent, CreateOrEditCategoryModalComponent, CreateOrEditTypeModalComponent
+        CategoryComponent, ViewCategoryModalComponent, CreateOrEditCategoryModalComponent,
+        CategoryTypeComponent, CreateOrEditTypeModalComponent
     ],
     providers: [
         DemoModelServiceProxy,
-        CustomerServiceProxy
+        CustomerServiceProxy,
+        CategoryServiceProxy,
+        CategoryTypeServiceProxy
     ]
 })
 export class GWebsiteModule { }

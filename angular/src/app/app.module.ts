@@ -35,6 +35,7 @@ import { HeaderNotificationsComponent } from './shared/layout/notifications/head
 import { NotificationSettingsModalComponent } from './shared/layout/notifications/notification-settings-modal.component';
 import { NotificationsComponent } from './shared/layout/notifications/notifications.component';
 
+
 @NgModule({
     declarations: [
         AppComponent,

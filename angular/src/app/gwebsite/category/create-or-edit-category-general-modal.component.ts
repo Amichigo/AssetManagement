@@ -4,7 +4,7 @@ import { ModalDirective } from 'ngx-bootstrap';
 import { finalize } from 'rxjs/operators';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 import { ComboboxItemDto } from '@shared/service-proxies/service-proxies';
-import { CategoryTypeDto } from './dto/category-type.dto';
+import { CategoryTypeDto } from '../category-type/dto/category-type.dto';
 import { CategoryDto } from './dto/category.dto';
 
 @Component({
