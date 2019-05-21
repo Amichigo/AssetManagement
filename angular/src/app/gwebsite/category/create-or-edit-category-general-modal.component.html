@@ -16,12 +16,12 @@
                     <div class="form-group">
                         <label>{{l("Category Type")}} *</label>
                         <select *ngIf="!category.id" #categoryCombobox name="categoryType" class="form-control"
-                            [(ngModel)]="selectedType" title="Select type..." (change)="this.onChangeType()"
-                            required>
+                            [(ngModel)]="selectedType" title="Select type..." (change)="this.onChangeType()" required>
                             <option *ngFor="let item of categoryTypes" [value]="item.id">{{item.name}}</option>
                         </select>
                         <select *ngIf="category.id" #categoryCombobox name="categoryType" class="form-control"
-                            title={{category.categoryType}} disabled required>
+                            [(ngModel)]="selectedType" title={{category.categoryType}} (change)="this.onChangeType()">
+                            <option *ngFor="let item of categoryTypes" [value]="item.id">{{item.name}}</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -44,9 +44,12 @@
                     </div>
                     <div class="form-group">
                         <label>{{l("Status")}}</label>
-                        <input #statusInput="ngModel" class="form-control" type="text" name="Description"
-                            [(ngModel)]="category.description">
-                        <validation-messages [formCtrl]="descriptionInput"></validation-messages>
+                        <select class="form-control" #statusInput name="categoryStatus" [(ngModel)]="selectedStatus"
+                            (change)="this.onChangeStatus()" title={{category.status}}>
+                            <option [value]="1">Active</option>
+                            <option [value]="2">Inactive</option>
+                        </select>
+                        <validation-messages [formCtrl]="statusInput"></validation-messages>
                     </div>
                 </div>
                 <div class="modal-footer">

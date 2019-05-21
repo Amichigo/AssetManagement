@@ -39,7 +39,8 @@
                                 <div class="form-group">
                                     <label for="filters.filterType" class="control-label">{{l("Type")}}</label>
                                     <select #typeCombobox [(ngModel)]="filters.filterType" name="filterType"
-                                        class="form-control" title="All types" type="text">
+                                        class="form-control" type="text">
+                                        <option>All types</option>
                                         <option *ngFor="let type of listItems" [value]=type.name>
                                             {{type.name}}
                                         </option>
@@ -49,7 +50,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="filters.filterStatus" class="control-label">{{l("Status")}}</label>
-                                    <select class="form-control" title="All status" [(ngModel)]="filters.filterStatus"
+                                    <select class="form-control" [(ngModel)]="filters.filterStatus"
                                         type="text" name="filterStatus">
                                         <option>All status</option>
                                         <option>Active</option>
@@ -73,7 +74,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="filters.filterSymbol" class="control-label">{{l("Name")}}</label>
+                                    <label for="filters.filterSymbol" class="control-label">{{l("Symbol")}}</label>
                                     <input [(ngModel)]="filters.filterSymbol" name="filterSymbol" autoFocus class="form-control" type="text">
                                 </div>
                             </div>
@@ -86,6 +87,7 @@
                                 <span class="clickable-item text-muted" *ngIf="advancedFiltersAreShown"
                                     (click)="advancedFiltersAreShown=!advancedFiltersAreShown"><i
                                         class="fa fa-angle-up"></i> {{l("HideAdvancedFilters")}}</span>
+                                <span><button type="button" class="btn btn-link" (click)="this.clearFilters()">Clear Filters</button></span>
                             </div>
                         </div>
                     </form>
@@ -146,12 +148,13 @@
                                     </td>
                                     <td>
                                         <span class="ui-column-title">{{l('Symbol')}}</span>
-                                        <span title="{{record.symbol}}">{{ record.symbol }}</span>
+                                        <span *ngIf="record.symbol" title="{{record.symbol}}">{{ record.symbol }}</span>
+                                        <span *ngIf="!record.symbol" title="{{record.symbol}}">{{l('-')}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">{{l('Description')}}</span>
-                                        <span
-                                            title="{{record.description}}">{{record.description}}</span>
+                                        <span *ngIf="record.description" title="{{record.description}}">{{record.description}}</span>
+                                        <span *ngIf="!record.description" title="{{record.description}}">{{l('-')}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">{{l('Status')}}</span>
@@ -200,4 +203,5 @@
         </div>
     </div>
     <createOrEditCategoryModal #createOrEditCategoryModal (modalSave)="refreshValueFromCategoryModal()"></createOrEditCategoryModal>
+    <viewCategoryModal #viewCategoryModal></viewCategoryModal>
 </div>

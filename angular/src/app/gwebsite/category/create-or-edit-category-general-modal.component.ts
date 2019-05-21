@@ -3,9 +3,8 @@ import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
 import { finalize } from 'rxjs/operators';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
-import { ComboboxItemDto } from '@shared/service-proxies/service-proxies';
 import { CategoryTypeDto } from '../category-type/dto/category-type.dto';
-import { CategoryDto } from './dto/category.dto';
+import { CategoryServiceProxy, CategoryInput } from '@shared/service-proxies/service-proxies';
 
 @Component({
     selector: 'createOrEditCategoryModal',
@@ -26,22 +25,23 @@ export class CreateOrEditCategoryModalComponent extends AppComponentBase {
     saving = false;
     savingType = false;
 
-    category: CategoryDto = new CategoryDto();
+    category: CategoryInput = new CategoryInput();
     categoryType: CategoryTypeDto = new CategoryTypeDto();
     selectedType: number;
+    selectedStatus: number;
     categoryTypes: Array<CategoryTypeDto> = [];
 
     constructor(
         injector: Injector,
-        private _apiService: WebApiServiceProxy
+        private _apiService: WebApiServiceProxy,
+        private _categoryService: CategoryServiceProxy
     ) {
         super(injector);
     }
 
     getTypes(): void {
         // get category type
-        this._apiService.get('api/CategoryType/GetCategoryTypesByFilter',
-            [{ fieldName: 'Status', value: 'Active' }])
+        this._apiService.get('api/CategoryType/GetCategoryTypesByFilter')
         .subscribe(result => {
             this.categoryTypes = result.items;
         });
@@ -51,8 +51,14 @@ export class CreateOrEditCategoryModalComponent extends AppComponentBase {
         this.active = true;
         this.getTypes();
 
-        this._apiService.getForEdit('api/Category/GetCategoryForEdit', categoryId).subscribe(result => {
+        this._categoryService.getCategoryForEdit(categoryId).subscribe(result => {
             this.category = result;
+            if (result.status === 'Active') {
+                this.selectedStatus = 1;
+            } else {
+                this.selectedStatus = 2;
+            }
+
             this.modal.show();
             setTimeout(() => {
                 $(this.categoryCombobox.nativeElement).selectpicker('refresh');
@@ -65,6 +71,14 @@ export class CreateOrEditCategoryModalComponent extends AppComponentBase {
             this.category.categoryType = result.name;
             this.category.categoryId = result.prefixWord; // get prefix word to create id
         });
+    }
+
+    onChangeStatus(): void {
+        if (this.selectedStatus === 1) {
+            this.category.status = 'Active';
+        } else {
+            this.category.status = 'Inactive';
+        }
     }
 
     save(): void {

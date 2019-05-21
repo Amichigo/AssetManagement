@@ -12787,6 +12787,10 @@ export class CategoryDto implements ICategoryDto {
     symbol!: string | undefined;
     description!: string | undefined;
     status!: boolean | undefined;
+    createdDate!: moment.Moment | undefined;
+    createdBy!: string | undefined;
+    updatedDate!: moment.Moment | undefined;
+    updatedBy!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: ICategoryDto) {
@@ -12806,6 +12810,10 @@ export class CategoryDto implements ICategoryDto {
             this.symbol = data["symbol"];
             this.description = data["description"];
             this.status = data["status"];
+            this.createdDate = data["createdDate"] ? moment(data["createdDate"].toString()) : <any>undefined;
+            this.createdBy = data["createdBy"];
+            this.updatedDate = data["updatedDate"] ? moment(data["updatedDate"].toString()) : <any>undefined;
+            this.updatedBy = data["updatedBy"];
             this.id = data["id"];
         }
     }
@@ -12825,6 +12833,10 @@ export class CategoryDto implements ICategoryDto {
         data["symbol"] = this.symbol;
         data["description"] = this.description;
         data["status"] = this.status;
+        data["createdDate"] = this.createdDate ? this.createdDate.toISOString() : <any>undefined;
+        data["createdBy"] = this.createdBy;
+        data["updatedDate"] = this.updatedDate ? this.updatedDate.toISOString() : <any>undefined;
+        data["updatedBy"] = this.updatedBy;
         data["id"] = this.id;
         return data; 
     }
@@ -12837,6 +12849,10 @@ export interface ICategoryDto {
     symbol: string | undefined;
     description: string | undefined;
     status: boolean | undefined;
+    createdDate: moment.Moment | undefined;
+    createdBy: string | undefined;
+    updatedDate: moment.Moment | undefined;
+    updatedBy: string | undefined;
     id: number | undefined;
 }
 

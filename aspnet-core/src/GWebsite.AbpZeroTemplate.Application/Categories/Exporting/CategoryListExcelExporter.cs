@@ -33,21 +33,29 @@ namespace GWebsite.AbpZeroTemplate.Application.Categories.Exporting
                     AddHeader(
                         sheet,
                         L("CategoryId"),
-                        L("CategoryType"),
                         L("Name"),
+                        L("CategoryType"),
                         L("Symbol"),
                         L("Description"),
-                        L("Status")
+                        L("Status"),
+                        L("CreatedDate"),
+                        L("CreatedBy"),
+                        L("UpdatedDate"),
+                        L("UpdatedBy")
                     );
 
                     AddObjects(
                         sheet, 2, categoryListDtos,
                         _ => _.CategoryId,
-                        _ => _.CategoryType,
                         _ => _.Name,
+                        _ => _.CategoryType,
                         _ => _.Symbol,
                         _ => _.Description,
-                        _ => _.Status
+                        _ => _.Status,
+                        _ => _.CreatedDate,
+                        _ => _.CreatedBy,
+                        _ => _.UpdatedDate,
+                        _ => _.UpdatedBy
                         );
 
                     //Formatting cells

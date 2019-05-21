@@ -126,7 +126,7 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
-            this.filters.filterType = params['filterType'] || '';
+            this.filters.filterType = params['filterType'] || 'All types';
             this.filters.filterId = params['filterId'] || '';
             this.filters.filterName = params['filterName'] || '';
             this.filters.filterSymbol = params['filterSymbol'] || '';
@@ -192,14 +192,20 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
     }
 
     //Refresh grid khi thực hiện create or edit thành công
-    refreshValueFromCategoryModal(): void {
+    refreshValueFromCategoryModal(event?: LazyLoadEvent): void {
         if (this.createOrEditCategoryModal.category.id) {
-            for (let i = 0; i < this.primengTableHelperCategories.records.length; i++) {
-                if (this.primengTableHelperCategories.records[i].id === this.createOrEditCategoryModal.category.id) {
-                    this.primengTableHelperCategories.records[i] = this.createOrEditCategoryModal.category;
-                    return;
-                }
-            }
+            // for (let i = 0; i < this.primengTableHelperCategories.records.length; i++) {
+            //     if (this.primengTableHelperCategories.records[i].id === this.createOrEditCategoryModal.category.id) {
+            //         this.primengTableHelperCategories.records[i] = this.createOrEditCategoryModal.category;
+            //         if (this.createOrEditCategoryModal.category.status === 'Active') {
+            //             this.primengTableHelperCategories.records[i].status = true;
+            //         } else {
+            //             this.primengTableHelperCategories.records[i].status = false;
+            //         }
+            //         return;
+            //     }
+            // }
+            this.getCategories(event);
         } else {
             this.reloadPage();
         }
@@ -237,5 +243,14 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
             .subscribe(result => {
                 self._fileDownloadService.downloadTempFile(result);
             });
+    }
+
+    clearFilters(): void {
+        this.filters.filterType = 'All types',
+        this.filters.filterId = '',
+        this.filters.filterName = '',
+        this.filters.filterSymbol = '',
+        this.filters.filterStatus = 'All status',
+        $(this.typeCombobox.nativeElement).selectpicker('refresh');
     }
 }
