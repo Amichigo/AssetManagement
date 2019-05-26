@@ -1551,6 +1551,61 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("AppUserRoles");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.AssetGroup_05", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AssetAccount");
+
+                    b.Property<string>("AssetTypeId");
+
+                    b.Property<string>("CostAccount");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("DepreciationAccount");
+
+                    b.Property<float>("DepreciationRates");
+
+                    b.Property<string>("FatherAssetGroup");
+
+                    b.Property<string>("IncomeAccount");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<int>("Level");
+
+                    b.Property<string>("LiquidationCostAccount");
+
+                    b.Property<int>("MonthsDepreciation");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssetGroups_05");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.AssetType_05", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssetTypes_05");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Customer", b =>
                 {
                     b.Property<int>("Id")

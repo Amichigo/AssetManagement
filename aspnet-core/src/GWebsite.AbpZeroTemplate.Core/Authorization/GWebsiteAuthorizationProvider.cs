@@ -53,6 +53,21 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
 
             var assetDashboard = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetDashboard, L("AssetDashboard"));
 
+            //var Asset_05 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_05, L("Asset_05"));
+            //Asset_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_05_Create, L("CreatingNewAsset_05"));
+            //Asset_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_05_Edit, L("EditingAsset_05"));
+            //Asset_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_05_Delete, L("DeletingAsset_05"));
+
+            var AssetType_05 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetType_05, L("AssetType_05"));
+            AssetType_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetType_05_Create, L("CreatingNewAssetType_05"));
+            AssetType_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetType_05_Edit, L("EditingAssetType_05"));
+            AssetType_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetType_05_Delete, L("DeletingAssetType_05"));
+
+            var AssetGroup_05 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetGroup_05, L("AssetGroup_05"));
+            AssetGroup_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetGroup_05_Create, L("CreatingNewAssetGroup_05"));
+            AssetGroup_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetGroup_05_Edit, L("EditingAssetGroup_05"));
+            AssetGroup_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetGroup_05_Delete, L("DeletingAssetGroup_05"));
+
         }
         private static ILocalizableString L(string name)
         {

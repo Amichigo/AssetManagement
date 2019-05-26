@@ -5,7 +5,6 @@ import { finalize } from 'rxjs/operators';
 import { MenuClientDto } from '@app/gwebsite/menu-client/dto/menu-clinet.dto';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 import { ComboboxItemDto } from '@shared/service-proxies/service-proxies';
-
 @Component({
     selector: 'createOrEditMenuClientModal',
     templateUrl: './create-or-edit-menu-client-modal.component.html'
@@ -27,6 +26,8 @@ export class CreateOrEditMenuClientModalComponent extends AppComponentBase {
     menuClient: MenuClientDto = new MenuClientDto();
     menuClients: ComboboxItemDto[] = [];
 
+    tempValue: number;
+
     constructor(
         injector: Injector,
         private _apiService: WebApiServiceProxy
@@ -42,7 +43,7 @@ export class CreateOrEditMenuClientModalComponent extends AppComponentBase {
             this.menuClients = result.menuClients;
             this.modal.show();
             setTimeout(() => {
-                    $(this.menuClientCombobox.nativeElement).selectpicker('refresh');
+                $(this.menuClientCombobox.nativeElement).selectpicker('refresh');
             }, 0);
         });
     }

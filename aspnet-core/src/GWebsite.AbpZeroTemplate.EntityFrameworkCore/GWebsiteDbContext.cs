@@ -3,6 +3,7 @@ using Abp.Authorization.Users;
 using Abp.MultiTenancy;
 using Abp.Zero.EntityFrameworkCore;
 using GWebsite.AbpZeroTemplate.Core.Models;
+using GWebsite.AbpZeroTemplate.Core.Models.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
@@ -25,6 +26,20 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<DemoModel> DemoModels { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<FixedAsset> FixedAssets { get; set; }
+        //public virtual DbSet<Asset_05> Assets_05 { get; set; }
+        //public virtual DbSet<AssetDetail_05> AssetDetails_05 { get; set; }
+        public virtual DbSet<AssetType_05> AssetTypes_05 { get; set; }
+        public virtual DbSet<AssetGroup_05> AssetGroups_05 { get; set; }
+        //public virtual DbSet<Depreciation_05> Depreciations_05 { get; set; }
+        //public virtual DbSet<DepreciationDetail_05> DepreciationDetails_05 { get; set; }
+        //public virtual DbSet<Liquidation_05> Liquidations_05 { get; set; }
+        //public virtual DbSet<LiquidationDetail_05> LiquidationDetails_05 { get; set; }
+        //public virtual DbSet<Repair_05> Repairs_05 { get; set; }
+        //public virtual DbSet<RepairDetail_05> RepairDetails_05 { get; set; }
+        //public virtual DbSet<UsingProcess_05> UsingProcess_05 { get; set; }
+        //public virtual DbSet<UsingProcessDetail_05> UsingProcessDetail_05 { get; set; }
+        //public virtual DbSet<Warranty_05> Warrantys_05 { get; set; }
+        //public virtual DbSet<WarrantyDetail_05> WarrantyDetails_05 { get; set; }
 
 
         /// <summary>
@@ -48,7 +63,7 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
+
             modelBuilder.Entity<Announcement>(entity =>
             {
                 //entity.HasIndex(e => e.UserId)
@@ -103,6 +118,7 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
                     .IsRequired()
                     .HasMaxLength(128);
             });
+
 
             modelBuilder.Entity<AppUserClaim>(entity =>
             {
@@ -236,6 +252,7 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
                     .HasColumnType("datetime");
             });
 
+
             modelBuilder.Entity<Function>(entity =>
             {
                 //entity.HasIndex(e => e.ParentId)
@@ -296,8 +313,7 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
 
                 entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
             });
-
-
+            
             modelBuilder.Entity<Permission>(entity =>
             {
                 //entity.HasIndex(e => e.FunctionId)

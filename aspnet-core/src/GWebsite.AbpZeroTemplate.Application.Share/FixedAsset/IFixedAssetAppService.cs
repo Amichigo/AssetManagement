@@ -7,7 +7,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.FixedAssets
 {
     public interface IFixedAssetAppService
     {
-
         void CreateOrEditFixedAsset(FixedAssetInput fixedAssetInput);
         FixedAssetInput GetFixedAssetForEdit(int id);
         void DeleteFixedAsset(int id);

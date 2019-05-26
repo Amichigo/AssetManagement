@@ -5,6 +5,7 @@ import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
 import { FixedAssetComponent } from './fixed-asset/fixed-asset.component';
 import { AssetDashboardComponent } from './asset-dashboard/asset-dashboard.component';
+import { AssetGroupComponent } from "./asset-group/asset-group.component";
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -50,6 +51,15 @@ import { AssetDashboardComponent } from './asset-dashboard/asset-dashboard.compo
                     {
                         path: 'asset-dashboard', component: AssetDashboardComponent,
                         data: { permission: 'Pages.Administration.AssetDashboard' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'asset-group', component: AssetGroupComponent,
+                        data: { permission: 'Pages.Administration.AssetGroup_05' }
                     },
                 ]
             }

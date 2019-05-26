@@ -7,23 +7,13 @@ using System.Threading.Tasks;
 using Abp.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using GWebsite.AbpZeroTemplate.Application;
-using GWebsite.AbpZeroTemplate.Application.Share.AssetDashboard;
 using GWebsite.AbpZeroTemplate.Application.Share.AssetDashboard.Dto;
-
-using Abp.Application.Services.Dto;
-using Abp.Authorization;
-using Abp.Linq.Extensions;
-using GWebsite.AbpZeroTemplate.Core.Authorization;
 using GWebsite.AbpZeroTemplate.Core.Models;
-
-
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.AssetDashboard
 {
-
     public class AssetStatisticsService : GWebsiteAppServiceBase, IAssetStatisticsService
     {
-
         private readonly IRepository<FixedAsset> assetDashboardRepository;
 
         public AssetStatisticsService(IRepository<FixedAsset> assetDashboardRepository)
@@ -47,7 +37,6 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.AssetDashboard
             FillGapsInDailyAssetStatistics(dailyRecords, startDate, endDate);
             return dailyRecords.OrderBy(s => s.Date).ToList();
         }
-
 
         public static void FillGapsInDailyAssetStatistics(ICollection<AssetTotalNumberStatistic> dailyRecords, DateTime startDate, DateTime endDate)
         {

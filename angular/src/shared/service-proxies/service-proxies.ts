@@ -706,6 +706,347 @@ export class AssetDashboardServiceProxy {
 }
 
 @Injectable()
+export class AssetGroupController_05ServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @name (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getAssetGroupByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfAssetGroupDto_05> {
+        let url_ = this.baseUrl + "/api/AssetGroupController_05/GetAssetGroupByFilter?";
+        if (name !== undefined)
+            url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAssetGroupByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAssetGroupByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfAssetGroupDto_05>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfAssetGroupDto_05>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAssetGroupByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfAssetGroupDto_05> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfAssetGroupDto_05.fromJS(resultData200) : new PagedResultDtoOfAssetGroupDto_05();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfAssetGroupDto_05>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getAssetGroupForEdit(id: string | null | undefined): Observable<AssetGroupOutput_05> {
+        let url_ = this.baseUrl + "/api/AssetGroupController_05/GetAssetGroupForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAssetGroupForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAssetGroupForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<AssetGroupOutput_05>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<AssetGroupOutput_05>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAssetGroupForEdit(response: HttpResponseBase): Observable<AssetGroupOutput_05> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? AssetGroupOutput_05.fromJS(resultData200) : new AssetGroupOutput_05();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<AssetGroupOutput_05>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createAssetGroup(input: AssetGroupInput_05 | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/AssetGroupController_05/CreateAssetGroup";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateAssetGroup(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateAssetGroup(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateAssetGroup(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    updateAssetGroup(input: AssetGroupUpdate_05 | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/AssetGroupController_05/UpdateAssetGroup";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdateAssetGroup(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdateAssetGroup(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processUpdateAssetGroup(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteAssetGroup(id: string): Observable<void> {
+        let url_ = this.baseUrl + "/api/AssetGroupController_05/DeleteAssetGroup/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteAssetGroup(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteAssetGroup(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteAssetGroup(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getAssetGroupForView(id: string | null | undefined): Observable<AssetGroupForViewDto_05> {
+        let url_ = this.baseUrl + "/api/AssetGroupController_05/GetAssetGroupForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAssetGroupForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAssetGroupForView(<any>response_);
+                } catch (e) {
+                    return <Observable<AssetGroupForViewDto_05>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<AssetGroupForViewDto_05>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAssetGroupForView(response: HttpResponseBase): Observable<AssetGroupForViewDto_05> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? AssetGroupForViewDto_05.fromJS(resultData200) : new AssetGroupForViewDto_05();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<AssetGroupForViewDto_05>(<any>null);
+    }
+}
+
+@Injectable()
 export class AuditLogServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -10768,6 +11109,466 @@ export interface IAssetTotalNumberStatisticsDataOutput {
     assetDashboardAssetStastistics: AssetTotalNumberStatistic[] | undefined;
 }
 
+export class PagedResultDtoOfAssetGroupDto_05 implements IPagedResultDtoOfAssetGroupDto_05 {
+    totalCount!: number | undefined;
+    items!: AssetGroupDto_05[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfAssetGroupDto_05) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(AssetGroupDto_05.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfAssetGroupDto_05 {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfAssetGroupDto_05();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfAssetGroupDto_05 {
+    totalCount: number | undefined;
+    items: AssetGroupDto_05[] | undefined;
+}
+
+export class AssetGroupDto_05 implements IAssetGroupDto_05 {
+    id!: string | undefined;
+    name!: string | undefined;
+    assetTypeId!: string | undefined;
+    level!: number | undefined;
+    fatherAssetGroup!: string | undefined;
+    monthsDepreciation!: number | undefined;
+    depreciationRates!: number | undefined;
+    assetAccount!: string | undefined;
+    depreciationAccount!: string | undefined;
+    costAccount!: string | undefined;
+    incomeAccount!: string | undefined;
+    liquidationCostAccount!: string | undefined;
+
+    constructor(data?: IAssetGroupDto_05) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.id = data["id"];
+            this.name = data["name"];
+            this.assetTypeId = data["assetTypeId"];
+            this.level = data["level"];
+            this.fatherAssetGroup = data["fatherAssetGroup"];
+            this.monthsDepreciation = data["monthsDepreciation"];
+            this.depreciationRates = data["depreciationRates"];
+            this.assetAccount = data["assetAccount"];
+            this.depreciationAccount = data["depreciationAccount"];
+            this.costAccount = data["costAccount"];
+            this.incomeAccount = data["incomeAccount"];
+            this.liquidationCostAccount = data["liquidationCostAccount"];
+        }
+    }
+
+    static fromJS(data: any): AssetGroupDto_05 {
+        data = typeof data === 'object' ? data : {};
+        let result = new AssetGroupDto_05();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["assetTypeId"] = this.assetTypeId;
+        data["level"] = this.level;
+        data["fatherAssetGroup"] = this.fatherAssetGroup;
+        data["monthsDepreciation"] = this.monthsDepreciation;
+        data["depreciationRates"] = this.depreciationRates;
+        data["assetAccount"] = this.assetAccount;
+        data["depreciationAccount"] = this.depreciationAccount;
+        data["costAccount"] = this.costAccount;
+        data["incomeAccount"] = this.incomeAccount;
+        data["liquidationCostAccount"] = this.liquidationCostAccount;
+        return data; 
+    }
+}
+
+export interface IAssetGroupDto_05 {
+    id: string | undefined;
+    name: string | undefined;
+    assetTypeId: string | undefined;
+    level: number | undefined;
+    fatherAssetGroup: string | undefined;
+    monthsDepreciation: number | undefined;
+    depreciationRates: number | undefined;
+    assetAccount: string | undefined;
+    depreciationAccount: string | undefined;
+    costAccount: string | undefined;
+    incomeAccount: string | undefined;
+    liquidationCostAccount: string | undefined;
+}
+
+export class AssetGroupOutput_05 implements IAssetGroupOutput_05 {
+    assetGroup!: AssetGroupDto_05 | undefined;
+    assetGroups!: ComboboxItemDto[] | undefined;
+
+    constructor(data?: IAssetGroupOutput_05) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.assetGroup = data["assetGroup"] ? AssetGroupDto_05.fromJS(data["assetGroup"]) : <any>undefined;
+            if (data["assetGroups"] && data["assetGroups"].constructor === Array) {
+                this.assetGroups = [];
+                for (let item of data["assetGroups"])
+                    this.assetGroups.push(ComboboxItemDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): AssetGroupOutput_05 {
+        data = typeof data === 'object' ? data : {};
+        let result = new AssetGroupOutput_05();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["assetGroup"] = this.assetGroup ? this.assetGroup.toJSON() : <any>undefined;
+        if (this.assetGroups && this.assetGroups.constructor === Array) {
+            data["assetGroups"] = [];
+            for (let item of this.assetGroups)
+                data["assetGroups"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IAssetGroupOutput_05 {
+    assetGroup: AssetGroupDto_05 | undefined;
+    assetGroups: ComboboxItemDto[] | undefined;
+}
+
+export class ComboboxItemDto implements IComboboxItemDto {
+    value!: string | undefined;
+    displayText!: string | undefined;
+    isSelected!: boolean | undefined;
+
+    constructor(data?: IComboboxItemDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.value = data["value"];
+            this.displayText = data["displayText"];
+            this.isSelected = data["isSelected"];
+        }
+    }
+
+    static fromJS(data: any): ComboboxItemDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ComboboxItemDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["value"] = this.value;
+        data["displayText"] = this.displayText;
+        data["isSelected"] = this.isSelected;
+        return data; 
+    }
+}
+
+export interface IComboboxItemDto {
+    value: string | undefined;
+    displayText: string | undefined;
+    isSelected: boolean | undefined;
+}
+
+export class AssetGroupInput_05 implements IAssetGroupInput_05 {
+    id!: string | undefined;
+    name!: string | undefined;
+    assetTypeId!: string | undefined;
+    level!: number | undefined;
+    fatherAssetGroup!: string | undefined;
+    monthsDepreciation!: number | undefined;
+    depreciationRates!: number | undefined;
+    assetAccount!: string | undefined;
+    depreciationAccount!: string | undefined;
+    costAccount!: string | undefined;
+    incomeAccount!: string | undefined;
+    liquidationCostAccount!: string | undefined;
+
+    constructor(data?: IAssetGroupInput_05) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.id = data["id"];
+            this.name = data["name"];
+            this.assetTypeId = data["assetTypeId"];
+            this.level = data["level"];
+            this.fatherAssetGroup = data["fatherAssetGroup"];
+            this.monthsDepreciation = data["monthsDepreciation"];
+            this.depreciationRates = data["depreciationRates"];
+            this.assetAccount = data["assetAccount"];
+            this.depreciationAccount = data["depreciationAccount"];
+            this.costAccount = data["costAccount"];
+            this.incomeAccount = data["incomeAccount"];
+            this.liquidationCostAccount = data["liquidationCostAccount"];
+        }
+    }
+
+    static fromJS(data: any): AssetGroupInput_05 {
+        data = typeof data === 'object' ? data : {};
+        let result = new AssetGroupInput_05();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["assetTypeId"] = this.assetTypeId;
+        data["level"] = this.level;
+        data["fatherAssetGroup"] = this.fatherAssetGroup;
+        data["monthsDepreciation"] = this.monthsDepreciation;
+        data["depreciationRates"] = this.depreciationRates;
+        data["assetAccount"] = this.assetAccount;
+        data["depreciationAccount"] = this.depreciationAccount;
+        data["costAccount"] = this.costAccount;
+        data["incomeAccount"] = this.incomeAccount;
+        data["liquidationCostAccount"] = this.liquidationCostAccount;
+        return data; 
+    }
+}
+
+export interface IAssetGroupInput_05 {
+    id: string | undefined;
+    name: string | undefined;
+    assetTypeId: string | undefined;
+    level: number | undefined;
+    fatherAssetGroup: string | undefined;
+    monthsDepreciation: number | undefined;
+    depreciationRates: number | undefined;
+    assetAccount: string | undefined;
+    depreciationAccount: string | undefined;
+    costAccount: string | undefined;
+    incomeAccount: string | undefined;
+    liquidationCostAccount: string | undefined;
+}
+
+export class AssetGroupUpdate_05 implements IAssetGroupUpdate_05 {
+    id!: string | undefined;
+    name!: string | undefined;
+    assetTypeId!: string | undefined;
+    level!: number | undefined;
+    fatherAssetGroup!: string | undefined;
+    monthsDepreciation!: number | undefined;
+    depreciationRates!: number | undefined;
+    assetAccount!: string | undefined;
+    depreciationAccount!: string | undefined;
+    costAccount!: string | undefined;
+    incomeAccount!: string | undefined;
+    liquidationCostAccount!: string | undefined;
+
+    constructor(data?: IAssetGroupUpdate_05) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.id = data["id"];
+            this.name = data["name"];
+            this.assetTypeId = data["assetTypeId"];
+            this.level = data["level"];
+            this.fatherAssetGroup = data["fatherAssetGroup"];
+            this.monthsDepreciation = data["monthsDepreciation"];
+            this.depreciationRates = data["depreciationRates"];
+            this.assetAccount = data["assetAccount"];
+            this.depreciationAccount = data["depreciationAccount"];
+            this.costAccount = data["costAccount"];
+            this.incomeAccount = data["incomeAccount"];
+            this.liquidationCostAccount = data["liquidationCostAccount"];
+        }
+    }
+
+    static fromJS(data: any): AssetGroupUpdate_05 {
+        data = typeof data === 'object' ? data : {};
+        let result = new AssetGroupUpdate_05();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["assetTypeId"] = this.assetTypeId;
+        data["level"] = this.level;
+        data["fatherAssetGroup"] = this.fatherAssetGroup;
+        data["monthsDepreciation"] = this.monthsDepreciation;
+        data["depreciationRates"] = this.depreciationRates;
+        data["assetAccount"] = this.assetAccount;
+        data["depreciationAccount"] = this.depreciationAccount;
+        data["costAccount"] = this.costAccount;
+        data["incomeAccount"] = this.incomeAccount;
+        data["liquidationCostAccount"] = this.liquidationCostAccount;
+        return data; 
+    }
+}
+
+export interface IAssetGroupUpdate_05 {
+    id: string | undefined;
+    name: string | undefined;
+    assetTypeId: string | undefined;
+    level: number | undefined;
+    fatherAssetGroup: string | undefined;
+    monthsDepreciation: number | undefined;
+    depreciationRates: number | undefined;
+    assetAccount: string | undefined;
+    depreciationAccount: string | undefined;
+    costAccount: string | undefined;
+    incomeAccount: string | undefined;
+    liquidationCostAccount: string | undefined;
+}
+
+export class AssetGroupForViewDto_05 implements IAssetGroupForViewDto_05 {
+    id!: string | undefined;
+    name!: string | undefined;
+    assetTypeId!: string | undefined;
+    level!: number | undefined;
+    fatherAssetGroup!: string | undefined;
+    monthsDepreciation!: number | undefined;
+    depreciationRates!: number | undefined;
+    assetAccount!: string | undefined;
+    depreciationAccount!: string | undefined;
+    costAccount!: string | undefined;
+    incomeAccount!: string | undefined;
+    liquidationCostAccount!: string | undefined;
+
+    constructor(data?: IAssetGroupForViewDto_05) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.id = data["id"];
+            this.name = data["name"];
+            this.assetTypeId = data["assetTypeId"];
+            this.level = data["level"];
+            this.fatherAssetGroup = data["fatherAssetGroup"];
+            this.monthsDepreciation = data["monthsDepreciation"];
+            this.depreciationRates = data["depreciationRates"];
+            this.assetAccount = data["assetAccount"];
+            this.depreciationAccount = data["depreciationAccount"];
+            this.costAccount = data["costAccount"];
+            this.incomeAccount = data["incomeAccount"];
+            this.liquidationCostAccount = data["liquidationCostAccount"];
+        }
+    }
+
+    static fromJS(data: any): AssetGroupForViewDto_05 {
+        data = typeof data === 'object' ? data : {};
+        let result = new AssetGroupForViewDto_05();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["assetTypeId"] = this.assetTypeId;
+        data["level"] = this.level;
+        data["fatherAssetGroup"] = this.fatherAssetGroup;
+        data["monthsDepreciation"] = this.monthsDepreciation;
+        data["depreciationRates"] = this.depreciationRates;
+        data["assetAccount"] = this.assetAccount;
+        data["depreciationAccount"] = this.depreciationAccount;
+        data["costAccount"] = this.costAccount;
+        data["incomeAccount"] = this.incomeAccount;
+        data["liquidationCostAccount"] = this.liquidationCostAccount;
+        return data; 
+    }
+}
+
+export interface IAssetGroupForViewDto_05 {
+    id: string | undefined;
+    name: string | undefined;
+    assetTypeId: string | undefined;
+    level: number | undefined;
+    fatherAssetGroup: string | undefined;
+    monthsDepreciation: number | undefined;
+    depreciationRates: number | undefined;
+    assetAccount: string | undefined;
+    depreciationAccount: string | undefined;
+    costAccount: string | undefined;
+    incomeAccount: string | undefined;
+    liquidationCostAccount: string | undefined;
+}
+
 export class PagedResultDtoOfAuditLogListDto implements IPagedResultDtoOfAuditLogListDto {
     totalCount!: number | undefined;
     items!: AuditLogListDto[] | undefined;
@@ -12836,7 +13637,7 @@ export class FixedAssetDto implements IFixedAssetDto {
     depreciationValue!: number | undefined;
     quantity!: number | undefined;
     fixedAssetTag!: number | undefined;
-    purchaseDate!: string | undefined;
+    purchaseDate!: moment.Moment | undefined;
     purchaseFrom!: string | undefined;
     cost!: number | undefined;
     isActive!: boolean | undefined;
@@ -12864,7 +13665,7 @@ export class FixedAssetDto implements IFixedAssetDto {
             this.depreciationValue = data["depreciationValue"];
             this.quantity = data["quantity"];
             this.fixedAssetTag = data["fixedAssetTag"];
-            this.purchaseDate = data["purchaseDate"];
+            this.purchaseDate = data["purchaseDate"] ? moment(data["purchaseDate"].toString()) : <any>undefined;
             this.purchaseFrom = data["purchaseFrom"];
             this.cost = data["cost"];
             this.isActive = data["isActive"];
@@ -12892,7 +13693,7 @@ export class FixedAssetDto implements IFixedAssetDto {
         data["depreciationValue"] = this.depreciationValue;
         data["quantity"] = this.quantity;
         data["fixedAssetTag"] = this.fixedAssetTag;
-        data["purchaseDate"] = this.purchaseDate;
+        data["purchaseDate"] = this.purchaseDate ? this.purchaseDate.toISOString() : <any>undefined;
         data["purchaseFrom"] = this.purchaseFrom;
         data["cost"] = this.cost;
         data["isActive"] = this.isActive;
@@ -12913,7 +13714,7 @@ export interface IFixedAssetDto {
     depreciationValue: number | undefined;
     quantity: number | undefined;
     fixedAssetTag: number | undefined;
-    purchaseDate: string | undefined;
+    purchaseDate: moment.Moment | undefined;
     purchaseFrom: string | undefined;
     cost: number | undefined;
     isActive: boolean | undefined;
@@ -12932,7 +13733,7 @@ export class FixedAssetInput implements IFixedAssetInput {
     depreciationValue!: number | undefined;
     quantity!: number | undefined;
     assetTag!: number | undefined;
-    purchaseDate!: string | undefined;
+    purchaseDate!: moment.Moment | undefined;
     purchaseFrom!: string | undefined;
     cost!: number | undefined;
     isActive!: boolean | undefined;
@@ -12960,7 +13761,7 @@ export class FixedAssetInput implements IFixedAssetInput {
             this.depreciationValue = data["depreciationValue"];
             this.quantity = data["quantity"];
             this.assetTag = data["assetTag"];
-            this.purchaseDate = data["purchaseDate"];
+            this.purchaseDate = data["purchaseDate"] ? moment(data["purchaseDate"].toString()) : <any>undefined;
             this.purchaseFrom = data["purchaseFrom"];
             this.cost = data["cost"];
             this.isActive = data["isActive"];
@@ -12988,7 +13789,7 @@ export class FixedAssetInput implements IFixedAssetInput {
         data["depreciationValue"] = this.depreciationValue;
         data["quantity"] = this.quantity;
         data["assetTag"] = this.assetTag;
-        data["purchaseDate"] = this.purchaseDate;
+        data["purchaseDate"] = this.purchaseDate ? this.purchaseDate.toISOString() : <any>undefined;
         data["purchaseFrom"] = this.purchaseFrom;
         data["cost"] = this.cost;
         data["isActive"] = this.isActive;
@@ -13009,7 +13810,7 @@ export interface IFixedAssetInput {
     depreciationValue: number | undefined;
     quantity: number | undefined;
     assetTag: number | undefined;
-    purchaseDate: string | undefined;
+    purchaseDate: moment.Moment | undefined;
     purchaseFrom: string | undefined;
     cost: number | undefined;
     isActive: boolean | undefined;
@@ -13028,7 +13829,7 @@ export class FixedAssetForViewDto implements IFixedAssetForViewDto {
     depreciationValue!: number | undefined;
     quantity!: number | undefined;
     assetTag!: number | undefined;
-    purchaseDate!: string | undefined;
+    purchaseDate!: moment.Moment | undefined;
     purchaseFrom!: string | undefined;
     cost!: number | undefined;
     isActive!: boolean | undefined;
@@ -13055,7 +13856,7 @@ export class FixedAssetForViewDto implements IFixedAssetForViewDto {
             this.depreciationValue = data["depreciationValue"];
             this.quantity = data["quantity"];
             this.assetTag = data["assetTag"];
-            this.purchaseDate = data["purchaseDate"];
+            this.purchaseDate = data["purchaseDate"] ? moment(data["purchaseDate"].toString()) : <any>undefined;
             this.purchaseFrom = data["purchaseFrom"];
             this.cost = data["cost"];
             this.isActive = data["isActive"];
@@ -13082,7 +13883,7 @@ export class FixedAssetForViewDto implements IFixedAssetForViewDto {
         data["depreciationValue"] = this.depreciationValue;
         data["quantity"] = this.quantity;
         data["assetTag"] = this.assetTag;
-        data["purchaseDate"] = this.purchaseDate;
+        data["purchaseDate"] = this.purchaseDate ? this.purchaseDate.toISOString() : <any>undefined;
         data["purchaseFrom"] = this.purchaseFrom;
         data["cost"] = this.cost;
         data["isActive"] = this.isActive;
@@ -13102,7 +13903,7 @@ export interface IFixedAssetForViewDto {
     depreciationValue: number | undefined;
     quantity: number | undefined;
     assetTag: number | undefined;
-    purchaseDate: string | undefined;
+    purchaseDate: moment.Moment | undefined;
     purchaseFrom: string | undefined;
     cost: number | undefined;
     isActive: boolean | undefined;
@@ -14777,50 +15578,6 @@ export interface IApplicationLanguageEditDto {
     name: string;
     icon: string | undefined;
     isEnabled: boolean | undefined;
-}
-
-export class ComboboxItemDto implements IComboboxItemDto {
-    value!: string | undefined;
-    displayText!: string | undefined;
-    isSelected!: boolean | undefined;
-
-    constructor(data?: IComboboxItemDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.value = data["value"];
-            this.displayText = data["displayText"];
-            this.isSelected = data["isSelected"];
-        }
-    }
-
-    static fromJS(data: any): ComboboxItemDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ComboboxItemDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["value"] = this.value;
-        data["displayText"] = this.displayText;
-        data["isSelected"] = this.isSelected;
-        return data; 
-    }
-}
-
-export interface IComboboxItemDto {
-    value: string | undefined;
-    displayText: string | undefined;
-    isSelected: boolean | undefined;
 }
 
 export class CreateOrUpdateLanguageInput implements ICreateOrUpdateLanguageInput {

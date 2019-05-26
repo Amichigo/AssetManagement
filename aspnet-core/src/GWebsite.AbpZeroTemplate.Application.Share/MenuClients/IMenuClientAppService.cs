@@ -9,13 +9,13 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.MenuClients
     {
         Task<ListResultDto<MenuClientDto>> GetMenuClientsAsync();
 
-        Task<PagedResultDto<MenuClientListDto>> GetMenuClientsAsync(GetMenuClientInput input);
+        Task<PagedResultDto<MenuClientListDto>> GetMenuClientsAsync(GetMenuClientInput input);//for filter
 
         Task<GetMenuClientOutput> GetMenuClientForEditAsync(NullableIdDto input);
 
-        Task<MenuClientDto> CreateMenuClientAsync(CreateMenuClientInput input);
-
         Task<MenuClientDto> UpdateMenuClientAsync(UpdateMenuClientInput input);
+
+        Task<MenuClientDto> CreateMenuClientAsync(CreateMenuClientInput input);
 
         Task DeleteMenuClientAsync(EntityDto<int> input);
     }
