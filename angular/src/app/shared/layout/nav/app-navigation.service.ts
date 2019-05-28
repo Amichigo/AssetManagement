@@ -24,12 +24,17 @@ export class AppNavigationService {
             ),
             new AppMenuItem('Quản Lý Bất Động Sản', '', 'flaticon-interface-8', '', [
                 new AppMenuItem('Bất Động Sản', 'Pages.QuanLyBatDongSan.BatDongSan', 'flaticon-menu-1', '/app/gwebsite/batdongsan'),
+                new AppMenuItem('Sửa Chữa Bất Động Sản', 'Pages.QuanLyBatDongSan.SuaChuaBatDongSan', 'flaticon-menu-1', '/app/gwebsite/suachuabatdongsan'),
                 new AppMenuItem('Loại Bất Động Sản', 'Pages.QuanLyBatDongSan.LoaiBatDongSan', 'flaticon-menu-1', '/app/gwebsite/loaibatdongsan'),
                 new AppMenuItem('Loại Sở Hữu', 'Pages.QuanLyBatDongSan.LoaiSoHuu', 'flaticon-menu-1', '/app/gwebsite/loaisohuu'),
                 new AppMenuItem('Hiện Trạng Pháp Lý', 'Pages.QuanLyBatDongSan.HienTrangPhapLy', 'flaticon-menu-1', '/app/gwebsite/hientrangphaply'),
                 new AppMenuItem('Tình Trạng Sử Dụng Đất', 'Pages.QuanLyBatDongSan.TinhTrangSuDungDat', 'flaticon-menu-1', '/app/gwebsite/tinhtrangsudungdat'),
+                new AppMenuItem('Tài Sản test', 'Pages.QuanLyBatDongSan.TaiSan', 'flaticon-menu-1', '/app/gwebsite/taisan'),  
             ]),
-    
+            new AppMenuItem('Quản Lý Kế hoạch N13', '', 'flaticon-interface-8', '', [
+                new AppMenuItem('Kế hoạch xd cơ bản', 'Pages.QuanLyKeHoachXayDung.KeHoachXayDung', 'flaticon-menu-1', '/app/gwebsite/kehoachxaydung'),
+                
+            ]),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),
                 new AppMenuItem('Roles', 'Pages.Administration.Roles', 'flaticon-suitcase', '/app/admin/roles'),

@@ -8,6 +8,9 @@ import { LoaiSoHuuComponent } from './loaisohuu/loaisohuu.component';
 import { HienTrangPhapLyComponent } from './hientrangphaply/hientrangphaply.component';
 import { BatDongSanComponent } from './batdongsan/batdongsan.component';
 import { TinhTrangSuDungDatComponent } from './tinhtrangsudungdat/tinhtrangsudungdat.component';
+import { TaiSanComponent } from './taisan/taisan.component';
+import { SuaChuaBatDongSanComponent } from './suachuabatdongsan/suachuabatdongsan.component';
+import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.component';
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -97,7 +100,36 @@ import { TinhTrangSuDungDatComponent } from './tinhtrangsudungdat/tinhtrangsudun
                 ]
 
             },
-           
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'taisan', component: TaiSanComponent,
+                        data: { permission: 'Pages.QuanLyBatDongSan.TaiSan' }
+                    },
+                ]
+
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'suachuabatdongsan', component: SuaChuaBatDongSanComponent,
+                        data: { permission: 'Pages.QuanLyBatDongSan.SuaChuaBatDongSan' }
+                    },
+                ]
+
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'kehoachxaydung', component: KeHoachXayDungComponent,
+                        data: { permission: 'Pages.QuanLyKeHoachXayDung.KeHoachXayDung' }
+                    },
+                ]
+
+            },
         ])
     ],
     exports: [

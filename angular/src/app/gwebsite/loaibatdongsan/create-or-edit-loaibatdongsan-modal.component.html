@@ -21,6 +21,19 @@
                     </div>
                    
                 </div>
+
+                <div class="form-group">
+                    <label>{{l("Bất động sản")}} *</label>
+                    <select *ngIf="!batdongsan.id" #categoryCombobox name="loaibatdongsan" class="form-control"
+                        [(ngModel)]="selectedBDS" title="Select type..." (change)="this.onChangeBDS()"
+                        required>
+                        <option *ngFor="let item of listItems" [value]="item.maBatDongSan">{{item.maBatDongSan}}</option>
+                    </select>
+                    
+                
+                </div>
+
+
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default"
                         (click)="close()">{{l("Cancel")}}</button>

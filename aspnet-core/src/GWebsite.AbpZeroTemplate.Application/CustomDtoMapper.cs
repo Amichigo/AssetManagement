@@ -17,6 +17,14 @@ using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.NhomTaiSan.DTO;
 
 using GWebsite.AbpZeroTemplate.Core.Models;
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.BatDongSan.DTO;
+using GWebsite.AbpZeroTemplate.Application.Share.TaiSan_13.Dto;
+using GWebsite.AbpZeroTemplate.Core.Models.TaiSan13;
+using GWebsite.AbpZeroTemplate.Core.Models.RealEstasAsset.QuanLyBDS;
+using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.SuaChuaBatDongSan.DTO;
+using GWebsite.AbpZeroTemplate.Application.Share.CongTrinh_N13.DTO;
+using GWebsite.AbpZeroTemplate.Core.Models.QuanLyCongTrinh_N13;
+using GWebsite.AbpZeroTemplate.Core.Models.KeHoachXayDung_N13;
+using GWebsite.AbpZeroTemplate.Application.Share.KeHoachXayDung_N13.DTO;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {
@@ -79,21 +87,37 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<MucDichSuDungDat, MucDichSuDungDatInput>();
             configuration.CreateMap<MucDichSuDungDat, MucDichSuDungDatForViewDto>();
 
-            configuration.CreateMap<LoaiTaiSan, LoaiTaiSanDto>();
-            configuration.CreateMap<LoaiTaiSanInput, LoaiTaiSan>();
-            configuration.CreateMap<LoaiTaiSan, LoaiTaiSanInput>();
-            configuration.CreateMap<LoaiTaiSan, LoaiTaiSanForViewDto>();
-
-            configuration.CreateMap<NhomTaiSan, NhomTaiSanDto>();
-            configuration.CreateMap<NhomTaiSanInput, NhomTaiSan>();
-            configuration.CreateMap<NhomTaiSan, NhomTaiSanInput>();
-            configuration.CreateMap<NhomTaiSan, NhomTaiSanForViewDto>();
+          
 
             configuration.CreateMap<BatDongSan, BatDongSanDto>();
             configuration.CreateMap<BatDongSanInput, BatDongSan>();
             configuration.CreateMap<BatDongSan, BatDongSanInput>();
             configuration.CreateMap<BatDongSan, BatDongSanForViewDto>();
 
+            //ts
+            configuration.CreateMap<TaiSan_13, TaiSanDto>();
+            configuration.CreateMap<TaiSanInput, TaiSan_13>();
+            configuration.CreateMap<TaiSan_13, TaiSanInput>();
+            configuration.CreateMap<TaiSan_13, TaiSanForViewDto>();
+
+            //sc bds
+            configuration.CreateMap<SuaChuaBatDongSan, SuaChuaBatDongSanDto>();
+            configuration.CreateMap<SuaChuaBatDongSanInput, SuaChuaBatDongSan>();
+            configuration.CreateMap<SuaChuaBatDongSan, SuaChuaBatDongSanInput>();
+            configuration.CreateMap<SuaChuaBatDongSan, SuaChuaBatDongSanForViewDto>();
+
+            //cong trinh
+            configuration.CreateMap<CongTrinh_N13, CongTrinhDto>();
+            configuration.CreateMap<CongTrinhInput, CongTrinh_N13>();
+            configuration.CreateMap<CongTrinh_N13, CongTrinhInput>();
+            configuration.CreateMap<CongTrinh_N13, CongTrinhForViewDto>();
+
+
+            //ke hoach
+            configuration.CreateMap<KeHoachXayDung_N13, KeHoachXayDungDto>();
+            configuration.CreateMap<KeHoachXayDungInput, KeHoachXayDung_N13>();
+            configuration.CreateMap<KeHoachXayDung_N13, KeHoachXayDungInput>();
+            configuration.CreateMap<KeHoachXayDung_N13, KeHoachXayDungForViewDto>();
         }
     }
 }

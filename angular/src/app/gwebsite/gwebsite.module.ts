@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, LoaiBatDongSanServiceProxy, NhomTaiSanServiceProxy, LoaiSoHuuServiceProxy, MucDichSuDungDatServiceProxy, BatDongSanServiceProxy, HienTrangPhapLyServiceProxy, TinhTrangSuDungDatServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, LoaiBatDongSanServiceProxy, NhomTaiSanServiceProxy, LoaiSoHuuServiceProxy, MucDichSuDungDatServiceProxy, BatDongSanServiceProxy, HienTrangPhapLyServiceProxy, TinhTrangSuDungDatServiceProxy, TaiSanServiceProxy, SuaChuaBatDongSanServiceProxy, KeHoachXayDungServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -34,6 +34,17 @@ import { ViewHienTrangPhapLyModalComponent } from './hientrangphaply/view-hientr
 import { TinhTrangSuDungDatComponent } from './tinhtrangsudungdat/tinhtrangsudungdat.component';
 import { CreateOrEditTinhTrangSuDungDatModalComponent } from './tinhtrangsudungdat/create-or-edit-tinhtrangsudungdat-modal.component';
 import { ViewTinhTrangSuDungDatModalComponent } from './tinhtrangsudungdat/view-tinhtrangsudungdat-modal.component';
+import { TaiSanComponent } from './taisan/taisan.component';
+import { ViewTaiSanModalComponent } from './taisan/view-taisan-modal.component';
+import { CreateOrEditTaiSanModalComponent } from './taisan/create-or-edit-taisan-modal.component';
+import { SelectTaiSanModalComponent } from './taisan/select-taisan-modal.component';
+import { SuaChuaBatDongSanComponent } from './suachuabatdongsan/suachuabatdongsan.component';
+import { CreateOrEditSuaChuaBatDongSanModalComponent } from './suachuabatdongsan/create-or-edit-suachuabatdongsan-modal.component';
+import { ViewSuaChuaBatDongSanModalComponent } from './suachuabatdongsan/view-suachuabatdongsan-modal.component';
+import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.component';
+import { CreateOrEditKeHoachXayDungModalComponent } from './kehoachxaydung/create-or-edit-kehoachxaydung-modal.component';
+import { ViewKeHoachXayDungModalComponent } from './kehoachxaydung/view-kehoachxaydung-modal.component';
+
 
 
 @NgModule({
@@ -64,6 +75,9 @@ import { ViewTinhTrangSuDungDatModalComponent } from './tinhtrangsudungdat/view-
         BatDongSanComponent, CreateOrEditBatDongSanModalComponent, ViewBatDongSanModalComponent,
         HienTrangPhapLyComponent, CreateOrEditHienTrangPhapLyModalComponent, ViewHienTrangPhapLyModalComponent,
         TinhTrangSuDungDatComponent, CreateOrEditTinhTrangSuDungDatModalComponent, ViewTinhTrangSuDungDatModalComponent,
+        TaiSanComponent, CreateOrEditTaiSanModalComponent, ViewTaiSanModalComponent, SelectTaiSanModalComponent,
+        SuaChuaBatDongSanComponent, CreateOrEditSuaChuaBatDongSanModalComponent, ViewSuaChuaBatDongSanModalComponent,
+        KeHoachXayDungComponent, CreateOrEditKeHoachXayDungModalComponent,ViewKeHoachXayDungModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
@@ -74,6 +88,9 @@ import { ViewTinhTrangSuDungDatModalComponent } from './tinhtrangsudungdat/view-
         BatDongSanServiceProxy,
         HienTrangPhapLyServiceProxy,
         TinhTrangSuDungDatServiceProxy,
+        TaiSanServiceProxy,
+        SuaChuaBatDongSanServiceProxy,
+        KeHoachXayDungServiceProxy,
     ]
 })
 export class GWebsiteModule { }

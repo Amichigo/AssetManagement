@@ -4,15 +4,15 @@
         <div class="d-flex align-items-center">
             <div class="mr-auto col-xs-6">
                 <h3 class="m-subheader__title m-subheader__title--separator">
-                    <span>{{l("BatDongSan")}}</span>
+                    <span>{{l("Bất Động sản")}}</span>
                 </h3>
                 <span class="m-section__sub">
-                    {{l("BatDongSanInfo")}}
+                    {{l("Chi tiết bất động sản")}}
                 </span>
             </div>
             <div class="col-xs-6 text-right">
                 <button (click)="createBatDongSan()" *ngIf="isGranted('Pages.QuanLyBatDongSan.BatDongSan.Create')"
-                    class="btn btn-primary"><i class="fa fa-plus"></i> {{l("CreateNewBatDongSan")}}</button>
+                    class="btn btn-primary"><i class="fa fa-plus"></i> {{l("Tạo mới bất động sản")}}</button>
             </div>
         </div>
     </div>
@@ -24,15 +24,115 @@
                     <div class="m-form m-form--label-align-right" id="TextsFilterForm">
                         <div class="row align-items-center m--margin-bottom-10">
                             <div class="col-sm-12">
-                                <div class="input-group">
-                                    <input [(ngModel)]="batdongsanName" name="batdongsanName" autoFocus class="form-control"
-                                        placeholder="Nhập mã BĐS" type="text">
-                                    <span class="input-group-btn">
-                                        <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
-                                                class="icon-refresh"></i>
-                                            {{l("Refresh")}}</button>
-                                    </span>
+
+                                <div class="form-control">
+                                    <label>{{l("Thông tin tài sản")}} *</label>
+                                    <br>
+                                    <div class="form-group">
+                                        <label>{{l("Mã tài sản")}} *</label>
+                                        <div class="form-group m-form__group row">
+                                            <div class="col-lg-10 col-md-9 col-sm-8">
+                                                <div class="form-group">
+                                                    <input #taisanInput="ngModel" class="form-control" type="text"
+                                                        name="TaiSan" [(ngModel)]="taisan.maTaiSan" disabled required
+                                                        maxlength="64">
+                                                    <validation-messages [formCtrl]="taisanInput"></validation-messages>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-4">
+                                                <button (click)="selectTaiSan()" class="btn btn-primary"><i
+                                                        class="fa fa-plus"></i>
+                                                    {{l("Chọn tài sản")}}</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row m--margin-bottom-10">
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label>Nhóm tài sản*</label>
+                                                    <input #nhomtsInput="ngModel" class="form-control" type="text"
+                                                        name="maNhomTaiSan" [(ngModel)]="taisan.maNhomTaiSan" disabled
+                                                        required>
+                                                    <validation-messages [formCtrl]="nhomtsInput"></validation-messages>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <label>Loại tài sản*</label>
+                                                <input #loaitsInput="ngModel" class="form-control" type="text"
+                                                    name="maLoaiTaiSan" [(ngModel)]="taisan.maLoaiTaiSan" disabled
+                                                    required>
+                                                <validation-messages [formCtrl]="loaitsInput"></validation-messages>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <label>Địa chỉ*</label>
+                                        <input #diachiInput="ngModel" class="form-control" type="text" name="DiaChi"
+                                            [(ngModel)]="taisan.diaChi" disabled required maxlength="64">
+                                        <validation-messages [formCtrl]="diachiInput"></validation-messages>
+                                    </div>
+
+
+
+
+
+
+                                    <div class="form-group">
+                                        <label>Nguyên giá tài sản*</label>
+                                        <input #nguyengiataisanInput="ngModel" class="form-control" type="number"
+                                            name="NguyenGia" [(ngModel)]="taisan.nguyenGiaTaiSan" disabled required>
+                                        <validation-messages [formCtrl]="nguyengiataisanInput">
+                                        </validation-messages>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label>Ghi Chú*</label>
+                                        <input #ghichutsInput="ngModel" class="form-control" type="text" name="ghiChu"
+                                            [(ngModel)]="taisan.ghiChu" disabled required>
+                                        <validation-messages [formCtrl]="ghichutsInput"></validation-messages>
+
+                                    </div>
                                 </div>
+                                <!-- <input [(ngModel)]="maloaibds" name="maloaibds" autoFocus class="form-control"
+                                        placeholder="Nhập mã loại bđs" type="text">
+                                         -->
+                                <div class="form-control">
+                                    <label>{{l("Tìm theo bất động sản")}} *</label>
+                                    <br>
+                                    <div class="row m--margin-bottom-10">
+                                        <div class="col-xl-6">
+                                            <label>{{l("Nhập mã tài sản")}} *</label>
+                                            <input [(ngModel)]="batdongsanName" name="batdongsanName" autoFocus
+                                                class="form-control" placeholder="Nhập mã BĐS" type="text">
+                                        </div>
+                                        <div class="col-xl-6">
+                                                <label>{{l("Loại Bất động sản")}} *</label>
+                                                <select #categoryCombobox name="loaibatdongsan" class="form-control"
+                                                    [(ngModel)]="maloaibds" title="Select type..."
+                                                    required>
+                                                    <option value>--Chọn loại BDS--</option>
+                                                    <option *ngFor="let item of listItems" [value]="item.id">{{item.name}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                    </div>
+                                </div>
+                                <span class="input-group-btn">
+                                    <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
+                                            class="icon-refresh"></i>
+                                        {{l("Refresh")}}</button>
+                                    <div class="col-xs-6 text-right">
+                                        <button (click)="reset()" class="btn btn-primary" type="submit"><i
+                                                class="icon-refresh"></i>
+                                            {{l("Reset")}}</button>
+                                    </div>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -45,23 +145,23 @@
                             [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
-                                    <th pSortableColumn="mataisan">
+                                    <th pSortableColumn="maTaiSan">
                                         Mã tài sản
-                                        <p-sortIcon field="mataisan"></p-sortIcon>
+                                        <p-sortIcon field="maTaiSan"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="mabatdongsan">
                                         Mã bất động sản
                                         <p-sortIcon field="mabatdongsan"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="ngaymuabatdongsan">
-                                            Ngày mua bất động sản
-                                         <p-sortIcon field="ngaymuabatdongsan"></p-sortIcon>
+                                        Ngày mua bất động sản
+                                        <p-sortIcon field="ngaymuabatdongsan"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="nguyengiataisan">
                                         Nguyên giá tài sản
                                         <p-sortIcon field="nguyengiataisan"></p-sortIcon>
                                     </th>
-                              
+
                                     <th pSortableColumn="loaisohuu">
                                         Loại sở hữu
                                     </th>
@@ -77,13 +177,13 @@
                                         Địa chỉ
                                     </th>
                                     <th pSortableColumn="chusohuu">
-                                       Chủ sở hữu
+                                        Chủ sở hữu
                                     </th>
 
                                     <th pSortableColumn="ghichu">
                                         Ghi chú
                                     </th>
-                        
+
                                     <th>{{l('Edit')}}</th>
                                 </tr>
                             </ng-template>
@@ -97,25 +197,29 @@
 
                                     <td>
                                         <span class="ui-column-title">Mã bất động sản</span>
-                                        <span title="{{record.maBatDongSan}}">{{truncateString(record.maBatDongSan)}}</span>
+                                        <span
+                                            title="{{record.maBatDongSan}}">{{truncateString(record.maBatDongSan)}}</span>
                                     </td>
 
                                     <td>
-                                            <span class="ui-column-title">Mã bất động sản</span>
-                                            <span title="{{record.ngayMuaBatDongSan}}">{{truncateString(record.ngayMuaBatDongSan)}}</span>
+                                        <span class="ui-column-title">Mã bất động sản</span>
+                                        <span
+                                            title="{{record.ngayMuaBatDongSan | date:'dd-MMM-yyyy'}}">{{truncateString(record.ngayMuaBatDongSan | date:'dd-MMM-yyyy')}}</span>
                                     </td>
-    
+
 
 
                                     <td>
                                         <span class="ui-column-title">Nguyên giá tài sản</span>
-                                        <span title="{{record.nguyenGiaTaiSan}}">{{truncateString(record.nguyenGiaTaiSan)}}</span>
+                                        <span
+                                            title="{{record.nguyenGiaTaiSan  | number}}">{{truncateString(record.nguyenGiaTaiSan  | number)}}</span>
                                     </td>
 
 
                                     <td>
                                         <span class="ui-column-title">Loại sở hữu</span>
-                                        <span title="{{record.maLoaiSoHuu}}">{{truncateString(record.maLoaiSoHuu)}}</span>
+                                        <span
+                                            title="{{record.maLoaiSoHuu}}">{{truncateString(record.maLoaiSoHuu)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Loại Bất động sản</span>
@@ -123,7 +227,8 @@
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Tên địa điểm</span>
-                                        <span title="{{record.maPhongGiaoDich}}">{{truncateString(record.maPhongGiaoDich)}}</span>
+                                        <span
+                                            title="{{record.maPhongGiaoDich}}">{{truncateString(record.maPhongGiaoDich)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Địa chỉ</span>
@@ -138,18 +243,21 @@
                                         <span title="{{record.ghiChu}}">{{truncateString(record.ghiChu)}}</span>
                                     </td>
                                     <td>
-                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">
+                                        <button
+                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                            (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">
                                             <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
                                         </button>
 
-                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                (click)="deleteBatDongSan(record.id)" title="{{l('Delete')}}">
+                                        <button
+                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                            (click)="deleteBatDongSan(record.id)" title="{{l('Delete')}}">
                                             <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                         </button>
 
-                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                (click)="viewBatDongSanModal.show(record.id)" title="{{l('View')}}">
+                                        <button
+                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                            (click)="viewBatDongSanModal.show(record.id)" title="{{l('View')}}">
                                             <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
                                         </button>
                                     </td>
@@ -176,5 +284,8 @@
         </div>
     </div>
     <createOrEditBatDongSanModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditBatDongSanModal>
+    <selectTaiSanModal #selectTaiSanModel (modalSave)="updateTaiSan()"></selectTaiSanModal>
     <viewBatDongSanModal #viewBatDongSanModal></viewBatDongSanModal>
+
+
 </div>

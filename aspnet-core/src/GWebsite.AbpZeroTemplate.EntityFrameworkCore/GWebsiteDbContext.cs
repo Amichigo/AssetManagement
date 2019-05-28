@@ -3,6 +3,10 @@ using Abp.Authorization.Users;
 using Abp.MultiTenancy;
 using Abp.Zero.EntityFrameworkCore;
 using GWebsite.AbpZeroTemplate.Core.Models;
+using GWebsite.AbpZeroTemplate.Core.Models.KeHoachXayDung_N13;
+using GWebsite.AbpZeroTemplate.Core.Models.QuanLyCongTrinh_N13;
+using GWebsite.AbpZeroTemplate.Core.Models.RealEstasAsset.QuanLyBDS;
+using GWebsite.AbpZeroTemplate.Core.Models.TaiSan13;
 using Microsoft.EntityFrameworkCore;
 
 namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
@@ -13,6 +17,7 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         where TUser : AbpUser<TUser>
         where TSelf : GWebsiteDbContext<TTenant, TRole, TUser, TSelf>
     {
+
         public virtual DbSet<Announcement> Announcements { get; set; }
         public virtual DbSet<AnnouncementUser> AnnouncementUsers { get; set; }
         public virtual DbSet<AppRole> AppRoles { get; set; }
@@ -25,22 +30,28 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<DemoModel> DemoModels { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
 
-        public virtual DbSet<TaiSan> TaiSan { get; set; }
-        public virtual DbSet<NhomTaiSan> NhomTaiSans { get; set; }
-        public virtual DbSet<LoaiTaiSan> LoaiTaiSans { get; set; }
-        public virtual DbSet<BatDongSan> BatDongSans { get; set; }
-        public virtual DbSet<GiayPhepSuDung> GiayPhepSuDungs { get; set; }
-        public virtual DbSet<HienTrangPhapLy> HienTrangPhapLys { get; set; }
-        public virtual DbSet<LoaiBatDongSan> LoaiBatDongSans { get; set; }
 
-        public virtual DbSet<LoaiSoHuu> LoaiSoHuus { get; set; }
+        public virtual DbSet<BatDongSan> BatDongSan_N13 { get; set; }
+        public virtual DbSet<GiayPhepSuDung> GiayPhepSuDung_N13 { get; set; }
+        public virtual DbSet<HienTrangPhapLy> HienTrangPhapLy_N13 { get; set; }
+        public virtual DbSet<LoaiBatDongSan> LoaiBatDongSan_N13 { get; set; }
 
-        public virtual DbSet<MucDinhSuDungDat> MucDinhSuDungDats { get; set; }
+        public virtual DbSet<LoaiSoHuu> LoaiSoHuu_N13 { get; set; }
 
-        public virtual DbSet<TinhTrangSuDungDat> TinhTrangSuDungDats { get; set; }
+        public virtual DbSet<MucDinhSuDungDat> MucDinhSuDungDat_N13 { get; set; }
 
-        public virtual DbSet<TinhTrangXayDung> TinhTrangXayDungs { get; set; }
+        public virtual DbSet<TinhTrangSuDungDat> TinhTrangSuDungDat_N13 { get; set; }
 
+        public virtual DbSet<TinhTrangXayDung> TinhTrangXayDung_N13 { get; set; }
+
+        public virtual DbSet<TaiSan_13> TaiSan_13 { get; set; }
+
+
+        public virtual DbSet<SuaChuaBatDongSan> SuaChuaBatDongSan_N13 { get; set; }
+
+        public virtual DbSet<KeHoachXayDung_N13> KeHoachXayDung_N13 { get; set; }
+
+        public virtual DbSet<CongTrinh_N13> CongTrinh_N13 { get; set; }
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>

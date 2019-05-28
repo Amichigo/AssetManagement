@@ -27,6 +27,13 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
+        public int ThemAPI()
+        {
+            return 1;
+        }
+
+
+        [HttpGet]
         public BatDongSanInput GetBatDongSanForEdit(int id)
         {
             return batdongsanAppService.GetBatDongSanForEdit(id);

@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    <span *ngIf="batdongsan.id">{{l("EditBatDongSan")}}: {{batdongsan.name}}</span>
+                    <span *ngIf="batdongsan.id">{{l("EditBatDongSan")}}: {{batdongsan.maBatDongSan}}</span>
                     <span *ngIf="!batdongsan.id">{{l("CreateNewBatDongSan")}}</span>
                 </h4>
                 <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">

@@ -16,7 +16,6 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public string DiaChi { set; get; }
         public string MaTaiSan { set; get; }
 
-        public float NguyenGiaTaiSan { set; get; }
         public string HienTrangBDS { set; get; }
 
         public string MaLoaiBDS { set; get; }

@@ -2,12 +2,16 @@ import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
 import { LoaiBatDongSanServiceProxy, LoaiBatDongSanInput } from '@shared/service-proxies/service-proxies';
+import { BatDongSanDTO } from '../batdongsan/dto/batdongsandto';
+import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 
 
 @Component({
     selector: 'createOrEditLoaiBatDongSanModal',
     templateUrl: './create-or-edit-loaibatdongsan-modal.component.html'
 })
+
+
 export class CreateOrEditLoaiBatDongSanModalComponent extends AppComponentBase {
 
 
@@ -15,7 +19,7 @@ export class CreateOrEditLoaiBatDongSanModalComponent extends AppComponentBase {
     @ViewChild('loaibatdongsanCombobox') loaibatdongsanCombobox: ElementRef;
     @ViewChild('iconCombobox') iconCombobox: ElementRef;
     @ViewChild('dateInput') dateInput: ElementRef;
-
+    selectedBDS: number;
 
     /**
      * @Output dùng để public event cho component khác xử lý
@@ -26,12 +30,29 @@ export class CreateOrEditLoaiBatDongSanModalComponent extends AppComponentBase {
 
     loaibatdongsan: LoaiBatDongSanInput = new LoaiBatDongSanInput();
 
+   
+
+
+
     constructor(
         injector: Injector,
-        private _loaibatdongsanService: LoaiBatDongSanServiceProxy
+        private _loaibatdongsanService: LoaiBatDongSanServiceProxy,
+        private _apiService: WebApiServiceProxy,
     ) {
         super(injector);
+       
     }
+
+
+
+
+
+
+
+
+
+
+ 
 
     show(loaibatdongsanId?: number | null | undefined): void {
         this.saving = false;

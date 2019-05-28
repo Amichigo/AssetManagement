@@ -9,5 +9,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.RealEstas.LoaiBatDongSan.DT
     public class LoaiBatDongSanForViewDto
     {
         public string Name { get; set; }
+        public string ID { get; set; }
     }
 }

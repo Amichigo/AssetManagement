@@ -14,77 +14,117 @@
                 </div>
 
                 <div class="modal-body">
-                  <div class="form-group m-form__group row">
-                     <label for="SampleDatePicker" class="col-md-12">Thông tin tài sản</label>
-                    <div class="form-group">
-                        <label>Mã Tài sản*</label>
-                        <input #mataisanInput="ngModel" class="form-control" type="text" name="MaTaiSan" 
-                               [(ngModel)]="batdongsan.maTaiSan" required maxlength="64">
-                              
-                        <validation-messages [formCtrl]="mataisanInput"></validation-messages>
-                
-                    </div>
-                   
-                    <div class="form-group">
-                        <label>Địa chỉ*</label>
-                        <input #diachiInput="ngModel" class="form-control" type="text" name="DiaChi"
-                               [(ngModel)]="batdongsan.diaChi" required maxlength="64">
-                        <validation-messages [formCtrl]="diachiInput"></validation-messages>
-                    </div>
-     
-                   
-
-                    <div class="form-group">
-                        <label>Mã Phòng giao dịch*</label>
-                        <input #phonggiaodichInput="ngModel" class="form-control" type="text" name="PhongGiaoDich"
-                               [(ngModel)]="batdongsan.maPhongGiaoDich" required maxlength="64">
-                        <validation-messages [formCtrl]="phonggiaodichInput"></validation-messages>
-                    </div>
-
-                    
-                    <div class="form-group">
-                            <label>Nguyên giá tài sản*</label>
-                            <input #nguyengiataisanInput="ngModel" class="form-control" type="number" name="DienTichXayDung"
-                                   [(ngModel)]="batdongsan.nguyenGiaTaiSan" required maxlength="64">
-                            <validation-messages [formCtrl]="nguyengiataisanInput"></validation-messages>
-                  </div>
-
+                    <div class="form-group m-form__group row">
+                        <div class="form-control">
+                            <label for="SampleDatePicker" class="col-md-12">Thông tin tài sản</label>
+                            <div class="form-group">
+                                    <label>Mã tài sản*</label>
+                                <div class="row m--margin-bottom-10">
+                                    <div class="col-xl-6">
+                                            <input #mataisanInput="ngModel" class="form-control" type="text"
+                                                name="MaTaiSan" [(ngModel)]="taisan.maTaiSan" disabled required
+                                                maxlength="64">
+                                            <validation-messages [formCtrl]="mataisanInput"></validation-messages>
+                                        
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <button  *ngIf="!batdongsan.id" [disabled]="saving" type="button" (click)="selectTaiSan()"
+                                            class="btn btn-primary"><i class="fa fa-plus"></i>
+                                            {{l("Chọn tài sản")}}</button>
                         
-                </div>
+                                    </div>
+                                </div>
 
 
-                <label>Thông tin bất động sản*</label>
+
+                            </div>
+
+                  
+                            <div class="row m--margin-bottom-10">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label>Nhóm tài sản*</label>
+                                        <input #nhomtsInput="ngModel" class="form-control" type="text"
+                                            name="maNhomTaiSan" [(ngModel)]="taisan.maNhomTaiSan" disabled required>
+                                        <validation-messages [formCtrl]="nhomtsInput"></validation-messages>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <label>Loại tài sản*</label>
+                                    <input #loaitsInput="ngModel" class="form-control" type="text" name="maLoaiTaiSan"
+                                        [(ngModel)]="taisan.maLoaiTaiSan" disabled required>
+                                    <validation-messages [formCtrl]="loaitsInput"></validation-messages>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                    <label>Địa chỉ*</label>
+                                    <input #diachiInput="ngModel" class="form-control" type="text" name="DiaChi"
+                                        [(ngModel)]="taisan.diaChi" disabled required maxlength="64">
+                                    <validation-messages [formCtrl]="diachiInput"></validation-messages>
+                                </div>
+    
+
+
+                            <div class="form-group">
+                                <label>Nguyên giá tài sản*</label>
+                                <input #nguyengiataisanInput="ngModel" class="form-control" type="number"
+                                    name="NguyenGia" [(ngModel)]="taisan.nguyenGiaTaiSan" disabled required>
+                                <validation-messages [formCtrl]="nguyengiataisanInput"></validation-messages>
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Ghi Chú*</label>
+                                <input #ghichutsInput="ngModel" class="form-control" type="text" name="ghiChu"
+                                    [(ngModel)]="taisan.ghiChu" disabled required>
+                                <validation-messages [formCtrl]="ghichutsInput"></validation-messages>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+                    <label>Thông tin bất động sản*</label>
                     <div class="form-group">
                         <label>Hiện trạng bất động sản*</label>
                         <input #hientrangInput="ngModel" class="form-control" type="text" name="HienTrang"
-                               [(ngModel)]="batdongsan.hienTrangBDS" required maxlength="64">
+                            [(ngModel)]="batdongsan.hienTrangBDS" required maxlength="64">
                         <validation-messages [formCtrl]="hientrangInput"></validation-messages>
                     </div>
-              
+
                     <div class="form-group">
                         <label>{{l("Loại Bất động sản")}} *</label>
                         <select *ngIf="!batdongsan.id" #categoryCombobox name="loaibatdongsan" class="form-control"
-                            [(ngModel)]="selectedLBDS" title="Select type..." (change)="this.onChangeType()"
-                            required>
+                            [(ngModel)]="batdongsan.maLoaiBDS" title="Select type..."  required>
+                            
                             <option *ngFor="let item of listItems" [value]="item.id">{{item.name}}</option>
                         </select>
-                        
-                        <select *ngIf="batdongsan.id" #categoryCombobox name="loaibatdongsan"  class="form-control"
-                        [(ngModel)]="selectedLBDS" title="Select type..." (change)="this.onChangeType()"
-                        required>
-                        <option *ngFor="let item of listItems" [value]="item.id">{{item.name}}</option>
-                           
+
+                        <select *ngIf="batdongsan.id" #categoryCombobox name="loaibatdongsan" class="form-control"
+                            [(ngModel)]="batdongsan.maLoaiBDS" title="Select type..." required>
+                            <option *ngFor="let item of listItems" [value]="item.id">{{item.name}}</option>
+
                         </select>
                     </div>
                     <br>
 
                     <div class="form-group">
                         <label>Ngày mua bất động sản*</label>
-                        <input #ngaymuabatdongsanInput="ngModel" class="form-control" type="date" name="NgayMuaBatDongSan"
-                               [(ngModel)]="batdongsan.ngayMuaBatDongSan" required >
+                        <input #ngaymuabatdongsanInput="ngModel" class="form-control" type="date"
+                            name="NgayMuaBatDongSan" [(ngModel)]="batdongsan.ngayMuaBatDongSan" required>
                         <validation-messages [formCtrl]="ngaymuabatdongsanInput"></validation-messages>
                     </div>
-                    
+
                     <!-- <div class="form-group m-form__group row">
                         <label for="SampleDateTimePicker" class="col-md-12">Default datetime picker</label>
                         <div class="col-lg-10 col-md-9 col-sm-8">
@@ -98,79 +138,81 @@
                     <div class="form-group">
                         <label>Chiều dài (m)*</label>
                         <input #chieudaiInput="ngModel" class="form-control" type="number" name="ChieuDai"
-                               [(ngModel)]="batdongsan.chieuDai" required maxlength="64">
+                            [(ngModel)]="batdongsan.chieuDai" required maxlength="64">
                         <validation-messages [formCtrl]="chieudaiInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Chiều Rộng (m)*</label>
                         <input #chieurongInput="ngModel" class="form-control" type="number" name="ChieuRong"
-                               [(ngModel)]="batdongsan.chieuRong" required maxlength="64">
+                            [(ngModel)]="batdongsan.chieuRong" required maxlength="64">
                         <validation-messages [formCtrl]="chieurongInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Diện tích đất nền(m2)*</label>
                         <input #dientichdatnenInput="ngModel" class="form-control" type="number" name="DienTichDatNen"
-                               [(ngModel)]="batdongsan.dienTichDatNen" required maxlength="64">
+                            [(ngModel)]="batdongsan.dienTichDatNen" required maxlength="64">
                         <validation-messages [formCtrl]="dientichdatnenInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Diện tích xây dựng(m2)*</label>
                         <input #dientichxaydungInput="ngModel" class="form-control" type="number" name="DienTichXayDung"
-                               [(ngModel)]="batdongsan.dienTichXayDung" required maxlength="64">
+                            [(ngModel)]="batdongsan.dienTichXayDung" required maxlength="64">
                         <validation-messages [formCtrl]="dientichxaydungInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Tình trạng sử dụng đất*</label>
-                        <input #tinhtrangsudungdatInput="ngModel" class="form-control" type="text" name="MaTinhTrangSuDungDat"
-                               [(ngModel)]="batdongsan.maTinhTrangSuDungDat" required maxlength="64">
+                        <input #tinhtrangsudungdatInput="ngModel" class="form-control" type="text"
+                            name="MaTinhTrangSuDungDat" [(ngModel)]="batdongsan.maTinhTrangSuDungDat" required
+                            maxlength="64">
                         <validation-messages [formCtrl]="tinhtrangsudungdatInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Tình trạng xây dựng*</label>
-                        <input #tinhtrangxaydungInput="ngModel" class="form-control" type="text" name="MaTinhTrangXayDung"
-                               [(ngModel)]="batdongsan.maTinhTrangXayDung" required maxlength="64">
+                        <input #tinhtrangxaydungInput="ngModel" class="form-control" type="text"
+                            name="MaTinhTrangXayDung" [(ngModel)]="batdongsan.maTinhTrangXayDung" required
+                            maxlength="64">
                         <validation-messages [formCtrl]="tinhtrangxaydungInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Công năng sử dụng *</label>
                         <input #congnangsudungInput="ngModel" class="form-control" type="text" name="CongNangSuDung"
-                               [(ngModel)]="batdongsan.congNangSuDung" required maxlength="64">
+                            [(ngModel)]="batdongsan.congNangSuDung" required maxlength="64">
                         <validation-messages [formCtrl]="congnangsudungInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Kết cấu nhà *</label>
                         <input #ketcaunhaInput="ngModel" class="form-control" type="text" name="KetCauNha"
-                               [(ngModel)]="batdongsan.ketCauNha" required maxlength="64">
+                            [(ngModel)]="batdongsan.ketCauNha" required maxlength="64">
                         <validation-messages [formCtrl]="ketcaunhaInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Ranh giới*</label>
                         <input #ranhgioiInput="ngModel" class="form-control" type="text" name="RanhGioi"
-                               [(ngModel)]="batdongsan.ranhGioi" required maxlength="64">
+                            [(ngModel)]="batdongsan.ranhGioi" required maxlength="64">
                         <validation-messages [formCtrl]="ranhgioiInput"></validation-messages>
                     </div>
 
                     <div class="form-group">
                         <label>Hiện trạng pháp lý*</label>
-                        <input #mahientranphaplyInput="ngModel" class="form-control" type="text" name="MaHienTrangPhapLy"
-                               [(ngModel)]="batdongsan.maHienTrangPhapLy" required maxlength="64">
+                        <input #mahientranphaplyInput="ngModel" class="form-control" type="text"
+                            name="MaHienTrangPhapLy" [(ngModel)]="batdongsan.maHienTrangPhapLy" required maxlength="64">
                         <validation-messages [formCtrl]="mahientranphaplyInput"></validation-messages>
                     </div>
 
-                 
+
 
                     <div class="form-group">
                         <label>Loại Sở hữu*</label>
                         <select *ngIf="!batdongsan.id" #categoryCombobox name="loaisohuu" class="form-control"
-                            [(ngModel)]="selectedLSH" title="Select loaisohuu..." (change)="this.onChangeLSH()"
+                            [(ngModel)]="batdongsan.maLoaiSoHuu" title="Select loaisohuu..." 
                             required>
-                            <option *ngFor="let item of listLSH" [value]="item.id" >{{item.name}}</option>
+                            <option *ngFor="let item of listLSH" [value]="item.id">{{item.name}}</option>
                         </select>
-                        
-                        <select *ngIf="batdongsan.id" #categoryCombobox name="loaisohuu"  class="form-control"
-                        [(ngModel)]="selectedLSH" title="Select loaisohuu..." (change)="this.onChangeLSH()"
-                        required>
-                        <option *ngFor="let item of listLSH" [value]="item.id" >{{item.name}}</option>
+
+                        <select *ngIf="batdongsan.id" #categoryCombobox name="loaisohuu" class="form-control"
+                            [(ngModel)]="batdongsan.maLoaiSoHuu" title="Select loaisohuu..." 
+                            required>
+                            <option *ngFor="let item of listLSH" [value]="item.id">{{item.name}}</option>
                         </select>
                     </div>
 
@@ -178,25 +220,29 @@
                     <div class="form-group">
                         <label>Chủ sở hữu*</label>
                         <input #chusohuuInput="ngModel" class="form-control" type="text" name="ChuSoHuu"
-                               [(ngModel)]="batdongsan.chuSoHuu" required maxlength="64">
+                            [(ngModel)]="batdongsan.chuSoHuu" required maxlength="64">
                         <validation-messages [formCtrl]="chusohuuInput"></validation-messages>
                     </div>
 
-                  
-                    
+
+
 
                     <div class="form-group">
                         <label>Ghi chú </label>
-                        <input  #ghiChuInput="ngModel" class="form-control"  type="text" [(ngModel)]="batdongsan.ghiChu" required  name="GhiChu" [style]="{'height':'300px'}">
-                      
+                        <input #ghiChuInput="ngModel" class="form-control" type="text" [(ngModel)]="batdongsan.ghiChu"
+                            required name="GhiChu" [style]="{'height':'300px'}">
+
                         <validation-messages [formCtrl]="ghiChuInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>file đính kèm *</label>
                         <input #filedinhkemInput="ngModel" class="form-control" type="file" name="FileDinhKem"
-                               [(ngModel)]="batdongsan.fileDinhKem"  >
+                            [(ngModel)]="batdongsan.fileDinhKem">
                         <validation-messages [formCtrl]="filedinhkemInput"></validation-messages>
                     </div>
+
+
+
                     <!-- <div class="form-group">
                         <label for="checkbox-inline">
                         </label>
@@ -207,18 +253,19 @@
 
 
 
-                
-
-
-
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default"
                         (click)="close()">{{l("Cancel")}}</button>
-                    <button type="submit" class="btn btn-primary"  [disabled]="!editForm.form.valid"  [buttonBusy]="saving"
-                        [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                    <button type="submit" class="btn btn-primary" [disabled]="!editForm.form.valid"
+                        [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
                         <span>{{l("Save")}}</span></button>
                 </div>
+
+
+
             </form>
         </div>
     </div>
+    <viewBatDongSanModal #viewBatDongSanModal></viewBatDongSanModal>
+    <selectTaiSanModal #selectTaiSanModel (modalSave)="updateTaiSan()"></selectTaiSanModal>
 </div>
