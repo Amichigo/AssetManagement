@@ -3,29 +3,29 @@ using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using GWebsite.AbpZeroTemplate.Application;
-using GWebsite.AbpZeroTemplate.Application.Share.ShoppingPlans;
-using GWebsite.AbpZeroTemplate.Application.Share.ShoppingPlans.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ShoppingPlanDetails;
+using GWebsite.AbpZeroTemplate.Application.Share.ShoppingPlanDetails.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 
 
-namespace GWebsite.AbpZeroTemplate.Web.Core.ShoppingPlans
+namespace GWebsite.AbpZeroTemplate.Web.Core.ShoppingPlansDetails
 {
     [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
-    public class ShoppingPlanAppService : GWebsiteAppServiceBase, IShoppingPlanAppService
+    public class ShoppingPlanDetailAppService : GWebsiteAppServiceBase, IShoppingPlanDetailAppService
     {
-        private readonly IRepository<ShoppingPlan> shoppingPlanRepository;
+        private readonly IRepository<ShoppingPlanDetail> shoppingPlanRepository;
 
-        public ShoppingPlanAppService(IRepository<ShoppingPlan> shoppingPlanRepository)
+        public ShoppingPlanDetailAppService(IRepository<ShoppingPlanDetail> shoppingPlanRepository)
         {
             this.shoppingPlanRepository = shoppingPlanRepository;
         }
 
         #region Public Method
 
-        public void CreateOrEditShoppingPlan(ShoppingPlanInput shoppingPlanInput)
+        public void CreateOrEditShoppingPlanDetail(ShoppingPlanDetailInput shoppingPlanInput)
         {
             if (shoppingPlanInput.Id == 0)
             {
@@ -37,9 +37,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ShoppingPlans
             }
         }
 
-        public void DeleteShoppingPlan(int id)
+        public void DeleteShoppingPlanDetail(int id)
         {
-            var shoppingPlanEntity = shoppingPlanRepository.GetAll().Where(x => !x.IsDelete && x.TinhTrang != "Đã Duyệt").SingleOrDefault(x => x.Id == id);
+            var shoppingPlanEntity = shoppingPlanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (shoppingPlanEntity != null)
             {
                 shoppingPlanEntity.IsDelete = true;
@@ -48,42 +48,21 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ShoppingPlans
             }
         }
 
-        public ShoppingPlanInput GetShoppingPlanForEdit(int id)
+        public ShoppingPlanDetailInput GetShoppingPlanDetailForEdit(int id)
         {
             var shoppingPlanEntity = shoppingPlanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (shoppingPlanEntity == null)
             {
                 return null;
             }
-            return ObjectMapper.Map<ShoppingPlanInput>(shoppingPlanEntity);
+            return ObjectMapper.Map<ShoppingPlanDetailInput>(shoppingPlanEntity);
         }
 
-        public ShoppingPlanForViewDto GetShoppingPlanForView(int id)
-        {
-            var shoppingPlanEntity = shoppingPlanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
-            if (shoppingPlanEntity == null)
-            {
-                return null;
-            }
-            return ObjectMapper.Map<ShoppingPlanForViewDto>(shoppingPlanEntity);
-        }
-
-        public PagedResultDto<ShoppingPlanDto> GetShoppingPlans(ShoppingPlanFilter input)
+        public PagedResultDto<ShoppingPlanDetailDto> GetShoppingPlanDetails(ShoppingPlanDetailFilter input)
         {
             var query = shoppingPlanRepository.GetAll().Where(x => !x.IsDelete);
-
             // filter by value
-            if (input.KhuVuc != null)
-            {
-                query = query.Where(x => x.KhuVuc.ToLower().Equals(input.KhuVuc));
-            }
-
-            if (input.PhongBan != null)
-            {
-                query = query.Where(x => x.PhongBan.ToLower().Equals(input.PhongBan));
-            }
-
-            if(input.MaKeHoach != null)
+            if (input.MaKeHoach != null)
             {
                 query = query.Where(x => x.MaKeHoach.ToLower().Equals(input.MaKeHoach));
             }
@@ -100,9 +79,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ShoppingPlans
             var items = query.PageBy(input).ToList();
 
             // result
-            return new PagedResultDto<ShoppingPlanDto>(
+            return new PagedResultDto<ShoppingPlanDetailDto>(
                 totalCount,
-                items.Select(item => ObjectMapper.Map<ShoppingPlanDto>(item)).ToList());
+                items.Select(item => ObjectMapper.Map<ShoppingPlanDetailDto>(item)).ToList());
         }
 
         #endregion
@@ -110,16 +89,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ShoppingPlans
         #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
-        private void Create(ShoppingPlanInput shoppingPlanInput)
+        private void Create(ShoppingPlanDetailInput shoppingPlanInput)
         {
-            var shoppingPlanEntity = ObjectMapper.Map<ShoppingPlan>(shoppingPlanInput);
+            var shoppingPlanEntity = ObjectMapper.Map<ShoppingPlanDetail>(shoppingPlanInput);
             SetAuditInsert(shoppingPlanEntity);
             shoppingPlanRepository.Insert(shoppingPlanEntity);
             CurrentUnitOfWork.SaveChanges();
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
-        private void Update(ShoppingPlanInput shoppingPlanInput)
+        private void Update(ShoppingPlanDetailInput shoppingPlanInput)
         {
             var shoppingPlanEntity = shoppingPlanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == shoppingPlanInput.Id);
             if (shoppingPlanEntity == null)

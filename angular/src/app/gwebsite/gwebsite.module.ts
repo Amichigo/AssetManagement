@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, ShoppingPlanServiceProxy, DirectorShoppingPlanServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, ShoppingPlanServiceProxy, DirectorShoppingPlanServiceProxy, ShoppingPlanDetailServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,12 +18,18 @@ import { DemoModelServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CustomerComponent } from './customer/customer.component';
 import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
 import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
+
 import { ShoppingPlanComponent } from './shoppingPlan/shoppingPlan.component';
 import { ViewShoppingPlanModalComponent } from './shoppingPlan/view-shoppingPlan-modal.component';
 import { CreateOrEditShoppingPlanModalComponent } from './shoppingPlan/create-or-edit-shoppingPlan-modal.component';
+
 import { DirectorShoppingPlanComponent } from './directorShoppingPlan/directorShoppingPlan.component';
 import { ViewDirectorShoppingPlanModalComponent } from './directorShoppingPlan/view-directorShoppingPlan-modal.component';
 import { CreateOrEditDirectorShoppingPlanModalComponent } from './directorShoppingPlan/create-or-edit-directorShoppingPlan-modal.component';
+
+import { ShoppingPlanDetailComponent } from './shoppingPlan/shoppingPlanDetail.component';
+import { CreateOrEditShoppingPlanDetailModalComponent } from './shoppingPlan/create-or-edit-shoppingPlanDetail-modal.component';
+
 @NgModule({
     imports: [
         FormsModule,
@@ -49,12 +55,14 @@ import { CreateOrEditDirectorShoppingPlanModalComponent } from './directorShoppi
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
         ShoppingPlanComponent, ViewShoppingPlanModalComponent, CreateOrEditShoppingPlanModalComponent,
         DirectorShoppingPlanComponent, ViewDirectorShoppingPlanModalComponent, CreateOrEditDirectorShoppingPlanModalComponent,
+        ShoppingPlanDetailComponent, CreateOrEditShoppingPlanDetailModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
         ShoppingPlanServiceProxy,
-        DirectorShoppingPlanServiceProxy
+        DirectorShoppingPlanServiceProxy,
+        ShoppingPlanDetailServiceProxy
     ]
 })
 export class GWebsiteModule { }

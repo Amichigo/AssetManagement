@@ -27,12 +27,10 @@ export class CreateOrEditDirectorShoppingPlanModalComponent extends AppComponent
     saving = false;
 
     directorShoppingPlan: DirectorShoppingPlanInput = new DirectorShoppingPlanInput();
-    shoppingPlan: ShoppingPlanInput = new ShoppingPlanInput();
 
     constructor(
         injector: Injector,
-        private _directorShoppingPlanService: DirectorShoppingPlanServiceProxy,
-        private _shoppingPlanService: ShoppingPlanServiceProxy
+        private _directorShoppingPlanService: DirectorShoppingPlanServiceProxy
     ) {
         super(injector);
     }
@@ -53,16 +51,6 @@ export class CreateOrEditDirectorShoppingPlanModalComponent extends AppComponent
         this.saving = true;
         var now = new Date();
         this.directorShoppingPlan.ngayHieuLuc = moment(now);
-        this.shoppingPlan.khuVuc = this.directorShoppingPlan.khuVuc;
-        this.shoppingPlan.kinhPhi = this.directorShoppingPlan.kinhPhi;
-        this.shoppingPlan.nam = this.directorShoppingPlan.nam;
-        this.shoppingPlan.ngayHieuLuc = this.directorShoppingPlan.ngayHieuLuc;
-        this.shoppingPlan.phongBan = this.directorShoppingPlan.phongBan;
-        this.directorShoppingPlan.tinhTrang = true;
-        let inputShoppingPlan = this.shoppingPlan;
-        this._shoppingPlanService.createOrEditShoppingPlan(inputShoppingPlan).subscribe(result => {
-            this.notify.info(this.l('AddedToShoppingPlan'));
-        })
         this._directorShoppingPlanService.createOrEditDirectorShoppingPlan(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));
             this.close();

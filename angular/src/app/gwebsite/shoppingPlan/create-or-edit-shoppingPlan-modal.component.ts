@@ -17,7 +17,6 @@ export class CreateOrEditShoppingPlanModalComponent extends AppComponentBase {
     @ViewChild('iconCombobox') iconCombobox: ElementRef;
     @ViewChild('dateInput') dateInput: ElementRef;
 
-
     /**
      * @Output dùng để public event cho component khác xử lý
      */
@@ -36,12 +35,12 @@ export class CreateOrEditShoppingPlanModalComponent extends AppComponentBase {
 
     show(shoppingPlanId?: number | null | undefined): void {
         this.saving = false;
-
-
         this._shoppingPlanService.getShoppingPlanForEdit(shoppingPlanId).subscribe(result => {
             this.shoppingPlan = result;
+            if (this.shoppingPlan.trangThai == null) {
+                this.shoppingPlan.trangThai = 'Chưa duyệt';
+            }
             this.modal.show();
-
         })
     }
 

@@ -5,6 +5,7 @@ import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ShoppingPlanComponent } from './shoppingPlan/shoppingPlan.component';
 import { DirectorShoppingPlanComponent } from './directorShoppingPlan/directorShoppingPlan.component';
+import { ShoppingPlanDetailComponent } from './shoppingPlan/shoppingPlanDetail.component';
 
 @NgModule({
     imports: [
@@ -42,6 +43,15 @@ import { DirectorShoppingPlanComponent } from './directorShoppingPlan/directorSh
                     {
                         path: 'shoppingPlan', component: ShoppingPlanComponent,
                         data: { permission: 'Pages.Administration.ShoppingPlan' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'ShoppingPlan', component: ShoppingPlanDetailComponent,
+                        data: { permission: 'Pages.Administration.ShoppingPlanDetail' }
                     },
                 ]
             },

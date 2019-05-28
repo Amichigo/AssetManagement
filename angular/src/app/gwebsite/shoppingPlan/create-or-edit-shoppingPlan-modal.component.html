@@ -32,10 +32,16 @@
                         <validation-messages [formCtrl]="namInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Kinh phí *</label>
-                        <input #kinhPhiInput="ngModel" class="form-control" type="text" name="kinhPhi"
-                               [(ngModel)]="shoppingPlan.kinhPhi" required maxlength="64">
-                        <validation-messages [formCtrl]="infoInput"></validation-messages>
+                        <label>Mã Kế Hoạch *</label>
+                        <input #kinhPhiInput="ngModel" class="form-control" type="text" name="maKeHoach"
+                               [(ngModel)]="shoppingPlan.maKeHoach" required maxlength="64">
+                        <validation-messages [formCtrl]="maKeHoachInput"></validation-messages>
+                        <div class="form-group">
+                            <label>Tình Trạng</label>
+                            <input #kinhPhiInput="ngModel" class="form-control" type="text" name="trangThai"
+                                   [(ngModel)]="shoppingPlan.trangThai" required maxlength="64" readonly>
+                            <validation-messages [formCtrl]="tinhTrangInput"></validation-messages>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
