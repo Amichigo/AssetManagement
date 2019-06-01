@@ -1,5 +1,5 @@
 import { ViewHienTrangPhapLyModalComponent } from './view-hientrangphaply-modal.component';
-import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
@@ -7,8 +7,8 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { HienTrangPhapLyServiceProxy } from '@shared/service-proxies/service-proxies';
-import { CreateOrEditHienTrangPhapLyModalComponent } from './create-or-edit-hientrangphaply-modal.component';
+import { HienTrangPhapLyServiceProxy, HienTrangPhapLyInput } from '@shared/service-proxies/service-proxies';
+import { NgForm } from '@angular/forms';
 
 @Component({
     templateUrl: './hientrangphaply.component.html',
@@ -21,7 +21,6 @@ export class HienTrangPhapLyComponent extends AppComponentBase implements AfterV
      */
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
-    @ViewChild('createOrEditModal') createOrEditModal: CreateOrEditHienTrangPhapLyModalComponent;
     @ViewChild('viewHienTrangPhapLyModal') viewHienTrangPhapLyModal: ViewHienTrangPhapLyModalComponent;
 
     /**
@@ -29,6 +28,11 @@ export class HienTrangPhapLyComponent extends AppComponentBase implements AfterV
      */
     hientrangphaplyName: string;
     Id: string;
+    @Input() selectedIndex: number | null; //The index of the active tab.  
+    hientrangphaply: HienTrangPhapLyInput = new HienTrangPhapLyInput();
+    saving = false;
+    activeTabHienTrang=true;
+    activeTabCreate=false;
     constructor(
         injector: Injector,
         private _hientrangphaplyService: HienTrangPhapLyServiceProxy,
@@ -98,6 +102,13 @@ export class HienTrangPhapLyComponent extends AppComponentBase implements AfterV
         });
     }
 
+    initTabHienTrang():void{
+        this.activeTabCreate=false;
+        
+        this.reloadList(null);
+        
+    }
+
     getId(): string {
         this._activatedRoute.params.subscribe((params: Params) => {
             this.Id = params['Id'] || '';
@@ -105,6 +116,10 @@ export class HienTrangPhapLyComponent extends AppComponentBase implements AfterV
      return this.Id;
     };
     
+
+    gotoTabCreate(){
+        this.activeTabCreate=true;
+    }
 
 
     reloadPage(): void {
@@ -121,9 +136,45 @@ export class HienTrangPhapLyComponent extends AppComponentBase implements AfterV
         }
     }
 
-    //hàm show view create MenuClient
-    createHienTrangPhapLy() {
-        this.createOrEditModal.show();
+
+
+    returnTabHienTrang():void{
+        this.activeTabHienTrang=true;
+        console.log("Go to tab");
+    }
+
+
+/*********************************************
+ * 
+ *  Tab Create va Tab Edit
+ * 
+ **********************************************/
+   
+
+    initTabCreate():void{
+        this.saving=false;
+        this.activeTabHienTrang=false;
+       
+    }
+    
+
+    save(): void {
+        let input = this.hientrangphaply;
+        this.saving = true;
+        this._hientrangphaplyService.createOrEditHienTrangPhapLy(input).subscribe(result => {
+            this.activeTabHienTrang=true;
+            this.notify.info(this.l('SavedSuccessfully'));
+        })
+
+    }
+
+    EditHT(htID?: number | null | undefined): void {
+        this.initTabCreate();
+        this.activeTabCreate=true;
+        this._hientrangphaplyService.getHienTrangPhapLyForEdit(htID).subscribe(result => {
+            this.hientrangphaply = result;
+        })
+ 
     }
 
     /**

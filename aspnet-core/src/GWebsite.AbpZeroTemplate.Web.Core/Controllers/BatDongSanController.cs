@@ -40,9 +40,9 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpPost]
-        public void CreateOrEditBatDongSan([FromBody] BatDongSanInput input)
+        public void CreateOrEditBatDongSan([FromBody] BatDongSanInput input,int idTaiSan)
         {
-            batdongsanAppService.CreateOrEditBatDongSan(input);
+            batdongsanAppService.CreateOrEditBatDongSan(input, idTaiSan);
         }
 
         [HttpDelete("{id}")]

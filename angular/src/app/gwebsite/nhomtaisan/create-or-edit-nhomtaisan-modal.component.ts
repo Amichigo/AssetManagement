@@ -35,8 +35,6 @@ export class CreateOrEditNhomTaiSanModalComponent extends AppComponentBase {
 
     show(nhomtaisanId?: number | null | undefined): void {
         this.saving = false;
-
-
         this._nhomtaisanService.getPropertyGroupForEdit(nhomtaisanId).subscribe(result => {
             this.nhomtaisan = result;
             this.modal.show();

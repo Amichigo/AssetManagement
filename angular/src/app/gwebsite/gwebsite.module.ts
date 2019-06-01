@@ -29,7 +29,6 @@ import { BatDongSanComponent } from './batdongsan/batdongsan.component';
 import { CreateOrEditBatDongSanModalComponent } from './batdongsan/create-or-edit-batdongsan-modal.component';
 import { ViewBatDongSanModalComponent } from './batdongsan/view-batdongsan-modal.component';
 import { HienTrangPhapLyComponent } from './hientrangphaply/hientrangphaply.component';
-import { CreateOrEditHienTrangPhapLyModalComponent } from './hientrangphaply/create-or-edit-hientrangphaply-modal.component';
 import { ViewHienTrangPhapLyModalComponent } from './hientrangphaply/view-hientrangphaply-modal.component';
 import { TinhTrangSuDungDatComponent } from './tinhtrangsudungdat/tinhtrangsudungdat.component';
 import { CreateOrEditTinhTrangSuDungDatModalComponent } from './tinhtrangsudungdat/create-or-edit-tinhtrangsudungdat-modal.component';
@@ -39,11 +38,13 @@ import { ViewTaiSanModalComponent } from './taisan/view-taisan-modal.component';
 import { CreateOrEditTaiSanModalComponent } from './taisan/create-or-edit-taisan-modal.component';
 import { SelectTaiSanModalComponent } from './taisan/select-taisan-modal.component';
 import { SuaChuaBatDongSanComponent } from './suachuabatdongsan/suachuabatdongsan.component';
-import { CreateOrEditSuaChuaBatDongSanModalComponent } from './suachuabatdongsan/create-or-edit-suachuabatdongsan-modal.component';
+import { CreateOrEditSuaChuaBatDongSanModalComponent } from './suachuabatdongsan/createSuachuabatdongsan-modal.component';
 import { ViewSuaChuaBatDongSanModalComponent } from './suachuabatdongsan/view-suachuabatdongsan-modal.component';
 import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.component';
 import { CreateOrEditKeHoachXayDungModalComponent } from './kehoachxaydung/create-or-edit-kehoachxaydung-modal.component';
 import { ViewKeHoachXayDungModalComponent } from './kehoachxaydung/view-kehoachxaydung-modal.component';
+import { EditSuaChuaBatDongSanModalComponent } from './suachuabatdongsan/edit-suachuabatdongsan-modal.component';
+import { DuyetBatDongSanModalComponent } from './suachuabatdongsan/duyet-suachuabatdongsan-modal.component';
 
 
 
@@ -64,7 +65,7 @@ import { ViewKeHoachXayDungModalComponent } from './kehoachxaydung/view-kehoachx
         PrimeNgFileUploadModule,
         AutoCompleteModule,
         EditorModule,
-        InputMaskModule
+        InputMaskModule,
     ],
     declarations: [
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
@@ -73,10 +74,10 @@ import { ViewKeHoachXayDungModalComponent } from './kehoachxaydung/view-kehoachx
         LoaiBatDongSanComponent, CreateOrEditLoaiBatDongSanModalComponent, ViewLoaiBatDongSanModalComponent,
         LoaiSoHuuComponent, CreateOrEditLoaiSoHuuModalComponent, ViewLoaiSoHuuModalComponent,
         BatDongSanComponent, CreateOrEditBatDongSanModalComponent, ViewBatDongSanModalComponent,
-        HienTrangPhapLyComponent, CreateOrEditHienTrangPhapLyModalComponent, ViewHienTrangPhapLyModalComponent,
+        HienTrangPhapLyComponent, ViewHienTrangPhapLyModalComponent,
         TinhTrangSuDungDatComponent, CreateOrEditTinhTrangSuDungDatModalComponent, ViewTinhTrangSuDungDatModalComponent,
         TaiSanComponent, CreateOrEditTaiSanModalComponent, ViewTaiSanModalComponent, SelectTaiSanModalComponent,
-        SuaChuaBatDongSanComponent, CreateOrEditSuaChuaBatDongSanModalComponent, ViewSuaChuaBatDongSanModalComponent,
+        SuaChuaBatDongSanComponent, CreateOrEditSuaChuaBatDongSanModalComponent, ViewSuaChuaBatDongSanModalComponent,EditSuaChuaBatDongSanModalComponent,DuyetBatDongSanModalComponent,
         KeHoachXayDungComponent, CreateOrEditKeHoachXayDungModalComponent,ViewKeHoachXayDungModalComponent,
     ],
     providers: [

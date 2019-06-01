@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Abp.Linq.Extensions;
 using System.Linq.Dynamic.Core;
 using GWebsite.AbpZeroTemplate.Core.Models.TaiSan13;
+using GWebsite.AbpZeroTemplate.Application.Share.TaiSan_13.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
 {
@@ -34,11 +35,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
 
         #region Public Method
 
-        public void CreateOrEditBatDongSan(BatDongSanInput batdongsanInput)
+        public void CreateOrEditBatDongSan(BatDongSanInput batdongsanInput,int idTaiSan)
         {
             if (batdongsanInput.Id == 0)
             {
+                batdongsanInput.MaBatDongSan = "BDS0000" + DateTime.Now.ToString("yyyyMMddHHmmss");
                 Create(batdongsanInput);
+                UpdateTaiSan(idTaiSan, batdongsanInput.MaBatDongSan);
             }
             else
             {
@@ -171,26 +174,36 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
         [AbpAuthorize(GWebsitePermissions.Pages_QuanLyBatDongSan_BatDongSan_Create)]
         private void Create(BatDongSanInput batdongsanInput)
         {
-            batdongsanInput.MaBatDongSan = "BDS"+ DateTime.Now.ToString("yyyyMMddHHmmss");
+           
             var batdongsanEntity = ObjectMapper.Map<BatDongSan>(batdongsanInput);
             SetAuditInsert(batdongsanEntity);
             batdongsanRepository.Insert(batdongsanEntity);
-            CurrentUnitOfWork.SaveChanges();
+          //  CurrentUnitOfWork.SaveChanges();
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_QuanLyBatDongSan_BatDongSan_Edit)]
         private void Update(BatDongSanInput batdongsanInput)
         {
             var batdongsanEntity = batdongsanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == batdongsanInput.Id);
-            if (batdongsanEntity == null)
-            {
-            }
-            ObjectMapper.Map(batdongsanInput, batdongsanEntity);
+
+            ObjectMapper.Map(batdongsanEntity, batdongsanInput);
             SetAuditEdit(batdongsanEntity);
             batdongsanRepository.Update(batdongsanEntity);
             CurrentUnitOfWork.SaveChanges();
         }
-
+        private void UpdateTaiSan(int idTaiSan,string maBDS)
+        {
+            
+            var taiSanEntity = taisanRepos.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == idTaiSan);
+            if (taiSanEntity == null)
+            {
+                return;
+            }
+            taiSanEntity.MaBatDongSan = maBDS;
+           // SetAuditEdit(taiSanEntity);
+            taisanRepos.Update(taiSanEntity);
+            CurrentUnitOfWork.SaveChanges();
+        }
         #endregion
     }
 }

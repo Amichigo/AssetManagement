@@ -8,11 +8,14 @@ import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
 import { SuaChuaBatDongSanServiceProxy, TaiSanInput } from '@shared/service-proxies/service-proxies';
-import { CreateOrEditSuaChuaBatDongSanModalComponent } from './create-or-edit-suachuabatdongsan-modal.component';
+import { CreateOrEditSuaChuaBatDongSanModalComponent } from './createSuachuabatdongsan-modal.component';
 import { TaiSanComponent } from '../taisan/taisan.component';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 import { TaiSanDto } from '../taisan/Dto/taisandto';
 import { SelectTaiSanModalComponent } from '../taisan/select-taisan-modal.component';
+import { Constain } from '../constain/constain';
+import { EditSuaChuaBatDongSanModalComponent } from './edit-suachuabatdongsan-modal.component';
+import { DuyetBatDongSanModalComponent } from './duyet-suachuabatdongsan-modal.component';
 
 @Component({
     selector: 'suachuabatdongsanComponent',
@@ -27,6 +30,8 @@ export class SuaChuaBatDongSanComponent extends AppComponentBase implements Afte
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
     @ViewChild('createOrEditModal') createOrEditModal: CreateOrEditSuaChuaBatDongSanModalComponent;
+    @ViewChild('EditModal') EditModal: EditSuaChuaBatDongSanModalComponent;
+    @ViewChild('DuyetModal') DuyetModal: DuyetBatDongSanModalComponent;
     @ViewChild('selectTaiSanModel') selectTaiSanModel: SelectTaiSanModalComponent;
     @ViewChild('viewSuaChuaBatDongSanModal') viewSuaChuaBatDongSanModal: ViewSuaChuaBatDongSanModalComponent;
     @ViewChild('taiSanModel') taiSanModel: TaiSanComponent;
@@ -45,6 +50,16 @@ export class SuaChuaBatDongSanComponent extends AppComponentBase implements Afte
     listTaiSans: Array<TaiSanDto> = [];
     selectedLBDS: number;
     selectedTaiSan: number;
+    trangthai: Array<string>=[];
+    activeTabSuaChua=true;
+    activeTabCreate=false;
+    activeTabUpdate=false;
+    activeTabView=false;
+    activeTabSetActive=false; 
+
+    disableTabUpdate=true;
+    disableTabView=true;
+    disableTabSetActive=true;
     @Input() test: number = 0;
     // dùng để gọi từ conponent khác
     // @Input() selectedMaTaiSan:string;
@@ -94,11 +109,121 @@ export class SuaChuaBatDongSanComponent extends AppComponentBase implements Afte
     }
 
 
+
+    /**
+     * 
+     * Init Tab
+     */
+
+     InitTabSuaChua():void{
+        if(Constain.showConsoleLog){
+            console.log("Init Tab Sua Chua");
+        }
+
+        this.reloadList(null,null,null);
+        this.activeTabCreate=false;
+        this.activeTabUpdate=false;
+        this.activeTabView=false;
+        this.activeTabSetActive=false;
+
+        this.disableTabUpdate=true;
+        this.disableTabView=true;
+        this.disableTabSetActive=true;
+      
+
+     }
+     InitTabCreate():void{
+        this.activeTabSuaChua=false;
+        this.activeTabUpdate=false;
+        this.activeTabView=false;
+        this.activeTabSetActive=false;
+
+        
+        this.disableTabView=true;
+        this.disableTabSetActive=true;
+        this.createOrEditModal.ResetInput();
+        this.createOrEditModal.show();
+     }
+
+     InitTabView(idRecond:number):void{
+        this.disableTabView=false;
+        this.activeTabView=true;
+      
+        this.activeTabSuaChua=false;
+        this.activeTabUpdate=false;
+        this.activeTabCreate=false;
+        this.activeTabSetActive=false;
+
+        this.disableTabSetActive=true;
+        this.disableTabUpdate=true;
+
+        this.viewSuaChuaBatDongSanModal.show(idRecond)
+     }
+
+     InitTabUpdate(idRecond:number){
+        this.disableTabUpdate=false;
+        this.activeTabUpdate=true;
+        this.disableTabView=true;
+        this.disableTabSetActive=true;
+
+        this.activeTabSuaChua=false;
+        this.activeTabView=false;
+        this.activeTabCreate=false;
+        this.activeTabSetActive=false;
+        this.EditModal.ResetInput();
+        this.EditModal.show(idRecond)
+     }
+
+     InitTabActive(idRecond:number){
+         console.log("ID recond"+idRecond);
+        this.disableTabSetActive=false;
+        this.activeTabSetActive=true;
+        this.disableTabView=true;
+        this.disableTabUpdate=true;
+
+        this.activeTabSuaChua=false;
+        this.activeTabView=false;
+        this.activeTabCreate=false;
+        this.activeTabUpdate=false;
+
+     
+        this.DuyetModal.show(idRecond);
+     }
+
+     GetDisableTabView ():boolean{
+      return this.disableTabView;
+     }
+     GetDisableTabUpdate():boolean{
+         return this.disableTabUpdate;
+     }
+
+     GetDisableTabActive():boolean{
+         return this.disableTabSetActive;
+     }
+
     /**
      * Hàm xử lý trước khi View được init
      */
     ngOnInit(): void {
     }
+
+    /**
+     * Tab Sua Chua funtions
+     */
+
+     
+
+
+    /**
+     * Tab Create Funtions
+     */
+
+     SaveNew(){
+         if(Constain.showConsoleLog){
+             console.log("Saving....");
+         }
+         this.activeTabSuaChua=true;
+     }
 
     /**
      * Hàm xử lý sau khi View được init
@@ -149,6 +274,7 @@ export class SuaChuaBatDongSanComponent extends AppComponentBase implements Afte
     }
 
     init(): void {
+        
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
             this.mataisanName = params['MaTaiSan'] || '';
@@ -193,10 +319,7 @@ export class SuaChuaBatDongSanComponent extends AppComponentBase implements Afte
 
       
     }
-    //hàm show view create MenuClient
-    createSuaChuaBatDongSan() {
-        this.createOrEditModal.show();
-    }
+ 
 
     selectTaiSan() {
         console.log("mo modal");
@@ -209,15 +332,9 @@ export class SuaChuaBatDongSanComponent extends AppComponentBase implements Afte
         if(this.selectTaiSanModel.selectedMaTS!=-1){
             this.selectedTaiSan=this.selectTaiSanModel.selectedMaTS;
             this._apiService.getForEdit('api/TaiSan/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
-                this.mataisanName = result.maTaiSan;
-                this.tenTaiSan=result.tenTaiSan;
-                this.taisan.maTaiSan = result.maTaiSan;
-                this.taisan.diaChi = result.diaChi;
-                this.taisan.tenTaiSan = result.tenTaiSan;
-                this.taisan.maNhomTaiSan = result.maNhomTaiSan;
-                this.taisan.maLoaiTaiSan = result.maLoaiTaiSan;
-                this.taisan.nguyenGiaTaiSan = result.nguyenGiaTaiSan;
-                this.taisan.ghiChu = result.ghiChu;
+                this.taisan.maTaiSan=result.maTaiSan;
+                this.taisan.tenTaiSan=result.tenTaiSan;
+                this.mataisanName=result.maTaiSan;
             });
         }
 

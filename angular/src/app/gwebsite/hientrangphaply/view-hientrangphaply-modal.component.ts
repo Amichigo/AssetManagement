@@ -24,7 +24,7 @@ export class ViewHienTrangPhapLyModalComponent extends AppComponentBase {
     show(hientrangphaplyId?: number | null | undefined): void {
         this._hientrangphaplyService.getHienTrangPhapLyForView(hientrangphaplyId).subscribe(result => {
             this.hientrangphaply = result;
-            this.modal.show();
+            
         })
     }
 

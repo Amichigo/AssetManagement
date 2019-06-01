@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\RealEstasAsset\QuanLyCongTrinhXayDung\**" />
-    <EmbeddedResource Remove="Models\RealEstasAsset\QuanLyCongTrinhXayDung\**" />
-    <None Remove="Models\RealEstasAsset\QuanLyCongTrinhXayDung\**" />
+    <Compile Remove="Models\BDS_13\QuanLyCongTrinhXayDung\**" />
+    <EmbeddedResource Remove="Models\BDS_13\QuanLyCongTrinhXayDung\**" />
+    <None Remove="Models\BDS_13\QuanLyCongTrinhXayDung\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\RealEstasAsset\QuanLyToaNha\" />
+    <Folder Include="Models\BDS_13\QuanLyToaNha\" />
   </ItemGroup>
 
 </Project>

@@ -1,21 +1,20 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { SuaChuaBatDongSanServiceProxy, SuaChuaBatDongSanInput, LoaiSoHuuDto, TaiSanInput, TaiSanDto, BatDongSanInput, BatDongSanDto } from '@shared/service-proxies/service-proxies';
+import { SuaChuaBatDongSanServiceProxy, SuaChuaBatDongSanInput, LoaiSoHuuDto, TaiSanInput, TaiSanDto, BatDongSanInput, BatDongSanDto, ResetPasswordInput } from '@shared/service-proxies/service-proxies';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
-import * as moment from 'moment';
 import { ViewSuaChuaBatDongSanModalComponent } from './view-suachuabatdongsan-modal.component';
 import { SelectTaiSanModalComponent } from '../taisan/select-taisan-modal.component';
 import { BreadcrumbModule } from 'primeng/primeng';
-import { Constain } from '../constain/constain';
+import { Constain, TrangThai } from '../constain/constain';
 @Component({
-    selector: 'createOrEditSuaChuaBatDongSanModal',
-    templateUrl: './create-or-edit-suachuabatdongsan-modal.component.html'
+    selector: 'DuyetSuaChuaBatDongSanModal',
+    templateUrl: './duyet-suachuabatdongsan-modal.component.html'
 })
-export class CreateOrEditSuaChuaBatDongSanModalComponent extends AppComponentBase {
+export class DuyetBatDongSanModalComponent extends AppComponentBase {
 
 
-    @ViewChild('createOrEditModal') modal: ModalDirective;
+    @ViewChild('DuyetModal') modal: ModalDirective;
     @ViewChild('suachuabatdongsanCombobox') suachuabatdongsanCombobox: ElementRef;
     @ViewChild('iconCombobox') iconCombobox: ElementRef;
     @ViewChild('dateInput') dateInput: ElementRef;
@@ -36,6 +35,7 @@ export class CreateOrEditSuaChuaBatDongSanModalComponent extends AppComponentBas
     suachuabatdongsan: SuaChuaBatDongSanInput = new SuaChuaBatDongSanInput();
     taisan: TaiSanInput = new TaiSanInput();
     batdongsan: BatDongSanInput = new BatDongSanInput();
+    trangThai: TrangThai;
     constructor(
         injector: Injector,
         private _suachuabatdongsanService: SuaChuaBatDongSanServiceProxy,
@@ -94,11 +94,11 @@ export class CreateOrEditSuaChuaBatDongSanModalComponent extends AppComponentBas
         });
     }
 
-    updateTaiSan(): void {  
+    updateTaiSan(): void {
         if (this.selectTaiSanModel.selectedMaTS != -1) {
             this.selectedTaiSan = this.selectTaiSanModel.selectedMaTS;
-            if  (Constain.showConsoleLog){
-                console.log("Selected IDtaisan=" +this.selectedTaiSan);
+            if (Constain.showConsoleLog) {
+                console.log("Selected IDtaisan=" + this.selectedTaiSan);
             }
             this._apiService.getForEdit('api/TaiSan/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
                 // this.suachuabatdongsan.maTaiSan = result.maTaiSan;
@@ -113,13 +113,13 @@ export class CreateOrEditSuaChuaBatDongSanModalComponent extends AppComponentBas
                 for (let item of this.listBatDongSan) {
                     if (item.maTaiSan == this.taisan.maTaiSan) {
                         this.batdongsan = item;
-                        if  (Constain.showConsoleLog){
-                            console.log("Lay thong tin bds" );
+                        if (Constain.showConsoleLog) {
+                            console.log("Lay thong tin bds");
                         }
                         break;
                     }
                     else {
-                      this.resetBDS();
+                        this.resetBDS();
                     }
                 }
             });
@@ -130,29 +130,45 @@ export class CreateOrEditSuaChuaBatDongSanModalComponent extends AppComponentBas
 
     }
 
-    resetBDS():void{
-        this.batdongsan.maTaiSan="";
-        this.batdongsan.hienTrangBDS="";
-        this.batdongsan.chieuDai=null;
-        this.batdongsan.chieuRong=null;
-        this.batdongsan.dienTichDatNen=null;
-        this.batdongsan.dienTichXayDung=null;
-        this.batdongsan.ketCauNha="";
-        this.batdongsan.ghiChu="";
-        this.batdongsan.chuSoHuu="";
-        this.batdongsan.maTinhTrangSuDungDat="";
-        this.batdongsan.maLoaiBDS="";
+    resetBDS(): void {
+        this.batdongsan.maTaiSan = "";
+        this.batdongsan.hienTrangBDS = "";
+        this.batdongsan.chieuDai = null;
+        this.batdongsan.chieuRong = null;
+        this.batdongsan.dienTichDatNen = null;
+        this.batdongsan.dienTichXayDung = null;
+        this.batdongsan.ranhGioi = null;
+        this.batdongsan.maHienTrangPhapLy = null;
+        this.batdongsan.ketCauNha = "";
+        this.batdongsan.ghiChu = "";
+        this.batdongsan.chuSoHuu = "";
+        this.batdongsan.maTinhTrangSuDungDat = "";
+        this.batdongsan.maLoaiBDS = "";
+      
+
     }
 
- 
+    ResetInput():void{
+        this.resetBDS();
+        this.taisan.maTaiSan=null;
+        this.taisan.tenTaiSan=null;
+        this.taisan.maNhomTaiSan=null;
+        this.taisan.maLoaiTaiSan=null;
+        this.taisan.diaChi=null;
+        this.taisan.ghiChu=null;
+        this.suachuabatdongsan.ngayDeXuat=null;
+        this.suachuabatdongsan.ngayDuKienSuaXong=null;
+        this.suachuabatdongsan.donViDeXuat=null;
+        this.suachuabatdongsan.donViSuaChua=null;
+        this.suachuabatdongsan.ghiChu=null;
+        this.suachuabatdongsan.nguoiDeXuat=null;
+        this.suachuabatdongsan.nhanVienPhuTrach=null;
+        this.suachuabatdongsan.noiDungSuaChua=null;
+        this.suachuabatdongsan.chiPhiDuKien=null;
 
-    //onChangeType(): void {
-    //    this._apiService.getForEdit('api/LoaiSuaChuaBatDongSan/GetLoaiSuaChuaBatDongSanForView', this.selectedLBDS).subscribe(result => {
-    //        this.suachuabatdongsan.maLoaiBDS = result.id;
-    //        this.loaisuachuabatdongsan.name=result.name;
+    }
 
-    //    });
-    //}
+
 
     onChangeLSH(): void {
         this._apiService.getForEdit('api/LoaiSoHuu/GetLoaiSoHuuForView', this.selectedLSH).subscribe(result => {
@@ -165,31 +181,19 @@ export class CreateOrEditSuaChuaBatDongSanModalComponent extends AppComponentBas
 
     show(suachuabatdongsanId?: number | null | undefined): void {
         this.saving = false;
-       
-
         this._suachuabatdongsanService.getSuaChuaBatDongSanForEdit(suachuabatdongsanId).subscribe(result => {
             this.suachuabatdongsan = result;
-
-
-            if (this.suachuabatdongsan.id){
-                for(let item of this.listTaiSans){                 
-                      if   (item.maTaiSan==this.suachuabatdongsan.maTaiSan)
-                      {
-                          this.selectTaiSanModel.selectedMaTS=item.id;
-                          this.updateTaiSan();
-                          break;
-                      }  
+            if (this.suachuabatdongsan.id) {
+                for (let item of this.listTaiSans) {
+                    if (item.maTaiSan == this.suachuabatdongsan.maTaiSan) {
+                        this.selectTaiSanModel.selectedMaTS = item.id;
+                        this.updateTaiSan();
+                        break;
+                    }
                 }
             }
-
-            //}
-            this.modal.show();
-            // default date time picker
-            // $(this.sampleDateTimePicker.nativeElement).datetimepicker({
-            //     locale: abp.localization.currentLanguage.name,
-            //     format: 'L LT'
-            // });
         })
+       
     }
 
     selectTaiSan() {
@@ -199,28 +203,37 @@ export class CreateOrEditSuaChuaBatDongSanModalComponent extends AppComponentBas
     }
 
 
-    save(): void {
-
-        console.log("tu dong luu");
-
-        if (!this.suachuabatdongsan.maSuaChuaBatDongSan)
-        {
-        this.suachuabatdongsan.maTaiSan = this.taisan.maTaiSan;
-        }
-
+    uncheck(): void {
+        console.log("uncheacked");
+        this.suachuabatdongsan.trangThaiSuaChua="uncheck";
         let input = this.suachuabatdongsan;
-
+      
         // input.ngayMuaSuaChuaBatDongSan.format('yyyy-MM-dd HH:mm:ss Z');
         this.saving = true;
         this._suachuabatdongsanService.createOrEditSuaChuaBatDongSan(input).subscribe(result => {
-            this.notify.info(this.l('SavedSuccessfully'));
-            this.close();
+          this.close();
+          this.notify.info(this.l('SavedSuccessfully'));
         })
 
     }
 
+    checked():void{
+        console.log("cheacked");
+        this.suachuabatdongsan.trangThaiSuaChua="checked";
+        let input = this.suachuabatdongsan;
+       
+        // input.ngayMuaSuaChuaBatDongSan.format('yyyy-MM-dd HH:mm:ss Z');
+        this.saving = true;
+        this._suachuabatdongsanService.createOrEditSuaChuaBatDongSan(input).subscribe(result => {
+          this.close();
+          this.notify.info(this.l('SavedSuccessfully'));
+        })
+
+    }
+
+
     close(): void {
-        this.modal.hide();
         this.modalSave.emit(null);
+        this.saving = false;
     }
 }

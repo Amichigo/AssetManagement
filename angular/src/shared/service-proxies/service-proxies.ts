@@ -1210,10 +1210,13 @@ export class BatDongSanServiceProxy {
 
     /**
      * @input (optional) 
+     * @idTaiSan (optional) 
      * @return Success
      */
-    createOrEditBatDongSan(input: BatDongSanInput | null | undefined): Observable<void> {
-        let url_ = this.baseUrl + "/api/BatDongSan/CreateOrEditBatDongSan";
+    createOrEditBatDongSan(input: BatDongSanInput | null | undefined, idTaiSan: number | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/BatDongSan/CreateOrEditBatDongSan?";
+        if (idTaiSan !== undefined)
+            url_ += "idTaiSan=" + encodeURIComponent("" + idTaiSan) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -23751,6 +23754,7 @@ export interface ITaiSanDto {
 export class TaiSanInput implements ITaiSanInput {
     maTaiSan!: string | undefined;
     maNhomTaiSan!: string | undefined;
+    maBatDongSan!: string | undefined;
     maLoaiTaiSan!: string | undefined;
     diaChi!: string | undefined;
     tenTaiSan!: string | undefined;
@@ -23777,6 +23781,7 @@ export class TaiSanInput implements ITaiSanInput {
         if (data) {
             this.maTaiSan = data["maTaiSan"];
             this.maNhomTaiSan = data["maNhomTaiSan"];
+            this.maBatDongSan = data["maBatDongSan"];
             this.maLoaiTaiSan = data["maLoaiTaiSan"];
             this.diaChi = data["diaChi"];
             this.tenTaiSan = data["tenTaiSan"];
@@ -23803,6 +23808,7 @@ export class TaiSanInput implements ITaiSanInput {
         data = typeof data === 'object' ? data : {};
         data["maTaiSan"] = this.maTaiSan;
         data["maNhomTaiSan"] = this.maNhomTaiSan;
+        data["maBatDongSan"] = this.maBatDongSan;
         data["maLoaiTaiSan"] = this.maLoaiTaiSan;
         data["diaChi"] = this.diaChi;
         data["tenTaiSan"] = this.tenTaiSan;
@@ -23822,6 +23828,7 @@ export class TaiSanInput implements ITaiSanInput {
 export interface ITaiSanInput {
     maTaiSan: string | undefined;
     maNhomTaiSan: string | undefined;
+    maBatDongSan: string | undefined;
     maLoaiTaiSan: string | undefined;
     diaChi: string | undefined;
     tenTaiSan: string | undefined;
