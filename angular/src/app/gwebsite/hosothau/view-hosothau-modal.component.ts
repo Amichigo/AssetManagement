@@ -1,7 +1,7 @@
-import { HoSoThauForViewDto } from './../../../shared/service-proxies/service-proxies';
+import { BidForViewDto } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild } from "@angular/core";
-import { HoSoThauServiceProxy } from "@shared/service-proxies/service-proxies";
+import { BidServiceProxy } from "@shared/service-proxies/service-proxies";
 import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
@@ -11,18 +11,18 @@ import { ModalDirective } from 'ngx-bootstrap';
 
 export class ViewHoSoThauModalComponent extends AppComponentBase {
 
-    hosothau : HoSoThauForViewDto = new HoSoThauForViewDto();
-    @ViewChild('viewModal') modal: ModalDirective;
+    hosothau: BidForViewDto = new BidForViewDto();
+    @ViewChild('viewHoSoThauModal') modal: ModalDirective;
 
     constructor(
         injector: Injector,
-        private _hosothauService: HoSoThauServiceProxy
+        private _hosothauService: BidServiceProxy
     ) {
         super(injector);
     }
 
     show(hosothauId?: number | null | undefined): void {
-        this._hosothauService.getHoSoThauForView(hosothauId).subscribe(result => {
+        this._hosothauService.getBidForView(hosothauId).subscribe(result => {
             this.hosothau = result;
             this.modal.show();
         })

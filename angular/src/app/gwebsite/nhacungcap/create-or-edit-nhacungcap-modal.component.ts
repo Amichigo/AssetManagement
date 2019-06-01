@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { NhaCungCapServiceProxy, NhaCungCapInput } from '@shared/service-proxies/service-proxies';
+import { SupplierServiceProxy, SupplierInput } from '@shared/service-proxies/service-proxies';
 
 
 @Component({
@@ -24,11 +24,11 @@ export class CreateOrEditNhaCungCapModalComponent extends AppComponentBase {
 
     saving = false;
 
-    nhacungcap: NhaCungCapInput = new NhaCungCapInput();
+    nhacungcap: SupplierInput = new SupplierInput();
 
     constructor(
         injector: Injector,
-        private _nhacungcapService: NhaCungCapServiceProxy
+        private _nhacungcapService: SupplierServiceProxy
     ) {
         super(injector);
     }
@@ -37,7 +37,7 @@ export class CreateOrEditNhaCungCapModalComponent extends AppComponentBase {
         this.saving = false;
 
 
-        this._nhacungcapService.getNhaCungCapForEdit(nhacungcapId).subscribe(result => {
+        this._nhacungcapService.getSupplierForEdit(nhacungcapId).subscribe(result => {
             this.nhacungcap = result;
             this.modal.show();
 
@@ -47,7 +47,7 @@ export class CreateOrEditNhaCungCapModalComponent extends AppComponentBase {
     save(): void {
         let input = this.nhacungcap;
         this.saving = true;
-        this._nhacungcapService.createOrEditNhaCungCap(input).subscribe(result => {
+        this._nhacungcapService.createOrEditSupplier(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));
             this.close();
         })

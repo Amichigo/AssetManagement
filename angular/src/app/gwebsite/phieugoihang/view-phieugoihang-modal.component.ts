@@ -1,7 +1,7 @@
-import { PhieuGoiHangForViewDto } from './../../../shared/service-proxies/service-proxies';
+import { GoodsInvoiceForViewDto } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild } from "@angular/core";
-import { PhieuGoiHangServiceProxy } from "@shared/service-proxies/service-proxies";
+import { GoodsInvoiceServiceProxy } from "@shared/service-proxies/service-proxies";
 import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
@@ -11,18 +11,18 @@ import { ModalDirective } from 'ngx-bootstrap';
 
 export class ViewPhieuGoiHangModalComponent extends AppComponentBase {
 
-    phieugoihang : PhieuGoiHangForViewDto = new PhieuGoiHangForViewDto();
+    phieugoihang: GoodsInvoiceForViewDto = new GoodsInvoiceForViewDto();
     @ViewChild('viewModal') modal: ModalDirective;
 
     constructor(
         injector: Injector,
-        private _phieugoihangService: PhieuGoiHangServiceProxy
+        private _phieugoihangService: GoodsInvoiceServiceProxy
     ) {
         super(injector);
     }
 
     show(phieugoihangId?: number | null | undefined): void {
-        this._phieugoihangService.getPhieuGoiHangForView(phieugoihangId).subscribe(result => {
+        this._phieugoihangService.getGoodsInvoiceForView(phieugoihangId).subscribe(result => {
             this.phieugoihang = result;
             this.modal.show();
         })

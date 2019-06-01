@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { DuAnServiceProxy, DuAnInput } from '@shared/service-proxies/service-proxies';
+import { ProjectServiceProxy, ProjectInput } from '@shared/service-proxies/service-proxies';
 
 
 @Component({
@@ -24,11 +24,11 @@ export class CreateOrEditDuAnModalComponent extends AppComponentBase {
 
     saving = false;
 
-    duan: DuAnInput = new DuAnInput();
+    duan: ProjectInput = new ProjectInput();
 
     constructor(
         injector: Injector,
-        private _duanService: DuAnServiceProxy
+        private _duanService: ProjectServiceProxy
     ) {
         super(injector);
     }
@@ -37,7 +37,7 @@ export class CreateOrEditDuAnModalComponent extends AppComponentBase {
         this.saving = false;
 
 
-        this._duanService.getDuAnForEdit(duanId).subscribe(result => {
+        this._duanService.getProjectForEdit(duanId).subscribe(result => {
             this.duan = result;
             this.modal.show();
 
@@ -47,7 +47,7 @@ export class CreateOrEditDuAnModalComponent extends AppComponentBase {
     save(): void {
         let input = this.duan;
         this.saving = true;
-        this._duanService.createOrEditDuAn(input).subscribe(result => {
+        this._duanService.createOrEditProject(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));
             this.close();
         })

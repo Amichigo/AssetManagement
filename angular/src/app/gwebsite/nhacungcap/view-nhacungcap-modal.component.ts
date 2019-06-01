@@ -1,7 +1,7 @@
-import { NhaCungCapForViewDto } from './../../../shared/service-proxies/service-proxies';
+import { SupplierForViewDto } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild } from "@angular/core";
-import { NhaCungCapServiceProxy } from "@shared/service-proxies/service-proxies";
+import { SupplierServiceProxy } from "@shared/service-proxies/service-proxies";
 import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
@@ -11,18 +11,18 @@ import { ModalDirective } from 'ngx-bootstrap';
 
 export class ViewNhaCungCapModalComponent extends AppComponentBase {
 
-    nhacungcap : NhaCungCapForViewDto = new NhaCungCapForViewDto();
+    nhacungcap: SupplierForViewDto = new SupplierForViewDto();
     @ViewChild('viewModal') modal: ModalDirective;
 
     constructor(
         injector: Injector,
-        private _nhacungcapService: NhaCungCapServiceProxy
+        private _nhacungcapService: SupplierServiceProxy
     ) {
         super(injector);
     }
 
     show(nhacungcapId?: number | null | undefined): void {
-        this._nhacungcapService.getNhaCungCapForView(nhacungcapId).subscribe(result => {
+        this._nhacungcapService.getSupplierForView(nhacungcapId).subscribe(result => {
             this.nhacungcap = result;
             this.modal.show();
         })

@@ -56,35 +56,41 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             customer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Customer_Edit, L("EditingCustomer"));
             customer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Customer_Delete, L("DeletingCustomer"));
 
-            ///du an
-            var duan = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_DuAn, L("DuAn"));
-            duan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DuAn_Create, L("CreatingNewDuAn"));
-            duan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DuAn_Edit, L("EditingDuAn"));
-            duan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DuAn_Delete, L("DeletingDuAn"));
+            ///project
+            var duan = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project, L("Project"));
+            duan.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project_Create, L("CreatingNewProject"));
+            duan.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project_Edit, L("EditingProject"));
+            duan.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project_Delete, L("DeletingProject"));
 
-            ///ho so thau
-            var thau = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_HoSoThau, L("HoSoThau"));
-            thau.CreateChildPermission(GWebsitePermissions.Pages_Administration_HoSoThau_Create, L("CreatingNewHoSoThau"));
-            thau.CreateChildPermission(GWebsitePermissions.Pages_Administration_HoSoThau_Edit, L("EditingHoSoThau"));
-            thau.CreateChildPermission(GWebsitePermissions.Pages_Administration_HoSoThau_Delete, L("DeletingHoSoThau"));
+            ///bid
+            var thau = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bid, L("Bid"));
+            thau.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bid_Create, L("CreatingNewBid"));
+            thau.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bid_Edit, L("EditingBid"));
+            thau.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bid_Delete, L("DeletingBid"));
 
-            ///nha cung cap
-            var nhacungcap = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhaCungCap, L("NhaCungCap"));
-            nhacungcap.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhaCungCap_Create, L("CreatingNewNhaCungCap"));
-            nhacungcap.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhaCungCap_Edit, L("EditingNhaCungCap"));
-            nhacungcap.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhaCungCap_Delete, L("DeletingNhaCungCap"));
+            ///supplier
+            var nhacungcap = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Supplier, L("Supplier"));
+            nhacungcap.CreateChildPermission(GWebsitePermissions.Pages_Administration_Supplier_Create, L("CreatingNewSupplier"));
+            nhacungcap.CreateChildPermission(GWebsitePermissions.Pages_Administration_Supplier_Edit, L("EditingSupplier"));
+            nhacungcap.CreateChildPermission(GWebsitePermissions.Pages_Administration_Supplier_Delete, L("DeletingSupplier"));
 
-            ///hop dong thau
-            var hopdongthau = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_HopDongThau, L("HopDongThau"));
-            hopdongthau.CreateChildPermission(GWebsitePermissions.Pages_Administration_HopDongThau_Create, L("CreatingNewHopDongThau"));
-            hopdongthau.CreateChildPermission(GWebsitePermissions.Pages_Administration_HopDongThau_Edit, L("EditingHopDongThau"));
-            hopdongthau.CreateChildPermission(GWebsitePermissions.Pages_Administration_HopDongThau_Delete, L("DeletingHopDongThau"));
+            ///contract
+            var hopdongthau = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract, L("Contract"));
+            hopdongthau.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract_Create, L("CreatingNewContract"));
+            hopdongthau.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract_Edit, L("EditingContract"));
+            hopdongthau.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract_Delete, L("DeletingContract"));
 
-            ///hop dong thau
-            var phieugoihang = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_PhieuGoiHang, L("PhieuGoiHang"));
-            phieugoihang.CreateChildPermission(GWebsitePermissions.Pages_Administration_PhieuGoiHang_Create, L("CreatingNewPhieuGoiHang"));
-            phieugoihang.CreateChildPermission(GWebsitePermissions.Pages_Administration_PhieuGoiHang_Edit, L("EditingPhieuGoiHang"));
-            phieugoihang.CreateChildPermission(GWebsitePermissions.Pages_Administration_PhieuGoiHang_Delete, L("DeletingPhieuGoiHang"));
+            ///goodsInvoice
+            var phieugoihang = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_GoodsInvoice, L("GoodsInvoice"));
+            phieugoihang.CreateChildPermission(GWebsitePermissions.Pages_Administration_GoodsInvoice_Create, L("CreatingNewGoodsInvoice"));
+            phieugoihang.CreateChildPermission(GWebsitePermissions.Pages_Administration_GoodsInvoice_Edit, L("EditingGoodsInvoice"));
+            phieugoihang.CreateChildPermission(GWebsitePermissions.Pages_Administration_GoodsInvoice_Delete, L("DeletingGoodsInvoice"));
+
+            ///goods
+            var hanghoa = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Goods, L("Goods"));
+            hanghoa.CreateChildPermission(GWebsitePermissions.Pages_Administration_Goods_Create, L("CreatingNewGoods"));
+            hanghoa.CreateChildPermission(GWebsitePermissions.Pages_Administration_Goods_Edit, L("EditingGoods"));
+            hanghoa.CreateChildPermission(GWebsitePermissions.Pages_Administration_Goods_Delete, L("DeletingGoods"));
         }
 
         private static ILocalizableString L(string name)

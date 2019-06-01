@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { HopDongThauServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ContractServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditHopDongThauModalComponent } from './create-or-edit-hopdongthau-modal.component';
 
 @Component({
@@ -31,7 +31,7 @@ export class HopDongThauComponent extends AppComponentBase implements AfterViewI
 
     constructor(
         injector: Injector,
-        private _hopdongthauService: HopDongThauServiceProxy,
+        private _hopdongthauService: ContractServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -73,7 +73,7 @@ export class HopDongThauComponent extends AppComponentBase implements AfterViewI
     }
 
     reloadList(hopdongthauName, event?: LazyLoadEvent) {
-        this._hopdongthauService.getHopDongThausByFilter(hopdongthauName, this.primengTableHelper.getSorting(this.dataTable),
+        this._hopdongthauService.getContractsByFilter(hopdongthauName, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -84,7 +84,7 @@ export class HopDongThauComponent extends AppComponentBase implements AfterViewI
     }
 
     deleteHopDongThau(id): void {
-        this._hopdongthauService.deleteHopDongThau(id).subscribe(() => {
+        this._hopdongthauService.deleteContract(id).subscribe(() => {
             this.reloadPage();
         })
     }

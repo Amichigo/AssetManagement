@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { NhaCungCapServiceProxy } from '@shared/service-proxies/service-proxies';
+import { SupplierServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditNhaCungCapModalComponent } from './create-or-edit-nhacungcap-modal.component';
 
 @Component({
@@ -31,7 +31,7 @@ export class NhaCungCapComponent extends AppComponentBase implements AfterViewIn
 
     constructor(
         injector: Injector,
-        private _nhacungcapService: NhaCungCapServiceProxy,
+        private _nhacungcapService: SupplierServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -73,7 +73,7 @@ export class NhaCungCapComponent extends AppComponentBase implements AfterViewIn
     }
 
     reloadList(nhacungcapName, event?: LazyLoadEvent) {
-        this._nhacungcapService.getNhaCungCapsByFilter(nhacungcapName, this.primengTableHelper.getSorting(this.dataTable),
+        this._nhacungcapService.getSuppliersByFilter(nhacungcapName, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -84,7 +84,7 @@ export class NhaCungCapComponent extends AppComponentBase implements AfterViewIn
     }
 
     deleteNhaCungCap(id): void {
-        this._nhacungcapService.deleteNhaCungCap(id).subscribe(() => {
+        this._nhacungcapService.deleteSupplier(id).subscribe(() => {
             this.reloadPage();
         })
     }

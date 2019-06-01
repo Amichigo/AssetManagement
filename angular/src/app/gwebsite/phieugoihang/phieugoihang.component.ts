@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { PhieuGoiHangServiceProxy } from '@shared/service-proxies/service-proxies';
+import { GoodsInvoiceServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditPhieuGoiHangModalComponent } from './create-or-edit-phieugoihang-modal.component';
 
 @Component({
@@ -31,7 +31,7 @@ export class PhieuGoiHangComponent extends AppComponentBase implements AfterView
 
     constructor(
         injector: Injector,
-        private _phieugoihangService: PhieuGoiHangServiceProxy,
+        private _phieugoihangService: GoodsInvoiceServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -73,7 +73,7 @@ export class PhieuGoiHangComponent extends AppComponentBase implements AfterView
     }
 
     reloadList(phieugoihangName, event?: LazyLoadEvent) {
-        this._phieugoihangService.getPhieuGoiHangsByFilter(phieugoihangName, this.primengTableHelper.getSorting(this.dataTable),
+        this._phieugoihangService.getGoodsInvoicesByFilter(phieugoihangName, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -84,7 +84,7 @@ export class PhieuGoiHangComponent extends AppComponentBase implements AfterView
     }
 
     deletePhieuGoiHang(id): void {
-        this._phieugoihangService.deletePhieuGoiHang(id).subscribe(() => {
+        this._phieugoihangService.deleteGoodsInvoice(id).subscribe(() => {
             this.reloadPage();
         })
     }

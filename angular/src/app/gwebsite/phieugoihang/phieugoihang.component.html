@@ -10,7 +10,7 @@
                 </span>
             </div>
             <div class="col-xs-6 text-right">
-                <button (click)="createPhieuGoiHang()" *ngIf="isGranted('Pages.Administration.PhieuGoiHang.Create')"
+                <button (click)="createPhieuGoiHang()" *ngIf="isGranted('Pages.Administration.GoodsInvoice.Create')"
                         class="btn btn-primary">
                     <i class="fa fa-plus"></i> {{l("CreateNewPhieuGoiHang")}}
                 </button>
@@ -41,7 +41,7 @@
                 <div class="row align-items-center">
                     <!--<Primeng-TurboTable-Start>-->
                     <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
-                        <p-table #dataTable (onLazyLoad)="getHoSoThaus($event)" [value]="primengTableHelper.records"
+                        <p-table #dataTable (onLazyLoad)="getPhieuGoiHangs($event)" [value]="primengTableHelper.records"
                                  rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
                                  [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
@@ -92,43 +92,43 @@
                                 <tr>
                                     <td>
                                         <span class="ui-column-title">Mã kế hoạch</span>
-                                        <span title="{{record.maKeHoach}}">{{truncateString(record.maKeHoach)}}</span>
+                                        <span title="{{record.planCode}}">{{truncateString(record.planCode)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Tên kế hoạch</span>
-                                        <span title="{{record.tenKeHoach}}">{{truncateString(record.tenKeHoach)}}</span>
+                                        <span title="{{record.planName}}">{{truncateString(record.planName)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Tên hợp đồng</span>
-                                        <span title="{{record.tenHopDong}}">{{truncateString(record.tenHopDong)}}</span>
+                                        <span title="{{record.contractName}}">{{truncateString(record.contractName)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Tên đơn vị</span>
-                                        <span title="{{record.tenDonVi}}">{{truncateString(record.tenDonVi)}}</span>
+                                        <span title="{{record.unitName}}">{{truncateString(record.unitName)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Tên hàng hóa</span>
-                                        <span title="{{record.tenHangHoa}}">{{truncateString(record.tenHangHoa)}}</span>
+                                        <span title="{{record.goodsName}}">{{truncateString(record.goodsName)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Số lượng</span>
-                                        <span title="{{record.soLuong}}">{{truncateString(record.soLuong)}}</span>
+                                        <span title="{{record.amount}}">{{truncateString(record.amount)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Đơn giá</span>
-                                        <span title="{{record.donGia}}">{{truncateString(record.donGia) | number:0}} </span>
+                                        <span title="{{record.price}}">{{truncateString(record.price) | number:0}} </span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Quá trình thanh toán</span>
-                                        <span title="{{record.quaTrinhThanhToan}}">{{truncateString(record.quaTrinhThanhToan)}}</span>
+                                        <span title="{{record.paymentProcess}}">{{truncateString(record.paymentProcess)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Tiến độ giao hàng</span>
-                                        <span title="{{record.tienDoGiaoHang}}">{{truncateString(record.tienDoGiaoHang)}}</span>
+                                        <span title="{{record.shippingProcess}}">{{truncateString(record.shippingProcess)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Tình trạng hóa đơn</span>
-                                        <span title="{{record.tinhTrangHoaDon}}">{{truncateString(record.tinhTrangHoaDon)}}</span>
+                                        <span title="{{record.billStatus}}">{{truncateString(record.billStatus)}}</span>
                                     </td>
                                     <td>
                                         <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"

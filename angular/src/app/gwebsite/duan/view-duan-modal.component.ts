@@ -1,7 +1,7 @@
-import { DuAnForViewDto } from './../../../shared/service-proxies/service-proxies';
+import { ProjectForViewDto } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild } from "@angular/core";
-import { DuAnServiceProxy } from "@shared/service-proxies/service-proxies";
+import { ProjectServiceProxy } from "@shared/service-proxies/service-proxies";
 import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
@@ -11,18 +11,18 @@ import { ModalDirective } from 'ngx-bootstrap';
 
 export class ViewDuAnModalComponent extends AppComponentBase {
 
-    duan : DuAnForViewDto = new DuAnForViewDto();
-    @ViewChild('viewModal') modal: ModalDirective;
+    duan: ProjectForViewDto = new ProjectForViewDto();
+    @ViewChild('viewDuAnModal') modal: ModalDirective;
 
     constructor(
         injector: Injector,
-        private _duanService: DuAnServiceProxy
+        private _duanService: ProjectServiceProxy
     ) {
         super(injector);
     }
 
     show(duanId?: number | null | undefined): void {
-        this._duanService.getDuAnForView(duanId).subscribe(result => {
+        this._duanService.getProjectForView(duanId).subscribe(result => {
             this.duan = result;
             this.modal.show();
         })

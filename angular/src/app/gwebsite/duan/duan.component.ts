@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { DuAnServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ProjectServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditDuAnModalComponent } from './create-or-edit-duan-modal.component';
 
 @Component({
@@ -31,7 +31,7 @@ export class DuAnComponent extends AppComponentBase implements AfterViewInit, On
 
     constructor(
         injector: Injector,
-        private _duanService: DuAnServiceProxy,
+        private _duanService: ProjectServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -73,7 +73,7 @@ export class DuAnComponent extends AppComponentBase implements AfterViewInit, On
     }
 
     reloadList(duanName, event?: LazyLoadEvent) {
-        this._duanService.getDuAnsByFilter(duanName, this.primengTableHelper.getSorting(this.dataTable),
+        this._duanService.getProjectsByFilter(duanName, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -84,7 +84,7 @@ export class DuAnComponent extends AppComponentBase implements AfterViewInit, On
     }
 
     deleteDuAn(id): void {
-        this._duanService.deleteDuAn(id).subscribe(() => {
+        this._duanService.deleteProject(id).subscribe(() => {
             this.reloadPage();
         })
     }

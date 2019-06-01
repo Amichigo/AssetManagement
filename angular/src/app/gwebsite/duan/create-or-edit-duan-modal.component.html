@@ -2,10 +2,10 @@
     aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form #editForm="ngForm" novalidate (ngSubmit)="save()">
+            <form ngNativeValidate #editForm="ngForm" novalidate (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <span *ngIf="duan.id">Cập nhật dự án: {{duan.tenDuAn}}</span>
+                        <span *ngIf="duan.id">Cập nhật dự án: {{duan.projectName}}</span>
                         <span *ngIf="!duan.id">Tạo mới dự án</span>
                     </h4>
                     <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
@@ -16,19 +16,25 @@
                     <div class="form-group">
                         <label>Mã dự án *</label>
                         <input #addressInput="ngModel" class="form-control" type="text" name="MaDuAn"
-                               [(ngModel)]="duan.maDuAn" required maxlength="64">
+                               [(ngModel)]="duan.projectCode" required maxlength="64">
+                        <div style="color: red;" role="alert" *ngIf="editForm.controls.MaDuAn.errors?.required &&
+                         editForm.controls.MaDuAn.touched">Field is required</div>
                         <validation-messages [formCtrl]="addressInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Tên dự án *</label>
                         <input #nameInput="ngModel" class="form-control" type="text" name="TenDuAn"
-                               [(ngModel)]="duan.tenDuAn" required maxlength="64">
+                               [(ngModel)]="duan.projectName" required maxlength="64">
+                        <div style="color: red;" role="alert" *ngIf="editForm.controls.TenDuAn.errors?.required &&
+                         editForm.controls.TenDuAn.touched">Field is required</div>
                         <validation-messages [formCtrl]="nameInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Ngày tạo dự án *</label>
                         <input #addressInput="ngModel" class="form-control" type="date" name="NgayTaoDuAn"
-                               [(ngModel)]="duan.ngayTaoDuAn" required maxlength="64">
+                               [(ngModel)]="duan.projectDayCreate" required maxlength="64">
+                        <div style="color: red;" role="alert" *ngIf="editForm.controls.NgayTaoDuAn.errors?.required &&
+                         editForm.controls.NgayTaoDuAn.touched">Field is required</div>
                         <validation-messages [formCtrl]="infoInput"></validation-messages>
                     </div>
                 </div>

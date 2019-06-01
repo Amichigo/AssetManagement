@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    <span *ngIf="nhacungcap.id">{{l("EditNhaCungCap")}}: {{nhacungcap.tenNhaCungCap}}</span>
+                    <span *ngIf="nhacungcap.id">{{l("EditNhaCungCap")}}: {{nhacungcap.supplierName}}</span>
                     <span *ngIf="!nhacungcap.id">{{l("CreateNewNhaCungCap")}}</span>
                 </h4>
                 <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
@@ -13,16 +13,20 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
+                    <label>Mã nhà cung cấp</label>
+                    <p>{{nhacungcap.supplierCode}}</p>
+                </div>
+                <div class="form-group">
                     <label>Tên nhà cung cấp</label>
-                    <p>{{nhacungcap.tenNhaCungCap}}</p>
+                    <p>{{nhacungcap.supplierName}}</p>
                 </div>
                 <div class="form-group">
                     <label>Địa chỉ</label>
-                    <p>{{nhacungcap.diaChi}}</p>
+                    <p>{{nhacungcap.address}}</p>
                 </div>
                 <div class="form-group">
                     <label>Số điện thoại</label>
-                    <p>{{nhacungcap.soDienThoai}}</p>
+                    <p>{{nhacungcap.phoneNumber}}</p>
                 </div>
                 <div class="form-group">
                     <label>Email</label>

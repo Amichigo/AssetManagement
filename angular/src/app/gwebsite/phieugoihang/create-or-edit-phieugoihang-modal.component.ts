@@ -1,8 +1,10 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { PhieuGoiHangServiceProxy, PhieuGoiHangInput, PhieuGoiHangDto, ComboboxItemDto, HopDongThauDto } from '@shared/service-proxies/service-proxies';
-
+import { GoodsInvoiceServiceProxy, GoodsInvoiceInput, GoodsInvoiceDto, ComboboxItemDto, ContractDto, GoodsContract, SupplierServiceProxy } from '@shared/service-proxies/service-proxies';
+import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
+import { Paginator } from 'primeng/components/paginator/paginator';
+import { Table } from 'primeng/components/table/table';
 
 @Component({
     selector: 'createOrEditPhieuGoiHangModal',
@@ -20,6 +22,8 @@ export class CreateOrEditPhieuGoiHangModalComponent extends AppComponentBase {
     @ViewChild('tinhtranghoadonCombobox') tinhtranghoadonCombobox: ElementRef;
     @ViewChild('iconCombobox') iconCombobox: ElementRef;
     @ViewChild('dateInput') dateInput: ElementRef;
+    @ViewChild('dataTable') dataTable: Table;
+    @ViewChild('paginator') paginator: Paginator;
 
 
     /**
@@ -29,14 +33,25 @@ export class CreateOrEditPhieuGoiHangModalComponent extends AppComponentBase {
 
     saving = false;
 
-    phieugoihang: PhieuGoiHangInput = new PhieuGoiHangInput();
+    phieugoihang: GoodsInvoiceInput = new GoodsInvoiceInput();
 
-    hopDongThau: HopDongThauDto = new HopDongThauDto();
+    hopDongThau: ContractDto = new ContractDto();
     hopDongThaus: ComboboxItemDto[] = [];
+
+    hopdongthauCode: string;
+    listHopDongHangHoa: GoodsContract[] = [];
+    nhacungcapName: string;
+    tenDonVi: any;
+    maDonVi: any;
+    diaChi: any;
+    donVi: any;
+    listNhaCungCap = [];
+    hangHoaHopDong: any;
 
     constructor(
         injector: Injector,
-        private _phieugoihangService: PhieuGoiHangServiceProxy
+        private _phieugoihangService: GoodsInvoiceServiceProxy,
+        private _nhacungcapService: SupplierServiceProxy,
     ) {
         super(injector);
     }
@@ -44,17 +59,17 @@ export class CreateOrEditPhieuGoiHangModalComponent extends AppComponentBase {
     show(phieugoihangId?: number | null | undefined): void {
         this.saving = false;
 
-        this._phieugoihangService.getPhieuGoiHangForEdit(phieugoihangId).subscribe(result => {
+        this._phieugoihangService.getGoodsInvoiceForEdit(phieugoihangId).subscribe(result => {
             this.phieugoihang = result;
             this.modal.show();
 
         })
 
         if (phieugoihangId == null) {
-            this._phieugoihangService.getHopDongThauComboboxForEditAsync(phieugoihangId).subscribe(result => {
+            this._phieugoihangService.getContractComboboxForEditAsync(phieugoihangId).subscribe(result => {
                 //this.phieugoihang = result;      
-                this.hopDongThau = result.hopDongThau;
-                this.hopDongThaus = result.hopDongThaus;
+                this.hopDongThau = result.contract;
+                this.hopDongThaus = result.contracts;
                 this.modal.show();
                 setTimeout(() => {
                     $(this.hopdongthauCombobox.nativeElement).selectpicker('refresh');
@@ -67,7 +82,7 @@ export class CreateOrEditPhieuGoiHangModalComponent extends AppComponentBase {
     save(): void {
         let input = this.phieugoihang;
         this.saving = true;
-        this._phieugoihangService.createOrEditPhieuGoiHang(input).subscribe(result => {
+        this._phieugoihangService.createOrEditGoodsInvoice(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));
             this.close();
         })
@@ -77,5 +92,80 @@ export class CreateOrEditPhieuGoiHangModalComponent extends AppComponentBase {
     close(): void {
         this.modal.hide();
         this.modalSave.emit(null);
+    }
+
+
+
+    reloadListHopDongHangHoa(hopdongthauCode, event?: LazyLoadEvent) {
+        this._phieugoihangService.getGoodsContract(hopdongthauCode).subscribe((hanghoahopdong: GoodsContract[]) => {
+            this.listHopDongHangHoa = hanghoahopdong;
+        });
+    }
+
+    applyFiltersHopDongHangHoa(): void {
+        //truyền params lên url thông qua router
+        this.reloadListHopDongHangHoa(this.hopdongthauCode, null);
+    }
+
+    /**
+     * Hàm get danh sách Customer
+     * @param event
+     */
+    getNhaCungCaps(event?: LazyLoadEvent) {
+        if (!this.paginator || !this.dataTable) {
+            return;
+        }
+
+        //show loading trong gridview
+        this.primengTableHelper.showLoadingIndicator();
+
+        /**
+         * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
+         */
+
+        this.reloadListNhaCungCap(null, event);
+
+    }
+
+    reloadListNhaCungCap(nhacungcapName, event?: LazyLoadEvent) {
+        this._nhacungcapService.getSuppliersByFilter(nhacungcapName, this.primengTableHelper.getSorting(this.dataTable),
+            this.primengTableHelper.getMaxResultCount(this.paginator, event),
+            this.primengTableHelper.getSkipCount(this.paginator, event),
+        ).subscribe(result => {
+            this.primengTableHelper.totalRecordsCount = result.totalCount;
+            this.primengTableHelper.records = result.items;
+            this.primengTableHelper.hideLoadingIndicator();
+        });
+    }
+
+    applyFiltersNhaCungCap(): void {
+        //truyền params lên url thông qua router
+        this.reloadListNhaCungCap(this.nhacungcapName, null);
+
+        if (this.paginator.getPage() !== 0) {
+            this.paginator.changePage(0);
+            return;
+        }
+    }
+
+    onSelectNhaCungCap(donVi: any) {
+        this.phieugoihang.unitName = donVi.supplierCode;
+        this.tenDonVi = donVi.supplierName;
+        this.diaChi = donVi.address;
+
+    }
+
+    onSelectHopDongHangHoa(hopDong: any, hangHoa: any) {
+        this.phieugoihang.contractName = hopDong;
+        this.hangHoaHopDong = hangHoa;
+
+    }
+
+    /**
+     * Tạo pipe thay vì tạo từng hàm truncate như thế này
+     * @param text
+     */
+    truncateString(text): string {
+        return abp.utils.truncateStringWithPostfix(text, 32, '...');
     }
 }

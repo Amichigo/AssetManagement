@@ -34,34 +34,41 @@
         public const string Pages_Administration_Customer_Edit = "Pages.Administration.Customer.Edit";
         public const string Pages_Administration_Customer_Delete = "Pages.Administration.Customer.Delete";
 
-        ///du an
-        public const string Pages_Administration_DuAn = "Pages.Administration.DuAn";
-        public const string Pages_Administration_DuAn_Create = "Pages.Administration.DuAn.Create";
-        public const string Pages_Administration_DuAn_Edit = "Pages.Administration.DuAn.Edit";
-        public const string Pages_Administration_DuAn_Delete = "Pages.Administration.DuAn.Delete";
+        ///project
+        public const string Pages_Administration_Project = "Pages.Administration.Project";
+        public const string Pages_Administration_Project_Create = "Pages.Administration.Project.Create";
+        public const string Pages_Administration_Project_Edit = "Pages.Administration.Project.Edit";
+        public const string Pages_Administration_Project_Delete = "Pages.Administration.Project.Delete";
 
-        ///ho so thau
-        public const string Pages_Administration_HoSoThau = "Pages.Administration.HoSoThau";
-        public const string Pages_Administration_HoSoThau_Create = "Pages.Administration.HoSoThau.Create";
-        public const string Pages_Administration_HoSoThau_Edit = "Pages.Administration.HoSoThau.Edit";
-        public const string Pages_Administration_HoSoThau_Delete = "Pages.Administration.HoSoThau.Delete";
+        ///bid
+        public const string Pages_Administration_Bid = "Pages.Administration.Bid";
+        public const string Pages_Administration_Bid_Create = "Pages.Administration.Bid.Create";
+        public const string Pages_Administration_Bid_Edit = "Pages.Administration.Bid.Edit";
+        public const string Pages_Administration_Bid_Delete = "Pages.Administration.Bid.Delete";
 
-        ///nha cung cap
-        public const string Pages_Administration_NhaCungCap = "Pages.Administration.NhaCungCap";
-        public const string Pages_Administration_NhaCungCap_Create = "Pages.Administration.NhaCungCap.Create";
-        public const string Pages_Administration_NhaCungCap_Edit = "Pages.Administration.NhaCungCap.Edit";
-        public const string Pages_Administration_NhaCungCap_Delete = "Pages.Administration.NhaCungCap.Delete";
+        ///supplier
+        public const string Pages_Administration_Supplier = "Pages.Administration.Supplier";
+        public const string Pages_Administration_Supplier_Create = "Pages.Administration.Supplier.Create";
+        public const string Pages_Administration_Supplier_Edit = "Pages.Administration.Supplier.Edit";
+        public const string Pages_Administration_Supplier_Delete = "Pages.Administration.Supplier.Delete";
 
-        ///hop dong thau
-        public const string Pages_Administration_HopDongThau = "Pages.Administration.HopDongThau";
-        public const string Pages_Administration_HopDongThau_Create = "Pages.Administration.HopDongThau.Create";
-        public const string Pages_Administration_HopDongThau_Edit = "Pages.Administration.HopDongThau.Edit";
-        public const string Pages_Administration_HopDongThau_Delete = "Pages.Administration.HopDongThau.Delete";
+        ///contract
+        public const string Pages_Administration_Contract = "Pages.Administration.Contract";
+        public const string Pages_Administration_Contract_Create = "Pages.Administration.Contract.Create";
+        public const string Pages_Administration_Contract_Edit = "Pages.Administration.Contract.Edit";
+        public const string Pages_Administration_Contract_Delete = "Pages.Administration.Contract.Delete";
 
-        ///phieu goi hang
-        public const string Pages_Administration_PhieuGoiHang = "Pages.Administration.PhieuGoiHang";
-        public const string Pages_Administration_PhieuGoiHang_Create = "Pages.Administration.PhieuGoiHang.Create";
-        public const string Pages_Administration_PhieuGoiHang_Edit = "Pages.Administration.PhieuGoiHang.Edit";
-        public const string Pages_Administration_PhieuGoiHang_Delete = "Pages.Administration.PhieuGoiHang.Delete";
+        ///goodsInvoice
+        public const string Pages_Administration_GoodsInvoice = "Pages.Administration.GoodsInvoice";
+        public const string Pages_Administration_GoodsInvoice_Create = "Pages.Administration.GoodsInvoice.Create";
+        public const string Pages_Administration_GoodsInvoice_Edit = "Pages.Administration.GoodsInvoice.Edit";
+        public const string Pages_Administration_GoodsInvoice_Delete = "Pages.Administration.GoodsInvoice.Delete";
+
+        ///goods
+        public const string Pages_Administration_Goods = "Pages.Administration.Goods";
+        public const string Pages_Administration_Goods_Create = "Pages.Administration.Goods.Create";
+        public const string Pages_Administration_Goods_Edit = "Pages.Administration.Goods.Edit";
+        public const string Pages_Administration_Goods_Delete = "Pages.Administration.Goods.Delete";
+
     }
 }

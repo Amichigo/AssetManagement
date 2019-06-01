@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    <span *ngIf="phieugoihang.id">{{l("EditPhieuGoiHang")}}: {{duan.tenDuAn}}</span>
+                    <span *ngIf="phieugoihang.id">{{l("EditPhieuGoiHang")}}: {{phieugoihang.planName}}</span>
                     <span *ngIf="!phieugoihang.id">{{l("CreateNewPhieuGoiHang")}}</span>
                 </h4>
                 <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
@@ -14,43 +14,43 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Mã kế hoạch</label>
-                    <p>{{phieugoihang.maKeHoach}}</p>
+                    <p>{{phieugoihang.planCode}}</p>
                 </div>
                 <div class="form-group">
                     <label>Tên kế hoạch</label>
-                    <p>{{phieugoihang.tenKeHoach}}</p>
+                    <p>{{phieugoihang.planName}}</p>
                 </div>
                 <div class="form-group">
                     <label>Tên hợp đồng</label>
-                    <p>{{phieugoihang.tenHopDong}}</p>
+                    <p>{{phieugoihang.contractName}}</p>
                 </div>
                 <div class="form-group">
                     <label>Tên đơn vị</label>
-                    <p>{{phieugoihang.tenDonVi}}</p>
+                    <p>{{phieugoihang.unitName}}</p>
                 </div>
                 <div class="form-group">
                     <label>Tên hàng hóa</label>
-                    <p>{{phieugoihang.tenHangHoa}}</p>
+                    <p>{{phieugoihang.goodsName}}</p>
                 </div>
                 <div class="form-group">
                     <label>Số lượng</label>
-                    <p>{{phieugoihang.soLuong}}</p>
+                    <p>{{phieugoihang.amount}}</p>
                 </div>
                 <div class="form-group">
                     <label>Đơn giá</label>
-                    <p>{{phieugoihang.donGia}}</p>
+                    <p>{{phieugoihang.price}}</p>
                 </div>
                 <div class="form-group">
                     <label>Quá trình thanh toán</label>
-                    <p>{{phieugoihang.quaTrinhThanhToan}}</p>
+                    <p>{{phieugoihang.paymentProcess}}</p>
                 </div>
                 <div class="form-group">
                     <label>Tiến độ giao hàng</label>
-                    <p>{{phieugoihang.tienDoGiaoHang}}</p>
+                    <p>{{phieugoihang.shippingProcess}}</p>
                 </div>
                 <div class="form-group">
                     <label>Tình trạng hóa đơn</label>
-                    <p>{{phieugoihang.tinhTrangHoaDon}}</p>
+                    <p>{{phieugoihang.billStatus}}</p>
                 </div>
             </div>
             <div class="modal-footer">

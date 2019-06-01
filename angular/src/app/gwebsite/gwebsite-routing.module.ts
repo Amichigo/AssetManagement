@@ -7,6 +7,7 @@ import { HoSoThauComponent } from './hosothau/hosothau.component';
 import { NhaCungCapComponent } from './nhacungcap/nhacungcap.component';
 import { HopDongThauComponent } from './hopdongthau/hopdongthau.component';
 import { PhieuGoiHangComponent } from './phieugoihang/phieugoihang.component';
+import { HangHoaComponent } from './hanghoa/hanghoa.component';
 
 @NgModule({
     imports: [
@@ -34,7 +35,7 @@ import { PhieuGoiHangComponent } from './phieugoihang/phieugoihang.component';
                 children: [
                     {
                         path: 'duan', component: DuAnComponent,
-                        data: { permission: 'Pages.Administration.DuAn' }
+                        data: { permission: 'Pages.Administration.Project' }
                     },
                 ]
             },
@@ -43,7 +44,7 @@ import { PhieuGoiHangComponent } from './phieugoihang/phieugoihang.component';
                 children: [
                     {
                         path: 'hosothau', component: HoSoThauComponent,
-                        data: { permission: 'Pages.Administration.HoSoThau' }
+                        data: { permission: 'Pages.Administration.Bid' }
                     },
                 ]
             },
@@ -52,7 +53,7 @@ import { PhieuGoiHangComponent } from './phieugoihang/phieugoihang.component';
                 children: [
                     {
                         path: 'nhacungcap', component: NhaCungCapComponent,
-                        data: { permission: 'Pages.Administration.NhaCungCap' }
+                        data: { permission: 'Pages.Administration.Supplier' }
                     },
                 ]
             },
@@ -61,7 +62,7 @@ import { PhieuGoiHangComponent } from './phieugoihang/phieugoihang.component';
                 children: [
                     {
                         path: 'hopdongthau', component: HopDongThauComponent,
-                        data: { permission: 'Pages.Administration.HopDongThau' }
+                        data: { permission: 'Pages.Administration.Contract' }
                     },
                 ]
             },
@@ -70,7 +71,16 @@ import { PhieuGoiHangComponent } from './phieugoihang/phieugoihang.component';
                 children: [
                     {
                         path: 'phieugoihang', component: PhieuGoiHangComponent,
-                        data: { permission: 'Pages.Administration.PhieuGoiHang' }
+                        data: { permission: 'Pages.Administration.GoodsInvoice' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'hanghoa', component: HangHoaComponent,
+                        data: { permission: 'Pages.Administration.Goods' }
                     },
                 ]
             }

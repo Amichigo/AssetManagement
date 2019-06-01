@@ -1,10 +1,10 @@
-<div bsModal #viewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="viewModal"
+<div bsModal #viewDuAnModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="viewDuAnModal"
     aria-hidden="true" [config]="{backdrop: 'static'}">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    <span *ngIf="duan.id">{{l("EditDuAn")}}: {{duan.tenDuAn}}</span>
+                    <span *ngIf="duan.id">{{l("EditDuAn")}}: {{duan.projectName}}</span>
                     <span *ngIf="!duan.id">{{l("CreateNewDuAn")}}</span>
                 </h4>
                 <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
@@ -14,15 +14,15 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Tên dự án</label>
-                    <p>{{duan.tenDuAn}}</p>
+                    <p>{{duan.projectName}}</p>
                 </div>
                 <div class="form-group">
                     <label>Mã dự án</label>
-                    <p>{{duan.maDuAn}}</p>
+                    <p>{{duan.projectCode}}</p>
                 </div>
                 <div class="form-group">
                     <label>Ngày tạo dự án</label>
-                    <p>{{duan.ngayTaoDuAn}}</p>
+                    <p>{{duan.projectDayCreate}}</p>
                 </div>
             </div>
             <div class="modal-footer">

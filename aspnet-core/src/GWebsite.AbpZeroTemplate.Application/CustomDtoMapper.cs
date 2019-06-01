@@ -2,11 +2,12 @@ using AutoMapper;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.DuAns.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.HoSoThaus.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.NhaCungCaps.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.HopDongThaus.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.PhieuGoiHangs.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Suppliers.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.GoodsInvoices.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.GoodsList.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Applications
@@ -30,36 +31,41 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<Customer, CustomerInput>();
             configuration.CreateMap<Customer, CustomerForViewDto>();
 
-            //du an
-            configuration.CreateMap<DuAn, DuAnDto>();
-            configuration.CreateMap<DuAnInput, DuAn>();
-            configuration.CreateMap<DuAn, DuAnInput>();
-            configuration.CreateMap<DuAn, DuAnForViewDto>();
+            //project
+            configuration.CreateMap<Project, ProjectDto>();
+            configuration.CreateMap<ProjectInput, Project>();
+            configuration.CreateMap<Project, ProjectInput>();
+            configuration.CreateMap<Project, ProjectForViewDto>();
 
-            //ho so thau
-            configuration.CreateMap<HoSoThau, HoSoThauDto>();
-            configuration.CreateMap<HoSoThauInput, HoSoThau>();
-            configuration.CreateMap<HoSoThau, HoSoThauInput>();
-            configuration.CreateMap<HoSoThau, HoSoThauForViewDto>();
+            //bid
+            configuration.CreateMap<Bid, BidDto>();
+            configuration.CreateMap<BidInput, Bid>();
+            configuration.CreateMap<Bid, BidInput>();
+            configuration.CreateMap<Bid, BidForViewDto>();
 
-            //nha cung cap
-            configuration.CreateMap<NhaCungCap, NhaCungCapDto>();
-            configuration.CreateMap<NhaCungCapInput, NhaCungCap>();
-            configuration.CreateMap<NhaCungCap, NhaCungCapInput>();
-            configuration.CreateMap<NhaCungCap, NhaCungCapForViewDto>();
+            //supplier
+            configuration.CreateMap<Supplier, SupplierDto>();
+            configuration.CreateMap<SupplierInput, Supplier>();
+            configuration.CreateMap<Supplier, SupplierInput>();
+            configuration.CreateMap<Supplier, SupplierForViewDto>();
 
-            //hop dong thau
-            configuration.CreateMap<HopDongThau, HopDongThauDto>();
-            configuration.CreateMap<HopDongThauInput, HopDongThau>();
-            configuration.CreateMap<HopDongThau, HopDongThauInput>();
-            configuration.CreateMap<HopDongThau, HopDongThauForViewDto>();
+            //contract
+            configuration.CreateMap<Contract, ContractDto>();
+            configuration.CreateMap<ContractInput, Contract>();
+            configuration.CreateMap<Contract, ContractInput>();
+            configuration.CreateMap<Contract, ContractForViewDto>();
 
-            //phieu goi hang
-            configuration.CreateMap<PhieuGoiHang, PhieuGoiHangDto>();
-            configuration.CreateMap<PhieuGoiHangInput, PhieuGoiHang>();
-            configuration.CreateMap<PhieuGoiHang, PhieuGoiHangInput>();
-            configuration.CreateMap<PhieuGoiHang, PhieuGoiHangForViewDto>();
+            //goodsInvoice
+            configuration.CreateMap<GoodsInvoice, GoodsInvoiceDto>();
+            configuration.CreateMap<GoodsInvoiceInput, GoodsInvoice>();
+            configuration.CreateMap<GoodsInvoice, GoodsInvoiceInput>();
+            configuration.CreateMap<GoodsInvoice, GoodsInvoiceForViewDto>();
 
+            //goods
+            configuration.CreateMap<Goods, GoodsDto>();
+            configuration.CreateMap<GoodsInput, Goods>();
+            configuration.CreateMap<Goods, GoodsInput>();
+            configuration.CreateMap<Goods, GoodsForViewDto>();
         }
     }
 }

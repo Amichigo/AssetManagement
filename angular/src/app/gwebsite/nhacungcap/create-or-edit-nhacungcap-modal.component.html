@@ -5,7 +5,7 @@
             <form novalidate #editForm="ngForm" (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <span *ngIf="nhacungcap.id">Cập nhật nhà cung cấp: {{nhacungcap.tenNhaCungCap}}</span>
+                        <span *ngIf="nhacungcap.id">Cập nhật nhà cung cấp: {{nhacungcap.supplierName}}</span>
                         <span *ngIf="!nhacungcap.id">Tạo mới nhà cung cấp</span>
                     </h4>
                     <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
@@ -14,22 +14,34 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        <label>Mã nhà cung cấp *</label>
+                        <input #addressInput="ngModel" class="form-control" type="text" name="maNhaCungCap"
+                               [(ngModel)]="nhacungcap.supplierCode" required maxlength="64">
+                        <div style="color: red;" role="alert" *ngIf="editForm.controls.maNhaCungCap.errors?.required &&
+                         editForm.controls.maNhaCungCap.touched">Field is required</div>
+                        <validation-messages [formCtrl]="addressInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
                         <label>Tên nhà cung cấp *</label>
                         <input #addressInput="ngModel" class="form-control" type="text" name="tenNhaCungCap"
-                               [(ngModel)]="nhacungcap.tenNhaCungCap" required maxlength="64">
+                               [(ngModel)]="nhacungcap.supplierName" required maxlength="64">
+                        <div style="color: red;" role="alert" *ngIf="editForm.controls.tenNhaCungCap.errors?.required &&
+                         editForm.controls.tenNhaCungCap.touched">Field is required</div>
                         <validation-messages [formCtrl]="addressInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Địa chỉ *</label>
                         <input #nameInput="ngModel" class="form-control" type="text" name="diaChi"
-                               [(ngModel)]="nhacungcap.diaChi" required maxlength="64">
+                               [(ngModel)]="nhacungcap.address" required maxlength="64">
+                        <div style="color: red;" role="alert" *ngIf="editForm.controls.diaChi.errors?.required &&
+                         editForm.controls.diaChi.touched">Field is required</div>
                         <validation-messages [formCtrl]="nameInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Số điện thoại *</label>
                         <input #addressInput="ngModel" class="form-control" type="tel" name="soDienThoai" tel
-                               [(ngModel)]="nhacungcap.soDienThoai" required maxlength="64">
-                        <div class="col alert alert-warning" style="background-color: #f8d7da;" role="alert" *ngIf="editForm.controls.soDienThoai.errors?.required &&
+                               [(ngModel)]="nhacungcap.phoneNumber" required maxlength="64">
+                        <div style="color: red;" role="alert" *ngIf="editForm.controls.soDienThoai.errors?.required &&
                          editForm.controls.soDienThoai.touched">Phone Number is required</div>
                         <validation-messages [formCtrl]="infoInput"></validation-messages>
                     </div>
@@ -37,12 +49,12 @@
                         <label>Email *</label>
                         <input #addressInput="ngModel" class="form-control" type="text" name="email" email
                                [(ngModel)]="nhacungcap.email" required maxlength="64">
-                        <div class="col alert alert-warning" style="background-color: #f8d7da;" role="alert" *ngIf="editForm.controls.email.errors?.required &&
+                        <div style="color: red;" role="alert" *ngIf="editForm.controls.email.errors?.required &&
                          editForm.controls.email.touched">Email is required</div>
-                        <div class="col alert alert-warning" style="background-color: #f8d7da;" role="alert" *ngIf="editForm.controls.email.invalid &&
+                        <div style="color: red;" role="alert" *ngIf="editForm.controls.email.invalid &&
                          editForm.controls.email.touched && editForm.controls.email.errors?.required==null">Email is invalid</div>
                         <validation-messages [formCtrl]="infoInput"></validation-messages>
-                    </div> 
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default"
@@ -56,8 +68,8 @@
                     </button>
                 </div>
             </form>
-            <p>Form Error:</p>
-            <pre>{{editForm.controls.email?.errors | json}}</pre>
+            <!--<p>Form Error:</p>
+            <pre>{{editForm.controls.email?.errors | json}}</pre>-->
         </div>
     </div>
 </div>

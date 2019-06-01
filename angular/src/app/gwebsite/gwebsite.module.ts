@@ -12,11 +12,12 @@ import { GWebsiteRoutingModule } from './gwebsite-routing.module';
 
 import { MenuClientComponent, CreateOrEditMenuClientModalComponent } from './index';
 import { DemoModelServiceProxy } from '@shared/service-proxies/service-proxies';
-import { DuAnServiceProxy } from '@shared/service-proxies/service-proxies';
-import { HoSoThauServiceProxy } from '@shared/service-proxies/service-proxies';
-import { NhaCungCapServiceProxy } from '@shared/service-proxies/service-proxies';
-import { HopDongThauServiceProxy } from '@shared/service-proxies/service-proxies';
-import { PhieuGoiHangServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ProjectServiceProxy } from '@shared/service-proxies/service-proxies';
+import { BidServiceProxy } from '@shared/service-proxies/service-proxies';
+import { SupplierServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ContractServiceProxy } from '@shared/service-proxies/service-proxies';
+import { GoodsInvoiceServiceProxy } from '@shared/service-proxies/service-proxies';
+import { GoodsServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CustomerComponent } from './customer/customer.component';
 import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
 import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
@@ -35,6 +36,9 @@ import { CreateOrEditHopDongThauModalComponent } from './hopdongthau/create-or-e
 import { PhieuGoiHangComponent } from './phieugoihang/phieugoihang.component';
 import { ViewPhieuGoiHangModalComponent } from './phieugoihang/view-phieugoihang-modal.component';
 import { CreateOrEditPhieuGoiHangModalComponent } from './phieugoihang/create-or-edit-phieugoihang-modal.component';
+import { HangHoaComponent } from './hanghoa/hanghoa.component';
+import { ViewHangHoaModalComponent } from './hanghoa/view-hanghoa-modal.component';
+import { CreateOrEditHangHoaModalComponent } from './hanghoa/create-or-edit-hanghoa-modal.component';
 
 @NgModule({
     imports: [
@@ -63,14 +67,16 @@ import { CreateOrEditPhieuGoiHangModalComponent } from './phieugoihang/create-or
         NhaCungCapComponent, CreateOrEditNhaCungCapModalComponent, ViewNhaCungCapModalComponent,
         HopDongThauComponent, CreateOrEditHopDongThauModalComponent, ViewHopDongThauModalComponent,
         PhieuGoiHangComponent, CreateOrEditPhieuGoiHangModalComponent, ViewPhieuGoiHangModalComponent,
+        HangHoaComponent, CreateOrEditHangHoaModalComponent, ViewHangHoaModalComponent,
     ],
     providers: [
         CustomerServiceProxy,
-        DuAnServiceProxy,
-        HoSoThauServiceProxy,
-        NhaCungCapServiceProxy,
-        HopDongThauServiceProxy,
-        PhieuGoiHangServiceProxy,
+        ProjectServiceProxy,
+        BidServiceProxy,
+        SupplierServiceProxy,
+        ContractServiceProxy,
+        GoodsInvoiceServiceProxy,
+        GoodsServiceProxy,
     ]
 })
 export class GWebsiteModule { }

@@ -1,7 +1,7 @@
-import { HopDongThauForViewDto } from './../../../shared/service-proxies/service-proxies';
+import { ContractForViewDto } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild } from "@angular/core";
-import { HopDongThauServiceProxy } from "@shared/service-proxies/service-proxies";
+import { ContractServiceProxy } from "@shared/service-proxies/service-proxies";
 import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
@@ -11,18 +11,18 @@ import { ModalDirective } from 'ngx-bootstrap';
 
 export class ViewHopDongThauModalComponent extends AppComponentBase {
 
-    hopdongthau : HopDongThauForViewDto = new HopDongThauForViewDto();
+    hopdongthau: ContractForViewDto = new ContractForViewDto();
     @ViewChild('viewModal') modal: ModalDirective;
 
     constructor(
         injector: Injector,
-        private _hopdongthauService: HopDongThauServiceProxy
+        private _hopdongthauService: ContractServiceProxy
     ) {
         super(injector);
     }
 
     show(hopdongthauId?: number | null | undefined): void {
-        this._hopdongthauService.getHopDongThauForView(hopdongthauId).subscribe(result => {
+        this._hopdongthauService.getContractForView(hopdongthauId).subscribe(result => {
             this.hopdongthau = result;
             this.modal.show();
         })

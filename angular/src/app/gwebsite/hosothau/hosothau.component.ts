@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { HoSoThauServiceProxy } from '@shared/service-proxies/service-proxies';
+import { BidServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditHoSoThauModalComponent } from './create-or-edit-hosothau-modal.component';
 
 @Component({
@@ -31,7 +31,7 @@ export class HoSoThauComponent extends AppComponentBase implements AfterViewInit
 
     constructor(
         injector: Injector,
-        private _hosothauService: HoSoThauServiceProxy,
+        private _hosothauService: BidServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -73,7 +73,7 @@ export class HoSoThauComponent extends AppComponentBase implements AfterViewInit
     }
 
     reloadList(hosothauName, event?: LazyLoadEvent) {
-        this._hosothauService.getHoSoThausByFilter(hosothauName, this.primengTableHelper.getSorting(this.dataTable),
+        this._hosothauService.getBidsByFilter(hosothauName, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -84,7 +84,7 @@ export class HoSoThauComponent extends AppComponentBase implements AfterViewInit
     }
 
     deleteHoSoThau(id): void {
-        this._hosothauService.deleteHoSoThau(id).subscribe(() => {
+        this._hosothauService.deleteBid(id).subscribe(() => {
             this.reloadPage();
         })
     }
