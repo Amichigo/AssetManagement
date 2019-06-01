@@ -13,8 +13,11 @@
 
   <ItemGroup>
     <Compile Remove="Models\BDS_13\QuanLyCongTrinhXayDung\**" />
+    <Compile Remove="Models\BDS_13\QuanLyToaNha\**" />
     <EmbeddedResource Remove="Models\BDS_13\QuanLyCongTrinhXayDung\**" />
+    <EmbeddedResource Remove="Models\BDS_13\QuanLyToaNha\**" />
     <None Remove="Models\BDS_13\QuanLyCongTrinhXayDung\**" />
+    <None Remove="Models\BDS_13\QuanLyToaNha\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,10 +31,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GSoft.AbpZeroTemplate.Core.Shared\GSoft.AbpZeroTemplate.Core.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\BDS_13\QuanLyToaNha\" />
   </ItemGroup>
 
 </Project>

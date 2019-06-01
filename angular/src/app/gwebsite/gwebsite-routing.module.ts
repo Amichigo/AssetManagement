@@ -46,7 +46,7 @@ import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.compone
                 children: [
                     {
                         path: 'loaibatdongsan', component: LoaiBatDongSanComponent,
-                        data: { permission: 'Pages.QuanLyBatDongSan.LoaiBatDongSan' }
+                        data: { permission: 'Pages.Administration.QuanLyBatDongSan.LoaiBatDongSan' }
                     },
                 ]
             },
@@ -56,7 +56,7 @@ import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.compone
                 children: [
                     {
                         path: 'loaisohuu', component: LoaiSoHuuComponent,
-                        data: { permission: 'Pages.QuanLyBatDongSan.LoaiSoHuu' }
+                        data: { permission: 'Pages.Administration.QuanLyBatDongSan.LoaiSoHuu' }
                     },
                 ]
             },
@@ -75,7 +75,7 @@ import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.compone
                 children: [
                     {
                         path: 'batdongsan', component: BatDongSanComponent,
-                        data: { permission: 'Pages.QuanLyBatDongSan.BatDongSan' }
+                        data: { permission: 'Pages.Administration.QuanLyBatDongSan.BatDongSan' }
                     },
                 ]
 
@@ -85,7 +85,7 @@ import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.compone
                 children: [
                     {
                         path: 'hientrangphaply', component: HienTrangPhapLyComponent,
-                        data: { permission: 'Pages.QuanLyBatDongSan.HienTrangPhapLy' }
+                        data: { permission: 'Pages.Administration.QuanLyBatDongSan.HienTrangPhapLy' }
                     },
                 ]
 
@@ -95,7 +95,7 @@ import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.compone
                 children: [
                     {
                         path: 'tinhtrangsudungdat', component: TinhTrangSuDungDatComponent,
-                        data: { permission: 'Pages.QuanLyBatDongSan.TinhTrangSuDungDat' }
+                        data: { permission: 'Pages.Administration.QuanLyBatDongSan.TinhTrangSuDungDat' }
                     },
                 ]
 
@@ -105,7 +105,7 @@ import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.compone
                 children: [
                     {
                         path: 'taisan', component: TaiSanComponent,
-                        data: { permission: 'Pages.QuanLyBatDongSan.TaiSan' }
+                        data: { permission: 'Pages.Administration.QuanLyBatDongSan.TaiSan' }
                     },
                 ]
 
@@ -115,7 +115,7 @@ import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.compone
                 children: [
                     {
                         path: 'suachuabatdongsan', component: SuaChuaBatDongSanComponent,
-                        data: { permission: 'Pages.QuanLyBatDongSan.SuaChuaBatDongSan' }
+                        data: { permission: 'Pages.Administration.QuanLyBatDongSan.SuaChuaBatDongSan' }
                     },
                 ]
 
@@ -125,7 +125,7 @@ import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.compone
                 children: [
                     {
                         path: 'kehoachxaydung', component: KeHoachXayDungComponent,
-                        data: { permission: 'Pages.QuanLyKeHoachXayDung.KeHoachXayDung' }
+                        data: { permission: 'Pages.Administration.QuanLyKeHoachXayDung.KeHoachXayDung' }
                     },
                 ]
 

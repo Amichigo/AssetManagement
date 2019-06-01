@@ -4,14 +4,16 @@ using GSoft.AbpZeroTemplate.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    partial class AbpZeroTemplateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190601092638_N13updateTableKHXD")]
+    partial class N13updateTableKHXD
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1760,8 +1762,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<DateTime?>("CreatedDate");
 
                     b.Property<bool>("IsDelete");
-
-                    b.Property<string>("KinhPhiDuocDuyet");
 
                     b.Property<string>("MaDonVi");
 

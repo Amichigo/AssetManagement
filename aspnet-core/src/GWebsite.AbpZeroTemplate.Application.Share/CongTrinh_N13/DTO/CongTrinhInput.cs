@@ -9,6 +9,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.CongTrinh_N13.DTO
 {
     public class CongTrinhInput : Entity<int>
     {
+        public string MaDuAnXayDungCoBan { set; get; }
         public string MaCongTrinh { set; get; }
         public string MaKeHoach { set; get; }
 
@@ -37,5 +38,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.CongTrinh_N13.DTO
         public string MoTaCongTrinh { set; get; }
 
         public string NgayThiCongThucTe { set; get; }
+
+        public string GhiChu { set; get; }
     }
 }

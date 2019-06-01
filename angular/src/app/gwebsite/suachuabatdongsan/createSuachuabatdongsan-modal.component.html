@@ -78,7 +78,7 @@
 
                             <div class="form-group">
                                 <label>Ghi Chú*</label>
-                                <input #ghichutsInput="ngModel" class="form-control" type="text" name="ghiChu"
+                                <input #ghichutsInput="ngModel" class="form-control" type="text" name="ghiChuts"
                                     [(ngModel)]="taisan.ghiChu" disabled required>
                                 <validation-messages [formCtrl]="ghichutsInput"></validation-messages>
 
@@ -182,7 +182,7 @@
                         <div class="form-group">
                             <label>Ghi chú </label>
                             <input #ghiChuInput="ngModel" class="form-control" type="text"
-                                [(ngModel)]="suachuabatdongsan.ghiChu" required disabled name="GhiChu"
+                                [(ngModel)]="batdongsan.ghiChu" required disabled name="GhiChubds"
                                 [style]="{'height':'300px'}">
 
                             <validation-messages [formCtrl]="ghiChuInput"></validation-messages>
@@ -323,7 +323,7 @@
 
                         <div class="form-group">
                             <label>Chi phí dự kiến*</label>
-                            <input #chiphiInput="ngModel" class="form-control" type="float" name="chiPhiDuKien"
+                            <input #chiphiInput="ngModel" class="form-control" type="number" name="chiPhiDuKien"
                                 [(ngModel)]="suachuabatdongsan.chiPhiDuKien" required maxlength="64">
                             <validation-messages [formCtrl]="chiphiInput"></validation-messages>
                         </div>
@@ -344,9 +344,9 @@
 
                         <div class="form-group">
                             <label>Ghi chú*</label>
-                            <input #ghichuInput="ngModel" class="form-control" type="text" name="ghiChu"
+                            <input #ghichuscInput="ngModel" class="form-control" type="text" name="ghiChusc"
                                 [(ngModel)]="suachuabatdongsan.ghiChu" required maxlength="64">
-                            <validation-messages [formCtrl]="ghichuInput"></validation-messages>
+                            <validation-messages [formCtrl]="ghichuscInput"></validation-messages>
                         </div>
 
                     </div>
@@ -376,7 +376,7 @@
                             <div class="col-xl-6">
                                 <div class="form-group">
                                     <label>Chi phí thực tế*</label>
-                                    <input #cpscttInput="ngModel" class="form-control" type="float"
+                                    <input #cpscttInput="ngModel" class="form-control" type="number"
                                         name="chiPhiSuaChuaThucTe" [(ngModel)]="suachuabatdongsan.chiPhiSuaChuaThucTe"
                                          required maxlength="64">
                                     <validation-messages [formCtrl]="cpscttInput"></validation-messages>

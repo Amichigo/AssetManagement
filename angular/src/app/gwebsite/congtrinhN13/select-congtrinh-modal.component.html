@@ -1,77 +1,81 @@
-<div [@routerTransition]>
+<div bsModal #viewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="viewModal"
+    aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <span>{{l("Chọn tài sản")}}</span>
+                    <!-- <span *ngIf="!customer.id">{{l("CreateNewCustomer")}}</span> -->
+                </h4>
+                <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
 
-    <div class="m-subheader ">
-        <div class="d-flex align-items-center">
-            <div class="mr-auto col-xs-6">
-                <h3 class="m-subheader__title m-subheader__title--separator">
-                    <span>{{l("TaiSan")}}</span>
-                </h3>
-                <span class="m-section__sub">
-                    {{l("TaiSanInfo")}}
-                </span>
+
+
+
             </div>
-            <div class="col-xs-6 text-right">
-                <button (click)="createTaiSan()" *ngIf="isGranted('Pages.Administration.QuanLyBatDongSan.TaiSan.Create')"
-                    class="btn btn-primary"><i class="fa fa-plus"></i> {{l("CreateNewTaiSan")}}</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="m-content">
-        <div class="m-portlet m-portlet--mobile">
-            <div class="m-portlet__body">
-                <form autocomplete="off">
-                    <div class="m-form m-form--label-align-right" id="TextsFilterForm">
-                        <div class="row align-items-center m--margin-bottom-10">
-
+            <div class="modal-body">
+                <div class="form-control">
+                    <div class="input-group">
                             <div class="form-control">
-                                <label>{{l("Tìm kiếm tài sản")}} *</label>
-                                <div class="row m--margin-bottom-10">
-                                    <div class="col-xl-6">
-                                        <label>{{l("Mã tài sản")}} *</label>
-                                        <input [(ngModel)]="mataisan" name="mataisan" autoFocus class="form-control"
-                                            placeholder="Mã tài sản" type="text">
+                                    <label>{{l("Tìm kiếm tài sản")}} *</label>
+                                    <div class="row m--margin-bottom-10">
+                                        <div class="col-xl-6">
+                                            <label>{{l("Mã tài sản")}} *</label>
+                                            <input [(ngModel)]="macongtrinh" name="macongtrinh" autoFocus class="form-control"
+                                                placeholder="Mã tài sản" type="text">
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <label>{{l("Tên tài sản")}} *</label>
+                                            <input [(ngModel)]="congtrinhName" name="congtrinhName" autoFocus class="form-control"
+                                                placeholder="Nhập tên tài sản" type="text">
+                                        </div>
                                     </div>
-                                    <div class="col-xl-6">
-                                        <label>{{l("Tên tài sản")}} *</label>
-                                        <input [(ngModel)]="taisanName" name="taisanName" autoFocus class="form-control"
-                                            placeholder="Nhập tên tài sản" type="text">
+    
+                                    <div class="row m--margin-bottom-10">
+                                        <div class="col-xl-6">
+                                            <label>{{l("Nhóm tài sản")}} *</label>
+                                            <input [(ngModel)]="nhomcongtrinh" name="nhomcongtrinh" autoFocus class="form-control"
+                                                placeholder="Nhập nhóm tài sản" type="text">
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <label>{{l("Loại tài sản")}} *</label>
+                                            <input [(ngModel)]="loaicongtrinh" name="loaicongtrinh" autoFocus class="form-control"
+                                                placeholder="Nhập loại tài sản" type="text">
+                                        </div>
                                     </div>
+                                    <div class="input-group">
+    
+                                        <span class="input-group-btn">
+                                            <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
+                                                    class="icon-refresh"></i>
+                                                {{l("Refresh")}}</button>
+                                        </span>
+                                    </div>
+    
                                 </div>
-
-                                <div class="row m--margin-bottom-10">
-                                    <div class="col-xl-6">
-                                        <label>{{l("Nhóm tài sản")}} *</label>
-                                        <input [(ngModel)]="nhomtaisan" name="nhomtaisan" autoFocus class="form-control"
-                                            placeholder="Nhập nhóm tài sản" type="text">
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <label>{{l("Loại tài sản")}} *</label>
-                                        <input [(ngModel)]="loaitaisan" name="loaitaisan" autoFocus class="form-control"
-                                            placeholder="Nhập loại tài sản" type="text">
-                                    </div>
-                                </div>
-                                <div class="input-group">
-
-                                    <span class="input-group-btn">
-                                        <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
-                                                class="icon-refresh"></i>
-                                            {{l("Refresh")}}</button>
-                                    </span>
-                                </div>
-
-                            </div>
-                        </div>
+                        <span class="input-group-btn">
+                            <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
+                                    class="icon-refresh"></i>
+                                {{l("Reset")}}</button>
+                        </span>
                     </div>
-                </form>
+
+                </div>
+
+
                 <div class="row align-items-center">
                     <!--<Primeng-TurboTable-Start>-->
                     <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
-                        <p-table #dataTable (onLazyLoad)="getTaiSans($event)" [value]="primengTableHelper.records"
+                        <p-table #dataTable (onLazyLoad)="getCongTrinhs($event)" [value]="primengTableHelper.records"
                             rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
                             [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
+                                    <th>
+                                        Chọn tài sản
+                                    </th>
                                     <th pSortableColumn="mats">
                                         Mã tài sản
                                         <p-sortIcon field="mats"></p-sortIcon>
@@ -110,37 +114,41 @@
                             </ng-template>
                             <ng-template pTemplate="body" let-record="$implicit">
                                 <tr>
+                                    <td>
 
+                                        <button class="btn btn-primary" type="button"
+                                            (click)="selectedCongTrinh(record.id)">{{l("Chọn")}}</button>
+                                    </td>
                                     <td>
                                         <span class="ui-column-title">Mã tài sản</span>
-                                        <span title="{{record.maTaiSan}}">{{truncateString(record.maTaiSan)}}</span>
+                                        <span title="{{record.maCongTrinh}}">{{truncateString(record.maCongTrinh)}}</span>
                                     </td>
 
                                     <td>
                                         <span class="ui-column-title">Tên tài sản</span>
-                                        <span title="{{record.tenTaiSan}}">{{truncateString(record.tenTaiSan)}}</span>
+                                        <span title="{{record.tenCongTrinh}}">{{truncateString(record.tenCongTrinh)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Nhóm tài sản</span>
                                         <span
-                                            title="{{record.maNhomTaiSan}}">{{truncateString(record.maNhomTaiSan)}}</span>
+                                            title="{{record.maNhomCongTrinh}}">{{truncateString(record.maNhomCongTrinh)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Loại tài sản</span>
                                         <span
-                                            title="{{record.maLoaiTaiSan}}">{{truncateString(record.maLoaiTaiSan)}}</span>
+                                            title="{{record.maLoaiCongTrinh}}">{{truncateString(record.maLoaiCongTrinh)}}</span>
                                     </td>
 
                                     <td>
                                         <span class="ui-column-title">Ngày nhập tài sản</span>
                                         <span
-                                            title="{{record.ngayNhapTaiSan}}">{{truncateString(record.ngayNhapTaiSan)}}</span>
+                                            title="{{record.ngayNhapCongTrinh}}">{{truncateString(record.ngayNhapCongTrinh)}}</span>
                                     </td>
 
                                     <td>
                                         <span class="ui-column-title">Nguyên giá</span>
                                         <span
-                                            title="{{record.nguyenGiaTaiSan}}">{{truncateString(record.nguyenGiaTaiSan)}}</span>
+                                            title="{{record.nguyenGiaCongTrinh | number}}">{{truncateString(record.nguyenGiaCongTrinh | number) }}</span>
                                     </td>
 
                                     <td>
@@ -158,23 +166,12 @@
                                         <span title="{{record.info}}">{{truncateString(record.info)}}</span>
                                     </td>-->
                                     <td>
-                                        <button
+                                        <!-- <button
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                             (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">
                                             <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
-                                        </button>
+                                        </button> -->
 
-                                        <button
-                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="deleteTaiSan(record.id)" title="{{l('Delete')}}">
-                                            <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
-                                        </button>
-
-                                        <button
-                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="viewTaiSanModal.show(record.id)" title="{{l('View')}}">
-                                            <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
-                                        </button>
                                     </td>
                                 </tr>
                             </ng-template>
@@ -184,7 +181,7 @@
                         </div>
                         <div class="primeng-paging-container">
                             <p-paginator rows="{{primengTableHelper.defaultRecordsCountPerPage}}" #paginator
-                                (onPageChange)="getTaiSans($event)"
+                                (onPageChange)="getCongTrinhs($event)"
                                 [totalRecords]="primengTableHelper.totalRecordsCount"
                                 [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
                             </p-paginator>
@@ -196,8 +193,14 @@
                     <!--<Primeng-TurboTable-End>-->
                 </div>
             </div>
+            <div class="modal-footer">
+                <!-- <button [disabled]="saving" type="button" class="btn btn-default"
+                    (click)="close()">{{l("Cancel")}}</button>
+                <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                    [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                    <span>{{l("Save")}}</span></button> -->
+            </div>
         </div>
     </div>
-    <createOrEditTaiSanModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditTaiSanModal>
-    <viewTaiSanModal #viewTaiSanModal></viewTaiSanModal>
+  
 </div>

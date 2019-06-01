@@ -110,7 +110,6 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.KeHoach_13
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
         private void Create(KeHoachXayDungInput keHoachXayDungInput)
         {
-            keHoachXayDungInput.MaKeHoach = "A" + keHoachXayDungInput.NamThucHien;
             var keHoachXayDungEntity = ObjectMapper.Map<KeHoachXayDung_N13>(keHoachXayDungInput);
             SetAuditInsert(keHoachXayDungEntity);
             keHoachXayDungRepository.Insert(keHoachXayDungEntity);

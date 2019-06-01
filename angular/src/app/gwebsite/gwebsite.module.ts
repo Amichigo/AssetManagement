@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, LoaiBatDongSanServiceProxy, NhomTaiSanServiceProxy, LoaiSoHuuServiceProxy, MucDichSuDungDatServiceProxy, BatDongSanServiceProxy, HienTrangPhapLyServiceProxy, TinhTrangSuDungDatServiceProxy, TaiSanServiceProxy, SuaChuaBatDongSanServiceProxy, KeHoachXayDungServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, LoaiBatDongSanServiceProxy, NhomTaiSanServiceProxy, LoaiSoHuuServiceProxy, MucDichSuDungDatServiceProxy, BatDongSanServiceProxy, HienTrangPhapLyServiceProxy, TinhTrangSuDungDatServiceProxy, TaiSanServiceProxy, SuaChuaBatDongSanServiceProxy, KeHoachXayDungServiceProxy, CongTrinhServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -45,6 +45,10 @@ import { CreateOrEditKeHoachXayDungModalComponent } from './kehoachxaydung/creat
 import { ViewKeHoachXayDungModalComponent } from './kehoachxaydung/view-kehoachxaydung-modal.component';
 import { EditSuaChuaBatDongSanModalComponent } from './suachuabatdongsan/edit-suachuabatdongsan-modal.component';
 import { DuyetBatDongSanModalComponent } from './suachuabatdongsan/duyet-suachuabatdongsan-modal.component';
+import { CongTrinhComponent } from './congtrinhN13/congtrinh.component';
+import { CreateOrEditCongTrinhModalComponent } from './congtrinhN13/create-or-edit-congtrinh-modal.component';
+import { ViewCongTrinhModalComponent } from './congtrinhN13/view-congtrinh-modal.component';
+import { SelectKeHoachXayDungModalComponent } from './kehoachxaydung/select-kehoachxaydung-modal.component';
 
 
 
@@ -79,6 +83,7 @@ import { DuyetBatDongSanModalComponent } from './suachuabatdongsan/duyet-suachua
         TaiSanComponent, CreateOrEditTaiSanModalComponent, ViewTaiSanModalComponent, SelectTaiSanModalComponent,
         SuaChuaBatDongSanComponent, CreateOrEditSuaChuaBatDongSanModalComponent, ViewSuaChuaBatDongSanModalComponent,EditSuaChuaBatDongSanModalComponent,DuyetBatDongSanModalComponent,
         KeHoachXayDungComponent, CreateOrEditKeHoachXayDungModalComponent,ViewKeHoachXayDungModalComponent,
+        CongTrinhComponent, CreateOrEditCongTrinhModalComponent,ViewCongTrinhModalComponent,SelectKeHoachXayDungModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
@@ -92,6 +97,7 @@ import { DuyetBatDongSanModalComponent } from './suachuabatdongsan/duyet-suachua
         TaiSanServiceProxy,
         SuaChuaBatDongSanServiceProxy,
         KeHoachXayDungServiceProxy,
+        CongTrinhServiceProxy,
     ]
 })
 export class GWebsiteModule { }

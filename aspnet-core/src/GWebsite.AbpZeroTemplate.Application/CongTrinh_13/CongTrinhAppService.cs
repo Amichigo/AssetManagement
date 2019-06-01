@@ -109,7 +109,8 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
         private void Create(CongTrinhInput congTrinhInput)
         {
-            congTrinhInput.MaCongTrinh = "TS000" + congTrinhRepository.GetAll().Count() + 1;
+           // int nextID = congTrinhRepository.GetAll().Count() + 1;
+           // congTrinhInput.MaCongTrinh = "CT000" + nextID;
             var congTrinhEntity = ObjectMapper.Map<CongTrinh_N13>(congTrinhInput);
             SetAuditInsert(congTrinhEntity);
             congTrinhRepository.Insert(congTrinhEntity);

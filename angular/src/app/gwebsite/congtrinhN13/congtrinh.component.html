@@ -4,15 +4,15 @@
         <div class="d-flex align-items-center">
             <div class="mr-auto col-xs-6">
                 <h3 class="m-subheader__title m-subheader__title--separator">
-                    <span>{{l("Danh Sách Kế Hoạch Xây dựng cơ bản")}}</span>
+                    <span>{{l("CongTrinh")}}</span>
                 </h3>
                 <span class="m-section__sub">
-                    {{l("KeHoachXayDungInfo")}}
+                    {{l("CongTrinhInfo")}}
                 </span>
             </div>
             <div class="col-xs-6 text-right">
-                <button (click)="createKeHoachXayDung()" *ngIf="isGranted('Pages.Administration.QuanLyKeHoachXayDung.KeHoachXayDung.Create')"
-                    class="btn btn-primary"><i class="fa fa-plus"></i> {{l("CreateNewKeHoachXayDung")}}</button>
+                <button (click)="createCongTrinh()" *ngIf="isGranted('Pages.Administration.QuanLyBatDongSan.CongTrinh.Create')"
+                    class="btn btn-primary"><i class="fa fa-plus"></i> {{l("CreateNewCongTrinh")}}</button>
             </div>
         </div>
     </div>
@@ -25,30 +25,30 @@
                         <div class="row align-items-center m--margin-bottom-10">
 
                             <div class="form-control">
-                                <label>{{l("Tìm kiếm kế hoạch")}} *</label>
+                                <label>{{l("Tìm kiếm tài sản")}} *</label>
                                 <div class="row m--margin-bottom-10">
                                     <div class="col-xl-6">
-                                        <label>{{l("Mã kế hoạch")}} *</label>
-                                        <input [(ngModel)]="makehoachxaydung" name="makehoachxaydung" autoFocus class="form-control"
-                                            placeholder=" Nhập Mã kế hoạch" type="text">
+                                        <label>{{l("Mã tài sản")}} *</label>
+                                        <input [(ngModel)]="macongtrinh" name="macongtrinh" autoFocus class="form-control"
+                                            placeholder="Mã tài sản" type="text">
                                     </div>
                                     <div class="col-xl-6">
-                                        <label>{{l("Năm thực hiện")}} *</label>
-                                        <input [(ngModel)]="kehoachxaydungName" name="kehoachxaydungName" autoFocus class="form-control"
-                                            placeholder="Nhập Năm thực hiện" type="text">
+                                        <label>{{l("Tên tài sản")}} *</label>
+                                        <input [(ngModel)]="congtrinhName" name="congtrinhName" autoFocus class="form-control"
+                                            placeholder="Nhập tên tài sản" type="text">
                                     </div>
                                 </div>
 
                                 <div class="row m--margin-bottom-10">
+                                    <!-- <div class="col-xl-6">
+                                        <label>{{l("Nhóm tài sản")}} *</label>
+                                        <input [(ngModel)]="nhomcongtrinh" name="nhomcongtrinh" autoFocus class="form-control"
+                                            placeholder="Nhập nhóm tài sản" type="text">
+                                    </div> -->
                                     <div class="col-xl-6">
-                                        <label>{{l("Đơn vị")}} *</label>
-                                        <input [(ngModel)]="nhomkehoachxaydung" name="nhomkehoachxaydung" autoFocus class="form-control"
-                                            placeholder="Nhập Đơn vị" type="text">
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <label>{{l("Trạng thái duyệt")}} *</label>
-                                        <input [(ngModel)]="loaikehoachxaydung" name="loaikehoachxaydung" autoFocus class="form-control"
-                                            placeholder="Nhập Trạng thái duyệt" type="text">
+                                        <label>{{l("Loại tài sản")}} *</label>
+                                        <input [(ngModel)]="loaicongtrinh" name="loaicongtrinh" autoFocus class="form-control"
+                                            placeholder="Nhập loại tài sản" type="text">
                                     </div>
                                 </div>
                                 <div class="input-group">
@@ -67,30 +67,39 @@
                 <div class="row align-items-center">
                     <!--<Primeng-TurboTable-Start>-->
                     <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
-                        <p-table #dataTable (onLazyLoad)="getKeHoachXayDungs($event)" [value]="primengTableHelper.records"
+                        <p-table #dataTable (onLazyLoad)="getCongTrinhs($event)" [value]="primengTableHelper.records"
                             rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
                             [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
-                                    <th pSortableColumn="makh">
-                                        Mã Kế Hoạch
-                                        <p-sortIcon field="makh"></p-sortIcon>
+                                    <th pSortableColumn="mats">
+                                        Mã tài sản
+                                        <p-sortIcon field="mats"></p-sortIcon>
                                     </th>
 
-                                    <th pSortableColumn="ngayhieuluc">
-                                        Ngày hiệu lực
+                                    <th pSortableColumn="name">
+                                        Tên tài sản
                                     </th>
-                                    <th pSortableColumn="kinhphi">
-                                        Kinh phí Được duyệt
+                                    <th pSortableColumn="nhomts">
+                                        Nhóm tài sản
                                     </th>
-                                    <th pSortableColumn="namth">
-                                        Năm thực hiện
-                                    </th>
-
-                                    <th pSortableColumn="trangthai">
-                                        Trạng thái
+                                    <th pSortableColumn="loaits">
+                                        Loại tài sản
                                     </th>
 
+                                    <th pSortableColumn="ngaynhap">
+                                        Ngày nhập tài sản
+                                    </th>
+
+                                    <th pSortableColumn="nguyengia">
+                                        Nguyên giá
+                                    </th>
+                                    <th pSortableColumn="khauhao">
+                                        Khấu hao
+                                    </th>
+                                    <th pSortableColumn="ghichu">
+                                        Ghi chú
+                                    </th>
 
                                     <!--<th pSortableColumn="info">
                                         Thông tin
@@ -103,32 +112,46 @@
                                 <tr>
 
                                     <td>
-                                        <span class="ui-column-title">Mã Kế hoạch</span>
-                                        <span title="{{record.maKeHoach}}">{{truncateString(record.maKeHoach)}}</span>
+                                        <span class="ui-column-title">Mã tài sản</span>
+                                        <span title="{{record.maCongTrinh}}">{{truncateString(record.maCongTrinh)}}</span>
                                     </td>
 
                                     <td>
-                                        <span class="ui-column-title">Ngày hiệu lực</span>
-                                        <span title="{{record.ngayHieuLuc}}">{{truncateString(record.ngayHieuLuc)}}</span>
+                                        <span class="ui-column-title">Tên tài sản</span>
+                                        <span title="{{record.tenCongTrinh}}">{{truncateString(record.tenCongTrinh)}}</span>
                                     </td>
                                     <td>
-                                        <span class="ui-column-title">Kinh phí được duyệt</span>
+                                        <span class="ui-column-title">Nhóm tài sản</span>
                                         <span
-                                            title="{{record.kinhPhiDuocDuyet|number}}">{{truncateString(record.kinhPhiDuocDuyet)|number}}</span>
+                                            title="{{record.maNhomCongTrinh}}">{{truncateString(record.maNhomCongTrinh)}}</span>
                                     </td>
                                     <td>
-                                        <span class="ui-column-title">Năm thực hiện</span>
+                                        <span class="ui-column-title">Loại tài sản</span>
                                         <span
-                                            title="{{record.namThucHien}}">{{truncateString(record.namThucHien)}}</span>
+                                            title="{{record.maLoaiCongTrinh}}">{{truncateString(record.maLoaiCongTrinh)}}</span>
                                     </td>
 
                                     <td>
-                                        <span class="ui-column-title">Trạng thái</span>
+                                        <span class="ui-column-title">Ngày nhập tài sản</span>
                                         <span
-                                            title="{{record.trangThaiDuyet}}">{{truncateString(record.trangThaiDuyet)}}</span>
+                                            title="{{record.ngayNhapCongTrinh}}">{{truncateString(record.ngayNhapCongTrinh)}}</span>
                                     </td>
 
-                               
+                                    <td>
+                                        <span class="ui-column-title">Nguyên giá</span>
+                                        <span
+                                            title="{{record.nguyenGiaCongTrinh}}">{{truncateString(record.nguyenGiaCongTrinh)}}</span>
+                                    </td>
+
+                                    <td>
+                                        <span class="ui-column-title">Khấu hao</span>
+                                        <span title="{{record.khauHao}}">{{truncateString(record.khauHao)}}</span>
+                                    </td>
+
+                                    <td>
+                                        <span class="ui-column-title">Ghi chú</span>
+                                        <span title="{{record.ghiChu}}">{{truncateString(record.ghiChu)}}</span>
+                                    </td>
 
                                     <!--<td>
                                         <span class="ui-column-title">Thông tin</span>
@@ -143,13 +166,13 @@
 
                                         <button
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="deleteKeHoachXayDung(record.id)" title="{{l('Delete')}}">
+                                            (click)="deleteCongTrinh(record.id)" title="{{l('Delete')}}">
                                             <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                         </button>
 
                                         <button
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="viewKeHoachXayDungModal.show(record.id)" title="{{l('View')}}">
+                                            (click)="viewCongTrinhModal.show(record.id)" title="{{l('View')}}">
                                             <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
                                         </button>
                                     </td>
@@ -161,7 +184,7 @@
                         </div>
                         <div class="primeng-paging-container">
                             <p-paginator rows="{{primengTableHelper.defaultRecordsCountPerPage}}" #paginator
-                                (onPageChange)="getKeHoachXayDungs($event)"
+                                (onPageChange)="getCongTrinhs($event)"
                                 [totalRecords]="primengTableHelper.totalRecordsCount"
                                 [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
                             </p-paginator>
@@ -175,6 +198,6 @@
             </div>
         </div>
     </div>
-    <createOrEditKeHoachXayDungModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditKeHoachXayDungModal>
-    <viewKeHoachXayDungModal #viewKeHoachXayDungModal></viewKeHoachXayDungModal>
+    <createOrEditCongTrinhModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditCongTrinhModal>
+    <viewCongTrinhModal #viewCongTrinhModal></viewCongTrinhModal>
 </div>

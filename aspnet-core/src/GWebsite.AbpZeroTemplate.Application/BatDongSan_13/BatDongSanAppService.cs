@@ -18,7 +18,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.TaiSan_13.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_QuanLyBatDongSan_BatDongSan)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_BatDongSan)]
     public class BatDongSanAppService : GWebsiteAppServiceBase, IBatDongSanAppService
     {
         private readonly IRepository<BatDongSan> batdongsanRepository;
@@ -171,7 +171,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_QuanLyBatDongSan_BatDongSan_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_BatDongSan_Create)]
         private void Create(BatDongSanInput batdongsanInput)
         {
            
@@ -181,7 +181,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
           //  CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_QuanLyBatDongSan_BatDongSan_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_BatDongSan_Edit)]
         private void Update(BatDongSanInput batdongsanInput)
         {
             var batdongsanEntity = batdongsanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == batdongsanInput.Id);

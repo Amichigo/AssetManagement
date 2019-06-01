@@ -8,6 +8,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models.QuanLyCongTrinh_N13
 {
     public class CongTrinh_N13 : FullAuditModel
     {
+        public string MaDuAnXayDungCoBan { set; get; }
         public string MaCongTrinh { set; get; }
         public string MaKeHoach { set; get; }
 
@@ -37,6 +38,6 @@ namespace GWebsite.AbpZeroTemplate.Core.Models.QuanLyCongTrinh_N13
 
         public string NgayThiCongThucTe { set; get; }
 
-
+        public string GhiChu { set; get; }
     }
 }

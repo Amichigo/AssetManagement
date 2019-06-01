@@ -16,5 +16,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.KeHoachXayDung_N13.DTO
         public string TrangThaiDuyet { set; get; }
         public string NgayHieuLuc { set; get; }
         public string NamThucHien { set; get; }
+        public string KinhPhiDuocDuyet { set; get; }
     }
 }

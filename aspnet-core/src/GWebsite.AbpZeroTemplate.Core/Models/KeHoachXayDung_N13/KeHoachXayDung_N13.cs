@@ -11,11 +11,13 @@ namespace GWebsite.AbpZeroTemplate.Core.Models.KeHoachXayDung_N13
         public string MaKeHoach { set; get; }
         public string TenKeHoach { set; get; }
         public string MaDonVi { set; get; }
-        string NgayLapKeHoach { set; get; }
+        public string NgayLapKeHoach { set; get; }
         public string TrangThaiDuyet { set; get; }
         public string NgayHieuLuc { set; get; }
 
         public string NamThucHien { set; get; }
+
+        public string KinhPhiDuocDuyet { set; get; }
 
     }
 }

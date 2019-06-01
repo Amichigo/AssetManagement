@@ -120,7 +120,8 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset_13
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
         private void Create(TaiSanInput taiSanInput)
         {
-            taiSanInput.MaTaiSan = "TS000" + taiSanRepository.GetAll().Count()+1;
+            int nextID = taiSanRepository.GetAll().Count() + 1;
+            taiSanInput.MaTaiSan = "TS000" + nextID;
             var taiSanEntity = ObjectMapper.Map<TaiSan_13>(taiSanInput);
             SetAuditInsert(taiSanEntity);
             taiSanRepository.Insert(taiSanEntity);

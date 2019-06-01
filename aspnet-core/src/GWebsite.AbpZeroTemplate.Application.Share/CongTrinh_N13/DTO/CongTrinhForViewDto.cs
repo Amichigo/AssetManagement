@@ -8,6 +8,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.CongTrinh_N13.DTO
 {
     public class CongTrinhForViewDto
     {
+        public string MaDuAnXayDungCoBan { set; get; }
         public string MaCongTrinh { set; get; }
         public string MaKeHoach { set; get; }
 

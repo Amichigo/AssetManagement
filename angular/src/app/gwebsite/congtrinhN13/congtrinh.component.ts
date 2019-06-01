@@ -1,4 +1,4 @@
-import { ViewLoaiBatDongSanModalComponent } from './view-loaibatdongsan-modal.component';
+import { ViewCongTrinhModalComponent } from './view-congtrinh-modal.component';
 import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
@@ -7,31 +7,36 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { LoaiBatDongSanServiceProxy } from '@shared/service-proxies/service-proxies';
-import { CreateOrEditLoaiBatDongSanModalComponent } from './create-or-edit-loaibatdongsan-modal.component';
+import { CongTrinhServiceProxy } from '@shared/service-proxies/service-proxies';
+import { CreateOrEditCongTrinhModalComponent } from './create-or-edit-congtrinh-modal.component';
+import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
-    templateUrl: './loaibatdongsan.component.html',
+
+    templateUrl: './congtrinh.component.html',
+    selector: 'CongTrinhModal',
     animations: [appModuleAnimation()]
 })
-export class LoaiBatDongSanComponent extends AppComponentBase implements AfterViewInit, OnInit {
+export class CongTrinhComponent extends AppComponentBase implements AfterViewInit, OnInit {
 
     /**
      * @ViewChild là dùng get control và call thuộc tính, functions của control đó
      */
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
-    @ViewChild('createOrEditModal') createOrEditModal: CreateOrEditLoaiBatDongSanModalComponent;
-    @ViewChild('viewLoaiBatDongSanModal') viewLoaiBatDongSanModal: ViewLoaiBatDongSanModalComponent;
-
+    @ViewChild('createOrEditModal') createOrEditModal: CreateOrEditCongTrinhModalComponent;
+    @ViewChild('viewCongTrinhModal') viewCongTrinhModal: ViewCongTrinhModalComponent;
+    @ViewChild('CongTrinhModal') modal: ModalDirective;
     /**
      * tạo các biến dể filters
      */
-    loaibatdongsanName: string;
-    Id: string;
+    congtrinhName: string;
+    macongtrinh:string;
+    maKeHoach:string;
+    loaicongtrinh:string;
     constructor(
         injector: Injector,
-        private _loaibatdongsanService: LoaiBatDongSanServiceProxy,
+        private _congtrinhService: CongTrinhServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -41,8 +46,14 @@ export class LoaiBatDongSanComponent extends AppComponentBase implements AfterVi
      * Hàm xử lý trước khi View được init
      */
     ngOnInit(): void {
+        
     }
 
+
+
+    show():void{
+        this.modal.show();
+    }
     /**
      * Hàm xử lý sau khi View được init
      */
@@ -53,10 +64,10 @@ export class LoaiBatDongSanComponent extends AppComponentBase implements AfterVi
     }
 
     /**
-     * Hàm get danh sách LoaiBatDongSan
+     * Hàm get danh sách CongTrinh
      * @param event
      */
-    getLoaiBatDongSans(event?: LazyLoadEvent) {
+    getCongTrinhs(event?: LazyLoadEvent) {
         if (!this.paginator || !this.dataTable) {
             return;
         }
@@ -68,12 +79,12 @@ export class LoaiBatDongSanComponent extends AppComponentBase implements AfterVi
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-        this.reloadList(null, event);
+        this.reloadList(null,null,null, event);
 
     }
 
-    reloadList(loaibatdongsanName, event?: LazyLoadEvent) {
-        this._loaibatdongsanService.getLoaiBatDongSansByFilter(loaibatdongsanName, this.primengTableHelper.getSorting(this.dataTable),
+    reloadList(congtrinhName,macongtrinh,maKeHoach, event?: LazyLoadEvent) {
+        this._congtrinhService.getCongTrinhsByFilter(macongtrinh,maKeHoach,congtrinhName, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -83,8 +94,8 @@ export class LoaiBatDongSanComponent extends AppComponentBase implements AfterVi
         });
     }
 
-    deleteLoaiBatDongSan(id): void {
-        this._loaibatdongsanService.deleteLoaiBatDongSan(id).subscribe(() => {
+    deleteCongTrinh(id): void {
+        this._congtrinhService.deleteCongTrinh(id).subscribe(() => {
             this.reloadPage();
         })
     }
@@ -92,14 +103,13 @@ export class LoaiBatDongSanComponent extends AppComponentBase implements AfterVi
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
-            this.loaibatdongsanName = params['name'] || '';
-            this.reloadList(this.loaibatdongsanName, null);
+            this.congtrinhName = params['TenCongTrinh'] || '';
+            this.macongtrinh = params['MaCongTrinh'] || '';
+            this.maKeHoach= params['MamaKeHoach'] || '';
+            this.loaicongtrinh= params['MaLoaiCongTrinh'] || '';
+            this.reloadList(this.congtrinhName,this.macongtrinh,this.maKeHoach, null);
         });
     }
-
-  
-    
-
 
     reloadPage(): void {
         this.paginator.changePage(this.paginator.getPage());
@@ -107,7 +117,7 @@ export class LoaiBatDongSanComponent extends AppComponentBase implements AfterVi
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.loaibatdongsanName, null);
+        this.reloadList(this.congtrinhName,this.macongtrinh,this.maKeHoach, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);
@@ -116,7 +126,8 @@ export class LoaiBatDongSanComponent extends AppComponentBase implements AfterVi
     }
 
     //hàm show view create MenuClient
-    createLoaiBatDongSan() {
+    createCongTrinh() {
+        
         this.createOrEditModal.show();
     }
 

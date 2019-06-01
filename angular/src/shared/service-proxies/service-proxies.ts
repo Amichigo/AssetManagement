@@ -15826,6 +15826,7 @@ export interface IPagedResultDtoOfCongTrinhDto {
 }
 
 export class CongTrinhDto implements ICongTrinhDto {
+    maDuAnXayDungCoBan!: string | undefined;
     maCongTrinh!: string | undefined;
     maKeHoach!: string | undefined;
     tenCongTrinh!: string | undefined;
@@ -15854,6 +15855,7 @@ export class CongTrinhDto implements ICongTrinhDto {
 
     init(data?: any) {
         if (data) {
+            this.maDuAnXayDungCoBan = data["maDuAnXayDungCoBan"];
             this.maCongTrinh = data["maCongTrinh"];
             this.maKeHoach = data["maKeHoach"];
             this.tenCongTrinh = data["tenCongTrinh"];
@@ -15882,6 +15884,7 @@ export class CongTrinhDto implements ICongTrinhDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["maDuAnXayDungCoBan"] = this.maDuAnXayDungCoBan;
         data["maCongTrinh"] = this.maCongTrinh;
         data["maKeHoach"] = this.maKeHoach;
         data["tenCongTrinh"] = this.tenCongTrinh;
@@ -15903,6 +15906,7 @@ export class CongTrinhDto implements ICongTrinhDto {
 }
 
 export interface ICongTrinhDto {
+    maDuAnXayDungCoBan: string | undefined;
     maCongTrinh: string | undefined;
     maKeHoach: string | undefined;
     tenCongTrinh: string | undefined;
@@ -15922,6 +15926,7 @@ export interface ICongTrinhDto {
 }
 
 export class CongTrinhInput implements ICongTrinhInput {
+    maDuAnXayDungCoBan!: string | undefined;
     maCongTrinh!: string | undefined;
     maKeHoach!: string | undefined;
     tenCongTrinh!: string | undefined;
@@ -15937,6 +15942,7 @@ export class CongTrinhInput implements ICongTrinhInput {
     dienTichCongTrinh!: number | undefined;
     moTaCongTrinh!: string | undefined;
     ngayThiCongThucTe!: string | undefined;
+    ghiChu!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: ICongTrinhInput) {
@@ -15950,6 +15956,7 @@ export class CongTrinhInput implements ICongTrinhInput {
 
     init(data?: any) {
         if (data) {
+            this.maDuAnXayDungCoBan = data["maDuAnXayDungCoBan"];
             this.maCongTrinh = data["maCongTrinh"];
             this.maKeHoach = data["maKeHoach"];
             this.tenCongTrinh = data["tenCongTrinh"];
@@ -15965,6 +15972,7 @@ export class CongTrinhInput implements ICongTrinhInput {
             this.dienTichCongTrinh = data["dienTichCongTrinh"];
             this.moTaCongTrinh = data["moTaCongTrinh"];
             this.ngayThiCongThucTe = data["ngayThiCongThucTe"];
+            this.ghiChu = data["ghiChu"];
             this.id = data["id"];
         }
     }
@@ -15978,6 +15986,7 @@ export class CongTrinhInput implements ICongTrinhInput {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["maDuAnXayDungCoBan"] = this.maDuAnXayDungCoBan;
         data["maCongTrinh"] = this.maCongTrinh;
         data["maKeHoach"] = this.maKeHoach;
         data["tenCongTrinh"] = this.tenCongTrinh;
@@ -15993,12 +16002,14 @@ export class CongTrinhInput implements ICongTrinhInput {
         data["dienTichCongTrinh"] = this.dienTichCongTrinh;
         data["moTaCongTrinh"] = this.moTaCongTrinh;
         data["ngayThiCongThucTe"] = this.ngayThiCongThucTe;
+        data["ghiChu"] = this.ghiChu;
         data["id"] = this.id;
         return data; 
     }
 }
 
 export interface ICongTrinhInput {
+    maDuAnXayDungCoBan: string | undefined;
     maCongTrinh: string | undefined;
     maKeHoach: string | undefined;
     tenCongTrinh: string | undefined;
@@ -16014,10 +16025,12 @@ export interface ICongTrinhInput {
     dienTichCongTrinh: number | undefined;
     moTaCongTrinh: string | undefined;
     ngayThiCongThucTe: string | undefined;
+    ghiChu: string | undefined;
     id: number | undefined;
 }
 
 export class CongTrinhForViewDto implements ICongTrinhForViewDto {
+    maDuAnXayDungCoBan!: string | undefined;
     maCongTrinh!: string | undefined;
     maKeHoach!: string | undefined;
     tenCongTrinh!: string | undefined;
@@ -16045,6 +16058,7 @@ export class CongTrinhForViewDto implements ICongTrinhForViewDto {
 
     init(data?: any) {
         if (data) {
+            this.maDuAnXayDungCoBan = data["maDuAnXayDungCoBan"];
             this.maCongTrinh = data["maCongTrinh"];
             this.maKeHoach = data["maKeHoach"];
             this.tenCongTrinh = data["tenCongTrinh"];
@@ -16072,6 +16086,7 @@ export class CongTrinhForViewDto implements ICongTrinhForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["maDuAnXayDungCoBan"] = this.maDuAnXayDungCoBan;
         data["maCongTrinh"] = this.maCongTrinh;
         data["maKeHoach"] = this.maKeHoach;
         data["tenCongTrinh"] = this.tenCongTrinh;
@@ -16092,6 +16107,7 @@ export class CongTrinhForViewDto implements ICongTrinhForViewDto {
 }
 
 export interface ICongTrinhForViewDto {
+    maDuAnXayDungCoBan: string | undefined;
     maCongTrinh: string | undefined;
     maKeHoach: string | undefined;
     tenCongTrinh: string | undefined;
@@ -18759,6 +18775,7 @@ export class KeHoachXayDungDto implements IKeHoachXayDungDto {
     ngayLapKeHoach!: string | undefined;
     trangThaiDuyet!: string | undefined;
     ngayHieuLuc!: string | undefined;
+    kinhPhiDuocDuyet!: string | undefined;
     namThucHien!: string | undefined;
     id!: number | undefined;
 
@@ -18779,6 +18796,7 @@ export class KeHoachXayDungDto implements IKeHoachXayDungDto {
             this.ngayLapKeHoach = data["ngayLapKeHoach"];
             this.trangThaiDuyet = data["trangThaiDuyet"];
             this.ngayHieuLuc = data["ngayHieuLuc"];
+            this.kinhPhiDuocDuyet = data["kinhPhiDuocDuyet"];
             this.namThucHien = data["namThucHien"];
             this.id = data["id"];
         }
@@ -18799,6 +18817,7 @@ export class KeHoachXayDungDto implements IKeHoachXayDungDto {
         data["ngayLapKeHoach"] = this.ngayLapKeHoach;
         data["trangThaiDuyet"] = this.trangThaiDuyet;
         data["ngayHieuLuc"] = this.ngayHieuLuc;
+        data["kinhPhiDuocDuyet"] = this.kinhPhiDuocDuyet;
         data["namThucHien"] = this.namThucHien;
         data["id"] = this.id;
         return data; 
@@ -18812,6 +18831,7 @@ export interface IKeHoachXayDungDto {
     ngayLapKeHoach: string | undefined;
     trangThaiDuyet: string | undefined;
     ngayHieuLuc: string | undefined;
+    kinhPhiDuocDuyet: string | undefined;
     namThucHien: string | undefined;
     id: number | undefined;
 }
@@ -18824,6 +18844,7 @@ export class KeHoachXayDungInput implements IKeHoachXayDungInput {
     trangThaiDuyet!: string | undefined;
     ngayHieuLuc!: string | undefined;
     namThucHien!: string | undefined;
+    kinhPhiDuocDuyet!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IKeHoachXayDungInput) {
@@ -18844,6 +18865,7 @@ export class KeHoachXayDungInput implements IKeHoachXayDungInput {
             this.trangThaiDuyet = data["trangThaiDuyet"];
             this.ngayHieuLuc = data["ngayHieuLuc"];
             this.namThucHien = data["namThucHien"];
+            this.kinhPhiDuocDuyet = data["kinhPhiDuocDuyet"];
             this.id = data["id"];
         }
     }
@@ -18864,6 +18886,7 @@ export class KeHoachXayDungInput implements IKeHoachXayDungInput {
         data["trangThaiDuyet"] = this.trangThaiDuyet;
         data["ngayHieuLuc"] = this.ngayHieuLuc;
         data["namThucHien"] = this.namThucHien;
+        data["kinhPhiDuocDuyet"] = this.kinhPhiDuocDuyet;
         data["id"] = this.id;
         return data; 
     }
@@ -18877,6 +18900,7 @@ export interface IKeHoachXayDungInput {
     trangThaiDuyet: string | undefined;
     ngayHieuLuc: string | undefined;
     namThucHien: string | undefined;
+    kinhPhiDuocDuyet: string | undefined;
     id: number | undefined;
 }
 
@@ -18887,6 +18911,7 @@ export class KeHoachXayDungForViewDto implements IKeHoachXayDungForViewDto {
     ngayLapKeHoach!: string | undefined;
     trangThaiDuyet!: string | undefined;
     ngayHieuLuc!: string | undefined;
+    kinhPhiDuocDuyet!: string | undefined;
     namThucHien!: string | undefined;
 
     constructor(data?: IKeHoachXayDungForViewDto) {
@@ -18906,6 +18931,7 @@ export class KeHoachXayDungForViewDto implements IKeHoachXayDungForViewDto {
             this.ngayLapKeHoach = data["ngayLapKeHoach"];
             this.trangThaiDuyet = data["trangThaiDuyet"];
             this.ngayHieuLuc = data["ngayHieuLuc"];
+            this.kinhPhiDuocDuyet = data["kinhPhiDuocDuyet"];
             this.namThucHien = data["namThucHien"];
         }
     }
@@ -18925,6 +18951,7 @@ export class KeHoachXayDungForViewDto implements IKeHoachXayDungForViewDto {
         data["ngayLapKeHoach"] = this.ngayLapKeHoach;
         data["trangThaiDuyet"] = this.trangThaiDuyet;
         data["ngayHieuLuc"] = this.ngayHieuLuc;
+        data["kinhPhiDuocDuyet"] = this.kinhPhiDuocDuyet;
         data["namThucHien"] = this.namThucHien;
         return data; 
     }
@@ -18937,6 +18964,7 @@ export interface IKeHoachXayDungForViewDto {
     ngayLapKeHoach: string | undefined;
     trangThaiDuyet: string | undefined;
     ngayHieuLuc: string | undefined;
+    kinhPhiDuocDuyet: string | undefined;
     namThucHien: string | undefined;
 }
 
