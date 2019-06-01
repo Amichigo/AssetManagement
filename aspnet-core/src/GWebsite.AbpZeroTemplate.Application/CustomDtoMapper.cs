@@ -5,6 +5,8 @@ using GWebsite.AbpZeroTemplate.Application.Share.DirectorShoppingPlans.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ShoppingPlanDetails.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ShoppingPlans.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ConstructionPlans.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ConstructionPlanDetails.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Applications
@@ -45,6 +47,17 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<ShoppingPlanDetail, ShoppingPlanDetailDto>();
             configuration.CreateMap<ShoppingPlanDetailInput, ShoppingPlanDetail>();
             configuration.CreateMap<ShoppingPlanDetail, ShoppingPlanDetailInput>();
+
+            //ConstructionPlan
+            configuration.CreateMap<ConstructionPlan, ConstructionPlanDto>();
+            configuration.CreateMap<ConstructionPlanInput, ConstructionPlan>();
+            configuration.CreateMap<ConstructionPlan, ConstructionPlanInput>();
+            configuration.CreateMap<ConstructionPlan, ConstructionPlanForViewDto>();
+
+            //ConstructionPlanDetail
+            configuration.CreateMap<ConstructionPlanDetail, ConstructionPlanDetailDto>();
+            configuration.CreateMap<ConstructionPlanDetailInput, ConstructionPlanDetail>();
+            configuration.CreateMap<ConstructionPlanDetail, ConstructionPlanDetailInput>();
         }
     }
 }

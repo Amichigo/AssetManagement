@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Core.Models
 {
-    public class ShoppingPlanDetail: FullAuditModel
+    public class ShoppingPlanDetail : FullAuditModel
     {
         public string MaSP { get; set; }
         public string TenSP { get; set; }

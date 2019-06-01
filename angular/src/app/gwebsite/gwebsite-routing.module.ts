@@ -6,6 +6,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { ShoppingPlanComponent } from './shoppingPlan/shoppingPlan.component';
 import { DirectorShoppingPlanComponent } from './directorShoppingPlan/directorShoppingPlan.component';
 import { ShoppingPlanDetailComponent } from './shoppingPlan/shoppingPlanDetail.component';
+import { ConstructionPlanComponent } from './constructionPlan/constructionPlan.component';
 
 @NgModule({
     imports: [
@@ -61,6 +62,15 @@ import { ShoppingPlanDetailComponent } from './shoppingPlan/shoppingPlanDetail.c
                     {
                         path: 'directorShoppingPlan', component: DirectorShoppingPlanComponent,
                         data: { permission: 'Pages.Administration.DirectorShoppingPlan' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'constructionPlan', component: ConstructionPlanComponent,
+                        data: { permission: 'Pages.Administration.ConstructionPlan' }
                     },
                 ]
             }

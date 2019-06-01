@@ -39,5 +39,15 @@
         public const string Pages_Administration_ShoppingPlanDetail_Edit = "Pages.Administration.ShoppingPlanDetail.Edit";
         public const string Pages_Administration_ShoppingPlanDetail_Delete = "Pages.Administration.ShoppingPlanDetail.Delete";
 
+        public const string Pages_Administration_ConstructionPlan = "Pages.Administration.ConstructionPlan";
+        public const string Pages_Administration_ConstructionPlan_Create = "Pages.Administration.Construction.Create";
+        public const string Pages_Administration_ConstructionPlan_Edit = "Pages.Administration.Construction.Edit";
+        public const string Pages_Administration_ConstructionPlan_Delete = "Pages.Administration.Construction.Delete";
+
+        public const string Pages_Administration_ConstructionPlanDetail = "Pages.Administration.ConstructionPlanDetail";
+        public const string Pages_Administration_ConstructionPlanDetail_Create = "Pages.Administration.ConstructionPlanDetail.Create";
+        public const string Pages_Administration_ConstructionPlanDetail_Edit = "Pages.Administration.ConstructionPlanDetail.Edit";
+        public const string Pages_Administration_ConstructionPlanDetail_Delete = "Pages.Administration.ConstructionPlanDetail.Delete";
+
     }
 }

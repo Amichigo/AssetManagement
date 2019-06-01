@@ -1537,6 +1537,538 @@ export class CommonLookupServiceProxy {
 }
 
 @Injectable()
+export class ConstructionPlanServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @khuVuc (optional) 
+     * @phongBan (optional) 
+     * @maKeHoach (optional) 
+     * @tinhTrang (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getConstructionPlansByFilter(khuVuc: string | null | undefined, phongBan: string | null | undefined, maKeHoach: string | null | undefined, tinhTrang: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfConstructionPlanDto> {
+        let url_ = this.baseUrl + "/api/ConstructionPlan/GetConstructionPlansByFilter?";
+        if (khuVuc !== undefined)
+            url_ += "KhuVuc=" + encodeURIComponent("" + khuVuc) + "&"; 
+        if (phongBan !== undefined)
+            url_ += "PhongBan=" + encodeURIComponent("" + phongBan) + "&"; 
+        if (maKeHoach !== undefined)
+            url_ += "MaKeHoach=" + encodeURIComponent("" + maKeHoach) + "&"; 
+        if (tinhTrang !== undefined)
+            url_ += "TinhTrang=" + encodeURIComponent("" + tinhTrang) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetConstructionPlansByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetConstructionPlansByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfConstructionPlanDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfConstructionPlanDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetConstructionPlansByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfConstructionPlanDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfConstructionPlanDto.fromJS(resultData200) : new PagedResultDtoOfConstructionPlanDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfConstructionPlanDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getConstructionPlanForEdit(id: number | null | undefined): Observable<ConstructionPlanInput> {
+        let url_ = this.baseUrl + "/api/ConstructionPlan/GetConstructionPlanForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetConstructionPlanForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetConstructionPlanForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<ConstructionPlanInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ConstructionPlanInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetConstructionPlanForEdit(response: HttpResponseBase): Observable<ConstructionPlanInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? ConstructionPlanInput.fromJS(resultData200) : new ConstructionPlanInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ConstructionPlanInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditConstructionPlan(input: ConstructionPlanInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/ConstructionPlan/CreateOrEditConstructionPlan";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditConstructionPlan(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditConstructionPlan(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditConstructionPlan(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteConstructionPlan(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/ConstructionPlan/DeleteConstructionPlan/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteConstructionPlan(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteConstructionPlan(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteConstructionPlan(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getConstructionPlanForView(id: number | null | undefined): Observable<ConstructionPlanForViewDto> {
+        let url_ = this.baseUrl + "/api/ConstructionPlan/GetConstructionPlanForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetConstructionPlanForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetConstructionPlanForView(<any>response_);
+                } catch (e) {
+                    return <Observable<ConstructionPlanForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ConstructionPlanForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetConstructionPlanForView(response: HttpResponseBase): Observable<ConstructionPlanForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? ConstructionPlanForViewDto.fromJS(resultData200) : new ConstructionPlanForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ConstructionPlanForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
+export class ConstructionPlanDetailServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @maKeHoach (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getConstructionPlansByFilter(maKeHoach: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfConstructionPlanDetailDto> {
+        let url_ = this.baseUrl + "/api/ConstructionPlanDetail/GetConstructionPlansByFilter?";
+        if (maKeHoach !== undefined)
+            url_ += "MaKeHoach=" + encodeURIComponent("" + maKeHoach) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetConstructionPlansByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetConstructionPlansByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfConstructionPlanDetailDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfConstructionPlanDetailDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetConstructionPlansByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfConstructionPlanDetailDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfConstructionPlanDetailDto.fromJS(resultData200) : new PagedResultDtoOfConstructionPlanDetailDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfConstructionPlanDetailDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getConstructionPlanDetailForEdit(id: number | null | undefined): Observable<ConstructionPlanDetailInput> {
+        let url_ = this.baseUrl + "/api/ConstructionPlanDetail/GetConstructionPlanDetailForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetConstructionPlanDetailForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetConstructionPlanDetailForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<ConstructionPlanDetailInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ConstructionPlanDetailInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetConstructionPlanDetailForEdit(response: HttpResponseBase): Observable<ConstructionPlanDetailInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? ConstructionPlanDetailInput.fromJS(resultData200) : new ConstructionPlanDetailInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ConstructionPlanDetailInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditConstructionPlanDetail(input: ConstructionPlanDetailInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/ConstructionPlanDetail/CreateOrEditConstructionPlanDetail";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditConstructionPlanDetail(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditConstructionPlanDetail(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditConstructionPlanDetail(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteConstructionPlanDetail(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/ConstructionPlanDetail/DeleteConstructionPlanDetail/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteConstructionPlanDetail(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteConstructionPlanDetail(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteConstructionPlanDetail(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+}
+
+@Injectable()
 export class CustomerServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -11991,6 +12523,426 @@ export class GetDefaultEditionNameOutput implements IGetDefaultEditionNameOutput
 
 export interface IGetDefaultEditionNameOutput {
     name: string | undefined;
+}
+
+export class PagedResultDtoOfConstructionPlanDto implements IPagedResultDtoOfConstructionPlanDto {
+    totalCount!: number | undefined;
+    items!: ConstructionPlanDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfConstructionPlanDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(ConstructionPlanDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfConstructionPlanDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfConstructionPlanDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfConstructionPlanDto {
+    totalCount: number | undefined;
+    items: ConstructionPlanDto[] | undefined;
+}
+
+export class ConstructionPlanDto implements IConstructionPlanDto {
+    maKeHoach!: string | undefined;
+    khuVuc!: string | undefined;
+    phongBan!: string | undefined;
+    nam!: number | undefined;
+    ngayHieuLuc!: moment.Moment | undefined;
+    kinhPhi!: string | undefined;
+    tinhTrang!: string | undefined;
+    soLanThayDoi!: number | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IConstructionPlanDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maKeHoach = data["maKeHoach"];
+            this.khuVuc = data["khuVuc"];
+            this.phongBan = data["phongBan"];
+            this.nam = data["nam"];
+            this.ngayHieuLuc = data["ngayHieuLuc"] ? moment(data["ngayHieuLuc"].toString()) : <any>undefined;
+            this.kinhPhi = data["kinhPhi"];
+            this.tinhTrang = data["tinhTrang"];
+            this.soLanThayDoi = data["soLanThayDoi"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ConstructionPlanDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ConstructionPlanDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maKeHoach"] = this.maKeHoach;
+        data["khuVuc"] = this.khuVuc;
+        data["phongBan"] = this.phongBan;
+        data["nam"] = this.nam;
+        data["ngayHieuLuc"] = this.ngayHieuLuc ? this.ngayHieuLuc.toISOString() : <any>undefined;
+        data["kinhPhi"] = this.kinhPhi;
+        data["tinhTrang"] = this.tinhTrang;
+        data["soLanThayDoi"] = this.soLanThayDoi;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IConstructionPlanDto {
+    maKeHoach: string | undefined;
+    khuVuc: string | undefined;
+    phongBan: string | undefined;
+    nam: number | undefined;
+    ngayHieuLuc: moment.Moment | undefined;
+    kinhPhi: string | undefined;
+    tinhTrang: string | undefined;
+    soLanThayDoi: number | undefined;
+    id: number | undefined;
+}
+
+export class ConstructionPlanInput implements IConstructionPlanInput {
+    maKeHoach!: string | undefined;
+    khuVuc!: string | undefined;
+    phongBan!: string | undefined;
+    nam!: number | undefined;
+    ngayHieuLuc!: moment.Moment | undefined;
+    kinhPhi!: string | undefined;
+    trangThai!: string | undefined;
+    soLanThayDoi!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IConstructionPlanInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maKeHoach = data["maKeHoach"];
+            this.khuVuc = data["khuVuc"];
+            this.phongBan = data["phongBan"];
+            this.nam = data["nam"];
+            this.ngayHieuLuc = data["ngayHieuLuc"] ? moment(data["ngayHieuLuc"].toString()) : <any>undefined;
+            this.kinhPhi = data["kinhPhi"];
+            this.trangThai = data["trangThai"];
+            this.soLanThayDoi = data["soLanThayDoi"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ConstructionPlanInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ConstructionPlanInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maKeHoach"] = this.maKeHoach;
+        data["khuVuc"] = this.khuVuc;
+        data["phongBan"] = this.phongBan;
+        data["nam"] = this.nam;
+        data["ngayHieuLuc"] = this.ngayHieuLuc ? this.ngayHieuLuc.toISOString() : <any>undefined;
+        data["kinhPhi"] = this.kinhPhi;
+        data["trangThai"] = this.trangThai;
+        data["soLanThayDoi"] = this.soLanThayDoi;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IConstructionPlanInput {
+    maKeHoach: string | undefined;
+    khuVuc: string | undefined;
+    phongBan: string | undefined;
+    nam: number | undefined;
+    ngayHieuLuc: moment.Moment | undefined;
+    kinhPhi: string | undefined;
+    trangThai: string | undefined;
+    soLanThayDoi: string | undefined;
+    id: number | undefined;
+}
+
+export class ConstructionPlanForViewDto implements IConstructionPlanForViewDto {
+    khuVuc!: string | undefined;
+    phongBan!: string | undefined;
+    nam!: number | undefined;
+    ngayHieuLuc!: moment.Moment | undefined;
+    kinhPhi!: string | undefined;
+
+    constructor(data?: IConstructionPlanForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.khuVuc = data["khuVuc"];
+            this.phongBan = data["phongBan"];
+            this.nam = data["nam"];
+            this.ngayHieuLuc = data["ngayHieuLuc"] ? moment(data["ngayHieuLuc"].toString()) : <any>undefined;
+            this.kinhPhi = data["kinhPhi"];
+        }
+    }
+
+    static fromJS(data: any): ConstructionPlanForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ConstructionPlanForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["khuVuc"] = this.khuVuc;
+        data["phongBan"] = this.phongBan;
+        data["nam"] = this.nam;
+        data["ngayHieuLuc"] = this.ngayHieuLuc ? this.ngayHieuLuc.toISOString() : <any>undefined;
+        data["kinhPhi"] = this.kinhPhi;
+        return data; 
+    }
+}
+
+export interface IConstructionPlanForViewDto {
+    khuVuc: string | undefined;
+    phongBan: string | undefined;
+    nam: number | undefined;
+    ngayHieuLuc: moment.Moment | undefined;
+    kinhPhi: string | undefined;
+}
+
+export class PagedResultDtoOfConstructionPlanDetailDto implements IPagedResultDtoOfConstructionPlanDetailDto {
+    totalCount!: number | undefined;
+    items!: ConstructionPlanDetailDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfConstructionPlanDetailDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(ConstructionPlanDetailDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfConstructionPlanDetailDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfConstructionPlanDetailDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfConstructionPlanDetailDto {
+    totalCount: number | undefined;
+    items: ConstructionPlanDetailDto[] | undefined;
+}
+
+export class ConstructionPlanDetailDto implements IConstructionPlanDetailDto {
+    maCT!: string | undefined;
+    tenCT!: string | undefined;
+    duKienXayDung!: string | undefined;
+    duKienHoanThanh!: string | undefined;
+    thoiGianThucHien!: string | undefined;
+    kinhPhiDeXuat!: string | undefined;
+    ghiChu!: string | undefined;
+    maKeHoach!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IConstructionPlanDetailDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maCT = data["maCT"];
+            this.tenCT = data["tenCT"];
+            this.duKienXayDung = data["duKienXayDung"];
+            this.duKienHoanThanh = data["duKienHoanThanh"];
+            this.thoiGianThucHien = data["thoiGianThucHien"];
+            this.kinhPhiDeXuat = data["kinhPhiDeXuat"];
+            this.ghiChu = data["ghiChu"];
+            this.maKeHoach = data["maKeHoach"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ConstructionPlanDetailDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ConstructionPlanDetailDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maCT"] = this.maCT;
+        data["tenCT"] = this.tenCT;
+        data["duKienXayDung"] = this.duKienXayDung;
+        data["duKienHoanThanh"] = this.duKienHoanThanh;
+        data["thoiGianThucHien"] = this.thoiGianThucHien;
+        data["kinhPhiDeXuat"] = this.kinhPhiDeXuat;
+        data["ghiChu"] = this.ghiChu;
+        data["maKeHoach"] = this.maKeHoach;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IConstructionPlanDetailDto {
+    maCT: string | undefined;
+    tenCT: string | undefined;
+    duKienXayDung: string | undefined;
+    duKienHoanThanh: string | undefined;
+    thoiGianThucHien: string | undefined;
+    kinhPhiDeXuat: string | undefined;
+    ghiChu: string | undefined;
+    maKeHoach: string | undefined;
+    id: number | undefined;
+}
+
+export class ConstructionPlanDetailInput implements IConstructionPlanDetailInput {
+    maCT!: string | undefined;
+    tenCT!: string | undefined;
+    duKienXayDung!: string | undefined;
+    duKienHoanThanh!: string | undefined;
+    thoiGianThucHien!: string | undefined;
+    kinhPhiDeXuat!: string | undefined;
+    ghiChu!: string | undefined;
+    maKeHoach!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IConstructionPlanDetailInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maCT = data["maCT"];
+            this.tenCT = data["tenCT"];
+            this.duKienXayDung = data["duKienXayDung"];
+            this.duKienHoanThanh = data["duKienHoanThanh"];
+            this.thoiGianThucHien = data["thoiGianThucHien"];
+            this.kinhPhiDeXuat = data["kinhPhiDeXuat"];
+            this.ghiChu = data["ghiChu"];
+            this.maKeHoach = data["maKeHoach"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ConstructionPlanDetailInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ConstructionPlanDetailInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maCT"] = this.maCT;
+        data["tenCT"] = this.tenCT;
+        data["duKienXayDung"] = this.duKienXayDung;
+        data["duKienHoanThanh"] = this.duKienHoanThanh;
+        data["thoiGianThucHien"] = this.thoiGianThucHien;
+        data["kinhPhiDeXuat"] = this.kinhPhiDeXuat;
+        data["ghiChu"] = this.ghiChu;
+        data["maKeHoach"] = this.maKeHoach;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IConstructionPlanDetailInput {
+    maCT: string | undefined;
+    tenCT: string | undefined;
+    duKienXayDung: string | undefined;
+    duKienHoanThanh: string | undefined;
+    thoiGianThucHien: string | undefined;
+    kinhPhiDeXuat: string | undefined;
+    ghiChu: string | undefined;
+    maKeHoach: string | undefined;
+    id: number | undefined;
 }
 
 export class PagedResultDtoOfCustomerDto implements IPagedResultDtoOfCustomerDto {
