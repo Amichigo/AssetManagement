@@ -1,0 +1,133 @@
+<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #editForm="ngForm" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="assetRentingContract.id">Update Contract: {{assetRentingContract.contractName}}</span>
+                        <span *ngIf="!assetRentingContract.id">Creat New Rental Contract</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Contract name *</label>
+                        <input #contractNameInput="ngModel" class="form-control" type="text" name="ContractName" [(ngModel)]="assetRentingContract.contractName" required maxlength="64">
+                        <validation-messages [formCtrl]="contractNameInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Contract code *</label>
+                        <input #contractCodeInput="ngModel" class="form-control" type="text" name="ContractCode" [(ngModel)]="assetRentingContract.contractCode" required maxlength="64">
+                        <validation-messages [formCtrl]="contractCodeInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>File code *</label>
+                        <select #assetRentingFileCombobox name="FileCode" class="form-control" [(ngModel)]="assetRentingContract.fileCode"
+                                [attr.data-live-search]="true" jq-plugin="selectpicker" required>
+                            <option selected disabled value="">---Select file code---</option>
+                            <option *ngFor="let item of assetRentingFiles" [value]="item.value">{{item.displayText}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Rental Partner</label>
+                        <input #rentalPartnerInput="ngModel" class="form-control" type="text" name="RentalPartner" [(ngModel)]="assetRentingContract.rentalPartner" required maxlength="64">
+                        <validation-messages [formCtrl]="rentalPartnerInput"></validation-messages>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label>Loại tài sản *</label>
+                        <select #loaiTaiSanInput="ngModel" size="1" class="form-control" [(ngModel)]="selected" name="TypeofAsset" required maxlength="64">
+                            <option *ngFor="let selected of typeAssets" [value]="selected">{{selected}}</option>
+                            <validation-messages [formCtrl]="typeofAssetInput"></validation-messages>  
+                            </select>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label>Type of asset *</label>
+                        <select #typeOfRentalAssetCombobox name="TypeofAsset" class="form-control" [(ngModel)]="assetRentingContract.typeOfAsset"
+                                [attr.data-live-search]="true" jq-plugin="selectpicker" required>
+                            <option selected disabled value="">---Select type of asset---</option>
+                            <option *ngFor="let item of typeOfRentalAssets" [value]="item.value">{{item.displayText}}</option>
+                        </select>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label>Asset value </label>
+                        <input #assetValueInput="ngModel" class="form-control" type="number" min="0" name="AssetValue" [(ngModel)]="assetRentingContract.assetValue" required maxlength="64">
+                        <validation-messages [formCtrl]="assetValueInput"></validation-messages>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label>Giá trị khấu hao *</label>
+                        <input #depreciationValueInput="ngModel" class="form-control" type="text" name="DepreciationValue" [(ngModel)]="assetRentingContract.depreciationValue" required maxlength="64">
+                        <validation-messages [formCtrl]="depreciationValueInput"></validation-messages>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label>Quantity *</label>
+                        <input #quantityInput="ngModel" class="form-control" type="number" min="0" name="Quantity" [(ngModel)]="assetRentingContract.quantity" required maxlength="64">
+                        <validation-messages [formCtrl]="quantityInput"></validation-messages>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label>Mã thẻ tài sản *</label>
+                        <input class="form-control" type="text" name="AssetTag" [(ngModel)]="assetRentingContract.assetTag" required maxlength="64">
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label>Ngày mua </label>
+                        <input #purchaseDateInput="ngModel" class="form-control" type="text" name="PurchaseDate" [(ngModel)]="assetRentingContract.purchaseDate" required maxlength="64">
+                        <validation-messages [formCtrl]="purchaseDateInput"></validation-messages>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label>Ngày thuê *</label>
+                        <input #ngayThueInput="ngModel" class="form-control" type="date" name="NgayThue"
+                               [(ngModel)]="assetRentingContract.ngayThue" required maxlength="64">
+                        <validation-messages [formCtrl]="ngayThueInput"></validation-messages>
+                    </div>  -->
+                    <div class="form-group">
+                        <label>{{l("Sign date *")}}</label>
+                        <input #signDateInput="ngModel" class="form-control" [ngModel]="assetRentingContract.signDate | date:'yyyy-MM-dd'"
+                          (ngModelChange)="assetRentingContract.signDate = $event" type="date" name="SignDate" required />
+                        <validation-messages [formCtrl]="signDate"></validation-messages>
+                      </div>
+                    <!-- <div class="form-group">
+                        <label>Nơi mua </label>
+                        <input #purchaseFromInput="ngModel" class="form-control" type="text" name="PurchaseFrom" [(ngModel)]="assetRentingContract.purchaseFrom" required maxlength="64">
+                        <validation-messages [formCtrl]="purchaseFromInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Giá *</label>
+                        <input #costInput="ngModel" class="form-control" type="text" name="Cost" [(ngModel)]="assetRentingContract.cost" required maxlength="64">
+                        <validation-messages [formCtrl]="costInput"></validation-messages>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label>Is active?</label><br />
+                        <mat-slide-toggle #isActiveInput="ngModel" color="primary" [(ngModel)]="assetRentingContract.isActive" name="IsActive">{{assetRentingContract.isActive ? 'Yes' : 'No'}}</mat-slide-toggle>
+                        <validation-messages [formCtrl]="isActiveInput"></validation-messages>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label>Thể loại </label>
+                        <input #categocyInput="ngModel" class="form-control" type="text" name="Categocy" [(ngModel)]="assetRentingContract.categocy" required maxlength="64">
+                        <validation-messages [formCtrl]="categocyInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Vị trí </label>
+                        <input #locationInput="ngModel" class="form-control" type="text" name="Location" [(ngModel)]="assetRentingContract.location" required maxlength="64">
+                        <validation-messages [formCtrl]="locationInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Mã đặt hàng (PO Number)</label>
+                        <input #poNumberInput="ngModel" class="form-control" type="text" name="PoNumber" [(ngModel)]="assetRentingContract.poNumber" required maxlength="64">
+                        <validation-messages [formCtrl]="poNumberInput"></validation-messages>
+                    </div> -->
+                    <div class="form-group">
+                        <label>Image</label>
+                        <img [src]="imageURL" height="200" width="200" position="center" *ngIf="imageURL">
+                        <input #file type="file" accept='image/*' (change)="chooseImage(file.files)">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                        <span>{{l("Save")}}</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

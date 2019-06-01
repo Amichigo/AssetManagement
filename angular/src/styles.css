@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 .margin-left-5 {
     margin-left: 5px !important;
 }
@@ -74,6 +76,7 @@
 .width-percent-100 {
     width: 100%;
 }
+
 
 /* Sweet alert */
 

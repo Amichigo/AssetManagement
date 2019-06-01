@@ -1,0 +1,60 @@
+<div bsModal #viewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="viewModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <span *ngIf="rentalAsset.id">{{l("View Rental Asset")}}: {{rentalAsset.assetName}}</span>
+                    <span *ngIf="!rentalAsset.id">{{l("View Asset")}}</span>
+                </h4>
+                <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Asset mame:</label>
+                    <p class="bg-secondary p-2">{{rentalAsset.assetName}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Asset code:</label>
+                    <p class="bg-secondary p-2">{{rentalAsset.assetCode}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Description:</label>
+                    <p class="bg-secondary p-2">{{rentalAsset.description}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Type of asset:</label>
+                    <p class="bg-secondary p-2">{{rentalAsset.typeOfAsset && rentalAsset.typeOfAsset.typeOfAsset}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Asset value:</label>
+                    <p class="bg-secondary p-2">{{rentalAsset.assetValue}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Quantity:</label>
+                    <p class="bg-secondary p-2">{{rentalAsset.quantity}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Rental date:</label>
+                    <p class="bg-secondary p-2">{{rentalAsset.rentalDate}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Is active?:</label>
+                    <p class="bg-secondary p-2">{{rentalAsset.isActive ? 'Yes' : 'No'}}</p>
+                </div>
+                <!-- <td>
+                    <span class="ui-column-title">Is active?</span>
+                    <span [title]="record.isActive ? 'Yes' : 'No'">{{truncateString(record.isActive ? 'Yes' : 'No')}}</span>
+                </td> -->
+                <div class="form-group">
+                    <label>Image:</label>
+                    <img class="rounded d-block" src={{rentalAsset.linkofImage}} width="200" height="200" alt="image">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="close()">{{l("Close")}}</button>
+            </div>
+        </div>
+    </div>
+</div>

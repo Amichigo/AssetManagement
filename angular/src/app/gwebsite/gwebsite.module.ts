@@ -1,4 +1,4 @@
-import { CustomerServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, FixedAssetServiceProxy, RentalAssetServiceProxy, TypeOfRentalAssetServiceProxy, FormOfRentingAssetServiceProxy, AssetRentingFileServiceProxy, AssetRentingContractServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,16 +15,64 @@ import { MenuClientComponent, CreateOrEditMenuClientModalComponent } from './ind
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CreateOrEditDemoModelModalComponent } from './demo-model/create-or-edit-demo-model-modal.component';
 import { DemoModelServiceProxy } from '@shared/service-proxies/service-proxies';
-
 import { CustomerComponent } from './customer/customer.component';
 import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
 import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
-
-import { TaiSanComponent } from './tai-san/taisan.component';
-import { CreateOrEditTaiSanModalComponent } from './tai-san/create-or-edit-taisan-modal.component';
-import { TaiSanServiceProxy } from '@shared/service-proxies/service-proxies';
-import { ViewTaiSanModalComponent } from './tai-san/view-taisan-modal.component';
-import { from } from 'rxjs';
+import { FixedAssetComponent } from './fixed-asset/fixed-asset.component'
+import { CreateOrEditFixedAssetModalComponent } from './fixed-asset/create-or-edit-fixed-asset-modal.component';
+import { ViewFixedAssetModalComponent } from './fixed-asset/view-fixed-asset-modal.component';
+import { RentalAssetComponent } from './rental-asset/rental-asset.component'
+import { CreateOrEditRentalAssetModalComponent } from './rental-asset/create-or-edit-rental-asset-modal.component';
+import { ViewRentalAssetModalComponent } from './rental-asset/view-rental-asset-modal.component';
+import { TypeOfRentalAssetComponent } from './type-of-rental-asset/type-of-rental-asset.component'
+import { CreateOrEditTypeOfRentalAssetModalComponent } from './type-of-rental-asset/create-or-edit-type-of-rental-asset-modal.component';
+import { ViewTypeOfRentalAssetModalComponent } from './type-of-rental-asset/view-type-of-rental-asset-modal.component';
+import { FormOfRentingAssetComponent } from './form-of-renting-asset/form-of-renting-asset.component'
+import { CreateOrEditFormOfRentingAssetModalComponent } from './form-of-renting-asset/create-or-edit-form-of-renting-asset-modal.component';
+import { ViewFormOfRentingAssetModalComponent } from './form-of-renting-asset/view-form-of-renting-asset-modal.component';
+import { AssetRentingFileComponent } from './asset-renting-file/asset-renting-file.component'
+import { CreateOrEditAssetRentingFileModalComponent } from './asset-renting-file/create-or-edit-asset-renting-file-modal.component';
+import { ViewAssetRentingFileModalComponent } from './asset-renting-file/view-asset-renting-file-modal.component';
+import { AssetRentingContractComponent } from './asset-renting-contract/asset-renting-contract.component'
+import { CreateOrEditAssetRentingContractModalComponent } from './asset-renting-contract/create-or-edit-asset-renting-contract-modal.component';
+import { ViewAssetRentingContractModalComponent } from './asset-renting-contract/view-asset-renting-contract-modal.component';
+import {
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatStepperModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule,
+} from '@angular/material';
 
 @NgModule({
     imports: [
@@ -43,19 +91,63 @@ import { from } from 'rxjs';
         PrimeNgFileUploadModule,
         AutoCompleteModule,
         EditorModule,
-        InputMaskModule
+        InputMaskModule,
+        MatAutocompleteModule,
+        MatBadgeModule,
+        MatBottomSheetModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatChipsModule,
+        MatDatepickerModule,
+        MatDialogModule,
+        MatDividerModule,
+        MatExpansionModule,
+        MatGridListModule,
+        MatIconModule,
+        MatInputModule,
+        MatListModule,
+        MatMenuModule,
+        MatNativeDateModule,
+        MatPaginatorModule,
+        MatProgressBarModule,
+        MatProgressSpinnerModule,
+        MatRadioModule,
+        MatRippleModule,
+        MatSelectModule,
+        MatSidenavModule,
+        MatSliderModule,
+        MatSlideToggleModule,
+        MatSnackBarModule,
+        MatSortModule,
+        MatStepperModule,
+        MatTableModule,
+        MatTabsModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        MatTreeModule,
     ],
     declarations: [
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
-        TaiSanComponent, CreateOrEditTaiSanModalComponent, ViewTaiSanModalComponent,
+        FixedAssetComponent, CreateOrEditFixedAssetModalComponent, ViewFixedAssetModalComponent,
+        RentalAssetComponent, CreateOrEditRentalAssetModalComponent, ViewRentalAssetModalComponent,
+        TypeOfRentalAssetComponent, CreateOrEditTypeOfRentalAssetModalComponent, ViewTypeOfRentalAssetModalComponent,
+        FormOfRentingAssetComponent, CreateOrEditFormOfRentingAssetModalComponent, ViewFormOfRentingAssetModalComponent,
+        AssetRentingFileComponent, CreateOrEditAssetRentingFileModalComponent, ViewAssetRentingFileModalComponent,
+        AssetRentingContractComponent, CreateOrEditAssetRentingContractModalComponent, ViewAssetRentingContractModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
-        TaiSanServiceProxy
-
+        FixedAssetServiceProxy,
+        RentalAssetServiceProxy,
+        TypeOfRentalAssetServiceProxy,
+        FormOfRentingAssetServiceProxy,
+        AssetRentingFileServiceProxy,
+        AssetRentingContractServiceProxy,
     ]
 })
 export class GWebsiteModule { }

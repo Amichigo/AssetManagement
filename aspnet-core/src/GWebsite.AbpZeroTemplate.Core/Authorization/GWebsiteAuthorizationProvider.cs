@@ -46,13 +46,37 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             customer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Customer_Edit, L("EditingCustomer"));
             customer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Customer_Delete, L("DeletingCustomer"));
 
-            var taisan = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_TaiSan, L("TaiSan"));
-            taisan.CreateChildPermission(GWebsitePermissions.Pages_Administration_TaiSan_Create, L("CreatingNewTaiSan"));
-            taisan.CreateChildPermission(GWebsitePermissions.Pages_Administration_TaiSan_Edit, L("EditingTaiSan"));
-            taisan.CreateChildPermission(GWebsitePermissions.Pages_Administration_TaiSan_Delete, L("DeletingTaiSan"));
+            var fixedAsset = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_FixedAsset, L("FixedAsset"));
+            fixedAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_FixedAsset_Create, L("CreatingNewFixedAsset"));
+            fixedAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_FixedAsset_Edit, L("EditingFixedAsset"));
+            fixedAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_FixedAsset_Delete, L("DeletingFixedAsset"));
+
+            var rentalAsset = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_RentalAsset, L("RentalAsset"));
+            rentalAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_RentalAsset_Create, L("CreatingNewRentalAsset"));
+            rentalAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_RentalAsset_Edit, L("EditingRentalAsset"));
+            rentalAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_RentalAsset_Delete, L("DeletingRentalAsset"));
+
+            var typeOfRentalAsset = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_TypeOfRentalAsset, L("TypeOfRentalAsset"));
+            typeOfRentalAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_TypeOfRentalAsset_Create, L("CreatingNewTypeOfRentalAsset"));
+            typeOfRentalAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_TypeOfRentalAsset_Edit, L("EditingTypeOfRentalAsset"));
+            typeOfRentalAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_TypeOfRentalAsset_Delete, L("DeletingTypeOfRentalAsset"));
+
+            var formOfRentingAsset = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_FormOfRentingAsset, L("FormOfRentingAsset"));
+            formOfRentingAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_FormOfRentingAsset_Create, L("CreatingNewFormOfRentingAsset"));
+            formOfRentingAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_FormOfRentingAsset_Edit, L("EditingFormOfRentingAsset"));
+            formOfRentingAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_FormOfRentingAsset_Delete, L("DeletingFormOfRentingAsset"));
+
+            var assetRentingFile = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRentingFile, L("AssetRentingFile"));
+            assetRentingFile.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRentingFile_Create, L("CreatingNewAssetRentingFile"));
+            assetRentingFile.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRentingFile_Edit, L("EditingAssetRentingFile"));
+            assetRentingFile.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRentingFile_Delete, L("DeletingAssetRentingFile"));
+
+            var assetRentingContract = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRentingContract, L("AssetRentingContract"));
+            assetRentingContract.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRentingContract_Create, L("CreatingNewAssetRentingContract"));
+            assetRentingContract.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRentingContract_Edit, L("EditingAssetRentingContract"));
+            assetRentingContract.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRentingContract_Delete, L("DeletingAssetRentingContract"));
 
         }
-
         private static ILocalizableString L(string name)
         {
             return new LocalizableString(name, AbpZeroTemplateConsts.LocalizationSourceName);

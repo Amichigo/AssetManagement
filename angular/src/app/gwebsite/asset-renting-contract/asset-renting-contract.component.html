@@ -1,0 +1,177 @@
+<div [@routerTransition]>
+
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-xs-6">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>{{l("Asset Renting Contract")}}</span>
+                </h3>
+                <span class="m-section__sub">
+                    {{l("Detailed information")}}
+                </span>
+            </div>
+            <div class="col-xs-6 text-right">
+                <button (click)="createAssetRentingContract()" *ngIf="isGranted('Pages.Administration.AssetRentingContract.Create')" class="btn btn-primary"><i class="fa fa-plus"></i> {{l("Creat new contract")}}</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+                <form autocomplete="off">
+                    <div class="m-form m-form--label-align-right" id="TextsFilterForm">
+                        <div class="row align-items-center m--margin-bottom-10">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <input [(ngModel)]="assetRentingContractName" name="assetRentingContractName" autoFocus class="form-control" placeholder="Enter contract name" type="text">
+                                    <span class="input-group-btn">
+                                        <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
+                                                class="icon-refresh"></i>
+                                            {{l("Refresh")}}</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row align-items-center">
+                    <!--<Primeng-TurboTable-Start>-->
+                    <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
+                        <p-table #dataTable (onLazyLoad)="getAssetRentingContracts($event)" [value]="primengTableHelper.records" rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true" [responsive]="primengTableHelper.isResponsive">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th pSortableColumn="contractName">
+                                        Contract name
+                                        <p-sortIcon field="contractName"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="contractCode">
+                                        Contract code
+                                        <p-sortIcon field="contractCode"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="fileCode">
+                                        File code
+                                    </th>
+                                    <th pSortableColumn="rentalPartner">
+                                        Rental Partner
+                                    </th>
+                                    <!-- <th pSortableColumn="typeOfAsset">
+                                        Type of asset
+                                    </th>
+                                    <th pSortableColumn="assetValue">
+                                        Asset value
+                                    </th>
+                                    <th pSortableColumn="quantity">
+                                        Quantity
+                                    </th> -->
+                                    <th pSortableColumn="signDate">
+                                        Sign date
+                                        <p-sortIcon field="signDate"></p-sortIcon>
+                                    </th>
+                                    <!-- <th pSortableColumn="isActive">
+                                        Is active?
+                                    </th> -->
+                                    <th pSortableColumn="linkofImage">
+                                            Image
+                                    </th>
+                                    <th>{{l('Edit')}}</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-record="$implicit">
+                                <tr>
+                                    <td>
+                                        <span class="ui-column-title">Contract name</span>
+                                        <span title="{{record.name}}">{{truncateString(record.contractName)}}</span>
+                                        </td>
+                                    <td>
+                                        <span class="ui-column-title">Contract code</span>
+                                        <span title="{{record.id}}">{{truncateString(record.contractCode)}}</span>
+                                    </td>
+                                    <!-- <td>
+                                        <span class="ui-column-title">File code</span>
+                                        <span title="{{record.fileCode}">{{truncateString(record.fileCode)}}</span>
+                                    </td> -->
+                                    <td>
+                                        <span class="ui-column-title">File code</span>
+                                        <span title="{{( record.fileCode && record.fileCode.fileCode) || ''}}">{{truncateString((record.fileCode && record.fileCode.fileCode) || '')}}</span>
+                                        <button class="ml-3 btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" (click)="viewAssetRentingFileModal.show(record.fileCode && record.fileCode.id || '')">
+                                            <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Rental Partner</span>
+                                        <span title="{{record.rentalPartner}">{{truncateString(record.rentalPartner)}}</span>
+                                    </td>
+                                    <!-- <td>
+                                        <span class="ui-column-title">Type of asset</span>
+                                        <span title="{{( record.typeOfAsset && record.typeOfAsset.typeOfAsset) || ''}}">{{truncateString((record.typeOfAsset && record.typeOfAsset.typeOfAsset) || '')}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Asset value</span>
+                                        <span title="{{record.assetValue}}">{{truncateString(record.assetValue)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Quantity</span>
+                                        <span title="{{record.quantity}}">{{truncateString(record.quantity)}}</span>
+                                    </td> -->
+                                    <!-- <div class="form-group">
+                                        <label>{{l("Ngày thuê *")}}</label>
+                                        <input #ngayThueInput="ngModel" class="form-control" [ngModel]="assetRentingContract.ngayThue | date:'yyyy-MM-dd'"
+                                          (ngModelChange)="assetRentingContract.ngayThue = $event" type="date" name="ngayThue" required />
+                                        <validation-messages [formCtrl]="ngayThue"></validation-messages>
+                                    </div> -->
+                                    <td>
+                                        <span class="ui-column-title">Sign date</span>
+                                        <span title="{{record.signDate}}">{{truncateString(record.signDate) | date: 'yyyy-MM-dd'}}</span>
+                                    </td>
+                                    <!-- <td>
+                                            <span class="ui-column-title">Ngày thuê</span>
+                                            <span title="{{record.ngayThue}}">{{truncateString(record.ngayThue) }}</span>
+                                    </td> -->
+                                    <!-- <td>
+                                        <span class="ui-column-title">Is active?</span>
+                                        <span [title]="record.isActive ? 'Yes' : 'No'">{{truncateString(record.isActive ? 'Yes' : 'No')}}</span>
+                                    </td> -->
+                                    <td>
+                                        <span class="ui-column-title">Image</span>
+                                        <img [src]="record.linkofImage || defaultImage" width="100" height="100" alt="image">
+                                        <!-- <span title="{{record.linkofImage}}">{{truncateString(record.linkofImage)}}</span> -->
+                                    </td>
+                                    <td>
+                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">
+                                            <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
+                                        </button>
+
+                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" (click)="deleteContract(record.id)" title="{{l('Delete')}}">
+                                            <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
+                                        </button>
+
+                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" (click)="viewAssetRentingContractModal.show(record.id)" title="{{l('View')}}">
+                                            <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <div class="primeng-no-data" *ngIf="primengTableHelper.totalRecordsCount == 0">
+                            {{l('NoData')}}
+                        </div>
+                        <div class="primeng-paging-container">
+                            <p-paginator rows="{{primengTableHelper.defaultRecordsCountPerPage}}" #paginator (onPageChange)="getAssetRentingContracts($event)" [totalRecords]="primengTableHelper.totalRecordsCount" [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
+                            </p-paginator>
+                            <span class="total-records-count">
+                                {{l('TotalRecordsCount', primengTableHelper.totalRecordsCount)}}
+                            </span>
+                        </div>
+                    </div>
+                    <!--<Primeng-TurboTable-End>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <createOrEditAssetRentingContractModal #createOrEditModal (modalSave)="reloadPage()">
+    </createOrEditAssetRentingContractModal>
+    <viewAssetRentingContractModal #viewAssetRentingContractModal>
+    </viewAssetRentingContractModal>
+    <viewAssetRentingFileModal #viewAssetRentingFileModal></viewAssetRentingFileModal>
+</div>

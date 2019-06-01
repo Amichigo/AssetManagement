@@ -17,10 +17,15 @@ export class AppNavigationService {
             new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-list-3', '/app/admin/tenants'),
             new AppMenuItem('Editions', 'Pages.Editions', 'flaticon-app', '/app/admin/editions'),
             new AppMenuItem('Administration', '', 'flaticon-interface-8', '', [
-                new AppMenuItem('MenuClient', 'Pages.Administration.MenuClient', 'flaticon-menu-1', '/app/gwebsite/menu-client'),
-                new AppMenuItem('DemoModel', 'Pages.Administration.DemoModel', 'flaticon-menu-1', '/app/gwebsite/demo-model'),
-                new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer'),
-                new AppMenuItem('TaiSan', 'Pages.Administration.TaiSan', 'flaticon-menu-1', '/app/gwebsite/taisan')
+                // new AppMenuItem('MenuClient', 'Pages.Administration.MenuClient', 'flaticon-menu-1', '/app/gwebsite/menu-client'),
+                // new AppMenuItem('DemoModel', 'Pages.Administration.DemoModel', 'flaticon-menu-1', '/app/gwebsite/demo-model'),
+                // new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer'),
+                new AppMenuItem('Fixed Asset', 'Pages.Administration.FixedAsset', 'flaticon-menu-1', '/app/gwebsite/fixed-asset'),
+                new AppMenuItem('Rental Asset', 'Pages.Administration.RentalAsset', 'flaticon-menu-1', '/app/gwebsite/rental-asset'),
+                new AppMenuItem('Type Of Rental Asset', 'Pages.Administration.TypeOfRentalAsset', 'flaticon-menu-1', '/app/gwebsite/type-of-rental-asset'),
+                new AppMenuItem('Form Of Renting Asset', 'Pages.Administration.FormOfRentingAsset', 'flaticon-menu-1', '/app/gwebsite/form-of-renting-asset'),
+                new AppMenuItem('Asset Renting File', 'Pages.Administration.AssetRentingFile', 'flaticon-menu-1', '/app/gwebsite/asset-renting-file'),
+                new AppMenuItem('Asset Renting Contract', 'Pages.Administration.AssetRentingContract', 'flaticon-menu-1', '/app/gwebsite/asset-renting-contract'),
             ]),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),
