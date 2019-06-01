@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GWebsite.AbpZeroTemplate.Application.Controllers
 {
     [Route("api/[controller]/[action]")]
-    public class RealEstateController : GWebsiteControllerBase
+     public class RealEstateController : GWebsiteControllerBase
     {
         private readonly IRealEstateAppService RealEstateAppService;
 
@@ -16,31 +16,37 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public PagedResultDto<RealEstateDto> GetRealEstatesByFilter(RealEstateFilter RealEstateFilter)
+        public PagedResultDto<RealEstateDto_9> GetRealEstatesByFilter(RealEstateFilter_9 RealEstateFilter)
         {
             return RealEstateAppService.GetRealEstates(RealEstateFilter);
         }
 
         [HttpGet]
-        public RealEstateInput GetRealEstateForEdit(int id)
+        public RealEstateInput_9 GetRealEstateForEdit(int id)
         {
             return RealEstateAppService.GetRealEstateForEdit(id);
         }
 
-        [HttpPost]
-        public void CreateOrEditRealEstate([FromBody] RealEstateInput input)
+        [HttpGet]
+        public RealEstateInput_9 GetRealEstateForEditWithMTS(string mts)
         {
-            RealEstateAppService.CreateOrEditRealEstate(input);
+            return RealEstateAppService.GetRealEstateForEditWithMTS(mts);
+        }
+
+        [HttpPost]
+        public void CreateOrEditRealEstate([FromBody] RealEstateInput_9 input)
+        {
+             this.RealEstateAppService.CreateOrEditRealEstate(input);
         }
 
         [HttpDelete("{id}")]
         public void DeleteRealEstate(int id)
         {
-            RealEstateAppService.DeleteRealEstate(id);
+            this.RealEstateAppService.DeleteRealEstate(id);
         }
 
         [HttpGet]
-        public RealEstateForViewDto GetRealEstateForView(int id)
+        public RealEstateForViewDto_9 GetRealEstateForView(int id)
         {
             return RealEstateAppService.GetRealEstateForView(id);
         }

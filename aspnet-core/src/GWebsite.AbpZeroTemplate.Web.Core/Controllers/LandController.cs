@@ -16,19 +16,19 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public PagedResultDto<LandDto> GetLandsByFilter(LandFilter LandFilter)
+        public PagedResultDto<LandDto_9> GetLandsByFilter(LandFilter_9 LandFilter)
         {
             return LandAppService.GetLands(LandFilter);
         }
 
         [HttpGet]
-        public LandInput GetLandForEdit(int id)
+        public LandInput_9 GetLandForEdit(int id)
         {
             return LandAppService.GetLandForEdit(id);
         }
 
         [HttpPost]
-        public void CreateOrEditLand([FromBody] LandInput input)
+        public void CreateOrEditLand([FromBody] LandInput_9 input)
         {
             LandAppService.CreateOrEditLand(input);
         }
@@ -40,7 +40,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public LandForViewDto GetLandForView(int id)
+        public LandForViewDto_9 GetLandForView(int id)
         {
             return LandAppService.GetLandForView(id);
         }

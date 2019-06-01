@@ -16,19 +16,19 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public PagedResultDto<BuildingDto> GetBuildingsByFilter(BuildingFilter BuildingFilter)
+        public PagedResultDto<BuildingDto_9> GetBuildingsByFilter(BuildingFilter_9 BuildingFilter)
         {
             return BuildingAppService.GetBuildings(BuildingFilter);
         }
 
         [HttpGet]
-        public BuildingInput GetBuildingForEdit(int id)
+        public BuildingInput_9 GetBuildingForEdit(int id)
         {
             return BuildingAppService.GetBuildingForEdit(id);
         }
 
         [HttpPost]
-        public void CreateOrEditBuilding([FromBody] BuildingInput input)
+        public void CreateOrEditBuilding([FromBody] BuildingInput_9 input)
         {
             BuildingAppService.CreateOrEditBuilding(input);
         }
@@ -40,7 +40,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public BuildingForViewDto GetBuildingForView(int id)
+        public BuildingForViewDto_9 GetBuildingForView(int id)
         {
             return BuildingAppService.GetBuildingForView(id);
         }

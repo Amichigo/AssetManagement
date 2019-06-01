@@ -16,19 +16,25 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public PagedResultDto<AssetDto> GetAssetsByFilter(AssetFilter AssetFilter)
+        public PagedResultDto<AssetDto_9> GetAssetsByFilter(AssetFilter_9 AssetFilter)
         {
             return AssetAppService.GetAssets(AssetFilter);
         }
 
         [HttpGet]
-        public AssetInput GetAssetForEdit(int id)
+        public AssetInput_9 GetAssetForEdit(int id)
         {
             return AssetAppService.GetAssetForEdit(id);
         }
 
+        [HttpGet]
+        public AssetInput_9 GetAssetForEditWithMTS(string maTaiSan)
+        {
+            return AssetAppService.GetAssetForEditWithMTS(maTaiSan);
+        }
+
         [HttpPost]
-        public void CreateOrEditAsset([FromBody] AssetInput input)
+        public void CreateOrEditAsset([FromBody] AssetInput_9 input)
         {
             AssetAppService.CreateOrEditAsset(input);
         }
@@ -40,7 +46,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public AssetForViewDto GetAssetForView(int id)
+        public AssetForViewDto_9 GetAssetForView(int id)
         {
             return AssetAppService.GetAssetForView(id);
         }

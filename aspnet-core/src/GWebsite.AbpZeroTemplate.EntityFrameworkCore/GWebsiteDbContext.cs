@@ -5,6 +5,7 @@ using Abp.Zero.EntityFrameworkCore;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
 {
     public abstract class GWebsiteDbContext<TTenant, TRole, TUser, TSelf> : AbpZeroDbContext<TTenant, TRole, TUser, TSelf>
@@ -23,14 +24,24 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<Function> Functions { get; set; }
         public virtual DbSet<MenuClient> MenuClients { get; set; }
         public virtual DbSet<DemoModel> DemoModels { get; set; }
+        public virtual DbSet<Land_9> Lands_9 { get; set; }
+        public virtual DbSet<Asset_test9> Assets_Test9 { get; set; }
+        public virtual DbSet<RealEstate_9> RealEstates_9 { get; set; }
+        public virtual DbSet<Building_9> Buildings_9 { get; set; }
+        public virtual DbSet<LegalStatusType_9> LegalStatusTypes_9 { get; set; }
+        public virtual DbSet<LocationType_9> LocationTypes_9 { get; set; }
+        public virtual DbSet<RealEstateType_9> RealEstateTypes_9 { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<Asset> Assets { get; set; }
-        public virtual DbSet<Building> Buildings { get; set; }
-        public virtual DbSet<Handover> Handovers { get; set; }
-        public virtual DbSet<Land> Lands { get; set; }
-        public virtual DbSet<RealEstate> RealEstates { get; set; }
-        public virtual DbSet<Revoke> Revokes { get; set; }
-        public virtual DbSet<Construction> Constructions { get; set; }
+        public virtual DbSet<RealEstateRepair_9> RealEstateRepairs_9 { get; set; }
+
+        public virtual DbSet<BidManager_9> BidManagers_9 { get; set; }
+        public virtual DbSet<Construction_9> Constructions_9 { get; set; }
+        public virtual DbSet<Contractors_9> Contractors_9 { get; set; }
+        public virtual DbSet<Plan_9> Plans_9 { get; set; }
+        public virtual DbSet<ContractManagement> ContractManagements_9 { get; set; }
+        public virtual DbSet<ContractGuarantee> ContractGuarantees_9 { get; set; }
+        public virtual DbSet<PaymentDetails_9> PaymentDetails_9 { get; set; }
+        public virtual DbSet<WarrantyGuarantee> WarrantyGuarantees_9 { get; set; }
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>

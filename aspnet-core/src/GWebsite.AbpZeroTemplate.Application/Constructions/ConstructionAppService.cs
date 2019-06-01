@@ -15,9 +15,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Constructions
     [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
     public class ConstructionAppService : GWebsiteAppServiceBase, IConstructionAppService
     {
-        private readonly IRepository<Construction> ConstructionRepository;
+        private readonly IRepository<Construction_9> ConstructionRepository;
 
-        public ConstructionAppService(IRepository<Construction> ConstructionRepository)
+        public ConstructionAppService(IRepository<Construction_9> ConstructionRepository)
         {
             this.ConstructionRepository = ConstructionRepository;
         }
@@ -57,6 +57,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Constructions
             return ObjectMapper.Map<ConstructionInput>(ConstructionEntity);
         }
 
+
         public ConstructionForViewDto GetConstructionForView(int id)
         {
             var ConstructionEntity = ConstructionRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
@@ -72,10 +73,22 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Constructions
             var query = ConstructionRepository.GetAll().Where(x => !x.IsDelete);
 
             // filter by value
-            //if (input.Name != null)
-            //{
-            //    query = query.Where(x => x.Name.ToLower().Equals(input.Name));
-            //}
+            if (input.MaCongTrinh != null)
+            {
+                query = query.Where(x => x.MaCongTrinh.ToLower().Equals(input.MaCongTrinh));
+            }
+            if (input.MaKeHoach != null)
+            {
+                query = query.Where(x => x.MaKeHoach.ToLower().Equals(input.MaKeHoach));
+            }
+            if (input.NgayThucThiThucTe != null)
+            {
+                query = query.Where(x => x.NgayThucThiThucTe.ToLower().Equals(input.NgayThucThiThucTe));
+            }
+            if (input.TenCongTrinh != null)
+            {
+                query = query.Where(x => x.TenCongTrinh.ToLower().Equals(input.TenCongTrinh));
+            }
 
             var totalCount = query.Count();
 
@@ -101,7 +114,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Constructions
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
         private void Create(ConstructionInput ConstructionInput)
         {
-            var ConstructionEntity = ObjectMapper.Map<Construction>(ConstructionInput);
+            var ConstructionEntity = ObjectMapper.Map<Construction_9>(ConstructionInput);
             SetAuditInsert(ConstructionEntity);
             ConstructionRepository.Insert(ConstructionEntity);
             CurrentUnitOfWork.SaveChanges();

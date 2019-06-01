@@ -15,16 +15,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Lands
     [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
     public class LandAppService : GWebsiteAppServiceBase, ILandAppService
     {
-        private readonly IRepository<Land> LandRepository;
+        private readonly IRepository<Land_9> LandRepository;
 
-        public LandAppService(IRepository<Land> LandRepository)
+        public LandAppService(IRepository<Land_9> LandRepository)
         {
             this.LandRepository = LandRepository;
         }
 
         #region Public Method
 
-        public void CreateOrEditLand(LandInput LandInput)
+        public void CreateOrEditLand(LandInput_9 LandInput)
         {
             if (LandInput.Id == 0)
             {
@@ -47,35 +47,39 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Lands
             }
         }
 
-        public LandInput GetLandForEdit(int id)
+        public LandInput_9 GetLandForEdit(int id)
         {
             var LandEntity = LandRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (LandEntity == null)
             {
                 return null;
             }
-            return ObjectMapper.Map<LandInput>(LandEntity);
+            return ObjectMapper.Map<LandInput_9>(LandEntity);
         }
 
-        public LandForViewDto GetLandForView(int id)
+        public LandForViewDto_9 GetLandForView(int id)
         {
             var LandEntity = LandRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (LandEntity == null)
             {
                 return null;
             }
-            return ObjectMapper.Map<LandForViewDto>(LandEntity);
+            return ObjectMapper.Map<LandForViewDto_9>(LandEntity);
         }
 
-        public PagedResultDto<LandDto> GetLands(LandFilter input)
+        public PagedResultDto<LandDto_9> GetLands(LandFilter_9 input)
         {
             var query = LandRepository.GetAll().Where(x => !x.IsDelete);
 
             // filter by value
-            //if (input.Name != null)
-            //{
-            //    query = query.Where(x => x.Name.ToLower().Equals(input.Name));
-            //}
+            if (input.MucDichSuDung != null)
+            {
+                query = query.Where(x => x.MucDichSuDung.ToLower().Equals(input.MucDichSuDung));
+            }
+            if (input.TinhTrangXayDung != null)
+            {
+                query = query.Where(x => x.TinhTrangXayDung.ToLower().Equals(input.TinhTrangXayDung));
+            }
 
             var totalCount = query.Count();
 
@@ -89,9 +93,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Lands
             var items = query.PageBy(input).ToList();
 
             // result
-            return new PagedResultDto<LandDto>(
+            return new PagedResultDto<LandDto_9>(
                 totalCount,
-                items.Select(item => ObjectMapper.Map<LandDto>(item)).ToList());
+                items.Select(item => ObjectMapper.Map<LandDto_9>(item)).ToList());
         }
 
         #endregion
@@ -99,16 +103,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Lands
         #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
-        private void Create(LandInput LandInput)
+        private void Create(LandInput_9 LandInput)
         {
-            var LandEntity = ObjectMapper.Map<Land>(LandInput);
+            var LandEntity = ObjectMapper.Map<Land_9>(LandInput);
             SetAuditInsert(LandEntity);
             LandRepository.Insert(LandEntity);
             CurrentUnitOfWork.SaveChanges();
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
-        private void Update(LandInput LandInput)
+        private void Update(LandInput_9 LandInput)
         {
             var LandEntity = LandRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == LandInput.Id);
             if (LandEntity == null)

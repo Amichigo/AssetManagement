@@ -20,7 +20,12 @@ export class AppNavigationService {
                 new AppMenuItem('MenuClient', 'Pages.Administration.MenuClient', 'flaticon-menu-1', '/app/gwebsite/menu-client'),
                 new AppMenuItem('DemoModel', 'Pages.Administration.DemoModel', 'flaticon-menu-1', '/app/gwebsite/demo-model'),
                 new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer'),
-                new AppMenuItem('Real Estate Management', 'Pages.Administration.RealEstate', 'flaticon-menu-1', '/app/gwebsite/realestatemanagement')
+                new AppMenuItem('RealEstate9', 'Pages.Administration.RealEstate9', 'flaticon-menu-1', '/app/gwebsite/real-estate-management'),
+                new AppMenuItem('RealEstateType', 'Pages.Administration.RealEstate9', 'flaticon-menu-1', '/app/gwebsite/real-estate-type'),
+                //new AppMenuItem('LegalStatusType', 'Pages.Administration.LegalStatusType9', 'flaticon-menu-1', '/app/gwebsite/legal-status-type'),
+                //new AppMenuItem('LocationType', 'Pages.Administration.LocationType9', 'flaticon-menu-1', '/app/gwebsite/location-type'),
+                new AppMenuItem('RealEstateRepair', 'Pages.Administration.RealEstateRepair9', 'flaticon-menu-1', '/app/gwebsite/real-estate-repair')
+
             ]),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),

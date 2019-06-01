@@ -15,75 +15,117 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.RealEstates
     [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
     public class RealEstateAppService : GWebsiteAppServiceBase, IRealEstateAppService
     {
-        private readonly IRepository<RealEstate> RealEstateRepository;
+        private readonly IRepository<RealEstate_9> realEstateRepository;
 
-        public RealEstateAppService(IRepository<RealEstate> RealEstateRepository)
+        public RealEstateAppService(IRepository<RealEstate_9> realEstateRepository)
         {
-            this.RealEstateRepository = RealEstateRepository;
+            this.realEstateRepository = realEstateRepository;
         }
 
         #region Public Method
 
-        public void CreateOrEditRealEstate(RealEstateInput RealEstateInput)
+        public void CreateOrEditRealEstate(RealEstateInput_9 realEstateInput)
         {
-            if (RealEstateInput.Id == 0)
+            if (realEstateInput.Id == 0)
             {
-                Create(RealEstateInput);
+                Create(realEstateInput);
             }
             else
             {
-                Update(RealEstateInput);
+                Update(realEstateInput);
             }
         }
 
+        //public RealEstateDto_9 CreateOrEditRealEstate(RealEstateInput_9 realEstateInput)
+        //{
+        //    RealEstate_9 realEstateEntity = null;
+        //    if (realEstateInput.Id == 0)
+        //    {
+        //        realEstateEntity = ObjectMapper.Map<RealEstate_9>(realEstateInput);
+        //        SetAuditInsert(realEstateEntity);
+        //        realEstateRepository.Insert(realEstateEntity);
+        //        CurrentUnitOfWork.SaveChanges();
+        //    }
+        //    else
+        //    {
+        //        // Update
+        //        realEstateEntity = realEstateRepository.GetAll().SingleOrDefault(x => x.Id == realEstateInput.Id);
+        //        if (realEstateEntity == null)
+        //        {
+        //            return null;
+        //        }
+        //        ObjectMapper.Map(realEstateInput, realEstateEntity);
+        //        SetAuditEdit(realEstateEntity);
+        //        realEstateRepository.Update(realEstateEntity);
+        //        CurrentUnitOfWork.SaveChanges();
+        //    }
+
+        //    return ObjectMapper.Map<RealEstateDto_9>(realEstateEntity);
+        //}
+
         public void DeleteRealEstate(int id)
         {
-            var RealEstateEntity = RealEstateRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
-            if (RealEstateEntity != null)
+            var realEstateEntity = realEstateRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            if (realEstateEntity != null)
             {
-                RealEstateEntity.IsDelete = true;
-                RealEstateRepository.Update(RealEstateEntity);
+                realEstateEntity.IsDelete = true;
+                realEstateRepository.Update(realEstateEntity);
                 CurrentUnitOfWork.SaveChanges();
             }
         }
 
-        public RealEstateInput GetRealEstateForEdit(int id)
+        public RealEstateInput_9 GetRealEstateForEdit(int id)
         {
-            var RealEstateEntity = RealEstateRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
-            if (RealEstateEntity == null)
+            var realEstateEntity = realEstateRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            if (realEstateEntity == null)
             {
                 return null;
             }
-            return ObjectMapper.Map<RealEstateInput>(RealEstateEntity);
+            return ObjectMapper.Map<RealEstateInput_9>(realEstateEntity);
         }
 
-        public RealEstateForViewDto GetRealEstateForView(int id)
+        public RealEstateInput_9 GetRealEstateForEditWithMTS(string mts)
         {
-            var RealEstateEntity = RealEstateRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
-            if (RealEstateEntity == null)
+            var realEstateEntity = realEstateRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.MaTaiSan == mts);
+            if (realEstateEntity == null)
             {
                 return null;
             }
-            return ObjectMapper.Map<RealEstateForViewDto>(RealEstateEntity);
+            return ObjectMapper.Map<RealEstateInput_9>(realEstateEntity);
         }
 
-        public PagedResultDto<RealEstateDto> GetRealEstates(RealEstateFilter input)
+        public RealEstateForViewDto_9 GetRealEstateForView(int id)
         {
-            var query = RealEstateRepository.GetAll().Where(x => !x.IsDelete);
+            var realEstateEntity = realEstateRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            if (realEstateEntity == null)
+            {
+                return null;
+            }
+            return ObjectMapper.Map<RealEstateForViewDto_9>(realEstateEntity);
+        }
+
+        public PagedResultDto<RealEstateDto_9> GetRealEstates(RealEstateFilter_9 input)
+        {
+            var query = realEstateRepository.GetAll().Where(x => !x.IsDelete);
 
             // filter by value
+            if (input.MaTaiSan != null)
+            {
+                query = query.Where(x => x.MaTaiSan.ToLower().Equals(input.MaTaiSan));
+            }
+            if (input.MaLoaiBatDongSan != null)
+            {
+                query = query.Where(x => x.MaLoaiBatDongSan.ToLower().Equals(input.MaLoaiBatDongSan));
+            }
             if (input.MaBatDongSan != null)
             {
                 query = query.Where(x => x.MaBatDongSan.ToLower().Equals(input.MaBatDongSan));
             }
-            if (input.LoaiBatDongSan != null)
+            if (input.TinhTrangSuDung != null)
             {
-                query = query.Where(x => x.LoaiBatDongSan.ToLower().Equals(input.LoaiBatDongSan));
+                query = query.Where(x => x.TinhTrangSuDung.ToLower().Equals(input.TinhTrangSuDung));
             }
-            if (input.LoaiSoHuu != null)
-            {
-                query = query.Where(x => x.LoaiSoHuu.ToLower().Equals(input.LoaiSoHuu));
-            }
+
 
             var totalCount = query.Count();
 
@@ -97,9 +139,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.RealEstates
             var items = query.PageBy(input).ToList();
 
             // result
-            return new PagedResultDto<RealEstateDto>(
+            return new PagedResultDto<RealEstateDto_9>(
                 totalCount,
-                items.Select(item => ObjectMapper.Map<RealEstateDto>(item)).ToList());
+                items.Select(item => ObjectMapper.Map<RealEstateDto_9>(item)).ToList());
         }
 
         #endregion
@@ -107,24 +149,24 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.RealEstates
         #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
-        private void Create(RealEstateInput RealEstateInput)
+        private void Create(RealEstateInput_9 realEstateInput)
         {
-            var RealEstateEntity = ObjectMapper.Map<RealEstate>(RealEstateInput);
-            SetAuditInsert(RealEstateEntity);
-            RealEstateRepository.Insert(RealEstateEntity);
+            var realEstateEntity = ObjectMapper.Map<RealEstate_9>(realEstateInput);
+            SetAuditInsert(realEstateEntity);
+            realEstateRepository.Insert(realEstateEntity);
             CurrentUnitOfWork.SaveChanges();
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
-        private void Update(RealEstateInput RealEstateInput)
+        private void Update(RealEstateInput_9 realEstateInput)
         {
-            var RealEstateEntity = RealEstateRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == RealEstateInput.Id);
-            if (RealEstateEntity == null)
+            var realEstateEntity = realEstateRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == realEstateInput.Id);
+            if (realEstateEntity == null)
             {
             }
-            ObjectMapper.Map(RealEstateInput, RealEstateEntity);
-            SetAuditEdit(RealEstateEntity);
-            RealEstateRepository.Update(RealEstateEntity);
+            ObjectMapper.Map(realEstateInput, realEstateEntity);
+            SetAuditEdit(realEstateEntity);
+            realEstateRepository.Update(realEstateEntity);
             CurrentUnitOfWork.SaveChanges();
         }
 

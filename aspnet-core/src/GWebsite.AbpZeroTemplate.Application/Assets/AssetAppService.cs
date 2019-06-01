@@ -15,16 +15,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Assets
     [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
     public class AssetAppService : GWebsiteAppServiceBase, IAssetAppService
     {
-        private readonly IRepository<Asset> assetRepository;
+        private readonly IRepository<Asset_test9> assetRepository;
 
-        public AssetAppService(IRepository<Asset> assetRepository)
+        public AssetAppService(IRepository<Asset_test9> assetRepository)
         {
             this.assetRepository = assetRepository;
         }
 
         #region Public Method
 
-        public void CreateOrEditAsset(AssetInput assetInput)
+        public void CreateOrEditAsset(AssetInput_9 assetInput)
         {
             if (assetInput.Id == 0)
             {
@@ -47,27 +47,37 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Assets
             }
         }
 
-        public AssetInput GetAssetForEdit(int id)
+        public AssetInput_9 GetAssetForEdit(int id)
         {
             var assetEntity = assetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (assetEntity == null)
             {
                 return null;
             }
-            return ObjectMapper.Map<AssetInput>(assetEntity);
+            return ObjectMapper.Map<AssetInput_9>(assetEntity);
         }
 
-        public AssetForViewDto GetAssetForView(int id)
+        public AssetInput_9 GetAssetForEditWithMTS(string maTaiSan)
+        {
+            var assetEntity = assetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.MaTaiSan == maTaiSan);
+            if (assetEntity == null)
+            {
+                return null;
+            }
+            return ObjectMapper.Map<AssetInput_9>(assetEntity);
+        }
+
+        public AssetForViewDto_9 GetAssetForView(int id)
         {
             var assetEntity = assetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (assetEntity == null)
             {
                 return null;
             }
-            return ObjectMapper.Map<AssetForViewDto>(assetEntity);
+            return ObjectMapper.Map<AssetForViewDto_9>(assetEntity);
         }
 
-        public PagedResultDto<AssetDto> GetAssets(AssetFilter input)
+        public PagedResultDto<AssetDto_9> GetAssets(AssetFilter_9 input)
         {
             var query = assetRepository.GetAll().Where(x => !x.IsDelete);
 
@@ -93,9 +103,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Assets
             var items = query.PageBy(input).ToList();
 
             // result
-            return new PagedResultDto<AssetDto>(
+            return new PagedResultDto<AssetDto_9>(
                 totalCount,
-                items.Select(item => ObjectMapper.Map<AssetDto>(item)).ToList());
+                items.Select(item => ObjectMapper.Map<AssetDto_9>(item)).ToList());
         }
 
         #endregion
@@ -103,16 +113,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Assets
         #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
-        private void Create(AssetInput assetInput)
+        private void Create(AssetInput_9 assetInput)
         {
-            var assetEntity = ObjectMapper.Map<Asset>(assetInput);
-            SetAuditInsert(assetEntity);
-            assetRepository.Insert(assetEntity);
+            var AssetEntity = ObjectMapper.Map<Asset_test9>(assetInput);
+            SetAuditInsert(AssetEntity);
+            assetRepository.Insert(AssetEntity);
             CurrentUnitOfWork.SaveChanges();
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
-        private void Update(AssetInput assetInput)
+        private void Update(AssetInput_9 assetInput)
         {
             var assetEntity = assetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == assetInput.Id);
             if (assetEntity == null)
