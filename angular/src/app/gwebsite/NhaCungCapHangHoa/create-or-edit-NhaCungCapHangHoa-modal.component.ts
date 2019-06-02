@@ -2,7 +2,7 @@
     import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
     import { AppComponentBase } from '@shared/common/app-component-base';
     import { ModalDirective } from 'ngx-bootstrap';
-    import { NhaCungCapHangHoaServiceProxy, NhaCungCapHangHoaInput, LoaiNhaCungCapDto, ComboboxItemDto } from '@shared/service-proxies/service-proxies';
+    import { NhaCungCapHangHoaServiceProxy, NhaCungCapHangHoaInput, LoaiNhaCungCapDto, ComboboxItemDto , LoaiNhaCungCapServiceProxy} from '@shared/service-proxies/service-proxies';
     import { ActivatedRoute, Router } from '@angular/router';
     import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
     
@@ -37,7 +37,8 @@
             private _nhaCungCapHangHoaService: NhaCungCapHangHoaServiceProxy,
             private _router: Router,
             private _activatedRoute: ActivatedRoute,
-            private _apiService: WebApiServiceProxy
+            private _apiService: WebApiServiceProxy,
+            private _loaiNhaCungCapService: LoaiNhaCungCapServiceProxy
         
         ) {
             super(injector);
@@ -45,9 +46,12 @@
         }
         getTypes(): void {
             // get category type
-            this._apiService.get('api/LoaiNhaCungCap/GetLoaiNhaCungCapsByFilter').subscribe(result => {
+           /* this._apiService.get('api/LoaiNhaCungCap/GetLoaiNhaCungCapsByFilter').subscribe(result => {
                 this.loaiNhaCungCaps = result.items;
-            });
+            });*/
+            this._loaiNhaCungCapService.getLoaiNhaCungCapsByFilter(null,"",100,0).subscribe(result =>{
+                this.loaiNhaCungCaps=result.items;
+            })
         }
         onChangeType(): void {
             this._apiService.getForEdit('api/LoaiNhaCungCap/GetLoaiNhaCungCapForView', this.selectedType).subscribe(result => {

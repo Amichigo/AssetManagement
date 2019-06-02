@@ -2,7 +2,7 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { ProductServiceProxy, ProductInput, ProductDto, ComboboxItemDto,ProductTypeDto, NhaCungCapHangHoaDto } from '@shared/service-proxies/service-proxies';
+import { ProductServiceProxy, ProductInput, ProductDto, ComboboxItemDto,ProductTypeDto, NhaCungCapHangHoaDto,ProductTypeServiceProxy,NhaCungCapHangHoaServiceProxy } from '@shared/service-proxies/service-proxies';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
     
@@ -40,7 +40,9 @@ import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
             private _productService: ProductServiceProxy,
             private _router: Router,
             private _activatedRoute: ActivatedRoute,
-            private _apiService: WebApiServiceProxy
+            private _apiService: WebApiServiceProxy,
+            private _productTypeService: ProductTypeServiceProxy,
+            private _nhaCungCapHangHoaService : NhaCungCapHangHoaServiceProxy
         
         ) {
             super(injector);
@@ -48,19 +50,24 @@ import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
             this.getNhaCungCap();
         }
         getProductTypes(): ProductTypeDto[] {
-            this._apiService.get('api/ProductType/GetProductTypesByFilter').subscribe(result => {
+           /* this._apiService.get('api/ProductType/GetProductTypesByFilter').subscribe(result => {
                 this.loaiSanPhams = result.items;
                
+            });*/
+            this._productTypeService.getProductTypesByFilter(null, "", 100, 0)
+            .subscribe(result => {
+                this.loaiSanPhams = result.items;
             });
-            return this.loaiSanPhams;
-            
-         
+            return this.loaiSanPhams;               
         }
 
         getNhaCungCap(): void {
-            this._apiService.get('api/NhaCungCapHangHoa/GetNhaCungCapHangHoasByFilter').subscribe(result => {
+            /*this._apiService.get('api/NhaCungCapHangHoa/GetNhaCungCapHangHoasByFilter').subscribe(result => {
                 this.nhaCungCapHangHoas = result.items;
                
+            });*/
+            this._nhaCungCapHangHoaService.getAllNhaCungCapHangHoasByFilter(null,"",100,0).subscribe(result =>{
+                this.nhaCungCapHangHoas=result.items;
             });
          
         }

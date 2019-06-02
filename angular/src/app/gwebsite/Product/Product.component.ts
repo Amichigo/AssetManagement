@@ -41,7 +41,7 @@ import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
         ) {
             super(injector);
             this.getProduct();
-            this.exportAsXLSX();
+           /* this.exportAsXLSX();*/
         }
 
         /**
@@ -65,7 +65,10 @@ import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
         */
        getProduct():ProductDto[]
        {
-        this._apiService.get('api/Product/GetProductsByFilter').subscribe(result => {
+       /* this._apiService.get('api/Product/GetProductsByFilter').subscribe(result => {
+            this.products = result.items;
+        });*/
+        this._productService.getProductsByFilter(null,"",500,0).subscribe(result => {
             this.products = result.items;
         });
            return this.products;

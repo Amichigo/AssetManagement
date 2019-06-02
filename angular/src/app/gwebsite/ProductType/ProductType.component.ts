@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { ProductTypeServiceProxy,ProductDto, ProductTypeDto } from '@shared/service-proxies/service-proxies';
+import { ProductTypeServiceProxy,ProductDto, ProductTypeDto,ProductServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditProductTypeModalComponent } from './create-or-edit-ProductType-modal.component';
 import { strictEqual } from 'assert';
 import {WebApiServiceProxy} from '@shared/service-proxies/webapi.service';
@@ -43,12 +43,13 @@ import { FileDownloadService } from '@shared/utils/file-download.service';
             private _activatedRoute: ActivatedRoute,
             private _apiService: WebApiServiceProxy,
             private excelService: ExcelService,
-            private _fileDownloadService: FileDownloadService
+            private _fileDownloadService: FileDownloadService,
+            private _productService: ProductServiceProxy
         ) {
             super(injector);
             this.getProducts(this.ProductType);
             this.getProductType();
-            this.exportAsXLSX();
+           /* this.exportAsXLSX();*/
         }
         getProductType():ProductTypeDto[]
         {
@@ -59,9 +60,11 @@ import { FileDownloadService } from '@shared/utils/file-download.service';
         }
         getProducts(ProductType): ProductDto[]
         {
-            this._apiService.get('api/Product/GetProductsByFilterType?MaLoaiSanPham='+ProductType).subscribe(result=>{
+            /*this._apiService.get('api/Product/GetProductsByFilterType?MaLoaiSanPham='+ProductType).subscribe(result=>{
                 this.products=result.items;
-            })
+            })*/
+            this._productService.getProductsByFilterType(ProductType,"",1000,0).subscribe(result=>{
+                this.products=result.items});
             return this.products;
         }
         /**

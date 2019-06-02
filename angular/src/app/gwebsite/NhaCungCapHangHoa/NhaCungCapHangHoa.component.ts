@@ -7,10 +7,13 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { NhaCungCapHangHoaServiceProxy, ProductDto, NhaCungCapHangHoaDto } from '@shared/service-proxies/service-proxies';
+import { NhaCungCapHangHoaServiceProxy, ProductDto, NhaCungCapHangHoaDto ,ProductServiceProxy} from '@shared/service-proxies/service-proxies';
 import { CreateOrEditNhaCungCapHangHoaModalComponent } from './create-or-edit-NhaCungCapHangHoa-modal.component';
 import {WebApiServiceProxy} from '@shared/service-proxies/webapi.service';
 import {ExcelService} from '../services/excel.service';
+import { Variable } from '@angular/compiler/src/render3/r3_ast';
+import { max } from 'moment';
+import { MAX_LENGTH_VALIDATOR } from '@angular/forms/src/directives/validators';
 
 
     @Component({
@@ -32,7 +35,9 @@ import {ExcelService} from '../services/excel.service';
         */
         NhaCungCapHangHoaName: string;
         MaNhaCungCapHangHoa: string;
+        sl:string;
         products: Array<ProductDto>=[];
+        products1:Array<ProductDto>=[];
         nhaCungCapHangHoa: Array<NhaCungCapHangHoaDto>=[];
         config: any;
         constructor(
@@ -40,12 +45,13 @@ import {ExcelService} from '../services/excel.service';
             private _nhaCungCapHangHoaService: NhaCungCapHangHoaServiceProxy,
             private _activatedRoute: ActivatedRoute,
             private _apiService: WebApiServiceProxy,
-            private excelService: ExcelService
+            private excelService: ExcelService,
+            private _productService: ProductServiceProxy
         ) {
             super(injector);
-            this.getProducts(this.MaNhaCungCapHangHoa);
+            /*this.getProducts(this.MaNhaCungCapHangHoa);*/
             this.getNhaCungCapHangHoa();
-            this.exportAsXLSX();
+            /*this.exportAsXLSX();*/
             this.config = {
                 itemsPerComponent: 5,
                 currentComponent: 1,
@@ -56,7 +62,10 @@ import {ExcelService} from '../services/excel.service';
 
         getNhaCungCapHangHoa(): NhaCungCapHangHoaDto[]
         {
-            this._apiService.get('api/NhaCungCapHangHoa/GetNhaCungCapHangHoasByFilter').subscribe(result => {
+            /*this._apiService.get('api/NhaCungCapHangHoa/GetNhaCungCapHangHoasByFilter').subscribe(result => {
+                this.nhaCungCapHangHoa = result.items;
+            });*/
+            this._nhaCungCapHangHoaService.getAllNhaCungCapHangHoasByFilter(null,"",1000,0).subscribe(result => {
                 this.nhaCungCapHangHoa = result.items;
             });
             return this.nhaCungCapHangHoa;
@@ -64,6 +73,11 @@ import {ExcelService} from '../services/excel.service';
         getProducts(MaNhaCungCapHangHoa): ProductDto[]
         {
             this._apiService.get('api/Product/GetProductsByFilterName?MaNhaCungCap='+MaNhaCungCapHangHoa).subscribe(result=>{
+                this.products1=result.items;
+               
+            })
+            
+            this._productService.getProductsByFilterName(MaNhaCungCapHangHoa,"",500,0).subscribe(result=>{
                 this.products=result.items;
             })
             return this.products;

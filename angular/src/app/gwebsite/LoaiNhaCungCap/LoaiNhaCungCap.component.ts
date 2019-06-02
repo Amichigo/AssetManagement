@@ -45,7 +45,7 @@ import {ExcelService} from '../services/excel.service';
             super(injector);
             this.getNhaCungCapHangHoa(this.MaLoaiNhaCungCapHangHoa);
             this.getNhaCungCapHangHoas(this.MaLoaiNhaCungCapHangHoa);
-            this.exportAsXLSX();
+            /*this.exportAsXLSX();*/
             this.getLoaiNhaCungCap();
             
         }
