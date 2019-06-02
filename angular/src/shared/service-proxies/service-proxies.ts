@@ -13283,11 +13283,11 @@ export interface ICategoryTypeDto {
 }
 
 export class CategoryTypeInput implements ICategoryTypeInput {
+    id!: number | undefined;
     name!: string | undefined;
     prefixWord!: string | undefined;
     description!: string | undefined;
     status!: string | undefined;
-    id!: number | undefined;
 
     constructor(data?: ICategoryTypeInput) {
         if (data) {
@@ -13300,11 +13300,11 @@ export class CategoryTypeInput implements ICategoryTypeInput {
 
     init(data?: any) {
         if (data) {
+            this.id = data["id"];
             this.name = data["name"];
             this.prefixWord = data["prefixWord"];
             this.description = data["description"];
             this.status = data["status"];
-            this.id = data["id"];
         }
     }
 
@@ -13317,25 +13317,25 @@ export class CategoryTypeInput implements ICategoryTypeInput {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["name"] = this.name;
         data["prefixWord"] = this.prefixWord;
         data["description"] = this.description;
         data["status"] = this.status;
-        data["id"] = this.id;
         return data; 
     }
 }
 
 export interface ICategoryTypeInput {
+    id: number | undefined;
     name: string | undefined;
     prefixWord: string | undefined;
     description: string | undefined;
     status: string | undefined;
-    id: number | undefined;
 }
 
 export class CategoryTypeForViewDto implements ICategoryTypeForViewDto {
-    id!: string | undefined;
+    id!: number | undefined;
     name!: string | undefined;
     prefixWord!: string | undefined;
     description!: string | undefined;
@@ -13391,7 +13391,7 @@ export class CategoryTypeForViewDto implements ICategoryTypeForViewDto {
 }
 
 export interface ICategoryTypeForViewDto {
-    id: string | undefined;
+    id: number | undefined;
     name: string | undefined;
     prefixWord: string | undefined;
     description: string | undefined;

@@ -44,10 +44,10 @@
                     </div>
                     <div class="form-group">
                         <label>{{l("Status")}}</label>
-                        <select class="form-control" #statusInput name="categoryStatus" [(ngModel)]="selectedStatus"
-                            (change)="this.onChangeStatus()" title={{category.status}}>
-                            <option [value]="1">Active</option>
-                            <option [value]="2">Inactive</option>
+                        <select class="form-control" #statusInput name="categoryStatus" [(ngModel)]="category.status"
+                            title={{category.status}}>
+                            <option value='Active'>Active</option>
+                            <option value="Inactive">Inactive</option>
                         </select>
                         <validation-messages [formCtrl]="statusInput"></validation-messages>
                     </div>

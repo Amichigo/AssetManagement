@@ -5,7 +5,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.CategoryTypes.Dto
 {
     public class CategoryTypeForViewDto
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string PrefixWord { get; set; }
         public string Description { get; set; }

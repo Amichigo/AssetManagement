@@ -40,7 +40,7 @@
                                     <label for="filters.filterType" class="control-label">{{l("Type")}}</label>
                                     <select #typeCombobox [(ngModel)]="filters.filterType" name="filterType"
                                         class="form-control" type="text">
-                                        <option [value]="null">All types</option>
+                                        <option value="null">All types</option>
                                         <option *ngFor="let type of listItems" [value]=type.name>
                                             {{type.name}}
                                         </option>
@@ -52,7 +52,7 @@
                                     <label for="filters.filterStatus" class="control-label">{{l("Status")}}</label>
                                     <select class="form-control" [(ngModel)]="filters.filterStatus"
                                         type="text" name="filterStatus">
-                                        <option [value]="null">All status</option>
+                                        <option value="null">All status</option>
                                         <option>Active</option>
                                         <option>Inactive</option>
                                     </select>
@@ -210,12 +210,12 @@
                                             title="{{l('View')}}" (click)="viewCategory(record.id)">
                                             <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
                                         </button>
-                                        <button
+                                        <button *ngIf="isGranted('Pages.Categories.General.Edit')"
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                             title="{{l('Edit')}}" (click)="editCategory(record.id)">
                                             <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
                                         </button>
-                                        <button
+                                        <button *ngIf="isGranted('Pages.Categories.General.Delete')"
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                             title="{{l('Delete')}}" (click)="deleteCategory(record.id)">
                                             <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>

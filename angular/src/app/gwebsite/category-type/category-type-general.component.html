@@ -157,9 +157,9 @@
                                         {{l('Name')}}
                                         <p-sortIcon field="name"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="symbol">
+                                    <th pSortableColumn="prefixWord">
                                         {{l('PrefixWord')}}
-                                        <p-sortIcon field="symbol"></p-sortIcon>
+                                        <p-sortIcon field="prefixWord"></p-sortIcon>
                                     </th>
                                     <th>
                                         {{l('Description')}}
@@ -192,17 +192,17 @@
                                         <span *ngIf="record.status == false">{{l('Inactive')}}</span>
                                     </td>
                                     <td>
-                                        <button
+                                        <button 
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                             title="{{l('View')}}" (click)="viewType(record.id)">
                                             <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
                                         </button>
-                                        <button
+                                        <button *ngIf="isGranted('Pages.CategoryTypes.General.Edit')"
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                             title="{{l('Edit')}}" (click)="editType(record.id)">
                                             <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
                                         </button>
-                                        <button
+                                        <button *ngIf="isGranted('Pages.CategoryTypes.General.Delete')"
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                             title="{{l('Delete')}}" (click)="deleteType(record.id)">
                                             <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>

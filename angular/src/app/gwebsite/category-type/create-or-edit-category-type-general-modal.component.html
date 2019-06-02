@@ -5,7 +5,7 @@
             <form *ngIf="active" #editForm="ngForm" novalidate (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <span *ngIf="categoryType.id">{{l("Edit type")}}: {{categoryType.name}}</span>
+                        <span *ngIf="categoryType.id">{{l("ID")}}: {{categoryType.id}}</span>
                         <span *ngIf="!categoryType.id">{{l("Create new type")}}</span>
                     </h4>
                     <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
@@ -32,6 +32,15 @@
                             <input #typeDescriptionInput="ngModel" class="form-control" type="text"
                                 name="typeDescription" [(ngModel)]="categoryType.description">
                             <validation-messages [formCtrl]="typeDescriptionInput"></validation-messages>
+                        </div>
+                        <div class="form-group">
+                            <label>{{l("Status")}} {{categoryType.status}}</label>
+                            <select class="form-control" #statusInput name="typeStatus" [(ngModel)]="categoryType.status"
+                                title={{categoryType.status}}>
+                                <option value='Active'>Active</option>
+                                <option value='Inactive'>Inactive</option>
+                            </select>
+                            <validation-messages [formCtrl]="statusInput"></validation-messages>
                         </div>
                     </form>
                 </div>

@@ -193,12 +193,13 @@ export class CategoryTypeComponent extends AppComponentBase implements AfterView
     //Refresh grid khi thực hiện create or edit thành công
     refreshValueFromTypeModal(): void {
         if (this.createOrEditTypeModal.categoryType.id) {
-            for (let i = 0; i < this.primengTableHelperTypes.records.length; i++) {
-                if (this.primengTableHelperTypes.records[i].id === this.createOrEditTypeModal.categoryType.id) {
-                    this.primengTableHelperTypes.records[i] = this.createOrEditTypeModal.categoryType;
-                    return;
-                }
-            }
+            // for (let i = 0; i < this.primengTableHelperTypes.records.length; i++) {
+            //     if (this.primengTableHelperTypes.records[i].id === this.createOrEditTypeModal.categoryType.id) {
+            //         this.primengTableHelperTypes.records[i] = this.createOrEditTypeModal.categoryType;
+            //         return;
+            //     }
+            // }
+            this.getTypes();
         } else {
             this.reloadPage();
         }

@@ -28,7 +28,6 @@ export class CreateOrEditCategoryModalComponent extends AppComponentBase {
     category: CategoryInput = new CategoryInput();
     categoryType: CategoryTypeDto = new CategoryTypeDto();
     selectedType: number;
-    selectedStatus: number;
     categoryTypes: Array<CategoryTypeDto> = [];
 
     constructor(
@@ -56,12 +55,6 @@ export class CreateOrEditCategoryModalComponent extends AppComponentBase {
 
         this._categoryService.getCategoryForEdit(categoryId).subscribe(result => {
             this.category = result;
-            if (result.status === 'Active') {
-                this.selectedStatus = 1;
-            } else {
-                this.selectedStatus = 2;
-            }
-
             this.modal.show();
             setTimeout(() => {
                 $(this.categoryCombobox.nativeElement).selectpicker('refresh');
@@ -74,14 +67,6 @@ export class CreateOrEditCategoryModalComponent extends AppComponentBase {
             this.category.categoryType = result.name;
             this.category.categoryId = result.prefixWord; // get prefix word to create id
         });
-    }
-
-    onChangeStatus(): void {
-        if (this.selectedStatus === 1) {
-            this.category.status = 'Active';
-        } else {
-            this.category.status = 'Inactive';
-        }
     }
 
     save(): void {

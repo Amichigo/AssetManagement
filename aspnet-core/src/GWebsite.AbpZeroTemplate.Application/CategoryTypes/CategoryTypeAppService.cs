@@ -61,7 +61,18 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
             {
                 return null;
             }
-            return ObjectMapper.Map<CategoryTypeInput>(categoryEntity);
+            var result = ObjectMapper.Map<CategoryTypeInput>(categoryEntity);
+
+            if (categoryEntity.IsDelete == true)
+            {
+                result.Status = "Inactive";
+            }
+            else
+            {
+                result.Status = "Active";
+            }
+
+            return result;
         }
 
         public CategoryTypeForViewDto GetCategoryTypeForView(int id)
@@ -121,7 +132,16 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
             var categoryEntity = ObjectMapper.Map<CategoryType>(categoryInput);
             categoryEntity.CreatedDate = DateTime.Now;
             categoryEntity.CreatedBy = GetCurrentUser().Name;
-            categoryEntity.IsDelete = false;
+            
+            if (categoryInput.Status == "Active")
+            {
+                categoryEntity.IsDelete = false;
+            }
+            else if (categoryInput.Status == "Inactive")
+            {
+                categoryEntity.IsDelete = true;
+            }
+
             typeRepository.Insert(categoryEntity);
             CurrentUnitOfWork.SaveChanges();
         }
@@ -129,14 +149,23 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
         [AbpAuthorize(GWebsitePermissions.Pages_CategoryTypes_General_Edit)]
         private void Update(CategoryTypeInput categoryInput)
         {
-            var categoryEntity = typeRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == categoryInput.Id);
+            var categoryEntity = typeRepository.GetAll().SingleOrDefault(x => x.Id == categoryInput.Id);
             if (categoryEntity == null)
             {
             }
             ObjectMapper.Map(categoryInput, categoryEntity);
-            categoryEntity.CreatedDate = DateTime.Now;
-            categoryEntity.CreatedBy = GetCurrentUser().Name;
-            categoryEntity.IsDelete = false;
+            categoryEntity.UpdatedDate = DateTime.Now;
+            categoryEntity.UpdatedBy = GetCurrentUser().Name;
+
+            if (categoryInput.Status == "Active")
+            {
+                categoryEntity.IsDelete = false;
+            }
+            else if (categoryInput.Status == "Inactive")
+            {
+                categoryEntity.IsDelete = true;
+            }
+
             typeRepository.Update(categoryEntity);
             CurrentUnitOfWork.SaveChanges();
         }

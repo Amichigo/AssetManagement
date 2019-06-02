@@ -3,7 +3,7 @@ import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
 import { finalize } from 'rxjs/operators';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
-import { CategoryTypeDto } from './dto/category-type.dto';
+import { CategoryTypeInput } from '@shared/service-proxies/service-proxies';
 
 @Component({
     selector: 'createOrEditTypeModal',
@@ -20,7 +20,7 @@ export class CreateOrEditTypeModalComponent extends AppComponentBase {
     active = false;
     saving = false;
 
-    categoryType: CategoryTypeDto = new CategoryTypeDto();
+    categoryType: CategoryTypeInput = new CategoryTypeInput();
 
     constructor(
         injector: Injector,
