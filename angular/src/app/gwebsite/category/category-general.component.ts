@@ -41,7 +41,8 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         filterId: string,
         filterName: string,
         filterSymbol: string,
-        filterStatus: string
+        filterStatus: string,
+        filterDescription: string,
     } = <any>{};
 
     // Categorytype dropdown list
@@ -62,11 +63,12 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
      * Hàm xử lý trước khi View được init
      */
     ngOnInit(): void {
-        this.filters.filterType = 'All types',
+        this.filters.filterType = null,
         this.filters.filterId = '',
         this.filters.filterName = '',
         this.filters.filterSymbol = '',
-        this.filters.filterStatus = 'All status',
+        this.filters.filterStatus = null,
+        this.filters.filterDescription = '';
 
         this.getListTypes();
     }
@@ -108,11 +110,11 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
 
         // filter
         this._categoryService.getCategoriesByFilter(
-            this.filters.filterType === 'All types' ? '' : this.filters.filterType,
+            this.filters.filterType === null ? null : this.filters.filterType,
             this.filters.filterId,
             this.filters.filterName,
             this.filters.filterSymbol,
-            this.filters.filterStatus,
+            this.filters.filterStatus === null ? null : this.filters.filterStatus,
             this.primengTableHelperCategories.getSorting(this.categoryTable),
             this.primengTableHelperCategories.getMaxResultCount(this.paginatorCategory, event),
             this.primengTableHelperCategories.getSkipCount(this.paginatorCategory, event),
@@ -126,11 +128,11 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
-            this.filters.filterType = params['filterType'] || 'All types';
+            this.filters.filterType = params['filterType'] || null;
             this.filters.filterId = params['filterId'] || '';
             this.filters.filterName = params['filterName'] || '';
             this.filters.filterSymbol = params['filterSymbol'] || '';
-            this.filters.filterStatus = params['filterStatus'] || 'All status';
+            this.filters.filterStatus = params['filterStatus'] || null;
 
             //reload lại gridview
             this.reloadPage();
@@ -159,11 +161,11 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
     }
 
     categoryRefresh(event?: LazyLoadEvent): void {
-        this.filters.filterType = 'All types',
+        this.filters.filterType = null,
         this.filters.filterId = '',
         this.filters.filterName = '',
         this.filters.filterSymbol = '',
-        this.filters.filterStatus = 'All status',
+        this.filters.filterStatus = null,
         $(this.typeCombobox.nativeElement).selectpicker('refresh');
 
         //truyền params lên url thông qua router
@@ -232,11 +234,11 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
     exportToExcelCategories(): void {
         const self = this;
         self._categoryService.getCategoriesToExcel(
-            self.filters.filterType === 'All types' ? '' : self.filters.filterType,
+            self.filters.filterType === null ? null : self.filters.filterType,
             self.filters.filterId,
             self.filters.filterName,
             self.filters.filterSymbol,
-            self.filters.filterStatus,
+            self.filters.filterStatus === null ? null : self.filters.filterStatus,
             undefined,
             1,
             0)
@@ -246,11 +248,13 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
     }
 
     clearFilters(): void {
-        this.filters.filterType = 'All types',
+        this.filters.filterType = null,
         this.filters.filterId = '',
         this.filters.filterName = '',
         this.filters.filterSymbol = '',
-        this.filters.filterStatus = 'All status',
+        this.filters.filterStatus = null,
         $(this.typeCombobox.nativeElement).selectpicker('refresh');
+
+        this.refreshValueFromCategoryModal();
     }
 }

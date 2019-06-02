@@ -1,8 +1,8 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
+using Abp.Extensions;
 using Abp.Linq.Extensions;
-using GWebsite.AbpZeroTemplate.Application;
 using GWebsite.AbpZeroTemplate.Application.Share.CategoryTypes;
 using GWebsite.AbpZeroTemplate.Application.Share.CategoryTypes.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
@@ -10,17 +10,25 @@ using GWebsite.AbpZeroTemplate.Core.Models;
 using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using GWebsite.AbpZeroTemplate.Application.CategoryTypes.Exporting;
+using GSoft.AbpZeroTemplate.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
 {
     [AbpAuthorize(GWebsitePermissions.Pages_CategoryTypes_General)]
     public class CategoryTypeAppService : GWebsiteAppServiceBase, ICategoryTypeAppService
     {
-        private readonly IRepository<CategoryType> categoryRepository;
+        private readonly IRepository<CategoryType> typeRepository;
+        private readonly CategoryTypeListExcelExporter typeListExcelExporter;
 
-        public CategoryTypeAppService(IRepository<CategoryType> categoryRepository)
+        public CategoryTypeAppService(
+            IRepository<CategoryType> typeRepository,
+            CategoryTypeListExcelExporter typeListExcelExporter)
         {
-            this.categoryRepository = categoryRepository;
+            this.typeRepository = typeRepository;
+            this.typeListExcelExporter = typeListExcelExporter;
         }
 
         #region Public Method
@@ -37,18 +45,18 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
 
         public void DeleteCategoryType(int id)
         {
-            var categoryEntity = categoryRepository.GetAll().SingleOrDefault(x => x.Id == id);
+            var categoryEntity = typeRepository.GetAll().SingleOrDefault(x => x.Id == id);
             if (categoryEntity != null)
             {
                 categoryEntity.IsDelete = true;
-                categoryRepository.Update(categoryEntity);
+                typeRepository.Update(categoryEntity);
                 CurrentUnitOfWork.SaveChanges();
             }
         }
 
         public CategoryTypeInput GetCategoryTypeForEdit(int id)
         {
-            var categoryEntity = categoryRepository.GetAll().SingleOrDefault(x => x.Id == id);
+            var categoryEntity = typeRepository.GetAll().SingleOrDefault(x => x.Id == id);
             if (categoryEntity == null)
             {
                 return null;
@@ -58,7 +66,7 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
 
         public CategoryTypeForViewDto GetCategoryTypeForView(int id)
         {
-            var categoryEntity = categoryRepository.GetAll().SingleOrDefault(x => x.Id == id);
+            var categoryEntity = typeRepository.GetAll().SingleOrDefault(x => x.Id == id);
             if (categoryEntity == null)
             {
                 return null;
@@ -68,29 +76,7 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
 
         public PagedResultDto<CategoryTypeDto> GetCategoryTypes(CategoryTypeFilter input)
         {
-            var query = categoryRepository.GetAll();
-
-            // filter by Name
-            if (input.Name != null)
-            {
-                query = query.Where(x => x.Name.ToLower().Contains(input.Name));
-            }
-
-            // filter by PrefixWord
-            if (input.PrefixWord != null)
-            {
-                query = query.Where(x => x.PrefixWord.ToLower().Contains(input.PrefixWord));
-            }
-
-            // filter by Status
-            if (input.Status == "Active")
-            {
-                query = query.Where(x => x.IsDelete == false);
-            }
-            else if (input.Status == "Inactive")
-            {
-                query = query.Where(x => x.IsDelete == true);
-            }
+            var query = CreateCategoryTypesQuery(input);
 
             var totalCount = query.Count();
 
@@ -114,6 +100,17 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
                 resultItems);
         }
 
+        public FileDto GetCategoryTypesToExcel(CategoryTypeFilter input)
+        {
+            var types = CreateCategoryTypesQuery(input)
+                .AsNoTracking()
+                .ToList();
+
+            var listTypeDto = types.Select(item => ObjectMapper.Map<CategoryTypeDto>(item)).ToList();
+
+            return typeListExcelExporter.ExportToFile(listTypeDto);
+        }
+
         #endregion
 
         #region Private Method
@@ -125,14 +122,14 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
             categoryEntity.CreatedDate = DateTime.Now;
             categoryEntity.CreatedBy = GetCurrentUser().Name;
             categoryEntity.IsDelete = false;
-            categoryRepository.Insert(categoryEntity);
+            typeRepository.Insert(categoryEntity);
             CurrentUnitOfWork.SaveChanges();
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_CategoryTypes_General_Edit)]
         private void Update(CategoryTypeInput categoryInput)
         {
-            var categoryEntity = categoryRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == categoryInput.Id);
+            var categoryEntity = typeRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == categoryInput.Id);
             if (categoryEntity == null)
             {
             }
@@ -140,8 +137,25 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
             categoryEntity.CreatedDate = DateTime.Now;
             categoryEntity.CreatedBy = GetCurrentUser().Name;
             categoryEntity.IsDelete = false;
-            categoryRepository.Update(categoryEntity);
+            typeRepository.Update(categoryEntity);
             CurrentUnitOfWork.SaveChanges();
+        }
+
+        private IQueryable<CategoryType> CreateCategoryTypesQuery(CategoryTypeFilter input)
+        {
+            var query = typeRepository.GetAll();
+
+            query = query
+                .WhereIf(!input.Name.IsNullOrWhiteSpace(), x => x.Name.ToLower().Contains(input.Name))
+                .WhereIf(!input.PrefixWord.IsNullOrWhiteSpace(), x => x.PrefixWord.ToLower().Contains(input.PrefixWord))
+                .WhereIf(input.Status == "Active", x => x.IsDelete == false)
+                .WhereIf(input.Status == "Inactive", x => x.IsDelete == true)
+                .WhereIf(!input.Description.IsNullOrWhiteSpace(), x => x.Description.ToLower().Contains(input.Description))
+                .WhereIf(input.IsCreatedCheckedAll == false, x => (x.CreatedDate >= input.StartCreatedDate && x.CreatedDate <= input.EndCreatedDate))
+                .WhereIf(!input.CreatedBy.IsNullOrWhiteSpace(), x => x.CreatedBy.ToLower().Contains(input.CreatedBy.ToLower()))
+                .WhereIf(input.IsUpdatedCheckedAll == false, x => (x.UpdatedDate >= input.StartUpdatedDate && x.UpdatedDate <= input.EndUpdatedDate))
+                .WhereIf(!input.CreatedBy.IsNullOrWhiteSpace(), x => x.UpdatedBy.ToLower().Contains(input.UpdatedBy.ToLower()));
+            return query;
         }
 
         #endregion

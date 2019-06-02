@@ -40,7 +40,7 @@
                                     <label for="filters.filterType" class="control-label">{{l("Type")}}</label>
                                     <select #typeCombobox [(ngModel)]="filters.filterType" name="filterType"
                                         class="form-control" type="text">
-                                        <option>All types</option>
+                                        <option [value]=null>All types</option>
                                         <option *ngFor="let type of listItems" [value]=type.name>
                                             {{type.name}}
                                         </option>
@@ -52,7 +52,7 @@
                                     <label for="filters.filterStatus" class="control-label">{{l("Status")}}</label>
                                     <select class="form-control" [(ngModel)]="filters.filterStatus"
                                         type="text" name="filterStatus">
-                                        <option>All status</option>
+                                        <option [value]=null>All status</option>
                                         <option>Active</option>
                                         <option>Inactive</option>
                                     </select>
@@ -76,6 +76,13 @@
                                 <div class="form-group">
                                     <label for="filters.filterSymbol" class="control-label">{{l("Symbol")}}</label>
                                     <input [(ngModel)]="filters.filterSymbol" name="filterSymbol" autoFocus class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="filters.Description" class="control-label">{{l("Description")}}</label>
+                                    <input [(ngModel)]="filters.filterDescription" name="filterDescription" autoFocus
+                                        class="form-control" type="text">
                                 </div>
                             </div>
                         </div>
