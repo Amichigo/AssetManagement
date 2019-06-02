@@ -230,7 +230,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Categories
                 .WhereIf(input.IsCreatedCheckedAll == false, x => (x.CreatedDate >= input.StartCreatedDate && x.CreatedDate <= input.EndCreatedDate))
                 .WhereIf(!input.CreatedBy.IsNullOrWhiteSpace(), x => x.CreatedBy.ToLower().Contains(input.CreatedBy.ToLower()))
                 .WhereIf(input.IsUpdatedCheckedAll == false, x => (x.UpdatedDate >= input.StartUpdatedDate && x.UpdatedDate <= input.EndUpdatedDate))
-                .WhereIf(!input.CreatedBy.IsNullOrWhiteSpace(), x => x.UpdatedBy.ToLower().Contains(input.UpdatedBy.ToLower()));
+                .WhereIf(!input.UpdatedBy.IsNullOrWhiteSpace(), x => x.UpdatedBy.ToLower().Contains(input.UpdatedBy.ToLower()));
             return query;
         }
 

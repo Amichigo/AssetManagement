@@ -24,10 +24,10 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes.Exporting
         public FileDto ExportToFile(List<CategoryTypeDto> categoryTypeListDtos)
         {
             return CreateExcelPackage(
-                "Categories.xlsx",
+                "CategoryTypes.xlsx",
                 excelPackage =>
                 {
-                    var sheet = excelPackage.Workbook.Worksheets.Add(L("Categories"));
+                    var sheet = excelPackage.Workbook.Worksheets.Add(L("CategoryTypes"));
                     sheet.OutLineApplyStyle = true;
 
                     AddHeader(
@@ -49,7 +49,7 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes.Exporting
                         _ => _.Name,
                         _ => _.PrefixWord,
                         _ => _.Description,
-                        _ => _.Status,
+                        _ => _.Status ? "Inactive" : "Active",
                         _ => _.CreatedDate,
                         _ => _.CreatedBy,
                         _ => _.UpdatedDate,
@@ -58,15 +58,16 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes.Exporting
 
                     //Formatting cells
 
-                    var timeColumn = sheet.Column(1);
-                    timeColumn.Style.Numberformat.Format = "yyyy-mm-dd hh:mm:ss";
+                    var createdDateColumn = sheet.Column(6);
+                    createdDateColumn.Style.Numberformat.Format = "dd-mm-yyyy hh:mm:ss";
 
-                    for (var i = 1; i <= 10; i++)
+                    var updatedDateColumn = sheet.Column(8);
+                    updatedDateColumn.Style.Numberformat.Format = "dd-mm-yyyy hh:mm:ss";
+
+                    for (var i = 1; i <= 9; i++)
                     {
-                        if (i.IsIn(5, 10)) //Don't AutoFit Parameters and Exception
-                        {
+                        if (i == 4)
                             continue;
-                        }
 
                         sheet.Column(i).AutoFit();
                     }

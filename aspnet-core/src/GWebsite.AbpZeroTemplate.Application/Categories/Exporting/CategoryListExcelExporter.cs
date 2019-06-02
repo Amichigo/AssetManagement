@@ -51,24 +51,23 @@ namespace GWebsite.AbpZeroTemplate.Application.Categories.Exporting
                         _ => _.CategoryType,
                         _ => _.Symbol,
                         _ => _.Description,
-                        _ => _.Status,
+                        _ => _.Status ? "Inactive" : "Active",
                         _ => _.CreatedDate,
                         _ => _.CreatedBy,
                         _ => _.UpdatedDate,
                         _ => _.UpdatedBy
                         );
 
-                    //Formatting cells
+                    var createdDateColumn = sheet.Column(7);
+                    createdDateColumn.Style.Numberformat.Format = "dd-mm-yyyy hh:mm:ss";
 
-                    var timeColumn = sheet.Column(1);
-                    timeColumn.Style.Numberformat.Format = "yyyy-mm-dd hh:mm:ss";
+                    var updatedDateColumn = sheet.Column(9);
+                    updatedDateColumn.Style.Numberformat.Format = "dd-mm-yyyy hh:mm:ss";
 
                     for (var i = 1; i <= 10; i++)
                     {
-                        if (i.IsIn(5, 10)) //Don't AutoFit Parameters and Exception
-                        {
+                        if (i == 5)
                             continue;
-                        }
 
                         sheet.Column(i).AutoFit();
                     }
