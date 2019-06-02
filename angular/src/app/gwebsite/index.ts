@@ -7,3 +7,4 @@ export * from './category/create-or-edit-category-general-modal.component';
 
 export * from './category-type/category-type-general.component';
 export * from './category-type/create-or-edit-category-type-general-modal.component';
+export * from './category-type/view-category-type-general-modal.component';

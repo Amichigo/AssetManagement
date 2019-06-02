@@ -8,10 +8,9 @@ import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
 import { CreateOrEditCategoryModalComponent } from './create-or-edit-category-general-modal.component';
 import { ViewCategoryModalComponent } from './view-category-modal.component';
-import { CategoryTypeDto } from '../category-type/dto/category-type.dto';
 import { PrimengTableHelper } from 'shared/helpers/PrimengTableHelper';
 import { FileDownloadService } from '@shared/utils/file-download.service';
-import { CategoryServiceProxy } from '@shared/service-proxies/service-proxies';
+import { CategoryServiceProxy, CategoryTypeDto } from '@shared/service-proxies/service-proxies';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 import * as moment from 'moment';
 
@@ -86,6 +85,7 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         this.filters.startUpdatedDate = moment().startOf('day'),
         this.filters.endUpdatedDate = moment().startOf('day'),
         this.filters.updatedBy = '';
+
         this.getListTypes();
     }
 
@@ -100,7 +100,9 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
 
     getListTypes(event?: LazyLoadEvent): void {
         // get category type
-        this._apiService.get('api/CategoryType/GetCategoryTypesByFilter')
+        this._apiService.get('api/CategoryType/GetCategoryTypesByFilter', 
+            [{ fieldName: 'IsCreatedCheckedAll', value: true }, 
+                { fieldName: 'IsUpdatedCheckedAll', value: true }])
         .subscribe(result => {
             this.listItems = result.items;
         });
@@ -158,8 +160,8 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
             this.filters.filterName = params['filterName'] || '';
             this.filters.filterSymbol = params['filterSymbol'] || '';
             this.filters.filterStatus = params['filterStatus'] || null;
-            this.filters.createdBy = params['createdBy'] || '';
-            this.filters.updatedBy = params['updatedBy'] || '';
+            this.filters.createdBy = params['filterCreatedBy'] || '';
+            this.filters.updatedBy = params['filterUpdatedBy'] || '';
             //reload lại gridview
             this.reloadPage();
         });
@@ -195,7 +197,6 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         this.filters.filterName = '',
         this.filters.filterSymbol = '',
         this.filters.filterStatus = null,
-        $(this.typeCombobox.nativeElement).selectpicker('refresh');
 
         //truyền params lên url thông qua router
         this._router.navigate(['app/gwebsite/category', {
@@ -294,9 +295,18 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         this.filters.filterDescription = '';
         this.filters.isCreatedCheckedAll = true;
         this.filters.isUpdatedCheckedAll = true;
+        this.filters.createdBy = '';
+        this.filters.updatedBy = '';
 
-        $(this.typeCombobox.nativeElement).selectpicker('refresh');
-
+        //$(this.typeCombobox.nativeElement).selectpicker('refresh');
         this.refreshValueFromCategoryModal();
+    }
+
+    onClickIsCreatedDateCheckedAll(): void {
+        this.filters.isCreatedCheckedAll = !this.filters.isCreatedCheckedAll;
+    }
+
+    onClickIsUpdatedDateCheckedAll(): void {
+        this.filters.isUpdatedCheckedAll = !this.filters.isUpdatedCheckedAll;
     }
 }

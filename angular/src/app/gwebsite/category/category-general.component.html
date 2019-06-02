@@ -4,7 +4,7 @@
         <div class="d-flex align-items-center">
             <div class="mr-auto col-xs-6">
                 <h3 class="m-subheader__title m-subheader__title--separator">
-                    <span>{{l("General Categories")}}</span>
+                    <span>{{l("Categories List")}}</span>
                 </h3>
                 <span class="m-section__sub">
                     {{l("Manage general categories")}}
@@ -40,7 +40,7 @@
                                     <label for="filters.filterType" class="control-label">{{l("Type")}}</label>
                                     <select #typeCombobox [(ngModel)]="filters.filterType" name="filterType"
                                         class="form-control" type="text">
-                                        <option [value]=null>All types</option>
+                                        <option [value]="null">All types</option>
                                         <option *ngFor="let type of listItems" [value]=type.name>
                                             {{type.name}}
                                         </option>
@@ -52,7 +52,7 @@
                                     <label for="filters.filterStatus" class="control-label">{{l("Status")}}</label>
                                     <select class="form-control" [(ngModel)]="filters.filterStatus"
                                         type="text" name="filterStatus">
-                                        <option [value]=null>All status</option>
+                                        <option [value]="null">All status</option>
                                         <option>Active</option>
                                         <option>Inactive</option>
                                     </select>
@@ -82,6 +82,42 @@
                                 <div class="form-group">
                                     <label for="filters.filterDescription" class="control-label">{{l("Description")}}</label>
                                     <input [(ngModel)]="filters.filterDescription" name="filterDescription" autoFocus
+                                        class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="StartEndCreatedDate" class="control-label">{{l("Created Date")}}</label>
+                                    <label><input id="StartEndCreatedDate" type="checkbox"
+                                            [(checked)]="filters.isCreatedCheckedAll"
+                                            (click)="this.onClickIsCreatedDateCheckedAll()">All</label>
+                                    <date-range-picker *ngIf="!filters.isCreatedCheckedAll"
+                                        [(startDate)]="filters.startCreatedDate"
+                                        [(endDate)]="filters.endCreatedDate"></date-range-picker>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="filters.createdBy" class="control-label">{{l("Created By")}}</label>
+                                    <input [(ngModel)]="filters.createdBy" name="filterCreatedBy" autoFocus
+                                        class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="StartEndUpdatedDate" class="control-label">{{l("Updated Date")}}</label>
+                                    <label><input id="StartEndUpdatedDate" type="checkbox"
+                                            [(checked)]="filters.isUpdatedCheckedAll"
+                                            (click)="this.onClickIsUpdatedDateCheckedAll()">All</label>
+                                    <date-range-picker *ngIf="!filters.isUpdatedCheckedAll"
+                                        [(startDate)]="filters.startUpdatedDate"
+                                        [(endDate)]="filters.endUpdatedDate"></date-range-picker>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="filters.updatedBy" class="control-label">{{l("Updated By")}}</label>
+                                    <input [(ngModel)]="filters.updatedBy" name="filterUpdatedBy" autoFocus
                                         class="form-control" type="text">
                                 </div>
                             </div>

@@ -13335,6 +13335,7 @@ export interface ICategoryTypeInput {
 }
 
 export class CategoryTypeForViewDto implements ICategoryTypeForViewDto {
+    id!: string | undefined;
     name!: string | undefined;
     prefixWord!: string | undefined;
     description!: string | undefined;
@@ -13355,6 +13356,7 @@ export class CategoryTypeForViewDto implements ICategoryTypeForViewDto {
 
     init(data?: any) {
         if (data) {
+            this.id = data["id"];
             this.name = data["name"];
             this.prefixWord = data["prefixWord"];
             this.description = data["description"];
@@ -13375,6 +13377,7 @@ export class CategoryTypeForViewDto implements ICategoryTypeForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["name"] = this.name;
         data["prefixWord"] = this.prefixWord;
         data["description"] = this.description;
@@ -13388,6 +13391,7 @@ export class CategoryTypeForViewDto implements ICategoryTypeForViewDto {
 }
 
 export interface ICategoryTypeForViewDto {
+    id: string | undefined;
     name: string | undefined;
     prefixWord: string | undefined;
     description: string | undefined;

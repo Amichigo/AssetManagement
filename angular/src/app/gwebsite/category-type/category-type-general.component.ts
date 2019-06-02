@@ -7,6 +7,7 @@ import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
 import { CreateOrEditTypeModalComponent } from './create-or-edit-category-type-general-modal.component';
+import { ViewCategoryTypeModalComponent } from './view-category-type-general-modal.component';
 import { PrimengTableHelper } from 'shared/helpers/PrimengTableHelper';
 import { FileDownloadService } from '@shared/utils/file-download.service';
 import { CategoryTypeServiceProxy } from '@shared/service-proxies/service-proxies';
@@ -23,6 +24,7 @@ export class CategoryTypeComponent extends AppComponentBase implements AfterView
      */
     @ViewChild('textsTable') textsTable: ElementRef;
     @ViewChild('createOrEditTypeModal') createOrEditTypeModal: CreateOrEditTypeModalComponent;
+    @ViewChild('viewCategoryTypeModal') viewCategoryTypeModal: ViewCategoryTypeModalComponent;
     @ViewChild('typeTable') typeTable: Table;
     @ViewChild('paginatorType') paginatorType: Paginator;
 
@@ -63,7 +65,7 @@ export class CategoryTypeComponent extends AppComponentBase implements AfterView
     ngOnInit(): void {
         this.filters.Name = '',
         this.filters.Prefix = '',
-        this.filters.Status = 'All status',
+        this.filters.Status = null,
         this.filters.Description = '',
         this.filters.isCreatedCheckedAll = true;
         this.filters.startCreatedDate = moment().startOf('day'),
@@ -127,7 +129,7 @@ export class CategoryTypeComponent extends AppComponentBase implements AfterView
         this._activatedRoute.params.subscribe((params: Params) => {
             this.filters.Name = params['Name'] || '';
             this.filters.Prefix = params['Prefix'] || '';
-            this.filters.Status = params['Status'] || 'All status';
+            this.filters.Status = params['Status'] || null;
             this.filters.Description = params['Description'] || '';
             this.filters.createdBy = params['createdBy'] || '';
             this.filters.updatedBy = params['updatedBy'] || '';
@@ -158,7 +160,7 @@ export class CategoryTypeComponent extends AppComponentBase implements AfterView
     typeRefresh(event?: LazyLoadEvent): void {
         this.filters.Name = '',
         this.filters.Prefix = '',
-        this.filters.Status = 'All status',
+        this.filters.Status = null,
         this.filters.Description = '',
         this.filters.createdBy = '',
         this.filters.updatedBy = '',
@@ -206,6 +208,10 @@ export class CategoryTypeComponent extends AppComponentBase implements AfterView
         this.createOrEditTypeModal.show();
     }
 
+    viewType(id: number): void {
+        this.viewCategoryTypeModal.show(id);
+    }
+
     editType(id: number): void {
         this.createOrEditTypeModal.show(id);
     }
@@ -237,5 +243,26 @@ export class CategoryTypeComponent extends AppComponentBase implements AfterView
             .subscribe(result => {
                 self._fileDownloadService.downloadTempFile(result);
             });
+    }
+
+    clearFilters(): void {
+        this.filters.Name = '',
+        this.filters.Status = null,
+        this.filters.Prefix = '',
+        this.filters.Description = '',
+        this.filters.isCreatedCheckedAll = true;
+        this.filters.isUpdatedCheckedAll = true;
+        this.filters.createdBy = '';
+        this.filters.updatedBy = '';
+
+        this.refreshValueFromTypeModal();
+    }
+
+    onClickIsCreatedDateCheckedAll(): void {
+        this.filters.isCreatedCheckedAll = !this.filters.isCreatedCheckedAll;
+    }
+
+    onClickIsUpdatedDateCheckedAll(): void {
+        this.filters.isUpdatedCheckedAll = !this.filters.isUpdatedCheckedAll;
     }
 }

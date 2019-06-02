@@ -4,14 +4,27 @@
         <div class="d-flex align-items-center">
             <div class="mr-auto col-xs-6">
                 <h3 class="m-subheader__title m-subheader__title--separator">
-                    <span>{{l("General Categories")}}</span>
+                    <span>{{l("Categories Type")}}</span>
                 </h3>
                 <span class="m-section__sub">
-                    {{l("Manage general categoriy types")}}
+                    {{l("Manage general category types")}}
                 </span>
             </div>
-            <div class="col-xs-6 text-right">
-
+            <div class="row margin-bottom-10">
+                <div class="col-sm-12 text-right">
+                    <button (click)="createType()" *ngIf="isGranted('Pages.CategoryTypes.General.Create')"
+                        class="btn btn-primary"><i class="fa fa-plus"></i>
+                        {{l("Create")}}
+                    </button>
+                    <button type="button" class="btn btn-success" (click)="exportToExcel()"><i
+                            class="fa fa-file-excel-o"></i>
+                        {{l("ExportToExcel")}}
+                    </button>
+                    <button (click)="applyTypeFilters($event)" name="RefreshButton" class="btn btn-basic"><i
+                            class="fa fa-refresh"></i>
+                        {{l('Refresh')}}
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -20,49 +33,113 @@
         <div class="m-portlet m-portlet--mobile">
             <div class="m-portlet__body">
                 <form autocomplete="off">
-                    <div class="m-form m-form--label-align-right" id="TypesFilterForm">
-                        <div class="row align-items-center m--margin-bottom-10">
-                            <div class="col-sm-12">
-                                <button (click)="createType()"
-                                    *ngIf="isGranted('Pages.CategoryTypes.General.Create')"
-                                    class="btn btn-primary"><i class="fa fa-plus"></i>
-                                    {{l("Create")}}
-                                </button>
-                                <button class="btn btn-success btn-md" data-toggle="collapse"
-                                    href="#categoryCollapseFilter">
-                                    <i class="fa fa-filter"></i>
-                                    Filter
-                                </button>
-                                <button type="button" class="btn btn-success"
-                                    (click)="exportToExcelCategoryTypes()"><i class="fa fa-file-excel-o"></i>
-                                    {{l("ExportToExcel")}}
-                                </button>
-                                <button (click)="typeRefresh()" name="RefreshButton" class="btn btn-basic">
-                                    <i class="fa fa-refresh"></i>
-                                    {{l('Refresh')}}
-                                </button>
-                                <div class="input-group" id="typeCollapseFilter">
-                                    <select class="form-control" title="All status"
-                                        [(ngModel)]="filters.Status" type="text"
-                                        name="Status">
-                                        <option>All status</option>
-                                        <option>Active</option>
-                                        <option>Inactive</option>
-                                    </select>
-                                    <input [(ngModel)]="filters.Name" name="Name"
-                                        autoFocus class="form-control" placeholder="{{l('Name...')}}"
-                                        type="text">
-                                    <input [(ngModel)]="filters.Prefix" name="Prefix"
-                                        autoFocus class="form-control" placeholder="{{l('Prefix...')}}"
-                                        type="text">
-                                    <span class="input-group-btn">
-                                        <button (click)="applyTypeFilters($event)" class="btn btn-basic"
-                                            type="submit"><i class="icon-refresh"></i>
-                                            {{l("Apply Filters")}}</button>
-                                    </span>
+                    <div class="m-form m-form--label-align-right">
+                        <form class="horizontal-form" #categoryFilterForm="ngForm"
+                            (ngSubmit)="getCategories()">
+                            <div class="row align-items-center m--margin-bottom-10">                    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="filters.Status"
+                                            class="control-label">{{l("Status")}}</label>
+                                        <select class="form-control"
+                                            [(ngModel)]="filters.Status" type="text"
+                                            name="Status">
+                                            <option [value]="null">All status</option>
+                                            <option>Active</option>
+                                            <option>Inactive</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="filters.Name" class="control-label">{{l("Name")}}</label>
+                                        <input [(ngModel)]="filters.Name" name="Name" autoFocus class="form-control"
+                                            type="text">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div *ngIf="advancedFiltersAreShown" class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="filters.Prefix"
+                                            class="control-label">{{l("Prefix")}}</label>
+                                        <input [(ngModel)]="filters.Prefix"
+                                            name="Prefix" autoFocus class="form-control"
+                                            type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="filters.Description"
+                                            class="control-label">{{l("Description")}}</label>
+                                        <input [(ngModel)]="filters.Description"
+                                            name="Description" autoFocus class="form-control"
+                                            type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="StartEndCreatedDate"
+                                            class="control-label">{{l("Created Date")}}</label>
+                                        <label><input id="StartEndCreatedDate" type="checkbox"
+                                                [(checked)]="filters.isCreatedCheckedAll"
+                                                (click)="this.onClickIsCreatedDateCheckedAll()">All</label>
+                                        <date-range-picker *ngIf="!filters.isCreatedCheckedAll"
+                                            [(startDate)]="filters.startCreatedDate"
+                                            [(endDate)]="filters.endCreatedDate">
+                                        </date-range-picker>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="filters.createdBy"
+                                            class="control-label">{{l("Created By")}}</label>
+                                        <input [(ngModel)]="filters.createdBy"
+                                            name="filterCreatedBy" autoFocus class="form-control"
+                                            type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="StartEndUpdatedDate"
+                                            class="control-label">{{l("Updated Date")}}</label>
+                                        <label><input id="StartEndUpdatedDate" type="checkbox"
+                                                [(checked)]="filters.isUpdatedCheckedAll"
+                                                (click)="this.onClickIsUpdatedDateCheckedAll()">All</label>
+                                        <date-range-picker *ngIf="!filters.isUpdatedCheckedAll"
+                                            [(startDate)]="filters.startUpdatedDate"
+                                            [(endDate)]="filters.endUpdatedDate">
+                                        </date-range-picker>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="filters.updatedBy"
+                                            class="control-label">{{l("Updated By")}}</label>
+                                        <input [(ngModel)]="filters.updatedBy"
+                                            name="filterUpdatedBy" autoFocus class="form-control"
+                                            type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m--margin-bottom-10">
+                                <div class="col-sm-6">
+                                    <span class="clickable-item text-muted"
+                                        *ngIf="!advancedFiltersAreShown"
+                                        (click)="advancedFiltersAreShown=!advancedFiltersAreShown"><i
+                                            class="fa fa-angle-down"></i>
+                                        {{l("ShowAdvancedFilters")}}</span>
+                                    <span class="clickable-item text-muted"
+                                        *ngIf="advancedFiltersAreShown"
+                                        (click)="advancedFiltersAreShown=!advancedFiltersAreShown"><i
+                                            class="fa fa-angle-up"></i>
+                                        {{l("HideAdvancedFilters")}}</span>
+                                    <span><button type="button" class="btn btn-link"
+                                            (click)="this.clearFilters()">Clear
+                                            Filters</button></span>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </form>
                         
@@ -90,7 +167,7 @@
                                     <th>
                                         {{l('Status')}}
                                     </th>
-                                    <th style="width: 100px">
+                                    <th>
                                         {{l('Action')}}
                                     </th>
                                 </tr>
@@ -117,11 +194,16 @@
                                     <td>
                                         <button
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                            title="{{l('View')}}" (click)="viewType(record.id)">
+                                            <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
+                                        </button>
+                                        <button
+                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                             title="{{l('Edit')}}" (click)="editType(record.id)">
                                             <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
                                         </button>
                                         <button
-                                            class="btn btn-danger m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                             title="{{l('Delete')}}" (click)="deleteType(record.id)">
                                             <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                         </button>
@@ -149,4 +231,5 @@
         </div>
     </div>
     <createOrEditTypeModal #createOrEditTypeModal (modalSave)="refreshValueFromTypeModal()"></createOrEditTypeModal>
+    <viewCategoryTypeModal #viewCategoryTypeModal></viewCategoryTypeModal>
 </div>

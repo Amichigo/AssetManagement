@@ -41,7 +41,10 @@ export class CreateOrEditCategoryModalComponent extends AppComponentBase {
 
     getTypes(): void {
         // get category type
-        this._apiService.get('api/CategoryType/GetCategoryTypesByFilter')
+        this._apiService.get('api/CategoryType/GetCategoryTypesByFilter', 
+        [{ fieldName: 'IsCreatedCheckedAll', value: true },
+        { fieldName: 'IsUpdatedCheckedAll', value: true },
+        { fieldName: 'Status', value: 'Active'}])
         .subscribe(result => {
             this.categoryTypes = result.items;
         });

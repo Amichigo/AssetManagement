@@ -13,7 +13,7 @@ import { GWebsiteRoutingModule } from './gwebsite-routing.module';
 
 import { MenuClientComponent, CreateOrEditMenuClientModalComponent,
 CategoryComponent, ViewCategoryModalComponent, CreateOrEditCategoryModalComponent,
-CategoryTypeComponent, CreateOrEditTypeModalComponent } from './index';
+CategoryTypeComponent, CreateOrEditTypeModalComponent, ViewCategoryTypeModalComponent } from './index';
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CreateOrEditDemoModelModalComponent } from './demo-model/create-or-edit-demo-model-modal.component';
 import { DemoModelServiceProxy } from '@shared/service-proxies/service-proxies';
@@ -46,7 +46,7 @@ import { CategoryServiceProxy, CategoryTypeServiceProxy } from '@shared/service-
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
         CategoryComponent, ViewCategoryModalComponent, CreateOrEditCategoryModalComponent,
-        CategoryTypeComponent, CreateOrEditTypeModalComponent
+        CategoryTypeComponent, ViewCategoryTypeModalComponent, CreateOrEditTypeModalComponent
     ],
     providers: [
         DemoModelServiceProxy,
