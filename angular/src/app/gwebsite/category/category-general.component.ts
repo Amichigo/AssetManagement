@@ -13,6 +13,7 @@ import { PrimengTableHelper } from 'shared/helpers/PrimengTableHelper';
 import { FileDownloadService } from '@shared/utils/file-download.service';
 import { CategoryServiceProxy } from '@shared/service-proxies/service-proxies';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
+import * as moment from 'moment';
 
 @Component({
     templateUrl: './category-general.component.html',
@@ -43,6 +44,14 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         filterSymbol: string,
         filterStatus: string,
         filterDescription: string,
+        isCreatedCheckedAll: boolean,
+        startCreatedDate: moment.Moment,
+        endCreatedDate: moment.Moment,
+        createdBy: string,
+        isUpdatedCheckedAll: boolean,
+        startUpdatedDate: moment.Moment,
+        endUpdatedDate: moment.Moment,
+        updatedBy: string
     } = <any>{};
 
     // Categorytype dropdown list
@@ -69,7 +78,14 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         this.filters.filterSymbol = '',
         this.filters.filterStatus = null,
         this.filters.filterDescription = '';
-
+        this.filters.isCreatedCheckedAll = true;
+        this.filters.startCreatedDate = moment().startOf('day'),
+        this.filters.endCreatedDate = moment().startOf('day'),
+        this.filters.createdBy = '';
+        this.filters.isUpdatedCheckedAll = true;
+        this.filters.startUpdatedDate = moment().startOf('day'),
+        this.filters.endUpdatedDate = moment().startOf('day'),
+        this.filters.updatedBy = '';
         this.getListTypes();
     }
 
@@ -115,6 +131,15 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
             this.filters.filterName,
             this.filters.filterSymbol,
             this.filters.filterStatus === null ? null : this.filters.filterStatus,
+            this.filters.filterDescription,
+            this.filters.isCreatedCheckedAll,
+            this.filters.startCreatedDate,
+            this.filters.endCreatedDate,
+            this.filters.createdBy,
+            this.filters.isUpdatedCheckedAll,
+            this.filters.startUpdatedDate,
+            this.filters.endUpdatedDate,
+            this.filters.updatedBy,
             this.primengTableHelperCategories.getSorting(this.categoryTable),
             this.primengTableHelperCategories.getMaxResultCount(this.paginatorCategory, event),
             this.primengTableHelperCategories.getSkipCount(this.paginatorCategory, event),
@@ -133,7 +158,8 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
             this.filters.filterName = params['filterName'] || '';
             this.filters.filterSymbol = params['filterSymbol'] || '';
             this.filters.filterStatus = params['filterStatus'] || null;
-
+            this.filters.createdBy = params['createdBy'] || '';
+            this.filters.updatedBy = params['updatedBy'] || '';
             //reload lại gridview
             this.reloadPage();
         });
@@ -150,7 +176,10 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
             filterId: this.filters.filterId,
             filterName: this.filters.filterName,
             filterSymbol: this.filters.filterSymbol,
-            filterStatus: this.filters.filterStatus
+            filterStatus: this.filters.filterStatus,
+            filterDescription: this.filters.filterDescription,
+            filterCreatedBy: this.filters.createdBy,
+            filterUpdatedBy: this.filters.updatedBy
         }]);
 
         // if (this.paginatorCategory.getPage() !== 0) {
@@ -239,6 +268,15 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
             self.filters.filterName,
             self.filters.filterSymbol,
             self.filters.filterStatus === null ? null : self.filters.filterStatus,
+            self.filters.filterDescription,
+            self.filters.isCreatedCheckedAll,
+            self.filters.startCreatedDate,
+            self.filters.endCreatedDate,
+            self.filters.createdBy,
+            self.filters.isUpdatedCheckedAll,
+            self.filters.startUpdatedDate,
+            self.filters.endUpdatedDate,
+            self.filters.updatedBy,
             undefined,
             1,
             0)
@@ -253,6 +291,10 @@ export class CategoryComponent extends AppComponentBase implements AfterViewInit
         this.filters.filterName = '',
         this.filters.filterSymbol = '',
         this.filters.filterStatus = null,
+        this.filters.filterDescription = '';
+        this.filters.isCreatedCheckedAll = true;
+        this.filters.isUpdatedCheckedAll = true;
+
         $(this.typeCombobox.nativeElement).selectpicker('refresh');
 
         this.refreshValueFromCategoryModal();

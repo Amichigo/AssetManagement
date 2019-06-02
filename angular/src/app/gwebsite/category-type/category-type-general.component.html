@@ -43,16 +43,16 @@
                                 </button>
                                 <div class="input-group" id="typeCollapseFilter">
                                     <select class="form-control" title="All status"
-                                        [(ngModel)]="filterTypes.filterTypeStatus" type="text"
-                                        name="filterTypeStatus">
+                                        [(ngModel)]="filters.Status" type="text"
+                                        name="Status">
                                         <option>All status</option>
                                         <option>Active</option>
                                         <option>Inactive</option>
                                     </select>
-                                    <input [(ngModel)]="filterTypes.filterTypeName" name="filterTypeName"
+                                    <input [(ngModel)]="filters.Name" name="Name"
                                         autoFocus class="form-control" placeholder="{{l('Name...')}}"
                                         type="text">
-                                    <input [(ngModel)]="filterTypes.filterTypePrefix" name="filterTypePrefix"
+                                    <input [(ngModel)]="filters.Prefix" name="Prefix"
                                         autoFocus class="form-control" placeholder="{{l('Prefix...')}}"
                                         type="text">
                                     <span class="input-group-btn">

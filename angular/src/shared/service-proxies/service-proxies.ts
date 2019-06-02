@@ -1201,12 +1201,21 @@ export class CategoryServiceProxy {
      * @name (optional) 
      * @symbol (optional) 
      * @status (optional) 
+     * @description (optional) 
+     * @isCreatedCheckedAll (optional) 
+     * @startCreatedDate (optional) 
+     * @endCreatedDate (optional) 
+     * @createdBy (optional) 
+     * @isUpdatedCheckedAll (optional) 
+     * @startUpdatedDate (optional) 
+     * @endUpdatedDate (optional) 
+     * @updatedBy (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getCategoriesToExcel(categoryType: string | null | undefined, categoryId: string | null | undefined, name: string | null | undefined, symbol: string | null | undefined, status: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<FileDto> {
+    getCategoriesToExcel(categoryType: string | null | undefined, categoryId: string | null | undefined, name: string | null | undefined, symbol: string | null | undefined, status: string | null | undefined, description: string | null | undefined, isCreatedCheckedAll: boolean | null | undefined, startCreatedDate: moment.Moment | null | undefined, endCreatedDate: moment.Moment | null | undefined, createdBy: string | null | undefined, isUpdatedCheckedAll: boolean | null | undefined, startUpdatedDate: moment.Moment | null | undefined, endUpdatedDate: moment.Moment | null | undefined, updatedBy: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<FileDto> {
         let url_ = this.baseUrl + "/api/Category/GetCategoriesToExcel?";
         if (categoryType !== undefined)
             url_ += "CategoryType=" + encodeURIComponent("" + categoryType) + "&"; 
@@ -1218,6 +1227,24 @@ export class CategoryServiceProxy {
             url_ += "Symbol=" + encodeURIComponent("" + symbol) + "&"; 
         if (status !== undefined)
             url_ += "Status=" + encodeURIComponent("" + status) + "&"; 
+        if (description !== undefined)
+            url_ += "Description=" + encodeURIComponent("" + description) + "&"; 
+        if (isCreatedCheckedAll !== undefined)
+            url_ += "IsCreatedCheckedAll=" + encodeURIComponent("" + isCreatedCheckedAll) + "&"; 
+        if (startCreatedDate !== undefined)
+            url_ += "StartCreatedDate=" + encodeURIComponent(startCreatedDate ? "" + startCreatedDate.toJSON() : "") + "&"; 
+        if (endCreatedDate !== undefined)
+            url_ += "EndCreatedDate=" + encodeURIComponent(endCreatedDate ? "" + endCreatedDate.toJSON() : "") + "&"; 
+        if (createdBy !== undefined)
+            url_ += "CreatedBy=" + encodeURIComponent("" + createdBy) + "&"; 
+        if (isUpdatedCheckedAll !== undefined)
+            url_ += "IsUpdatedCheckedAll=" + encodeURIComponent("" + isUpdatedCheckedAll) + "&"; 
+        if (startUpdatedDate !== undefined)
+            url_ += "StartUpdatedDate=" + encodeURIComponent(startUpdatedDate ? "" + startUpdatedDate.toJSON() : "") + "&"; 
+        if (endUpdatedDate !== undefined)
+            url_ += "EndUpdatedDate=" + encodeURIComponent(endUpdatedDate ? "" + endUpdatedDate.toJSON() : "") + "&"; 
+        if (updatedBy !== undefined)
+            url_ += "UpdatedBy=" + encodeURIComponent("" + updatedBy) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -1277,12 +1304,21 @@ export class CategoryServiceProxy {
      * @name (optional) 
      * @symbol (optional) 
      * @status (optional) 
+     * @description (optional) 
+     * @isCreatedCheckedAll (optional) 
+     * @startCreatedDate (optional) 
+     * @endCreatedDate (optional) 
+     * @createdBy (optional) 
+     * @isUpdatedCheckedAll (optional) 
+     * @startUpdatedDate (optional) 
+     * @endUpdatedDate (optional) 
+     * @updatedBy (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getCategoriesByFilter(categoryType: string | null | undefined, categoryId: string | null | undefined, name: string | null | undefined, symbol: string | null | undefined, status: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfCategoryDto> {
+    getCategoriesByFilter(categoryType: string | null | undefined, categoryId: string | null | undefined, name: string | null | undefined, symbol: string | null | undefined, status: string | null | undefined, description: string | null | undefined, isCreatedCheckedAll: boolean | null | undefined, startCreatedDate: moment.Moment | null | undefined, endCreatedDate: moment.Moment | null | undefined, createdBy: string | null | undefined, isUpdatedCheckedAll: boolean | null | undefined, startUpdatedDate: moment.Moment | null | undefined, endUpdatedDate: moment.Moment | null | undefined, updatedBy: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfCategoryDto> {
         let url_ = this.baseUrl + "/api/Category/GetCategoriesByFilter?";
         if (categoryType !== undefined)
             url_ += "CategoryType=" + encodeURIComponent("" + categoryType) + "&"; 
@@ -1294,6 +1330,24 @@ export class CategoryServiceProxy {
             url_ += "Symbol=" + encodeURIComponent("" + symbol) + "&"; 
         if (status !== undefined)
             url_ += "Status=" + encodeURIComponent("" + status) + "&"; 
+        if (description !== undefined)
+            url_ += "Description=" + encodeURIComponent("" + description) + "&"; 
+        if (isCreatedCheckedAll !== undefined)
+            url_ += "IsCreatedCheckedAll=" + encodeURIComponent("" + isCreatedCheckedAll) + "&"; 
+        if (startCreatedDate !== undefined)
+            url_ += "StartCreatedDate=" + encodeURIComponent(startCreatedDate ? "" + startCreatedDate.toJSON() : "") + "&"; 
+        if (endCreatedDate !== undefined)
+            url_ += "EndCreatedDate=" + encodeURIComponent(endCreatedDate ? "" + endCreatedDate.toJSON() : "") + "&"; 
+        if (createdBy !== undefined)
+            url_ += "CreatedBy=" + encodeURIComponent("" + createdBy) + "&"; 
+        if (isUpdatedCheckedAll !== undefined)
+            url_ += "IsUpdatedCheckedAll=" + encodeURIComponent("" + isUpdatedCheckedAll) + "&"; 
+        if (startUpdatedDate !== undefined)
+            url_ += "StartUpdatedDate=" + encodeURIComponent(startUpdatedDate ? "" + startUpdatedDate.toJSON() : "") + "&"; 
+        if (endUpdatedDate !== undefined)
+            url_ += "EndUpdatedDate=" + encodeURIComponent(endUpdatedDate ? "" + endUpdatedDate.toJSON() : "") + "&"; 
+        if (updatedBy !== undefined)
+            url_ += "UpdatedBy=" + encodeURIComponent("" + updatedBy) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -1628,12 +1682,118 @@ export class CategoryTypeServiceProxy {
      * @name (optional) 
      * @prefixWord (optional) 
      * @status (optional) 
+     * @description (optional) 
+     * @isCreatedCheckedAll (optional) 
+     * @startCreatedDate (optional) 
+     * @endCreatedDate (optional) 
+     * @createdBy (optional) 
+     * @isUpdatedCheckedAll (optional) 
+     * @startUpdatedDate (optional) 
+     * @endUpdatedDate (optional) 
+     * @updatedBy (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getCategoryTypesByFilter(name: string | null | undefined, prefixWord: string | null | undefined, status: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfCategoryTypeDto> {
+    getCategoryTypesToExcel(name: string | null | undefined, prefixWord: string | null | undefined, status: string | null | undefined, description: string | null | undefined, isCreatedCheckedAll: boolean | null | undefined, startCreatedDate: moment.Moment | null | undefined, endCreatedDate: moment.Moment | null | undefined, createdBy: string | null | undefined, isUpdatedCheckedAll: boolean | null | undefined, startUpdatedDate: moment.Moment | null | undefined, endUpdatedDate: moment.Moment | null | undefined, updatedBy: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<FileDto> {
+        let url_ = this.baseUrl + "/api/CategoryType/GetCategoryTypesToExcel?";
+        if (name !== undefined)
+            url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+        if (prefixWord !== undefined)
+            url_ += "PrefixWord=" + encodeURIComponent("" + prefixWord) + "&"; 
+        if (status !== undefined)
+            url_ += "Status=" + encodeURIComponent("" + status) + "&"; 
+        if (description !== undefined)
+            url_ += "Description=" + encodeURIComponent("" + description) + "&"; 
+        if (isCreatedCheckedAll !== undefined)
+            url_ += "IsCreatedCheckedAll=" + encodeURIComponent("" + isCreatedCheckedAll) + "&"; 
+        if (startCreatedDate !== undefined)
+            url_ += "StartCreatedDate=" + encodeURIComponent(startCreatedDate ? "" + startCreatedDate.toJSON() : "") + "&"; 
+        if (endCreatedDate !== undefined)
+            url_ += "EndCreatedDate=" + encodeURIComponent(endCreatedDate ? "" + endCreatedDate.toJSON() : "") + "&"; 
+        if (createdBy !== undefined)
+            url_ += "CreatedBy=" + encodeURIComponent("" + createdBy) + "&"; 
+        if (isUpdatedCheckedAll !== undefined)
+            url_ += "IsUpdatedCheckedAll=" + encodeURIComponent("" + isUpdatedCheckedAll) + "&"; 
+        if (startUpdatedDate !== undefined)
+            url_ += "StartUpdatedDate=" + encodeURIComponent(startUpdatedDate ? "" + startUpdatedDate.toJSON() : "") + "&"; 
+        if (endUpdatedDate !== undefined)
+            url_ += "EndUpdatedDate=" + encodeURIComponent(endUpdatedDate ? "" + endUpdatedDate.toJSON() : "") + "&"; 
+        if (updatedBy !== undefined)
+            url_ += "UpdatedBy=" + encodeURIComponent("" + updatedBy) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetCategoryTypesToExcel(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetCategoryTypesToExcel(<any>response_);
+                } catch (e) {
+                    return <Observable<FileDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<FileDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetCategoryTypesToExcel(response: HttpResponseBase): Observable<FileDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? FileDto.fromJS(resultData200) : new FileDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<FileDto>(<any>null);
+    }
+
+    /**
+     * @name (optional) 
+     * @prefixWord (optional) 
+     * @status (optional) 
+     * @description (optional) 
+     * @isCreatedCheckedAll (optional) 
+     * @startCreatedDate (optional) 
+     * @endCreatedDate (optional) 
+     * @createdBy (optional) 
+     * @isUpdatedCheckedAll (optional) 
+     * @startUpdatedDate (optional) 
+     * @endUpdatedDate (optional) 
+     * @updatedBy (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getCategoryTypesByFilter(name: string | null | undefined, prefixWord: string | null | undefined, status: string | null | undefined, description: string | null | undefined, isCreatedCheckedAll: boolean | null | undefined, startCreatedDate: moment.Moment | null | undefined, endCreatedDate: moment.Moment | null | undefined, createdBy: string | null | undefined, isUpdatedCheckedAll: boolean | null | undefined, startUpdatedDate: moment.Moment | null | undefined, endUpdatedDate: moment.Moment | null | undefined, updatedBy: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfCategoryTypeDto> {
         let url_ = this.baseUrl + "/api/CategoryType/GetCategoryTypesByFilter?";
         if (name !== undefined)
             url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
@@ -1641,6 +1801,24 @@ export class CategoryTypeServiceProxy {
             url_ += "PrefixWord=" + encodeURIComponent("" + prefixWord) + "&"; 
         if (status !== undefined)
             url_ += "Status=" + encodeURIComponent("" + status) + "&"; 
+        if (description !== undefined)
+            url_ += "Description=" + encodeURIComponent("" + description) + "&"; 
+        if (isCreatedCheckedAll !== undefined)
+            url_ += "IsCreatedCheckedAll=" + encodeURIComponent("" + isCreatedCheckedAll) + "&"; 
+        if (startCreatedDate !== undefined)
+            url_ += "StartCreatedDate=" + encodeURIComponent(startCreatedDate ? "" + startCreatedDate.toJSON() : "") + "&"; 
+        if (endCreatedDate !== undefined)
+            url_ += "EndCreatedDate=" + encodeURIComponent(endCreatedDate ? "" + endCreatedDate.toJSON() : "") + "&"; 
+        if (createdBy !== undefined)
+            url_ += "CreatedBy=" + encodeURIComponent("" + createdBy) + "&"; 
+        if (isUpdatedCheckedAll !== undefined)
+            url_ += "IsUpdatedCheckedAll=" + encodeURIComponent("" + isUpdatedCheckedAll) + "&"; 
+        if (startUpdatedDate !== undefined)
+            url_ += "StartUpdatedDate=" + encodeURIComponent(startUpdatedDate ? "" + startUpdatedDate.toJSON() : "") + "&"; 
+        if (endUpdatedDate !== undefined)
+            url_ += "EndUpdatedDate=" + encodeURIComponent(endUpdatedDate ? "" + endUpdatedDate.toJSON() : "") + "&"; 
+        if (updatedBy !== undefined)
+            url_ += "UpdatedBy=" + encodeURIComponent("" + updatedBy) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -13041,6 +13219,10 @@ export class CategoryTypeDto implements ICategoryTypeDto {
     prefixWord!: string | undefined;
     description!: string | undefined;
     status!: boolean | undefined;
+    createdDate!: moment.Moment | undefined;
+    createdBy!: string | undefined;
+    updatedDate!: moment.Moment | undefined;
+    updatedBy!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: ICategoryTypeDto) {
@@ -13058,6 +13240,10 @@ export class CategoryTypeDto implements ICategoryTypeDto {
             this.prefixWord = data["prefixWord"];
             this.description = data["description"];
             this.status = data["status"];
+            this.createdDate = data["createdDate"] ? moment(data["createdDate"].toString()) : <any>undefined;
+            this.createdBy = data["createdBy"];
+            this.updatedDate = data["updatedDate"] ? moment(data["updatedDate"].toString()) : <any>undefined;
+            this.updatedBy = data["updatedBy"];
             this.id = data["id"];
         }
     }
@@ -13075,6 +13261,10 @@ export class CategoryTypeDto implements ICategoryTypeDto {
         data["prefixWord"] = this.prefixWord;
         data["description"] = this.description;
         data["status"] = this.status;
+        data["createdDate"] = this.createdDate ? this.createdDate.toISOString() : <any>undefined;
+        data["createdBy"] = this.createdBy;
+        data["updatedDate"] = this.updatedDate ? this.updatedDate.toISOString() : <any>undefined;
+        data["updatedBy"] = this.updatedBy;
         data["id"] = this.id;
         return data; 
     }
@@ -13085,6 +13275,10 @@ export interface ICategoryTypeDto {
     prefixWord: string | undefined;
     description: string | undefined;
     status: boolean | undefined;
+    createdDate: moment.Moment | undefined;
+    createdBy: string | undefined;
+    updatedDate: moment.Moment | undefined;
+    updatedBy: string | undefined;
     id: number | undefined;
 }
 
@@ -13144,6 +13338,11 @@ export class CategoryTypeForViewDto implements ICategoryTypeForViewDto {
     name!: string | undefined;
     prefixWord!: string | undefined;
     description!: string | undefined;
+    createdDate!: moment.Moment | undefined;
+    createdBy!: string | undefined;
+    updatedDate!: moment.Moment | undefined;
+    updatedBy!: string | undefined;
+    isDelete!: boolean | undefined;
 
     constructor(data?: ICategoryTypeForViewDto) {
         if (data) {
@@ -13159,6 +13358,11 @@ export class CategoryTypeForViewDto implements ICategoryTypeForViewDto {
             this.name = data["name"];
             this.prefixWord = data["prefixWord"];
             this.description = data["description"];
+            this.createdDate = data["createdDate"] ? moment(data["createdDate"].toString()) : <any>undefined;
+            this.createdBy = data["createdBy"];
+            this.updatedDate = data["updatedDate"] ? moment(data["updatedDate"].toString()) : <any>undefined;
+            this.updatedBy = data["updatedBy"];
+            this.isDelete = data["isDelete"];
         }
     }
 
@@ -13174,6 +13378,11 @@ export class CategoryTypeForViewDto implements ICategoryTypeForViewDto {
         data["name"] = this.name;
         data["prefixWord"] = this.prefixWord;
         data["description"] = this.description;
+        data["createdDate"] = this.createdDate ? this.createdDate.toISOString() : <any>undefined;
+        data["createdBy"] = this.createdBy;
+        data["updatedDate"] = this.updatedDate ? this.updatedDate.toISOString() : <any>undefined;
+        data["updatedBy"] = this.updatedBy;
+        data["isDelete"] = this.isDelete;
         return data; 
     }
 }
@@ -13182,6 +13391,11 @@ export interface ICategoryTypeForViewDto {
     name: string | undefined;
     prefixWord: string | undefined;
     description: string | undefined;
+    createdDate: moment.Moment | undefined;
+    createdBy: string | undefined;
+    updatedDate: moment.Moment | undefined;
+    updatedBy: string | undefined;
+    isDelete: boolean | undefined;
 }
 
 export class GetUserChatFriendsWithSettingsOutput implements IGetUserChatFriendsWithSettingsOutput {
