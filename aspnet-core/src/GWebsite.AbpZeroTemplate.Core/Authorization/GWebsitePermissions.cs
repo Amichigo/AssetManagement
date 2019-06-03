@@ -48,5 +48,41 @@
         public const string Pages_Categories_General_Create = "Pages.Categories.General.Create";
         public const string Pages_Categories_General_Edit = "Pages.Categories.General.Edit";
         public const string Pages_Categories_General_Delete = "Pages.Categories.General.Delete";
+        ///project
+        public const string Pages_Administration_Project = "Pages.Administration.Project";
+        public const string Pages_Administration_Project_Create = "Pages.Administration.Project.Create";
+        public const string Pages_Administration_Project_Edit = "Pages.Administration.Project.Edit";
+        public const string Pages_Administration_Project_Delete = "Pages.Administration.Project.Delete";
+
+        ///bid
+        public const string Pages_Administration_Bid = "Pages.Administration.Bid";
+        public const string Pages_Administration_Bid_Create = "Pages.Administration.Bid.Create";
+        public const string Pages_Administration_Bid_Edit = "Pages.Administration.Bid.Edit";
+        public const string Pages_Administration_Bid_Delete = "Pages.Administration.Bid.Delete";
+
+        ///supplier
+        public const string Pages_Administration_Supplier = "Pages.Administration.Supplier";
+        public const string Pages_Administration_Supplier_Create = "Pages.Administration.Supplier.Create";
+        public const string Pages_Administration_Supplier_Edit = "Pages.Administration.Supplier.Edit";
+        public const string Pages_Administration_Supplier_Delete = "Pages.Administration.Supplier.Delete";
+
+        ///contract
+        public const string Pages_Administration_Contract = "Pages.Administration.Contract";
+        public const string Pages_Administration_Contract_Create = "Pages.Administration.Contract.Create";
+        public const string Pages_Administration_Contract_Edit = "Pages.Administration.Contract.Edit";
+        public const string Pages_Administration_Contract_Delete = "Pages.Administration.Contract.Delete";
+
+        ///goodsInvoice
+        public const string Pages_Administration_GoodsInvoice = "Pages.Administration.GoodsInvoice";
+        public const string Pages_Administration_GoodsInvoice_Create = "Pages.Administration.GoodsInvoice.Create";
+        public const string Pages_Administration_GoodsInvoice_Edit = "Pages.Administration.GoodsInvoice.Edit";
+        public const string Pages_Administration_GoodsInvoice_Delete = "Pages.Administration.GoodsInvoice.Delete";
+
+        ///goods
+        public const string Pages_Administration_Goods = "Pages.Administration.Goods";
+        public const string Pages_Administration_Goods_Create = "Pages.Administration.Goods.Create";
+        public const string Pages_Administration_Goods_Edit = "Pages.Administration.Goods.Edit";
+        public const string Pages_Administration_Goods_Delete = "Pages.Administration.Goods.Delete";
+
     }
 }

@@ -44,6 +44,12 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<OwTrafficSourceEcommerce> OwTrafficSourceEcommerce { get; set; }
         public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethod { get; set; }
+        public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<Bid> Bids { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<Contract> Contracts { get; set; }
+        public virtual DbSet<GoodsInvoice> GoodsInvoices { get; set; }
+        public virtual DbSet<Goods> Goods { get; set; }
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>

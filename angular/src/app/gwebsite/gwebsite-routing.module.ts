@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.component';
-import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
 import { CategoryComponent } from './category/category-general.component';
 import { CategoryTypeComponent } from './category-type/category-type-general.component';
+import { DuAnComponent } from './duan/duan.component';
+import { HoSoThauComponent } from './hosothau/hosothau.component';
+import { NhaCungCapComponent } from './nhacungcap/nhacungcap.component';
+import { HopDongThauComponent } from './hopdongthau/hopdongthau.component';
+import { PhieuGoiHangComponent } from './phieugoihang/phieugoihang.component';
+import { HangHoaComponent } from './hanghoa/hanghoa.component';
 
 @NgModule({
     imports: [
@@ -22,8 +27,8 @@ import { CategoryTypeComponent } from './category-type/category-type-general.com
                 path: '',
                 children: [
                     {
-                        path: 'demo-model', component: DemoModelComponent,
-                        data: { permission: 'Pages.Administration.DemoModel' }
+                        path: 'customer', component: CustomerComponent,
+                        data: { permission: 'Pages.Administration.Customer' }
                     },
                 ]
             },
@@ -31,8 +36,53 @@ import { CategoryTypeComponent } from './category-type/category-type-general.com
                 path: '',
                 children: [
                     {
-                        path: 'customer', component: CustomerComponent,
-                        data: { permission: 'Pages.Administration.Customer' }
+                        path: 'duan', component: DuAnComponent,
+                        data: { permission: 'Pages.Administration.Project' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'hosothau', component: HoSoThauComponent,
+                        data: { permission: 'Pages.Administration.Bid' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'nhacungcap', component: NhaCungCapComponent,
+                        data: { permission: 'Pages.Administration.Supplier' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'hopdongthau', component: HopDongThauComponent,
+                        data: { permission: 'Pages.Administration.Contract' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'phieugoihang', component: PhieuGoiHangComponent,
+                        data: { permission: 'Pages.Administration.GoodsInvoice' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'hanghoa', component: HangHoaComponent,
+                        data: { permission: 'Pages.Administration.Goods' }
                     },
                 ]
             },
