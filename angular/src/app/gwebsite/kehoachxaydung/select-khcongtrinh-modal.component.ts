@@ -26,11 +26,11 @@ export class SelectKHCongTrinhModalComponent extends AppComponentBase {
 
     }
 
-
+    showCongTrinh:boolean=false;
     congtrinhName: string;
     macongtrinh:string;
     makehoach:string;
-    public selectedMaCongTrinh:string;
+    public selectedMaCongTrinh:number;
    
     //@Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
      @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
@@ -42,6 +42,7 @@ export class SelectKHCongTrinhModalComponent extends AppComponentBase {
         //     this.modal.show();
         // })
         //get params từ url để thực hiện filter
+   
         this._activatedRoute.params.subscribe((params: Params) => {
             this.congtrinhName = params['TenCongTrinh'] || '';
             this.macongtrinh = params['MaCongTrinh'] || '';
@@ -112,7 +113,7 @@ export class SelectKHCongTrinhModalComponent extends AppComponentBase {
 
   
     close() : void{
-       
+        this.showCongTrinh=false;
         this.modalSave.emit(null);
     }
     truncateString(text): string {

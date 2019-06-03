@@ -9,6 +9,7 @@ import { Paginator } from 'primeng/components/paginator/paginator';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BatDongSanComponent } from '../batdongsan/batdongsan.component';
 import { SelectKHCongTrinhModalComponent } from './select-khcongtrinh-modal.component';
+import { NumericDictionary } from 'lodash';
 
 @Component({
     selector: 'selectKeHoachXayDungModal',
@@ -35,8 +36,8 @@ export class SelectKeHoachXayDungModalComponent extends AppComponentBase {
     makehoachxaydung:string;
     nhomkehoachxaydung:string;
     loaikehoachxaydung:string;
-    public selectedMaTS:number;
-   
+    public selectedIDCongTrinh:number;
+    selectedMaKH:string;
     //@Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
      @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
@@ -47,6 +48,8 @@ export class SelectKeHoachXayDungModalComponent extends AppComponentBase {
         //     this.modal.show();
         // })
         //get params từ url để thực hiện filter
+        this.selectedMaKH='';
+        this.selectedIDCongTrinh=0;
         this._activatedRoute.params.subscribe((params: Params) => {
             this.kehoachxaydungName = params['TenKeHoachXayDung'] || '';
             this.makehoachxaydung = params['MaKeHoachXayDung'] || '';
@@ -54,7 +57,7 @@ export class SelectKeHoachXayDungModalComponent extends AppComponentBase {
             this.loaikehoachxaydung= params['MaLoaiKeHoachXayDung'] || '';
             this.reloadList(this.kehoachxaydungName,this.makehoachxaydung,this.nhomkehoachxaydung,this.loaikehoachxaydung, null);
         });
-            this.selectedMaTS=-1;
+           
             this.modal.show();
 
     }
@@ -67,10 +70,14 @@ export class SelectKeHoachXayDungModalComponent extends AppComponentBase {
         this.paginator.changePage(this.paginator.getPage());
     }
 
-    selectedKeHoachXayDung(mats):void{
-        this.selectedMaTS=mats;
-        this.close();
+ 
+
+    SetSelectedCongTrinhID():void{
+        this.selectedIDCongTrinh=this.selectKHCongtrinhModal.selectedMaCongTrinh;
+        // console.log("ID:"+ this.selectedIDCongTrinh);
+        this.close()
     }
+
 
     /**
      * Hàm get danh sách KeHoachXayDung
@@ -103,6 +110,8 @@ export class SelectKeHoachXayDungModalComponent extends AppComponentBase {
             this.primengTableHelper.hideLoadingIndicator();
         });
     }
+
+
     
     applyFilters(): void {
         //truyền params lên url thông qua router
@@ -114,7 +123,9 @@ export class SelectKeHoachXayDungModalComponent extends AppComponentBase {
     }
 
     SetFilterSelectKHCongTrinh(kehoacName:string):void{
+        this.selectKHCongtrinhModal.showCongTrinh=true;
         this.selectKHCongtrinhModal.show(kehoacName);
+        this.selectedMaKH=kehoacName;
     }
   
     close() : void{

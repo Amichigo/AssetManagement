@@ -51,6 +51,7 @@ import { ViewCongTrinhModalComponent } from './congtrinhN13/view-congtrinh-modal
 import { SelectKeHoachXayDungModalComponent } from './kehoachxaydung/select-kehoachxaydung-modal.component';
 import { SelectCongTrinhModalComponent } from './congtrinhN13/select-congtrinh-modal.component';
 import { SelectKHCongTrinhModalComponent } from './kehoachxaydung/select-khcongtrinh-modal.component';
+import { CreateCongTrinhModalComponent } from './congtrinhN13/create-congtrinh-modal.component';
 
 
 
@@ -86,6 +87,7 @@ import { SelectKHCongTrinhModalComponent } from './kehoachxaydung/select-khcongt
         SuaChuaBatDongSanComponent, CreateOrEditSuaChuaBatDongSanModalComponent, ViewSuaChuaBatDongSanModalComponent,EditSuaChuaBatDongSanModalComponent,DuyetBatDongSanModalComponent,
         KeHoachXayDungComponent, CreateOrEditKeHoachXayDungModalComponent,ViewKeHoachXayDungModalComponent,SelectKHCongTrinhModalComponent,
         CongTrinhComponent, CreateOrEditCongTrinhModalComponent,ViewCongTrinhModalComponent,SelectKeHoachXayDungModalComponent,
+        CreateCongTrinhModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
