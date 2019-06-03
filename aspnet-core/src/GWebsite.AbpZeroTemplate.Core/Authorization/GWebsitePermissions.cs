@@ -29,11 +29,6 @@
         public const string Pages_Administration_VideoInstructionCategory_Edit = "Pages.Administration.VideoInstructionCategory.Edit";
         public const string Pages_Administration_VideoInstructionCategory_Delete = "Pages.Administration.VideoInstructionCategory.Delete";
 
-        public const string Pages_Administration_DemoModel = "Pages.Administration.DemoModel";
-        public const string Pages_Administration_DemoModel_Create = "Pages.Administration.DemoModel.Create";
-        public const string Pages_Administration_DemoModel_Edit = "Pages.Administration.DemoModel.Edit";
-        public const string Pages_Administration_DemoModel_Delete = "Pages.Administration.DemoModel.Delete";
-
         public const string Pages_Administration_Customer = "Pages.Administration.Customer";
         public const string Pages_Administration_Customer_Create = "Pages.Administration.Customer.Create";
         public const string Pages_Administration_Customer_Edit = "Pages.Administration.Customer.Edit";
@@ -83,6 +78,7 @@
         public const string Pages_Administration_Goods_Create = "Pages.Administration.Goods.Create";
         public const string Pages_Administration_Goods_Edit = "Pages.Administration.Goods.Edit";
         public const string Pages_Administration_Goods_Delete = "Pages.Administration.Goods.Delete";
+
         public const string Pages_Administration_ShoppingPlan = "Pages.Administration.ShoppingPlan";
         public const string Pages_Administration_ShoppingPlan_Create = "Pages.Administration.ShoppingPlan.Create";
         public const string Pages_Administration_ShoppingPlan_Edit = "Pages.Administration.ShoppingPlan.Edit";

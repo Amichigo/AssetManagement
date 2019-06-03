@@ -13,7 +13,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.ShoppingPlansDetails
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_ShoppingPlanDetail)]
     public class ShoppingPlanDetailAppService : GWebsiteAppServiceBase, IShoppingPlanDetailAppService
     {
         private readonly IRepository<ShoppingPlanDetail> shoppingPlanRepository;
@@ -37,6 +37,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ShoppingPlansDetails
             }
         }
 
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_ShoppingPlanDetail_Delete)]
         public void DeleteShoppingPlanDetail(int id)
         {
             var shoppingPlanEntity = shoppingPlanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
@@ -88,7 +89,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ShoppingPlansDetails
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_ShoppingPlanDetail_Create)]
         private void Create(ShoppingPlanDetailInput shoppingPlanInput)
         {
             var shoppingPlanEntity = ObjectMapper.Map<ShoppingPlanDetail>(shoppingPlanInput);
@@ -97,7 +98,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ShoppingPlansDetails
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_ShoppingPlanDetail_Edit)]
         private void Update(ShoppingPlanDetailInput shoppingPlanInput)
         {
             var shoppingPlanEntity = shoppingPlanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == shoppingPlanInput.Id);

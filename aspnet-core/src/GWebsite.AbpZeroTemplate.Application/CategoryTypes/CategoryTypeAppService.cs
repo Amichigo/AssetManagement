@@ -43,6 +43,7 @@ namespace GWebsite.AbpZeroTemplate.Application.CategoryTypes
             Update(input);
         }
 
+        [AbpAuthorize(GWebsitePermissions.Pages_CategoryTypes_General_Delete)]
         public void DeleteCategoryType(int id)
         {
             var categoryEntity = typeRepository.GetAll().SingleOrDefault(x => x.Id == id);

@@ -46,6 +46,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Categories
             Update(input);
         }
 
+        [AbpAuthorize(GWebsitePermissions.Pages_Categories_General_Delete)]
         public void DeleteCategory(int id)
         {
             var categoryEntity = categoryRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);

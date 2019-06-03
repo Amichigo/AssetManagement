@@ -13,7 +13,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Customers
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_Customer)]
     public class CustomerAppService : GWebsiteAppServiceBase, ICustomerAppService
     {
         private readonly IRepository<Customer> customerRepository;
@@ -37,6 +37,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Customers
             }
         }
 
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Customer_Delete)]
         public void DeleteCustomer(int id)
         {
             var customerEntity = customerRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
@@ -99,7 +100,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Customers
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Customer_Create)]
         private void Create(CustomerInput customerInput)
         {
             var customerEntity = ObjectMapper.Map<Customer>(customerInput);
@@ -110,7 +111,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Customers
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Customer_Edit)]
         private void Update(CustomerInput customerInput)
         {
             var customerEntity = customerRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == customerInput.Id);
