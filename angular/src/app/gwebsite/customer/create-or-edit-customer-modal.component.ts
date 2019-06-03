@@ -9,7 +9,6 @@ import { CustomerServiceProxy, CustomerInput } from '@shared/service-proxies/ser
 })
 export class CreateOrEditCustomerModalComponent extends AppComponentBase {
 
-
     @ViewChild('createOrEditModal') modal: ModalDirective;
     @ViewChild('customerCombobox') customerCombobox: ElementRef;
     @ViewChild('iconCombobox') iconCombobox: ElementRef;
@@ -35,12 +34,9 @@ export class CreateOrEditCustomerModalComponent extends AppComponentBase {
 
     show(customerId?: number | null | undefined): void {
         this.saving = false;
-
-
         this._customerService.getCustomerForEdit(customerId).subscribe(result => {
             this.customer = result;
             this.modal.show();
-
         })
     }
 
@@ -58,4 +54,4 @@ export class CreateOrEditCustomerModalComponent extends AppComponentBase {
         this.modal.hide();
         this.modalSave.emit(null);
     }
-}
+}   

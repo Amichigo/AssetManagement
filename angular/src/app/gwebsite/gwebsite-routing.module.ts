@@ -24,6 +24,10 @@ import { CongTrinhComponent } from './congtrinhN13/congtrinh.component';
 import { HoSoThauN13Component } from './hosothauN13/hosothaun13.component';
 import { ComputerComponent } from './computer/computer.component';
 import { SoftwareComponent } from './software/software.component';
+import { FixedAssetComponent } from './fixed-asset/fixed-asset.component';
+import { AssetDashboardComponent } from './asset-dashboard/asset-dashboard.component';
+import { AssetGroupComponent } from "./asset-group/asset-group.component";
+import { AssetComponent } from "./asset/asset.component";
 
 @NgModule({
     imports: [
@@ -68,6 +72,24 @@ import { SoftwareComponent } from './software/software.component';
                 path: '',
                 children: [
                     {
+                        path: 'fixed-asset', component: FixedAssetComponent,
+                        data: { permission: 'Pages.Administration.FixedAsset' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'asset-dashboard', component: AssetDashboardComponent,
+                        data: { permission: 'Pages.Administration.AssetDashboard' }
+                    },
+                ]
+            },
+            {
+            path: '',
+                children: [
+                    {
                         path: 'phieugoihang', component: PhieuGoiHangComponent,
                         data: { permission: 'Pages.Administration.GoodsInvoice' }
                     },
@@ -79,6 +101,15 @@ import { SoftwareComponent } from './software/software.component';
                     {
                         path: 'hanghoa', component: HangHoaComponent,
                         data: { permission: 'Pages.Administration.Goods' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'asset-group', component: AssetGroupComponent,
+                        data: { permission: 'Pages.Administration.AssetGroup_05' }
                     },
                 ]
             },
@@ -241,7 +272,7 @@ import { SoftwareComponent } from './software/software.component';
                     {
                         path: 'hosothaun13', component: HoSoThauN13Component,
                         data: { permission: 'Pages.Administration.QuanLyCongTrinhDoDang.HoSoThau' }
-                    },
+                    }
                 ]
             },
             {
@@ -259,6 +290,15 @@ import { SoftwareComponent } from './software/software.component';
                     {
                         path: 'software', component: SoftwareComponent,
                         data: { permission: 'Pages.Administration.Software'}
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'asset', component: AssetComponent,
+                        data: { permission: 'Pages.Administration.Asset_05' }
                     }
                 ]
             }

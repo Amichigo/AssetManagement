@@ -40,6 +40,11 @@ using GWebsite.AbpZeroTemplate.Core.Models.KeHoachXayDung_N13;
 using GWebsite.AbpZeroTemplate.Application.Share.KeHoachXayDung_N13.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.HoSoThau_N13.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.DonViThau.DTO;
+using GWebsite.AbpZeroTemplate.Application.Share.FixedAssets.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.AssetGroups_05.Dto;
+using GWebsite.AbpZeroTemplate.Core.Models;
+using GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.AssetTypes_05.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {
@@ -232,6 +237,29 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<Software, SoftwareInput>();
             configuration.CreateMap<Software, SoftwareForViewDto>();
 
+            // Asset
+            configuration.CreateMap<FixedAsset, FixedAssetDto>();
+            configuration.CreateMap<FixedAssetInput, FixedAsset>();
+            configuration.CreateMap<FixedAsset, FixedAssetInput>();
+            configuration.CreateMap<FixedAsset, FixedAssetForViewDto>();//view
+
+           // AssetGroup
+            configuration.CreateMap<AssetGroup_05, AssetGroupDto_05>();//get filter assetGroup
+            configuration.CreateMap<AssetGroupDto_05, AssetGroup_05>();//create
+            configuration.CreateMap<AssetGroup_05, AssetGroupInput_05>();//get for edit
+            configuration.CreateMap<AssetGroup_05, AssetGroupOutput_05>();//get for edit
+            configuration.CreateMap<AssetGroup_05, AssetGroupForViewDto_05>();//view
+
+           // Asset_05
+            configuration.CreateMap<Asset_05, AssetDto_05>();
+            configuration.CreateMap<AssetDto_05, Asset_05>();
+            configuration.CreateMap<Asset_05, AssetDto_05>();
+            configuration.CreateMap<Asset_05, AssetForViewDto_05>();
+            configuration.CreateMap<Asset_05, AssetOutput_05>();//get for edit
+
+            //AssetType_05
+            configuration.CreateMap<AssetType_05, AssetTypeDto_05>();
+            configuration.CreateMap<AssetType_05, AssetForViewDto_05>();
         }
     }
 }

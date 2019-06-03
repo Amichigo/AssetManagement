@@ -1,9 +1,9 @@
 //== Class definition
 
-var Autosize = function () {
-    
+var Autosize = function() {
+
     //== Private functions
-    var demos = function () {
+    var demos = function() {
         // basic demo
         var demo1 = $('#m_autosize_1');
         var demo2 = $('#m_autosize_2');
@@ -17,11 +17,11 @@ var Autosize = function () {
     return {
         // public functions
         init: function() {
-            demos(); 
+            demos();
         }
     };
 }();
 
-jQuery(document).ready(function() {    
+jQuery(document).ready(function() {
     Autosize.init();
 });

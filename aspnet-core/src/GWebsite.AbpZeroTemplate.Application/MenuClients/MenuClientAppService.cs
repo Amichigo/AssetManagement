@@ -9,7 +9,6 @@ using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
@@ -28,21 +27,19 @@ namespace GWebsite.AbpZeroTemplate.Application.MenuClients
 
         public async Task<ListResultDto<MenuClientDto>> GetMenuClientsAsync()
         {
-            
             var items = await _menuRepository.GetAllListAsync();
 
             return new ListResultDto<MenuClientDto>(
                 items.Select(item => ObjectMapper.Map<MenuClientDto>(item)).ToList());
-            
         }
 
-        public async Task<PagedResultDto<MenuClientListDto>> GetMenuClientsAsync(GetMenuClientInput input)
+        public async Task<PagedResultDto<MenuClientListDto>> GetMenuClientsAsync(GetMenuClientInput input)//filter
         {
             var query = _menuRepository.GetAll()
-                .WhereIf(!input.Name.IsNullOrWhiteSpace(), m => m.Name.Contains(input.Name));
+                .WhereIf(!input.Name.IsNullOrWhiteSpace(), m => m.Name.Contains(input.Name));//dk filter by name
 
-            var totalCount = await query.CountAsync();
-            var items = await query.OrderBy(input.Sorting).PageBy(input).ToListAsync();
+            var totalCount = await query.CountAsync();// Tinh tong
+            var items = await query.OrderBy(input.Sorting).PageBy(input).ToListAsync();//sort 
 
             return new PagedResultDto<MenuClientListDto>(
                 totalCount,
@@ -54,15 +51,15 @@ namespace GWebsite.AbpZeroTemplate.Application.MenuClients
             MenuClient menuClient = null;
             if (input.Id.HasValue && input.Id.Value > 0)
             {
-                menuClient = await _menuRepository.GetAsync(input.Id.Value);
+                menuClient = await _menuRepository.GetAsync(input.Id.Value);//get by id
             }
             var output = new GetMenuClientOutput();
 
             output.MenuClient = menuClient != null
                 ? ObjectMapper.Map<MenuClientDto>(menuClient)
-                : new MenuClientDto();
+                : new MenuClientDto();//kiem tra neu ton tai thi map else tao moi
 
-            var parentMenuId = output.MenuClient.ParentId ?? 0;
+            var parentMenuId = output.MenuClient.ParentId ?? 0;//Do du lieu name vai combobox
             output.MenuClients = await _menuRepository.GetAll()
                 .Where(m => m.Status)
                 .Select(c => new ComboboxItemDto(c.Id.ToString(), c.Name) { IsSelected = parentMenuId == c.Id })
@@ -78,8 +75,9 @@ namespace GWebsite.AbpZeroTemplate.Application.MenuClients
             entity = await _menuRepository.InsertAsync(entity);
             return ObjectMapper.Map<MenuClientDto>(entity);
         }
+        
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+       [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
         public async Task<MenuClientDto> UpdateMenuClientAsync(UpdateMenuClientInput input)
         {
             var entity = await _menuRepository.GetAsync(input.Id);

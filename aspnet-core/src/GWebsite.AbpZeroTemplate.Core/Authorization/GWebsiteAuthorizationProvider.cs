@@ -206,6 +206,24 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             dvtN13.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Create, L("CreatingNewHoSoThau"));
             dvtN13.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Edit, L("EditingHoSoThau"));
             dvtN13.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Delete, L("DeletingHoSoThau"));
+            var fixedAsset = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_FixedAsset, L("FixedAsset"));
+            fixedAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_FixedAsset_Create, L("CreatingNewFixedAsset"));
+            fixedAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_FixedAsset_Edit, L("EditingFixedAsset"));
+            fixedAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_FixedAsset_Delete, L("DeletingFixedAsset"));
+
+            var assetDashboard = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetDashboard, L("AssetDashboard"));
+
+            var Asset_05 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_05, L("Asset_05"));
+            Asset_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_05_Create, L("CreatingNewAsset_05"));
+            Asset_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_05_Edit, L("EditingAsset_05"));
+            Asset_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_05_Delete, L("DeletingAsset_05"));
+
+            var AssetType_05 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetType_05, L("AssetType_05"));
+
+            var AssetGroup_05 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetGroup_05, L("AssetGroup_05"));
+            AssetGroup_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetGroup_05_Create, L("CreatingNewAssetGroup_05"));
+            AssetGroup_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetGroup_05_Edit, L("EditingAssetGroup_05"));
+            AssetGroup_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetGroup_05_Delete, L("DeletingAssetGroup_05"));
 
         }
         private static ILocalizableString L(string name)

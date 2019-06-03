@@ -29,7 +29,8 @@ import { CategoryServiceProxy, CategoryTypeServiceProxy,
     ShoppingPlanServiceProxy, DirectorShoppingPlanServiceProxy, ShoppingPlanDetailServiceProxy, ConstructionPlanServiceProxy,
     LoaiBatDongSanServiceProxy, NhomTaiSanServiceProxy, LoaiSoHuuServiceProxy, MucDichSuDungDatServiceProxy, BatDongSanServiceProxy,
     HienTrangPhapLyServiceProxy, TinhTrangSuDungDatServiceProxy, TaiSanServiceProxy, SuaChuaBatDongSanServiceProxy, KeHoachXayDungServiceProxy, CongTrinhServiceProxy, HoSoThauN13ServiceProxy,
-    ComputerServiceProxy, SoftwareServiceProxy,
+    ComputerServiceProxy, SoftwareServiceProxy, FixedAssetServiceProxy, AssetDashboardServiceProxy,
+    AssetGroupController_05ServiceProxy, AssetController_05ServiceProxy 
 } from '@shared/service-proxies/service-proxies';
 
 import { LoaiBatDongSanComponent } from './loaibatdongsan/loaibatdongsan.component';
@@ -75,6 +76,54 @@ import { ViewComputerModalComponent } from './computer/view-computer-modal.compo
 import { SoftwareComponent } from './software/software.component';
 import { CreateOrEditSoftwareModalComponent } from './software/create-or-edit-software-modal.component';
 import { ViewSoftwareModalComponent } from './software/view-software-modal.component';
+import { FixedAssetComponent } from './fixed-asset/fixed-asset.component'
+import { CreateOrEditFixedAssetModalComponent } from './fixed-asset/create-or-edit-fixed-asset-modal.component';
+import { ViewFixedAssetModalComponent } from './fixed-asset/view-fixed-asset-modal.component';
+import { AssetDashboardComponent } from './asset-dashboard/asset-dashboard.component';
+import { AssetGroupComponent } from './asset-group/asset-group.component';
+import { ViewAssetGroupModalComponent } from './asset-group/view-asset-group-modal.component';
+import { CreateOrEditAssetGroupModalComponent } from './asset-group/create-or-edit-asset-group-modal.component';
+import { CreateOrEditAssetModalComponent } from './asset/create-or-edit-asset-modal.component';
+import { AssetComponent } from './asset/asset.component';
+import { ViewAssetModalComponent } from './asset/view-asset-modal.component';
+
+import {
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatStepperModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule,
+} from '@angular/material';
 
 @NgModule({
     imports: [
@@ -94,6 +143,41 @@ import { ViewSoftwareModalComponent } from './software/view-software-modal.compo
         AutoCompleteModule,
         EditorModule,
         InputMaskModule,
+        MatAutocompleteModule,
+        MatBadgeModule,
+        MatBottomSheetModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatChipsModule,
+        MatDatepickerModule,
+        MatDialogModule,
+        MatDividerModule,
+        MatExpansionModule,
+        MatGridListModule,
+        MatIconModule,
+        MatInputModule,
+        MatListModule,
+        MatMenuModule,
+        MatNativeDateModule,
+        MatPaginatorModule,
+        MatProgressBarModule,
+        MatProgressSpinnerModule,
+        MatRadioModule,
+        MatRippleModule,
+        MatSelectModule,
+        MatSidenavModule,
+        MatSliderModule,
+        MatSlideToggleModule,
+        MatSnackBarModule,
+        MatSortModule,
+        MatStepperModule,
+        MatTableModule,
+        MatTabsModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        MatTreeModule,
     ],
     declarations: [
         DuAnComponent, CreateOrEditDuAnModalComponent, ViewDuAnModalComponent,
@@ -120,6 +204,10 @@ import { ViewSoftwareModalComponent } from './software/view-software-modal.compo
         CreateCongTrinhModalComponent, HoSoThauN13Component, CreateHoSoThauN13ModalComponent,
         ComputerComponent, CreateOrEditComputerModalComponent, ViewComputerModalComponent,
         SoftwareComponent, CreateOrEditSoftwareModalComponent, ViewSoftwareModalComponent,
+        FixedAssetComponent, CreateOrEditFixedAssetModalComponent, ViewFixedAssetModalComponent,
+        AssetDashboardComponent,
+        AssetGroupComponent, CreateOrEditAssetGroupModalComponent, ViewAssetGroupModalComponent,
+        AssetComponent, CreateOrEditAssetModalComponent, ViewAssetModalComponent
     ],
     providers: [
         CategoryServiceProxy,
@@ -147,6 +235,10 @@ import { ViewSoftwareModalComponent } from './software/view-software-modal.compo
         HoSoThauN13ServiceProxy,
         ComputerServiceProxy,
         SoftwareServiceProxy,
+        FixedAssetServiceProxy,
+        AssetDashboardServiceProxy,
+        AssetGroupController_05ServiceProxy,
+        AssetController_05ServiceProxy
     ]
 })
 export class GWebsiteModule { }

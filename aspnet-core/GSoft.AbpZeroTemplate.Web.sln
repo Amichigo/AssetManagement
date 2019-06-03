@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F10AA149-2626-486E-85BB-9CD5365F3016}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GSoft.AbpZeroTemplate.Web.Mvc", "src\GSoft.AbpZeroTemplate.Web.Mvc\GSoft.AbpZeroTemplate.Web.Mvc.csproj", "{A2213374-BB48-48FD-BBD4-81E6A961D866}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9FC37C62-2105-4D32-9724-7323B959504B} = {9FC37C62-2105-4D32-9724-7323B959504B}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GSoft.AbpZeroTemplate.Web.Host", "src\GSoft.AbpZeroTemplate.Web.Host\GSoft.AbpZeroTemplate.Web.Host.csproj", "{9FC37C62-2105-4D32-9724-7323B959504B}"
 EndProject

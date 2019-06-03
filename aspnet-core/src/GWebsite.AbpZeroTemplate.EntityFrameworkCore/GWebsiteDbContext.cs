@@ -7,6 +7,7 @@ using GWebsite.AbpZeroTemplate.Core.Models.KeHoachXayDung_N13;
 using GWebsite.AbpZeroTemplate.Core.Models.QuanLyCongTrinh_N13;
 using GWebsite.AbpZeroTemplate.Core.Models.RealEstasAsset.QuanLyBDS;
 using GWebsite.AbpZeroTemplate.Core.Models.TaiSan13;
+using GWebsite.AbpZeroTemplate.Core.Models.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
@@ -88,6 +89,23 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<DonViThau_N13> DonViThau_N13 { get; set; }
         public virtual DbSet<Computer> Computers { get; set; }
         public virtual DbSet<Software> Softwares { get; set; }
+
+        public virtual DbSet<FixedAsset> FixedAssets { get; set; }
+        public virtual DbSet<Asset_05> Assets_05 { get; set; }
+       // public virtual DbSet<AssetDetail_05> AssetDetails_05 { get; set; }
+        public virtual DbSet<AssetType_05> AssetTypes_05 { get; set; }
+        public virtual DbSet<AssetGroup_05> AssetGroups_05 { get; set; }
+        //public virtual DbSet<Depreciation_05> Depreciations_05 { get; set; }
+        //public virtual DbSet<DepreciationDetail_05> DepreciationDetails_05 { get; set; }
+        //public virtual DbSet<Liquidation_05> Liquidations_05 { get; set; }
+        //public virtual DbSet<LiquidationDetail_05> LiquidationDetails_05 { get; set; }
+        //public virtual DbSet<Repair_05> Repairs_05 { get; set; }
+        //public virtual DbSet<RepairDetail_05> RepairDetails_05 { get; set; }
+        //public virtual DbSet<UsingProcess_05> UsingProcess_05 { get; set; }
+        //public virtual DbSet<UsingProcessDetail_05> UsingProcessDetail_05 { get; set; }
+        //public virtual DbSet<Warranty_05> Warrantys_05 { get; set; }
+        //public virtual DbSet<WarrantyDetail_05> WarrantyDetails_05 { get; set; }
+
 
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
@@ -256,6 +274,7 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
                     .IsRequired()
                     .HasMaxLength(128);
             });
+
 
             modelBuilder.Entity<AppUserClaim>(entity =>
             {
@@ -550,7 +569,7 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
             });
 
             modelBuilder.Entity<OrderPackage>(entity =>
-            {
+                        {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.ApproveDt)

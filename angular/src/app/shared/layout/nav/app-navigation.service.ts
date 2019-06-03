@@ -15,6 +15,7 @@ export class AppNavigationService {
             new AppMenuItem('Dashboard', 'Pages.Administration.Host.Dashboard', 'flaticon-line-graph', '/app/admin/hostDashboard'),
             new AppMenuItem('Dashboard', 'Pages.Tenant.Dashboard', 'flaticon-line-graph', '/app/main/dashboard'),
             new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-list-3', '/app/admin/tenants'),
+            new AppMenuItem('AssetDashboard', 'Pages.Administration.AssetDashboard', 'flaticon-line-graph', '/app/gwebsite/asset-dashboard'),
             new AppMenuItem('Editions', 'Pages.Editions', 'flaticon-app', '/app/admin/editions'),
             new AppMenuItem('Nhóm 1 - Quản lý danh mục', '', 'flaticon-grid-menu', '', [
                 new AppMenuItem('Loại danh mục', 'Pages.CategoryTypes.General', 'flaticon-menu-1', '/app/gwebsite/category-type'),
@@ -32,6 +33,11 @@ export class AppNavigationService {
                 new AppMenuItem('Hồ sơ thầu', 'Pages.Administration.Bid', 'flaticon-menu-1', '/app/gwebsite/hosothau'),
                 new AppMenuItem('Hợp đồng thầu', 'Pages.Administration.Contract', 'flaticon-menu-1', '/app/gwebsite/hopdongthau'),
                 new AppMenuItem('Phiếu gọi hàng', 'Pages.Administration.GoodsInvoice', 'flaticon-menu-1', '/app/gwebsite/phieugoihang'),
+            ]),
+            new AppMenuItem('Nhóm 5 - Quản lý tài sản cố định', '', 'flaticon-interface-8', '', [
+                new AppMenuItem('FixedAsset', 'Pages.Administration.FixedAsset', 'flaticon-menu-1', '/app/gwebsite/fixed-asset'),
+                new AppMenuItem('AssetGroup', 'Pages.Administration.AssetGroup_05', 'flaticon-menu-1', '/app/gwebsite/asset-group'),
+                new AppMenuItem('Asset', 'Pages.Administration.Asset_05', 'flaticon-menu-1', '/app/gwebsite/asset'),
             ]),
             new AppMenuItem('Nhóm 13 - Quản lý bất động sản', '', 'flaticon-interface-8', '', [
                 new AppMenuItem('Quản Lý Bất Động Sản N13', '', 'flaticon-interface-8', '', [
@@ -55,6 +61,7 @@ export class AppNavigationService {
                 new AppMenuItem('Computer', 'Pages.Administration.Computer', 'flaticon-menu-1', '/app/gwebsite/computer'),
                 new AppMenuItem('Software', 'Pages.Administration.Software', 'flaticon-menu-1', '/app/gwebsite/software')
             ]),
+            
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),
                 new AppMenuItem('Roles', 'Pages.Administration.Roles', 'flaticon-suitcase', '/app/admin/roles'),
@@ -72,7 +79,6 @@ export class AppNavigationService {
     }
 
     checkChildMenuItemPermission(menuItem): boolean {
-
         for (let i = 0; i < menuItem.items.length; i++) {
             let subMenuItem = menuItem.items[i];
 
@@ -86,7 +92,6 @@ export class AppNavigationService {
                 return true;
             }
         }
-
         return false;
     }
 }

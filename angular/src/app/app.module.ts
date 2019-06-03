@@ -34,6 +34,9 @@ import { UserNotificationHelper } from './shared/layout/notifications/UserNotifi
 import { HeaderNotificationsComponent } from './shared/layout/notifications/header-notifications.component';
 import { NotificationSettingsModalComponent } from './shared/layout/notifications/notification-settings-modal.component';
 import { NotificationsComponent } from './shared/layout/notifications/notifications.component';
+import { MatSelectModule, MatSlideToggleModule } from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 
 @NgModule({
@@ -74,7 +77,10 @@ import { NotificationsComponent } from './shared/layout/notifications/notificati
         TableModule,
         PaginatorModule,
         PrimeNgFileUploadModule,
-        ProgressBarModule
+        ProgressBarModule,
+        MatSelectModule,
+        BrowserModule,
+        MatSlideToggleModule
     ],
     providers: [
         ImpersonationService,
