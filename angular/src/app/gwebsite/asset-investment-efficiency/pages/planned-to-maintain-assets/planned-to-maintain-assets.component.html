@@ -59,7 +59,7 @@
         
                 <div class="general-statistics-card-body">
                     <span class="general-statistics-card-value">{{ addThousandSeparator(generalStatisticsData['CurrentTotalInvestedAmount']) }}</span>
-                    <span [class]="generalStatisticsData['TotalInvestedAmountRatio'] > 0 ? 'general-statistics-card-offset--up' : 'general-statistics-card-offset--down'"><i [class]="generalStatisticsData['TotalInvestedAmountRatio'] > 0 ? 'fas fa-caret-up' : 'fas fa-caret-down'"></i> {{ generalStatisticsData['TotalInvestedAmountRatio'] }}%</span>
+                    <span [class]="generalStatisticsData['TotalInvestedAmountRatio'] > 0 ? 'general-statistics-card-offset--up' : 'general-statistics-card-offset--down'"><i [class]="generalStatisticsData['TotalInvestedAmountRatio'] > 0 ? 'fas fa-caret-up' : 'fas fa-caret-down'"></i> {{ generalStatisticsData['TotalInvestedAmountRatio'].toFixed(2) }}%</span>
                 </div>
     
                 <div class="general-statistics-card-footer">
@@ -75,7 +75,7 @@
         
                 <div class="general-statistics-card-body">
                     <span class="general-statistics-card-value">{{ addThousandSeparator(generalStatisticsData['CurrentTotalPurchasedAssets']) }}</span>
-                    <span [class]="generalStatisticsData['TotalPurchasedAssetsRatio'] > 0 ? 'general-statistics-card-offset--up' : 'general-statistics-card-offset--down'"><i [class]="generalStatisticsData['TotalPurchasedAssetsRatio'] > 0 ? 'fas fa-caret-up' : 'fas fa-caret-down'"></i> {{ generalStatisticsData['TotalPurchasedAssetsRatio'] }}%</span>
+                    <span [class]="generalStatisticsData['TotalPurchasedAssetsRatio'] > 0 ? 'general-statistics-card-offset--up' : 'general-statistics-card-offset--down'"><i [class]="generalStatisticsData['TotalPurchasedAssetsRatio'] > 0 ? 'fas fa-caret-up' : 'fas fa-caret-down'"></i> {{ generalStatisticsData['TotalPurchasedAssetsRatio'].toFixed(2) }}%</span>
                 </div>
     
                 <div class="general-statistics-card-footer">

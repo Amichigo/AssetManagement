@@ -76,8 +76,8 @@ export const getGeneralStatisticsData = (options) => {
         }
     }
 
-    const totalInvestedAmountRatio = (((currentTotalInvestedAmount - previousTotalInvestedAmount) / previousTotalInvestedAmount) * 100).toFixed(2);
-    const totalPurchasedAssetsRatio = (((currentTotalPurchasedAssets - previousTotalPurchasedAssets) / previousTotalPurchasedAssets) * 100).toFixed(2);
+    const totalInvestedAmountRatio = (((currentTotalInvestedAmount - previousTotalInvestedAmount) / previousTotalInvestedAmount) * 100);
+    const totalPurchasedAssetsRatio = (((currentTotalPurchasedAssets - previousTotalPurchasedAssets) / previousTotalPurchasedAssets) * 100);
 
     result['CurrentTotalInvestedAmount'] = currentTotalInvestedAmount;
     result['CurrentTotalPurchasedAssets'] = currentTotalPurchasedAssets;
