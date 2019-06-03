@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { RealEstateServiceProxy, RealEstateInput_9, AssetServiceProxy, AssetInput_9, LandInput_9, LandServiceProxy, ComboboxItemDto, RealEstateDto_9, AssetDto_9, LandDto_9, BuildingDto_9, BuildingServiceProxy, BuildingInput_9, RealEstateTypeInput_9, RealEstateTypeServiceProxy, RealEstateTypeDto_9, } from '@shared/service-proxies/service-proxies';
+import { RealEstateServiceProxy, RealEstateInput_9, AssetServiceProxy, AssetInput_9, ComboboxItemDto, RealEstateDto_9, AssetDto_9,  RealEstateTypeInput_9, RealEstateTypeServiceProxy, RealEstateTypeDto_9, } from '@shared/service-proxies/service-proxies';
 import { Router, ActivatedRoute } from '@angular/router';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 import { finalize } from 'rxjs/operators';
@@ -41,16 +41,14 @@ export class CreateOrEditRealEstateModalComponent extends AppComponentBase {
     realEstateTypes: Array<RealEstateTypeDto_9> = [];
     realEstate: RealEstateInput_9 = new RealEstateInput_9();
     asset: AssetInput_9 = new AssetInput_9();
-    land: LandInput_9 = new LandInput_9();
-    building: BuildingInput_9 = new BuildingInput_9();
+
 
     constructor(
         injector: Injector,
         private _realEstateTypeService: RealEstateTypeServiceProxy,
         private _realEstateService: RealEstateServiceProxy,
         private _assetService: AssetServiceProxy,
-        private _land: LandServiceProxy,
-        private _buildingService: BuildingServiceProxy,
+
         private _router: Router,
         private _activatedRoute: ActivatedRoute,
         private _apiService: WebApiServiceProxy

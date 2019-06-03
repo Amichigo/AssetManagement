@@ -5,8 +5,6 @@ import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
 import { RealEstateManagementComponent } from './real-estate-management/real-estate-management.component';
 import { RealEstateTypeComponent } from './real-estate-type/real-estate-type.component';
-import { LegalStatusTypeComponent } from './legal-status-type/legal-status-type.component';
-import { LocationTypeComponent } from './location-type/location-type.component';
 import { RealEstateRepairComponent } from './real-estate-repair/real-estate-repair.component';
 
 @NgModule({
@@ -54,24 +52,6 @@ import { RealEstateRepairComponent } from './real-estate-repair/real-estate-repa
                     {
                         path: 'real-estate-type', component: RealEstateTypeComponent,
                         data: { permission: 'Pages.Administration.RealEstateType9' }
-                    },
-                ]
-            },
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'legal-status-type', component: LegalStatusTypeComponent,
-                        data: { permission: 'Pages.Administration.LegalStatusType9' }
-                    },
-                ]
-            },
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'location-type', component: LocationTypeComponent,
-                        data: { permission: 'Pages.Administration.LocationType9' }
                     },
                 ]
             },

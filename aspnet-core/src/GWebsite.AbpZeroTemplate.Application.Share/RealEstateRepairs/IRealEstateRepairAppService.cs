@@ -12,7 +12,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.RealEstateRepairs
     {
         void CreateOrEditRealEstateRepair(RealEstateRepairInput_9 RealEstateRepairInput);
         RealEstateRepairInput_9 GetRealEstateRepairForEdit(int id);
-        
+
         void DeleteRealEstateRepair(int id);
         PagedResultDto<RealEstateRepairDto_9> GetRealEstateRepairs(RealEstateRepairFilter_9 input);
         RealEstateRepairForViewDto_9 GetRealEstateRepairForView(int id);

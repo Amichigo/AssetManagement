@@ -11,6 +11,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.WarrantyGuarantees.Dto
     public class WarrantyGuaranteeFilter : PagedAndSortedInputDto
     {
         public string MaBaoLanhBaoHanh { get; set; }
-       
+
     }
 }

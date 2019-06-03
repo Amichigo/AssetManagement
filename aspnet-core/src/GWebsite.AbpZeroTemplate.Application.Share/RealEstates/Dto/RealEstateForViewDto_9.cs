@@ -41,6 +41,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.RealEstates.Dto
         public string TinhTrangSuDung { get; set; }
         public string KetCauNha { get; set; }
         public string RanhGioi { get; set; }
+        public string TrangThaiDuyet { get; set; }
         public string TinhTrangPhapLy { get; set; }
         public string NguonGocTaiSan { get; set; }
         public string FileDinhKem { get; set; }

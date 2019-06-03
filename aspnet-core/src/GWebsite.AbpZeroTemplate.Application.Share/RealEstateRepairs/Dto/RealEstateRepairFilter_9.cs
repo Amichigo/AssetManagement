@@ -16,6 +16,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.RealEstateRepairs.Dto
         public string NguoiDeXuat { get; set; }
         public string NhanVienPhuTrach { get; set; }
         public string TrangThaiDuyet { get; set; }
-        
+
     }
 }

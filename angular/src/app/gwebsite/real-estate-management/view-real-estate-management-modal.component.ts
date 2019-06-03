@@ -1,7 +1,7 @@
 import { RealEstateForViewDto_9, RealEstateRepairServiceProxy, RealEstateInput_9 } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild, OnInit, EventEmitter, Output } from "@angular/core";
-import { RealEstateServiceProxy, BuildingServiceProxy, LandServiceProxy } from "@shared/service-proxies/service-proxies";
+import { RealEstateServiceProxy } from "@shared/service-proxies/service-proxies";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { ModalDirective } from 'ngx-bootstrap';
 import { Paginator, LazyLoadEvent } from 'primeng/primeng';
@@ -40,13 +40,13 @@ export class ViewRealEstateModalComponent extends AppComponentBase  {
 
         this._realEstateService.getRealEstateForView(realEstateID).subscribe(result => {
             this.realEstate = result;
-            this._activatedRoute.params.subscribe((params: Params) => {
+            this._activatedRoute.params.subscribe((params: Params) => {            
                 this.reloadList(this.realEstate.maTaiSan, null);
             })
             this.modal.show();
         })
-
-
+        
+        
     }
     reloadPage(): void {
         this.paginator.changePage(this.paginator.getPage());
@@ -74,7 +74,7 @@ export class ViewRealEstateModalComponent extends AppComponentBase  {
 
 
     reloadList(MaTaiSan, event?: LazyLoadEvent) {
-        this._realEstateRepairService.getRealEstateRepairsByFilter(MaTaiSan, null, null, null, null, null, null, this.primengTableHelper.getSorting(this.dataTable),
+        this._realEstateRepairService.getRealEstateRepairsByFilter(MaTaiSan, null, null, null, null, null , null, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {

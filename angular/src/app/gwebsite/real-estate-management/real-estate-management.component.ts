@@ -31,13 +31,11 @@ export class RealEstateManagementComponent extends AppComponentBase implements A
      */
 
 
-    filters: {
-        MaTaiSan: string;
-        MaDiaDiem: string;
-        MaBatDongSan: string;
-        MaLoaiBatDongSan: string;
-        TinhTrangSuDung: string;
-    } = <any>{};
+    
+    MaTaiSan: string;       
+    MaBatDongSan: string;
+    MaLoaiBatDongSan: string;
+    TinhTrangSuDung: string;
 
 
     constructor(
@@ -55,10 +53,10 @@ export class RealEstateManagementComponent extends AppComponentBase implements A
      * Hàm xử lý trước khi View được init
      */
     ngOnInit(): void {
-        this.filters.MaTaiSan = null,
-            this.filters.MaBatDongSan = null,
-            this.filters.MaLoaiBatDongSan = null,
-            this.filters.TinhTrangSuDung = null
+        this.MaTaiSan = null,
+            this.MaBatDongSan = null,
+            this.MaLoaiBatDongSan = null,
+            this.TinhTrangSuDung = null
     }
 
     /**
@@ -107,12 +105,12 @@ export class RealEstateManagementComponent extends AppComponentBase implements A
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
-            this.filters.MaTaiSan = params['MaTaiSan'] || '';
-            this.filters.MaBatDongSan = params['MaBatDongSan'] || '';
-            this.filters.MaLoaiBatDongSan = params['MaLoaiBatDongSan'] || '';
-            this.filters.TinhTrangSuDung = params['TinhTrangSuDung'] || '';
+            this.MaTaiSan = params['MaTaiSan'] || '';
+            this.MaBatDongSan = params['MaBatDongSan'] || '';
+            this.MaLoaiBatDongSan = params['MaLoaiBatDongSan'] || '';
+            this.TinhTrangSuDung = params['TinhTrangSuDung'] || '';
             //reload lại gridview
-            this.reloadList(this.filters.MaTaiSan,  this.filters.MaBatDongSan, this.filters.MaLoaiBatDongSan, this.filters.TinhTrangSuDung, null);
+            this.reloadList(this.MaTaiSan,  this.MaBatDongSan, this.MaLoaiBatDongSan, this.TinhTrangSuDung, null);
         });
     }
 
@@ -121,7 +119,7 @@ export class RealEstateManagementComponent extends AppComponentBase implements A
     }
 
     applyFilters(): void {
-        this.reloadList(this.filters.MaTaiSan, this.filters.MaBatDongSan, this.filters.MaLoaiBatDongSan, this.filters.TinhTrangSuDung, null);
+        this.reloadList(this.MaTaiSan, this.MaBatDongSan, this.MaLoaiBatDongSan, this.TinhTrangSuDung, null);
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);
             return;

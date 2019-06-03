@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GWebsite.AbpZeroTemplate.Application.Controllers
 {
     [Route("api/[controller]/[action]")]
-     public class RealEstateController : GWebsiteControllerBase
+    public class RealEstateController : GWebsiteControllerBase
     {
         private readonly IRealEstateAppService RealEstateAppService;
 
@@ -36,7 +36,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         [HttpPost]
         public void CreateOrEditRealEstate([FromBody] RealEstateInput_9 input)
         {
-             this.RealEstateAppService.CreateOrEditRealEstate(input);
+            this.RealEstateAppService.CreateOrEditRealEstate(input);
         }
 
         [HttpDelete("{id}")]

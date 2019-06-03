@@ -41,7 +41,7 @@ namespace GWebsite.AbpZeroTemplate.Application
         protected async Task<string> GetCurrentUserName()
         {
             var user = await UserManager.FindByIdAsync(AbpSession.GetUserId().ToString());
-            if(user==null)
+            if (user == null)
             {
                 return "no-user";
             }

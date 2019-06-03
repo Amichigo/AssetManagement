@@ -12,8 +12,8 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Constructions.Dto
     {
         public string MaCongTrinh { get; set; }
         public string TenCongTrinh { get; set; }
-       
-        public string MaKeHoach { get; set; }      
+
+        public string MaKeHoach { get; set; }
         public string NgayThucThiThucTe { get; set; }
     }
 }

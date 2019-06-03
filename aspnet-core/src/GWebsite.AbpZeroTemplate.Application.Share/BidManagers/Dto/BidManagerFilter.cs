@@ -14,7 +14,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.BidManagers.Dto
         public string HangMucThau { get; set; }
         public string NgayNhanHSThau { get; set; }
         public string NgayHetHanNopHSThau { get; set; }
-        public string HinhThucThau { get; set; }     
+        public string HinhThucThau { get; set; }
         public string MaCongTrinh { get; set; }
     }
 }

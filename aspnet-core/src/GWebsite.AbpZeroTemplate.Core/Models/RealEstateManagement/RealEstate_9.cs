@@ -21,8 +21,8 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public string TinhTrangTaiSan { get; set; }
         public string DonViSuDung { get; set; }
         public string TinhTrangKhauHao { get; set; }
-     
-                #endregion
+
+        #endregion
 
         #region Thông tin bất động sản
         public string MaBatDongSan { get; set; }
@@ -38,8 +38,9 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public string KetCauNha { get; set; }
         public string RanhGioi { get; set; }
         public string TinhTrangPhapLy { get; set; }
+        public string TrangThaiDuyet { get; set; }
         public string NguonGocTaiSan { get; set; }
-        public string FileDinhKem { get; set; }       
+        public string FileDinhKem { get; set; }
         #endregion
     }
 }

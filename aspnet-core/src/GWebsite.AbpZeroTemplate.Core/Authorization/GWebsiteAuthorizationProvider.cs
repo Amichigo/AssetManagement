@@ -31,35 +31,31 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             var pages = context.GetPermissionOrNull(GWebsitePermissions.Pages) ?? context.CreatePermission(GWebsitePermissions.Pages, L("Pages"));
             var gwebsite = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_GWebsite, L("GWebsite"));
 
-            var menuClient = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_MenuClient, L("MenuClient"));
-            menuClient.CreateChildPermission(GWebsitePermissions.Pages_Administration_MenuClient_Create, L("CreatingNewMenuClient"));
-            menuClient.CreateChildPermission(GWebsitePermissions.Pages_Administration_MenuClient_Edit, L("EditingMenuClient"));
-            menuClient.CreateChildPermission(GWebsitePermissions.Pages_Administration_MenuClient_Delete, L("DeletingMenuClient"));
+            var menuClients = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_OrderPackage, L("MenuClient"));
+            menuClients.CreateChildPermission(GWebsitePermissions.Pages_Administration_OrderPackage_Create, L("CreatingNewMenuClient"));
+            menuClients.CreateChildPermission(GWebsitePermissions.Pages_Administration_OrderPackage_Edit, L("EditingMenuClient"));
+            menuClients.CreateChildPermission(GWebsitePermissions.Pages_Administration_OrderPackage_Delete, L("DeletingMenuClient"));
 
-            var demoModel = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_DemoModel, L("DemoModel"));
-            demoModel.CreateChildPermission(GWebsitePermissions.Pages_Administration_DemoModel_Create, L("CreatingNewDemoModel"));
-            demoModel.CreateChildPermission(GWebsitePermissions.Pages_Administration_DemoModel_Edit, L("EditingDemoModel"));
-            demoModel.CreateChildPermission(GWebsitePermissions.Pages_Administration_DemoModel_Delete, L("DeletingDemoModel"));
+            var orderPackages = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_MenuClient, L("OrderPackage"));
+            orderPackages.CreateChildPermission(GWebsitePermissions.Pages_Administration_MenuClient_Create, L("CreatingNewOrderPackage"));
+            orderPackages.CreateChildPermission(GWebsitePermissions.Pages_Administration_MenuClient_Edit, L("EditingOrderPackage"));
+            orderPackages.CreateChildPermission(GWebsitePermissions.Pages_Administration_MenuClient_Delete, L("DeletingOrderPackage"));
 
-            var customer = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Customer, L("Customer"));
-            customer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Customer_Create, L("CreatingNewCustomer"));
-            customer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Customer_Edit, L("EditingCustomer"));
-            customer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Customer_Delete, L("DeletingCustomer"));
+            var videoInstructions = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_VideoInstruction, L("VideoInstruction"));
+            videoInstructions.CreateChildPermission(GWebsitePermissions.Pages_Administration_VideoInstruction_Create, L("CreatingNewVideoInstruction"));
+            videoInstructions.CreateChildPermission(GWebsitePermissions.Pages_Administration_VideoInstruction_Edit, L("EditingVideoInstruction"));
+            videoInstructions.CreateChildPermission(GWebsitePermissions.Pages_Administration_VideoInstruction_Delete, L("DeletingVideoInstruction"));
+
+            var VideoInstructionCategories = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_VideoInstructionCategory, L("VideoInstructionCategory"));
+            VideoInstructionCategories.CreateChildPermission(GWebsitePermissions.Pages_Administration_VideoInstructionCategory_Create, L("CreatingNewVVideoInstructionCategory"));
+            VideoInstructionCategories.CreateChildPermission(GWebsitePermissions.Pages_Administration_VideoInstructionCategory_Edit, L("EditingVideoInstructionCategory"));
+            VideoInstructionCategories.CreateChildPermission(GWebsitePermissions.Pages_Administration_VideoInstructionCategory_Delete, L("DeletingVideoInstructionCategory"));
 
             var realestate_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstate9, L("RealEstate"));
             realestate_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstate9_Create, L("CreatingNewRealEstate"));
             realestate_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstate9_Edit, L("EditingRealEstate"));
             realestate_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstate9_Delete, L("DeletingRealEstate"));
 
-            var land_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Land9, L("Land"));
-            land_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Land9_Create, L("CreatingNewLand"));
-            land_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Land9_Edit, L("EditingLand"));
-            land_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Land9_Delete, L("DeletingLand"));
-
-            var building_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Building9, L("Building"));
-            building_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Building9_Create, L("CreatingNewBuilding"));
-            building_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Building9_Edit, L("EditingBuilding"));
-            building_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Building9_Delete, L("DeletingBuilding"));
 
             var asset_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset9, L("Asset"));
             asset_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset9_Create, L("CreatingNewAsset"));
@@ -71,16 +67,6 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             realestatetype_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateType9_Edit, L("EditingRealEstateType9"));
             realestatetype_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateType9_Delete, L("DeletingRealEstateType9"));
 
-            var legalstatustype_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_LegalStatusType9, L("LegalStatusType9"));
-            legalstatustype_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_LegalStatusType9_Create, L("CreatingNewLegalStatusType9"));
-            legalstatustype_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_LegalStatusType9_Edit, L("EditingLegalStatusType9"));
-            legalstatustype_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_LegalStatusType9_Delete, L("DeletingLegalStatusType9"));
-
-            var locationtype_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_LocationType9, L("LocationType9"));
-            locationtype_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_LocationType9_Create, L("CreatingNewLocationType9"));
-            locationtype_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_LocationType9_Edit, L("EditingLocationType9"));
-            locationtype_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_LocationType9_Delete, L("DeletingLocationType9"));
-            
             var realestaterepair_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateRepair9, L("RealEstateRepair9"));
             realestaterepair_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateRepair9_Create, L("CreatingNewRealEstateRepair9"));
             realestaterepair_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateRepair9_Edit, L("EditingRealEstateRepair9"));

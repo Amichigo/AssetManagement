@@ -7,9 +7,10 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Constructions.Dto
     /// <summary>
     /// <model cref="Construction_9"></model>
     /// </summary>
-    public class ConstructionDto : Entity <int>
+    public class ConstructionDto : Entity<int>
     {
         public string MaCongTrinh { get; set; }
+        public string DiaChiCongTrinh { get; set; }
         public string TenCongTrinh { get; set; }
         public string MaLoaiCongTrinh { get; set; }
         public string MaKeHoach { get; set; }

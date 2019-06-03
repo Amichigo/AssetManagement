@@ -10,6 +10,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.ContractGuarantees.Dto
     /// </summary>
     public class ContractGuaranteeFilter : PagedAndSortedInputDto
     {
-        public string MaBaoLanhHopDong { get; set; }       
+        public string MaBaoLanhHopDong { get; set; }
     }
 }
