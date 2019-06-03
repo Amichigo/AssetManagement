@@ -110,6 +110,15 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             directorShoppingPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DirectorShoppingPlan_Create, L("CreatingNewDirectorShoppingPlan"));
             directorShoppingPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DirectorShoppingPlan_Edit, L("EditingDirectorShoppingPlan"));
             directorShoppingPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DirectorShoppingPlan_Delete, L("DeletingDirectorShoppingPlan"));
+            var computer = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Computer, L("Computer"));
+            computer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Computer_Create, L("CreatingNewComputer"));
+            computer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Computer_Edit, L("EditingComputer"));
+            computer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Computer_Delete, L("DeletingComputer"));
+
+            var software = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Software, L("Software"));
+            software.CreateChildPermission(GWebsitePermissions.Pages_Administration_Software_Create, L("CreatingNewSoftware"));
+            software.CreateChildPermission(GWebsitePermissions.Pages_Administration_Software_Edit, L("EditingSoftware"));
+            software.CreateChildPermission(GWebsitePermissions.Pages_Administration_Software_Delete, L("DeletingSoftware"));
 
             var constructionPlan = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlan, L("ConstructionPlan"));
             constructionPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlan_Create, L("CreatingNewConstructionPlan"));

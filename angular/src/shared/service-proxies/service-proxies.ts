@@ -3237,6 +3237,295 @@ export class CommonLookupServiceProxy {
 }
 
 @Injectable()
+export class ComputerServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @name (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getComputersByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfComputerDto> {
+        let url_ = this.baseUrl + "/api/Computer/GetComputersByFilter?";
+        if (name !== undefined)
+            url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetComputersByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetComputersByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfComputerDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfComputerDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetComputersByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfComputerDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfComputerDto.fromJS(resultData200) : new PagedResultDtoOfComputerDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfComputerDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getComputerForEdit(id: number | null | undefined): Observable<ComputerInput> {
+        let url_ = this.baseUrl + "/api/Computer/GetComputerForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetComputerForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetComputerForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<ComputerInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ComputerInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetComputerForEdit(response: HttpResponseBase): Observable<ComputerInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? ComputerInput.fromJS(resultData200) : new ComputerInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ComputerInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditComputer(input: ComputerInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/Computer/CreateOrEditComputer";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditComputer(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditComputer(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditComputer(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteCustomer(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/Computer/DeleteCustomer/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteCustomer(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteCustomer(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteCustomer(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getComputerForView(id: number | null | undefined): Observable<ComputerForViewDto> {
+        let url_ = this.baseUrl + "/api/Computer/GetComputerForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetComputerForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetComputerForView(<any>response_);
+                } catch (e) {
+                    return <Observable<ComputerForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ComputerForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetComputerForView(response: HttpResponseBase): Observable<ComputerForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? ComputerForViewDto.fromJS(resultData200) : new ComputerForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ComputerForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class CongTrinhServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -14958,6 +15247,295 @@ export class SlideServiceProxy {
 }
 
 @Injectable()
+export class SoftwareServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @name (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getSoftwaresByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfSoftwareDto> {
+        let url_ = this.baseUrl + "/api/Software/GetSoftwaresByFilter?";
+        if (name !== undefined)
+            url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetSoftwaresByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetSoftwaresByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfSoftwareDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfSoftwareDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetSoftwaresByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfSoftwareDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfSoftwareDto.fromJS(resultData200) : new PagedResultDtoOfSoftwareDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfSoftwareDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getSoftwareForEdit(id: number | null | undefined): Observable<SoftwareInput> {
+        let url_ = this.baseUrl + "/api/Software/GetSoftwareForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetSoftwareForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetSoftwareForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<SoftwareInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SoftwareInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetSoftwareForEdit(response: HttpResponseBase): Observable<SoftwareInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? SoftwareInput.fromJS(resultData200) : new SoftwareInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SoftwareInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditSoftware(input: SoftwareInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/Software/CreateOrEditSoftware";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditSoftware(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditSoftware(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditSoftware(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteSoftware(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/Software/DeleteSoftware/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteSoftware(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteSoftware(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteSoftware(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getSoftwareForView(id: number | null | undefined): Observable<SoftwareForViewDto> {
+        let url_ = this.baseUrl + "/api/Software/GetSoftwareForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetSoftwareForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetSoftwareForView(<any>response_);
+                } catch (e) {
+                    return <Observable<SoftwareForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SoftwareForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetSoftwareForView(response: HttpResponseBase): Observable<SoftwareForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? SoftwareForViewDto.fromJS(resultData200) : new SoftwareForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SoftwareForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class SuaChuaBatDongSanServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -23050,6 +23628,398 @@ export class GetDefaultEditionNameOutput implements IGetDefaultEditionNameOutput
 
 export interface IGetDefaultEditionNameOutput {
     name: string | undefined;
+}
+
+export class PagedResultDtoOfComputerDto implements IPagedResultDtoOfComputerDto {
+    totalCount!: number | undefined;
+    items!: ComputerDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfComputerDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(ComputerDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfComputerDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfComputerDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfComputerDto {
+    totalCount: number | undefined;
+    items: ComputerDto[] | undefined;
+}
+
+export class ComputerDto implements IComputerDto {
+    domain1!: string | undefined;
+    dnsHostName!: string | undefined;
+    cpuname!: string | undefined;
+    manufacturer!: string | undefined;
+    model!: string | undefined;
+    userName!: string | undefined;
+    ram1Manufacturer!: string | undefined;
+    ram1PartNumber!: string | undefined;
+    ram1Total!: string | undefined;
+    ram2Manufacturer!: string | undefined;
+    ram2PartNumber!: string | undefined;
+    ram2Total!: string | undefined;
+    monitorType!: string | undefined;
+    hdD1Type!: string | undefined;
+    hdD1Size!: string | undefined;
+    hdD2Type!: string | undefined;
+    hdD2Size!: string | undefined;
+    os!: string | undefined;
+    osa!: string | undefined;
+    localIp!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IComputerDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.domain1 = data["domain1"];
+            this.dnsHostName = data["dnsHostName"];
+            this.cpuname = data["cpuname"];
+            this.manufacturer = data["manufacturer"];
+            this.model = data["model"];
+            this.userName = data["userName"];
+            this.ram1Manufacturer = data["ram1Manufacturer"];
+            this.ram1PartNumber = data["ram1PartNumber"];
+            this.ram1Total = data["ram1Total"];
+            this.ram2Manufacturer = data["ram2Manufacturer"];
+            this.ram2PartNumber = data["ram2PartNumber"];
+            this.ram2Total = data["ram2Total"];
+            this.monitorType = data["monitorType"];
+            this.hdD1Type = data["hdD1Type"];
+            this.hdD1Size = data["hdD1Size"];
+            this.hdD2Type = data["hdD2Type"];
+            this.hdD2Size = data["hdD2Size"];
+            this.os = data["os"];
+            this.osa = data["osa"];
+            this.localIp = data["localIp"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ComputerDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ComputerDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["domain1"] = this.domain1;
+        data["dnsHostName"] = this.dnsHostName;
+        data["cpuname"] = this.cpuname;
+        data["manufacturer"] = this.manufacturer;
+        data["model"] = this.model;
+        data["userName"] = this.userName;
+        data["ram1Manufacturer"] = this.ram1Manufacturer;
+        data["ram1PartNumber"] = this.ram1PartNumber;
+        data["ram1Total"] = this.ram1Total;
+        data["ram2Manufacturer"] = this.ram2Manufacturer;
+        data["ram2PartNumber"] = this.ram2PartNumber;
+        data["ram2Total"] = this.ram2Total;
+        data["monitorType"] = this.monitorType;
+        data["hdD1Type"] = this.hdD1Type;
+        data["hdD1Size"] = this.hdD1Size;
+        data["hdD2Type"] = this.hdD2Type;
+        data["hdD2Size"] = this.hdD2Size;
+        data["os"] = this.os;
+        data["osa"] = this.osa;
+        data["localIp"] = this.localIp;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IComputerDto {
+    domain1: string | undefined;
+    dnsHostName: string | undefined;
+    cpuname: string | undefined;
+    manufacturer: string | undefined;
+    model: string | undefined;
+    userName: string | undefined;
+    ram1Manufacturer: string | undefined;
+    ram1PartNumber: string | undefined;
+    ram1Total: string | undefined;
+    ram2Manufacturer: string | undefined;
+    ram2PartNumber: string | undefined;
+    ram2Total: string | undefined;
+    monitorType: string | undefined;
+    hdD1Type: string | undefined;
+    hdD1Size: string | undefined;
+    hdD2Type: string | undefined;
+    hdD2Size: string | undefined;
+    os: string | undefined;
+    osa: string | undefined;
+    localIp: string | undefined;
+    id: number | undefined;
+}
+
+export class ComputerInput implements IComputerInput {
+    domain1!: string | undefined;
+    dnsHostName!: string | undefined;
+    cpuname!: string | undefined;
+    manufacturer!: string | undefined;
+    model!: string | undefined;
+    userName!: string | undefined;
+    ram1Manufacturer!: string | undefined;
+    ram1PartNumber!: string | undefined;
+    ram1Total!: string | undefined;
+    ram2Manufacturer!: string | undefined;
+    ram2PartNumber!: string | undefined;
+    ram2Total!: string | undefined;
+    monitorType!: string | undefined;
+    hdD1Type!: string | undefined;
+    hdD1Size!: string | undefined;
+    hdD2Type!: string | undefined;
+    hdD2Size!: string | undefined;
+    os!: string | undefined;
+    osa!: string | undefined;
+    localIp!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IComputerInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.domain1 = data["domain1"];
+            this.dnsHostName = data["dnsHostName"];
+            this.cpuname = data["cpuname"];
+            this.manufacturer = data["manufacturer"];
+            this.model = data["model"];
+            this.userName = data["userName"];
+            this.ram1Manufacturer = data["ram1Manufacturer"];
+            this.ram1PartNumber = data["ram1PartNumber"];
+            this.ram1Total = data["ram1Total"];
+            this.ram2Manufacturer = data["ram2Manufacturer"];
+            this.ram2PartNumber = data["ram2PartNumber"];
+            this.ram2Total = data["ram2Total"];
+            this.monitorType = data["monitorType"];
+            this.hdD1Type = data["hdD1Type"];
+            this.hdD1Size = data["hdD1Size"];
+            this.hdD2Type = data["hdD2Type"];
+            this.hdD2Size = data["hdD2Size"];
+            this.os = data["os"];
+            this.osa = data["osa"];
+            this.localIp = data["localIp"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ComputerInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ComputerInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["domain1"] = this.domain1;
+        data["dnsHostName"] = this.dnsHostName;
+        data["cpuname"] = this.cpuname;
+        data["manufacturer"] = this.manufacturer;
+        data["model"] = this.model;
+        data["userName"] = this.userName;
+        data["ram1Manufacturer"] = this.ram1Manufacturer;
+        data["ram1PartNumber"] = this.ram1PartNumber;
+        data["ram1Total"] = this.ram1Total;
+        data["ram2Manufacturer"] = this.ram2Manufacturer;
+        data["ram2PartNumber"] = this.ram2PartNumber;
+        data["ram2Total"] = this.ram2Total;
+        data["monitorType"] = this.monitorType;
+        data["hdD1Type"] = this.hdD1Type;
+        data["hdD1Size"] = this.hdD1Size;
+        data["hdD2Type"] = this.hdD2Type;
+        data["hdD2Size"] = this.hdD2Size;
+        data["os"] = this.os;
+        data["osa"] = this.osa;
+        data["localIp"] = this.localIp;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IComputerInput {
+    domain1: string | undefined;
+    dnsHostName: string | undefined;
+    cpuname: string | undefined;
+    manufacturer: string | undefined;
+    model: string | undefined;
+    userName: string | undefined;
+    ram1Manufacturer: string | undefined;
+    ram1PartNumber: string | undefined;
+    ram1Total: string | undefined;
+    ram2Manufacturer: string | undefined;
+    ram2PartNumber: string | undefined;
+    ram2Total: string | undefined;
+    monitorType: string | undefined;
+    hdD1Type: string | undefined;
+    hdD1Size: string | undefined;
+    hdD2Type: string | undefined;
+    hdD2Size: string | undefined;
+    os: string | undefined;
+    osa: string | undefined;
+    localIp: string | undefined;
+    id: number | undefined;
+}
+
+export class ComputerForViewDto implements IComputerForViewDto {
+    domain1!: string | undefined;
+    dnsHostName!: string | undefined;
+    cpuname!: string | undefined;
+    manufacturer!: string | undefined;
+    model!: string | undefined;
+    userName!: string | undefined;
+    ram1Manufacturer!: string | undefined;
+    ram1PartNumber!: string | undefined;
+    ram1Total!: string | undefined;
+    ram2Manufacturer!: string | undefined;
+    ram2PartNumber!: string | undefined;
+    ram2Total!: string | undefined;
+    monitorType!: string | undefined;
+    hdD1Type!: string | undefined;
+    hdD1Size!: string | undefined;
+    hdD2Type!: string | undefined;
+    hdD2Size!: string | undefined;
+    os!: string | undefined;
+    osa!: string | undefined;
+    localIp!: string | undefined;
+
+    constructor(data?: IComputerForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.domain1 = data["domain1"];
+            this.dnsHostName = data["dnsHostName"];
+            this.cpuname = data["cpuname"];
+            this.manufacturer = data["manufacturer"];
+            this.model = data["model"];
+            this.userName = data["userName"];
+            this.ram1Manufacturer = data["ram1Manufacturer"];
+            this.ram1PartNumber = data["ram1PartNumber"];
+            this.ram1Total = data["ram1Total"];
+            this.ram2Manufacturer = data["ram2Manufacturer"];
+            this.ram2PartNumber = data["ram2PartNumber"];
+            this.ram2Total = data["ram2Total"];
+            this.monitorType = data["monitorType"];
+            this.hdD1Type = data["hdD1Type"];
+            this.hdD1Size = data["hdD1Size"];
+            this.hdD2Type = data["hdD2Type"];
+            this.hdD2Size = data["hdD2Size"];
+            this.os = data["os"];
+            this.osa = data["osa"];
+            this.localIp = data["localIp"];
+        }
+    }
+
+    static fromJS(data: any): ComputerForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ComputerForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["domain1"] = this.domain1;
+        data["dnsHostName"] = this.dnsHostName;
+        data["cpuname"] = this.cpuname;
+        data["manufacturer"] = this.manufacturer;
+        data["model"] = this.model;
+        data["userName"] = this.userName;
+        data["ram1Manufacturer"] = this.ram1Manufacturer;
+        data["ram1PartNumber"] = this.ram1PartNumber;
+        data["ram1Total"] = this.ram1Total;
+        data["ram2Manufacturer"] = this.ram2Manufacturer;
+        data["ram2PartNumber"] = this.ram2PartNumber;
+        data["ram2Total"] = this.ram2Total;
+        data["monitorType"] = this.monitorType;
+        data["hdD1Type"] = this.hdD1Type;
+        data["hdD1Size"] = this.hdD1Size;
+        data["hdD2Type"] = this.hdD2Type;
+        data["hdD2Size"] = this.hdD2Size;
+        data["os"] = this.os;
+        data["osa"] = this.osa;
+        data["localIp"] = this.localIp;
+        return data; 
+    }
+}
+
+export interface IComputerForViewDto {
+    domain1: string | undefined;
+    dnsHostName: string | undefined;
+    cpuname: string | undefined;
+    manufacturer: string | undefined;
+    model: string | undefined;
+    userName: string | undefined;
+    ram1Manufacturer: string | undefined;
+    ram1PartNumber: string | undefined;
+    ram1Total: string | undefined;
+    ram2Manufacturer: string | undefined;
+    ram2PartNumber: string | undefined;
+    ram2Total: string | undefined;
+    monitorType: string | undefined;
+    hdD1Type: string | undefined;
+    hdD1Size: string | undefined;
+    hdD2Type: string | undefined;
+    hdD2Size: string | undefined;
+    os: string | undefined;
+    osa: string | undefined;
+    localIp: string | undefined;
 }
 
 export class PagedResultDtoOfCongTrinhDto implements IPagedResultDtoOfCongTrinhDto {
@@ -34272,6 +35242,266 @@ export interface IUpdateSlideInput {
     displayOrder: number | undefined;
     status: boolean | undefined;
     content: string | undefined;
+}
+
+export class PagedResultDtoOfSoftwareDto implements IPagedResultDtoOfSoftwareDto {
+    totalCount!: number | undefined;
+    items!: SoftwareDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfSoftwareDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(SoftwareDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfSoftwareDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfSoftwareDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfSoftwareDto {
+    totalCount: number | undefined;
+    items: SoftwareDto[] | undefined;
+}
+
+export class SoftwareDto implements ISoftwareDto {
+    cpuname!: string | undefined;
+    displayname!: string | undefined;
+    displayVersion!: string | undefined;
+    publisher!: string | undefined;
+    installdate!: string | undefined;
+    installLocation!: string | undefined;
+    installSource!: string | undefined;
+    urlInfoAbout!: string | undefined;
+    urlUpdateInfo!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: ISoftwareDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.cpuname = data["cpuname"];
+            this.displayname = data["displayname"];
+            this.displayVersion = data["displayVersion"];
+            this.publisher = data["publisher"];
+            this.installdate = data["installdate"];
+            this.installLocation = data["installLocation"];
+            this.installSource = data["installSource"];
+            this.urlInfoAbout = data["urlInfoAbout"];
+            this.urlUpdateInfo = data["urlUpdateInfo"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): SoftwareDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new SoftwareDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["cpuname"] = this.cpuname;
+        data["displayname"] = this.displayname;
+        data["displayVersion"] = this.displayVersion;
+        data["publisher"] = this.publisher;
+        data["installdate"] = this.installdate;
+        data["installLocation"] = this.installLocation;
+        data["installSource"] = this.installSource;
+        data["urlInfoAbout"] = this.urlInfoAbout;
+        data["urlUpdateInfo"] = this.urlUpdateInfo;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface ISoftwareDto {
+    cpuname: string | undefined;
+    displayname: string | undefined;
+    displayVersion: string | undefined;
+    publisher: string | undefined;
+    installdate: string | undefined;
+    installLocation: string | undefined;
+    installSource: string | undefined;
+    urlInfoAbout: string | undefined;
+    urlUpdateInfo: string | undefined;
+    id: number | undefined;
+}
+
+export class SoftwareInput implements ISoftwareInput {
+    cpuname!: string | undefined;
+    displayname!: string | undefined;
+    displayVersion!: string | undefined;
+    publisher!: string | undefined;
+    installdate!: string | undefined;
+    installLocation!: string | undefined;
+    installSource!: string | undefined;
+    urlInfoAbout!: string | undefined;
+    urlUpdateInfo!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: ISoftwareInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.cpuname = data["cpuname"];
+            this.displayname = data["displayname"];
+            this.displayVersion = data["displayVersion"];
+            this.publisher = data["publisher"];
+            this.installdate = data["installdate"];
+            this.installLocation = data["installLocation"];
+            this.installSource = data["installSource"];
+            this.urlInfoAbout = data["urlInfoAbout"];
+            this.urlUpdateInfo = data["urlUpdateInfo"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): SoftwareInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new SoftwareInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["cpuname"] = this.cpuname;
+        data["displayname"] = this.displayname;
+        data["displayVersion"] = this.displayVersion;
+        data["publisher"] = this.publisher;
+        data["installdate"] = this.installdate;
+        data["installLocation"] = this.installLocation;
+        data["installSource"] = this.installSource;
+        data["urlInfoAbout"] = this.urlInfoAbout;
+        data["urlUpdateInfo"] = this.urlUpdateInfo;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface ISoftwareInput {
+    cpuname: string | undefined;
+    displayname: string | undefined;
+    displayVersion: string | undefined;
+    publisher: string | undefined;
+    installdate: string | undefined;
+    installLocation: string | undefined;
+    installSource: string | undefined;
+    urlInfoAbout: string | undefined;
+    urlUpdateInfo: string | undefined;
+    id: number | undefined;
+}
+
+export class SoftwareForViewDto implements ISoftwareForViewDto {
+    cpuname!: string | undefined;
+    displayname!: string | undefined;
+    displayVersion!: string | undefined;
+    publisher!: string | undefined;
+    installdate!: string | undefined;
+    installLocation!: string | undefined;
+    installSource!: string | undefined;
+    urlInfoAbout!: string | undefined;
+    urlUpdateInfo!: string | undefined;
+
+    constructor(data?: ISoftwareForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.cpuname = data["cpuname"];
+            this.displayname = data["displayname"];
+            this.displayVersion = data["displayVersion"];
+            this.publisher = data["publisher"];
+            this.installdate = data["installdate"];
+            this.installLocation = data["installLocation"];
+            this.installSource = data["installSource"];
+            this.urlInfoAbout = data["urlInfoAbout"];
+            this.urlUpdateInfo = data["urlUpdateInfo"];
+        }
+    }
+
+    static fromJS(data: any): SoftwareForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new SoftwareForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["cpuname"] = this.cpuname;
+        data["displayname"] = this.displayname;
+        data["displayVersion"] = this.displayVersion;
+        data["publisher"] = this.publisher;
+        data["installdate"] = this.installdate;
+        data["installLocation"] = this.installLocation;
+        data["installSource"] = this.installSource;
+        data["urlInfoAbout"] = this.urlInfoAbout;
+        data["urlUpdateInfo"] = this.urlUpdateInfo;
+        return data; 
+    }
+}
+
+export interface ISoftwareForViewDto {
+    cpuname: string | undefined;
+    displayname: string | undefined;
+    displayVersion: string | undefined;
+    publisher: string | undefined;
+    installdate: string | undefined;
+    installLocation: string | undefined;
+    installSource: string | undefined;
+    urlInfoAbout: string | undefined;
+    urlUpdateInfo: string | undefined;
 }
 
 export class PagedResultDtoOfSuaChuaBatDongSanDto implements IPagedResultDtoOfSuaChuaBatDongSanDto {

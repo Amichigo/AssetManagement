@@ -22,6 +22,9 @@ import { SuaChuaBatDongSanComponent } from './suachuabatdongsan/suachuabatdongsa
 import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.component';
 import { CongTrinhComponent } from './congtrinhN13/congtrinh.component';
 import { HoSoThauN13Component } from './hosothauN13/hosothaun13.component';
+import { ComputerComponent } from './computer/computer.component';
+import { SoftwareComponent } from './software/software.component';
+
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -240,8 +243,25 @@ import { HoSoThauN13Component } from './hosothauN13/hosothaun13.component';
                         data: { permission: 'Pages.Administration.QuanLyCongTrinhDoDang.HoSoThau' }
                     },
                 ]
-
             },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'computer', component: ComputerComponent,
+                        data: { permission: 'Pages.Administration.Computer'}
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'software', component: SoftwareComponent,
+                        data: { permission: 'Pages.Administration.Software'}
+                    }
+                ]
+            }
         ])
     ],
     exports: [

@@ -26,6 +26,8 @@ using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.TinhTrangSuDungDat.DT
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.TinhTrangXayDung.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.LoaiTaiSan.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.NhomTaiSan.DTO;
+using GWebsite.AbpZeroTemplate.Application.Share.Computers.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Softwares.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.BatDongSan.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.TaiSan_13.Dto;
@@ -217,6 +219,19 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<DonViThauInput, DonViThau_N13>();
             configuration.CreateMap<DonViThau_N13, DonViThauInput>();
             configuration.CreateMap<DonViThau_N13, DonViThauForViewDto>();
+
+            //computer
+            configuration.CreateMap<Computer, ComputerDto>();
+            configuration.CreateMap<ComputerInput, Computer>();
+            configuration.CreateMap<Computer, ComputerInput>();
+            configuration.CreateMap<Computer, ComputerForViewDto>();
+
+            //software
+            configuration.CreateMap<Software, SoftwareDto>();
+            configuration.CreateMap<SoftwareInput, Software>();
+            configuration.CreateMap<Software, SoftwareInput>();
+            configuration.CreateMap<Software, SoftwareForViewDto>();
+
         }
     }
 }

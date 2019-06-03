@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+    <PackageReference Include="System.Management" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +19,10 @@
     <ProjectReference Include="..\GSoft.AbpZeroTemplate.Core\GSoft.AbpZeroTemplate.Core.csproj" />
     <ProjectReference Include="..\GWebsite.AbpZeroTemplate.Application.Share\GWebsite.AbpZeroTemplate.Application.Share.csproj" />
     <ProjectReference Include="..\GWebsite.AbpZeroTemplate.Core\GWebsite.AbpZeroTemplate.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Management" />
   </ItemGroup>
 
 </Project>

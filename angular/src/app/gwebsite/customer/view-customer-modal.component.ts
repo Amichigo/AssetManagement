@@ -1,7 +1,7 @@
 import { CustomerForViewDto } from './../../../shared/service-proxies/service-proxies';
-import { AppComponentBase } from "@shared/common/app-component-base";
-import { AfterViewInit, Injector, Component, ViewChild } from "@angular/core";
-import { CustomerServiceProxy } from "@shared/service-proxies/service-proxies";
+import { AppComponentBase } from '@shared/common/app-component-base';
+import { AfterViewInit, Injector, Component, ViewChild } from '@angular/core';
+import { CustomerServiceProxy } from '@shared/service-proxies/service-proxies';
 import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
@@ -11,7 +11,7 @@ import { ModalDirective } from 'ngx-bootstrap';
 
 export class ViewCustomerModalComponent extends AppComponentBase {
 
-    customer : CustomerForViewDto = new CustomerForViewDto();
+    customer: CustomerForViewDto = new CustomerForViewDto();
     @ViewChild('viewModal') modal: ModalDirective;
 
     constructor(
@@ -25,10 +25,10 @@ export class ViewCustomerModalComponent extends AppComponentBase {
         this._customerService.getCustomerForView(customerId).subscribe(result => {
             this.customer = result;
             this.modal.show();
-        })
+        } );
     }
 
-    close() : void{
+    close(): void {
         this.modal.hide();
     }
 }
