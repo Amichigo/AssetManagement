@@ -2,7 +2,7 @@
 using GWebsite.AbpZeroTemplate.Core.Models;
 using System;
 
-namespace GWebsite.AbpZeroTemplate.Application.Share.FixedAssets.Dto
+namespace GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Dto
 {
     /// <summary>
     /// <model cref="Asset_05"></model>

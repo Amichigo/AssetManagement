@@ -9,7 +9,6 @@ import { CustomerServiceProxy, CustomerInput } from '@shared/service-proxies/ser
 })
 export class CreateOrEditCustomerModalComponent extends AppComponentBase {
 
-
     @ViewChild('createOrEditModal') modal: ModalDirective;
     @ViewChild('customerCombobox') customerCombobox: ElementRef;
     @ViewChild('iconCombobox') iconCombobox: ElementRef;
@@ -36,7 +35,6 @@ export class CreateOrEditCustomerModalComponent extends AppComponentBase {
         this._customerService.getCustomerForEdit(customerId).subscribe(result => {
             this.customer = result;
             this.modal.show();
-
         })
     }
 

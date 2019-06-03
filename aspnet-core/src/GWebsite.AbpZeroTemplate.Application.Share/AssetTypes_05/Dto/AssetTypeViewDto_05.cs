@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.AssetTypes_05.Dto
 {
-    public class AssetTypeViewDto
+    public class AssetTypeViewDto_05
     {
         public string Id { get; set; }
         public string Name { get; set; }

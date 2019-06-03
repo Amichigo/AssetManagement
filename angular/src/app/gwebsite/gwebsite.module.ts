@@ -1,4 +1,7 @@
-import { CustomerServiceProxy, FixedAssetServiceProxy, AssetDashboardServiceProxy, AssetGroupController_05ServiceProxy } from './../../shared/service-proxies/service-proxies';
+import {
+    CustomerServiceProxy, FixedAssetServiceProxy, AssetDashboardServiceProxy,
+    AssetGroupController_05ServiceProxy, AssetController_05ServiceProxy
+} from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -23,7 +26,10 @@ import { ViewFixedAssetModalComponent } from './fixed-asset/view-fixed-asset-mod
 import { AssetDashboardComponent } from './asset-dashboard/asset-dashboard.component';
 import { AssetGroupComponent } from './asset-group/asset-group.component';
 import { ViewAssetGroupModalComponent } from './asset-group/view-asset-group-modal.component';
-import { CreateAssetGroupModalComponent } from './asset-group/create-asset-group-modal.component';
+import { CreateOrEditAssetGroupModalComponent } from './asset-group/create-or-edit-asset-group-modal.component';
+import { CreateOrEditAssetModalComponent } from './asset/create-or-edit-asset-modal.component';
+import { AssetComponent } from './asset/asset.component';
+import { ViewAssetModalComponent } from './asset/view-asset-modal.component';
 
 import {
     MatAutocompleteModule,
@@ -62,7 +68,6 @@ import {
     MatTooltipModule,
     MatTreeModule,
 } from '@angular/material';
-
 
 @NgModule({
     imports: [
@@ -124,8 +129,9 @@ import {
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
         FixedAssetComponent, CreateOrEditFixedAssetModalComponent, ViewFixedAssetModalComponent,
         AssetDashboardComponent,
-        AssetGroupComponent,
-        AssetGroupComponent, CreateAssetGroupModalComponent, ViewAssetGroupModalComponent
+        AssetGroupComponent, CreateOrEditAssetGroupModalComponent, ViewAssetGroupModalComponent,
+        AssetComponent, CreateOrEditAssetModalComponent, ViewAssetModalComponent
+
     ],
     providers: [
         DemoModelServiceProxy,
@@ -133,6 +139,7 @@ import {
         FixedAssetServiceProxy,
         AssetDashboardServiceProxy,
         AssetGroupController_05ServiceProxy,
+        AssetController_05ServiceProxy
     ]
 })
 export class GWebsiteModule { }

@@ -1,5 +1,4 @@
-<div bsModal #viewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="viewModal"
-    aria-hidden="true" [config]="{backdrop: 'static'}">
+<div bsModal #viewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="viewModal" aria-hidden="true" [config]="{backdrop: 'static'}">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,6 +11,10 @@
                 </button>
             </div>
             <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã khách hàng</label>
+                    <p>{{customer.id}}</p>
+                </div>
                 <div class="form-group">
                     <label>Tên khách hàng</label>
                     <p>{{customer.name}}</p>
@@ -26,10 +29,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button [disabled]="saving" type="button" class="btn btn-default"
-                    (click)="close()">{{l("Cancel")}}</button>
-                <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
-                    [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                <button type="submit" class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
                     <span>{{l("Save")}}</span></button>
             </div>
         </div>

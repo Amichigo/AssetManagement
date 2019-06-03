@@ -1,44 +1,31 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
-using GWebsite.AbpZeroTemplate.Core.Models;
-using GWebsite.AbpZeroTemplate.Core.Models.Base;
 
 namespace GWebsite.AbpZeroTemplate.Core.Models
 {
-    public class Asset_05 : Entity<string>
+    public class Asset_05 : FullAuditModel
     {
+        public string AssetId { get; set; }
+
         public string Name { get; set; }//Tên
-
+        public int TotalMonthDepreciation { get; set; }//Số tháng khấu hao
+        public float DepreciationValue { get; set; }//giá trị khấu hao
+        public float DepreciationRate { get; set; }//Tỉ lệ khấu hao
+        public int RemainingDepMonths { get; set; }//Số tháng khấu hao còn lại
+        public string DepreciationStatus { get; set; }//Tình trạng khấu hao
+        public float RemainingDepValue { get; set; }//Giá trị khấu hao còn lại
         public string Description { get; set; }//Mô tả
-
         public DateTime DateAdded { get; set; }//Ngày nhận
-
         public int  Quantity { get; set; }//số lượng
-
         public float OriginalPrice { get; set; }//giá gốc
-
         public string Note { get; set; }//ghi chú
-
         public bool IsActive { get; set; }//đang hoạt động
-
         public string PurchaseOderId { get; set; }
-
         public string AssetDetailId  { get; set; }
-
         public string AssetGroupId { get; set; }
-
         public string WarrantyId { get; set; }
-
-        public string CreatedDate { get; set; }
-
-        public string CreatedBy { get; set; }
-
-        public DateTime? UpdatedDate { get; set; }
-
-        public string UpdatedBy { get; set; }
-
-        public bool IsDelete { get; set; }
+        public string LinkofImage { get; set; }
+       public int AssetTypeId { get; set; }
     }
 }

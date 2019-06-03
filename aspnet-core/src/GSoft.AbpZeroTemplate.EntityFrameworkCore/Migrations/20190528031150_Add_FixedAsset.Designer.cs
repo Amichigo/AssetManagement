@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    [Migration("20190520124701_Edit-Entity")]
-    partial class EditEntity
+    [Migration("20190528031150_Add_FixedAsset")]
+    partial class Add_FixedAsset
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1551,61 +1551,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasIndex("IdentityRoleId");
 
                     b.ToTable("AppUserRoles");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.AssetGroup_05", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AssetAccount");
-
-                    b.Property<int>("AssetTypeId");
-
-                    b.Property<string>("CostAccount");
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("DepreciationAccount");
-
-                    b.Property<float>("DepreciationRates");
-
-                    b.Property<string>("FatherAssetGroup");
-
-                    b.Property<string>("IncomeAccount");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<int>("Level");
-
-                    b.Property<string>("LiquidationCostAccount");
-
-                    b.Property<int>("MonthsDepreciation");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AssetGroups_05");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.AssetType_05", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AssetTypes_05");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Customer", b =>

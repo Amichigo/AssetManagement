@@ -30,15 +30,12 @@
 
         public const string Pages_Administration_AssetDashboard = "Pages.Administration.AssetDashboard";
 
-        //public const string Pages_Administration_Asset_05 = "Pages.Administration.Asset_05";
-        //public const string Pages_Administration_Asset_05_Create = "Pages.Administration.Asset_05.Create";
-        //public const string Pages_Administration_Asset_05_Edit = "Pages.Administration.Asset_05.Edit ";
-        //public const string Pages_Administration_Asset_05_Delete = "Pages.Administration.Asset_05.Delete";
+        public const string Pages_Administration_Asset_05 = "Pages.Administration.Asset_05";
+        public const string Pages_Administration_Asset_05_Create = "Pages.Administration.Asset_05.Create";
+        public const string Pages_Administration_Asset_05_Edit = "Pages.Administration.Asset_05.Edit ";
+        public const string Pages_Administration_Asset_05_Delete = "Pages.Administration.Asset_05.Delete";
 
         public const string Pages_Administration_AssetType_05 = "Pages.Administration.AssetType_05";
-        public const string Pages_Administration_AssetType_05_Create = "Pages.Administration.AssetType_05.Create";
-        public const string Pages_Administration_AssetType_05_Edit = "Pages.Administration.AssetType_05.Edit ";
-        public const string Pages_Administration_AssetType_05_Delete = "Pages.Administration.AssetType_05.Delete";
 
         public const string Pages_Administration_AssetGroup_05 = "Pages.Administration.AssetGroup_05";
         public const string Pages_Administration_AssetGroup_05_Create = "Pages.Administration.AssetGroup_05.Create";

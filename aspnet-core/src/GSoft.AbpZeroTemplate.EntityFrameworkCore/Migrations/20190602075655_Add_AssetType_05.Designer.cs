@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    [Migration("20190518095820_edit")]
-    partial class edit
+    [Migration("20190602075655_Add_AssetType_05")]
+    partial class Add_AssetType_05
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1555,16 +1555,21 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Asset_05", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AssetDetailId");
 
                     b.Property<string>("AssetGroupId");
 
+                    b.Property<string>("AssetId");
+
+                    b.Property<int>("AssetTypeId");
+
                     b.Property<string>("CreatedBy");
 
-                    b.Property<string>("CreatedDate");
+                    b.Property<DateTime?>("CreatedDate");
 
                     b.Property<DateTime>("DateAdded");
 
@@ -1573,6 +1578,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<bool>("IsActive");
 
                     b.Property<bool>("IsDelete");
+
+                    b.Property<string>("LinkofImage");
 
                     b.Property<string>("Name");
 
@@ -1597,12 +1604,15 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.AssetGroup_05", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AssetAccount");
 
-                    b.Property<string>("AssetTypeId");
+                    b.Property<string>("AssetGroupId");
+
+                    b.Property<int?>("AssetTypeId");
 
                     b.Property<string>("CostAccount");
 
@@ -1628,6 +1638,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("SelectedId");
+
                     b.Property<string>("UpdatedBy");
 
                     b.Property<DateTime?>("UpdatedDate");
@@ -1648,27 +1660,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AssetTypes_05");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Base.AssetDetail_05", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AssetDetailId");
-
-                    b.Property<int>("DepreciationId");
-
-                    b.Property<int>("LiquidationId");
-
-                    b.Property<int>("RepairId");
-
-                    b.Property<int>("UsingProcessId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AssetDetails_05");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Customer", b =>
@@ -1723,48 +1714,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DemoModels");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Depreciation_05", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("DepreciationDetailId");
-
-                    b.Property<float>("DepreciationRate");
-
-                    b.Property<string>("DepreciationStatus");
-
-                    b.Property<float>("DepreciationValue");
-
-                    b.Property<int>("RemainingDepMonths");
-
-                    b.Property<float>("RemainingDepValue");
-
-                    b.Property<int>("TotalMonthDepreciation");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Depreciations_05");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.DepreciationDetail_05", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<float>("AmountOfMoney");
-
-                    b.Property<string>("Content");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DepreciationDetails_05");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.FixedAsset", b =>
@@ -1851,38 +1800,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("Functions");
                 });
 
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Liquidation_05", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("LiquidationDetailId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Liquidations_05");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.LiquidationDetail_05", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("FormLiquidation");
-
-                    b.Property<float>("LiquidationPrice");
-
-                    b.Property<string>("Note");
-
-                    b.Property<float>("RemainingDepreciationValue");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("LiquidationDetails_05");
-                });
-
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.MenuClient", b =>
                 {
                     b.Property<int>("Id")
@@ -1967,111 +1884,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("GPermissions");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Repair_05", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AssetDetailId");
-
-                    b.Property<int?>("RepairDetail_05Id");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RepairDetail_05Id");
-
-                    b.ToTable("Repairs_05");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.RepairDetail_05", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<float>("AmountOfMoney");
-
-                    b.Property<string>("InterpretationContent");
-
-                    b.Property<DateTime>("RepairDate");
-
-                    b.Property<string>("RepairDetail");
-
-                    b.Property<string>("RepairUnit");
-
-                    b.Property<string>("Unit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RepairDetails_05");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.UsingProcess_05", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AssetDetailId");
-
-                    b.Property<int?>("UsingProcessDetail_05Id");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UsingProcessDetail_05Id");
-
-                    b.ToTable("UsingProcess_05");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.UsingProcessDetail_05", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Content");
-
-                    b.Property<string>("Unit");
-
-                    b.Property<DateTime>("UseDate");
-
-                    b.Property<string>("User");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UsingProcessDetail_05");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Warranty_05", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("WarrantyDetailId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Warrantys_05");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.WarrantyDetail_05", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("InterpretationContent");
-
-                    b.Property<DateTime>("WarrantyDate");
-
-                    b.Property<float>("Warrantyperiod");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WarrantyDetails_05");
                 });
 
             modelBuilder.Entity("GSoft.AbpZeroTemplate.Editions.SubscribableEdition", b =>
@@ -2342,20 +2154,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .WithMany("Permissions")
                         .HasForeignKey("RoleId")
                         .HasConstraintName("FK_dbo.Permissions_dbo.AppRoles_RoleId");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Repair_05", b =>
-                {
-                    b.HasOne("GWebsite.AbpZeroTemplate.Core.Models.RepairDetail_05", "RepairDetail_05")
-                        .WithMany()
-                        .HasForeignKey("RepairDetail_05Id");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.UsingProcess_05", b =>
-                {
-                    b.HasOne("GWebsite.AbpZeroTemplate.Core.Models.UsingProcessDetail_05", "UsingProcessDetail_05")
-                        .WithMany()
-                        .HasForeignKey("UsingProcessDetail_05Id");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>

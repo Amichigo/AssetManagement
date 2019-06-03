@@ -4,9 +4,9 @@ using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.FixedAssets.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.AssetGroups_05.Dto;
-
-
 using GWebsite.AbpZeroTemplate.Core.Models;
+using GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.AssetTypes_05.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {
@@ -36,25 +36,24 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<FixedAssetInput, FixedAsset>();
             configuration.CreateMap<FixedAsset, FixedAssetInput>();
             configuration.CreateMap<FixedAsset, FixedAssetForViewDto>();//view
-            
-            // AssetGroup
+
+           // AssetGroup
             configuration.CreateMap<AssetGroup_05, AssetGroupDto_05>();//get filter assetGroup
-            configuration.CreateMap<AssetGroupUpdate_05, AssetGroup_05>();//update
-            configuration.CreateMap<AssetGroupInput_05, AssetGroup_05>();//create
-            configuration.CreateMap<AssetGroup_05, AssetGroupDto_05>();//get for edit
+            configuration.CreateMap<AssetGroupDto_05, AssetGroup_05>();//create
+            configuration.CreateMap<AssetGroup_05, AssetGroupInput_05>();//get for edit
+            configuration.CreateMap<AssetGroup_05, AssetGroupOutput_05>();//get for edit
             configuration.CreateMap<AssetGroup_05, AssetGroupForViewDto_05>();//view
 
-            // Asset_05
-            //configuration.CreateMap<Asset_05, AssetDto_05>();
-            //configuration.CreateMap<Asset_05, Asset_05>();
-            //configuration.CreateMap<Asset_05, AssetInput_05>();
-            //configuration.CreateMap<Asset_05, AssetForViewDto_05>();
+           // Asset_05
+            configuration.CreateMap<Asset_05, AssetDto_05>();
+            configuration.CreateMap<AssetDto_05, Asset_05>();
+            configuration.CreateMap<Asset_05, AssetDto_05>();
+            configuration.CreateMap<Asset_05, AssetForViewDto_05>();
+            configuration.CreateMap<Asset_05, AssetOutput_05>();//get for edit
 
             //AssetType_05
-            //configuration.CreateMap<AssetType_05, AssetTypeDto_05>();
-            //configuration.CreateMap<Asset_05, Asset_05>();
-            //configuration.CreateMap<Asset_05, AssetInput_05>();
-            //configuration.CreateMap<Asset_05, AssetForViewDto_05>();
+            configuration.CreateMap<AssetType_05, AssetTypeDto_05>();
+            configuration.CreateMap<AssetType_05, AssetForViewDto_05>();
         }
     }
 }

@@ -13,6 +13,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        <label>Mã tài sản *</label>
+                        <input #idInput="ngModel" class="form-control" type="text" name="Name" [(ngModel)]="fixedAsset.id" required maxlength="64">
+                        <validation-messages [formCtrl]="idInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
                         <label>Tên tài sản *</label>
                         <input #nameInput="ngModel" class="form-control" type="text" name="Name" [(ngModel)]="fixedAsset.name" required maxlength="64">
                         <validation-messages [formCtrl]="nameInput"></validation-messages>

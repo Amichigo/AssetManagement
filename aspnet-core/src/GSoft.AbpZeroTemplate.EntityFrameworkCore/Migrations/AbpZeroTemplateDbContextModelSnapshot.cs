@@ -1551,14 +1551,78 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("AppUserRoles");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Asset_05", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AssetDetailId");
+
+                    b.Property<string>("AssetGroupId");
+
+                    b.Property<string>("AssetId");
+
+                    b.Property<int>("AssetTypeId");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<DateTime>("DateAdded");
+
+                    b.Property<float>("DepreciationRate");
+
+                    b.Property<string>("DepreciationStatus");
+
+                    b.Property<float>("DepreciationValue");
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("LinkofImage");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Note");
+
+                    b.Property<float>("OriginalPrice");
+
+                    b.Property<string>("PurchaseOderId");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<int>("RemainingDepMonths");
+
+                    b.Property<float>("RemainingDepValue");
+
+                    b.Property<int>("TotalMonthDepreciation");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.Property<string>("WarrantyId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Assets_05");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.AssetGroup_05", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AssetAccount");
 
-                    b.Property<string>("AssetTypeId");
+                    b.Property<string>("AssetGroupId");
+
+                    b.Property<int?>("AssetTypeId");
 
                     b.Property<string>("CostAccount");
 
@@ -1583,6 +1647,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<int>("MonthsDepreciation");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("SelectedId");
 
                     b.Property<string>("UpdatedBy");
 

@@ -1,10 +1,11 @@
-<div bsModal #createModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form #editForm="ngForm" novalidate (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <span *ngIf="!assetGroup.id">Tạo mới tài sản</span>
+                        <span *ngIf="assetGroup.id">Cập nhật nhóm tài sản: {{assetGroup.name}}</span>
+                        <span *ngIf="!assetGroup.id">Tạo mới nhóm tài sản</span>
                     </h4>
                     <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
                         <span aria-hidden="true">&times;</span>
@@ -13,29 +14,33 @@
 
                 <div class="modal-body">
                     <div class="form-group">
+                        <label>Mã nhóm tài sản *</label>
+                        <input #idInput="ngModel" class="form-control" type="text" name="Id" [(ngModel)]="assetGroup.assetGroupId" required maxlength="64">
+                        <validation-messages [formCtrl]="idInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
                         <label>Tên nhóm tài sản *</label>
                         <input #nameInput="ngModel" class="form-control" type="text" name="Name" [(ngModel)]="assetGroup.name" required maxlength="64">
                         <validation-messages [formCtrl]="nameInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Loại tài sản</label>
-                        <select #assetTypeInput="ngModel" size="1" class="form-control" [(ngModel)]="selected" name="AssetType" required maxlength="64">
-                            <option *ngFor="let selected of typeAssets" [value]="selected">{{selected}}</option>
-                            <validation-messages [formCtrl]="assetTypeInput"></validation-messages>  
-                            </select>
+                        <label>Loại tài sản *</label>
+                        <select #assetTypeCombobox name="AssetTypeId" class="form-control" [(ngModel)]="assetGroup.assetTypeId" [attr.data-live-search]="true" jq-plugin="selectpicker" required>
+                            <option *ngFor="let item of assetTypes" [value]="item.value">{{item.displayText}}</option>
+                        </select>
                     </div>
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <label>Cấp tài sản *</label>
                         <input #levelInput="ngModel" class="form-control" type="text" name="Level" [(ngModel)]="assetGroup.level" required maxlength="64">
                         <validation-messages [formCtrl]="levelInput"></validation-messages>
-                    </div> -->
+                    </div>
                     <div class="form-group">
                         <label>Số tháng khấu hao *</label>
                         <input #monthsDepreciationInput="ngModel" class="form-control" type="text" name="MonthsDepreciation" [(ngModel)]="assetGroup.monthsDepreciation" required maxlength="64">
                         <validation-messages [formCtrl]="monthsDepreciationInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Tỷ lệ khấu hao*</label>
+                        <label>Tỷ lệ khấu hao %/năm*</label>
                         <input #depreciationRatesInput="ngModel" class="form-control" type="text" name="DepreciationRates" [(ngModel)]="assetGroup.depreciationRates" required maxlength="64">
                         <validation-messages [formCtrl]="depreciationRatesInput"></validation-messages>
                     </div>
@@ -56,8 +61,8 @@
                     </div>
                     <div class="form-group">
                         <label>Tài khoản thu nhập*</label>
-                        <input #incomeAcountInput="ngModel" class="form-control" type="text" name="IncomeAccount" [(ngModel)]="assetGroup.incomeAcount" required maxlength="64">
-                        <validation-messages [formCtrl]="incomeAcountInput"></validation-messages>
+                        <input #incomeAccountInput="ngModel" class="form-control" type="text" name="IncomeAccount" [(ngModel)]="assetGroup.incomeAccount" required maxlength="64">
+                        <validation-messages [formCtrl]="incomeAccountInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Tài khoản chi phí thanh lý*</label>
@@ -66,8 +71,8 @@
                     </div>
                     <div class="form-group">
                         <label>Nhóm tài sản cha *</label>
-                        <select #assetGroupCombobox name="FatherAssetGroup" class="form-control" [(value)]="leveltemp" [attr.data-live-search]="true" jq-plugin="selectpicker" required>
-                            <option value = 0 >{{emptyText}}</option>
+                        <select #assetGroupCombobox name="FatherAssetGroup" class="form-control" [(ngModel)]="assetGroup.selectedId" [attr.data-live-search]="true" jq-plugin="selectpicker" required>
+                            <option value="">--Default--</option>
                             <option *ngFor="let item of assetGroups" [value]="item.value">{{item.displayText}}</option>
                         </select>
                     </div>

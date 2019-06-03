@@ -26,8 +26,8 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<DemoModel> DemoModels { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<FixedAsset> FixedAssets { get; set; }
-        //public virtual DbSet<Asset_05> Assets_05 { get; set; }
-        //public virtual DbSet<AssetDetail_05> AssetDetails_05 { get; set; }
+        public virtual DbSet<Asset_05> Assets_05 { get; set; }
+       // public virtual DbSet<AssetDetail_05> AssetDetails_05 { get; set; }
         public virtual DbSet<AssetType_05> AssetTypes_05 { get; set; }
         public virtual DbSet<AssetGroup_05> AssetGroups_05 { get; set; }
         //public virtual DbSet<Depreciation_05> Depreciations_05 { get; set; }

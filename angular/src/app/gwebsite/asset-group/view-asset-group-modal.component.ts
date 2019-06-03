@@ -4,30 +4,30 @@ import { AssetGroupController_05ServiceProxy, AssetGroupForViewDto_05 } from "@s
 import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
-  selector: 'viewAssetGroupModal',
-  templateUrl: './view-asset-group-modal.component.html'
+    selector: 'viewAssetGroupModal',
+    templateUrl: './view-asset-group-modal.component.html'
 })
 
 export class ViewAssetGroupModalComponent extends AppComponentBase {
 
-  assetGroup: AssetGroupForViewDto_05 = new AssetGroupForViewDto_05();
-  @ViewChild('viewModal') modal: ModalDirective;
+    assetGroup: AssetGroupForViewDto_05 = new AssetGroupForViewDto_05();
+    @ViewChild('viewModal') modal: ModalDirective;
 
-  constructor(
-    injector: Injector,
-    private assetGroupId: AssetGroupController_05ServiceProxy
-  ) {
-    super(injector);
-  }
+    constructor(
+        injector: Injector,
+        private assetGroupId: AssetGroupController_05ServiceProxy
+    ) {
+        super(injector);
+    }
 
-  show(assetGroupId?: string | null | undefined): void {
-    this.assetGroupId.getAssetGroupForView(assetGroupId).subscribe(result => {
-      this.assetGroup = result;
-      this.modal.show();
-    })
-  }
+    show(assetGroupId?: string | null | undefined): void {
+        this.assetGroupId.getAssetGroupForView(assetGroupId).subscribe(result => {
+            this.assetGroup = result;
+            this.modal.show();
+        })
+    }
 
-  close(): void {
-    this.modal.hide();
-  }
+    close(): void {
+        this.modal.hide();
+    }
 }

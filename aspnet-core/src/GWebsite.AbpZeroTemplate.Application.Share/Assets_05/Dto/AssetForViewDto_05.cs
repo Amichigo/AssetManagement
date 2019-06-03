@@ -1,14 +1,14 @@
 ﻿using GWebsite.AbpZeroTemplate.Core.Models;
 using System;
 
-namespace GWebsite.AbpZeroTemplate.Application.Share.FixedAssets.Dto
+namespace GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Dto
 {
     /// <summary>
     /// <model cref="Asset_05"></model>
     /// </summary>
     public class AssetForViewDto_05
     {
-        public string Id { get; set; }
+        public string AssetId { get; set; }
 
         public string Name { get; set; }//Tên
 
@@ -17,6 +17,8 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.FixedAssets.Dto
         public DateTime DateAdded { get; set; }//Ngày nhận
 
         public int TotalMonthDepreciation { get; set; }//Số tháng khấu hao
+
+        public int AssetTypeId { get; set; }
 
         public float DepreciationRate { get; set; }//Tỉ lệ khấu hao
 
@@ -30,10 +32,13 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.FixedAssets.Dto
 
         public bool IsActive { get; set; }//đang hoạt động
 
-        public string AssetTypeId { get; set; }
-
         public string AssetGroupId { get; set; }
 
         public string AssetDetailId { get; set; }
+
+        public string LinkofImage { get; set; }
+
+
+
     }
 }

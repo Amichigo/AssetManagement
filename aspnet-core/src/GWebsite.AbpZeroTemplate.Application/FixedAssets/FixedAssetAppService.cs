@@ -113,13 +113,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.FixedAssets
             var fixedAssetEntity = fixedAssetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == fixedAssetInput.Id);
             if (fixedAssetEntity == null)
             {
+                ObjectMapper.Map(fixedAssetInput, fixedAssetEntity);
+                SetAuditEdit(fixedAssetEntity);
+                fixedAssetRepository.Update(fixedAssetEntity);
+                CurrentUnitOfWork.SaveChanges();
             }
-            ObjectMapper.Map(fixedAssetInput, fixedAssetEntity);
-            SetAuditEdit(fixedAssetEntity);
-            fixedAssetRepository.Update(fixedAssetEntity);
-            CurrentUnitOfWork.SaveChanges();
         }
-
+        
         #endregion
     }
 }

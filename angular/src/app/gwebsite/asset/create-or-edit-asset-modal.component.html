@@ -1,0 +1,93 @@
+<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #editForm="ngForm" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="asset.assetId">Cập nhật tài sản: {{asset.name}}</span>
+                        <span *ngIf="!asset.assetId">Tạo mới tài sản</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Ngày Nhập *</label>
+                        <input #dateAddedInput="ngModel" class="form-control" type="text" name="DateAdded" [(ngModel)]="asset.dateAdded" required maxlength="64">
+                        <validation-messages [formCtrl]="dateAddedInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Nhóm tài sản cha *</label>
+                        <select #assetGroupCombobox name="FatherAssetGroup" class="form-control" [(ngModel)]="asset.assetGroupId" [attr.data-live-search]="true" jq-plugin="selectpicker" required>
+                            <option value="">--Default--</option>
+                            <option *ngFor="let item of assetGroups" [value]="item.value">{{item.displayText}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Loại tài sản *</label>
+                        <select #assetTypeCombobox name="AssetTypeId" class="form-control" [(ngModel)]="asset.assetTypeId" [attr.data-live-search]="true" jq-plugin="selectpicker" required>
+                            <option *ngFor="let item of assetTypes" [value]="item.value">{{item.displayText}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Số tháng khấu hao *</label>
+                        <input #totalMonthDepreciationInput="ngModel" class="form-control" type="text" name="Name" [(ngModel)]="asset.totalMonthDepreciation" required maxlength="64">
+                        <validation-messages [formCtrl]="totalMonthDepreciationInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Tỷ lệ khấu hao *</label>
+                        <input #depreciationRateInput="ngModel" class="form-control" type="text" name="DepreciationRate" [(ngModel)]="asset.depreciationRate" required maxlength="64">
+                        <validation-messages [formCtrl]="depreciationRateInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên tài sản *</label>
+                        <input #nameInput="ngModel" class="form-control" type="text" name="Name" [(ngModel)]="asset.name" required maxlength="64">
+                        <validation-messages [formCtrl]="nameInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Thông tin mô tả*</label>
+                        <input #descriptionInput="ngModel" class="form-control" type="text" name="Description" [(ngModel)]="asset.description" required maxlength="64">
+                        <validation-messages [formCtrl]="descriptionInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Trạng thái*</label>
+                        <mat-slide-toggle #isActiveInput="ngModel" color="primary" [(ngModel)]="asset.isActive" name="IsActive">{{asset.isActive}}</mat-slide-toggle>
+                        <validation-messages [formCtrl]="isActiveInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Số lượng*</label>
+                        <input #quantityInput="ngModel" class="form-control" type="text" name="Quantity" [(ngModel)]="asset.quantity" required maxlength="64">
+                        <validation-messages [formCtrl]="quantityInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Nguyên giá tài sản*</label>
+                        <input #originalPriceInput="ngModel" class="form-control" type="text" name="OriginalPrice" [(ngModel)]="asset.originalPrice" required maxlength="64">
+                        <validation-messages [formCtrl]="originalPriceInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Giá trị khấu hao*</label>
+                        <input #depreciationValueInput="ngModel" class="form-control" type="text" name="DepreciationValue" [(ngModel)]="asset.depreciationValue" required maxlength="64">
+                        <validation-messages [formCtrl]="depreciationValueInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Ghi chú*</label>
+                        <input #noteInput="ngModel" class="form-control" type="text" name="Note" [(ngModel)]="asset.note" required maxlength="64">
+                        <validation-messages [formCtrl]="noteInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Ảnh</label>
+                        <img [src]="imageURL" height="200" width="200" position="center" *ngIf="imageURL">
+                        <input #file type="file" accept='image/*' (change)="chooseImage(file.files)">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                        <span>{{l("Save")}}</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

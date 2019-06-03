@@ -1,11 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
-using Abp.Domain.Repositories;
 using GWebsite.AbpZeroTemplate.Application.Share.AssetGroups_05;
 using GWebsite.AbpZeroTemplate.Application.Share.AssetGroups_05.Dto;
-using GWebsite.AbpZeroTemplate.Core.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Application.Controllers
 {
@@ -26,24 +22,18 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public AssetGroupOutput_05 GetAssetGroupForEdit(string id)
+        public AssetGroupInput_05 GetAssetGroupForEdit(string id)
         {
             return assetGroupAppService.GetAssetGroupForEdit(id);
         }
 
         [HttpPost]
-        public void CreateAssetGroup([FromBody] AssetGroupInput_05 input)
+        public void CreateOrEditAssetGroup([FromBody] AssetGroupDto_05 input)
         {
-            assetGroupAppService.CreateGroupAsset(input);
+            assetGroupAppService.CreateOrEditAssetGroup(input);
         }
 
-        [HttpPost]
-        public void UpdateAssetGroup([FromBody] AssetGroupUpdate_05 input)
-        {
-            assetGroupAppService.UpdateGroupAsset(input);
-        }
-
-        [HttpDelete("{id}")]        
+        [HttpDelete("{id}")]
         public void DeleteAssetGroup(string id)
         {
             assetGroupAppService.DeleteAssetGroup(id);
@@ -55,6 +45,10 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
             return assetGroupAppService.GetAssetGroupForView(id);
         }
 
-
+        [HttpGet]
+        public AssetGroupOutput_05 GetAsseGroupEdit(string id)
+        {
+            return assetGroupAppService.GetAssetGroupEdit(id);
+        }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GSoft.AbpZeroTemplate.Migrations
 {
-    public partial class EditEntity : Migration
+    public partial class Add_AssetType_05 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
