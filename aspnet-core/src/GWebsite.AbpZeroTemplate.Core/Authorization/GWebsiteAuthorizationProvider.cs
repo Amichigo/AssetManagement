@@ -120,8 +120,85 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             constructionPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlanDetail_Create, L("CreatingNewConstructionPlanDetail"));
             constructionPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlanDetail_Edit, L("EditingConstructionPlanDetail"));
             constructionPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlanDetail_Delete, L("DeletingConstructionPlanDetail"));
-        }
+        
+            var loaibds = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_LoaiBatDongSan, L("LoaiBatDongSan"));
+            loaibds.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_LoaiBatDongSan_Create, L("CreatingNewLoaiBatDongSan"));
+            loaibds.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_LoaiBatDongSan_Edit, L("EditingLoaiBatDongSan"));
+            loaibds.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_LoaiBatDongSan_Delete, L("DeletingLoaiBatDongSan"));
 
+            var loaish = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_LoaiSoHuu, L("LoaiSoHuu"));
+            loaish.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_LoaiSoHuu_Create, L("CreatingNewLoaiSoHuu"));
+            loaish.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_LoaiSoHuu_Edit, L("EditingLoaiSoHuu"));
+            loaish.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_LoaiSoHuu_Delete, L("DeletingLoaiSoHuu"));
+            //Khu Vuc
+            var kv = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_KhuVuc, L("KhuVuc"));
+            kv.CreateChildPermission(GWebsitePermissions.Pages_Administration_KhuVuc_Create, L("CreatingNewKhuVuc"));
+            kv.CreateChildPermission(GWebsitePermissions.Pages_Administration_KhuVuc_Edit, L("EditingKhuVuc"));
+            kv.CreateChildPermission(GWebsitePermissions.Pages_Administration_KhuVuc_Delete, L("DeletingKhuVuc"));
+            //Tinh trang su dung dat
+            var ttsdd = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangSuDungDat, L("TinhTrangSuDungDat"));
+            ttsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangSuDungDat_Create, L("CreatingNewTinhTrangSuDungDat"));
+            ttsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangSuDungDat_Edit, L("EditingTinhTrangSuDungDat"));
+            ttsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangSuDungDat_Delete, L("DeletingTinhTrangSuDungDat"));
+            //Tinh trang xay dung 
+            var ttxd = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangXayDung, L("TinhTrangXayDung"));
+            ttxd.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangXayDung_Create, L("CreatingNewTinhTrangXayDung"));
+            ttxd.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangXayDung_Edit, L("EditingTinhTrangXayDung"));
+            ttxd.CreateChildPermission(GWebsitePermissions.Pages_Administration_TinhTrangXayDung_Delete, L("DeletingTinhTrangXayDung"));
+            //Hien trang phap ly
+            var htpl = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_HienTrangPhapLy, L("HienTrangPhapLy"));
+            htpl.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_HienTrangPhapLy_Create, L("CreatingNewHienTrangPhapLy"));
+            htpl.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_HienTrangPhapLy_Edit, L("EditingHienTrangPhapLy"));
+            htpl.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_HienTrangPhapLy_Delete, L("DeletingHienTrangPhapLy"));
+            //Muc dich su dung dat
+            var mdsdd = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_MucDichSuDungDat, L("MucDichSuDungDat"));
+            mdsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_MucDichSuDungDat_Create, L("CreatingNewMucDichSuDungDat"));
+            mdsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_MucDichSuDungDat_Edit, L("EditingMucDichSuDungDat"));
+            mdsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_MucDichSuDungDat_Delete, L("DeletingMucDichSuDungDat"));
+
+            var loaits = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiTaiSan, L("LoaiTaiSan"));
+            loaits.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiTaiSan_Create, L("CreatingNewLoaiTaiSan"));
+            loaits.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiTaiSan_Edit, L("EditingLoaiTaiSan"));
+            loaits.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiTaiSan_Delete, L("DeletingLoaiTaiSan"));
+
+            var nhomts = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhomTaiSan, L("NhomTaiSan"));
+            nhomts.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhomTaiSan_Create, L("CreatingNewNhomTaiSan"));
+            nhomts.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhomTaiSan_Edit, L("EditingNhomTaiSan"));
+            nhomts.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhomTaiSan_Delete, L("DeletingNhomTaiSan"));
+
+
+            var bds = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_BatDongSan, L("BatDongSan"));
+            bds.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_BatDongSan_Create, L("CreatingNewBatDongSan"));
+            bds.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_BatDongSan_Edit, L("EditingBatDongSan"));
+            bds.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_BatDongSan_Delete, L("DeletingBatDongSan"));
+
+            var ts = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_TaiSan, L("TaiSan"));
+            ts.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_TaiSan_Create, L("CreatingNewTaiSan"));
+            ts.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_TaiSan_Edit, L("EditingTaiSan"));
+            ts.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_TaiSan_Delete, L("DeletingTaiSan"));
+
+
+            var scBDS = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_SuaChuaBatDongSan, L("SuaChuaBatDongSan"));
+            scBDS.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_SuaChuaBatDongSan_Create, L("CreatingNewSuaChuaBatDongSan"));
+            scBDS.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_SuaChuaBatDongSan_Edit, L("EditingSuaChuaBatDongSan"));
+            scBDS.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_SuaChuaBatDongSan_Delete, L("DeletingSuaChuaBatDongSan"));
+
+            var khxd = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyKeHoachXayDung_KeHoachXayDung, L("KeHoachXayDung"));
+            khxd.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyKeHoachXayDung_KeHoachXayDung_Create, L("CreatingNewKeHoachXayDung"));
+            khxd.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyKeHoachXayDung_KeHoachXayDung_Edit, L("EditingKeHoachXayDung"));
+            khxd.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyKeHoachXayDung_KeHoachXayDung_Delete, L("DeletingKeHoachXayDung"));
+
+            var ctdd = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_CongTrinhDoDang, L("CongTrinhDoDang"));
+            ctdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_CongTrinhDoDang_Create, L("CreatingNewCongTrinhDoDang"));
+            ctdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_CongTrinhDoDang_Edit, L("EditingCongTrinhDoDang"));
+            ctdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_CongTrinhDoDang_Delete, L("DeletingCongTrinhDoDang"));
+
+            var dvtN13 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau, L("HoSoThau"));
+            dvtN13.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Create, L("CreatingNewHoSoThau"));
+            dvtN13.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Edit, L("EditingHoSoThau"));
+            dvtN13.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Delete, L("DeletingHoSoThau"));
+
+        }
         private static ILocalizableString L(string name)
         {
             return new LocalizableString(name, AbpZeroTemplateConsts.LocalizationSourceName);

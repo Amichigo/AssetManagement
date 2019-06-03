@@ -33,6 +33,26 @@ export class AppNavigationService {
                 new AppMenuItem('Hợp đồng thầu', 'Pages.Administration.Contract', 'flaticon-menu-1', '/app/gwebsite/hopdongthau'),
                 new AppMenuItem('Phiếu gọi hàng', 'Pages.Administration.GoodsInvoice', 'flaticon-menu-1', '/app/gwebsite/phieugoihang'),
             ]),
+            new AppMenuItem('Nhóm 13 - Quản lý bất động sản', '', 'flaticon-interface-8', '', [
+                new AppMenuItem('Quản Lý Bất Động Sản N13', '', 'flaticon-interface-8', '', [
+                    new AppMenuItem('Bất Động Sản N13', 'Pages.Administration.QuanLyBatDongSan.BatDongSan', 'flaticon-menu-1', '/app/gwebsite/batdongsan'),
+                    new AppMenuItem('Sửa Chữa Bất Động Sản N13', 'Pages.Administration.QuanLyBatDongSan.SuaChuaBatDongSan', 'flaticon-menu-1', '/app/gwebsite/suachuabatdongsan'),
+                    new AppMenuItem('Loại Bất Động Sản N13', 'Pages.Administration.QuanLyBatDongSan.LoaiBatDongSan', 'flaticon-menu-1', '/app/gwebsite/loaibatdongsan'),
+                    new AppMenuItem('Loại Sở Hữu N13', 'Pages.Administration.QuanLyBatDongSan.LoaiSoHuu', 'flaticon-menu-1', '/app/gwebsite/loaisohuu'),
+                    new AppMenuItem('Hiện Trạng Pháp Lý N13', 'Pages.Administration.QuanLyBatDongSan.HienTrangPhapLy', 'flaticon-menu-1', '/app/gwebsite/hientrangphaply'),
+                    new AppMenuItem('Tình Trạng Sử Dụng Đất N13', 'Pages.Administration.QuanLyBatDongSan.TinhTrangSuDungDat', 'flaticon-menu-1', '/app/gwebsite/tinhtrangsudungdat'),
+                    new AppMenuItem('Tài Sản Test N13', 'Pages.Administration.QuanLyBatDongSan.TaiSan', 'flaticon-menu-1', '/app/gwebsite/taisan'),  
+                ]),
+                new AppMenuItem('Quản Lý Kế hoạch XD N13', '', 'flaticon-interface-8', '', [
+                    new AppMenuItem('Kế hoạch XD cơ bản N13', 'Pages.Administration.QuanLyKeHoachXayDung.KeHoachXayDung', 'flaticon-menu-1', '/app/gwebsite/kehoachxaydung'),  
+                ]),     
+                new AppMenuItem('Quản Lý Công trình N13', '', 'flaticon-interface-8', '', [
+                    new AppMenuItem('Công trình dỡ dang N13', 'Pages.Administration.QuanLyCongTrinhDoDang.CongTrinhDoDang', 'flaticon-menu-1', '/app/gwebsite/congtrinh'),
+                    new AppMenuItem('Hồ sơ thầu N13', 'Pages.Administration.QuanLyCongTrinhDoDang.HoSoThau', 'flaticon-menu-1', '/app/gwebsite/hosothaun13'),
+                    
+                ]),   
+            ]),
+         
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),
                 new AppMenuItem('Roles', 'Pages.Administration.Roles', 'flaticon-suitcase', '/app/admin/roles'),

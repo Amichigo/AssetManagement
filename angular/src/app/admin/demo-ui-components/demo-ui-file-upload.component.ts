@@ -27,8 +27,11 @@ export class DemoUiFileUploadComponent extends AppComponentBase {
     onUpload(event): void {
         for (const file of event.files) {
             this.uploadedFiles.push(file);
+
         }
+
     }
+
 
     onBeforeSend(event): void {
         event.xhr.setRequestHeader('Authorization', 'Bearer ' + abp.auth.getToken());

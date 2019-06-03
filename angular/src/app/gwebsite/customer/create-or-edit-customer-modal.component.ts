@@ -2,8 +2,7 @@ import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
 import { CustomerServiceProxy, CustomerInput } from '@shared/service-proxies/service-proxies';
-
-
+    
 @Component({
     selector: 'createOrEditCustomerModal',
     templateUrl: './create-or-edit-customer-modal.component.html'
@@ -17,6 +16,7 @@ export class CreateOrEditCustomerModalComponent extends AppComponentBase {
     @ViewChild('dateInput') dateInput: ElementRef;
 
 
+     
     /**
      * @Output dùng để public event cho component khác xử lý
      */

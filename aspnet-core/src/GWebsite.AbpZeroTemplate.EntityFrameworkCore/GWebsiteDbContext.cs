@@ -3,6 +3,10 @@ using Abp.Authorization.Users;
 using Abp.MultiTenancy;
 using Abp.Zero.EntityFrameworkCore;
 using GWebsite.AbpZeroTemplate.Core.Models;
+using GWebsite.AbpZeroTemplate.Core.Models.KeHoachXayDung_N13;
+using GWebsite.AbpZeroTemplate.Core.Models.QuanLyCongTrinh_N13;
+using GWebsite.AbpZeroTemplate.Core.Models.RealEstasAsset.QuanLyBDS;
+using GWebsite.AbpZeroTemplate.Core.Models.TaiSan13;
 using Microsoft.EntityFrameworkCore;
 
 namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
@@ -55,6 +59,34 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<DirectorShoppingPlan> DirectorShoppingPlans { get; set; }
         public virtual DbSet<ConstructionPlan> ConstructionPlans { get; set; }
         public virtual DbSet<ConstructionPlanDetail> ConstructionPlanDetails { get; set; }
+
+
+        public virtual DbSet<BatDongSan> BatDongSan_N13 { get; set; }
+        public virtual DbSet<GiayPhepSuDung> GiayPhepSuDung_N13 { get; set; }
+        public virtual DbSet<HienTrangPhapLy> HienTrangPhapLy_N13 { get; set; }
+        public virtual DbSet<LoaiBatDongSan> LoaiBatDongSan_N13 { get; set; }
+
+        public virtual DbSet<LoaiSoHuu> LoaiSoHuu_N13 { get; set; }
+
+        public virtual DbSet<MucDinhSuDungDat> MucDinhSuDungDat_N13 { get; set; }
+
+        public virtual DbSet<TinhTrangSuDungDat> TinhTrangSuDungDat_N13 { get; set; }
+
+        public virtual DbSet<TinhTrangXayDung> TinhTrangXayDung_N13 { get; set; }
+
+        public virtual DbSet<TaiSan_13> TaiSan_13 { get; set; }
+
+
+        public virtual DbSet<SuaChuaBatDongSan> SuaChuaBatDongSan_N13 { get; set; }
+
+        public virtual DbSet<KeHoachXayDung_N13> KeHoachXayDung_N13 { get; set; }
+
+        public virtual DbSet<CongTrinh_N13> CongTrinh_N13 { get; set; }
+
+        public virtual DbSet<HoSoThau_N13> HoSoThau_N13 { get; set; }
+
+        public virtual DbSet<DonViThau_N13> DonViThau_N13 { get; set; }
+
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>
