@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.LocationTypes
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_LocationType9)]
     public class LocationTypeAppService : GWebsiteAppServiceBase, ILocationTypeAppService
     {
         private readonly IRepository<LocationType_9> LocationTypeRepository;
@@ -102,7 +102,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.LocationTypes
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_LocationType9_Create)]
         private void Create(LocationTypeInput_9 LocationTypeInput)
         {
             var LocationTypeEntity = ObjectMapper.Map<LocationType_9>(LocationTypeInput);
@@ -111,7 +111,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.LocationTypes
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_LocationType9_Edit)]
         private void Update(LocationTypeInput_9 LocationTypeInput)
         {
             var LocationTypeEntity = LocationTypeRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == LocationTypeInput.Id);

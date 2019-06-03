@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.LegalStatusTypes
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_LegalStatusType9)]
     public class LegalStatusTypeAppService : GWebsiteAppServiceBase, ILegalStatusTypeAppService
     {
         private readonly IRepository<LegalStatusType_9> LegalStatusTypeRepository;
@@ -102,7 +102,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.LegalStatusTypes
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_LegalStatusType9_Create)]
         private void Create(LegalStatusTypeInput_9 LegalStatusTypeInput)
         {
             var LegalStatusTypeEntity = ObjectMapper.Map<LegalStatusType_9>(LegalStatusTypeInput);
@@ -111,7 +111,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.LegalStatusTypes
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_LegalStatusType9_Edit)]
         private void Update(LegalStatusTypeInput_9 LegalStatusTypeInput)
         {
             var LegalStatusTypeEntity = LegalStatusTypeRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == LegalStatusTypeInput.Id);

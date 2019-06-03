@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Buildings
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_Building9)]
     public class BuildingAppService : GWebsiteAppServiceBase, IBuildingAppService
     {
         private readonly IRepository<Building_9> BuildingRepository;
@@ -98,7 +98,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Buildings
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Building9_Create)]
         private void Create(BuildingInput_9 BuildingInput)
         {
             var BuildingEntity = ObjectMapper.Map<Building_9>(BuildingInput);
@@ -107,7 +107,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Buildings
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Building9_Edit)]
         private void Update(BuildingInput_9 BuildingInput)
         {
             var BuildingEntity = BuildingRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == BuildingInput.Id);

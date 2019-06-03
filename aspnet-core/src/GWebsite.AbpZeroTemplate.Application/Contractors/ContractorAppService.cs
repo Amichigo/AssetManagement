@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Contractors
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_Contractor9)]
     public class ContractorAppService : GWebsiteAppServiceBase, IContractorAppService
     {
         private readonly IRepository<Contractors_9> ContractorRepository;
@@ -103,7 +103,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contractors
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Contractor9_Create)]
         private void Create(ContractorInput ContractorInput)
         {
             var ContractorEntity = ObjectMapper.Map<Contractors_9>(ContractorInput);
@@ -112,7 +112,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contractors
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Contractor9_Edit)]
         private void Update(ContractorInput ContractorInput)
         {
             var ContractorEntity = ContractorRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == ContractorInput.Id);

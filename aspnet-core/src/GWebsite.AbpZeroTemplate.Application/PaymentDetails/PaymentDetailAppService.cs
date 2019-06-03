@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.PaymentDetails
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_PaymentDetail9)]
     public class PaymentDetailAppService : GWebsiteAppServiceBase, IPaymentDetailAppService
     {
         private readonly IRepository<PaymentDetails_9> PaymentDetailRepository;
@@ -100,7 +100,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.PaymentDetails
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_PaymentDetail9_Create)]
         private void Create(PaymentDetailInput PaymentDetailInput)
         {
             var PaymentDetailEntity = ObjectMapper.Map<PaymentDetails_9>(PaymentDetailInput);
@@ -109,7 +109,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.PaymentDetails
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_PaymentDetail9_Edit)]
         private void Update(PaymentDetailInput PaymentDetailInput)
         {
             var PaymentDetailEntity = PaymentDetailRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == PaymentDetailInput.Id);

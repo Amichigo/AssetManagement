@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.RealEstateRepairs
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_RealEstateRepair9)]
     public class RealEstateRepairAppService : GWebsiteAppServiceBase, IRealEstateRepairAppService
     {
         private readonly IRepository<RealEstateRepair_9> RealEstateRepairRepository;
@@ -127,7 +127,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.RealEstateRepairs
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_RealEstateRepair9_Create)]
         private void Create(RealEstateRepairInput_9 RealEstateRepairInput)
         {
             var RealEstateRepairEntity = ObjectMapper.Map<RealEstateRepair_9>(RealEstateRepairInput);
@@ -136,7 +136,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.RealEstateRepairs
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_RealEstateRepair9_Edit)]
         private void Update(RealEstateRepairInput_9 RealEstateRepairInput)
         {
             var RealEstateRepairEntity = RealEstateRepairRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == RealEstateRepairInput.Id);

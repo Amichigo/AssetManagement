@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Plans
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_Plan9)]
     public class PlanAppService : GWebsiteAppServiceBase, IPlanAppService
     {
         private readonly IRepository<Plan_9> PlanRepository;
@@ -111,7 +111,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Plans
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Plan9_Create)]
         private void Create(PlanInput PlanInput)
         {
             var PlanEntity = ObjectMapper.Map<Plan_9>(PlanInput);
@@ -120,7 +120,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Plans
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Plan9_Edit)]
         private void Update(PlanInput PlanInput)
         {
             var PlanEntity = PlanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == PlanInput.Id);

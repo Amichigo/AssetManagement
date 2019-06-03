@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Assets
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_Asset9)]
     public class AssetAppService : GWebsiteAppServiceBase, IAssetAppService
     {
         private readonly IRepository<Asset_test9> assetRepository;
@@ -112,7 +112,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Assets
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Asset9_Create)]
         private void Create(AssetInput_9 assetInput)
         {
             var AssetEntity = ObjectMapper.Map<Asset_test9>(assetInput);
@@ -121,7 +121,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Assets
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Asset9_Edit)]
         private void Update(AssetInput_9 assetInput)
         {
             var assetEntity = assetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == assetInput.Id);

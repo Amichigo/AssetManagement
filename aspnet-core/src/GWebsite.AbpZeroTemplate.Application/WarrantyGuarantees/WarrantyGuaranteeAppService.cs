@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.WarrantyGuarantees
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_WarrantyGuarantee9)]
     public class WarrantyGuaranteeAppService : GWebsiteAppServiceBase, IWarrantyGuaranteeAppService
     {
         private readonly IRepository<WarrantyGuarantee> WarrantyGuaranteeRepository;
@@ -100,7 +100,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.WarrantyGuarantees
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_WarrantyGuarantee9_Create)]
         private void Create(WarrantyGuaranteeInput WarrantyGuaranteeInput)
         {
             var WarrantyGuaranteeEntity = ObjectMapper.Map<WarrantyGuarantee>(WarrantyGuaranteeInput);
@@ -109,7 +109,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.WarrantyGuarantees
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_WarrantyGuarantee9_Edit)]
         private void Update(WarrantyGuaranteeInput WarrantyGuaranteeInput)
         {
             var WarrantyGuaranteeEntity = WarrantyGuaranteeRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == WarrantyGuaranteeInput.Id);

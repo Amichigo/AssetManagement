@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Lands
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_Land9)]
     public class LandAppService : GWebsiteAppServiceBase, ILandAppService
     {
         private readonly IRepository<Land_9> LandRepository;
@@ -102,7 +102,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Lands
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Land9_Create)]
         private void Create(LandInput_9 LandInput)
         {
             var LandEntity = ObjectMapper.Map<Land_9>(LandInput);
@@ -111,7 +111,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Lands
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Land9_Edit)]
         private void Update(LandInput_9 LandInput)
         {
             var LandEntity = LandRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == LandInput.Id);

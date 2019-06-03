@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.ContractGuarantees
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_ContractGuarantee9)]
     public class ContractGuaranteeAppService : GWebsiteAppServiceBase, IContractGuaranteeAppService
     {
         private readonly IRepository<ContractGuarantee> ContractGuaranteeRepository;
@@ -100,7 +100,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ContractGuarantees
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_ContractGuarantee9_Create)]
         private void Create(ContractGuaranteeInput ContractGuaranteeInput)
         {
             var ContractGuaranteeEntity = ObjectMapper.Map<ContractGuarantee>(ContractGuaranteeInput);
@@ -109,7 +109,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ContractGuarantees
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_ContractGuarantee9_Edit)]
         private void Update(ContractGuaranteeInput ContractGuaranteeInput)
         {
             var ContractGuaranteeEntity = ContractGuaranteeRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == ContractGuaranteeInput.Id);

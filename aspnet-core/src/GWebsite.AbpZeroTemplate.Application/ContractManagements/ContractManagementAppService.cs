@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.ContractManagements
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_ContractManagement9)]
     public class ContractManagementAppService : GWebsiteAppServiceBase, IContractManagementAppService
     {
         private readonly IRepository<ContractManagement> ContractManagementRepository;
@@ -111,7 +111,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ContractManagements
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_ContractManagement9_Create)]
         private void Create(ContractManagementInput ContractManagementInput)
         {
             var ContractManagementEntity = ObjectMapper.Map<ContractManagement>(ContractManagementInput);
@@ -120,7 +120,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ContractManagements
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_ContractManagement9_Edit)]
         private void Update(ContractManagementInput ContractManagementInput)
         {
             var ContractManagementEntity = ContractManagementRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == ContractManagementInput.Id);

@@ -4,8 +4,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    <span *ngIf="realEstate.id">{{l("EditCustomer")}}: {{realEstate.name}}</span>
-                    <span *ngIf="!realEstate.id">{{l("CreateNewCustomer")}}</span>
+                    <span *ngIf="realEstate.id">{{l("Chi tiết bất động sản")}}: {{realEstate.name}}</span>
+                    <span *ngIf="!realEstate.id">{{l("Chi tiết bất động sản")}}</span>
                 </h4>
                 <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
                     <span aria-hidden="true">&times;</span>

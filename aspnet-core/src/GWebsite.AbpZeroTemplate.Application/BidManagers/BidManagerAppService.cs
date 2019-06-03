@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.BidManagers
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_BidManager9)]
     public class BidManagerAppService : GWebsiteAppServiceBase, IBidManagerAppService
     {
         private readonly IRepository<BidManager_9> BidManagerRepository;
@@ -119,7 +119,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BidManagers
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_BidManager9_Create)]
         private void Create(BidManagerInput BidManagerInput)
         {
             var BidManagerEntity = ObjectMapper.Map<BidManager_9>(BidManagerInput);
@@ -128,7 +128,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BidManagers
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_BidManager9_Edit)]
         private void Update(BidManagerInput BidManagerInput)
         {
             var BidManagerEntity = BidManagerRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == BidManagerInput.Id);
