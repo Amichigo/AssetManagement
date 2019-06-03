@@ -10,11 +10,18 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Vehicles.Dto
 {
     public class VehicleInput : Entity<int>
     {
+
+        public string IdVehicle { get; set; }
         public string Name { get; set; }
         public string Number { get; set; }
-        public string Cartype { get; set; }
-        public string detail { get; set; }
-        public string status { get; set; }
-        public string IdCar { get; set; }
+        public string Price { get; set; }
+        public string Status { get; set; }
+        public string IdTypeCar { get; set; }
+        public string Model { get; set; }
+        public string MachineNumber { get; set; }
+        public string Color { get; set; }
+        public string HostName { get; set; }
+        public string NameEngine { get; set; }
+        public string IdModel { get; set; }
     }
 }

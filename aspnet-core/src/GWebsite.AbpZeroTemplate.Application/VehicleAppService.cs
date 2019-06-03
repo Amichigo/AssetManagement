@@ -16,19 +16,27 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vehicles
     public class VehicleAppService : GWebsiteAppServiceBase, IVehicleAppService
     {
         private readonly IRepository<Vehicle> vehicleRepository;
+        private readonly IRepository<TypeVehicle> typevehicleRepository;
+        private readonly IRepository<Asset_8> assetRepository;
 
-        public VehicleAppService(IRepository<Vehicle> vehicleRepository)
+        public VehicleAppService(IRepository<Vehicle> vehicleRepository, IRepository<TypeVehicle> typevehicleRepository, IRepository<Asset_8> assetRepository)
         {
             this.vehicleRepository = vehicleRepository;
+            this.typevehicleRepository = typevehicleRepository;
+            this.assetRepository = assetRepository;
         }
 
         #region Public Method
 
-        public void CreateOrEditVehicle(VehicleInput vehicleInput)
+        public void CreateOrEditVehicle(VehicleInput vehicleInput,int selectedTS)
         {
             if (vehicleInput.Id == 0)
             {
+                int nextid = vehicleRepository.GetAll().Where(x => !x.IsDelete).Count() + 1;
+                vehicleInput.IdVehicle = "VH000" + nextid;
                 Create(vehicleInput);
+                // Lưu mã vehicle vào bảng tài sản , bằng cách edit tài sản
+                UpdateTaiSan(selectedTS, vehicleInput.IdVehicle);
             }
             else
             {
@@ -70,11 +78,11 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vehicles
         public PagedResultDto<VehicleDto> GetVehicles(VehicleFilter input)
         {
             var query = vehicleRepository.GetAll().Where(x => !x.IsDelete);
-
+            var tsquery=assetRepository.GetAll().Where(x => !x.IsDelete);
             // filter by value
             if (input.Name != null)
             {
-                query = query.Where(x => x.Name.ToLower().Equals(input.Name));
+                query = query.Where(x => x.Name.ToLower().Contains(input.Name.ToLower()));
             }
 
             var totalCount = query.Count();
@@ -88,10 +96,32 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vehicles
             // paging
             var items = query.PageBy(input).ToList();
 
+            var listVehicle = from vh in query
+                              join ts in tsquery
+                              on vh.IdVehicle equals ts.IdVehicle
+                              select new VehicleDto
+                              {
+                                  MaTaiSan = ts.MaTaiSan,
+                                  TenTaiSan = ts.TenTaiSan,
+                                  NguyenGiaTaiSan = ts.NguyenGiaTaiSan,
+                                  IdTypeCar = vh.IdTypeCar,
+                                  Color = vh.Color,
+                                  Status = vh.Status,
+                                  HostName = vh.HostName,
+                                  Id = vh.Id,
+                                  IdVehicle = vh.IdVehicle,
+                                  MachineNumber = vh.MachineNumber,
+                                  Model = vh.Model,
+                                  Name = vh.Name,
+                                  NameEngine = vh.NameEngine,
+                                  Number = vh.Number,
+                                  Price = vh.Price
+
+                              };
             // result
             return new PagedResultDto<VehicleDto>(
                 totalCount,
-                items.Select(item => ObjectMapper.Map<VehicleDto>(item)).ToList());
+               listVehicle.ToList());
         }
 
         #endregion
@@ -117,6 +147,20 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vehicles
             ObjectMapper.Map(vehicleInput, vehicleEntity);
             SetAuditEdit(vehicleEntity);
             vehicleRepository.Update(vehicleEntity);
+           // CurrentUnitOfWork.SaveChanges();
+        }
+
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        private void UpdateTaiSan(int selectedTS,string maVehicle)
+        {
+            var taiSanEntity = assetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == selectedTS);
+            if (taiSanEntity == null)
+            {
+                return;
+            }
+            taiSanEntity.IdVehicle = maVehicle;
+            // SetAuditEdit(taiSanEntity);
+            assetRepository.Update(taiSanEntity);
             CurrentUnitOfWork.SaveChanges();
         }
 

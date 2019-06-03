@@ -57,6 +57,36 @@ export class AppNavigationService {
                     "Pages.Administration.Vehicle",
                     "flaticon-menu-1",
                     "/app/gwebsite/vehicle"
+                ),
+                new AppMenuItem(
+                    "TypeVehicle",
+                    "Pages.Administration.TypeVehicle",
+                    "flaticon-menu-1",
+                    "/app/gwebsite/typevehicle"
+                ),
+                new AppMenuItem(
+                    "Asset",
+                    "Pages.QuanLyXe.Asset",
+                    "flaticon-menu-1",
+                    "/app/gwebsite/asset"
+                ),
+                new AppMenuItem(
+                    "BrandVehicle",
+                    "Pages.Administration.BrandVehicle",
+                    "flaticon-menu-1",
+                    "/app/gwebsite/brandvehicle"
+                ),
+                new AppMenuItem(
+                    "ModelVehicle",
+                    "Pages.Administration.ModelVehicle",
+                    "flaticon-menu-1",
+                    "/app/gwebsite/modelvehicle"
+                ),
+                new AppMenuItem(
+                    "OperateVehicle",
+                    "Pages.Administration.OperateVehicle",
+                    "flaticon-menu-1",
+                    "/app/gwebsite/operatevehicle"
                 )
             ]),
             new AppMenuItem("Systems", "", "flaticon-layers", "", [

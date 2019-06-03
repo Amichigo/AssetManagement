@@ -14,10 +14,16 @@ import * as _ from "lodash";
 import { LazyLoadEvent } from "primeng/components/common/lazyloadevent";
 import { Paginator } from "primeng/components/paginator/paginator";
 import { Table } from "primeng/components/table/table";
-import { CustomerServiceProxy } from "@shared/service-proxies/service-proxies";
+import {
+    CustomerServiceProxy,
+    AssetInput,
+    AssetForViewDto
+} from "@shared/service-proxies/service-proxies";
 import { VehicleServiceProxy } from "@shared/service-proxies/service-proxies";
 import { CreateOrEditVehicleModalComponent } from "./create-or-edit-vehicle-modal.components";
-
+import { SelectAssetModalComponent } from "../asset/select-asset-modal.component";
+import { WebApiServiceProxy } from "@shared/service-proxies/webapi.service";
+import { AssetServiceProxy } from "@shared/service-proxies/service-proxies";
 @Component({
     templateUrl: "./vehicle.component.html",
     animations: [appModuleAnimation()]
@@ -32,15 +38,20 @@ export class VehicleComponent extends AppComponentBase
     @ViewChild("createOrEditModal")
     createOrEditModal: CreateOrEditVehicleModalComponent;
     @ViewChild("viewVehicleModal") viewVehicleModal: ViewVehicleModalComponent;
-
+    // gọi modal select ra để hiển thị trong component vehicle;
+    @ViewChild("selectAssetModal") selectAssetModal: SelectAssetModalComponent;
     /**
      * tạo các biến dể filters
      */
     vehicleName: string;
-
+    selectedAsset: number;
+    mataisanName: string;
+    taisan: AssetInput = new AssetInput();
     constructor(
         injector: Injector,
         private _vehicleService: VehicleServiceProxy,
+        private _apiService: WebApiServiceProxy,
+        private _assetService: AssetServiceProxy,
         private _activatedRoute: ActivatedRoute
     ) {
         super(injector);
@@ -130,6 +141,24 @@ export class VehicleComponent extends AppComponentBase
         this.createOrEditModal.show();
     }
 
+    //Lấy ra thông tin tài sản ứng với id tài sản vừa chọn
+    updateAsset(): void {
+        if (this.selectAssetModal.selectedMaTS != -1) {
+            this.selectedAsset = this.selectAssetModal.selectedMaTS;
+            this._apiService
+                .getForEdit("api/Asset/GetAssetForView", this.selectedAsset)
+                .subscribe(result => {
+                    // this.mataisanName = result.maTaiSan;
+                    this.taisan = result; //ghi vậy ngắn hơn
+                });
+        }
+    }
+
+    // hiển thị  modal select lên cái màn hình vehicle
+    // gọi nó trong button, khi button click gọi vào hàm này,
+    showTaiSan(): void {
+        this.selectAssetModal.show();
+    }
     /**
      * Tạo pipe thay vì tạo từng hàm truncate như thế này
      * @param text

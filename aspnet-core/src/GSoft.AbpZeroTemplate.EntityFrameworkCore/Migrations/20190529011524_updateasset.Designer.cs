@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    [Migration("20190420140659_Vehicle")]
-    partial class Vehicle
+    [Migration("20190529011524_updateasset")]
+    partial class updateasset
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1553,6 +1553,55 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("AppUserRoles");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Asset_8", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("DiaChi");
+
+                    b.Property<string>("GhiChu");
+
+                    b.Property<float>("GiaTinhKhauHao");
+
+                    b.Property<string>("IdVehicle");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("KhauHao");
+
+                    b.Property<string>("MaLoaiTaiSan");
+
+                    b.Property<string>("MaNhomTaiSan");
+
+                    b.Property<string>("MaTaiSan");
+
+                    b.Property<string>("NgayBatDauKhauHao");
+
+                    b.Property<string>("NgayKetThucKhauHao");
+
+                    b.Property<string>("NgayNhapTaiSan");
+
+                    b.Property<float>("NguyenGiaTaiSan");
+
+                    b.Property<string>("TenTaiSan");
+
+                    b.Property<string>("TinhTrangTaiSan");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Assets_8");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
@@ -1695,6 +1744,31 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("MenuClients");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.ModelVehicle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("IdModel");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("NameModel");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ModelVehicles");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Permission", b =>
                 {
                     b.Property<int>("Id")
@@ -1726,7 +1800,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("GPermissions");
                 });
 
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Vehicle", b =>
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.TypeVehicle", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1736,17 +1810,56 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime?>("CreatedDate");
 
+                    b.Property<string>("IdTypeCar");
+
                     b.Property<bool>("IsDelete");
 
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Number");
+                    b.Property<string>("NameTypeCar");
 
                     b.Property<string>("UpdatedBy");
 
                     b.Property<DateTime?>("UpdatedDate");
 
-                    b.Property<string>("cartype");
+                    b.HasKey("Id");
+
+                    b.ToTable("TypeVehicles");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Vehicle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Color");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("HostName");
+
+                    b.Property<string>("IdTypeCar");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("MachineNumber");
+
+                    b.Property<string>("Model");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("NameEngine");
+
+                    b.Property<string>("Number");
+
+                    b.Property<string>("Price");
+
+                    b.Property<string>("Status");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
 
                     b.HasKey("Id");
 

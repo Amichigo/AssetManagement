@@ -9,7 +9,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Vehicles
 {
     public interface IVehicleAppService
     {
-        void CreateOrEditVehicle(VehicleInput vehicleInput);
+        void CreateOrEditVehicle(VehicleInput vehicleInput,int selectedTS=0);
         VehicleInput GetVehicleForEdit(int id);
         void DeleteVehicle(int id);
         PagedResultDto<VehicleDto> GetVehicles(VehicleFilter input);

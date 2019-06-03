@@ -51,6 +51,31 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             vehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_Vehicle_Edit, L("EditingVehicle"));
             vehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_Vehicle_Delete, L("DeletingVehicle"));
 
+            var typevehicle = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_TypeVehicle, L("TypeVehicle"));
+            typevehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_TypeVehicle_Create, L("CreatingNewTypeVehicle"));
+            typevehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_TypeVehicle_Edit, L("EditingTypeVehicle"));
+            typevehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_TypeVehicle_Delete, L("DeletingTypeVehicle"));
+
+
+            var modelvehicle = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ModelVehicle, L("ModelVehicle"));
+            modelvehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_ModelVehicle_Create, L("CreatingNewModelVehicle"));
+            modelvehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_ModelVehicle_Edit, L("EditingModelVehicle"));
+            modelvehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_ModelVehicle_Delete, L("DeletingModelVehicle"));
+
+            var ts = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_QuanLyXe_Asset, L("Asset"));
+            ts.CreateChildPermission(GWebsitePermissions.Pages_QuanLyXe_Asset_Create, L("CreatingNewAsset"));
+            ts.CreateChildPermission(GWebsitePermissions.Pages_QuanLyXe_Asset_Edit, L("EditingAsset"));
+            ts.CreateChildPermission(GWebsitePermissions.Pages_QuanLyXe_Asset_Delete, L("DeletingAsset"));
+
+            var brandvehicle = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_BrandVehicle, L("BrandVehicle"));
+            brandvehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_BrandVehicle_Create, L("CreatingNewBrandVehicle"));
+            brandvehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_BrandVehicle_Edit, L("EditingBrandVehicle"));
+            brandvehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_BrandVehicle_Delete, L("DeletingBrandVehicle"));
+
+            var operatevehicle = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_OperateVehicle, L("OperateVehicle"));
+            operatevehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_OperateVehicle_Create, L("CreatingNewOperateVehicle"));
+            operatevehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_OperateVehicle_Edit, L("EditingOperateVehicle"));
+           operatevehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_OperateVehicle_Delete, L("DeletingOperateVehicle"));
         }
 
         private static ILocalizableString L(string name)

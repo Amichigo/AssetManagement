@@ -28,9 +28,9 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpPost]
-        public void CreateOrEditVehicle([FromBody] VehicleInput input)
+        public void CreateOrEditVehicle([FromBody] VehicleInput input,int selectedTS)
         {
-            vehicleAppService.CreateOrEditVehicle(input);
+            vehicleAppService.CreateOrEditVehicle(input, selectedTS);
         }
 
         [HttpDelete("{id}")]
