@@ -10,6 +10,7 @@ import { Table } from 'primeng/components/table/table';
 import { KeHoachXayDungServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditKeHoachXayDungModalComponent } from './create-or-edit-kehoachxaydung-modal.component';
 import { ModalDirective } from 'ngx-bootstrap';
+import { SelectKeHoachXayDungModalComponent } from './select-kehoachxaydung-modal.component';
 
 @Component({
     templateUrl: './kehoachxaydung.component.html',
@@ -25,7 +26,9 @@ export class KeHoachXayDungComponent extends AppComponentBase implements AfterVi
     @ViewChild('paginator') paginator: Paginator;
     @ViewChild('createOrEditModal') createOrEditModal: CreateOrEditKeHoachXayDungModalComponent;
     @ViewChild('viewKeHoachXayDungModal') viewKeHoachXayDungModal: ViewKeHoachXayDungModalComponent;
+    @ViewChild('selectKeHoachXayDungModal') selectKeHoachXayDungModal:SelectKeHoachXayDungModalComponent;
     @ViewChild('KeHoachXayDungModal') modal: ModalDirective;
+  
     /**
      * tạo các biến dể filters
      */

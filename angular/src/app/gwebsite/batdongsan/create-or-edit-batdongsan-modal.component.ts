@@ -57,6 +57,7 @@ export class CreateOrEditBatDongSanModalComponent extends AppComponentBase {
     listTaiSans: Array<TaiSanDto> = [];
     static test: number;
     getListTypes(): void {
+        
         // get loaibatdongsan type
         this._apiService.get('api/LoaiBatDongSan/GetLoaiBatDongSansByFilter').subscribe(result => {
             this.listItems = result.items;

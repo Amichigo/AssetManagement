@@ -52,33 +52,35 @@
                     <div class="form-control">
                         <div class="row align-items-center">
                             <table class="table">
-                                <tr>
-                                    <th>
-                                        Mã công trình
-                                    </th>
-                                    <th>
-                                        Tên công trình
-                                    </th>
-                                    <th>
-                                        Dự kiến xây dựng
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Mã công trình
+                                        </th>
+                                        <th>
+                                            Tên công trình
+                                        </th>
+                                        <th>
+                                            Dự kiến xây dựng
 
-                                    </th>
-                                    <th>
-                                        Dự kiến hoàn thành
+                                        </th>
+                                        <th>
+                                            Dự kiến hoàn thành
 
-                                    </th>
-                                    <th>
-                                        Thời gian thực hiện
-                                    </th>
-                                    <th>
-                                        Kinh phí đề xuất
+                                        </th>
+                                        <th>
+                                            Thời gian thực hiện
+                                        </th>
+                                        <th>
+                                            Kinh phí đề xuất
 
-                                    </th>
-                                    <th>
-                                        Ghi chú
+                                        </th>
+                                        <th>
+                                            Ghi chú
 
-                                    </th>
-                                </tr>
+                                        </th>
+                                    </tr>
+                                </thead>
                                 <tr *ngFor="let item of dsCongtrinh">
                                     <td>
 
@@ -90,26 +92,30 @@
                                     </td>
                                     <td>
 
-                                        <span title="{{item.duKienXayDung}}">{{truncateString(item.duKienXayDung)}}</span>
+                                        <span
+                                            title="{{item.duKienXayDung}}">{{truncateString(item.duKienXayDung)}}</span>
                                     </td>
                                     <td>
 
-                                        <span title="{{item.duKienHoanThanh}}">{{truncateString(item.duKienHoanThanh)}}</span>
+                                        <span
+                                            title="{{item.duKienHoanThanh}}">{{truncateString(item.duKienHoanThanh)}}</span>
                                     </td>
                                     <td>
 
-                                        <span title="{{item.ngayThiCongThucTe}}">{{truncateString(item.ngayThiCongThucTe)}}</span>
+                                        <span
+                                            title="{{item.ngayThiCongThucTe}}">{{truncateString(item.ngayThiCongThucTe)}}</span>
                                     </td>
                                     <td>
 
-                                        <span title="{{item.kinhPhiDeXuat}}">{{truncateString(item.kinhPhiDeXuat)}}</span>
+                                        <span
+                                            title="{{item.kinhPhiDeXuat}}">{{truncateString(item.kinhPhiDeXuat)}}</span>
                                     </td>
                                     <td>
                                         <span title="{{item.ghiChu}}">{{truncateString(item.ghiChu)}}</span>
                                     </td>
-                           
+
                                 </tr>
-                              
+
                             </table>
                         </div>
                     </div>
@@ -137,8 +143,9 @@
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default"
                         (click)="close()">{{l("Cancel")}}</button>
-                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving"  [disabled]="!editForm.form.valid"
-                        [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                        [disabled]="!editForm.form.valid" [busyText]="l('SavingWithThreeDot')"><i
+                            class="fa fa-save"></i>
                         <span>{{l("Save")}}</span></button>
                 </div>
             </form>

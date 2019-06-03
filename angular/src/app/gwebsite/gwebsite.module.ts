@@ -49,6 +49,8 @@ import { CongTrinhComponent } from './congtrinhN13/congtrinh.component';
 import { CreateOrEditCongTrinhModalComponent } from './congtrinhN13/create-or-edit-congtrinh-modal.component';
 import { ViewCongTrinhModalComponent } from './congtrinhN13/view-congtrinh-modal.component';
 import { SelectKeHoachXayDungModalComponent } from './kehoachxaydung/select-kehoachxaydung-modal.component';
+import { SelectCongTrinhModalComponent } from './congtrinhN13/select-congtrinh-modal.component';
+import { SelectKHCongTrinhModalComponent } from './kehoachxaydung/select-khcongtrinh-modal.component';
 
 
 
@@ -82,7 +84,7 @@ import { SelectKeHoachXayDungModalComponent } from './kehoachxaydung/select-keho
         TinhTrangSuDungDatComponent, CreateOrEditTinhTrangSuDungDatModalComponent, ViewTinhTrangSuDungDatModalComponent,
         TaiSanComponent, CreateOrEditTaiSanModalComponent, ViewTaiSanModalComponent, SelectTaiSanModalComponent,
         SuaChuaBatDongSanComponent, CreateOrEditSuaChuaBatDongSanModalComponent, ViewSuaChuaBatDongSanModalComponent,EditSuaChuaBatDongSanModalComponent,DuyetBatDongSanModalComponent,
-        KeHoachXayDungComponent, CreateOrEditKeHoachXayDungModalComponent,ViewKeHoachXayDungModalComponent,
+        KeHoachXayDungComponent, CreateOrEditKeHoachXayDungModalComponent,ViewKeHoachXayDungModalComponent,SelectKHCongTrinhModalComponent,
         CongTrinhComponent, CreateOrEditCongTrinhModalComponent,ViewCongTrinhModalComponent,SelectKeHoachXayDungModalComponent,
     ],
     providers: [

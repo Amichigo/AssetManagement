@@ -11,6 +11,7 @@ import { TinhTrangSuDungDatComponent } from './tinhtrangsudungdat/tinhtrangsudun
 import { TaiSanComponent } from './taisan/taisan.component';
 import { SuaChuaBatDongSanComponent } from './suachuabatdongsan/suachuabatdongsan.component';
 import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.component';
+import { CongTrinhComponent } from './congtrinhN13/congtrinh.component';
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -126,6 +127,16 @@ import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.compone
                     {
                         path: 'kehoachxaydung', component: KeHoachXayDungComponent,
                         data: { permission: 'Pages.Administration.QuanLyKeHoachXayDung.KeHoachXayDung' }
+                    },
+                ]
+
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'congtrinh', component: CongTrinhComponent,
+                        data: { permission: 'Pages.Administration.QuanLyCongTrinhDoDang.CongTrinhDoDang' }
                     },
                 ]
 

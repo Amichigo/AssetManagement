@@ -1968,6 +1968,146 @@ export class CongTrinhServiceProxy {
     }
 
     /**
+     * @maCongTrinh (optional) 
+     * @maKeHoach (optional) 
+     * @tenCongTrinh (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getDsCongTrinhThuocDuAnByFilter(maCongTrinh: string | null | undefined, maKeHoach: string | null | undefined, tenCongTrinh: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfCongTrinhDto> {
+        let url_ = this.baseUrl + "/api/CongTrinh/GetDsCongTrinhThuocDuAnByFilter?";
+        if (maCongTrinh !== undefined)
+            url_ += "MaCongTrinh=" + encodeURIComponent("" + maCongTrinh) + "&"; 
+        if (maKeHoach !== undefined)
+            url_ += "MaKeHoach=" + encodeURIComponent("" + maKeHoach) + "&"; 
+        if (tenCongTrinh !== undefined)
+            url_ += "TenCongTrinh=" + encodeURIComponent("" + tenCongTrinh) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetDsCongTrinhThuocDuAnByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetDsCongTrinhThuocDuAnByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfCongTrinhDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfCongTrinhDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetDsCongTrinhThuocDuAnByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfCongTrinhDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfCongTrinhDto.fromJS(resultData200) : new PagedResultDtoOfCongTrinhDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfCongTrinhDto>(<any>null);
+    }
+
+    /**
+     * @maCongTrinh (optional) 
+     * @maKeHoach (optional) 
+     * @tenCongTrinh (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getDsCongTrinhKhongThuocDuAnByFilter(maCongTrinh: string | null | undefined, maKeHoach: string | null | undefined, tenCongTrinh: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfCongTrinhDto> {
+        let url_ = this.baseUrl + "/api/CongTrinh/GetDsCongTrinhKhongThuocDuAnByFilter?";
+        if (maCongTrinh !== undefined)
+            url_ += "MaCongTrinh=" + encodeURIComponent("" + maCongTrinh) + "&"; 
+        if (maKeHoach !== undefined)
+            url_ += "MaKeHoach=" + encodeURIComponent("" + maKeHoach) + "&"; 
+        if (tenCongTrinh !== undefined)
+            url_ += "TenCongTrinh=" + encodeURIComponent("" + tenCongTrinh) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetDsCongTrinhKhongThuocDuAnByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetDsCongTrinhKhongThuocDuAnByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfCongTrinhDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfCongTrinhDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetDsCongTrinhKhongThuocDuAnByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfCongTrinhDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfCongTrinhDto.fromJS(resultData200) : new PagedResultDtoOfCongTrinhDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfCongTrinhDto>(<any>null);
+    }
+
+    /**
      * @id (optional) 
      * @return Success
      */
@@ -15842,6 +15982,7 @@ export class CongTrinhDto implements ICongTrinhDto {
     dienTichCongTrinh!: number | undefined;
     moTaCongTrinh!: string | undefined;
     ngayThiCongThucTe!: string | undefined;
+    ghiChu!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: ICongTrinhDto) {
@@ -15871,6 +16012,7 @@ export class CongTrinhDto implements ICongTrinhDto {
             this.dienTichCongTrinh = data["dienTichCongTrinh"];
             this.moTaCongTrinh = data["moTaCongTrinh"];
             this.ngayThiCongThucTe = data["ngayThiCongThucTe"];
+            this.ghiChu = data["ghiChu"];
             this.id = data["id"];
         }
     }
@@ -15900,6 +16042,7 @@ export class CongTrinhDto implements ICongTrinhDto {
         data["dienTichCongTrinh"] = this.dienTichCongTrinh;
         data["moTaCongTrinh"] = this.moTaCongTrinh;
         data["ngayThiCongThucTe"] = this.ngayThiCongThucTe;
+        data["ghiChu"] = this.ghiChu;
         data["id"] = this.id;
         return data; 
     }
@@ -15922,6 +16065,7 @@ export interface ICongTrinhDto {
     dienTichCongTrinh: number | undefined;
     moTaCongTrinh: string | undefined;
     ngayThiCongThucTe: string | undefined;
+    ghiChu: string | undefined;
     id: number | undefined;
 }
 

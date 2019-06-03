@@ -11,7 +11,8 @@
                 </span>
             </div>
             <div class="col-xs-6 text-right">
-                <button (click)="createKeHoachXayDung()" *ngIf="isGranted('Pages.Administration.QuanLyKeHoachXayDung.KeHoachXayDung.Create')"
+                <button (click)="createKeHoachXayDung()"
+                    *ngIf="isGranted('Pages.Administration.QuanLyKeHoachXayDung.KeHoachXayDung.Create')"
                     class="btn btn-primary"><i class="fa fa-plus"></i> {{l("CreateNewKeHoachXayDung")}}</button>
             </div>
         </div>
@@ -29,26 +30,26 @@
                                 <div class="row m--margin-bottom-10">
                                     <div class="col-xl-6">
                                         <label>{{l("Mã kế hoạch")}} *</label>
-                                        <input [(ngModel)]="makehoachxaydung" name="makehoachxaydung" autoFocus class="form-control"
-                                            placeholder=" Nhập Mã kế hoạch" type="text">
+                                        <input [(ngModel)]="makehoachxaydung" name="makehoachxaydung" autoFocus
+                                            class="form-control" placeholder=" Nhập Mã kế hoạch" type="text">
                                     </div>
                                     <div class="col-xl-6">
                                         <label>{{l("Năm thực hiện")}} *</label>
-                                        <input [(ngModel)]="kehoachxaydungName" name="kehoachxaydungName" autoFocus class="form-control"
-                                            placeholder="Nhập Năm thực hiện" type="text">
+                                        <input [(ngModel)]="kehoachxaydungName" name="kehoachxaydungName" autoFocus
+                                            class="form-control" placeholder="Nhập Năm thực hiện" type="text">
                                     </div>
                                 </div>
 
                                 <div class="row m--margin-bottom-10">
                                     <div class="col-xl-6">
                                         <label>{{l("Đơn vị")}} *</label>
-                                        <input [(ngModel)]="nhomkehoachxaydung" name="nhomkehoachxaydung" autoFocus class="form-control"
-                                            placeholder="Nhập Đơn vị" type="text">
+                                        <input [(ngModel)]="nhomkehoachxaydung" name="nhomkehoachxaydung" autoFocus
+                                            class="form-control" placeholder="Nhập Đơn vị" type="text">
                                     </div>
                                     <div class="col-xl-6">
                                         <label>{{l("Trạng thái duyệt")}} *</label>
-                                        <input [(ngModel)]="loaikehoachxaydung" name="loaikehoachxaydung" autoFocus class="form-control"
-                                            placeholder="Nhập Trạng thái duyệt" type="text">
+                                        <input [(ngModel)]="loaikehoachxaydung" name="loaikehoachxaydung" autoFocus
+                                            class="form-control" placeholder="Nhập Trạng thái duyệt" type="text">
                                     </div>
                                 </div>
                                 <div class="input-group">
@@ -67,27 +68,31 @@
                 <div class="row align-items-center">
                     <!--<Primeng-TurboTable-Start>-->
                     <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
-                        <p-table #dataTable (onLazyLoad)="getKeHoachXayDungs($event)" [value]="primengTableHelper.records"
+                        <p-table #dataTable (onLazyLoad)="getKeHoachXayDungs($event)"
+                            [value]="primengTableHelper.records"
                             rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
                             [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
-                                    <th pSortableColumn="makh">
+                                    <th pSortableColumn="makehoach">
                                         Mã Kế Hoạch
-                                        <p-sortIcon field="makh"></p-sortIcon>
+                                        <p-sortIcon field="makehoach"></p-sortIcon>
                                     </th>
 
                                     <th pSortableColumn="ngayhieuluc">
                                         Ngày hiệu lực
+                                        <p-sortIcon field="ngayhieuluc"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="kinhphi">
+                                    <th pSortableColumn="kinhphiduocduyet">
                                         Kinh phí Được duyệt
+                                        <p-sortIcon field="kinhphiduocduyet"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="namth">
+                                    <th pSortableColumn="namthuchien">
                                         Năm thực hiện
+                                        <p-sortIcon field="namthuchien"></p-sortIcon>
                                     </th>
 
-                                    <th pSortableColumn="trangthai">
+                                    <th>
                                         Trạng thái
                                     </th>
 
@@ -109,7 +114,8 @@
 
                                     <td>
                                         <span class="ui-column-title">Ngày hiệu lực</span>
-                                        <span title="{{record.ngayHieuLuc}}">{{truncateString(record.ngayHieuLuc)}}</span>
+                                        <span
+                                            title="{{record.ngayHieuLuc}}">{{truncateString(record.ngayHieuLuc)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Kinh phí được duyệt</span>
@@ -128,7 +134,7 @@
                                             title="{{record.trangThaiDuyet}}">{{truncateString(record.trangThaiDuyet)}}</span>
                                     </td>
 
-                               
+
 
                                     <!--<td>
                                         <span class="ui-column-title">Thông tin</span>
@@ -147,11 +153,7 @@
                                             <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                         </button>
 
-                                        <button
-                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="viewKeHoachXayDungModal.show(record.id)" title="{{l('View')}}">
-                                            <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
-                                        </button>
+                                      
                                     </td>
                                 </tr>
                             </ng-template>
@@ -173,8 +175,11 @@
                     <!--<Primeng-TurboTable-End>-->
                 </div>
             </div>
+            <button class="btn btn-primary" (click)="  selectKeHoachXayDungModal.show()" title="{{l('View')}}">
+                <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
+            </button>
         </div>
     </div>
     <createOrEditKeHoachXayDungModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditKeHoachXayDungModal>
-    <viewKeHoachXayDungModal #viewKeHoachXayDungModal></viewKeHoachXayDungModal>
+    <selectKeHoachXayDungModal #selectKeHoachXayDungModal></selectKeHoachXayDungModal>
 </div>

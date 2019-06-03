@@ -84,7 +84,85 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
             {
                 query = query.Where(x => x.TenCongTrinh.ToLower().Equals(input.TenCongTrinh));
             }
-       
+            // filter by value
+            if (input.MaKeHoach != null)
+            {
+                query = query.Where(x => x.MaKeHoach.ToLower().Equals(input.MaKeHoach));
+            }
+
+            var totalCount = query.Count();
+
+            // sorting
+            if (!string.IsNullOrWhiteSpace(input.Sorting))
+            {
+                query = query.OrderBy(input.Sorting);
+            }
+
+            // paging
+            var items = query.PageBy(input).ToList();
+
+            // result
+            return new PagedResultDto<CongTrinhDto>(
+                totalCount,
+                items.Select(item => ObjectMapper.Map<CongTrinhDto>(item)).ToList());
+        }
+
+        public PagedResultDto<CongTrinhDto> GetDsCongTrinhTheoDuAn(CongTrinhFilter input)
+        {
+            var query = congTrinhRepository.GetAll().Where(x => !x.IsDelete).Where(da=>da.MaDuAnXayDungCoBan!=null);
+            // filter by value
+            if (input.MaCongTrinh != null)
+            {
+                query = query.Where(x => x.MaCongTrinh.ToLower().Equals(input.MaCongTrinh));
+            }
+
+            // filter by value
+            if (input.TenCongTrinh != null)
+            {
+                query = query.Where(x => x.TenCongTrinh.ToLower().Equals(input.TenCongTrinh));
+            }
+            // filter by value
+            if (input.MaKeHoach != null)
+            {
+                query = query.Where(x => x.MaKeHoach.ToLower().Equals(input.MaKeHoach));
+            }
+
+            var totalCount = query.Count();
+
+            // sorting
+            if (!string.IsNullOrWhiteSpace(input.Sorting))
+            {
+                query = query.OrderBy(input.Sorting);
+            }
+
+            // paging
+            var items = query.PageBy(input).ToList();
+
+            // result
+            return new PagedResultDto<CongTrinhDto>(
+                totalCount,
+                items.Select(item => ObjectMapper.Map<CongTrinhDto>(item)).ToList());
+        }
+        public PagedResultDto<CongTrinhDto> GetCongTrinhKhongThuocDuAn(CongTrinhFilter input)
+        {
+            var query = congTrinhRepository.GetAll().Where(x => !x.IsDelete).Where(da => da.MaDuAnXayDungCoBan == null); ;
+            // filter by value
+            if (input.MaCongTrinh != null)
+            {
+                query = query.Where(x => x.MaCongTrinh.ToLower().Equals(input.MaCongTrinh));
+            }
+
+            // filter by value
+            if (input.TenCongTrinh != null)
+            {
+                query = query.Where(x => x.TenCongTrinh.ToLower().Equals(input.TenCongTrinh));
+            }
+            // filter by value
+            if (input.MaKeHoach != null)
+            {
+                query = query.Where(x => x.MaKeHoach.ToLower().Equals(input.MaKeHoach));
+            }
+
             var totalCount = query.Count();
 
             // sorting

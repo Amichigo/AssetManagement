@@ -140,6 +140,7 @@ export class SuaChuaBatDongSanComponent extends AppComponentBase implements Afte
 
         
         this.disableTabView=true;
+        this.disableTabUpdate=true;
         this.disableTabSetActive=true;
         this.createOrEditModal.ResetInput();
         this.createOrEditModal.show();

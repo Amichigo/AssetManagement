@@ -33,6 +33,10 @@ export class AppNavigationService {
                     new AppMenuItem('Kế hoạch XD cơ bản N13', 'Pages.Administration.QuanLyKeHoachXayDung.KeHoachXayDung', 'flaticon-menu-1', '/app/gwebsite/kehoachxaydung'),
                     
                 ]),     
+                new AppMenuItem('Quản Lý Công trình N13', '', 'flaticon-interface-8', '', [
+                    new AppMenuItem('Công trình dỡ dang', 'Pages.Administration.QuanLyCongTrinhDoDang.CongTrinhDoDang', 'flaticon-menu-1', '/app/gwebsite/congtrinh'),
+                    
+                ]),     
             ]
             ),
          

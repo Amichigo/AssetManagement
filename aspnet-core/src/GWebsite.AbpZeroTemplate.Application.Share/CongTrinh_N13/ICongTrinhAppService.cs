@@ -15,6 +15,8 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.CongTrinh_N13.DTO
         CongTrinhInput GetCongTrinhForEdit(int id);
         void DeleteCongTrinh(int id);
         PagedResultDto<CongTrinhDto> GetCongTrinhs(CongTrinhFilter input);
+        PagedResultDto<CongTrinhDto> GetDsCongTrinhTheoDuAn(CongTrinhFilter input);
+        PagedResultDto<CongTrinhDto> GetCongTrinhKhongThuocDuAn(CongTrinhFilter input);
         CongTrinhForViewDto GetCongTrinhForView(int id);
     }
 }

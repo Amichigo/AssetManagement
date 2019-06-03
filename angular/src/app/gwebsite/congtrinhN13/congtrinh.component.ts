@@ -84,7 +84,7 @@ export class CongTrinhComponent extends AppComponentBase implements AfterViewIni
     }
 
     reloadList(congtrinhName,macongtrinh,maKeHoach, event?: LazyLoadEvent) {
-        this._congtrinhService.getCongTrinhsByFilter(macongtrinh,maKeHoach,congtrinhName, this.primengTableHelper.getSorting(this.dataTable),
+        this._congtrinhService.getDsCongTrinhThuocDuAnByFilter(macongtrinh,maKeHoach,congtrinhName, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
