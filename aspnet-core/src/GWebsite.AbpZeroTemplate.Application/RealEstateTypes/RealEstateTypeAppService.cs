@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.RealEstateTypes
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_RealEstateType9)]
     public class RealEstateTypeAppService : GWebsiteAppServiceBase, IRealEstateTypeAppService
     {
         private readonly IRepository<RealEstateType_9> RealEstateTypeRepository;
@@ -102,7 +102,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.RealEstateTypes
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_RealEstateType9_Create)]
         private void Create(RealEstateTypeInput_9 RealEstateTypeInput)
         {
             var RealEstateTypeEntity = ObjectMapper.Map<RealEstateType_9>(RealEstateTypeInput);
@@ -111,7 +111,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.RealEstateTypes
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_RealEstateType9_Edit)]
         private void Update(RealEstateTypeInput_9 RealEstateTypeInput)
         {
             var RealEstateTypeEntity = RealEstateTypeRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == RealEstateTypeInput.Id);
