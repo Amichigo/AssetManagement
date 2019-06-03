@@ -8,6 +8,10 @@ import { NhaCungCapComponent } from './nhacungcap/nhacungcap.component';
 import { HopDongThauComponent } from './hopdongthau/hopdongthau.component';
 import { PhieuGoiHangComponent } from './phieugoihang/phieugoihang.component';
 import { HangHoaComponent } from './hanghoa/hanghoa.component';
+import { ShoppingPlanComponent } from './shoppingPlan/shoppingPlan.component';
+import { DirectorShoppingPlanComponent } from './directorShoppingPlan/directorShoppingPlan.component';
+import { ShoppingPlanDetailComponent } from './shoppingPlan/shoppingPlanDetail.component';
+import { ConstructionPlanComponent } from './constructionPlan/constructionPlan.component';
 
 @NgModule({
     imports: [
@@ -81,6 +85,42 @@ import { HangHoaComponent } from './hanghoa/hanghoa.component';
                     {
                         path: 'category-type', component: CategoryTypeComponent,
                         data: { permission: 'Pages.CategoryTypes.General' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'shoppingPlan', component: ShoppingPlanComponent,
+                        data: { permission: 'Pages.Administration.ShoppingPlan' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'ShoppingPlan', component: ShoppingPlanDetailComponent,
+                        data: { permission: 'Pages.Administration.ShoppingPlanDetail' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'directorShoppingPlan', component: DirectorShoppingPlanComponent,
+                        data: { permission: 'Pages.Administration.DirectorShoppingPlan' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'constructionPlan', component: ConstructionPlanComponent,
+                        data: { permission: 'Pages.Administration.ConstructionPlan' }
                     },
                 ]
             }

@@ -20,6 +20,11 @@ export class AppNavigationService {
                 new AppMenuItem('Loại danh mục', 'Pages.CategoryTypes.General', 'flaticon-menu-1', '/app/gwebsite/category-type'),
                 new AppMenuItem('Danh sách danh mục', 'Pages.Categories.General', 'flaticon-menu-1', '/app/gwebsite/category')
             ]),
+            new AppMenuItem('Nhóm 2 - Quản lý kế hoạch mua sắm', '', 'flaticon-interface-8', '', [
+                new AppMenuItem('ShoppingPlan', 'Pages.Administration.ShoppingPlan', 'flaticon-menu-1', '/app/gwebsite/shoppingPlan'),
+                new AppMenuItem('DirectorShoppingPlan', 'Pages.Administration.DirectorShoppingPlan', 'flaticon-menu-1', '/app/gwebsite/directorShoppingPlan'),
+                new AppMenuItem('ConstructionPlan', 'Pages.Administration.ConstructionPlan', 'flaticon-menu-1', '/app/gwebsite/constructionPlan')
+            ]),
             new AppMenuItem('Nhóm 3 - Quản lý nghiệp vụ mua sắm', '', 'flaticon-interface-8', '', [
                 new AppMenuItem('Dự án', 'Pages.Administration.Project', 'flaticon-menu-1', '/app/gwebsite/duan'),
                 new AppMenuItem('Hàng hoá', 'Pages.Administration.Goods', 'flaticon-menu-1', '/app/gwebsite/hanghoa'),

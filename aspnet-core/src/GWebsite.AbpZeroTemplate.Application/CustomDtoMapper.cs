@@ -11,6 +11,11 @@ using GWebsite.AbpZeroTemplate.Application.Share.Suppliers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.GoodsInvoices.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.GoodsList.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.DirectorShoppingPlans.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ShoppingPlanDetails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ShoppingPlans.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ConstructionPlans.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ConstructionPlanDetails.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Applications
@@ -81,6 +86,33 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<GoodsInput, Goods>();
             configuration.CreateMap<Goods, GoodsInput>();
             configuration.CreateMap<Goods, GoodsForViewDto>();
+
+            //ShoppingPlan
+            configuration.CreateMap<ShoppingPlan, ShoppingPlanDto>();
+            configuration.CreateMap<ShoppingPlanInput, ShoppingPlan>();
+            configuration.CreateMap<ShoppingPlan, ShoppingPlanInput>();
+            configuration.CreateMap<ShoppingPlan, ShoppingPlanForViewDto>();
+
+            //DirectorShoppingPlan
+            configuration.CreateMap<DirectorShoppingPlan, DirectorShoppingPlanDto>();
+            configuration.CreateMap<DirectorShoppingPlanInput, DirectorShoppingPlan>();
+            configuration.CreateMap<DirectorShoppingPlan, DirectorShoppingPlanInput>();
+            configuration.CreateMap<DirectorShoppingPlan, DirectorShoppingPlanForViewDto>();
+
+            configuration.CreateMap<ShoppingPlanDetail, ShoppingPlanDetailDto>();
+            configuration.CreateMap<ShoppingPlanDetailInput, ShoppingPlanDetail>();
+            configuration.CreateMap<ShoppingPlanDetail, ShoppingPlanDetailInput>();
+
+            //ConstructionPlan
+            configuration.CreateMap<ConstructionPlan, ConstructionPlanDto>();
+            configuration.CreateMap<ConstructionPlanInput, ConstructionPlan>();
+            configuration.CreateMap<ConstructionPlan, ConstructionPlanInput>();
+            configuration.CreateMap<ConstructionPlan, ConstructionPlanForViewDto>();
+
+            //ConstructionPlanDetail
+            configuration.CreateMap<ConstructionPlanDetail, ConstructionPlanDetailDto>();
+            configuration.CreateMap<ConstructionPlanDetailInput, ConstructionPlanDetail>();
+            configuration.CreateMap<ConstructionPlanDetail, ConstructionPlanDetailInput>();
         }
     }
 }

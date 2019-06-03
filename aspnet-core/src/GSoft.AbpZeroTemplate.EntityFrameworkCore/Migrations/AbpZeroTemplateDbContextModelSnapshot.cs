@@ -3546,7 +3546,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<string>("RecordStatus")
                         .HasColumnName("RECORD_STATUS");
 
-                    b.HasKey("Id");
+                    b.Property<string>("MaSP");
 
                     b.HasIndex("PriceId");
 

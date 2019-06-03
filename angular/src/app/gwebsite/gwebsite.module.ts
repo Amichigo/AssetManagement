@@ -10,19 +10,25 @@ import { TableModule } from 'primeng/table';
 import { GWebsiteRoutingModule } from './gwebsite-routing.module';
 
 import {
-CategoryComponent, ViewCategoryModalComponent, CreateOrEditCategoryModalComponent,
-CategoryTypeComponent, CreateOrEditTypeModalComponent, ViewCategoryTypeModalComponent,
-DuAnComponent, ViewDuAnModalComponent, CreateOrEditDuAnModalComponent,
-HoSoThauComponent, ViewHoSoThauModalComponent, CreateOrEditHoSoThauModalComponent,
-NhaCungCapComponent, ViewNhaCungCapModalComponent, CreateOrEditNhaCungCapModalComponent,
-HopDongThauComponent, ViewHopDongThauModalComponent, CreateOrEditHopDongThauModalComponent,
-PhieuGoiHangComponent, ViewPhieuGoiHangModalComponent, CreateOrEditPhieuGoiHangModalComponent,
-HangHoaComponent, ViewHangHoaModalComponent, CreateOrEditHangHoaModalComponent
+    CategoryComponent, ViewCategoryModalComponent, CreateOrEditCategoryModalComponent,
+    CategoryTypeComponent, CreateOrEditTypeModalComponent, ViewCategoryTypeModalComponent,
+    DuAnComponent, ViewDuAnModalComponent, CreateOrEditDuAnModalComponent,
+    HoSoThauComponent, ViewHoSoThauModalComponent, CreateOrEditHoSoThauModalComponent,
+    NhaCungCapComponent, ViewNhaCungCapModalComponent, CreateOrEditNhaCungCapModalComponent,
+    HopDongThauComponent, ViewHopDongThauModalComponent, CreateOrEditHopDongThauModalComponent,
+    PhieuGoiHangComponent, ViewPhieuGoiHangModalComponent, CreateOrEditPhieuGoiHangModalComponent,
+    HangHoaComponent, ViewHangHoaModalComponent, CreateOrEditHangHoaModalComponent,
+    ShoppingPlanComponent, ViewShoppingPlanModalComponent, CreateOrEditShoppingPlanModalComponent,
+    DirectorShoppingPlanComponent, ViewDirectorShoppingPlanModalComponent, CreateOrEditDirectorShoppingPlanModalComponent,
+    ShoppingPlanDetailComponent, CreateOrEditShoppingPlanDetailModalComponent,
+    ConstructionPlanComponent, ViewConstructionPlanModalComponent, CreateOrEditConstructionPlanModalComponent
 } from './index';
 
 import { CategoryServiceProxy, CategoryTypeServiceProxy,
-    ProjectServiceProxy, BidServiceProxy, SupplierServiceProxy, ContractServiceProxy, GoodsInvoiceServiceProxy, GoodsServiceProxy
+    ProjectServiceProxy, BidServiceProxy, SupplierServiceProxy, ContractServiceProxy, GoodsInvoiceServiceProxy, GoodsServiceProxy,
+    ShoppingPlanServiceProxy, DirectorShoppingPlanServiceProxy, ShoppingPlanDetailServiceProxy, ConstructionPlanServiceProxy
 } from '@shared/service-proxies/service-proxies';
+
 
 @NgModule({
     imports: [
@@ -51,7 +57,11 @@ import { CategoryServiceProxy, CategoryTypeServiceProxy,
         PhieuGoiHangComponent, CreateOrEditPhieuGoiHangModalComponent, ViewPhieuGoiHangModalComponent,
         HangHoaComponent, CreateOrEditHangHoaModalComponent, ViewHangHoaModalComponent,
         CategoryComponent, ViewCategoryModalComponent, CreateOrEditCategoryModalComponent,
-        CategoryTypeComponent, ViewCategoryTypeModalComponent, CreateOrEditTypeModalComponent
+        CategoryTypeComponent, ViewCategoryTypeModalComponent, CreateOrEditTypeModalComponent,
+        ShoppingPlanComponent, ViewShoppingPlanModalComponent, CreateOrEditShoppingPlanModalComponent,
+        DirectorShoppingPlanComponent, ViewDirectorShoppingPlanModalComponent, CreateOrEditDirectorShoppingPlanModalComponent,
+        ShoppingPlanDetailComponent, CreateOrEditShoppingPlanDetailModalComponent,
+        ConstructionPlanComponent, ViewConstructionPlanModalComponent, CreateOrEditConstructionPlanModalComponent,
     ],
     providers: [
         CategoryServiceProxy,
@@ -62,6 +72,10 @@ import { CategoryServiceProxy, CategoryTypeServiceProxy,
         ContractServiceProxy,
         GoodsInvoiceServiceProxy,
         GoodsServiceProxy,
+        ShoppingPlanServiceProxy,
+        DirectorShoppingPlanServiceProxy,
+        ShoppingPlanDetailServiceProxy,
+        ConstructionPlanServiceProxy
     ]
 })
 export class GWebsiteModule { }

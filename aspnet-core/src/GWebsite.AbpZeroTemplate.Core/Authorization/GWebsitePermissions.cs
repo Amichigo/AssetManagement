@@ -83,6 +83,30 @@
         public const string Pages_Administration_Goods_Create = "Pages.Administration.Goods.Create";
         public const string Pages_Administration_Goods_Edit = "Pages.Administration.Goods.Edit";
         public const string Pages_Administration_Goods_Delete = "Pages.Administration.Goods.Delete";
+        public const string Pages_Administration_ShoppingPlan = "Pages.Administration.ShoppingPlan";
+        public const string Pages_Administration_ShoppingPlan_Create = "Pages.Administration.ShoppingPlan.Create";
+        public const string Pages_Administration_ShoppingPlan_Edit = "Pages.Administration.ShoppingPlan.Edit";
+        public const string Pages_Administration_ShoppingPlan_Delete = "Pages.Administration.ShoppingPlan.Delete";
+
+        public const string Pages_Administration_DirectorShoppingPlan = "Pages.Administration.DirectorShoppingPlan";
+        public const string Pages_Administration_DirectorShoppingPlan_Create = "Pages.Administration.DirectorShoppingPlan.Create";
+        public const string Pages_Administration_DirectorShoppingPlan_Edit = "Pages.Administration.DirectorShoppingPlan.Edit";
+        public const string Pages_Administration_DirectorShoppingPlan_Delete = "Pages.Administration.DirectorShoppingPlan.Delete";
+
+        public const string Pages_Administration_ShoppingPlanDetail = "Pages.Administration.ShoppingPlanDetail";
+        public const string Pages_Administration_ShoppingPlanDetail_Create = "Pages.Administration.ShoppingPlanDetail.Create";
+        public const string Pages_Administration_ShoppingPlanDetail_Edit = "Pages.Administration.ShoppingPlanDetail.Edit";
+        public const string Pages_Administration_ShoppingPlanDetail_Delete = "Pages.Administration.ShoppingPlanDetail.Delete";
+
+        public const string Pages_Administration_ConstructionPlan = "Pages.Administration.ConstructionPlan";
+        public const string Pages_Administration_ConstructionPlan_Create = "Pages.Administration.Construction.Create";
+        public const string Pages_Administration_ConstructionPlan_Edit = "Pages.Administration.Construction.Edit";
+        public const string Pages_Administration_ConstructionPlan_Delete = "Pages.Administration.Construction.Delete";
+
+        public const string Pages_Administration_ConstructionPlanDetail = "Pages.Administration.ConstructionPlanDetail";
+        public const string Pages_Administration_ConstructionPlanDetail_Create = "Pages.Administration.ConstructionPlanDetail.Create";
+        public const string Pages_Administration_ConstructionPlanDetail_Edit = "Pages.Administration.ConstructionPlanDetail.Edit";
+        public const string Pages_Administration_ConstructionPlanDetail_Delete = "Pages.Administration.ConstructionPlanDetail.Delete";
 
     }
 }
