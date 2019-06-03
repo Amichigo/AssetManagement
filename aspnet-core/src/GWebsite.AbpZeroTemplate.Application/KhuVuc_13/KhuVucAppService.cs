@@ -16,7 +16,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.KhuVuc.DTO;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.KhuVucs
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_KhuVuc)]
     public class KhuVucAppService : GWebsiteAppServiceBase, IKhuVucAppService
     {
         private readonly IRepository<KhuVuc> khuVucRepository;
@@ -101,7 +101,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.KhuVucs
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_KhuVuc_Create)]
         private void Create(KhuVucInput khuVucInput)
         {
             var khuVucEntity = ObjectMapper.Map<KhuVuc>(khuVucInput);
@@ -110,7 +110,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.KhuVucs
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_KhuVuc_Edit)]
         private void Update(KhuVucInput khuVucInput)
         {
             var khuVucEntity = khuVucRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == khuVucInput.Id);

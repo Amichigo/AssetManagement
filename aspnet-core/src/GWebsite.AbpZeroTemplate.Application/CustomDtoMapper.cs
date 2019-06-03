@@ -25,6 +25,8 @@ using GWebsite.AbpZeroTemplate.Application.Share.CongTrinh_N13.DTO;
 using GWebsite.AbpZeroTemplate.Core.Models.QuanLyCongTrinh_N13;
 using GWebsite.AbpZeroTemplate.Core.Models.KeHoachXayDung_N13;
 using GWebsite.AbpZeroTemplate.Application.Share.KeHoachXayDung_N13.DTO;
+using GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.HoSoThau_N13.DTO;
+using GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.DonViThau.DTO;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {
@@ -118,6 +120,19 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<KeHoachXayDungInput, KeHoachXayDung_N13>();
             configuration.CreateMap<KeHoachXayDung_N13, KeHoachXayDungInput>();
             configuration.CreateMap<KeHoachXayDung_N13, KeHoachXayDungForViewDto>();
+
+            //ho so thau
+            configuration.CreateMap<HoSoThau_N13, HoSoThauN13Dto>();
+            configuration.CreateMap<HoSoThauN13Input, HoSoThau_N13>();
+            configuration.CreateMap<HoSoThau_N13, HoSoThauN13Input>();
+            configuration.CreateMap<HoSoThau_N13, HoSoThauN13ForViewDto>();
+
+
+            //don vi thau
+            configuration.CreateMap<DonViThau_N13, DonViThauDto>();
+            configuration.CreateMap<DonViThauInput, DonViThau_N13>();
+            configuration.CreateMap<DonViThau_N13, DonViThauInput>();
+            configuration.CreateMap<DonViThau_N13, DonViThauForViewDto>();
         }
     }
 }

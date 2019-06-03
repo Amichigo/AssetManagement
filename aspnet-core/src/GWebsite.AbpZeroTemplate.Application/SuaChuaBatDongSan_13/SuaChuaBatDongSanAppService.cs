@@ -17,7 +17,7 @@ using GWebsite.AbpZeroTemplate.Core.Models.TaiSan13;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.SuaChuaBatDongSans
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_SuaChuaBatDongSan)]
     public class SuaChuaBatDongSanAppService : GWebsiteAppServiceBase, ISuaChuaBatDongSanAppService
     {
         private readonly IRepository<SuaChuaBatDongSan> suaChuaBatDongSanRepository;
@@ -136,7 +136,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.SuaChuaBatDongSans
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_SuaChuaBatDongSan_Create)]
         private void Create(SuaChuaBatDongSanInput suaChuaBatDongSanInput)
         {
             suaChuaBatDongSanInput.MaSuaChuaBatDongSan = "SC" +suaChuaBatDongSanInput.MaTaiSan ;
@@ -146,7 +146,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.SuaChuaBatDongSans
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_SuaChuaBatDongSan_Edit)]
         private void Update(SuaChuaBatDongSanInput suaChuaBatDongSanInput)
         {
             var suaChuaBatDongSanEntity = suaChuaBatDongSanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == suaChuaBatDongSanInput.Id);

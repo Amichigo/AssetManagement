@@ -15,7 +15,7 @@ using Abp.Linq.Extensions;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_CongTrinhDoDang)]
     public class CongTrinhAppService : GWebsiteAppServiceBase, ICongTrinhAppService
     {
         private readonly IRepository<CongTrinh_N13> congTrinhRepository;
@@ -184,7 +184,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_CongTrinhDoDang_Create)]
         private void Create(CongTrinhInput congTrinhInput)
         {
            // int nextID = congTrinhRepository.GetAll().Count() + 1;
@@ -195,7 +195,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_CongTrinhDoDang_Edit)]
         private void Update(CongTrinhInput congTrinhInput)
         {
             var congTrinhEntity = congTrinhRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == congTrinhInput.Id);

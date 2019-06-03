@@ -96,5 +96,10 @@
         public const string Pages_Administration_QuanLyCongTrinhDoDang_CongTrinhDoDang_Edit = "Pages.Administration.QuanLyCongTrinhDoDang.CongTrinhDoDang.Edit";
         public const string Pages_Administration_QuanLyCongTrinhDoDang_CongTrinhDoDang_Delete = "Pages.Administration.QuanLyCongTrinhDoDang.CongTrinhDoDang.Delete";
 
+        public const string Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau = "Pages.Administration.QuanLyCongTrinhDoDang.HoSoThau";
+        public const string Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Create = "Pages.Administration.QuanLyCongTrinhDoDang.HoSoThau.Create";
+        public const string Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Edit = "Pages.Administration.QuanLyCongTrinhDoDang.HoSoThau.Edit";
+        public const string Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Delete = "Pages.Administration.QuanLyCongTrinhDoDang.HoSoThau.Delete";
+
     }
 }

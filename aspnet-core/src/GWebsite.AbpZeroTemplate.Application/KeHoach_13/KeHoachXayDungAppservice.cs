@@ -16,7 +16,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.KeHoachXayDung_N13;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.KeHoach_13
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyKeHoachXayDung_KeHoachXayDung)]
     public class KeHoachXayDungAppService : GWebsiteAppServiceBase, IKeHoachXayDungAppService
     {
         private readonly IRepository<KeHoachXayDung_N13> keHoachXayDungRepository;
@@ -107,7 +107,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.KeHoach_13
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyKeHoachXayDung_KeHoachXayDung_Create)]
         private void Create(KeHoachXayDungInput keHoachXayDungInput)
         {
             var keHoachXayDungEntity = ObjectMapper.Map<KeHoachXayDung_N13>(keHoachXayDungInput);
@@ -116,7 +116,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.KeHoach_13
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyKeHoachXayDung_KeHoachXayDung_Edit)]
         private void Update(KeHoachXayDungInput keHoachXayDungInput)
         {
             var keHoachXayDungEntity = keHoachXayDungRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == keHoachXayDungInput.Id);

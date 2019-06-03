@@ -16,7 +16,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.LoaiSoHuu.DTO;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.LoaiSoHuus
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_LoaiSoHuu)]
     public class LoaiSoHuuAppService : GWebsiteAppServiceBase, ILoaiSoHuuAppService
     {
         private readonly IRepository<LoaiSoHuu> loaiSoHuuRepository;
@@ -102,7 +102,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.LoaiSoHuus
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_LoaiSoHuu_Create)]
         private void Create(LoaiSoHuuInput loaiSoHuuInput)
         {
             var loaiSoHuuEntity = ObjectMapper.Map<LoaiSoHuu>(loaiSoHuuInput);
@@ -111,7 +111,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.LoaiSoHuus
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_LoaiSoHuu_Edit)]
         private void Update(LoaiSoHuuInput loaiSoHuuInput)
         {
             var loaiSoHuuEntity = loaiSoHuuRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == loaiSoHuuInput.Id);

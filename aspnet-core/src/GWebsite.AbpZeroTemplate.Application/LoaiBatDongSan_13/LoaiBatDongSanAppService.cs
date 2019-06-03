@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.LoaiBatDongSans
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_LoaiBatDongSan)]
     public class LoaiBatDongSanAppService : GWebsiteAppServiceBase, ILoaiBatDongSanAppService
     {
         private readonly IRepository<LoaiBatDongSan> loaiBatDongSanRepository;
@@ -102,7 +102,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.LoaiBatDongSans
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_LoaiBatDongSan_Create)]
         private void Create(LoaiBatDongSanInput loaiBatDongSanInput)
         {
             var loaiBatDongSanEntity = ObjectMapper.Map<LoaiBatDongSan>(loaiBatDongSanInput);
@@ -111,7 +111,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.LoaiBatDongSans
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_LoaiBatDongSan_Edit)]
         private void Update(LoaiBatDongSanInput loaiBatDongSanInput)
         {
             var loaiBatDongSanEntity = loaiBatDongSanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == loaiBatDongSanInput.Id);

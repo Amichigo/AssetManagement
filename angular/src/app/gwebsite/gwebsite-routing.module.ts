@@ -12,6 +12,7 @@ import { TaiSanComponent } from './taisan/taisan.component';
 import { SuaChuaBatDongSanComponent } from './suachuabatdongsan/suachuabatdongsan.component';
 import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.component';
 import { CongTrinhComponent } from './congtrinhN13/congtrinh.component';
+import { HoSoThauN13Component } from './hosothauN13/hosothaun13.component';
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -137,6 +138,16 @@ import { CongTrinhComponent } from './congtrinhN13/congtrinh.component';
                     {
                         path: 'congtrinh', component: CongTrinhComponent,
                         data: { permission: 'Pages.Administration.QuanLyCongTrinhDoDang.CongTrinhDoDang' }
+                    },
+                ]
+
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'hosothaun13', component: HoSoThauN13Component,
+                        data: { permission: 'Pages.Administration.QuanLyCongTrinhDoDang.HoSoThau' }
                     },
                 ]
 

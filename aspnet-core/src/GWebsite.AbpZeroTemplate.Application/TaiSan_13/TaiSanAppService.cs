@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Asset_13
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_TaiSan)]
     public class TaiSanAppService : GWebsiteAppServiceBase, ITaiSanAppService
     {
         private readonly IRepository<TaiSan_13> taiSanRepository;
@@ -117,7 +117,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset_13
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_TaiSan_Create)]
         private void Create(TaiSanInput taiSanInput)
         {
             int nextID = taiSanRepository.GetAll().Count() + 1;
@@ -128,7 +128,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset_13
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_TaiSan_Edit)]
         private void Update(TaiSanInput taiSanInput)
         {
             var taiSanEntity = taiSanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == taiSanInput.Id);

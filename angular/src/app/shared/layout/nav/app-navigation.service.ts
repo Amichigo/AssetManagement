@@ -34,9 +34,10 @@ export class AppNavigationService {
                     
                 ]),     
                 new AppMenuItem('Quản Lý Công trình N13', '', 'flaticon-interface-8', '', [
-                    new AppMenuItem('Công trình dỡ dang', 'Pages.Administration.QuanLyCongTrinhDoDang.CongTrinhDoDang', 'flaticon-menu-1', '/app/gwebsite/congtrinh'),
+                    new AppMenuItem('Công trình dỡ dang N13', 'Pages.Administration.QuanLyCongTrinhDoDang.CongTrinhDoDang', 'flaticon-menu-1', '/app/gwebsite/congtrinh'),
+                    new AppMenuItem('Hồ sơ thầu N13', 'Pages.Administration.QuanLyCongTrinhDoDang.HoSoThau', 'flaticon-menu-1', '/app/gwebsite/hosothaun13'),
                     
-                ]),     
+                ]),   
             ]
             ),
          

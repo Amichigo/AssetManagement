@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.HienTrangPhapLys
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_HienTrangPhapLy)]
     public class HienTrangPhapLyAppService : GWebsiteAppServiceBase, IHienTrangPhapLyAppService
     {
         private readonly IRepository<HienTrangPhapLy> hienTrangPhapLyRepository;
@@ -102,7 +102,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HienTrangPhapLys
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_HienTrangPhapLy_Create)]
         private void Create(HienTrangPhapLyInput hienTrangPhapLyInput)
         {
             var hienTrangPhapLyEntity = ObjectMapper.Map<HienTrangPhapLy>(hienTrangPhapLyInput);
@@ -111,7 +111,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HienTrangPhapLys
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_HienTrangPhapLy_Edit)]
         private void Update(HienTrangPhapLyInput hienTrangPhapLyInput)
         {
             var hienTrangPhapLyEntity = hienTrangPhapLyRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == hienTrangPhapLyInput.Id);

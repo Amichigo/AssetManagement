@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.MucDichSuDungDats
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_MucDichSuDungDat)]
     public class MucDichSuDungDatAppService : GWebsiteAppServiceBase, IMucDichSuDungDatAppService
     {
         private readonly IRepository<MucDichSuDungDat> mucDichSuDungDatRepository;
@@ -102,7 +102,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.MucDichSuDungDats
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_MucDichSuDungDat_Create)]
         private void Create(MucDichSuDungDatInput mucDichSuDungDatInput)
         {
             var mucDichSuDungDatEntity = ObjectMapper.Map<MucDichSuDungDat>(mucDichSuDungDatInput);
@@ -111,7 +111,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.MucDichSuDungDats
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_MucDichSuDungDat_Edit)]
         private void Update(MucDichSuDungDatInput mucDichSuDungDatInput)
         {
             var mucDichSuDungDatEntity = mucDichSuDungDatRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == mucDichSuDungDatInput.Id);

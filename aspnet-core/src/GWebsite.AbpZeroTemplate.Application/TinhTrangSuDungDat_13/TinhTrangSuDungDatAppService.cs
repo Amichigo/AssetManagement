@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.TinhTrangSuDungDats
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_TinhTrangSuDungDat)]
     public class TinhTrangSuDungDatAppService : GWebsiteAppServiceBase, ITinhTrangSuDungDatAppService
     {
         private readonly IRepository<TinhTrangSuDungDat> tinhTrangSuDungDatRepository;
@@ -102,7 +102,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.TinhTrangSuDungDats
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_TinhTrangSuDungDat_Create)]
         private void Create(TinhTrangSuDungDatInput tinhTrangSuDungDatInput)
         {
             var tinhTrangSuDungDatEntity = ObjectMapper.Map<TinhTrangSuDungDat>(tinhTrangSuDungDatInput);
@@ -111,7 +111,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.TinhTrangSuDungDats
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_TinhTrangSuDungDat_Edit)]
         private void Update(TinhTrangSuDungDatInput tinhTrangSuDungDatInput)
         {
             var tinhTrangSuDungDatEntity = tinhTrangSuDungDatRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == tinhTrangSuDungDatInput.Id);
