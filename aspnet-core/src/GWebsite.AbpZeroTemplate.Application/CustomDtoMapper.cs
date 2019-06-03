@@ -19,11 +19,6 @@ namespace GWebsite.AbpZeroTemplate.Applications
     {
         public static void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            configuration.CreateMap<MenuClient, MenuClientDto>();
-            configuration.CreateMap<MenuClient, MenuClientListDto>();
-            configuration.CreateMap<CreateMenuClientInput, MenuClient>();
-            configuration.CreateMap<UpdateMenuClientInput, MenuClient>();
-
             configuration.CreateMap<Slide, SlideDto>();
             configuration.CreateMap<CreateSlideInput, Slide>();
             configuration.CreateMap<UpdateSlideInput, Slide>();
@@ -39,15 +34,6 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<VideoInstructionCategory, VideoInstructionCategoryDto>();
             configuration.CreateMap<CreateVideoInstructionCategoryInput, VideoInstructionCategory>();
             configuration.CreateMap<UpdateVideoInstructionCategoryInput, VideoInstructionCategory>();
-            // DemoModel
-            configuration.CreateMap<DemoModel, DemoModelDto>();
-            configuration.CreateMap<DemoModelInput, DemoModel>();
-            configuration.CreateMap<DemoModel, DemoModelInput>();
-
-            configuration.CreateMap<Customer, CustomerDto>();
-            configuration.CreateMap<CustomerInput, Customer>();
-            configuration.CreateMap<Customer, CustomerInput>();
-            configuration.CreateMap<Customer, CustomerForViewDto>();
 
             // Category type
             configuration.CreateMap<CategoryType, CategoryTypeDto>();

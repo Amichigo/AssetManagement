@@ -16,19 +16,17 @@ export class AppNavigationService {
             new AppMenuItem('Dashboard', 'Pages.Tenant.Dashboard', 'flaticon-line-graph', '/app/main/dashboard'),
             new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-list-3', '/app/admin/tenants'),
             new AppMenuItem('Editions', 'Pages.Editions', 'flaticon-app', '/app/admin/editions'),
-            new AppMenuItem('Administration', '', 'flaticon-interface-8', '', [
-                new AppMenuItem('MenuClient', 'Pages.Administration.MenuClient', 'flaticon-menu-1', '/app/gwebsite/menu-client'),
-                new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer'),
-                new AppMenuItem('DuAn', 'Pages.Administration.Project', 'flaticon-menu-1', '/app/gwebsite/duan'),
-                new AppMenuItem('HangHoa', 'Pages.Administration.Goods', 'flaticon-menu-1', '/app/gwebsite/hanghoa'),
-                new AppMenuItem('NhaCungCap', 'Pages.Administration.Supplier', 'flaticon-menu-1', '/app/gwebsite/nhacungcap'),
-                new AppMenuItem('HoSoThau', 'Pages.Administration.Bid', 'flaticon-menu-1', '/app/gwebsite/hosothau'),
-                new AppMenuItem('HopDongThau', 'Pages.Administration.Contract', 'flaticon-menu-1', '/app/gwebsite/hopdongthau'),
-                new AppMenuItem('PhieuGoiHang', 'Pages.Administration.GoodsInvoice', 'flaticon-menu-1', '/app/gwebsite/phieugoihang'),
+            new AppMenuItem('Nhóm 1 - Quản lý danh mục', '', 'flaticon-grid-menu', '', [
+                new AppMenuItem('Loại danh mục', 'Pages.CategoryTypes.General', 'flaticon-menu-1', '/app/gwebsite/category-type'),
+                new AppMenuItem('Danh sách danh mục', 'Pages.Categories.General', 'flaticon-menu-1', '/app/gwebsite/category')
             ]),
-            new AppMenuItem('Categories', '', 'flaticon-grid-menu', '', [
-                new AppMenuItem('Category Types', 'Pages.CategoryTypes.General', 'flaticon-menu-1', '/app/gwebsite/category-type'),
-                new AppMenuItem('Category List', 'Pages.Categories.General', 'flaticon-menu-1', '/app/gwebsite/category')
+            new AppMenuItem('Nhóm 3 - Quản lý nghiệp vụ mua sắm', '', 'flaticon-interface-8', '', [
+                new AppMenuItem('Dự án', 'Pages.Administration.Project', 'flaticon-menu-1', '/app/gwebsite/duan'),
+                new AppMenuItem('Hàng hoá', 'Pages.Administration.Goods', 'flaticon-menu-1', '/app/gwebsite/hanghoa'),
+                new AppMenuItem('Nhà cung cấp', 'Pages.Administration.Supplier', 'flaticon-menu-1', '/app/gwebsite/nhacungcap'),
+                new AppMenuItem('Hồ sơ thầu', 'Pages.Administration.Bid', 'flaticon-menu-1', '/app/gwebsite/hosothau'),
+                new AppMenuItem('Hợp đồng thầu', 'Pages.Administration.Contract', 'flaticon-menu-1', '/app/gwebsite/hopdongthau'),
+                new AppMenuItem('Phiếu gọi hàng', 'Pages.Administration.GoodsInvoice', 'flaticon-menu-1', '/app/gwebsite/phieugoihang'),
             ]),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),

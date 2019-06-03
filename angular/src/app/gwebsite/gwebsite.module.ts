@@ -19,6 +19,7 @@ HopDongThauComponent, ViewHopDongThauModalComponent, CreateOrEditHopDongThauModa
 PhieuGoiHangComponent, ViewPhieuGoiHangModalComponent, CreateOrEditPhieuGoiHangModalComponent,
 HangHoaComponent, ViewHangHoaModalComponent, CreateOrEditHangHoaModalComponent
 } from './index';
+
 import { CategoryServiceProxy, CategoryTypeServiceProxy,
     ProjectServiceProxy, BidServiceProxy, SupplierServiceProxy, ContractServiceProxy, GoodsInvoiceServiceProxy, GoodsServiceProxy
 } from '@shared/service-proxies/service-proxies';

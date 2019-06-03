@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using GSoft.AbpZeroTemplate.Authorization.Users;
 using GSoft.AbpZeroTemplate.MultiTenancy;
 using GSoft.AbpZeroTemplate;
+using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Application
 {
@@ -35,6 +36,19 @@ namespace GWebsite.AbpZeroTemplate.Application
             }
 
             return user;
+        }
+
+        protected void SetAuditInsert(FullAuditModel entity)
+        {
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = GetCurrentUser().Name;
+            entity.IsDelete = false;
+        }
+
+        protected void SetAuditEdit(FullAuditModel entity)
+        {
+            entity.UpdatedDate = DateTime.Now;
+            entity.UpdatedBy = GetCurrentUser().Name;
         }
 
         protected virtual User GetCurrentUser()

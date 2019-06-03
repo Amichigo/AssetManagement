@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.component';
-import { CustomerComponent } from './customer/customer.component';
 import { CategoryComponent } from './category/category-general.component';
 import { CategoryTypeComponent } from './category-type/category-type-general.component';
 import { DuAnComponent } from './duan/duan.component';
@@ -14,24 +12,6 @@ import { HangHoaComponent } from './hanghoa/hanghoa.component';
 @NgModule({
     imports: [
         RouterModule.forChild([
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'menu-client', component: MenuClientComponent,
-                        data: { permission: 'Pages.Administration.MenuClient' }
-                    },
-                ]
-            },
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'customer', component: CustomerComponent,
-                        data: { permission: 'Pages.Administration.Customer' }
-                    },
-                ]
-            },
             {
                 path: '',
                 children: [
