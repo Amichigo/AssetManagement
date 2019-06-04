@@ -6,16 +6,10 @@ namespace GSoft.AbpZeroTemplate.Web.Startup
 {
     public class Program
     {
+        [STAThread]
         public static void Main(string[] args)
         {
-            try
-            {
-                CreateWebHostBuilder(args).Build().Run();
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
+            CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)

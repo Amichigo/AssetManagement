@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { ProductServiceProxy, ProductDto } from '@shared/service-proxies/service-proxies';
+import { SanPhamServiceProxy, SanPhamDto } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditProductModalComponent } from './create-or-edit-Product-modal.component';
 import {ExcelService} from '../services/excel.service';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
@@ -30,11 +30,11 @@ import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
         * tạo các biến dể filters
         */
         ProductName: string;
-        products: Array<ProductDto>=[];
+        products: Array<SanPhamDto>=[];
 
         constructor(
             injector: Injector,
-            private _productService: ProductServiceProxy,
+            private _productService: SanPhamServiceProxy,
             private _activatedRoute: ActivatedRoute,
             private _apiService: WebApiServiceProxy,
             private excelService: ExcelService
@@ -63,7 +63,7 @@ import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
         * Hàm get danh sách Customer
         * @param event
         */
-       getProduct():ProductDto[]
+       getProduct():SanPhamDto[]
        {
        /* this._apiService.get('api/Product/GetProductsByFilter').subscribe(result => {
             this.products = result.items;

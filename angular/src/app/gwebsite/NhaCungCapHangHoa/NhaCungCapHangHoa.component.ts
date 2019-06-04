@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { NhaCungCapHangHoaServiceProxy, ProductDto, NhaCungCapHangHoaDto ,ProductServiceProxy} from '@shared/service-proxies/service-proxies';
+import { NhaCungCapHangHoaServiceProxy, SanPhamDto, NhaCungCapHangHoaDto ,SanPhamServiceProxy} from '@shared/service-proxies/service-proxies';
 import { CreateOrEditNhaCungCapHangHoaModalComponent } from './create-or-edit-NhaCungCapHangHoa-modal.component';
 import {WebApiServiceProxy} from '@shared/service-proxies/webapi.service';
 import {ExcelService} from '../services/excel.service';
@@ -36,8 +36,8 @@ import { MAX_LENGTH_VALIDATOR } from '@angular/forms/src/directives/validators';
         NhaCungCapHangHoaName: string;
         MaNhaCungCapHangHoa: string;
         sl:string;
-        products: Array<ProductDto>=[];
-        products1:Array<ProductDto>=[];
+        products: Array<SanPhamDto>=[];
+        products1:Array<SanPhamDto>=[];
         nhaCungCapHangHoa: Array<NhaCungCapHangHoaDto>=[];
         config: any;
         constructor(
@@ -46,7 +46,7 @@ import { MAX_LENGTH_VALIDATOR } from '@angular/forms/src/directives/validators';
             private _activatedRoute: ActivatedRoute,
             private _apiService: WebApiServiceProxy,
             private excelService: ExcelService,
-            private _productService: ProductServiceProxy
+            private _productService: SanPhamServiceProxy
         ) {
             super(injector);
             /*this.getProducts(this.MaNhaCungCapHangHoa);*/
@@ -70,7 +70,7 @@ import { MAX_LENGTH_VALIDATOR } from '@angular/forms/src/directives/validators';
             });
             return this.nhaCungCapHangHoa;
         }
-        getProducts(MaNhaCungCapHangHoa): ProductDto[]
+        getProducts(MaNhaCungCapHangHoa): SanPhamDto[]
         {
             this._apiService.get('api/Product/GetProductsByFilterName?MaNhaCungCap='+MaNhaCungCapHangHoa).subscribe(result=>{
                 this.products1=result.items;

@@ -2,7 +2,7 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { ProductServiceProxy, ProductInput, ProductDto, ComboboxItemDto,ProductTypeDto, NhaCungCapHangHoaDto,ProductTypeServiceProxy,NhaCungCapHangHoaServiceProxy } from '@shared/service-proxies/service-proxies';
+import { SanPhamServiceProxy, SanPhamInput, SanPhamDto, ComboboxItemDto,ProductTypeDto, NhaCungCapHangHoaDto,ProductTypeServiceProxy,NhaCungCapHangHoaServiceProxy } from '@shared/service-proxies/service-proxies';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
     
@@ -28,7 +28,7 @@ import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
     
         saving = false;
     
-        product: ProductInput = new ProductInput();
+        product: SanPhamInput = new SanPhamInput();
         loaiSanPham: ProductTypeDto=new ProductTypeDto();
         nhaCungCapHangHoa: NhaCungCapHangHoaDto=new NhaCungCapHangHoaDto();
        selectedType: number;
@@ -37,7 +37,7 @@ import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
        nhaCungCapHangHoas: Array<NhaCungCapHangHoaDto>=[];
         constructor(
             injector: Injector,
-            private _productService: ProductServiceProxy,
+            private _productService: SanPhamServiceProxy,
             private _router: Router,
             private _activatedRoute: ActivatedRoute,
             private _apiService: WebApiServiceProxy,

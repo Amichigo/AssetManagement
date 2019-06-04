@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { ProductTypeServiceProxy,ProductDto, ProductTypeDto,ProductServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ProductTypeServiceProxy,SanPhamDto, ProductTypeDto,SanPhamServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditProductTypeModalComponent } from './create-or-edit-ProductType-modal.component';
 import { strictEqual } from 'assert';
 import {WebApiServiceProxy} from '@shared/service-proxies/webapi.service';
@@ -34,7 +34,7 @@ import { FileDownloadService } from '@shared/utils/file-download.service';
         */
        ProductTypeName: string;
        ProductType: string;
-       products: Array<ProductDto>=[];
+       products: Array<SanPhamDto>=[];
        productTypes: Array<ProductTypeDto>=[];
 
         constructor(
@@ -44,7 +44,7 @@ import { FileDownloadService } from '@shared/utils/file-download.service';
             private _apiService: WebApiServiceProxy,
             private excelService: ExcelService,
             private _fileDownloadService: FileDownloadService,
-            private _productService: ProductServiceProxy
+            private _productService: SanPhamServiceProxy
         ) {
             super(injector);
             this.getProducts(this.ProductType);
@@ -58,7 +58,7 @@ import { FileDownloadService } from '@shared/utils/file-download.service';
             });
             return this.productTypes;
         }
-        getProducts(ProductType): ProductDto[]
+        getProducts(ProductType): SanPhamDto[]
         {
             /*this._apiService.get('api/Product/GetProductsByFilterType?MaLoaiSanPham='+ProductType).subscribe(result=>{
                 this.products=result.items;

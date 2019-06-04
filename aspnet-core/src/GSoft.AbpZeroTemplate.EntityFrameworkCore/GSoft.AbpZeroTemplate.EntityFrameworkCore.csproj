@@ -15,19 +15,6 @@
     <Compile Remove="Migrations\20180907015541_FixGwebsite.cs" />
     <Compile Remove="Migrations\20180907072254_Added_Slide_Entity_For_Training.cs" />
     <Compile Remove="Migrations\20180911025043_AddEntity.cs" />
-    <Compile Remove="Migrations\20190323114143_AddDemoModel.cs" />
-    <Compile Remove="Migrations\20190422083750_LoaiSanPham.cs" />
-    <Compile Remove="Migrations\20190422084327_LoaiSanPham.cs" />
-    <Compile Remove="Migrations\20190422085006_LoaiSanPhams.cs" />
-    <Compile Remove="Migrations\20190422085330_LoaiSanPhams.cs" />
-    <Compile Remove="Migrations\20190422090021_LoaiSanPhams.cs" />
-    <Compile Remove="Migrations\20190422090440_LoaiSanPhams.cs" />
-    <Compile Remove="Migrations\20190422090651_LoaiSanPhams.cs" />
-    <Compile Remove="Migrations\20190422091355_LoaiSanPhams.cs" />
-    <Compile Remove="Migrations\20190422092950_LoaiSPs.cs" />
-    <Compile Remove="Migrations\20190422093929_NhaCungCapHangHoas.cs" />
-    <Compile Remove="Migrations\20190422101520_LoaiSPs.cs" />
-    <Compile Remove="Migrations\20190423034204_oke.cs" />
   </ItemGroup>
 
   <ItemGroup>

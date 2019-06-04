@@ -1,4 +1,4 @@
-import { CustomerForViewDto }         from './../../../shared/service-proxies/service-proxies';
+import { CustomerForViewDto } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild } from "@angular/core";
 import { CustomerServiceProxy } from "@shared/service-proxies/service-proxies";

@@ -1,8 +1,8 @@
 
-    import { ProductForViewDto }         from './../../../shared/service-proxies/service-proxies';
+    import { SanPhamForViewDto }         from './../../../shared/service-proxies/service-proxies';
     import { AppComponentBase } from "@shared/common/app-component-base";
     import { AfterViewInit, Injector, Component, ViewChild } from "@angular/core";
-    import { ProductServiceProxy } from "@shared/service-proxies/service-proxies";
+    import { SanPhamServiceProxy } from "@shared/service-proxies/service-proxies";
     import { ModalDirective } from 'ngx-bootstrap';
     
     @Component({
@@ -12,12 +12,12 @@
     
     export class ViewProductModalComponent extends AppComponentBase {
     
-        product : ProductForViewDto = new ProductForViewDto();
+        product : SanPhamForViewDto = new SanPhamForViewDto();
         @ViewChild('viewModal') modal: ModalDirective;
     
         constructor(
             injector: Injector,
-            private _productService: ProductServiceProxy
+            private _productService: SanPhamServiceProxy
         ) {
             super(injector);
         }

@@ -1,12 +1,14 @@
 using AutoMapper;
-using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.OrderPackages.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Templates.Slider.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Videos.VideoInstructionCategories.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Videos.VideoInstructions.Dto;
+using GWebsite.AbpZeroTemplate.Core.Models;
 using GWebsite.AbpZeroTemplate.Application.Share.LoaiNhaCungCaps.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.NhaCungCapHangHoas.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ProductTypes.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.SanPhams.Dto;
-using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {
@@ -19,17 +21,22 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<CreateMenuClientInput, MenuClient>();
             configuration.CreateMap<UpdateMenuClientInput, MenuClient>();
 
-            // DemoModel
-            configuration.CreateMap<DemoModel, DemoModelDto>();
-            configuration.CreateMap<DemoModelInput, DemoModel>();
-            configuration.CreateMap<DemoModel, DemoModelInput>();
-            configuration.CreateMap<DemoModel, DemoModelForViewDto>();
+            configuration.CreateMap<Slide, SlideDto>();
+            configuration.CreateMap<CreateSlideInput, Slide>();
+            configuration.CreateMap<UpdateSlideInput, Slide>();
 
-            // Customer
-            configuration.CreateMap<Customer, CustomerDto>();
-            configuration.CreateMap<CustomerInput, Customer>();
-            configuration.CreateMap<Customer, CustomerInput>();
-            configuration.CreateMap<Customer, CustomerForViewDto>();
+            configuration.CreateMap<VideoInstruction, VideoInstructionDto>();
+            configuration.CreateMap<CreateVideoInstructionInput, VideoInstruction>();
+            configuration.CreateMap<UpdateVideoInstructionInput, VideoInstruction>();
+
+            configuration.CreateMap<OrderPackage, OrderPackageDto>();
+            configuration.CreateMap<CreateOrderPackageInput, OrderPackage>();
+            configuration.CreateMap<UpdateOrderPackageInput, OrderPackage>();
+
+            configuration.CreateMap<VideoInstructionCategory, VideoInstructionCategoryDto>();
+            configuration.CreateMap<CreateVideoInstructionCategoryInput, VideoInstructionCategory>();
+            configuration.CreateMap<UpdateVideoInstructionCategoryInput, VideoInstructionCategory>();
+
 
             // LoaiNhaCungCap
             configuration.CreateMap<LoaiNhaCungCap, LoaiNhaCungCapDto>();
@@ -51,11 +58,10 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<ProductType, ProductTypeForViewDto>();
 
             //Product
-            configuration.CreateMap<Product, ProductDto>();
-            configuration.CreateMap<ProductInput, Product>();
-            configuration.CreateMap<Product, ProductInput>();
-            configuration.CreateMap<Product, ProductForViewDto>();
-
+            configuration.CreateMap<SanPham, SanPhamDto>();
+            configuration.CreateMap<SanPhamInput, SanPham>();
+            configuration.CreateMap<SanPham, SanPhamInput>();
+            configuration.CreateMap<SanPham, SanPhamForViewDto>();
         }
     }
 }

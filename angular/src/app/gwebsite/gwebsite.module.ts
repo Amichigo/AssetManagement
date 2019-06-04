@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, LoaiNhaCungCapServiceProxy, NhaCungCapHangHoaServiceProxy, ProductTypeServiceProxy, ProductServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, LoaiNhaCungCapServiceProxy, NhaCungCapHangHoaServiceProxy, ProductTypeServiceProxy, SanPhamServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -67,7 +67,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
         CustomerServiceProxy,
         LoaiNhaCungCapServiceProxy,
         NhaCungCapHangHoaServiceProxy,
-        ProductServiceProxy,
+        SanPhamServiceProxy,
         ProductTypeServiceProxy,
         ExcelService,
         WebApiServiceProxy
