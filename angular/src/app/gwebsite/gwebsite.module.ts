@@ -4,7 +4,7 @@ import { TypeVehicleServiceProxy } from "./../../shared/service-proxies/service-
 import { BrandVehicleServiceProxy } from "./../../shared/service-proxies/service-proxies";
 import { ModelVehicleServiceProxy } from "./../../shared/service-proxies/service-proxies";
 import { OperateVehicleServiceProxy } from "./../../shared/service-proxies/service-proxies";
-import { AssetServiceProxy } from "./../../shared/service-proxies/service-proxies";
+import { Asset_8ServiceProxy } from "./../../shared/service-proxies/service-proxies";
 import { ViewDemoModelModalComponent } from "./demo-model/view-demo-model-modal.component";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
@@ -118,7 +118,7 @@ import { SelectVehicleModalComponent } from "./vehicle/select-vehicle-modal.comp
         CustomerServiceProxy,
         VehicleServiceProxy,
         TypeVehicleServiceProxy,
-        AssetServiceProxy,
+        Asset_8ServiceProxy,
         BrandVehicleServiceProxy,
         ModelVehicleServiceProxy,
         OperateVehicleServiceProxy

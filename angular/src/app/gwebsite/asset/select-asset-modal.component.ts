@@ -1,6 +1,6 @@
 import {
     CustomerForViewDto,
-    AssetServiceProxy
+    Asset_8ServiceProxy
 } from "./../../../shared/service-proxies/service-proxies";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import {
@@ -29,7 +29,7 @@ export class SelectAssetModalComponent extends AppComponentBase {
     @ViewChild("paginator") paginator: Paginator;
     constructor(
         injector: Injector,
-        private _assetService: AssetServiceProxy,
+        private _assetService: Asset_8ServiceProxy,
         private _activatedRoute: ActivatedRoute
     ) {
         super(injector);
@@ -88,7 +88,7 @@ export class SelectAssetModalComponent extends AppComponentBase {
 
     reloadList(assetName, event?: LazyLoadEvent) {
         this._assetService
-            .getAssetsByFilter(
+            .getAssets_8ByFilter(
                 null,
                 null,
                 null,
@@ -115,7 +115,6 @@ export class SelectAssetModalComponent extends AppComponentBase {
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);
             return;
-
         }
     }
 

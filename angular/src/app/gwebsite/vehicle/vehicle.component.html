@@ -25,17 +25,27 @@
                     <div class="m-form m-form--label-align-right" id="TextsFilterForm">
                         <div class="row align-items-center m--margin-bottom-10">
                             <div class="col-sm-12">
+
                                 <div class="form-group">
                                     <label>{{l("Thông tin tài sản")}} *</label>
+
                                     <div class="row m--margin-bottom-10">
                                         <div class="col-xl-6">
                                             <div class="form-group">
+                                                <!-- Mở màn hình select tài sản bằng cách bắt event click, chạy vào hàm showTaiSan() -->
+                                                <button (click)="showTaiSan()" class="btn btn-primary" type="button">
+                                                    <i class="icon-refresh"></i>
+                                                    {{ l(" ... ") }}
+                                                </button>
                                                 <label>Mã tài sản *</label>
+
                                                 <input #matsInput="ngModel" class="form-control" type="text"
                                                     name="maTaiSan" [(ngModel)]="taisan.maTaiSan" required disabled
                                                     maxlength="64" />
                                                 <validation-messages [formCtrl]="matsInput"></validation-messages>
+
                                             </div>
+
                                         </div>
                                         <div class="col-xl-6">
                                             <label>Tên tài sản *</label>
@@ -95,17 +105,23 @@
                                     </div>
                                 </div>
 
-                                <!-- Mở màn hình select tài sản bằng cách bắt event click, chạy vào hàm showTaiSan() -->
-                                <button (click)="showTaiSan()" class="btn btn-primary" type="button">
-                                    <i class="icon-refresh"></i>
-                                    {{ l("Mo TS") }}
-                                </button>
+
                             </div>
                         </div>
                     </div>
                 </form>
-
-
+                <div class="form-group">
+                    <div class="input-group">
+                        <input [(ngModel)]="vehicleName" name="vehicleName" autoFocus class="form-control"
+                            placeholder="Nhập tên xe" type="text" />
+                        <span class="input-group-btn">
+                            <button (click)="applyFilters()" class="btn btn-primary" type="submit">
+                                <i class="icon-refresh"></i>
+                                {{ l("Refresh") }}
+                            </button>
+                        </span>
+                    </div>
+                </div>
 
                 <div class="row align-items-center">
                     <!--<Primeng-TurboTable-Start>-->

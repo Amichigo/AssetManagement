@@ -36,7 +36,9 @@ export class OperateVehicleComponent extends AppComponentBase
     createOrEditModal: CreateOrEditOperateVehicleModalComponent;
     @ViewChild("viewOperateVehicleModal")
     viewOperateVehiclModal: ViewOperateVehicleModalComponent;
-    // selectVehicleModal: SelectVehicleModalComponent;
+    @ViewChild("selectVehicleModal")
+    selectVehicleModal: SelectVehicleModalComponent;
+
     xe: VehicleInput = new VehicleInput();
     /**
      * tạo các biến dể filters
@@ -137,22 +139,22 @@ export class OperateVehicleComponent extends AppComponentBase
     createOperateVehicle() {
         this.createOrEditModal.show();
     }
-    // updateVehicle(): void {
-    //     if (this.selectVehicleModal.selectedMaXe != -1) {
-    //         this.selectedVehicle = this.selectVehicleModal.selectedMaXe;
-    //         this._apiService
-    //             .getForEdit(
-    //                 "api/Vehicle/GetVehicleForView",
-    //                 this.selectedVehicle
-    //             )
-    //             .subscribe(result => {
-    //                 this.xe = result;
-    //             });
-    //     }
-    // }
+    updateVehicle(): void {
+        if (this.selectVehicleModal.selectedMaXe != -1) {
+            this.selectedVehicle = this.selectVehicleModal.selectedMaXe;
+            this._apiService
+                .getForEdit(
+                    "api/Vehicle/GetVehicleForView",
+                    this.selectedVehicle
+                )
+                .subscribe(result => {
+                    this.xe = result;
+                });
+        }
+    }
     showXe(): void {
         console.log("Mo tai san");
-        // this.selectVehicleModal.show();
+        this.selectVehicleModal.show();
     }
 
     /**

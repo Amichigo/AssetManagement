@@ -14,14 +14,14 @@ import {
     TypeVehicleDto,
     ModelVehicleDto,
     ComboboxItemDto,
-    AssetInput,
+    Asset_8Input,
     TypeVehicleServiceProxy
 } from "@shared/service-proxies/service-proxies";
 import { ActivatedRoute, Router } from "@angular/router";
 import { WebApiServiceProxy } from "@shared/service-proxies/webapi.service";
 import { SelectAssetModalComponent } from "../asset/select-asset-modal.component";
 import { nextTick } from "q";
-import { AssetServiceProxy } from "@shared/service-proxies/service-proxies";
+import { Asset_8ServiceProxy } from "@shared/service-proxies/service-proxies";
 
 @Component({
     selector: "createOrEditVehicleModal",
@@ -52,7 +52,7 @@ export class CreateOrEditVehicleModalComponent extends AppComponentBase {
     listVehicles: Array<VehicleInput> = [];
     selectedAsset: number;
     nextID: any;
-    taisan: AssetInput = new AssetInput();
+    taisan: Asset_8Input = new Asset_8Input();
 
     constructor(
         injector: Injector,
@@ -60,7 +60,7 @@ export class CreateOrEditVehicleModalComponent extends AppComponentBase {
         private _typeVehicle: TypeVehicleServiceProxy,
         private _router: Router,
         private _activatedRoute: ActivatedRoute,
-        private _assetService: AssetServiceProxy,
+        private _assetService: Asset_8ServiceProxy,
         private _apiService: WebApiServiceProxy
     ) {
         super(injector);
@@ -146,7 +146,7 @@ export class CreateOrEditVehicleModalComponent extends AppComponentBase {
         if (this.selectAssetModal.selectedMaTS != -1) {
             this.selectedAsset = this.selectAssetModal.selectedMaTS;
             this._apiService
-                .getForEdit("api/Asset/GetAssetForView", this.selectedAsset)
+                .getForEdit("api/Asset_8/GetAsset_8ForView", this.selectedAsset)
                 .subscribe(result => {
                     // this.mataisanName = result.maTaiSan;
                     this.taisan = result;

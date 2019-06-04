@@ -1,6 +1,6 @@
 using AutoMapper;
 using GWebsite.AbpZeroTemplate.Application.Share.Vehicles.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.Asset.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Asset_8.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.OperateVehicles.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.TypeVehicles.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ModelVehicles.Dto;
@@ -49,10 +49,10 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<ModelVehicle, ModelVehicleInput>();
             configuration.CreateMap<ModelVehicle, ModelVehicleForViewDto>();
             //Asset
-            configuration.CreateMap<Asset_8, AssetDto>();
-            configuration.CreateMap<AssetInput, Asset_8>();
-            configuration.CreateMap<Asset_8, AssetInput>();
-            configuration.CreateMap<Asset_8, AssetForViewDto>();
+            configuration.CreateMap<Asset_8, Asset_8Dto>();
+            configuration.CreateMap<Asset_8Input, Asset_8>();
+            configuration.CreateMap<Asset_8, Asset_8Input>();
+            configuration.CreateMap<Asset_8, Asset_8ForViewDto>();
             //brand
             configuration.CreateMap<BrandVehicle, BrandVehicleDto>();
             configuration.CreateMap<BrandVehicleInput, BrandVehicle>();

@@ -572,7 +572,7 @@ export class AccountServiceProxy {
 }
 
 @Injectable()
-export class AssetServiceProxy {
+export class Asset_8ServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
@@ -593,8 +593,8 @@ export class AssetServiceProxy {
      * @skipCount (optional) 
      * @return Success
      */
-    getAssetsByFilter(maTaiSan: string | null | undefined, maNhomTaiSan: string | null | undefined, maLoaiTaiSan: string | null | undefined, diaChi: string | null | undefined, tenTaiSan: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfAssetDto> {
-        let url_ = this.baseUrl + "/api/Asset/GetAssetsByFilter?";
+    getAssets_8ByFilter(maTaiSan: string | null | undefined, maNhomTaiSan: string | null | undefined, maLoaiTaiSan: string | null | undefined, diaChi: string | null | undefined, tenTaiSan: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfAsset_8Dto> {
+        let url_ = this.baseUrl + "/api/Asset_8/GetAssets_8ByFilter?";
         if (maTaiSan !== undefined)
             url_ += "MaTaiSan=" + encodeURIComponent("" + maTaiSan) + "&"; 
         if (maNhomTaiSan !== undefined)
@@ -623,20 +623,20 @@ export class AssetServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAssetsByFilter(response_);
+            return this.processGetAssets_8ByFilter(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAssetsByFilter(<any>response_);
+                    return this.processGetAssets_8ByFilter(<any>response_);
                 } catch (e) {
-                    return <Observable<PagedResultDtoOfAssetDto>><any>_observableThrow(e);
+                    return <Observable<PagedResultDtoOfAsset_8Dto>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<PagedResultDtoOfAssetDto>><any>_observableThrow(response_);
+                return <Observable<PagedResultDtoOfAsset_8Dto>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetAssetsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfAssetDto> {
+    protected processGetAssets_8ByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfAsset_8Dto> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -647,7 +647,7 @@ export class AssetServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfAssetDto.fromJS(resultData200) : new PagedResultDtoOfAssetDto();
+            result200 = resultData200 ? PagedResultDtoOfAsset_8Dto.fromJS(resultData200) : new PagedResultDtoOfAsset_8Dto();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -655,15 +655,15 @@ export class AssetServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<PagedResultDtoOfAssetDto>(<any>null);
+        return _observableOf<PagedResultDtoOfAsset_8Dto>(<any>null);
     }
 
     /**
      * @id (optional) 
      * @return Success
      */
-    getAssetForEdit(id: number | null | undefined): Observable<AssetInput> {
-        let url_ = this.baseUrl + "/api/Asset/GetAssetForEdit?";
+    getAsset_8ForEdit(id: number | null | undefined): Observable<Asset_8Input> {
+        let url_ = this.baseUrl + "/api/Asset_8/GetAsset_8ForEdit?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -678,20 +678,20 @@ export class AssetServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAssetForEdit(response_);
+            return this.processGetAsset_8ForEdit(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAssetForEdit(<any>response_);
+                    return this.processGetAsset_8ForEdit(<any>response_);
                 } catch (e) {
-                    return <Observable<AssetInput>><any>_observableThrow(e);
+                    return <Observable<Asset_8Input>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<AssetInput>><any>_observableThrow(response_);
+                return <Observable<Asset_8Input>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetAssetForEdit(response: HttpResponseBase): Observable<AssetInput> {
+    protected processGetAsset_8ForEdit(response: HttpResponseBase): Observable<Asset_8Input> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -702,7 +702,7 @@ export class AssetServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? AssetInput.fromJS(resultData200) : new AssetInput();
+            result200 = resultData200 ? Asset_8Input.fromJS(resultData200) : new Asset_8Input();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -710,15 +710,15 @@ export class AssetServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<AssetInput>(<any>null);
+        return _observableOf<Asset_8Input>(<any>null);
     }
 
     /**
      * @input (optional) 
      * @return Success
      */
-    createOrEditAsset(input: AssetInput | null | undefined): Observable<void> {
-        let url_ = this.baseUrl + "/api/Asset/CreateOrEditAsset";
+    createOrEditAsset_8(input: Asset_8Input | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/Asset_8/CreateOrEditAsset_8";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -733,11 +733,11 @@ export class AssetServiceProxy {
         };
 
         return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processCreateOrEditAsset(response_);
+            return this.processCreateOrEditAsset_8(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processCreateOrEditAsset(<any>response_);
+                    return this.processCreateOrEditAsset_8(<any>response_);
                 } catch (e) {
                     return <Observable<void>><any>_observableThrow(e);
                 }
@@ -746,7 +746,7 @@ export class AssetServiceProxy {
         }));
     }
 
-    protected processCreateOrEditAsset(response: HttpResponseBase): Observable<void> {
+    protected processCreateOrEditAsset_8(response: HttpResponseBase): Observable<void> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -768,8 +768,8 @@ export class AssetServiceProxy {
     /**
      * @return Success
      */
-    deleteAsset(id: number): Observable<void> {
-        let url_ = this.baseUrl + "/api/Asset/DeleteAsset/{id}";
+    deleteAsset_8(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/Asset_8/DeleteAsset_8/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
         url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
@@ -784,11 +784,11 @@ export class AssetServiceProxy {
         };
 
         return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processDeleteAsset(response_);
+            return this.processDeleteAsset_8(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processDeleteAsset(<any>response_);
+                    return this.processDeleteAsset_8(<any>response_);
                 } catch (e) {
                     return <Observable<void>><any>_observableThrow(e);
                 }
@@ -797,7 +797,7 @@ export class AssetServiceProxy {
         }));
     }
 
-    protected processDeleteAsset(response: HttpResponseBase): Observable<void> {
+    protected processDeleteAsset_8(response: HttpResponseBase): Observable<void> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -820,8 +820,8 @@ export class AssetServiceProxy {
      * @id (optional) 
      * @return Success
      */
-    getAssetForView(id: number | null | undefined): Observable<AssetForViewDto> {
-        let url_ = this.baseUrl + "/api/Asset/GetAssetForView?";
+    getAsset_8ForView(id: number | null | undefined): Observable<Asset_8ForViewDto> {
+        let url_ = this.baseUrl + "/api/Asset_8/GetAsset_8ForView?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -836,20 +836,20 @@ export class AssetServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAssetForView(response_);
+            return this.processGetAsset_8ForView(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAssetForView(<any>response_);
+                    return this.processGetAsset_8ForView(<any>response_);
                 } catch (e) {
-                    return <Observable<AssetForViewDto>><any>_observableThrow(e);
+                    return <Observable<Asset_8ForViewDto>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<AssetForViewDto>><any>_observableThrow(response_);
+                return <Observable<Asset_8ForViewDto>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetAssetForView(response: HttpResponseBase): Observable<AssetForViewDto> {
+    protected processGetAsset_8ForView(response: HttpResponseBase): Observable<Asset_8ForViewDto> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -860,7 +860,7 @@ export class AssetServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? AssetForViewDto.fromJS(resultData200) : new AssetForViewDto();
+            result200 = resultData200 ? Asset_8ForViewDto.fromJS(resultData200) : new Asset_8ForViewDto();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -868,7 +868,7 @@ export class AssetServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<AssetForViewDto>(<any>null);
+        return _observableOf<Asset_8ForViewDto>(<any>null);
     }
 }
 
@@ -11913,11 +11913,11 @@ export interface ISwitchToLinkedAccountOutput {
     tenancyName: string | undefined;
 }
 
-export class PagedResultDtoOfAssetDto implements IPagedResultDtoOfAssetDto {
+export class PagedResultDtoOfAsset_8Dto implements IPagedResultDtoOfAsset_8Dto {
     totalCount!: number | undefined;
-    items!: AssetDto[] | undefined;
+    items!: Asset_8Dto[] | undefined;
 
-    constructor(data?: IPagedResultDtoOfAssetDto) {
+    constructor(data?: IPagedResultDtoOfAsset_8Dto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -11932,14 +11932,14 @@ export class PagedResultDtoOfAssetDto implements IPagedResultDtoOfAssetDto {
             if (data["items"] && data["items"].constructor === Array) {
                 this.items = [];
                 for (let item of data["items"])
-                    this.items.push(AssetDto.fromJS(item));
+                    this.items.push(Asset_8Dto.fromJS(item));
             }
         }
     }
 
-    static fromJS(data: any): PagedResultDtoOfAssetDto {
+    static fromJS(data: any): PagedResultDtoOfAsset_8Dto {
         data = typeof data === 'object' ? data : {};
-        let result = new PagedResultDtoOfAssetDto();
+        let result = new PagedResultDtoOfAsset_8Dto();
         result.init(data);
         return result;
     }
@@ -11956,12 +11956,12 @@ export class PagedResultDtoOfAssetDto implements IPagedResultDtoOfAssetDto {
     }
 }
 
-export interface IPagedResultDtoOfAssetDto {
+export interface IPagedResultDtoOfAsset_8Dto {
     totalCount: number | undefined;
-    items: AssetDto[] | undefined;
+    items: Asset_8Dto[] | undefined;
 }
 
-export class AssetDto implements IAssetDto {
+export class Asset_8Dto implements IAsset_8Dto {
     maTaiSan!: string | undefined;
     maNhomTaiSan!: string | undefined;
     maLoaiTaiSan!: string | undefined;
@@ -11977,7 +11977,7 @@ export class AssetDto implements IAssetDto {
     ghiChu!: string | undefined;
     id!: number | undefined;
 
-    constructor(data?: IAssetDto) {
+    constructor(data?: IAsset_8Dto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -12005,9 +12005,9 @@ export class AssetDto implements IAssetDto {
         }
     }
 
-    static fromJS(data: any): AssetDto {
+    static fromJS(data: any): Asset_8Dto {
         data = typeof data === 'object' ? data : {};
-        let result = new AssetDto();
+        let result = new Asset_8Dto();
         result.init(data);
         return result;
     }
@@ -12032,7 +12032,7 @@ export class AssetDto implements IAssetDto {
     }
 }
 
-export interface IAssetDto {
+export interface IAsset_8Dto {
     maTaiSan: string | undefined;
     maNhomTaiSan: string | undefined;
     maLoaiTaiSan: string | undefined;
@@ -12049,7 +12049,7 @@ export interface IAssetDto {
     id: number | undefined;
 }
 
-export class AssetInput implements IAssetInput {
+export class Asset_8Input implements IAsset_8Input {
     maTaiSan!: string | undefined;
     maNhomTaiSan!: string | undefined;
     maLoaiTaiSan!: string | undefined;
@@ -12066,7 +12066,7 @@ export class AssetInput implements IAssetInput {
     ghiChu!: string | undefined;
     id!: number | undefined;
 
-    constructor(data?: IAssetInput) {
+    constructor(data?: IAsset_8Input) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -12095,9 +12095,9 @@ export class AssetInput implements IAssetInput {
         }
     }
 
-    static fromJS(data: any): AssetInput {
+    static fromJS(data: any): Asset_8Input {
         data = typeof data === 'object' ? data : {};
-        let result = new AssetInput();
+        let result = new Asset_8Input();
         result.init(data);
         return result;
     }
@@ -12123,7 +12123,7 @@ export class AssetInput implements IAssetInput {
     }
 }
 
-export interface IAssetInput {
+export interface IAsset_8Input {
     maTaiSan: string | undefined;
     maNhomTaiSan: string | undefined;
     maLoaiTaiSan: string | undefined;
@@ -12141,7 +12141,7 @@ export interface IAssetInput {
     id: number | undefined;
 }
 
-export class AssetForViewDto implements IAssetForViewDto {
+export class Asset_8ForViewDto implements IAsset_8ForViewDto {
     maTaiSan!: string | undefined;
     maNhomTaiSan!: string | undefined;
     maLoaiTaiSan!: string | undefined;
@@ -12156,7 +12156,7 @@ export class AssetForViewDto implements IAssetForViewDto {
     khauHao!: string | undefined;
     ghiChu!: string | undefined;
 
-    constructor(data?: IAssetForViewDto) {
+    constructor(data?: IAsset_8ForViewDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -12183,9 +12183,9 @@ export class AssetForViewDto implements IAssetForViewDto {
         }
     }
 
-    static fromJS(data: any): AssetForViewDto {
+    static fromJS(data: any): Asset_8ForViewDto {
         data = typeof data === 'object' ? data : {};
-        let result = new AssetForViewDto();
+        let result = new Asset_8ForViewDto();
         result.init(data);
         return result;
     }
@@ -12209,7 +12209,7 @@ export class AssetForViewDto implements IAssetForViewDto {
     }
 }
 
-export interface IAssetForViewDto {
+export interface IAsset_8ForViewDto {
     maTaiSan: string | undefined;
     maNhomTaiSan: string | undefined;
     maLoaiTaiSan: string | undefined;

@@ -98,7 +98,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BrandVehicles
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_BrandVehicle_Create)]
         private void Create(BrandVehicleInput brandvehicleInput)
         {
             var brandvehicleEntity = ObjectMapper.Map<BrandVehicle>(brandvehicleInput);
@@ -107,7 +107,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BrandVehicles
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_BrandVehicle_Edit)]
         private void Update(BrandVehicleInput brandvehicleInput)
         {
             var brandvehicleEntity = brandvehicleRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == brandvehicleInput.Id);

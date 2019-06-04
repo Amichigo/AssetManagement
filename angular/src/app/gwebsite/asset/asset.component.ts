@@ -14,7 +14,7 @@ import * as _ from "lodash";
 import { LazyLoadEvent } from "primeng/components/common/lazyloadevent";
 import { Paginator } from "primeng/components/paginator/paginator";
 import { Table } from "primeng/components/table/table";
-import { AssetServiceProxy } from "@shared/service-proxies/service-proxies";
+import { Asset_8ServiceProxy } from "@shared/service-proxies/service-proxies";
 import { CreateOrEditAssetModalComponent } from "./create-or-edit-asset-modal.component";
 import { ModalDirective } from "ngx-bootstrap";
 
@@ -41,7 +41,7 @@ export class AssetComponent extends AppComponentBase
 
     constructor(
         injector: Injector,
-        private _assetService: AssetServiceProxy,
+        private _assetService: Asset_8ServiceProxy,
         private _activatedRoute: ActivatedRoute
     ) {
         super(injector);
@@ -85,7 +85,7 @@ export class AssetComponent extends AppComponentBase
 
     reloadList(assetName, event?: LazyLoadEvent) {
         this._assetService
-            .getAssetsByFilter(
+            .getAssets_8ByFilter(
                 null,
                 null,
                 null,
@@ -105,8 +105,9 @@ export class AssetComponent extends AppComponentBase
             });
     }
 
-    deleteAsset(id): void {
-        this._assetService.deleteAsset(id).subscribe(() => {
+    deleteAsset_8(id): void {
+        console.log("Chay vao day");
+        this._assetService.deleteAsset_8(id).subscribe(() => {
             this.reloadPage();
         });
     }

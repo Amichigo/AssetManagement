@@ -16,14 +16,14 @@ import { Paginator } from "primeng/components/paginator/paginator";
 import { Table } from "primeng/components/table/table";
 import {
     CustomerServiceProxy,
-    AssetInput,
-    AssetForViewDto
+    Asset_8Input,
+    Asset_8ForViewDto
 } from "@shared/service-proxies/service-proxies";
 import { VehicleServiceProxy } from "@shared/service-proxies/service-proxies";
 import { CreateOrEditVehicleModalComponent } from "./create-or-edit-vehicle-modal.components";
 import { SelectAssetModalComponent } from "../asset/select-asset-modal.component";
 import { WebApiServiceProxy } from "@shared/service-proxies/webapi.service";
-import { AssetServiceProxy } from "@shared/service-proxies/service-proxies";
+import { Asset_8ServiceProxy } from "@shared/service-proxies/service-proxies";
 @Component({
     templateUrl: "./vehicle.component.html",
     animations: [appModuleAnimation()]
@@ -46,12 +46,12 @@ export class VehicleComponent extends AppComponentBase
     vehicleName: string;
     selectedAsset: number;
     mataisanName: string;
-    taisan: AssetInput = new AssetInput();
+    taisan: Asset_8Input = new Asset_8Input();
     constructor(
         injector: Injector,
         private _vehicleService: VehicleServiceProxy,
         private _apiService: WebApiServiceProxy,
-        private _assetService: AssetServiceProxy,
+        private _assetService: Asset_8ServiceProxy,
         private _activatedRoute: ActivatedRoute
     ) {
         super(injector);
@@ -146,7 +146,7 @@ export class VehicleComponent extends AppComponentBase
         if (this.selectAssetModal.selectedMaTS != -1) {
             this.selectedAsset = this.selectAssetModal.selectedMaTS;
             this._apiService
-                .getForEdit("api/Asset/GetAssetForView", this.selectedAsset)
+                .getForEdit("api/Asset_8/GetAsset_8ForView", this.selectedAsset)
                 .subscribe(result => {
                     // this.mataisanName = result.maTaiSan;
                     this.taisan = result; //ghi vậy ngắn hơn

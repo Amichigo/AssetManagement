@@ -98,7 +98,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperateVehicles
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_OperateVehicle_Create)]
         private void Create(OperateVehicleInput operatevehicleInput)
         {
             var operatevehicleEntity = ObjectMapper.Map<OperateVehicle>(operatevehicleInput);
@@ -107,7 +107,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperateVehicles
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_OperateVehicle_Edit)]
         private void Update(OperateVehicleInput operatevehicleInput)
         {
             var operatevehicleEntity = operatevehicleRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == operatevehicleInput.Id);

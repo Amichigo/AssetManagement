@@ -9,8 +9,8 @@ import {
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { ModalDirective } from "ngx-bootstrap";
 import {
-    AssetServiceProxy,
-    AssetInput
+    Asset_8ServiceProxy,
+    Asset_8Input
 } from "@shared/service-proxies/service-proxies";
 
 @Component({
@@ -30,16 +30,19 @@ export class CreateOrEditAssetModalComponent extends AppComponentBase {
 
     saving = false;
 
-    asset: AssetInput = new AssetInput();
+    asset: Asset_8Input = new Asset_8Input();
 
-    constructor(injector: Injector, private _assetService: AssetServiceProxy) {
+    constructor(
+        injector: Injector,
+        private _assetService: Asset_8ServiceProxy
+    ) {
         super(injector);
     }
 
     show(assetId?: number | null | undefined): void {
         this.saving = false;
 
-        this._assetService.getAssetForEdit(assetId).subscribe(result => {
+        this._assetService.getAsset_8ForEdit(assetId).subscribe(result => {
             this.asset = result;
             this.modal.show();
         });
@@ -48,7 +51,7 @@ export class CreateOrEditAssetModalComponent extends AppComponentBase {
     save(): void {
         let input = this.asset;
         this.saving = true;
-        this._assetService.createOrEditAsset(input).subscribe(result => {
+        this._assetService.createOrEditAsset_8(input).subscribe(result => {
             this.notify.info(this.l("SavedSuccessfully"));
             this.close();
         });
