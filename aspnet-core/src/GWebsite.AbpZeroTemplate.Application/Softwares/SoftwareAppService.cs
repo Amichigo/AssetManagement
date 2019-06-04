@@ -15,7 +15,7 @@ using System;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Softwares
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_Software)]
     public class SoftwareAppService : GWebsiteAppServiceBase, ISoftwareAppService
     {
         private readonly IRepository<Software> softwareReponsitory;
@@ -88,7 +88,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Softwares
 
         #endregion
         #region Private Method
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Software_Create)]
         private void Create(SoftwareInput customerInput)
         {
             var customerEntity = ObjectMapper.Map<Software>(customerInput);
@@ -97,7 +97,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Softwares
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Software_Edit)]
         private void Update(SoftwareInput customerInput)
         {
             var customerEntity = softwareReponsitory.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == customerInput.Id);

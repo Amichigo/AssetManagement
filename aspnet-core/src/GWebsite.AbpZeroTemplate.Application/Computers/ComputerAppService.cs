@@ -14,7 +14,7 @@ using System.Net;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Computer
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_Computer)]
     public class ComputerAppService : GWebsiteAppServiceBase, IComputerAppService
     {
         private readonly IRepository<GWebsite.AbpZeroTemplate.Core.Models.Computer> computerRespostory;
@@ -118,7 +118,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Computer
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Computer)]
         private void Create(ComputerInput customerInput)
         {
             var computerEntity = ObjectMapper.Map<GWebsite.AbpZeroTemplate.Core.Models.Computer>(customerInput);
@@ -127,7 +127,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Computer
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Computer_Edit)]
         private void Update(ComputerInput customerInput)
         {
             var customerEntity = computerRespostory.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == customerInput.Id);
