@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.TypeOfRentalAssets
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_TypeOfRentalAsset)]
     public class TypeOfRentalAssetAppService : GWebsiteAppServiceBase, ITypeOfRentalAssetAppService
     {
         private readonly IRepository<TypeOfRentalAsset> typeOfRentalAssetRepository;
@@ -98,7 +98,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.TypeOfRentalAssets
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_TypeOfRentalAsset_Create)]
         private void Create(TypeOfRentalAssetInput typeOfRentalAssetInput)
         {
             var typeOfRentalAssetEntity = ObjectMapper.Map<TypeOfRentalAsset>(typeOfRentalAssetInput);
@@ -107,7 +107,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.TypeOfRentalAssets
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_TypeOfRentalAsset_Edit)]
         private void Update(TypeOfRentalAssetInput typeOfRentalAssetInput)
         {
             var typeOfRentalAssetEntity = typeOfRentalAssetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == typeOfRentalAssetInput.Id);

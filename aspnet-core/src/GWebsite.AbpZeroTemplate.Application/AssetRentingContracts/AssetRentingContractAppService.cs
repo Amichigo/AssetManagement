@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.AssetRentingContracts
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_AssetRentingContract)]
     public class AssetRentingContractAppService : GWebsiteAppServiceBase, IAssetRentingContractAppService
     {
         private readonly IRepository<AssetRentingContract> assetRentingContractRepository;
@@ -129,7 +129,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.AssetRentingContracts
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_AssetRentingContract_Create)]
         private void Create(AssetRentingContractInput assetRentingContractInput)
         {
             var assetRentingContractEntity = ObjectMapper.Map<AssetRentingContract>(assetRentingContractInput);
@@ -138,7 +138,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.AssetRentingContracts
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_AssetRentingContract_Edit)]
         private void Update(AssetRentingContractInput assetRentingContractInput)
         {
             var assetRentingContractEntity = assetRentingContractRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == assetRentingContractInput.Id);

@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.FormOfRentingAssets
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_FormOfRentingAsset)]
     public class FormOfRentingAssetAppService : GWebsiteAppServiceBase, IFormOfRentingAssetAppService
     {
         private readonly IRepository<FormOfRentingAsset> formOfRentingAssetRepository;
@@ -98,7 +98,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.FormOfRentingAssets
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_FormOfRentingAsset_Create)]
         private void Create(FormOfRentingAssetInput formOfRentingAssetInput)
         {
             var formOfRentingAssetEntity = ObjectMapper.Map<FormOfRentingAsset>(formOfRentingAssetInput);
@@ -107,7 +107,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.FormOfRentingAssets
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_FormOfRentingAsset_Edit)]
         private void Update(FormOfRentingAssetInput formOfRentingAssetInput)
         {
             var formOfRentingAssetEntity = formOfRentingAssetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == formOfRentingAssetInput.Id);

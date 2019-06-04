@@ -46,11 +46,6 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             customer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Customer_Edit, L("EditingCustomer"));
             customer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Customer_Delete, L("DeletingCustomer"));
 
-            var fixedAsset = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_FixedAsset, L("FixedAsset"));
-            fixedAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_FixedAsset_Create, L("CreatingNewFixedAsset"));
-            fixedAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_FixedAsset_Edit, L("EditingFixedAsset"));
-            fixedAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_FixedAsset_Delete, L("DeletingFixedAsset"));
-
             var rentalAsset = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_RentalAsset, L("RentalAsset"));
             rentalAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_RentalAsset_Create, L("CreatingNewRentalAsset"));
             rentalAsset.CreateChildPermission(GWebsitePermissions.Pages_Administration_RentalAsset_Edit, L("EditingRentalAsset"));

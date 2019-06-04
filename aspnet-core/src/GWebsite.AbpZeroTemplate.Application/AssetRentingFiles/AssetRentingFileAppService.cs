@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.AssetRentingFiles
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_AssetRentingFile)]
     public class AssetRentingFileAppService : GWebsiteAppServiceBase, IAssetRentingFileAppService
     {
         private readonly IRepository<AssetRentingFile> assetRentingFileRepository;
@@ -154,7 +154,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.AssetRentingFiles
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_AssetRentingFile_Create)]
         private void Create(AssetRentingFileInput assetRentingFileInput)
         {
             var assetRentingFileEntity = ObjectMapper.Map<AssetRentingFile>(assetRentingFileInput);
@@ -163,7 +163,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.AssetRentingFiles
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_AssetRentingFile_Edit)]
         private void Update(AssetRentingFileInput assetRentingFileInput)
         {
             var assetRentingFileEntity = assetRentingFileRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == assetRentingFileInput.Id);

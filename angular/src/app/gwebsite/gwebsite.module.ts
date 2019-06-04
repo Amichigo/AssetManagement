@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, FixedAssetServiceProxy, RentalAssetServiceProxy, TypeOfRentalAssetServiceProxy, FormOfRentingAssetServiceProxy, AssetRentingFileServiceProxy, AssetRentingContractServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, RentalAssetServiceProxy, TypeOfRentalAssetServiceProxy, FormOfRentingAssetServiceProxy, AssetRentingFileServiceProxy, AssetRentingContractServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,9 +18,6 @@ import { DemoModelServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CustomerComponent } from './customer/customer.component';
 import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
 import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
-import { FixedAssetComponent } from './fixed-asset/fixed-asset.component'
-import { CreateOrEditFixedAssetModalComponent } from './fixed-asset/create-or-edit-fixed-asset-modal.component';
-import { ViewFixedAssetModalComponent } from './fixed-asset/view-fixed-asset-modal.component';
 import { RentalAssetComponent } from './rental-asset/rental-asset.component'
 import { CreateOrEditRentalAssetModalComponent } from './rental-asset/create-or-edit-rental-asset-modal.component';
 import { ViewRentalAssetModalComponent } from './rental-asset/view-rental-asset-modal.component';
@@ -132,7 +129,6 @@ import {
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
-        FixedAssetComponent, CreateOrEditFixedAssetModalComponent, ViewFixedAssetModalComponent,
         RentalAssetComponent, CreateOrEditRentalAssetModalComponent, ViewRentalAssetModalComponent,
         TypeOfRentalAssetComponent, CreateOrEditTypeOfRentalAssetModalComponent, ViewTypeOfRentalAssetModalComponent,
         FormOfRentingAssetComponent, CreateOrEditFormOfRentingAssetModalComponent, ViewFormOfRentingAssetModalComponent,
@@ -142,7 +138,6 @@ import {
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
-        FixedAssetServiceProxy,
         RentalAssetServiceProxy,
         TypeOfRentalAssetServiceProxy,
         FormOfRentingAssetServiceProxy,

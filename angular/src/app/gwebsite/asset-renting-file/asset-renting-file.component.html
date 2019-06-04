@@ -95,9 +95,16 @@
                                         <span class="ui-column-title">Description</span>
                                         <span title="{{record.description}">{{truncateString(record.description)}}</span>
                                     </td> -->
+                                    <!-- <td>
+                                        <span class="ui-column-title">Asset code</span>
+                                        <span title="{{( record.assetCode && record.assetCode.assetCode) || ''}}">{{truncateString((record.assetCode && record.assetCode.assetCode) || '')}}</span>
+                                    </td> -->
                                     <td>
                                         <span class="ui-column-title">Asset code</span>
                                         <span title="{{( record.assetCode && record.assetCode.assetCode) || ''}}">{{truncateString((record.assetCode && record.assetCode.assetCode) || '')}}</span>
+                                        <button class="ml-3 btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" (click)="viewRentalAssetModal.show(record.assetCode && record.assetCode.id || '')">
+                                            <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
+                                        </button>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Form of renting</span>
@@ -170,4 +177,5 @@
     </createOrEditAssetRentingFileModal>
     <viewAssetRentingFileModal #viewAssetRentingFileModal>
     </viewAssetRentingFileModal>
+    <viewRentalAssetModal #viewRentalAssetModal></viewRentalAssetModal>
 </div>

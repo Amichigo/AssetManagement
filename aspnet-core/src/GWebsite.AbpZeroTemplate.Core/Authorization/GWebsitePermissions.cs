@@ -24,11 +24,6 @@
         public const string Pages_Administration_Customer_Edit = "Pages.Administration.Customer.Edit";
         public const string Pages_Administration_Customer_Delete = "Pages.Administration.Customer.Delete";
 
-        public const string Pages_Administration_FixedAsset = "Pages.Administration.FixedAsset";
-        public const string Pages_Administration_FixedAsset_Create = "Pages.Administration.FixedAsset.Create";
-        public const string Pages_Administration_FixedAsset_Edit = "Pages.Administration.FixedAsset.Edit ";
-        public const string Pages_Administration_FixedAsset_Delete = "Pages.Administration.FixedAsset.Delete";
-
         public const string Pages_Administration_RentalAsset = "Pages.Administration.RentalAsset";
         public const string Pages_Administration_RentalAsset_Create = "Pages.Administration.RentalAsset.Create";
         public const string Pages_Administration_RentalAsset_Edit = "Pages.Administration.RentalAsset.Edit ";

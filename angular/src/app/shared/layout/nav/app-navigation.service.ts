@@ -20,7 +20,6 @@ export class AppNavigationService {
                 // new AppMenuItem('MenuClient', 'Pages.Administration.MenuClient', 'flaticon-menu-1', '/app/gwebsite/menu-client'),
                 // new AppMenuItem('DemoModel', 'Pages.Administration.DemoModel', 'flaticon-menu-1', '/app/gwebsite/demo-model'),
                 // new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer'),
-                new AppMenuItem('Fixed Asset', 'Pages.Administration.FixedAsset', 'flaticon-menu-1', '/app/gwebsite/fixed-asset'),
                 new AppMenuItem('Rental Asset', 'Pages.Administration.RentalAsset', 'flaticon-menu-1', '/app/gwebsite/rental-asset'),
                 new AppMenuItem('Type Of Rental Asset', 'Pages.Administration.TypeOfRentalAsset', 'flaticon-menu-1', '/app/gwebsite/type-of-rental-asset'),
                 new AppMenuItem('Form Of Renting Asset', 'Pages.Administration.FormOfRentingAsset', 'flaticon-menu-1', '/app/gwebsite/form-of-renting-asset'),

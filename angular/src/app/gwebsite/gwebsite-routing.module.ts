@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.component';
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
-import { FixedAssetComponent } from './fixed-asset/fixed-asset.component';
 import { RentalAssetComponent } from './rental-asset/rental-asset.component';
 import { TypeOfRentalAssetComponent } from './type-of-rental-asset/type-of-rental-asset.component';
 import { FormOfRentingAssetComponent } from './form-of-renting-asset/form-of-renting-asset.component';
@@ -37,15 +36,6 @@ import { AssetRentingContractComponent } from './asset-renting-contract/asset-re
                     {
                         path: 'customer', component: CustomerComponent,
                         data: { permission: 'Pages.Administration.Customer' }
-                    },
-                ]
-            },
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'fixed-asset', component: FixedAssetComponent,
-                        data: { permission: 'Pages.Administration.FixedAsset' }
                     },
                 ]
             },

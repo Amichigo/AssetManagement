@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.RentalAssets
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_RentalAsset)]
     public class RentalAssetAppService : GWebsiteAppServiceBase, IRentalAssetAppService
     {
         private readonly IRepository<RentalAsset> rentalAssetRepository;
@@ -129,7 +129,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.RentalAssets
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_RentalAsset_Create)]
         private void Create(RentalAssetInput rentalAssetInput)
         {
             var rentalAssetEntity = ObjectMapper.Map<RentalAsset>(rentalAssetInput);
@@ -138,7 +138,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.RentalAssets
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_RentalAsset_Edit)]
         private void Update(RentalAssetInput rentalAssetInput)
         {
             var rentalAssetEntity = rentalAssetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == rentalAssetInput.Id);
