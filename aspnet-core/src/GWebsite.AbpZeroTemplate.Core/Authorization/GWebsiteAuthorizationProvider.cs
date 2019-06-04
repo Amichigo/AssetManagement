@@ -165,6 +165,67 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             mdsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_MucDichSuDungDat_Edit, L("EditingMucDichSuDungDat"));
             mdsdd.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_MucDichSuDungDat_Delete, L("DeletingMucDichSuDungDat"));
 
+            var realestate_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstate9, L("RealEstate"));
+            realestate_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstate9_Create, L("CreatingNewRealEstate"));
+            realestate_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstate9_Edit, L("EditingRealEstate"));
+            realestate_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstate9_Delete, L("DeletingRealEstate"));
+
+
+            var asset_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset9, L("Asset"));
+            asset_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset9_Create, L("CreatingNewAsset"));
+            asset_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset9_Edit, L("EditingAsset"));
+            asset_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset9_Delete, L("DeletingAsset"));
+
+            var realestatetype_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateType9, L("RealEstateType9"));
+            realestatetype_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateType9_Create, L("CreatingNewRealEstateType9"));
+            realestatetype_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateType9_Edit, L("EditingRealEstateType9"));
+            realestatetype_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateType9_Delete, L("DeletingRealEstateType9"));
+
+            var realestaterepair_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateRepair9, L("RealEstateRepair9"));
+            realestaterepair_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateRepair9_Create, L("CreatingNewRealEstateRepair9"));
+            realestaterepair_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateRepair9_Edit, L("EditingRealEstateRepair9"));
+            realestaterepair_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateRepair9_Delete, L("DeletingRealEstateRepair9"));
+
+            var bidmanager_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_BidManager9, L("BidManager9"));
+            bidmanager_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_BidManager9_Create, L("CreatingNewBidManager9"));
+            bidmanager_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_BidManager9_Edit, L("EditingBidManager9"));
+            bidmanager_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_BidManager9_Delete, L("DeletingBidManager9"));
+
+            var construction_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Construction9, L("Construction9"));
+            construction_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Construction9_Create, L("CreatingNewConstruction9"));
+            construction_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Construction9_Edit, L("EditingConstruction9"));
+            construction_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Construction9_Delete, L("DeletingConstruction9"));
+
+            var contractguarantee_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractGuarantee9, L("ContractGuarantee9"));
+            contractguarantee_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractGuarantee9_Create, L("CreatingNewContractGuarantee9"));
+            contractguarantee_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractGuarantee9_Edit, L("EditingContractGuarantee9"));
+            contractguarantee_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractGuarantee9_Delete, L("DeletingContractGuarantee9"));
+
+            var contractmanagement_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractManagement9, L("ContractManagement9"));
+            contractmanagement_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractManagement9_Create, L("CreatingNewContractManagement9"));
+            contractmanagement_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractManagement9_Edit, L("EditingContractManagement9"));
+            contractmanagement_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractManagement9_Delete, L("DeletingContractManagement9"));
+
+            var contractor_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contractor9, L("Contractor9"));
+            contractor_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contractor9_Create, L("CreatingNewContractor9"));
+            contractor_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contractor9_Edit, L("EditingContractor9"));
+            contractor_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contractor9_Delete, L("DeletingContractor9"));
+
+            var paymentdetail_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_PaymentDetail9, L("PaymentDetail9"));
+            paymentdetail_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_PaymentDetail9_Create, L("CreatingNewPaymentDetail9"));
+            paymentdetail_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_PaymentDetail9_Edit, L("EditingPaymentDetail9"));
+            paymentdetail_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_PaymentDetail9_Delete, L("DeletingPaymentDetail9"));
+
+            var plan_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Plan9, L("Plan9"));
+            plan_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Plan9_Create, L("CreatingNewPlan9"));
+            plan_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Plan9_Edit, L("EditingPlan9"));
+            plan_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_Plan9_Delete, L("DeletingPlan9"));
+
+            var warrantyguarantee_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_WarrantyGuarantee9, L("WarrantyGuarantee9"));
+            warrantyguarantee_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_WarrantyGuarantee9_Create, L("CreatingNewWarrantyGuarantee9"));
+            warrantyguarantee_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_WarrantyGuarantee9_Edit, L("EditingWarrantyGuarantee9"));
+            warrantyguarantee_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_WarrantyGuarantee9_Delete, L("DeletingWarrantyGuarantee9"));
+
             var loaits = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiTaiSan, L("LoaiTaiSan"));
             loaits.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiTaiSan_Create, L("CreatingNewLoaiTaiSan"));
             loaits.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiTaiSan_Edit, L("EditingLoaiTaiSan"));

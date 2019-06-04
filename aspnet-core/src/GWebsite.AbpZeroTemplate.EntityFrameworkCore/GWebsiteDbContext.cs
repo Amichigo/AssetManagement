@@ -132,6 +132,21 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<VideoInstruction> VideoInstructions { get; set; }
         public virtual DbSet<VisitorStatistic> VisitorStatistics { get; set; }
 
+        public virtual DbSet<Asset_test9> Assets_Test9 { get; set; }
+        public virtual DbSet<RealEstate_9> RealEstates_9 { get; set; }
+
+        public virtual DbSet<RealEstateType_9> RealEstateTypes_9 { get; set; }
+        public virtual DbSet<RealEstateRepair_9> RealEstateRepairs_9 { get; set; }
+
+        public virtual DbSet<BidManager_9> BidManagers_9 { get; set; }
+        public virtual DbSet<Construction_9> Constructions_9 { get; set; }
+        public virtual DbSet<Contractors_9> Contractors_9 { get; set; }
+        public virtual DbSet<Plan_9> Plans_9 { get; set; }
+        public virtual DbSet<ContractManagement> ContractManagements_9 { get; set; }
+        public virtual DbSet<ContractGuarantee> ContractGuarantees_9 { get; set; }
+        public virtual DbSet<PaymentDetails_9> PaymentDetails_9 { get; set; }
+        public virtual DbSet<WarrantyGuarantee> WarrantyGuarantees_9 { get; set; }
+
         /// <summary>
         /// 
         /// </summary>

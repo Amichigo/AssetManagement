@@ -39,6 +39,11 @@ export class AppNavigationService {
                 new AppMenuItem('AssetGroup', 'Pages.Administration.AssetGroup_05', 'flaticon-menu-1', '/app/gwebsite/asset-group'),
                 new AppMenuItem('Asset', 'Pages.Administration.Asset_05', 'flaticon-menu-1', '/app/gwebsite/asset'),
             ]),
+            new AppMenuItem('Nhóm 9 - Quản lý bất động sản', '', 'flaticon-interface-8', '', [
+                new AppMenuItem('RealEstate9', 'Pages.Administration.RealEstate9', 'flaticon-menu-1', '/app/gwebsite/real-estate-management'),
+                new AppMenuItem('RealEstateType', 'Pages.Administration.RealEstateType9', 'flaticon-menu-1', '/app/gwebsite/real-estate-type'),
+                new AppMenuItem('RealEstateRepair', 'Pages.Administration.RealEstateRepair9', 'flaticon-menu-1', '/app/gwebsite/real-estate-repair')
+            ]),
             new AppMenuItem('Nhóm 13 - Quản lý bất động sản', '', 'flaticon-interface-8', '', [
                 new AppMenuItem('Quản Lý Bất Động Sản N13', '', 'flaticon-interface-8', '', [
                     new AppMenuItem('Bất Động Sản N13', 'Pages.Administration.QuanLyBatDongSan.BatDongSan', 'flaticon-menu-1', '/app/gwebsite/batdongsan'),

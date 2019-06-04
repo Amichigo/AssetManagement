@@ -30,7 +30,8 @@ import { CategoryServiceProxy, CategoryTypeServiceProxy,
     LoaiBatDongSanServiceProxy, NhomTaiSanServiceProxy, LoaiSoHuuServiceProxy, MucDichSuDungDatServiceProxy, BatDongSanServiceProxy,
     HienTrangPhapLyServiceProxy, TinhTrangSuDungDatServiceProxy, TaiSanServiceProxy, SuaChuaBatDongSanServiceProxy, KeHoachXayDungServiceProxy, CongTrinhServiceProxy, HoSoThauN13ServiceProxy,
     ComputerServiceProxy, SoftwareServiceProxy, FixedAssetServiceProxy, AssetDashboardServiceProxy,
-    AssetGroupController_05ServiceProxy, AssetController_05ServiceProxy 
+    AssetGroupController_05ServiceProxy, AssetController_05ServiceProxy,
+    RealEstateServiceProxy, AssetServiceProxy, RealEstateTypeServiceProxy, RealEstateRepairServiceProxy
 } from '@shared/service-proxies/service-proxies';
 
 import { LoaiBatDongSanComponent } from './loaibatdongsan/loaibatdongsan.component';
@@ -69,7 +70,6 @@ import { CreateCongTrinhModalComponent } from './congtrinhN13/create-congtrinh-m
 import { HoSoThauN13Component } from './hosothauN13/hosothaun13.component';
 import { CreateHoSoThauN13ModalComponent } from './hosothauN13/create-hosothau13-modal.component';
 
-
 import { ComputerComponent } from './computer/computer.component';
 import { CreateOrEditComputerModalComponent } from './computer/create-or-edit-computer-modal.component';
 import { ViewComputerModalComponent } from './computer/view-computer-modal.component';
@@ -86,6 +86,19 @@ import { CreateOrEditAssetGroupModalComponent } from './asset-group/create-or-ed
 import { CreateOrEditAssetModalComponent } from './asset/create-or-edit-asset-modal.component';
 import { AssetComponent } from './asset/asset.component';
 import { ViewAssetModalComponent } from './asset/view-asset-modal.component';
+
+import { CreateOrEditRealEstateModalComponent } from './real-estate-management/create-or-edit-real-estate-management-modal.component';
+import { RealEstateManagementComponent } from './real-estate-management/real-estate-management.component';
+import { RealEstateTypeComponent } from './real-estate-type/real-estate-type.component';
+import { CreateOrEditRealEstateTypeModalComponent } from './real-estate-type/create-or-edit-real-estate-type';
+import { ViewRealEstateModalComponent } from './real-estate-management/view-real-estate-management-modal.component';
+import { AssetComponent9 } from './real-estate-management/asset-component';
+import { ViewRealEstateRepairModalComponent } from './real-estate-repair/view-real-estate-repair-modal.component';
+import { CreateOrEditRealEstateRepairModalComponent } from './real-estate-repair/create-or-edit-real-estate-repair-modal.component';
+import { RealEstateRepairComponent } from './real-estate-repair/real-estate-repair.component';
+import { RealEstateModalComponent } from './real-estate-repair/real-estate-modal';
+import { ApprovedRealEstateRepairModalComponent } from './real-estate-repair/approved-real-estate-repair';
+import { UpdateRealEstateRepairModalComponent } from './real-estate-repair/update-real-estate-repair-modal.component';
 
 import {
     MatAutocompleteModule,
@@ -207,7 +220,11 @@ import {
         FixedAssetComponent, CreateOrEditFixedAssetModalComponent, ViewFixedAssetModalComponent,
         AssetDashboardComponent,
         AssetGroupComponent, CreateOrEditAssetGroupModalComponent, ViewAssetGroupModalComponent,
-        AssetComponent, CreateOrEditAssetModalComponent, ViewAssetModalComponent
+        AssetComponent, CreateOrEditAssetModalComponent, ViewAssetModalComponent,
+        RealEstateManagementComponent, CreateOrEditRealEstateModalComponent, ViewRealEstateModalComponent, AssetComponent9,
+        RealEstateTypeComponent, CreateOrEditRealEstateTypeModalComponent,
+        RealEstateRepairComponent, CreateOrEditRealEstateRepairModalComponent, ViewRealEstateRepairModalComponent,
+        RealEstateModalComponent, ApprovedRealEstateRepairModalComponent, UpdateRealEstateRepairModalComponent,
     ],
     providers: [
         CategoryServiceProxy,
@@ -238,7 +255,11 @@ import {
         FixedAssetServiceProxy,
         AssetDashboardServiceProxy,
         AssetGroupController_05ServiceProxy,
-        AssetController_05ServiceProxy
+        AssetController_05ServiceProxy,
+        RealEstateServiceProxy,
+        AssetServiceProxy,
+        RealEstateTypeServiceProxy,
+        RealEstateRepairServiceProxy
     ]
 })
 export class GWebsiteModule { }
