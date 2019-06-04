@@ -13,7 +13,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.ConstructionPlans
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_ConstructionPlan)]
     public class ConstructionPlanAppService : GWebsiteAppServiceBase, IConstructionPlanAppService
     {
         private readonly IRepository<ConstructionPlan> constructionPlanRepository;

@@ -51,11 +51,12 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             shoppingPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_ShoppingPlan_Edit, L("EditingShoppingPlan"));
             shoppingPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_ShoppingPlan_Delete, L("DeletingShoppingPlan"));
 
-            var directorShoppingPlan = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_DirectorShoppingPlan, L("DirectorShoppingPlan"));
-            directorShoppingPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DirectorShoppingPlan_Create, L("CreatingNewDirectorShoppingPlan"));
-            directorShoppingPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DirectorShoppingPlan_Edit, L("EditingDirectorShoppingPlan"));
-            directorShoppingPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DirectorShoppingPlan_Delete, L("DeletingDirectorShoppingPlan"));
+            var shoppingPlanDetail = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ShoppingPlanDetail, L("ShoppingPlanDetail"));
+            shoppingPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ShoppingPlanDetail_Create, L("CreatingNewShoppingPlanDetail"));
+            shoppingPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ShoppingPlanDetail_Edit, L("EditingShoppingPlanDetail"));
+            shoppingPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ShoppingPlanDetail_Delete, L("DeletingShoppingPlanDetail"));
 
+        
             var constructionPlan = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlan, L("ConstructionPlan"));
             constructionPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlan_Create, L("CreatingNewConstructionPlan"));
             constructionPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlan_Edit, L("EditingConstructionPlan"));

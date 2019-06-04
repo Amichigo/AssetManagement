@@ -29,10 +29,6 @@
         public const string Pages_Administration_ShoppingPlan_Edit = "Pages.Administration.ShoppingPlan.Edit";
         public const string Pages_Administration_ShoppingPlan_Delete = "Pages.Administration.ShoppingPlan.Delete";
 
-        public const string Pages_Administration_DirectorShoppingPlan = "Pages.Administration.DirectorShoppingPlan";
-        public const string Pages_Administration_DirectorShoppingPlan_Create = "Pages.Administration.DirectorShoppingPlan.Create";
-        public const string Pages_Administration_DirectorShoppingPlan_Edit = "Pages.Administration.DirectorShoppingPlan.Edit";
-        public const string Pages_Administration_DirectorShoppingPlan_Delete = "Pages.Administration.DirectorShoppingPlan.Delete";
 
         public const string Pages_Administration_ShoppingPlanDetail = "Pages.Administration.ShoppingPlanDetail";
         public const string Pages_Administration_ShoppingPlanDetail_Create = "Pages.Administration.ShoppingPlanDetail.Create";

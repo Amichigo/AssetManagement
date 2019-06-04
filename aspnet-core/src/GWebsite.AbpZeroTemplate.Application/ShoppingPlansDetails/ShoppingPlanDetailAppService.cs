@@ -13,7 +13,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.ShoppingPlansDetails
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_ShoppingPlanDetail)]
     public class ShoppingPlanDetailAppService : GWebsiteAppServiceBase, IShoppingPlanDetailAppService
     {
         private readonly IRepository<ShoppingPlanDetail> shoppingPlanRepository;

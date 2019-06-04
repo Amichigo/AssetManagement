@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, ShoppingPlanServiceProxy, DirectorShoppingPlanServiceProxy, ShoppingPlanDetailServiceProxy, ConstructionPlanServiceProxy} from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, ShoppingPlanServiceProxy,  ShoppingPlanDetailServiceProxy, ConstructionPlanServiceProxy} from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,10 +22,6 @@ import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-cu
 import { ShoppingPlanComponent } from './shoppingPlan/shoppingPlan.component';
 import { ViewShoppingPlanModalComponent } from './shoppingPlan/view-shoppingPlan-modal.component';
 import { CreateOrEditShoppingPlanModalComponent } from './shoppingPlan/create-or-edit-shoppingPlan-modal.component';
-
-import { DirectorShoppingPlanComponent } from './directorShoppingPlan/directorShoppingPlan.component';
-import { ViewDirectorShoppingPlanModalComponent } from './directorShoppingPlan/view-directorShoppingPlan-modal.component';
-import { CreateOrEditDirectorShoppingPlanModalComponent } from './directorShoppingPlan/create-or-edit-directorShoppingPlan-modal.component';
 
 import { ShoppingPlanDetailComponent } from './shoppingPlan/shoppingPlanDetail.component';
 import { CreateOrEditShoppingPlanDetailModalComponent } from './shoppingPlan/create-or-edit-shoppingPlanDetail-modal.component';
@@ -57,7 +53,6 @@ import { CreateOrEditConstructionPlanModalComponent } from './constructionPlan/c
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
         ShoppingPlanComponent, ViewShoppingPlanModalComponent, CreateOrEditShoppingPlanModalComponent,
-        DirectorShoppingPlanComponent, ViewDirectorShoppingPlanModalComponent, CreateOrEditDirectorShoppingPlanModalComponent,
         ShoppingPlanDetailComponent, CreateOrEditShoppingPlanDetailModalComponent,
         ConstructionPlanComponent, ViewConstructionPlanModalComponent, CreateOrEditConstructionPlanModalComponent,
     ],
@@ -65,7 +60,6 @@ import { CreateOrEditConstructionPlanModalComponent } from './constructionPlan/c
         DemoModelServiceProxy,
         CustomerServiceProxy,
         ShoppingPlanServiceProxy,
-        DirectorShoppingPlanServiceProxy,
         ShoppingPlanDetailServiceProxy,
         ConstructionPlanServiceProxy
     ]

@@ -4,7 +4,6 @@ import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.compo
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ShoppingPlanComponent } from './shoppingPlan/shoppingPlan.component';
-import { DirectorShoppingPlanComponent } from './directorShoppingPlan/directorShoppingPlan.component';
 import { ShoppingPlanDetailComponent } from './shoppingPlan/shoppingPlanDetail.component';
 import { ConstructionPlanComponent } from './constructionPlan/constructionPlan.component';
 
@@ -53,15 +52,6 @@ import { ConstructionPlanComponent } from './constructionPlan/constructionPlan.c
                     {
                         path: 'ShoppingPlan', component: ShoppingPlanDetailComponent,
                         data: { permission: 'Pages.Administration.ShoppingPlanDetail' }
-                    },
-                ]
-            },
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'directorShoppingPlan', component: DirectorShoppingPlanComponent,
-                        data: { permission: 'Pages.Administration.DirectorShoppingPlan' }
                     },
                 ]
             },
