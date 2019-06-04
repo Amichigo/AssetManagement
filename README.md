@@ -6,13 +6,8 @@ lần này phải sửa lại nếu muốn được merge lần kế tiếp**
 Các trường hợp sẽ không nhận code:
 
 - Build chương trình lỗi, chỗ nào lỗi chưa làm xong thì comment lại
-- Build chương trình chạy nhưng console có lỗi
-- Không đặt tên label, button... bằng tiếng việt
-- Không đặt tên label, button... bằng tên biến hay gì đó trong code
-    - VD: không đặt tên button là CreateNewHoSoThau (thật sự k cần phải đề ra quy tắc này tại mọi người làm lố quá) 
-- Mỗi lần nhóm trưởng merge code thì nhánh nào trễ quá 12h ngày sẽ KHÔNG merge
-    Cho nên trước khi code nhớ pull về và trc khi đẩy lên pull về một lần nữa:
-    Không bắt buộc nhưng nên làm theo nếu không muốn vi phạm quy tắc này
+- Đặt tên bảng, thuộc tính, component quá chung chung (Vd như Asset thì nên đổi thành AssetX với X là tên nhóm để không bị trùng...)
+- Sai permission: Check trong các file appservice của aspcore (Phần lớn sai do copy cái MenuClient qua mà không chịu sửa lại)
 
 Tất cả các trường hợp vi phạm không được merge sẽ **xem như là chưa làm**
 
