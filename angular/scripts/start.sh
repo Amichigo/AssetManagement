@@ -8,14 +8,7 @@ function refreshSwagger() {
 }
 
 function setupAngular() {
-    # dont touch node_moudles once install the first time
-    if [[ ! -d "$ROOT_PROJECT/angular/node_modules" ]]; then
-        echo 'angular/node_moudles not exist. run npm install'
-        cd "$ROOT_PROJECT/angular"
-        npm install
-    fi
-
-    npm start-server
+    npm run start-server
 }
 
 function main() {

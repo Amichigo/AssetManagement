@@ -2,6 +2,8 @@
 # Created by https://www.gitignore.io/api/csharp,angular,aspnetcore,visualstudio,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=csharp,angular,aspnetcore,visualstudio,visualstudiocode
 
+service-proxies.ts
+
 ### Angular ###
 ## Angular ##
 # compiled output
