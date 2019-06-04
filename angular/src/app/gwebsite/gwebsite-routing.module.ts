@@ -26,8 +26,8 @@ import { ComputerComponent } from './computer/computer.component';
 import { SoftwareComponent } from './software/software.component';
 import { FixedAssetComponent } from './fixed-asset/fixed-asset.component';
 import { AssetDashboardComponent } from './asset-dashboard/asset-dashboard.component';
-import { AssetGroupComponent } from "./asset-group/asset-group.component";
-import { AssetComponent } from "./asset/asset.component";
+import { AssetGroupComponent } from './asset-group/asset-group.component';
+import { AssetComponent } from './asset/asset.component';
 import { PurchasedAssetsComponent } from './asset-investment-efficiency/pages/purchased-assets/purchased-assets.component';
 import { SoleAssetsComponent } from './asset-investment-efficiency/pages/sole-assets/sole-assets.component';
 import { MaintainedAssetsComponent } from './asset-investment-efficiency/pages/maintained-assets/maintained-assets.component';
@@ -35,6 +35,9 @@ import { PlannedToSellAssetsComponent } from './asset-investment-efficiency/page
 import { OperatingAssetsComponent } from './asset-investment-efficiency/pages/operating-assets/operating-assets.component';
 import { PlannedToPurchaseAssetsComponent } from './asset-investment-efficiency/pages/planned-to-purchase-assets/planned-to-purchase-assets.component';
 import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/pages/planned-to-maintain-assets/planned-to-maintain-assets.component';
+import { RealEstateManagementComponent } from './real-estate-management/real-estate-management.component';
+import { RealEstateTypeComponent } from './real-estate-type/real-estate-type.component';
+import { RealEstateRepairComponent } from './real-estate-repair/real-estate-repair.component';
 
 @NgModule({
     imports: [
@@ -79,8 +82,26 @@ import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/
                 path: '',
                 children: [
                     {
+                        path: 'real-estate-management', component: RealEstateManagementComponent,
+                        data: { permission: 'Pages.Administration.RealEstate9' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
                         path: 'fixed-asset', component: FixedAssetComponent,
                         data: { permission: 'Pages.Administration.FixedAsset' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'real-estate-type', component: RealEstateTypeComponent,
+                        data: { permission: 'Pages.Administration.RealEstateType9' }
                     },
                 ]
             },
@@ -183,7 +204,6 @@ import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/
                     },
                 ]
             },
-    
             {
                 path: '',
                 children: [
@@ -369,6 +389,15 @@ import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/
                     {
                         path: 'asset-investment-efficiency/planned-to-maintain-assets', component: PlannedToMaintainAssetsComponent,
                         data: { permission: ''}
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'real-estate-repair', component: RealEstateRepairComponent,
+                        data: { permission: 'Pages.Administration.RealEstateRepair9' }
                     }
                 ]
             }
