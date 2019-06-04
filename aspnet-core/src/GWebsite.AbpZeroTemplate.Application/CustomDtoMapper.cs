@@ -28,6 +28,10 @@ using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.LoaiTaiSan.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.NhomTaiSan.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.Computers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Softwares.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.AssetActivities.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.BatDongSan.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.TaiSan_13.Dto;
@@ -260,6 +264,28 @@ namespace GWebsite.AbpZeroTemplate.Applications
             //AssetType_05
             configuration.CreateMap<AssetType_05, AssetTypeDto_05>();
             configuration.CreateMap<AssetType_05, AssetForViewDto_05>();
+            configuration.CreateMap<MenuClient, MenuClientDto>();
+            configuration.CreateMap<MenuClient, MenuClientListDto>();
+            configuration.CreateMap<CreateMenuClientInput, MenuClient>();
+            configuration.CreateMap<UpdateMenuClientInput, MenuClient>();
+
+            // DemoModel
+            configuration.CreateMap<DemoModel, DemoModelDto>();
+            configuration.CreateMap<DemoModelInput, DemoModel>();
+            configuration.CreateMap<DemoModel, DemoModelInput>();
+            configuration.CreateMap<DemoModel, DemoModelForViewDto>();
+
+            // Customer
+            configuration.CreateMap<Customer, CustomerDto>();
+            configuration.CreateMap<CustomerInput, Customer>();
+            configuration.CreateMap<Customer, CustomerInput>();
+            configuration.CreateMap<Customer, CustomerForViewDto>();
+
+            // AssetActivity
+            configuration.CreateMap<AssetActivity, AssetActivityDto>();
+            configuration.CreateMap<AssetActivityInput, AssetActivity>();
+            configuration.CreateMap<AssetActivity, AssetActivityInput>();
+            configuration.CreateMap<AssetActivity, AssetActivityForViewDto>();
         }
     }
 }

@@ -28,6 +28,13 @@ import { FixedAssetComponent } from './fixed-asset/fixed-asset.component';
 import { AssetDashboardComponent } from './asset-dashboard/asset-dashboard.component';
 import { AssetGroupComponent } from "./asset-group/asset-group.component";
 import { AssetComponent } from "./asset/asset.component";
+import { PurchasedAssetsComponent } from './asset-investment-efficiency/pages/purchased-assets/purchased-assets.component';
+import { SoleAssetsComponent } from './asset-investment-efficiency/pages/sole-assets/sole-assets.component';
+import { MaintainedAssetsComponent } from './asset-investment-efficiency/pages/maintained-assets/maintained-assets.component';
+import { PlannedToSellAssetsComponent } from './asset-investment-efficiency/pages/planned-to-sell-assets/planned-to-sell-assets.component';
+import { OperatingAssetsComponent } from './asset-investment-efficiency/pages/operating-assets/operating-assets.component';
+import { PlannedToPurchaseAssetsComponent } from './asset-investment-efficiency/pages/planned-to-purchase-assets/planned-to-purchase-assets.component';
+import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/pages/planned-to-maintain-assets/planned-to-maintain-assets.component';
 
 @NgModule({
     imports: [
@@ -244,7 +251,16 @@ import { AssetComponent } from "./asset/asset.component";
                         data: { permission: 'Pages.Administration.QuanLyBatDongSan.SuaChuaBatDongSan' }
                     },
                 ]
+            },
+            {
+                path: '',
+                children: [
+                    {
 
+                        path: 'asset-investment-efficiency/purchased-assets', component: PurchasedAssetsComponent,
+                        data: { permission: ''}
+                    }
+                ]
             },
             {
                 path: '',
@@ -254,7 +270,16 @@ import { AssetComponent } from "./asset/asset.component";
                         data: { permission: 'Pages.Administration.QuanLyKeHoachXayDung.KeHoachXayDung' }
                     },
                 ]
+            },
+            {
+                path: '',
+                children: [
+                    {
 
+                        path: 'asset-investment-efficiency/sole-assets', component: SoleAssetsComponent,
+                        data: { permission: '' }
+                    }
+                ]
             },
             {
                 path: '',
@@ -264,7 +289,16 @@ import { AssetComponent } from "./asset/asset.component";
                         data: { permission: 'Pages.Administration.QuanLyCongTrinhDoDang.CongTrinhDoDang' }
                     },
                 ]
+            },
+            {
+                path: '',
+                children: [
+                    {
 
+                        path: 'asset-investment-efficiency/maintained-assets', component: MaintainedAssetsComponent,
+                        data: { permission: ''}
+                    }
+                ]
             },
             {
                 path: '',
@@ -272,6 +306,15 @@ import { AssetComponent } from "./asset/asset.component";
                     {
                         path: 'hosothaun13', component: HoSoThauN13Component,
                         data: { permission: 'Pages.Administration.QuanLyCongTrinhDoDang.HoSoThau' }
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'asset-investment-efficiency/planned-to-sell-assets', component: PlannedToSellAssetsComponent,
+                        data: { permission: ''}
                     }
                 ]
             },
@@ -288,6 +331,15 @@ import { AssetComponent } from "./asset/asset.component";
                 path: '',
                 children: [
                     {
+                        path: 'asset-investment-efficiency/operating-assets', component: OperatingAssetsComponent,
+                        data: { permission: ''}
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
                         path: 'software', component: SoftwareComponent,
                         data: { permission: 'Pages.Administration.Software'}
                     }
@@ -297,8 +349,26 @@ import { AssetComponent } from "./asset/asset.component";
                 path: '',
                 children: [
                     {
+                        path: 'asset-investment-efficiency/planned-to-purchase-assets', component: PlannedToPurchaseAssetsComponent,
+                        data: { permission: ''}
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
                         path: 'asset', component: AssetComponent,
                         data: { permission: 'Pages.Administration.Asset_05' }
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'asset-investment-efficiency/planned-to-maintain-assets', component: PlannedToMaintainAssetsComponent,
+                        data: { permission: ''}
                     }
                 ]
             }

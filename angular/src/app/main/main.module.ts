@@ -20,7 +20,7 @@ import { MainRoutingModule } from './main-routing.module';
         UtilsModule,
         MainRoutingModule,
         CountoModule,
-        EasyPieChartModule
+        EasyPieChartModule,
     ],
     declarations: [
         DashboardComponent

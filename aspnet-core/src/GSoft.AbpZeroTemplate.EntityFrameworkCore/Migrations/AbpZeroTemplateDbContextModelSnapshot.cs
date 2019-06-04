@@ -3666,6 +3666,64 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("DonViThau_N13");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.AssetActivity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AssetActivityType");
+
+                    b.Property<string>("AssetId");
+
+                    b.Property<double>("Cost");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<DateTime>("ExecutionTime");
+
+                    b.Property<string>("InvestmentType");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssetActivities");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Customer", b =>
+            {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("Info");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.QuanLyCongTrinh_N13.HoSoThau_N13", b =>
                 {
                     b.Property<int>("Id")

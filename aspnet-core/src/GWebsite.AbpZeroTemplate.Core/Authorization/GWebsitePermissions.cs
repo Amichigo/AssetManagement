@@ -208,5 +208,9 @@
         public const string Pages_Administration_AssetGroup_05_Create = "Pages.Administration.AssetGroup_05.Create";
         public const string Pages_Administration_AssetGroup_05_Edit = "Pages.Administration.AssetGroup_05.Edit ";
         public const string Pages_Administration_AssetGroup_05_Delete = "Pages.Administration.AssetGroup_05.Delete";
+        public const string Pages_Administration_AssetActivity = "Pages.Administration.AssetActivity";
+        public const string Pages_Administration_AssetActivity_Create = "Pages.Administration.AssetActivity.Create";
+        public const string Pages_Administration_AssetActivity_Edit = "Pages.Administration.AssetActivity.Edit";
+        public const string Pages_Administration_AssetActivity_Delete = "Pages.Administration.AssetActivity.Delete";
     }
 }

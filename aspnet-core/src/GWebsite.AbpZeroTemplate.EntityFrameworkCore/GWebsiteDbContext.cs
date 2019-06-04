@@ -107,6 +107,8 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         //public virtual DbSet<WarrantyDetail_05> WarrantyDetails_05 { get; set; }
 
 
+        public virtual DbSet<AssetActivity> AssetActivities { get; set; }
+
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>

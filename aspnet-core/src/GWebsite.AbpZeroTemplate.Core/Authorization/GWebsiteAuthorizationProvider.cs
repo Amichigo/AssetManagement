@@ -124,6 +124,10 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             constructionPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlan_Create, L("CreatingNewConstructionPlan"));
             constructionPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlan_Edit, L("EditingConstructionPlan"));
             constructionPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlan_Delete, L("DeletingConstructionPlan"));
+            var assetActivity = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetActivity, L("AssetActivity"));
+            assetActivity.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetActivity_Create, L("CreatingNewAssetActivity"));
+            assetActivity.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetActivity_Edit, L("EditingAssetActivity"));
+            assetActivity.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetActivity_Delete, L("DeletingAssetActivity"));
 
             var constructionPlanDetail = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlanDetail, L("ConstructionPlanDetail"));
             constructionPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlanDetail_Create, L("CreatingNewConstructionPlanDetail"));
