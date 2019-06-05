@@ -12524,6 +12524,8 @@ export class ConstructionPlanDetailDto implements IConstructionPlanDetailDto {
     duKienHoanThanh!: string | undefined;
     thoiGianThucHien!: string | undefined;
     kinhPhiDeXuat!: string | undefined;
+    kinhPhiTrinh!: string | undefined;
+    kinhPhiDuocDuyet!: string | undefined;
     ghiChu!: string | undefined;
     maKeHoach!: string | undefined;
     id!: number | undefined;
@@ -12545,6 +12547,8 @@ export class ConstructionPlanDetailDto implements IConstructionPlanDetailDto {
             this.duKienHoanThanh = data["duKienHoanThanh"];
             this.thoiGianThucHien = data["thoiGianThucHien"];
             this.kinhPhiDeXuat = data["kinhPhiDeXuat"];
+            this.kinhPhiTrinh = data["kinhPhiTrinh"];
+            this.kinhPhiDuocDuyet = data["kinhPhiDuocDuyet"];
             this.ghiChu = data["ghiChu"];
             this.maKeHoach = data["maKeHoach"];
             this.id = data["id"];
@@ -12566,6 +12570,8 @@ export class ConstructionPlanDetailDto implements IConstructionPlanDetailDto {
         data["duKienHoanThanh"] = this.duKienHoanThanh;
         data["thoiGianThucHien"] = this.thoiGianThucHien;
         data["kinhPhiDeXuat"] = this.kinhPhiDeXuat;
+        data["kinhPhiTrinh"] = this.kinhPhiTrinh;
+        data["kinhPhiDuocDuyet"] = this.kinhPhiDuocDuyet;
         data["ghiChu"] = this.ghiChu;
         data["maKeHoach"] = this.maKeHoach;
         data["id"] = this.id;
@@ -12580,6 +12586,8 @@ export interface IConstructionPlanDetailDto {
     duKienHoanThanh: string | undefined;
     thoiGianThucHien: string | undefined;
     kinhPhiDeXuat: string | undefined;
+    kinhPhiTrinh: string | undefined;
+    kinhPhiDuocDuyet: string | undefined;
     ghiChu: string | undefined;
     maKeHoach: string | undefined;
     id: number | undefined;
@@ -12592,6 +12600,8 @@ export class ConstructionPlanDetailInput implements IConstructionPlanDetailInput
     duKienHoanThanh!: string | undefined;
     thoiGianThucHien!: string | undefined;
     kinhPhiDeXuat!: string | undefined;
+    kinhPhiTrinh!: string | undefined;
+    kinhPhiDuocDuyet!: string | undefined;
     ghiChu!: string | undefined;
     maKeHoach!: string | undefined;
     id!: number | undefined;
@@ -12613,6 +12623,8 @@ export class ConstructionPlanDetailInput implements IConstructionPlanDetailInput
             this.duKienHoanThanh = data["duKienHoanThanh"];
             this.thoiGianThucHien = data["thoiGianThucHien"];
             this.kinhPhiDeXuat = data["kinhPhiDeXuat"];
+            this.kinhPhiTrinh = data["kinhPhiTrinh"];
+            this.kinhPhiDuocDuyet = data["kinhPhiDuocDuyet"];
             this.ghiChu = data["ghiChu"];
             this.maKeHoach = data["maKeHoach"];
             this.id = data["id"];
@@ -12634,6 +12646,8 @@ export class ConstructionPlanDetailInput implements IConstructionPlanDetailInput
         data["duKienHoanThanh"] = this.duKienHoanThanh;
         data["thoiGianThucHien"] = this.thoiGianThucHien;
         data["kinhPhiDeXuat"] = this.kinhPhiDeXuat;
+        data["kinhPhiTrinh"] = this.kinhPhiTrinh;
+        data["kinhPhiDuocDuyet"] = this.kinhPhiDuocDuyet;
         data["ghiChu"] = this.ghiChu;
         data["maKeHoach"] = this.maKeHoach;
         data["id"] = this.id;
@@ -12648,6 +12662,8 @@ export interface IConstructionPlanDetailInput {
     duKienHoanThanh: string | undefined;
     thoiGianThucHien: string | undefined;
     kinhPhiDeXuat: string | undefined;
+    kinhPhiTrinh: string | undefined;
+    kinhPhiDuocDuyet: string | undefined;
     ghiChu: string | undefined;
     maKeHoach: string | undefined;
     id: number | undefined;
