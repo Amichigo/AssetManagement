@@ -37,8 +37,8 @@ export class CreateOrEditShoppingPlanModalComponent extends AppComponentBase {
         this.saving = false;
         this._shoppingPlanService.getShoppingPlanForEdit(shoppingPlanId).subscribe(result => {
             this.shoppingPlan = result;
-            if (this.shoppingPlan.trangThai == null) {
-                this.shoppingPlan.trangThai = 'Chưa duyệt';
+            if (this.shoppingPlan.tinhTrang == null) {
+                this.shoppingPlan.tinhTrang = 'Chưa duyệt';
             }
             this.modal.show();
         })

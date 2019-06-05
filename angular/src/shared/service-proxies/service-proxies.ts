@@ -18526,7 +18526,7 @@ export class ShoppingPlanInput implements IShoppingPlanInput {
     nam!: number | undefined;
     ngayHieuLuc!: moment.Moment | undefined;
     kinhPhi!: string | undefined;
-    trangThai!: string | undefined;
+    tinhTrang!: string | undefined;
     soLanThayDoi!: string | undefined;
     id!: number | undefined;
 
@@ -18547,7 +18547,7 @@ export class ShoppingPlanInput implements IShoppingPlanInput {
             this.nam = data["nam"];
             this.ngayHieuLuc = data["ngayHieuLuc"] ? moment(data["ngayHieuLuc"].toString()) : <any>undefined;
             this.kinhPhi = data["kinhPhi"];
-            this.trangThai = data["trangThai"];
+            this.tinhTrang = data["tinhTrang"];
             this.soLanThayDoi = data["soLanThayDoi"];
             this.id = data["id"];
         }
@@ -18568,7 +18568,7 @@ export class ShoppingPlanInput implements IShoppingPlanInput {
         data["nam"] = this.nam;
         data["ngayHieuLuc"] = this.ngayHieuLuc ? this.ngayHieuLuc.toISOString() : <any>undefined;
         data["kinhPhi"] = this.kinhPhi;
-        data["trangThai"] = this.trangThai;
+        data["tinhTrang"] = this.tinhTrang;
         data["soLanThayDoi"] = this.soLanThayDoi;
         data["id"] = this.id;
         return data; 
@@ -18582,7 +18582,7 @@ export interface IShoppingPlanInput {
     nam: number | undefined;
     ngayHieuLuc: moment.Moment | undefined;
     kinhPhi: string | undefined;
-    trangThai: string | undefined;
+    tinhTrang: string | undefined;
     soLanThayDoi: string | undefined;
     id: number | undefined;
 }

@@ -34,6 +34,7 @@
         public const string Pages_Administration_ShoppingPlanDetail_Create = "Pages.Administration.ShoppingPlanDetail.Create";
         public const string Pages_Administration_ShoppingPlanDetail_Edit = "Pages.Administration.ShoppingPlanDetail.Edit";
         public const string Pages_Administration_ShoppingPlanDetail_Delete = "Pages.Administration.ShoppingPlanDetail.Delete";
+        public const string Pages_Administration_ShoppingPlanDetail_Check = "Pages.Administration.ShoppingPlanDetail.Check";
 
         public const string Pages_Administration_ConstructionPlan = "Pages.Administration.ConstructionPlan";
         public const string Pages_Administration_ConstructionPlan_Create = "Pages.Administration.Construction.Create";

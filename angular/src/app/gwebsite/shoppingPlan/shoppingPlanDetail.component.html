@@ -19,13 +19,13 @@
                             </span>
                         </div>
                         <div class="col-xs-6 text-right">
-                            <button (click)="createShoppingPlanDetail()" *ngIf="isGranted('Pages.Administration.ShoppingPlan.Create')"
+                            <button (click)="createShoppingPlanDetail()" *ngIf="isGranted('Pages.Administration.ShoppingPlanDetail.Create')"
                                     class="btn btn-primary">
                                 <i class="fa fa-plus"></i> {{l("CreateNewShopingPlanDetail")}}
                             </button>
                         </div>
                         <div class="col-xs-6 text-right">
-                            <button (click)="checkShoppingPlan()" *ngIf="isGranted('Pages.Administration.ShoppingPlan.Create')"
+                            <button (click)="checkShoppingPlan()" *ngIf="isGranted('Pages.Administration.ShoppingPlanDetail.Check')"
                                     class="btn btn-primary">
                                 <i class="fa fa-plus"></i> {{l("Check")}}
                             </button>

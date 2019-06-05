@@ -142,5 +142,5 @@
     </div>
     <createOrEditShoppingPlanModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditShoppingPlanModal>
     <viewShoppingPlanModal #viewShoppingPlanModal></viewShoppingPlanModal>
-    <viewDetailModal #viewDetailModal [selectedRow]="selectedRow"></viewDetailModal>
+    <viewDetailModal #viewDetailModal [selectedRow]="selectedRow" (detailSave)="reloadPage()"></viewDetailModal>
 </div>
