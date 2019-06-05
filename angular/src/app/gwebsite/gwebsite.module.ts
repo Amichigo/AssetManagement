@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, ShoppingPlanServiceProxy,  ShoppingPlanDetailServiceProxy, ConstructionPlanServiceProxy} from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, ShoppingPlanServiceProxy,  ShoppingPlanDetailServiceProxy, ConstructionPlanServiceProxy,ConstructionPlanDetailServiceProxy} from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -29,6 +29,10 @@ import { CreateOrEditShoppingPlanDetailModalComponent } from './shoppingPlan/cre
 import { ConstructionPlanComponent } from './constructionPlan/constructionPlan.component';
 import { ViewConstructionPlanModalComponent } from './constructionPlan/view-constructionPlan-modal.component';
 import { CreateOrEditConstructionPlanModalComponent } from './constructionPlan/create-or-edit-constructionPlan-modal.component';
+
+import { ConstructionPlanDetailComponent } from './constructionPlan/constructionPlanDetail.component';
+import { CreateOrEditConstructionPlanDetailModalComponent } from './constructionPlan/create-or-edit-constructionPlanDetail-modal.component';
+
 @NgModule({
     imports: [
         FormsModule,
@@ -55,13 +59,15 @@ import { CreateOrEditConstructionPlanModalComponent } from './constructionPlan/c
         ShoppingPlanComponent, ViewShoppingPlanModalComponent, CreateOrEditShoppingPlanModalComponent,
         ShoppingPlanDetailComponent, CreateOrEditShoppingPlanDetailModalComponent,
         ConstructionPlanComponent, ViewConstructionPlanModalComponent, CreateOrEditConstructionPlanModalComponent,
+        ConstructionPlanDetailComponent, CreateOrEditConstructionPlanDetailModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
         ShoppingPlanServiceProxy,
         ShoppingPlanDetailServiceProxy,
-        ConstructionPlanServiceProxy
+        ConstructionPlanServiceProxy,
+        ConstructionPlanDetailServiceProxy
     ]
 })
 export class GWebsiteModule { }
