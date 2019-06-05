@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, LoaiBatDongSanServiceProxy, NhomTaiSanServiceProxy, LoaiSoHuuServiceProxy, MucDichSuDungDatServiceProxy, BatDongSanServiceProxy, HienTrangPhapLyServiceProxy, TinhTrangSuDungDatServiceProxy, TaiSanServiceProxy, SuaChuaBatDongSanServiceProxy, KeHoachXayDungServiceProxy, CongTrinhServiceProxy, HoSoThauN13ServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, LoaiBatDongSanServiceProxy, NhomTaiSanServiceProxy, LoaiSoHuuServiceProxy, MucDichSuDungDatServiceProxy, BatDongSanServiceProxy, HienTrangPhapLyServiceProxy, TinhTrangSuDungDatServiceProxy, TaiSanServiceProxy, SuaChuaBatDongSanServiceProxy, KeHoachXayDungServiceProxy, CongTrinhServiceProxy, HoSoThauN13ServiceProxy, DonViThauServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -54,6 +54,8 @@ import { SelectKHCongTrinhModalComponent } from './kehoachxaydung/select-khcongt
 import { CreateCongTrinhModalComponent } from './congtrinhN13/create-congtrinh-modal.component';
 import { HoSoThauN13Component } from './hosothauN13/hosothaun13.component';
 import { CreateHoSoThauN13ModalComponent } from './hosothauN13/create-hosothau13-modal.component';
+import { SelectCongTrinhN13ModalComponent } from './hosothauN13/select-congtrinhn13-modal.component';
+import { CreateDonViThauN13Component } from './hosothauN13/create-donvithaun13-modal.component';
 
 
 
@@ -89,7 +91,7 @@ import { CreateHoSoThauN13ModalComponent } from './hosothauN13/create-hosothau13
         SuaChuaBatDongSanComponent, CreateOrEditSuaChuaBatDongSanModalComponent, ViewSuaChuaBatDongSanModalComponent,EditSuaChuaBatDongSanModalComponent,DuyetBatDongSanModalComponent,
         KeHoachXayDungComponent, CreateOrEditKeHoachXayDungModalComponent,ViewKeHoachXayDungModalComponent,SelectKHCongTrinhModalComponent,
         CongTrinhComponent, CreateOrEditCongTrinhModalComponent,ViewCongTrinhModalComponent,SelectKeHoachXayDungModalComponent,
-        CreateCongTrinhModalComponent,HoSoThauN13Component,CreateHoSoThauN13ModalComponent,
+        CreateCongTrinhModalComponent,HoSoThauN13Component,CreateHoSoThauN13ModalComponent,SelectCongTrinhN13ModalComponent,CreateDonViThauN13Component,
     ],
     providers: [
         DemoModelServiceProxy,
@@ -105,6 +107,7 @@ import { CreateHoSoThauN13ModalComponent } from './hosothauN13/create-hosothau13
         KeHoachXayDungServiceProxy,
         CongTrinhServiceProxy,
         HoSoThauN13ServiceProxy,
+        DonViThauServiceProxy,
     ]
 })
 export class GWebsiteModule { }

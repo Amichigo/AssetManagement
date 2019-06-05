@@ -81,16 +81,20 @@ export class CongTrinhComponent extends AppComponentBase implements AfterViewIni
 
     }
     InitTabCreate(): void {
-        this.activeTabSuaChua = false;
-        this.activeTabUpdate = false;
-        this.activeTabView = false;
-        this.activeTabSetActive = false;
-
-
-        this.disableTabView = true;
-        this.disableTabUpdate = true;
-        this.disableTabSetActive = true;
-        this.createCongTrinhModal.reset();
+        if(this.activeTabCreate==false){
+            this.activeTabSuaChua = false;
+            this.activeTabUpdate = false;
+            this.activeTabCreate=true;
+            this.activeTabView = false;
+            this.activeTabSetActive = false;
+    
+    
+            this.disableTabView = true;
+            this.disableTabUpdate = true;
+            this.disableTabSetActive = true;
+            this.createCongTrinhModal.reset();
+        }
+   
     }
 
     InitTabView(idRecond: number): void {
@@ -107,15 +111,19 @@ export class CongTrinhComponent extends AppComponentBase implements AfterViewIni
     }
 
     InitTabUpdate(idRecond: number) {
-        this.disableTabUpdate = false;
-        this.activeTabUpdate = true;
-        this.disableTabView = true;
-        this.disableTabSetActive = true;
-
-        this.activeTabSuaChua = false;
-        this.activeTabView = false;
-        this.activeTabCreate = false;
-        this.activeTabSetActive = false;
+        if(this.activeTabUpdate==false)
+        {
+            this.disableTabUpdate = false;
+            this.activeTabUpdate = true;
+            this.disableTabView = true;
+            this.disableTabSetActive = true;
+    
+            this.activeTabSuaChua = false;
+            this.activeTabView = false;
+            this.activeTabCreate = false;
+            this.activeTabSetActive = false;
+        }
+     
     }
 
     InitTabActive(idRecond: number) {

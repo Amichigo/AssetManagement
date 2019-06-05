@@ -15,12 +15,12 @@
                         <div class="col-xl-6">
                             <label>{{l("Mã Công trình")}} *</label>
                             <input [(ngModel)]="macongtrinh" name="macongtrinh" autoFocus class="form-control"
-                                placeholder="Mã tài sản" type="text">
+                                placeholder="Nhập Mã Công trình" type="text">
                         </div>
                         <div class="col-xl-6">
                             <label>{{l("Tên Công trình")}} *</label>
                             <input [(ngModel)]="congtrinhName" name="congtrinhName" autoFocus class="form-control"
-                                placeholder="Nhập tên tài sản" type="text">
+                                placeholder="Nhập Tên Công trình" type="text">
                         </div>
                     </div>
 
@@ -84,6 +84,7 @@
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-record="$implicit">
+                        
                         <tr>
                             <td>
                                 <span class="ui-column-title">Mã công trình</span>

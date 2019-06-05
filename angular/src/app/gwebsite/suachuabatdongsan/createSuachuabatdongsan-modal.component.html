@@ -121,7 +121,7 @@
 
                         <div class="form-group">
                             <label>Chiều dài (m)*</label>
-                            <input #chieudaiInput="ngModel" class="form-control" type="number" name="ChieuDai"
+                            <input #chieudaiInput="ngModel" class="form-control" type="number"  name="ChieuDai"
                                 [(ngModel)]="batdongsan.chieuDai" required disabled maxlength="64">
                             <validation-messages [formCtrl]="chieudaiInput"></validation-messages>
                         </div>
@@ -323,7 +323,7 @@
 
                         <div class="form-group">
                             <label>Chi phí dự kiến*</label>
-                            <input #chiphiInput="ngModel" class="form-control" type="number" name="chiPhiDuKien"
+                            <input #chiphiInput="ngModel" class="form-control" type="number" min="1000" name="chiPhiDuKien"
                                 [(ngModel)]="suachuabatdongsan.chiPhiDuKien" required maxlength="64">
                             <validation-messages [formCtrl]="chiphiInput"></validation-messages>
                         </div>
@@ -376,7 +376,7 @@
                             <div class="col-xl-6">
                                 <div class="form-group">
                                     <label>Chi phí thực tế*</label>
-                                    <input #cpscttInput="ngModel" class="form-control" type="number"
+                                    <input #cpscttInput="ngModel" class="form-control" type="number" min="0"
                                         name="chiPhiSuaChuaThucTe" [(ngModel)]="suachuabatdongsan.chiPhiSuaChuaThucTe"
                                          required maxlength="64">
                                     <validation-messages [formCtrl]="cpscttInput"></validation-messages>

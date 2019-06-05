@@ -51,6 +51,7 @@ export class CreateOrEditSuaChuaBatDongSanModalComponent extends AppComponentBas
 
     }
 
+
     // listItems: Array<LoaiSuaChuaBatDongSanDto> = [];
     //loaisuachuabatdongsan: LoaiSuaChuaBatDongSanDto =new LoaiSuaChuaBatDongSanDto();
     listTaiSans: Array<TaiSanDto> = [];
@@ -181,7 +182,6 @@ export class CreateOrEditSuaChuaBatDongSanModalComponent extends AppComponentBas
 
 
     show(suachuabatdongsanId?: number | null | undefined): void {
-        console.log("ID:"+suachuabatdongsanId);
         this.saving = false;
         this._suachuabatdongsanService.getSuaChuaBatDongSanForEdit(suachuabatdongsanId).subscribe(result => {
             this.suachuabatdongsan = result;
@@ -236,6 +236,7 @@ export class CreateOrEditSuaChuaBatDongSanModalComponent extends AppComponentBas
     }
 
     close(): void {
+    
         this.modalSave.emit(null);
         this.saving = false;
     }

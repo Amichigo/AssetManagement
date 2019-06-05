@@ -1,6 +1,6 @@
 
 import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params} from '@angular/router';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import * as _ from 'lodash';
@@ -8,13 +8,11 @@ import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
 import { ModalDirective } from 'ngx-bootstrap';
-import { CreateHoSoThauN13ModalComponent } from './create-hosothau13-modal.component';
 import { HoSoThauN13ServiceProxy } from '@shared/service-proxies/service-proxies';
-
+import { CreateHoSoThauN13ModalComponent } from './create-hosothau13-modal.component';
 @Component({
 
-    templateUrl: './hosothauN13.component.html',
-    selector: 'HoSoThauN13Modal',
+    templateUrl: './hosothaun13.component.html',
     animations: [appModuleAnimation()]
 })
 export class HoSoThauN13Component extends AppComponentBase implements AfterViewInit, OnInit {
@@ -25,8 +23,7 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
     @ViewChild('HoSoThauN13Modal') modal: ModalDirective;
-    @ViewChild("createHoSoThauN13Modal") createHoSoThauN13Modal:CreateHoSoThauN13ModalComponent;
-
+    @ViewChild('createHoSoThauN13Modal') createHoSoThauN13Modal:CreateHoSoThauN13ModalComponent;
     /**
      * tạo các biến dể filters
      */
@@ -35,6 +32,7 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
     maKeHoach: string;
     loaihosothau: string;
 
+    
     /**
      * Tab values
      */
@@ -80,15 +78,25 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
 
     }
     InitTabCreate(): void {
-        this.activeTabHoSoThau = false;
-        this.activeTabUpdate = false;
-        this.activeTabView = false;
-        this.activeTabSetActive = false;
+        if(this.activeTabCreate==false)
+        {
 
+            console.log("Init create");
+            this.activeTabHoSoThau = false;
+            this.activeTabUpdate = false;
+            this.activeTabView = false;
+            this.activeTabSetActive = false;
+            this.activeTabCreate=true;
 
-        this.disableTabView = true;
-        this.disableTabUpdate = true;
-        this.disableTabSetActive = true;
+            this.disableTabView = true;
+            this.disableTabUpdate = true;
+            this.disableTabSetActive = true;
+            this.createHoSoThauN13Modal.show();
+
+        }
+      
+        
+      
     }
 
     InitTabView(idRecond: number): void {
@@ -105,15 +113,20 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
     }
 
     InitTabUpdate(idRecond: number) {
-        this.disableTabUpdate = false;
-        this.activeTabUpdate = true;
-        this.disableTabView = true;
-        this.disableTabSetActive = true;
+        if(this.activeTabUpdate==false)
+        {
+            this.disableTabUpdate = false;
+            this.activeTabUpdate = true;
+            this.disableTabView = true;
+            this.disableTabSetActive = true;
+    
+            this.activeTabHoSoThau = false;
+            this.activeTabView = false;
+            this.activeTabCreate = false;
+            this.activeTabSetActive = false;
+        }
 
-        this.activeTabHoSoThau = false;
-        this.activeTabView = false;
-        this.activeTabCreate = false;
-        this.activeTabSetActive = false;
+   
     }
 
     InitTabActive(idRecond: number) {

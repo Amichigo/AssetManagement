@@ -2,7 +2,7 @@
     aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form #editForm="ngForm"  (ngSubmit)="save()">
+            <form #editForm="ngForm" novalidate (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
                         <span *ngIf="congtrinh.id">Sửa chữa: {{congtrinh.tenCongTrinh}}</span>
@@ -50,21 +50,21 @@
 
                     <div class="form-group">
                         <label>Kinh phí đề xuất*</label>
-                        <input #kpdxInput="ngModel" class="form-control" type="number" name="kinhPhiDeXuat"
+                        <input #kpdxInput="ngModel" class="form-control" type="number" min="1000" name="kinhPhiDeXuat"
                                [(ngModel)]="congtrinh.kinhPhiDeXuat" required maxlength="64">
                         <validation-messages [formCtrl]="kpdxInput"></validation-messages>
                     </div>
 
                     <div class="form-group">
                         <label>Kinh phí trình*</label>
-                        <input #kptInput="ngModel" class="form-control" type="number" name="kinhPhiTrinh"
+                        <input #kptInput="ngModel" class="form-control" type="number" min="1000" name="kinhPhiTrinh"
                                [(ngModel)]="congtrinh.kinhPhiTrinh" required maxlength="64">
                         <validation-messages [formCtrl]="kptInput"></validation-messages>
                     </div>
 
                     <div class="form-group">
                         <label>Kinh phí được duyệt*</label>
-                        <input #kpddInput="ngModel" class="form-control" type="number" name="kinhPhiDuocDuyet"
+                        <input #kpddInput="ngModel" class="form-control" type="number" min="1000" name="kinhPhiDuocDuyet"
                                [(ngModel)]="congtrinh.kinhPhiDuocDuyet" required maxlength="64">
                         <validation-messages [formCtrl]="kpddInput"></validation-messages>
                     </div>

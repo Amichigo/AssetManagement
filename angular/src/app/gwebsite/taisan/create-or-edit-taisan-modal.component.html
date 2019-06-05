@@ -54,7 +54,7 @@
                               
                     <div class="form-group">
                         <label>Nguyên giá*</label>
-                        <input #nguyengiaInput="ngModel" class="form-control" type="number" name="nguyenGiaTaiSan "
+                        <input #nguyengiaInput="ngModel" class="form-control" type="number" min="1000" name="nguyenGiaTaiSan "
                                [(ngModel)]="taisan.nguyenGiaTaiSan" required maxlength="64">
                         <validation-messages [formCtrl]="nguyengiaInput"></validation-messages>
                     </div>
@@ -63,7 +63,7 @@
                                      
                     <div class="form-group">
                         <label>Giá tính khấu hao*</label>
-                        <input #giatinhkhInput="ngModel" class="form-control" type="number" name="giaTinhKhauHao"
+                        <input #giatinhkhInput="ngModel" class="form-control" type="number" min="1000" name="giaTinhKhauHao"
                                [(ngModel)]="taisan.giaTinhKhauHao" required maxlength="64">
                         <validation-messages [formCtrl]="giatinhkhInput"></validation-messages>
                     </div>
@@ -100,7 +100,7 @@
                                         
                     <div class="form-group">
                         <label>Khấu hao*</label>
-                        <input #khauhaoInput="ngModel" class="form-control" type="text" name="khauHao"
+                        <input #khauhaoInput="ngModel" class="form-control" type="number" min="1000" name="khauHao"
                                [(ngModel)]="taisan.khauHao" required maxlength="64">
                         <validation-messages [formCtrl]="khauhaoInput"></validation-messages>
                     </div>

@@ -73,8 +73,10 @@ export class CreateCongTrinhModalComponent extends AppComponentBase {
     }
     setThongTinCongTrinh(){
         this._congtrinhService.getCongTrinhForEdit(this.selectKeHoachXayDungModal.selectedIDCongTrinh).subscribe(result => {
-            this.congtrinh=result;
-          
+            this.congtrinh.maCongTrinh=result.maCongTrinh;
+            this.congtrinh.tenCongTrinh=result.tenCongTrinh;
+            this.congtrinh.kinhPhiDuocDuyet=result.kinhPhiDuocDuyet;
+            this.congtrinh.duKienXayDung=result.duKienXayDung;   
         })
         this.makh=this.selectKeHoachXayDungModal.selectedMaKH;
     }

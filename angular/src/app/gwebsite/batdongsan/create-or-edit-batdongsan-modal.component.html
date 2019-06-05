@@ -137,25 +137,25 @@
 
                     <div class="form-group">
                         <label>Chiều dài (m)*</label>
-                        <input #chieudaiInput="ngModel" class="form-control" type="number" name="ChieuDai"
+                        <input #chieudaiInput="ngModel" class="form-control" type="number" min="1" name="ChieuDai"
                             [(ngModel)]="batdongsan.chieuDai" required maxlength="64">
                         <validation-messages [formCtrl]="chieudaiInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Chiều Rộng (m)*</label>
-                        <input #chieurongInput="ngModel" class="form-control" type="number" name="ChieuRong"
+                        <input #chieurongInput="ngModel" class="form-control" type="number" min="1" name="ChieuRong"
                             [(ngModel)]="batdongsan.chieuRong" required maxlength="64">
                         <validation-messages [formCtrl]="chieurongInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Diện tích đất nền(m2)*</label>
-                        <input #dientichdatnenInput="ngModel" class="form-control" type="number" name="DienTichDatNen"
+                        <input #dientichdatnenInput="ngModel" class="form-control" type="number" min="1" name="DienTichDatNen"
                             [(ngModel)]="batdongsan.dienTichDatNen" required maxlength="64">
                         <validation-messages [formCtrl]="dientichdatnenInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Diện tích xây dựng(m2)*</label>
-                        <input #dientichxaydungInput="ngModel" class="form-control" type="number" name="DienTichXayDung"
+                        <input #dientichxaydungInput="ngModel" class="form-control" type="number" min="1" name="DienTichXayDung"
                             [(ngModel)]="batdongsan.dienTichXayDung" required maxlength="64">
                         <validation-messages [formCtrl]="dientichxaydungInput"></validation-messages>
                     </div>
