@@ -8,7 +8,8 @@ import { CategoryServiceProxy, CategoryInput } from '@shared/service-proxies/ser
 
 @Component({
     selector: 'createOrEditCategoryModal',
-    templateUrl: './create-or-edit-category-general-modal.component.html'
+    templateUrl: './create-or-edit-category-general-modal.component.html',
+    styleUrls: ['./create-or-edit-category-general-modal.component.scss'],
 })
 export class CreateOrEditCategoryModalComponent extends AppComponentBase {
 
