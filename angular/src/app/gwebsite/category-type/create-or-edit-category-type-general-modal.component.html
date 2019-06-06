@@ -1,5 +1,5 @@
 <div bsModal #createOrEditModal="bs-modal" class="modal fade category-modal" tabindex="-1" role="dialog"
-    aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: false}">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form *ngIf="active" #editForm="ngForm" novalidate (ngSubmit)="save()">
@@ -45,7 +45,7 @@
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default"
                         (click)="close()">{{l("Cancel")}}</button>
-                    <button type="submit" class="btn btn-primary" [disabled]="!editFormType.form.valid"
+                    <button type="submit" class="btn btn-primary" [disabled]="!editForm.form.valid"
                         [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
                         <span>{{l("Save")}}</span></button>
                 </div>

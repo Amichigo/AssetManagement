@@ -16,7 +16,7 @@ $mobile-width: 512px;
     transform: translate(100vw, 0);
     overflow: hidden; // remove scrollbar
     transition: all 0.35s ease-out;
-    // z-index: 98;
+    z-index: 97;
 
     &.in {
         transform: translate(0, 0);
@@ -42,6 +42,7 @@ $mobile-width: 512px;
             @media (min-width: $desktop-width) {
                 form {
                     padding: 0 16rem;
+                    padding-left: 255px + 160px;
                 }
             }
         }
