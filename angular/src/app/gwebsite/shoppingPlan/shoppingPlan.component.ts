@@ -19,7 +19,8 @@ import { takeUntil } from 'rxjs/operators';
     animations: [appModuleAnimation()],
     styles: [`.highlighted {
     background - color: #fff2ac;
-    background-image: linear-gradient(to right, #ffe359 0 %, #fff2ac 100 %);}`]
+    background-image: linear-gradient(to right, #ffe359 0 %, #fff2ac 100 %);}`,
+        `.hide { display: none;}`]
 })
 export class ShoppingPlanComponent extends AppComponentBase implements AfterViewInit, OnInit {
 
@@ -34,6 +35,7 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
 
     halfChecked: boolean = false;
     role: any;
+    showActions: boolean = false;
     /**
      * tạo các biến dể filters
      */
@@ -94,11 +96,11 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
                 for (let i = 0; i < this.currentUser.roles.length; i++) {
                     if (this.currentUser.roles[i].isAssigned == true && this.currentUser.roles[i].roleDisplayName == "hieu truong") {
                         this.halfChecked = true;
-                        this.reloadList(null, null, null, "checking", event);
+                        this.reloadList(null, null, null, "checking" && "checked", event);
                     }
                 }
                 console.log(this.halfChecked);
-                if (this.halfChecked == false) this.reloadList(null, null, null,"checking", event);
+                if (this.halfChecked == false) this.reloadList(null, null, null,null, event);
             })
         })
     }
@@ -113,6 +115,7 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
             this.primengTableHelper.records = result.items;
             this.primengTableHelper.hideLoadingIndicator();
             });
+        console.log(this.primengTableHelper.records);
     }
 
     deleteShoppingPlan(id): void {
@@ -175,4 +178,5 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
         this.selectedRow.tinhTrang = userInput.tinhTrang;
         console.log(userInput);
     }
+
 }

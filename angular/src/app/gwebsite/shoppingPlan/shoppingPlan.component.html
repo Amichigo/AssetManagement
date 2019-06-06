@@ -77,6 +77,9 @@
                                     <th pSortableColumn="kinhPhi">
                                         Kinh Phí
                                     </th>
+                                    <th pSortableColumn="tinhTrang">
+                                        Tình Trạng
+                                    </th>
                                     <th>{{l('Edit')}}</th>
                                 </tr>
                             </ng-template>
@@ -103,13 +106,17 @@
                                         <span title="{{record.kinhPhi}}">{{truncateString(record.kinhPhi)}}</span>
                                     </td>
                                     <td>
+                                        <span class="ui-column-title">Tình Trạng</span>
+                                        <span title="{{record.tinhTrang}}">{{truncateString(record.tinhTrang)}}</span>
+                                    </td>
+                                    <td>
                                         <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">
+                                                (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}" [class.hide]="record.tinhTrang === 'checked'">
                                             <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
                                         </button>
 
                                         <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                (click)="deleteShoppingPlan(record.id)" title="{{l('Delete')}}">
+                                                (click)="deleteShoppingPlan(record.id)" title="{{l('Delete')}}" [class.hide]="record.tinhTrang === 'checked'">
                                             <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                         </button>
 

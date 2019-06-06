@@ -14,6 +14,7 @@ import { filter } from 'rxjs/operators';
 @Component({
     templateUrl: './shoppingPlanDetail.component.html',
     animations: [appModuleAnimation()],
+    styles:[`.hide{display:none;}`],
     selector: 'viewDetailModal'
 })
 export class ShoppingPlanDetailComponent extends AppComponentBase implements AfterViewInit, OnInit {
