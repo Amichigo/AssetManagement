@@ -290,6 +290,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             AssetGroup_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetGroup_05_Edit, L("EditingAssetGroup_05"));
             AssetGroup_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetGroup_05_Delete, L("DeletingAssetGroup_05"));
 
+            var asset11 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset11, L("Asset11"));
+            asset11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset11_Create, L("CreatingNewAsset11"));
+            asset11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset11_Edit, L("EditingAsset11"));
+            asset11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset11_Delete, L("DeletingAsset11"));
+
         }
         private static ILocalizableString L(string name)
         {

@@ -148,6 +148,7 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<ContractGuarantee> ContractGuarantees_9 { get; set; }
         public virtual DbSet<PaymentDetails_9> PaymentDetails_9 { get; set; }
         public virtual DbSet<WarrantyGuarantee> WarrantyGuarantees_9 { get; set; }
+        public virtual DbSet<Asset11> Asset11s { get; set; }
 
         /// <summary>
         /// 

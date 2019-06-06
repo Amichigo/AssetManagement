@@ -272,5 +272,10 @@
         public const string Pages_Administration_WarrantyGuarantee9_Edit = "Pages.Administration.WarrantyGuarantee9.Edit";
         public const string Pages_Administration_WarrantyGuarantee9_Delete = "Pages.Administration.WarrantyGuarantee9.Delete";
 
+        public const string Pages_Administration_Asset11 = "Pages.Administration.Asset11";
+        public const string Pages_Administration_Asset11_Create = "Pages.Administration.Asset11.Create";
+        public const string Pages_Administration_Asset11_Edit = "Pages.Administration.Asset11.Edit";
+        public const string Pages_Administration_Asset11_Delete = "Pages.Administration.Asset11.Delete";
+
     }
 }
