@@ -137,9 +137,9 @@ export class ShoppingPlanDetailComponent extends AppComponentBase implements Aft
     }
 
     checkShoppingPlan(): void {
-        if (this.selectedRow.tinhTrang == "Chưa duyệt" || this.selectedRow.tinhTrang == null)
-            this.selectedRow.tinhTrang = "Đang duyệt";
-        else this.selectedRow.tinhTrang = "Đã duyệt";
+        if (this.selectedRow.tinhTrang == "not check" || this.selectedRow.tinhTrang == null)
+            this.selectedRow.tinhTrang = "checking";
+        else this.selectedRow.tinhTrang = "checked";
         let input = this.selectedRow;
         console.log(input);
         this.__shoppingPlanService.createOrEditShoppingPlan(input).subscribe(result => {

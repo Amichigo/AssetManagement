@@ -11,6 +11,8 @@ import { ShoppingPlanServiceProxy, ShoppingPlanInput,SessionServiceProxy,UserSer
 import { CreateOrEditShoppingPlanModalComponent } from './create-or-edit-shoppingPlan-modal.component';
 import { ShoppingPlanDetailComponent } from './shoppingPlanDetail.component';
 import { userInfo } from 'os';
+import { Subject, Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     templateUrl: './shoppingPlan.component.html',
@@ -31,6 +33,7 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
     @ViewChild('viewDetailModal') viewDetailModal: ShoppingPlanDetailComponent;
 
     halfChecked: boolean = false;
+    role: any;
     /**
      * tạo các biến dể filters
      */
@@ -62,6 +65,7 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
      * Hàm xử lý trước khi View được init
      */
     ngOnInit(): void {
+
     }
 
     /**
@@ -78,30 +82,25 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
      * @param event
      */
     getShoppingPlans(event?: LazyLoadEvent) {
-        if (!this.paginator || !this.dataTable) {
-            return;
-        }
         this._sessionService.getCurrentLoginInformations().subscribe(result => {
             this.currentSession = result;
             this._userService.getUserForEdit(this.currentSession.user.id).subscribe(user => {
                 this.currentUser = user;
-                console.log(this.currentUser);
+
+                if (!this.paginator || !this.dataTable) {
+                       return;
+                }
+                this.primengTableHelper.showLoadingIndicator();
+                for (let i = 0; i < this.currentUser.roles.length; i++) {
+                    if (this.currentUser.roles[i].isAssigned == true && this.currentUser.roles[i].roleDisplayName == "hieu truong") {
+                        this.halfChecked = true;
+                        this.reloadList(null, null, null, "checking", event);
+                    }
+                }
+                console.log(this.halfChecked);
+                if (this.halfChecked == false) this.reloadList(null, null, null,"checking", event);
             })
         })
-        //show loading trong gridview
-        this.primengTableHelper.showLoadingIndicator();
-
-        
-        for (let role of this.currentUser.roles) {
-            if (role.isAssigned == true && role.roleDisplayName == "truong khoa") {
-                this.reloadList(null, null, null, "Đã duyệt", event);
-                this.halfChecked = true;
-                break;
-            }
-        }
-        if(this.halfChecked == false)
-            this.reloadList(null,null,null,null,event);
-
     }
 
     reloadList(shoppingPlanKhuVuc,shoppingPlanPhongBan,shoppingPlanMaKeHoach,shoppingPlanTinhTrang, event?: LazyLoadEvent) {
@@ -129,8 +128,6 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
             this.shoppingPlanPhongBan = params['phongBan'] || '';
             this.shoppingPlanMaKeHoach = params['maKeHoach'] || '';
             this.shoppingPlanTinhTrang = params['tinhTrang'] || '';
-            this.reloadList(this.shoppingPlanKhuVuc, this.shoppingPlanPhongBan, this.shoppingPlanMaKeHoach,
-                this.shoppingPlanTinhTrang, null);
         });
     }
 
@@ -177,8 +174,5 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
         this.selectedRow.soLanThayDoi = userInput.soLanThayDoi;
         this.selectedRow.tinhTrang = userInput.tinhTrang;
         console.log(userInput);
-    }
-
-    checkCurrentUserRole(): void {
     }
 }

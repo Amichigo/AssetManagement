@@ -88,6 +88,11 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ShoppingPlans
                 query = query.Where(x => x.MaKeHoach.ToLower().Equals(input.MaKeHoach));
             }
 
+            if(input.TinhTrang != null)
+            {
+                query = query.Where(x => x.TinhTrang.ToLower().Contains(input.TinhTrang));
+            }
+
             var totalCount = query.Count();
 
             // sorting
