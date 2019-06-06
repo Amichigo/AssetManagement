@@ -50,6 +50,26 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             VideoInstructionCategories.CreateChildPermission(GWebsitePermissions.Pages_Administration_VideoInstructionCategory_Create, L("CreatingNewVVideoInstructionCategory"));
             VideoInstructionCategories.CreateChildPermission(GWebsitePermissions.Pages_Administration_VideoInstructionCategory_Edit, L("EditingVideoInstructionCategory"));
             VideoInstructionCategories.CreateChildPermission(GWebsitePermissions.Pages_Administration_VideoInstructionCategory_Delete, L("DeletingVideoInstructionCategory"));
+
+            var LoaiNhaCungCap = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiNhaCungCap, L("LoaiNhaCungCap"));
+            LoaiNhaCungCap.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiNhaCungCap_Create, L("CreatingNewLoaiNhaCungCap"));
+            LoaiNhaCungCap.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiNhaCungCap_Edit, L("EditingLoaiNhaCungCap"));
+            LoaiNhaCungCap.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiNhaCungCap_Delete, L("DeletingLoaiNhaCungCap"));
+
+            var NhaCungCapHangHoa = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhaCungCapHangHoa, L("NhaCungCapHangHoa"));
+            NhaCungCapHangHoa.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhaCungCapHangHoa_Create, L("CreatingNewNhaCungCapHangHoa"));
+            NhaCungCapHangHoa.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhaCungCapHangHoa_Edit, L("EditingNhaCungCapHangHoa"));
+            NhaCungCapHangHoa.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhaCungCapHangHoa_Delete, L("DeletingNhaCungCapHangHoa"));
+
+            var ProductType = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductType, L("ProductType"));
+            ProductType.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductType_Create, L("CreatingNewProductType"));
+            ProductType.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductType_Edit, L("EditingProductType"));
+            ProductType.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductType_Delete, L("DeletingProductType"));
+
+            var SanPham = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Product, L("Product"));
+            SanPham.CreateChildPermission(GWebsitePermissions.Pages_Administration_Product_Create, L("CreatingNewProduct"));
+            SanPham.CreateChildPermission(GWebsitePermissions.Pages_Administration_Product_Edit, L("EditingProduct"));
+            SanPham.CreateChildPermission(GWebsitePermissions.Pages_Administration_Product_Delete, L("DeletingProduct"));
         }
 
         private static ILocalizableString L(string name)

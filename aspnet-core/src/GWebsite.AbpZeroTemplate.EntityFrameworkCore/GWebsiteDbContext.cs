@@ -65,6 +65,11 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<VideoInstruction> VideoInstructions { get; set; }
         public virtual DbSet<VisitorStatistic> VisitorStatistics { get; set; }
 
+        public virtual DbSet<LoaiNhaCungCap> LoaiNhaCungCaps { get; set; }
+        public virtual DbSet<NhaCungCapHangHoa> NhaCungCapHangHoas { get; set; }
+        public virtual DbSet<ProductType> ProductTypes { get; set; }
+        public virtual DbSet<SanPham> SanPhams { get; set; }
+
         /// <summary>
         /// 
         /// </summary>

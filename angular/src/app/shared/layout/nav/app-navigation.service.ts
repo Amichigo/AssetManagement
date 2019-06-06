@@ -16,6 +16,12 @@ export class AppNavigationService {
             new AppMenuItem('Dashboard', 'Pages.Tenant.Dashboard', 'flaticon-line-graph', '/app/main/dashboard'),
             new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-list-3', '/app/admin/tenants'),
             new AppMenuItem('Editions', 'Pages.Editions', 'flaticon-app', '/app/admin/editions'),
+            new AppMenuItem('Quản Lý Nhà Cung Cấp Hàng Hóa', '', 'flaticon-interface-8', '', [
+                new AppMenuItem('Loại Nhà Cung Cấp', 'Pages.Administration.LoaiNhaCungCap', 'flaticon-menu-1', '/app/gwebsite/LoaiNhaCungCap'),
+                new AppMenuItem('Nhà Cung Cấp Hàng Hóa', 'Pages.Administration.NhaCungCapHangHoa', 'flaticon-menu-1', '/app/gwebsite/NhaCungCapHangHoa'),
+                new AppMenuItem('Loại Sản Phẩm', 'Pages.Administration.ProductType', 'flaticon-menu-1', '/app/gwebsite/ProductType'),
+                new AppMenuItem('Sản Phẩm', 'Pages.Administration.Product', 'flaticon-menu-1', '/app/gwebsite/Product')                   
+            ]),
             new AppMenuItem('Administration', '', 'flaticon-interface-8', '', [
                 new AppMenuItem('MenuClient', 'Pages.Administration.MenuClient', 'flaticon-menu-1', '/app/gwebsite/menu-client'),
                 new AppMenuItem('DemoModel', 'Pages.Administration.DemoModel', 'flaticon-menu-1', '/app/gwebsite/demo-model'),

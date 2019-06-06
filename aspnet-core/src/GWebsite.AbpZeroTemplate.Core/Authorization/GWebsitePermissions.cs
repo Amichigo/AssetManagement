@@ -29,5 +29,25 @@
         public const string Pages_Administration_VideoInstructionCategory_Edit = "Pages.Administration.VideoInstructionCategory.Edit";
         public const string Pages_Administration_VideoInstructionCategory_Delete = "Pages.Administration.VideoInstructionCategory.Delete";
 
+        public const string Pages_Administration_LoaiNhaCungCap = "Pages.Administration.LoaiNhaCungCap";
+        public const string Pages_Administration_LoaiNhaCungCap_Create = "Pages.Administration.LoaiNhaCungCap.Create";
+        public const string Pages_Administration_LoaiNhaCungCap_Edit = "Pages.Administration.LoaiNhaCungCap.Edit";
+        public const string Pages_Administration_LoaiNhaCungCap_Delete = "Pages.Administration.LoaiNhaCungCap.Delete";
+
+        public const string Pages_Administration_NhaCungCapHangHoa = "Pages.Administration.NhaCungCapHangHoa";
+        public const string Pages_Administration_NhaCungCapHangHoa_Create = "Pages.Administration.NhaCungCapHangHoa.Create";
+        public const string Pages_Administration_NhaCungCapHangHoa_Edit = "Pages.Administration.NhaCungCapHangHoa.Edit";
+        public const string Pages_Administration_NhaCungCapHangHoa_Delete = "Pages.Administration.NhaCungCapHangHoa.Delete";
+
+        public const string Pages_Administration_ProductType = "Pages.Administration.ProductType";
+        public const string Pages_Administration_ProductType_Create = "Pages.Administration.ProductType.Create";
+        public const string Pages_Administration_ProductType_Edit = "Pages.Administration.ProductType.Edit";
+        public const string Pages_Administration_ProductType_Delete = "Pages.Administration.ProductType.Delete";
+
+        public const string Pages_Administration_Product = "Pages.Administration.Product";
+        public const string Pages_Administration_Product_Create = "Pages.Administration.Product.Create";
+        public const string Pages_Administration_Product_Edit = "Pages.Administration.Product.Edit";
+        public const string Pages_Administration_Product_Delete = "Pages.Administration.Product.Delete";
+
     }
 }
