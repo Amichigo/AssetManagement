@@ -37,8 +37,8 @@ export class CreateOrEditConstructionPlanModalComponent extends AppComponentBase
         this.saving = false;
         this._constructionPlanService.getConstructionPlanForEdit(constructionPlanId).subscribe(result => {
             this.constructionPlan = result;
-            if (this.constructionPlan.trangThai == null) {
-                this.constructionPlan.trangThai = 'Chưa duyệt';
+            if (this.constructionPlan.tinhTrang == null) {
+                this.constructionPlan.tinhTrang = 'not check';
             }
             this.modal.show();
         })

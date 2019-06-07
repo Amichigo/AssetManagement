@@ -45,6 +45,7 @@
         public const string Pages_Administration_ConstructionPlanDetail_Create = "Pages.Administration.ConstructionPlanDetail.Create";
         public const string Pages_Administration_ConstructionPlanDetail_Edit = "Pages.Administration.ConstructionPlanDetail.Edit";
         public const string Pages_Administration_ConstructionPlanDetail_Delete = "Pages.Administration.ConstructionPlanDetail.Delete";
+        public const string Pages_Administration_ConstructionPlanDetail_Check = "Pages.Administration.ConstructionPlanDetail.Check";
 
     }
 }

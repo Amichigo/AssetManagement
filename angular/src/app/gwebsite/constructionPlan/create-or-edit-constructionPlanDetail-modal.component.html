@@ -11,61 +11,71 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Mã Kế Hoạch *</label>
-                        <input #kinhPhiInput="ngModel" class="form-control" type="text" name="maKeHoach"
+                        <input #maKeHoachInput="ngModel" class="form-control" type="text" name="maKeHoach"
                                [(ngModel)]="constructionPlanDetail.maKeHoach" required maxlength="64">
                         <validation-messages [formCtrl]="maKeHoachInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Mã Công Trình *</label>
-                        <input #maSPInput="ngModel" class="form-control" type="text" name="maCT"
-                               [(ngModel)]="constructionPlanDetail.maCT" required maxlength="64">
+                        <select #maCTInput="ngModel" class="form-control" type="text" name="maCT"
+                        [(ngModel)]="constructionPlanDetail.maCT" required maxlength="64">
+                            <option value="Xe">Xe</option>
+                            <option value="NAn">NAn</option>
+                            <option value="PTN">PTN</option>
+                            <option value="NTD">NTD</option>
+                        </select>
                         <validation-messages [formCtrl]="maCTInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Tên Công Trình *</label>
-                        <input #phongBanInput="ngModel" class="form-control" type="text" name="tenCT"
-                               [(ngModel)]="constructionPlanDetail.tenCT" required maxlength="64">
+                        <select #tenCTInput="ngModel" class="form-control" type="text" name="tenCT"
+                        [(ngModel)]="constructionPlanDetail.tenCT" required maxlength="64">
+                            <option value="Xây dựng nhà xe">Xây dựng nhà xe</option>
+                            <option value="Xây dựng nhà ăn">Xây dựng nhà ăn</option>
+                            <option value="Xây dựng phòng thí nghiệm">Xây dựng phòng thí nghiệm</option>
+                            <option value="Xây dựng nhà thi đấu thể thao">Xây dựng nhà thi đấu thể thao</option>
+                        </select>
                         <validation-messages [formCtrl]="tenCTInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Dự Kiến Xây Dựng *</label>
-                        <input #namInput="ngModel" class="form-control" type="text" name="duKienXayDung"
+                        <input #duKienXayDungInput="ngModel" class="form-control" type="text" name="duKienXayDung"
                                [(ngModel)]="constructionPlanDetail.duKienXayDung" required maxlength="64">
                         <validation-messages [formCtrl]="duKienXayDungInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Dự Kiến Hoàn Thành *</label>
-                        <input #namInput="ngModel" class="form-control" type="text" name="duKienHoanThanh"
+                        <input #duKienHoanThanhInput="ngModel" class="form-control" type="text" name="duKienHoanThanh"
                                [(ngModel)]="constructionPlanDetail.duKienHoanThanh" required maxlength="64">
                         <validation-messages [formCtrl]="duKienHoanThanhInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Thời Gian Thực Hiện *</label>
-                        <input #namInput="ngModel" class="form-control" type="text" name="thoiGianThucHien"
+                        <input #thoiGianThucHienInput="ngModel" class="form-control" type="text" name="thoiGianThucHien"
                                [(ngModel)]="constructionPlanDetail.thoiGianThucHien" required maxlength="64">
                         <validation-messages [formCtrl]="thoiGianThucHienInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Kinh Phí Đề Xuất *</label>
-                        <input #namInput="ngModel" class="form-control" type="number" name="kinhPhiDeXuat"
+                        <input #kinhPhiDeXuatInput="ngModel" class="form-control" type="number" name="kinhPhiDeXuat"
                                [(ngModel)]="constructionPlanDetail.kinhPhiDeXuat" required maxlength="64">
                         <validation-messages [formCtrl]="kinhPhiDeXuatInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Kinh Phí Trình *</label>
-                        <input #namInput="ngModel" class="form-control" type="number" name="kinhPhiTrinh"
-                               [(ngModel)]="constructionPlanDetail.kinhPhiTrinh" required maxlength="64">
+                        <label *ngIf="isGranted('Pages.Administration.ConstructionPlanDetail.Check')" >Kinh Phí Trình *</label>
+                        <input #kinhPhiTrinhInput="ngModel" class="form-control" type="number" name="kinhPhiTrinh"
+                               [(ngModel)]="constructionPlanDetail.kinhPhiTrinh" required maxlength="64" *ngIf="isGranted('Pages.Administration.ConstructionPlanDetail.Check')" >
                         <validation-messages [formCtrl]="kinhPhiTrinhInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Kinh Phí Được Duyệt *</label>
-                        <input #namInput="ngModel" class="form-control" type="number" name="kinhPhiDuocDuyet"
-                               [(ngModel)]="constructionPlanDetail.kinhPhiDuocDuyet" required maxlength="64">
+                        <label *ngIf="isGranted('Pages.Administration.ConstructionPlanDetail.Check')">Kinh Phí Được Duyệt *</label>
+                        <input #kinhPhiDuocDuyetInput="ngModel" class="form-control" type="number" name="kinhPhiDuocDuyet"
+                               [(ngModel)]="constructionPlanDetail.kinhPhiDuocDuyet" required maxlength="64" *ngIf="isGranted('Pages.Administration.ConstructionPlanDetail.Check')">
                         <validation-messages [formCtrl]="kinhPhiDuocDuyetInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Ghi Chú *</label>
-                        <input #namInput="ngModel" class="form-control" type="number" name="ghiChu"
+                        <input #ghiChuInput="ngModel" class="form-control" type="text" name="ghiChu"
                                [(ngModel)]="constructionPlanDetail.ghiChu" required maxlength="64">
                         <validation-messages [formCtrl]="ghiChuInput"></validation-messages>
                     </div>
