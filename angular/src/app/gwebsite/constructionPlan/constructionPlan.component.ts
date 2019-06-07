@@ -7,10 +7,10 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { ConstructionPlanServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ConstructionPlanServiceProxy,ConstructionPlanInput } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditConstructionPlanModalComponent } from './create-or-edit-constructionPlan-modal.component';
-
-
+import { ConstructionPlanDetailComponent } from './constructionPlanDetail.component';
+import { userInfo } from 'os';
 
 @Component({
     templateUrl: './constructionPlan.component.html',
@@ -28,6 +28,7 @@ export class ConstructionPlanComponent extends AppComponentBase implements After
     @ViewChild('paginator') paginator: Paginator;
     @ViewChild('createOrEditModal') createOrEditModal: CreateOrEditConstructionPlanModalComponent;
     @ViewChild('viewConstructionPlanModal') viewConstructionPlanModal: ViewConstructionPlanModalComponent;
+    @ViewChild('viewDetailModal') viewDetailModal: ConstructionPlanDetailComponent;
 
     /**
      * tạo các biến dể filters
@@ -39,6 +40,7 @@ export class ConstructionPlanComponent extends AppComponentBase implements After
     /*
      * tạo biến để lưu và truyền qua form detail
      */
+    selectedRow: ConstructionPlanInput = new ConstructionPlanInput();
 
     constructor(
         injector: Injector,
@@ -128,6 +130,10 @@ export class ConstructionPlanComponent extends AppComponentBase implements After
         }
     }
 
+    constructionPlanDetail():void {
+        this.viewDetailModal.show();
+    }
+
     //hàm show view create MenuClient
     createConstructionPlan():void {
         this.createOrEditModal.show();
@@ -139,6 +145,19 @@ export class ConstructionPlanComponent extends AppComponentBase implements After
      */
     truncateString(text): string {
         return abp.utils.truncateStringWithPostfix(text, 32, '...');
+    }
+
+    rowSelected(userInput: any):void {
+        this.selectedRow.id = userInput.id;
+        this.selectedRow.khuVuc = userInput.khuVuc;
+        this.selectedRow.kinhPhi = userInput.kinhPhi;
+        this.selectedRow.maKeHoach = userInput.maKeHoach;
+        this.selectedRow.nam = userInput.nam;
+        this.selectedRow.ngayHieuLuc = userInput.ngayHieuLuc;
+        this.selectedRow.phongBan = userInput.phongBan;
+        this.selectedRow.soLanThayDoi = userInput.soLanThayDoi;
+        this.selectedRow.trangThai = userInput.trangThai;
+        console.log(userInput);
     }
 
 }

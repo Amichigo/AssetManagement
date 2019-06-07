@@ -11,8 +11,7 @@
                 </span>
             </div>
             <div class="col-xs-6 text-right">
-                  <!--<lưu ý thêm vào dòng này sau khi fix dc *ngIf="isGranted('Pages.Administration.ConstructionPlan.Create')" >--> 
-                <button (click)="createConstructionPlan()" 
+                <button (click)="createConstructionPlan()" *ngIf="isGranted('Pages.Administration.ConstructionPlan.Create')"
                         class="btn btn-primary">
                     <i class="fa fa-plus"></i> {{l("CreateNewConstructionPlan")}}
                 </button>
@@ -143,4 +142,5 @@
     </div>
     <createOrEditConstructionPlanModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditConstructionPlanModal>
     <viewConstructionPlanModal #viewConstructionPlanModal></viewConstructionPlanModal>
+    <viewConstructionPlanDetailModal #viewDetailModal [selectedRow]="selectedRow"></viewConstructionPlanDetailModal>
 </div>

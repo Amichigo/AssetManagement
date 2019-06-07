@@ -1,5 +1,6 @@
 import { CustomerServiceProxy, ShoppingPlanServiceProxy,  ShoppingPlanDetailServiceProxy, ConstructionPlanServiceProxy, 
             DisposalPlanServiceProxy, DisposalPlanDetailServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, ShoppingPlanServiceProxy,  ShoppingPlanDetailServiceProxy, ConstructionPlanServiceProxy,ConstructionPlanDetailServiceProxy} from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -37,6 +38,10 @@ import { CreateOrEditDisposalPlanModalComponent } from './disposalPlan/create-or
 
 import { DisposalPlanDetailComponent } from './disposalPlan/disposalPlanDetail.component';
 import { CreateOrEditDisposalPlanDetailModalComponent } from './disposalPlan/create-or-edit-disposalPlanDetail-modal.component';
+
+import { ConstructionPlanDetailComponent } from './constructionPlan/constructionPlanDetail.component';
+import { CreateOrEditConstructionPlanDetailModalComponent } from './constructionPlan/create-or-edit-constructionPlanDetail-modal.component';
+
 @NgModule({
     imports: [
         FormsModule,
@@ -65,12 +70,15 @@ import { CreateOrEditDisposalPlanDetailModalComponent } from './disposalPlan/cre
         ConstructionPlanComponent, ViewConstructionPlanModalComponent, CreateOrEditConstructionPlanModalComponent,
         DisposalPlanComponent, ViewDisposalPlanModalComponent, CreateOrEditDisposalPlanModalComponent,
         DisposalPlanDetailComponent, CreateOrEditDisposalPlanDetailModalComponent,
+        ConstructionPlanDetailComponent, CreateOrEditConstructionPlanDetailModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
         ShoppingPlanServiceProxy,
         ShoppingPlanDetailServiceProxy,
+        ConstructionPlanServiceProxy,
+        ConstructionPlanDetailServiceProxy
         ConstructionPlanServiceProxy,
         DisposalPlanServiceProxy,
         DisposalPlanDetailServiceProxy
