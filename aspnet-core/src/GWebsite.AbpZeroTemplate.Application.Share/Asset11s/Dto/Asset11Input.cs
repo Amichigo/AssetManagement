@@ -10,7 +10,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Asset11s.Dto
     {
         public string Name { get; set; }
         public string AssetId { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public int Vat { get; set; }
         public int Quantity { get; set; }
         public int Time { get; set; }

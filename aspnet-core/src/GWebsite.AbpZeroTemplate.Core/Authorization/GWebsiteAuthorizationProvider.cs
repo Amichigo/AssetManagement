@@ -292,8 +292,14 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
 
             var asset11 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset11, L("Asset11"));
             asset11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset11_Create, L("CreatingNewAsset11"));
+            asset11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset11_CreateDebit11, L("CreatingDebit11"));
             asset11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset11_Edit, L("EditingAsset11"));
             asset11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset11_Delete, L("DeletingAsset11"));
+
+            var debit11 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Debit11, L("Debit11"));
+            debit11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Debit11_Create, L("CreatingNewDebit11"));
+            debit11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Debit11_Edit, L("EditingDebit11"));
+            debit11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Debit11_Delete, L("DeletingDebit11"));
 
         }
         private static ILocalizableString L(string name)

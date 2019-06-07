@@ -62,6 +62,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.PaymentDetails.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Plans.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.WarrantyGuarantees.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Asset11s.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Debit11s.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {
@@ -364,6 +365,11 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<Asset11Input, Asset11>();
             configuration.CreateMap<Asset11, Asset11Input>();
             configuration.CreateMap<Asset11, Asset11ForViewDto>();
+
+            configuration.CreateMap<Debit11, Debit11Dto>();
+            configuration.CreateMap<Debit11Input, Debit11>();
+            configuration.CreateMap<Debit11, Debit11Input>();
+            configuration.CreateMap<Debit11, Debit11ForViewDto>();
         }
     }
 }

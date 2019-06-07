@@ -274,8 +274,14 @@
 
         public const string Pages_Administration_Asset11 = "Pages.Administration.Asset11";
         public const string Pages_Administration_Asset11_Create = "Pages.Administration.Asset11.Create";
+        public const string Pages_Administration_Asset11_CreateDebit11 = "Pages.Administration.Asset11.CreateDebit11";
         public const string Pages_Administration_Asset11_Edit = "Pages.Administration.Asset11.Edit";
         public const string Pages_Administration_Asset11_Delete = "Pages.Administration.Asset11.Delete";
+
+        public const string Pages_Administration_Debit11 = "Pages.Administration.Debit11";
+        public const string Pages_Administration_Debit11_Create = "Pages.Administration.Debit11.Create";
+        public const string Pages_Administration_Debit11_Edit = "Pages.Administration.Debit11.Edit";
+        public const string Pages_Administration_Debit11_Delete = "Pages.Administration.Debit11.Delete";
 
     }
 }

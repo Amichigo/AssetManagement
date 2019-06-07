@@ -12,14 +12,17 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Asset11s
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_Asset11)]
     public class Asset11AppService : GWebsiteAppServiceBase, IAsset11AppService
     {
         private readonly IRepository<Asset11> asset11Repository;
 
-        public Asset11AppService(IRepository<Asset11> asset11Repository)
+        private readonly IRepository<Debit11> debit11Repository;
+
+        public Asset11AppService(IRepository<Asset11> asset11Repository, IRepository<Debit11> debit11Repository)
         {
             this.asset11Repository = asset11Repository;
+            this.debit11Repository = debit11Repository;
         }
 
         #region Public Method
@@ -72,9 +75,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset11s
             var query = asset11Repository.GetAll().Where(x => !x.IsDelete);
 
             // filter by value
-            if (input.IdAsset != null)
+            if (input.AssetId != null)
             {
-                query = query.Where(x => x.Name.ToLower().Equals(input.IdAsset));
+                query = query.Where(x => x.AssetId.ToLower().Equals(input.AssetId));
             }
 
             var totalCount = query.Count();
@@ -94,6 +97,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset11s
                 items.Select(item => ObjectMapper.Map<Asset11Dto>(item)).ToList());
         }
 
+        public void Accounting()
+        {
+            var listAsset = asset11Repository.GetAll().Where(x => !x.IsDelete && !x.IsAccounted);
+            CreateDebit11();
+            // CreateCredit11(listAsset);
+        }
+
         #endregion
 
         #region Private Method
@@ -107,6 +117,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset11s
             CurrentUnitOfWork.SaveChanges();
         }
 
+
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_Asset11_Edit)]
         private void Update(Asset11Input asset11Input)
         {
@@ -119,6 +130,31 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset11s
             asset11Repository.Update(asset11Entity);
             CurrentUnitOfWork.SaveChanges();
         }
+
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Asset11_CreateDebit11)]
+        public void CreateDebit11()
+        {
+            var listAsset = asset11Repository.GetAll().Where(x => !x.IsDelete && !x.IsAccounted);
+            foreach (var asset in listAsset)
+            {
+                var debitAccount = new Debit11();
+                debitAccount.AssetId = asset.AssetId;
+                debitAccount.AccountType = asset.DebitAccount;
+                debitAccount.Price = asset.Price;
+                SetAuditInsert(debitAccount);
+                debit11Repository.Insert(debitAccount);
+
+                var debitAccountVar = new Debit11();
+                debitAccountVar.AssetId = asset.AssetId;
+                debitAccountVar.AccountType = 331;
+                debitAccountVar.Price = ((double)asset.Vat / 100) * asset.Price;
+                SetAuditInsert(debitAccountVar);
+                debit11Repository.Insert(debitAccountVar);
+                CurrentUnitOfWork.SaveChanges();
+            }
+        }
+
+
 
         #endregion
     }
