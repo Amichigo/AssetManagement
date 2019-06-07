@@ -1,0 +1,41 @@
+.bar-chart-section {
+    margin: 0 16px;
+}
+
+.bar-chart-section-header {
+    margin-bottom: 12px;
+}
+
+.bar-chart-section-body {
+    box-shadow: 0 1px 15px 1px rgba(69,65,78,.08);
+    background-color: #fff;
+    padding: 24px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+}
+
+.tab,
+.tab-active {
+    padding: 12px;
+    margin-right: 6px;
+    border-radius: 3px;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+}
+
+.tab {
+    border: 1px solid gray;
+}
+
+.tab:hover {
+    color: white;
+    background-color: #36a3f7;
+    border: 1px solid white;
+}
+
+.tab-active {
+    border: 1px solid #36a3f7;
+    background-color: #36a3f7;
+    color: white;
+}

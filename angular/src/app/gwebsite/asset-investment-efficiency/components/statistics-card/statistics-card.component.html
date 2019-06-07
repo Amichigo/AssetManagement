@@ -1,0 +1,19 @@
+<div class="statistics-card">
+   <div class="statistics-card-header">
+      <h4 class="statistics-card-title">{{ title }}</h4>
+      <p class="statistics-card-date-range">
+         <i class="far fa-calendar-alt"></i>&nbsp;&nbsp;{{ dateRange }}
+      </p>  
+   </div>
+
+   <div class="statistics-card-body">
+      <span class="statistics-card-value">{{ value ? addThousandSeparator(value) : 0 }}</span>
+         <span *ngIf="showComparison" [class]="tendency === 'up' ? 'statistics-card-offset--up' : 'statistics-card-offset--down'">
+            <i [class]="tendency === 'up' > 0 ? 'fas fa-caret-up' : 'fas fa-caret-down'"></i> {{ rate ? rate.toFixed(2) : 0 }}%
+         </span>
+   </div>
+
+   <div class="statistics-card-footer">
+      <div>Đơn vị tính: {{ unit }}</div>
+   </div>
+</div>

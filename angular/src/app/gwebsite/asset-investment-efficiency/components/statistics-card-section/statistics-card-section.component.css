@@ -1,0 +1,14 @@
+.statistics-card-section {
+    margin: 0 16px;
+    margin-bottom: 24px;
+}
+
+.statistics-card-section-header {
+    margin-bottom: 12px;
+}
+
+.statistics-card-section-body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 12px;
+}

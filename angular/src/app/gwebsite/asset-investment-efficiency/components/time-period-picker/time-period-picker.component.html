@@ -1,0 +1,25 @@
+<div class="time-period-picker">
+    <div class="row">
+        <div class="col-md-4">
+            <label for="time-period-picker-label">{{ title }}</label>
+            <select id="time-period-picker-select" class="form-control" [(ngModel)]="timePeriod" (ngModelChange)="onChangeTimePeriod()">
+                <option value="0">Hôm nay</option>
+                <option value="1">Tuần này</option>
+                <option value="2">Tháng này</option>
+                <option value="3">Quý này</option>
+                <option value="4">Năm nay</option>
+                <option value="5">Khoảng thời gian khác</option>
+            </select>
+        </div>
+
+        <div class="col-md-4" *ngIf="showDateRangePicker">
+            <label for="starting-date">Ngày bắt đầu</label>
+            <input type="date" id="starting-date" class="form-control" [(ngModel)]="startingDate" (ngModelChange)="onUpdate()" required />
+        </div>
+
+        <div class="col-md-4" *ngIf="showDateRangePicker">
+            <label for="ending-date">Ngày kết thúc</label>
+            <input type="date" id="ending-date" class="form-control" [(ngModel)]="endingDate" (ngModelChange)="onUpdate()" required />
+        </div>
+    </div>
+</div>

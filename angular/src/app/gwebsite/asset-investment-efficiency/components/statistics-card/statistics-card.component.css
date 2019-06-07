@@ -1,0 +1,45 @@
+.statistics-cards {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-column-gap: 12px;
+}
+
+.statistics-card {
+   box-shadow: 0 1px 15px 1px rgba(69,65,78,.08);
+   background-color: #fff;
+   padding: 24px;
+   border-radius: 6px;
+}
+
+.statistics-card-date-range {
+   font-size: 12px;
+   color: #90949c;
+}
+
+.statistics-card-value {
+   font-weight: bold;
+   font-size: 28px;
+   line-height: 36px;
+}
+
+.statistics-card-title {
+   font-size: 15px;
+}
+
+.statistics-card-offset--down,
+.statistics-card-offset--up {
+   font-weight: bold;
+   margin-left: 6px;
+}
+
+.statistics-card-offset--down {
+   color: #fa3e3e;
+}
+
+.statistics-card-offset--up {
+   color: #42b72a;
+}
+
+.statistics-card-footer {
+   color: #90949c;
+}

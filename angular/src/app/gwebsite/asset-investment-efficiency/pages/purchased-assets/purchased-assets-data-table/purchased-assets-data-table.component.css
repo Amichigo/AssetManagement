@@ -1,0 +1,121 @@
+.table tr td {
+    background-color: white;
+}
+
+table {
+    border: 1px solid #32383e;
+    margin-bottom: 18px;
+}
+
+table tr:hover td {
+    background-color: #e9ebee;
+}
+
+.data-table-section label {
+    font-weight: bold;
+}
+
+.data-table-section-body {
+    background-color: white;
+    padding: 32px;
+    border-radius: 3px;
+}
+
+.data-table-section {
+    margin: 0 16px;
+}
+
+.data-table-section-header {
+    margin-bottom: 12px;
+}
+
+.data-table-section-body {
+    box-shadow: 0 1px 15px 1px rgba(69,65,78,.08);
+    background-color: #fff;
+    padding: 24px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+}
+
+.paging-button,
+.button {
+    margin-right: 6px;
+    border-radius: 3px;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    border: 1px solid gray;
+    text-align: center;
+    display: inline-block;
+}
+
+.button {
+    padding: 12px;
+}
+
+.paging-button {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.paging-button:hover,
+.button:hover {
+    color: white;
+    background-color: #36a3f7;
+    border: 1px solid white;
+}
+
+table tr:nth-child(even) td {
+    background-color: #F2F3F8;
+}
+
+.popup-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 100;
+    overflow: hidden;
+}
+
+.popup {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 15px 1px rgba(69,65,78,.08);
+    width: 80%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup-header {
+    margin: 12px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.popup-body {
+    padding: 12px;
+    overflow-y: scroll;
+}
+
+.popup-header-title {
+    font-size: 16px;
+}
+
+.popup-header-close-button {
+    color: gray;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+table tr th {
+    user-select: none;
+}
