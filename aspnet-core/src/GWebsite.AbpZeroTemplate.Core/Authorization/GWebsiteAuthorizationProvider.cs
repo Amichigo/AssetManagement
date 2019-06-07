@@ -301,6 +301,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             debit11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Debit11_Edit, L("EditingDebit11"));
             debit11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Debit11_Delete, L("DeletingDebit11"));
 
+            var credit11 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Credit11, L("Credit11"));
+            credit11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Credit11_Create, L("CreatingNewCredit11"));
+            credit11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Credit11_Edit, L("EditingCredit11"));
+            credit11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Credit11_Delete, L("DeletingCredit11"));
+
         }
         private static ILocalizableString L(string name)
         {

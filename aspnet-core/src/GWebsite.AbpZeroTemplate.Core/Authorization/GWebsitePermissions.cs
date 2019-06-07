@@ -283,5 +283,10 @@
         public const string Pages_Administration_Debit11_Edit = "Pages.Administration.Debit11.Edit";
         public const string Pages_Administration_Debit11_Delete = "Pages.Administration.Debit11.Delete";
 
+        public const string Pages_Administration_Credit11 = "Pages.Administration.Credit11";
+        public const string Pages_Administration_Credit11_Create = "Pages.Administration.Credit11.Create";
+        public const string Pages_Administration_Credit11_Edit = "Pages.Administration.Credit11.Edit";
+        public const string Pages_Administration_Credit11_Delete = "Pages.Administration.Credit11.Delete";
+
     }
 }
