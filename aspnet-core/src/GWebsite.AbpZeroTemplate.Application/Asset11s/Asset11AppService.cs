@@ -7,6 +7,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.Asset11s;
 using GWebsite.AbpZeroTemplate.Application.Share.Asset11s.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
 using GWebsite.AbpZeroTemplate.Core.Models;
+using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 
@@ -99,6 +100,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset11s
                 items.Select(item => ObjectMapper.Map<Asset11Dto>(item)).ToList());
         }
 
+        // hoach toan
         public void Accounting()
         {
             var listAsset = asset11Repository.GetAll().Where(x => !x.IsDelete && !x.IsAccounted);
@@ -112,6 +114,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset11s
                     debitAccountVar.AssetId = asset.AssetId;
                     debitAccountVar.AccountType = 331;
                     debitAccountVar.Price = (((double)asset.Vat / 100) * asset.Price) * asset.Quantity;
+                    debitAccount.Price = Math.Round(debitAccount.Price, 3);
                     SetAuditInsert(debitAccountVar);
                     debit11Repository.Insert(debitAccountVar);
 
@@ -142,6 +145,36 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset11s
                 CurrentUnitOfWork.SaveChanges();
             }
 
+        }
+
+        // Khau hao
+        public void Depreciating()
+        {
+            var listAsset = asset11Repository.GetAll().Where(x => !x.IsDelete && !x.IsDepreciated);
+            foreach (var asset in listAsset)
+            {
+                if (asset.Time != 0)
+                {
+                    var debitAccount = new Debit11();
+                    debitAccount.AssetId = asset.AssetId;
+                    debitAccount.AccountType = 134;
+                    debitAccount.Price = ((asset.Price / asset.Time) / 12) * asset.Quantity;
+                    debitAccount.Price = Math.Round(debitAccount.Price, 3);
+                    SetAuditInsert(debitAccount);
+                    debit11Repository.Insert(debitAccount);
+
+                    var creditAccount = new Credit11();
+                    creditAccount.AssetId = asset.AssetId;
+                    creditAccount.AccountType = 2141;
+                    creditAccount.Price = debitAccount.Price;
+                    SetAuditInsert(creditAccount);
+                    credit11Repository.Insert(creditAccount);
+
+                    asset.IsDepreciated = true;
+                    CurrentUnitOfWork.SaveChanges();
+
+                }
+            }
         }
 
         #endregion

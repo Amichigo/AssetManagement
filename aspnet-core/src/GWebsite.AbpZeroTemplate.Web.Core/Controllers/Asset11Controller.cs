@@ -33,6 +33,19 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
             asset11AppService.CreateOrEditAsset11(input);
         }
 
+        [HttpPost]
+        public void Accounting()
+        {
+            asset11AppService.Accounting();
+        }
+
+
+        [HttpPost]
+        public void Depreciating()
+        {
+            asset11AppService.Depreciating();
+        }
+
         [HttpDelete("{id}")]
         public void DeleteAsset11(int id)
         {

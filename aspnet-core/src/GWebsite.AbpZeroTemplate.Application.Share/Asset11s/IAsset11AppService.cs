@@ -10,5 +10,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Asset11s
         void DeleteAsset11(int id);
         PagedResultDto<Asset11Dto> GetAsset11s(Asset11Filter input);
         Asset11ForViewDto GetAsset11ForView(int id);
+        void Accounting(); // hoach toan
+        void Depreciating(); // khau hao
     }
 }
