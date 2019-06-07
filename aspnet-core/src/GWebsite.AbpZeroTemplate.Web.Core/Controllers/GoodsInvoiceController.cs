@@ -30,6 +30,12 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
+        public PagedResultDto<ContractDto> GetContractsByFilter(ContractFilter contractFilter)
+        {
+            return goodsinvoiceAppService.GetContracts(contractFilter);
+        }
+
+        [HttpGet]
         public GoodsInvoiceInput GetGoodsInvoiceForEdit(int id)
         {
             return goodsinvoiceAppService.GetGoodsInvoiceForEdit(id);

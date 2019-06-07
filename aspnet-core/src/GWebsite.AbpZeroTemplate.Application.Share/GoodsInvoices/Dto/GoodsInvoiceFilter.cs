@@ -13,6 +13,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.GoodsInvoices.Dto
     /// </summary>
     public class GoodsInvoiceFilter : PagedAndSortedInputDto
     {
-        public string PlanName { get; set; }
+        public string POName { get; set; }
     }
 }

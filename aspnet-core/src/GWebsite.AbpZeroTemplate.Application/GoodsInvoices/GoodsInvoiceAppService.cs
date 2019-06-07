@@ -106,9 +106,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.GoodsInvoices
             var query = goodsinvoiceRepository.GetAll().Where(x => !x.IsDelete);
 
             // filter by value
-            if (input.PlanName != null)
+            if (input.POName != null)
             {
-                query = query.Where(x => x.PlanName.ToLower().Equals(input.PlanName));
+                query = query.Where(x => x.POName.ToLower().Equals(input.POName));
             }
 
             var totalCount = query.Count();
@@ -126,6 +126,33 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.GoodsInvoices
             return new PagedResultDto<GoodsInvoiceDto>(
                 totalCount,
                 items.Select(item => ObjectMapper.Map<GoodsInvoiceDto>(item)).ToList());
+        }
+
+        public PagedResultDto<ContractDto> GetContracts(ContractFilter input)
+        {
+            var query = contractRepository.GetAll().Where(x => !x.IsDelete);
+
+            // filter by value
+            if (input.ContractName != null)
+            {
+                query = query.Where(x => x.ContractName.ToLower().Equals(input.ContractName));
+            }
+
+            var totalCount = query.Count();
+
+            // sorting
+            if (!string.IsNullOrWhiteSpace(input.Sorting))
+            {
+                query = query.OrderBy(input.Sorting);
+            }
+
+            // paging
+            var items = query.PageBy(input).ToList();
+
+            // result
+            return new PagedResultDto<ContractDto>(
+                totalCount,
+                items.Select(item => ObjectMapper.Map<ContractDto>(item)).ToList());
         }
 
         public IList<GoodsContract> GetGoodsContract(string ContractCode)

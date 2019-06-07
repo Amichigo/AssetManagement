@@ -35,6 +35,7 @@ export class PhieuGoiHangComponent extends AppComponentBase implements AfterView
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
+        this.ngAfterViewInit();
     }
 
     /**

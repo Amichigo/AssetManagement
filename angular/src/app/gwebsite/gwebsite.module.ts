@@ -18,6 +18,7 @@ import { SupplierServiceProxy } from '@shared/service-proxies/service-proxies';
 import { ContractServiceProxy } from '@shared/service-proxies/service-proxies';
 import { GoodsInvoiceServiceProxy } from '@shared/service-proxies/service-proxies';
 import { GoodsServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ContractPaymentServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CustomerComponent } from './customer/customer.component';
 import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
 import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
@@ -77,6 +78,7 @@ import { CreateOrEditHangHoaModalComponent } from './hanghoa/create-or-edit-hang
         ContractServiceProxy,
         GoodsInvoiceServiceProxy,
         GoodsServiceProxy,
+        ContractPaymentServiceProxy,
     ]
 })
 export class GWebsiteModule { }

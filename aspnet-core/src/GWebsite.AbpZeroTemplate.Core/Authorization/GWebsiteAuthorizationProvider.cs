@@ -91,6 +91,12 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             hanghoa.CreateChildPermission(GWebsitePermissions.Pages_Administration_Goods_Create, L("CreatingNewGoods"));
             hanghoa.CreateChildPermission(GWebsitePermissions.Pages_Administration_Goods_Edit, L("EditingGoods"));
             hanghoa.CreateChildPermission(GWebsitePermissions.Pages_Administration_Goods_Delete, L("DeletingGoods"));
+
+            ///contractPayment
+            var contractpayment = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractPayment, L("ContractPayment"));
+            contractpayment.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractPayment_Create, L("CreatingNewContractPayment"));
+            contractpayment.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractPayment_Edit, L("EditingContractPayment"));
+            contractpayment.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractPayment_Delete, L("DeletingContractPayment"));
         }
 
         private static ILocalizableString L(string name)

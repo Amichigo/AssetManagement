@@ -2173,6 +2173,61 @@ export class ContractServiceProxy {
     }
 
     /**
+     * @id (optional) 
+     * @return Success
+     */
+    getContractComboboxForEditAsync(id: number | null | undefined): Observable<ContractOutput> {
+        let url_ = this.baseUrl + "/api/Contract/GetContractComboboxForEditAsync?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetContractComboboxForEditAsync(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetContractComboboxForEditAsync(<any>response_);
+                } catch (e) {
+                    return <Observable<ContractOutput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ContractOutput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetContractComboboxForEditAsync(response: HttpResponseBase): Observable<ContractOutput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? ContractOutput.fromJS(resultData200) : new ContractOutput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ContractOutput>(<any>null);
+    }
+
+    /**
      * @input (optional) 
      * @return Success
      */
@@ -2328,6 +2383,295 @@ export class ContractServiceProxy {
             }));
         }
         return _observableOf<ContractForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
+export class ContractPaymentServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @contractCode (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getContractPaymentsByFilter(contractCode: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfContractPaymentDto> {
+        let url_ = this.baseUrl + "/api/ContractPayment/GetContractPaymentsByFilter?";
+        if (contractCode !== undefined)
+            url_ += "ContractCode=" + encodeURIComponent("" + contractCode) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetContractPaymentsByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetContractPaymentsByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfContractPaymentDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfContractPaymentDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetContractPaymentsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfContractPaymentDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfContractPaymentDto.fromJS(resultData200) : new PagedResultDtoOfContractPaymentDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfContractPaymentDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getContractPaymentForEdit(id: number | null | undefined): Observable<ContractPaymentInput> {
+        let url_ = this.baseUrl + "/api/ContractPayment/GetContractPaymentForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetContractPaymentForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetContractPaymentForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<ContractPaymentInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ContractPaymentInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetContractPaymentForEdit(response: HttpResponseBase): Observable<ContractPaymentInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? ContractPaymentInput.fromJS(resultData200) : new ContractPaymentInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ContractPaymentInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditContractPayment(input: ContractPaymentInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/ContractPayment/CreateOrEditContractPayment";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditContractPayment(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditContractPayment(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditContractPayment(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteContractPayment(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/ContractPayment/DeleteContractPayment/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteContractPayment(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteContractPayment(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteContractPayment(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getContractPaymentForView(id: number | null | undefined): Observable<ContractPaymentForViewDto> {
+        let url_ = this.baseUrl + "/api/ContractPayment/GetContractPaymentForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetContractPaymentForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetContractPaymentForView(<any>response_);
+                } catch (e) {
+                    return <Observable<ContractPaymentForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ContractPaymentForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetContractPaymentForView(response: HttpResponseBase): Observable<ContractPaymentForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? ContractPaymentForViewDto.fromJS(resultData200) : new ContractPaymentForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ContractPaymentForViewDto>(<any>null);
     }
 }
 
@@ -4083,16 +4427,16 @@ export class GoodsInvoiceServiceProxy {
     }
 
     /**
-     * @planName (optional) 
+     * @pOName (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getGoodsInvoicesByFilter(planName: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfGoodsInvoiceDto> {
+    getGoodsInvoicesByFilter(pOName: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfGoodsInvoiceDto> {
         let url_ = this.baseUrl + "/api/GoodsInvoice/GetGoodsInvoicesByFilter?";
-        if (planName !== undefined)
-            url_ += "PlanName=" + encodeURIComponent("" + planName) + "&"; 
+        if (pOName !== undefined)
+            url_ += "POName=" + encodeURIComponent("" + pOName) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -4144,6 +4488,70 @@ export class GoodsInvoiceServiceProxy {
             }));
         }
         return _observableOf<PagedResultDtoOfGoodsInvoiceDto>(<any>null);
+    }
+
+    /**
+     * @contractName (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getContractsByFilter(contractName: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfContractDto> {
+        let url_ = this.baseUrl + "/api/GoodsInvoice/GetContractsByFilter?";
+        if (contractName !== undefined)
+            url_ += "ContractName=" + encodeURIComponent("" + contractName) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetContractsByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetContractsByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfContractDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfContractDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetContractsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfContractDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfContractDto.fromJS(resultData200) : new PagedResultDtoOfContractDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfContractDto>(<any>null);
     }
 
     /**
@@ -13576,6 +13984,21 @@ export class ContractDto implements IContractDto {
     approvalStatus!: string | undefined;
     unitAcceptedCode!: string | undefined;
     goodsName!: string | undefined;
+    content!: string | undefined;
+    totalPrice!: string | undefined;
+    totalPricePay!: string | undefined;
+    contractForm!: string | undefined;
+    guaranteeForm!: string | undefined;
+    contractConfirmNumber!: string | undefined;
+    guaranteeConfirmNumber!: string | undefined;
+    contractBank!: string | undefined;
+    guaranteeBank!: string | undefined;
+    contractRatio!: string | undefined;
+    contractPrice!: string | undefined;
+    guaranteeRatio!: string | undefined;
+    guaranteePrice!: string | undefined;
+    contractExpire!: string | undefined;
+    guaranteeExpire!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IContractDto) {
@@ -13597,6 +14020,21 @@ export class ContractDto implements IContractDto {
             this.approvalStatus = data["approvalStatus"];
             this.unitAcceptedCode = data["unitAcceptedCode"];
             this.goodsName = data["goodsName"];
+            this.content = data["content"];
+            this.totalPrice = data["totalPrice"];
+            this.totalPricePay = data["totalPricePay"];
+            this.contractForm = data["contractForm"];
+            this.guaranteeForm = data["guaranteeForm"];
+            this.contractConfirmNumber = data["contractConfirmNumber"];
+            this.guaranteeConfirmNumber = data["guaranteeConfirmNumber"];
+            this.contractBank = data["contractBank"];
+            this.guaranteeBank = data["guaranteeBank"];
+            this.contractRatio = data["contractRatio"];
+            this.contractPrice = data["contractPrice"];
+            this.guaranteeRatio = data["guaranteeRatio"];
+            this.guaranteePrice = data["guaranteePrice"];
+            this.contractExpire = data["contractExpire"];
+            this.guaranteeExpire = data["guaranteeExpire"];
             this.id = data["id"];
         }
     }
@@ -13618,6 +14056,21 @@ export class ContractDto implements IContractDto {
         data["approvalStatus"] = this.approvalStatus;
         data["unitAcceptedCode"] = this.unitAcceptedCode;
         data["goodsName"] = this.goodsName;
+        data["content"] = this.content;
+        data["totalPrice"] = this.totalPrice;
+        data["totalPricePay"] = this.totalPricePay;
+        data["contractForm"] = this.contractForm;
+        data["guaranteeForm"] = this.guaranteeForm;
+        data["contractConfirmNumber"] = this.contractConfirmNumber;
+        data["guaranteeConfirmNumber"] = this.guaranteeConfirmNumber;
+        data["contractBank"] = this.contractBank;
+        data["guaranteeBank"] = this.guaranteeBank;
+        data["contractRatio"] = this.contractRatio;
+        data["contractPrice"] = this.contractPrice;
+        data["guaranteeRatio"] = this.guaranteeRatio;
+        data["guaranteePrice"] = this.guaranteePrice;
+        data["contractExpire"] = this.contractExpire;
+        data["guaranteeExpire"] = this.guaranteeExpire;
         data["id"] = this.id;
         return data; 
     }
@@ -13632,6 +14085,21 @@ export interface IContractDto {
     approvalStatus: string | undefined;
     unitAcceptedCode: string | undefined;
     goodsName: string | undefined;
+    content: string | undefined;
+    totalPrice: string | undefined;
+    totalPricePay: string | undefined;
+    contractForm: string | undefined;
+    guaranteeForm: string | undefined;
+    contractConfirmNumber: string | undefined;
+    guaranteeConfirmNumber: string | undefined;
+    contractBank: string | undefined;
+    guaranteeBank: string | undefined;
+    contractRatio: string | undefined;
+    contractPrice: string | undefined;
+    guaranteeRatio: string | undefined;
+    guaranteePrice: string | undefined;
+    contractExpire: string | undefined;
+    guaranteeExpire: string | undefined;
     id: number | undefined;
 }
 
@@ -13644,6 +14112,21 @@ export class ContractInput implements IContractInput {
     approvalStatus!: string | undefined;
     unitAcceptedCode!: string | undefined;
     goodsName!: string | undefined;
+    content!: string | undefined;
+    totalPrice!: string | undefined;
+    totalPricePay!: string | undefined;
+    contractForm!: string | undefined;
+    guaranteeForm!: string | undefined;
+    contractConfirmNumber!: string | undefined;
+    guaranteeConfirmNumber!: string | undefined;
+    contractBank!: string | undefined;
+    guaranteeBank!: string | undefined;
+    contractRatio!: string | undefined;
+    contractPrice!: string | undefined;
+    guaranteeRatio!: string | undefined;
+    guaranteePrice!: string | undefined;
+    contractExpire!: string | undefined;
+    guaranteeExpire!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IContractInput) {
@@ -13665,6 +14148,21 @@ export class ContractInput implements IContractInput {
             this.approvalStatus = data["approvalStatus"];
             this.unitAcceptedCode = data["unitAcceptedCode"];
             this.goodsName = data["goodsName"];
+            this.content = data["content"];
+            this.totalPrice = data["totalPrice"];
+            this.totalPricePay = data["totalPricePay"];
+            this.contractForm = data["contractForm"];
+            this.guaranteeForm = data["guaranteeForm"];
+            this.contractConfirmNumber = data["contractConfirmNumber"];
+            this.guaranteeConfirmNumber = data["guaranteeConfirmNumber"];
+            this.contractBank = data["contractBank"];
+            this.guaranteeBank = data["guaranteeBank"];
+            this.contractRatio = data["contractRatio"];
+            this.contractPrice = data["contractPrice"];
+            this.guaranteeRatio = data["guaranteeRatio"];
+            this.guaranteePrice = data["guaranteePrice"];
+            this.contractExpire = data["contractExpire"];
+            this.guaranteeExpire = data["guaranteeExpire"];
             this.id = data["id"];
         }
     }
@@ -13686,6 +14184,21 @@ export class ContractInput implements IContractInput {
         data["approvalStatus"] = this.approvalStatus;
         data["unitAcceptedCode"] = this.unitAcceptedCode;
         data["goodsName"] = this.goodsName;
+        data["content"] = this.content;
+        data["totalPrice"] = this.totalPrice;
+        data["totalPricePay"] = this.totalPricePay;
+        data["contractForm"] = this.contractForm;
+        data["guaranteeForm"] = this.guaranteeForm;
+        data["contractConfirmNumber"] = this.contractConfirmNumber;
+        data["guaranteeConfirmNumber"] = this.guaranteeConfirmNumber;
+        data["contractBank"] = this.contractBank;
+        data["guaranteeBank"] = this.guaranteeBank;
+        data["contractRatio"] = this.contractRatio;
+        data["contractPrice"] = this.contractPrice;
+        data["guaranteeRatio"] = this.guaranteeRatio;
+        data["guaranteePrice"] = this.guaranteePrice;
+        data["contractExpire"] = this.contractExpire;
+        data["guaranteeExpire"] = this.guaranteeExpire;
         data["id"] = this.id;
         return data; 
     }
@@ -13700,6 +14213,21 @@ export interface IContractInput {
     approvalStatus: string | undefined;
     unitAcceptedCode: string | undefined;
     goodsName: string | undefined;
+    content: string | undefined;
+    totalPrice: string | undefined;
+    totalPricePay: string | undefined;
+    contractForm: string | undefined;
+    guaranteeForm: string | undefined;
+    contractConfirmNumber: string | undefined;
+    guaranteeConfirmNumber: string | undefined;
+    contractBank: string | undefined;
+    guaranteeBank: string | undefined;
+    contractRatio: string | undefined;
+    contractPrice: string | undefined;
+    guaranteeRatio: string | undefined;
+    guaranteePrice: string | undefined;
+    contractExpire: string | undefined;
+    guaranteeExpire: string | undefined;
     id: number | undefined;
 }
 
@@ -13855,6 +14383,54 @@ export interface ISupplierDto {
     id: number | undefined;
 }
 
+export class ContractOutput implements IContractOutput {
+    contract!: ContractDto | undefined;
+    contracts!: ComboboxItemDto[] | undefined;
+
+    constructor(data?: IContractOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.contract = data["contract"] ? ContractDto.fromJS(data["contract"]) : <any>undefined;
+            if (data["contracts"] && data["contracts"].constructor === Array) {
+                this.contracts = [];
+                for (let item of data["contracts"])
+                    this.contracts.push(ComboboxItemDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): ContractOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ContractOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["contract"] = this.contract ? this.contract.toJSON() : <any>undefined;
+        if (this.contracts && this.contracts.constructor === Array) {
+            data["contracts"] = [];
+            for (let item of this.contracts)
+                data["contracts"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IContractOutput {
+    contract: ContractDto | undefined;
+    contracts: ComboboxItemDto[] | undefined;
+}
+
 export class ContractForViewDto implements IContractForViewDto {
     contractCode!: string | undefined;
     bidCode!: string | undefined;
@@ -13864,6 +14440,21 @@ export class ContractForViewDto implements IContractForViewDto {
     approvalStatus!: string | undefined;
     unitAcceptedCode!: string | undefined;
     goodsName!: string | undefined;
+    content!: string | undefined;
+    totalPrice!: string | undefined;
+    totalPricePay!: string | undefined;
+    contractForm!: string | undefined;
+    guaranteeForm!: string | undefined;
+    contractConfirmNumber!: string | undefined;
+    guaranteeConfirmNumber!: string | undefined;
+    contractBank!: string | undefined;
+    guaranteeBank!: string | undefined;
+    contractRatio!: string | undefined;
+    contractPrice!: string | undefined;
+    guaranteeRatio!: string | undefined;
+    guaranteePrice!: string | undefined;
+    contractExpire!: string | undefined;
+    guaranteeExpire!: string | undefined;
 
     constructor(data?: IContractForViewDto) {
         if (data) {
@@ -13884,6 +14475,21 @@ export class ContractForViewDto implements IContractForViewDto {
             this.approvalStatus = data["approvalStatus"];
             this.unitAcceptedCode = data["unitAcceptedCode"];
             this.goodsName = data["goodsName"];
+            this.content = data["content"];
+            this.totalPrice = data["totalPrice"];
+            this.totalPricePay = data["totalPricePay"];
+            this.contractForm = data["contractForm"];
+            this.guaranteeForm = data["guaranteeForm"];
+            this.contractConfirmNumber = data["contractConfirmNumber"];
+            this.guaranteeConfirmNumber = data["guaranteeConfirmNumber"];
+            this.contractBank = data["contractBank"];
+            this.guaranteeBank = data["guaranteeBank"];
+            this.contractRatio = data["contractRatio"];
+            this.contractPrice = data["contractPrice"];
+            this.guaranteeRatio = data["guaranteeRatio"];
+            this.guaranteePrice = data["guaranteePrice"];
+            this.contractExpire = data["contractExpire"];
+            this.guaranteeExpire = data["guaranteeExpire"];
         }
     }
 
@@ -13904,6 +14510,21 @@ export class ContractForViewDto implements IContractForViewDto {
         data["approvalStatus"] = this.approvalStatus;
         data["unitAcceptedCode"] = this.unitAcceptedCode;
         data["goodsName"] = this.goodsName;
+        data["content"] = this.content;
+        data["totalPrice"] = this.totalPrice;
+        data["totalPricePay"] = this.totalPricePay;
+        data["contractForm"] = this.contractForm;
+        data["guaranteeForm"] = this.guaranteeForm;
+        data["contractConfirmNumber"] = this.contractConfirmNumber;
+        data["guaranteeConfirmNumber"] = this.guaranteeConfirmNumber;
+        data["contractBank"] = this.contractBank;
+        data["guaranteeBank"] = this.guaranteeBank;
+        data["contractRatio"] = this.contractRatio;
+        data["contractPrice"] = this.contractPrice;
+        data["guaranteeRatio"] = this.guaranteeRatio;
+        data["guaranteePrice"] = this.guaranteePrice;
+        data["contractExpire"] = this.contractExpire;
+        data["guaranteeExpire"] = this.guaranteeExpire;
         return data; 
     }
 }
@@ -13917,6 +14538,269 @@ export interface IContractForViewDto {
     approvalStatus: string | undefined;
     unitAcceptedCode: string | undefined;
     goodsName: string | undefined;
+    content: string | undefined;
+    totalPrice: string | undefined;
+    totalPricePay: string | undefined;
+    contractForm: string | undefined;
+    guaranteeForm: string | undefined;
+    contractConfirmNumber: string | undefined;
+    guaranteeConfirmNumber: string | undefined;
+    contractBank: string | undefined;
+    guaranteeBank: string | undefined;
+    contractRatio: string | undefined;
+    contractPrice: string | undefined;
+    guaranteeRatio: string | undefined;
+    guaranteePrice: string | undefined;
+    contractExpire: string | undefined;
+    guaranteeExpire: string | undefined;
+}
+
+export class PagedResultDtoOfContractPaymentDto implements IPagedResultDtoOfContractPaymentDto {
+    totalCount!: number | undefined;
+    items!: ContractPaymentDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfContractPaymentDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(ContractPaymentDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfContractPaymentDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfContractPaymentDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfContractPaymentDto {
+    totalCount: number | undefined;
+    items: ContractPaymentDto[] | undefined;
+}
+
+export class ContractPaymentDto implements IContractPaymentDto {
+    contractPaymentCode!: string | undefined;
+    timePayment!: string | undefined;
+    paymentDate!: string | undefined;
+    ratio!: string | undefined;
+    money!: string | undefined;
+    content!: string | undefined;
+    contractCode!: string | undefined;
+    disable!: boolean | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IContractPaymentDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.contractPaymentCode = data["contractPaymentCode"];
+            this.timePayment = data["timePayment"];
+            this.paymentDate = data["paymentDate"];
+            this.ratio = data["ratio"];
+            this.money = data["money"];
+            this.content = data["content"];
+            this.contractCode = data["contractCode"];
+            this.disable = data["disable"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ContractPaymentDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ContractPaymentDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["contractPaymentCode"] = this.contractPaymentCode;
+        data["timePayment"] = this.timePayment;
+        data["paymentDate"] = this.paymentDate;
+        data["ratio"] = this.ratio;
+        data["money"] = this.money;
+        data["content"] = this.content;
+        data["contractCode"] = this.contractCode;
+        data["disable"] = this.disable;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IContractPaymentDto {
+    contractPaymentCode: string | undefined;
+    timePayment: string | undefined;
+    paymentDate: string | undefined;
+    ratio: string | undefined;
+    money: string | undefined;
+    content: string | undefined;
+    contractCode: string | undefined;
+    disable: boolean | undefined;
+    id: number | undefined;
+}
+
+export class ContractPaymentInput implements IContractPaymentInput {
+    contractPaymentCode!: string | undefined;
+    timePayment!: string | undefined;
+    paymentDate!: string | undefined;
+    ratio!: string | undefined;
+    money!: string | undefined;
+    content!: string | undefined;
+    contractCode!: string | undefined;
+    disable!: boolean | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IContractPaymentInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.contractPaymentCode = data["contractPaymentCode"];
+            this.timePayment = data["timePayment"];
+            this.paymentDate = data["paymentDate"];
+            this.ratio = data["ratio"];
+            this.money = data["money"];
+            this.content = data["content"];
+            this.contractCode = data["contractCode"];
+            this.disable = data["disable"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ContractPaymentInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ContractPaymentInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["contractPaymentCode"] = this.contractPaymentCode;
+        data["timePayment"] = this.timePayment;
+        data["paymentDate"] = this.paymentDate;
+        data["ratio"] = this.ratio;
+        data["money"] = this.money;
+        data["content"] = this.content;
+        data["contractCode"] = this.contractCode;
+        data["disable"] = this.disable;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IContractPaymentInput {
+    contractPaymentCode: string | undefined;
+    timePayment: string | undefined;
+    paymentDate: string | undefined;
+    ratio: string | undefined;
+    money: string | undefined;
+    content: string | undefined;
+    contractCode: string | undefined;
+    disable: boolean | undefined;
+    id: number | undefined;
+}
+
+export class ContractPaymentForViewDto implements IContractPaymentForViewDto {
+    contractPaymentCode!: string | undefined;
+    timePayment!: string | undefined;
+    paymentDate!: string | undefined;
+    ratio!: string | undefined;
+    money!: string | undefined;
+    content!: string | undefined;
+    contractCode!: string | undefined;
+    disable!: boolean | undefined;
+
+    constructor(data?: IContractPaymentForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.contractPaymentCode = data["contractPaymentCode"];
+            this.timePayment = data["timePayment"];
+            this.paymentDate = data["paymentDate"];
+            this.ratio = data["ratio"];
+            this.money = data["money"];
+            this.content = data["content"];
+            this.contractCode = data["contractCode"];
+            this.disable = data["disable"];
+        }
+    }
+
+    static fromJS(data: any): ContractPaymentForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ContractPaymentForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["contractPaymentCode"] = this.contractPaymentCode;
+        data["timePayment"] = this.timePayment;
+        data["paymentDate"] = this.paymentDate;
+        data["ratio"] = this.ratio;
+        data["money"] = this.money;
+        data["content"] = this.content;
+        data["contractCode"] = this.contractCode;
+        data["disable"] = this.disable;
+        return data; 
+    }
+}
+
+export interface IContractPaymentForViewDto {
+    contractPaymentCode: string | undefined;
+    timePayment: string | undefined;
+    paymentDate: string | undefined;
+    ratio: string | undefined;
+    money: string | undefined;
+    content: string | undefined;
+    contractCode: string | undefined;
+    disable: boolean | undefined;
 }
 
 export class PagedResultDtoOfCustomerDto implements IPagedResultDtoOfCustomerDto {
@@ -14158,7 +15042,8 @@ export interface IPagedResultDtoOfDemoModelDto {
 export class DemoModelDto implements IDemoModelDto {
     value!: number | undefined;
     info!: string | undefined;
-    date!: moment.Moment | undefined;
+    date!: string | undefined;
+    id!: number | undefined;
 
     constructor(data?: IDemoModelDto) {
         if (data) {
@@ -14173,7 +15058,8 @@ export class DemoModelDto implements IDemoModelDto {
         if (data) {
             this.value = data["value"];
             this.info = data["info"];
-            this.date = data["date"] ? moment(data["date"].toString()) : <any>undefined;
+            this.date = data["date"];
+            this.id = data["id"];
         }
     }
 
@@ -14188,7 +15074,8 @@ export class DemoModelDto implements IDemoModelDto {
         data = typeof data === 'object' ? data : {};
         data["value"] = this.value;
         data["info"] = this.info;
-        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
+        data["date"] = this.date;
+        data["id"] = this.id;
         return data; 
     }
 }
@@ -14196,13 +15083,14 @@ export class DemoModelDto implements IDemoModelDto {
 export interface IDemoModelDto {
     value: number | undefined;
     info: string | undefined;
-    date: moment.Moment | undefined;
+    date: string | undefined;
+    id: number | undefined;
 }
 
 export class DemoModelInput implements IDemoModelInput {
     value!: number | undefined;
     info!: string | undefined;
-    date!: moment.Moment | undefined;
+    date!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IDemoModelInput) {
@@ -14218,7 +15106,7 @@ export class DemoModelInput implements IDemoModelInput {
         if (data) {
             this.value = data["value"];
             this.info = data["info"];
-            this.date = data["date"] ? moment(data["date"].toString()) : <any>undefined;
+            this.date = data["date"];
             this.id = data["id"];
         }
     }
@@ -14234,7 +15122,7 @@ export class DemoModelInput implements IDemoModelInput {
         data = typeof data === 'object' ? data : {};
         data["value"] = this.value;
         data["info"] = this.info;
-        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
+        data["date"] = this.date;
         data["id"] = this.id;
         return data; 
     }
@@ -14243,7 +15131,7 @@ export class DemoModelInput implements IDemoModelInput {
 export interface IDemoModelInput {
     value: number | undefined;
     info: string | undefined;
-    date: moment.Moment | undefined;
+    date: string | undefined;
     id: number | undefined;
 }
 
@@ -15348,13 +16236,20 @@ export interface IPagedResultDtoOfGoodsInvoiceDto {
 }
 
 export class GoodsInvoiceDto implements IGoodsInvoiceDto {
-    planCode!: string | undefined;
-    planName!: string | undefined;
-    contractName!: string | undefined;
+    poCode!: string | undefined;
+    poDate!: string | undefined;
+    poName!: string | undefined;
+    reportNumber!: string | undefined;
+    reportReceiveDate!: string | undefined;
+    reportConfirmDate!: string | undefined;
+    contractCode!: string | undefined;
+    contractId!: string | undefined;
+    totalPriceContract!: string | undefined;
+    totalPriceContractPayment!: string | undefined;
+    contractContent!: string | undefined;
+    unitCode!: string | undefined;
     unitName!: string | undefined;
-    goodsName!: string | undefined;
-    amount!: string | undefined;
-    price!: string | undefined;
+    unitAddress!: string | undefined;
     paymentProcess!: string | undefined;
     shippingProcess!: string | undefined;
     billStatus!: string | undefined;
@@ -15371,13 +16266,20 @@ export class GoodsInvoiceDto implements IGoodsInvoiceDto {
 
     init(data?: any) {
         if (data) {
-            this.planCode = data["planCode"];
-            this.planName = data["planName"];
-            this.contractName = data["contractName"];
+            this.poCode = data["poCode"];
+            this.poDate = data["poDate"];
+            this.poName = data["poName"];
+            this.reportNumber = data["reportNumber"];
+            this.reportReceiveDate = data["reportReceiveDate"];
+            this.reportConfirmDate = data["reportConfirmDate"];
+            this.contractCode = data["contractCode"];
+            this.contractId = data["contractId"];
+            this.totalPriceContract = data["totalPriceContract"];
+            this.totalPriceContractPayment = data["totalPriceContractPayment"];
+            this.contractContent = data["contractContent"];
+            this.unitCode = data["unitCode"];
             this.unitName = data["unitName"];
-            this.goodsName = data["goodsName"];
-            this.amount = data["amount"];
-            this.price = data["price"];
+            this.unitAddress = data["unitAddress"];
             this.paymentProcess = data["paymentProcess"];
             this.shippingProcess = data["shippingProcess"];
             this.billStatus = data["billStatus"];
@@ -15394,13 +16296,20 @@ export class GoodsInvoiceDto implements IGoodsInvoiceDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["planCode"] = this.planCode;
-        data["planName"] = this.planName;
-        data["contractName"] = this.contractName;
+        data["poCode"] = this.poCode;
+        data["poDate"] = this.poDate;
+        data["poName"] = this.poName;
+        data["reportNumber"] = this.reportNumber;
+        data["reportReceiveDate"] = this.reportReceiveDate;
+        data["reportConfirmDate"] = this.reportConfirmDate;
+        data["contractCode"] = this.contractCode;
+        data["contractId"] = this.contractId;
+        data["totalPriceContract"] = this.totalPriceContract;
+        data["totalPriceContractPayment"] = this.totalPriceContractPayment;
+        data["contractContent"] = this.contractContent;
+        data["unitCode"] = this.unitCode;
         data["unitName"] = this.unitName;
-        data["goodsName"] = this.goodsName;
-        data["amount"] = this.amount;
-        data["price"] = this.price;
+        data["unitAddress"] = this.unitAddress;
         data["paymentProcess"] = this.paymentProcess;
         data["shippingProcess"] = this.shippingProcess;
         data["billStatus"] = this.billStatus;
@@ -15410,13 +16319,20 @@ export class GoodsInvoiceDto implements IGoodsInvoiceDto {
 }
 
 export interface IGoodsInvoiceDto {
-    planCode: string | undefined;
-    planName: string | undefined;
-    contractName: string | undefined;
+    poCode: string | undefined;
+    poDate: string | undefined;
+    poName: string | undefined;
+    reportNumber: string | undefined;
+    reportReceiveDate: string | undefined;
+    reportConfirmDate: string | undefined;
+    contractCode: string | undefined;
+    contractId: string | undefined;
+    totalPriceContract: string | undefined;
+    totalPriceContractPayment: string | undefined;
+    contractContent: string | undefined;
+    unitCode: string | undefined;
     unitName: string | undefined;
-    goodsName: string | undefined;
-    amount: string | undefined;
-    price: string | undefined;
+    unitAddress: string | undefined;
     paymentProcess: string | undefined;
     shippingProcess: string | undefined;
     billStatus: string | undefined;
@@ -15424,13 +16340,20 @@ export interface IGoodsInvoiceDto {
 }
 
 export class GoodsInvoiceInput implements IGoodsInvoiceInput {
-    planCode!: string | undefined;
-    planName!: string | undefined;
-    contractName!: string | undefined;
+    poCode!: string | undefined;
+    poDate!: string | undefined;
+    poName!: string | undefined;
+    reportNumber!: string | undefined;
+    reportReceiveDate!: string | undefined;
+    reportConfirmDate!: string | undefined;
+    contractCode!: string | undefined;
+    contractId!: string | undefined;
+    totalPriceContract!: string | undefined;
+    totalPriceContractPayment!: string | undefined;
+    contractContent!: string | undefined;
+    unitCode!: string | undefined;
     unitName!: string | undefined;
-    goodsName!: string | undefined;
-    amount!: string | undefined;
-    price!: string | undefined;
+    unitAddress!: string | undefined;
     paymentProcess!: string | undefined;
     shippingProcess!: string | undefined;
     billStatus!: string | undefined;
@@ -15447,13 +16370,20 @@ export class GoodsInvoiceInput implements IGoodsInvoiceInput {
 
     init(data?: any) {
         if (data) {
-            this.planCode = data["planCode"];
-            this.planName = data["planName"];
-            this.contractName = data["contractName"];
+            this.poCode = data["poCode"];
+            this.poDate = data["poDate"];
+            this.poName = data["poName"];
+            this.reportNumber = data["reportNumber"];
+            this.reportReceiveDate = data["reportReceiveDate"];
+            this.reportConfirmDate = data["reportConfirmDate"];
+            this.contractCode = data["contractCode"];
+            this.contractId = data["contractId"];
+            this.totalPriceContract = data["totalPriceContract"];
+            this.totalPriceContractPayment = data["totalPriceContractPayment"];
+            this.contractContent = data["contractContent"];
+            this.unitCode = data["unitCode"];
             this.unitName = data["unitName"];
-            this.goodsName = data["goodsName"];
-            this.amount = data["amount"];
-            this.price = data["price"];
+            this.unitAddress = data["unitAddress"];
             this.paymentProcess = data["paymentProcess"];
             this.shippingProcess = data["shippingProcess"];
             this.billStatus = data["billStatus"];
@@ -15470,13 +16400,20 @@ export class GoodsInvoiceInput implements IGoodsInvoiceInput {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["planCode"] = this.planCode;
-        data["planName"] = this.planName;
-        data["contractName"] = this.contractName;
+        data["poCode"] = this.poCode;
+        data["poDate"] = this.poDate;
+        data["poName"] = this.poName;
+        data["reportNumber"] = this.reportNumber;
+        data["reportReceiveDate"] = this.reportReceiveDate;
+        data["reportConfirmDate"] = this.reportConfirmDate;
+        data["contractCode"] = this.contractCode;
+        data["contractId"] = this.contractId;
+        data["totalPriceContract"] = this.totalPriceContract;
+        data["totalPriceContractPayment"] = this.totalPriceContractPayment;
+        data["contractContent"] = this.contractContent;
+        data["unitCode"] = this.unitCode;
         data["unitName"] = this.unitName;
-        data["goodsName"] = this.goodsName;
-        data["amount"] = this.amount;
-        data["price"] = this.price;
+        data["unitAddress"] = this.unitAddress;
         data["paymentProcess"] = this.paymentProcess;
         data["shippingProcess"] = this.shippingProcess;
         data["billStatus"] = this.billStatus;
@@ -15486,75 +16423,41 @@ export class GoodsInvoiceInput implements IGoodsInvoiceInput {
 }
 
 export interface IGoodsInvoiceInput {
-    planCode: string | undefined;
-    planName: string | undefined;
-    contractName: string | undefined;
+    poCode: string | undefined;
+    poDate: string | undefined;
+    poName: string | undefined;
+    reportNumber: string | undefined;
+    reportReceiveDate: string | undefined;
+    reportConfirmDate: string | undefined;
+    contractCode: string | undefined;
+    contractId: string | undefined;
+    totalPriceContract: string | undefined;
+    totalPriceContractPayment: string | undefined;
+    contractContent: string | undefined;
+    unitCode: string | undefined;
     unitName: string | undefined;
-    goodsName: string | undefined;
-    amount: string | undefined;
-    price: string | undefined;
+    unitAddress: string | undefined;
     paymentProcess: string | undefined;
     shippingProcess: string | undefined;
     billStatus: string | undefined;
     id: number | undefined;
 }
 
-export class ContractOutput implements IContractOutput {
-    contract!: ContractDto | undefined;
-    contracts!: ComboboxItemDto[] | undefined;
-
-    constructor(data?: IContractOutput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.contract = data["contract"] ? ContractDto.fromJS(data["contract"]) : <any>undefined;
-            if (data["contracts"] && data["contracts"].constructor === Array) {
-                this.contracts = [];
-                for (let item of data["contracts"])
-                    this.contracts.push(ComboboxItemDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): ContractOutput {
-        data = typeof data === 'object' ? data : {};
-        let result = new ContractOutput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["contract"] = this.contract ? this.contract.toJSON() : <any>undefined;
-        if (this.contracts && this.contracts.constructor === Array) {
-            data["contracts"] = [];
-            for (let item of this.contracts)
-                data["contracts"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IContractOutput {
-    contract: ContractDto | undefined;
-    contracts: ComboboxItemDto[] | undefined;
-}
-
 export class GoodsInvoiceForViewDto implements IGoodsInvoiceForViewDto {
-    planCode!: string | undefined;
-    planName!: string | undefined;
-    contractName!: string | undefined;
+    poCode!: string | undefined;
+    poDate!: string | undefined;
+    poName!: string | undefined;
+    reportNumber!: string | undefined;
+    reportReceiveDate!: string | undefined;
+    reportConfirmDate!: string | undefined;
+    contractCode!: string | undefined;
+    contractId!: string | undefined;
+    totalPriceContract!: string | undefined;
+    totalPriceContractPayment!: string | undefined;
+    contractContent!: string | undefined;
+    unitCode!: string | undefined;
     unitName!: string | undefined;
-    goodsName!: string | undefined;
-    amount!: string | undefined;
-    price!: string | undefined;
+    unitAddress!: string | undefined;
     paymentProcess!: string | undefined;
     shippingProcess!: string | undefined;
     billStatus!: string | undefined;
@@ -15570,13 +16473,20 @@ export class GoodsInvoiceForViewDto implements IGoodsInvoiceForViewDto {
 
     init(data?: any) {
         if (data) {
-            this.planCode = data["planCode"];
-            this.planName = data["planName"];
-            this.contractName = data["contractName"];
+            this.poCode = data["poCode"];
+            this.poDate = data["poDate"];
+            this.poName = data["poName"];
+            this.reportNumber = data["reportNumber"];
+            this.reportReceiveDate = data["reportReceiveDate"];
+            this.reportConfirmDate = data["reportConfirmDate"];
+            this.contractCode = data["contractCode"];
+            this.contractId = data["contractId"];
+            this.totalPriceContract = data["totalPriceContract"];
+            this.totalPriceContractPayment = data["totalPriceContractPayment"];
+            this.contractContent = data["contractContent"];
+            this.unitCode = data["unitCode"];
             this.unitName = data["unitName"];
-            this.goodsName = data["goodsName"];
-            this.amount = data["amount"];
-            this.price = data["price"];
+            this.unitAddress = data["unitAddress"];
             this.paymentProcess = data["paymentProcess"];
             this.shippingProcess = data["shippingProcess"];
             this.billStatus = data["billStatus"];
@@ -15592,13 +16502,20 @@ export class GoodsInvoiceForViewDto implements IGoodsInvoiceForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["planCode"] = this.planCode;
-        data["planName"] = this.planName;
-        data["contractName"] = this.contractName;
+        data["poCode"] = this.poCode;
+        data["poDate"] = this.poDate;
+        data["poName"] = this.poName;
+        data["reportNumber"] = this.reportNumber;
+        data["reportReceiveDate"] = this.reportReceiveDate;
+        data["reportConfirmDate"] = this.reportConfirmDate;
+        data["contractCode"] = this.contractCode;
+        data["contractId"] = this.contractId;
+        data["totalPriceContract"] = this.totalPriceContract;
+        data["totalPriceContractPayment"] = this.totalPriceContractPayment;
+        data["contractContent"] = this.contractContent;
+        data["unitCode"] = this.unitCode;
         data["unitName"] = this.unitName;
-        data["goodsName"] = this.goodsName;
-        data["amount"] = this.amount;
-        data["price"] = this.price;
+        data["unitAddress"] = this.unitAddress;
         data["paymentProcess"] = this.paymentProcess;
         data["shippingProcess"] = this.shippingProcess;
         data["billStatus"] = this.billStatus;
@@ -15607,13 +16524,20 @@ export class GoodsInvoiceForViewDto implements IGoodsInvoiceForViewDto {
 }
 
 export interface IGoodsInvoiceForViewDto {
-    planCode: string | undefined;
-    planName: string | undefined;
-    contractName: string | undefined;
+    poCode: string | undefined;
+    poDate: string | undefined;
+    poName: string | undefined;
+    reportNumber: string | undefined;
+    reportReceiveDate: string | undefined;
+    reportConfirmDate: string | undefined;
+    contractCode: string | undefined;
+    contractId: string | undefined;
+    totalPriceContract: string | undefined;
+    totalPriceContractPayment: string | undefined;
+    contractContent: string | undefined;
+    unitCode: string | undefined;
     unitName: string | undefined;
-    goodsName: string | undefined;
-    amount: string | undefined;
-    price: string | undefined;
+    unitAddress: string | undefined;
     paymentProcess: string | undefined;
     shippingProcess: string | undefined;
     billStatus: string | undefined;

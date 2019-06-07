@@ -70,5 +70,10 @@
         public const string Pages_Administration_Goods_Edit = "Pages.Administration.Goods.Edit";
         public const string Pages_Administration_Goods_Delete = "Pages.Administration.Goods.Delete";
 
+        ///contractPayment
+        public const string Pages_Administration_ContractPayment = "Pages.Administration.ContractPayment";
+        public const string Pages_Administration_ContractPayment_Create = "Pages.Administration.ContractPayment.Create";
+        public const string Pages_Administration_ContractPayment_Edit = "Pages.Administration.ContractPayment.Edit";
+        public const string Pages_Administration_ContractPayment_Delete = "Pages.Administration.ContractPayment.Delete";
     }
 }

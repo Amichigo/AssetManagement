@@ -19,5 +19,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.GoodsInvoices
         GoodsInvoiceForViewDto GetGoodsInvoiceForView(int id);
         Task<ContractOutput> GetContractComboboxForEditAsync(NullableIdDto input);
         IList<GoodsContract> GetGoodsContract(string ContractCode);
+        PagedResultDto<ContractDto> GetContracts(ContractFilter input);
     }
 }

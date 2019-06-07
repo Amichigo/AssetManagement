@@ -21,5 +21,22 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
         public string ApprovalStatus { get; set; }
         public string UnitAcceptedCode { get; set; }
         public string GoodsName { get; set; }
+
+        public string Content { get; set; }
+        public string TotalPrice { get; set; }
+        public string TotalPricePay { get; set; }
+
+        public string ContractForm { get; set; }
+        public string GuaranteeForm { get; set; }
+        public string ContractConfirmNumber { get; set; }
+        public string GuaranteeConfirmNumber { get; set; }
+        public string ContractBank { get; set; }
+        public string GuaranteeBank { get; set; }
+        public string ContractRatio { get; set; }
+        public string ContractPrice { get; set; }
+        public string GuaranteeRatio { get; set; }
+        public string GuaranteePrice { get; set; }
+        public string ContractExpire { get; set; }
+        public string GuaranteeExpire { get; set; }
     }
 }

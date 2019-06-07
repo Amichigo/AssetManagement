@@ -8,13 +8,20 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 {
     public class GoodsInvoice : FullAuditModel
     {
-        public string PlanCode { get; set; }
-        public string PlanName { get; set; }
-        public string ContractName { get; set; }
+        public string POCode { get; set; }
+        public string PODate { get; set; }
+        public string POName { get; set; }
+        public string ReportNumber { get; set; }
+        public string ReportReceiveDate { get; set; }
+        public string ReportConfirmDate { get; set; }
+        public string ContractCode { get; set; }
+        public string ContractId { get; set; }
+        public string TotalPriceContract { get; set; }
+        public string TotalPriceContractPayment { get; set; }
+        public string ContractContent { get; set; }
+        public string UnitCode { get; set; }
         public string UnitName { get; set; }
-        public string GoodsName { get; set; }
-        public string Amount { get; set; }
-        public string Price { get; set; }
+        public string UnitAddress { get; set; }
         public string PaymentProcess { get; set; }
         public string ShippingProcess { get; set; }
         public string BillStatus { get; set; }

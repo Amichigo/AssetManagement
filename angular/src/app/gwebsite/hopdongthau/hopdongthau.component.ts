@@ -35,6 +35,7 @@ export class HopDongThauComponent extends AppComponentBase implements AfterViewI
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
+        this.ngAfterViewInit();
     }
 
     /**

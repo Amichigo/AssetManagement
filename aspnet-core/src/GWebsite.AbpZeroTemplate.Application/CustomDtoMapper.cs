@@ -8,6 +8,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.Suppliers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.GoodsInvoices.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.GoodsList.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ContractPayments.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Applications
@@ -66,6 +67,12 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<GoodsInput, Goods>();
             configuration.CreateMap<Goods, GoodsInput>();
             configuration.CreateMap<Goods, GoodsForViewDto>();
+
+            //contractPayment
+            configuration.CreateMap<ContractPayment, ContractPaymentDto>();
+            configuration.CreateMap<ContractPaymentInput, ContractPayment>();
+            configuration.CreateMap<ContractPayment, ContractPaymentInput>();
+            configuration.CreateMap<ContractPayment, ContractPaymentForViewDto>();
         }
     }
 }

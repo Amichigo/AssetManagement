@@ -147,6 +147,26 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
             return output;
         }
 
+        public async Task<ContractOutput> GetContractComboboxForEditAsync(NullableIdDto input)
+        {
+            Contract hopDongThau = null;
+            if (input.Id.HasValue && input.Id.Value > 0)
+            {
+                hopDongThau = await contractRepository.GetAsync(input.Id.Value);
+            }
+            var output = new ContractOutput();
+
+            output.Contract = hopDongThau != null
+                ? ObjectMapper.Map<ContractDto>(hopDongThau)
+                : new ContractDto();
+
+            output.Contracts = await contractRepository.GetAll()
+                .Select(c => new ComboboxItemDto(c.Id.ToString(), c.ContractCode))
+                .ToListAsync();
+
+            return output;
+        }
+
         #endregion
 
         #region Private Method
