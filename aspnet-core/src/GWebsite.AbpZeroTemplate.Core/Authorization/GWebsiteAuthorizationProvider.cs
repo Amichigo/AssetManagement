@@ -66,6 +66,16 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             constructionPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlanDetail_Create, L("CreatingNewConstructionPlanDetail"));
             constructionPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlanDetail_Edit, L("EditingConstructionPlanDetail"));
             constructionPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlanDetail_Delete, L("DeletingConstructionPlanDetail"));
+
+            var disposalPlan = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlan, L("DisposalPlan"));
+            disposalPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlan_Create, L("CreatingNewDisposalPlan"));
+            disposalPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlan_Edit, L("EditingDisposalPlan"));
+            disposalPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlan_Delete, L("DeletingDisposalPlan"));
+
+            var disposalPlanDetail = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlanDetail, L("DisposalPlanDetail"));
+            disposalPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlanDetail_Create, L("CreatingNewDisposalPlanDetail"));
+            disposalPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlanDetail_Edit, L("EditingDisposalPlanDetail"));
+            disposalPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlanDetail_Delete, L("DeletingDisposalPlanDetail"));
         }
 
         private static ILocalizableString L(string name)

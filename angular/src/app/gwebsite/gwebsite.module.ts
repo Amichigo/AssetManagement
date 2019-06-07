@@ -1,4 +1,5 @@
-import { CustomerServiceProxy, ShoppingPlanServiceProxy,  ShoppingPlanDetailServiceProxy, ConstructionPlanServiceProxy} from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, ShoppingPlanServiceProxy,  ShoppingPlanDetailServiceProxy, ConstructionPlanServiceProxy, 
+            DisposalPlanServiceProxy, DisposalPlanDetailServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -29,6 +30,13 @@ import { CreateOrEditShoppingPlanDetailModalComponent } from './shoppingPlan/cre
 import { ConstructionPlanComponent } from './constructionPlan/constructionPlan.component';
 import { ViewConstructionPlanModalComponent } from './constructionPlan/view-constructionPlan-modal.component';
 import { CreateOrEditConstructionPlanModalComponent } from './constructionPlan/create-or-edit-constructionPlan-modal.component';
+
+import { DisposalPlanComponent } from './disposalPlan/disposalPlan.component';
+import { ViewDisposalPlanModalComponent } from './disposalPlan/view-disposalPlan-modal.component';
+import { CreateOrEditDisposalPlanModalComponent } from './disposalPlan/create-or-edit-disposalPlan-modal.component';
+
+import { DisposalPlanDetailComponent } from './disposalPlan/disposalPlanDetail.component';
+import { CreateOrEditDisposalPlanDetailModalComponent } from './disposalPlan/create-or-edit-disposalPlanDetail-modal.component';
 @NgModule({
     imports: [
         FormsModule,
@@ -55,13 +63,17 @@ import { CreateOrEditConstructionPlanModalComponent } from './constructionPlan/c
         ShoppingPlanComponent, ViewShoppingPlanModalComponent, CreateOrEditShoppingPlanModalComponent,
         ShoppingPlanDetailComponent, CreateOrEditShoppingPlanDetailModalComponent,
         ConstructionPlanComponent, ViewConstructionPlanModalComponent, CreateOrEditConstructionPlanModalComponent,
+        DisposalPlanComponent, ViewDisposalPlanModalComponent, CreateOrEditDisposalPlanModalComponent,
+        DisposalPlanDetailComponent, CreateOrEditDisposalPlanDetailModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
         ShoppingPlanServiceProxy,
         ShoppingPlanDetailServiceProxy,
-        ConstructionPlanServiceProxy
+        ConstructionPlanServiceProxy,
+        DisposalPlanServiceProxy,
+        DisposalPlanDetailServiceProxy
     ]
 })
 export class GWebsiteModule { }
