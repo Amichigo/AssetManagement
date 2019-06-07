@@ -12,7 +12,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.CongTrinh_N13.DTO
         public string MaDuAnXayDungCoBan { set; get; }
         public string MaCongTrinh { set; get; }
         public string MaKeHoach { set; get; }
-
+        public string NamThucHien { set; get; }
         public string TenCongTrinh { set; get; }
 
         public string DuKienXayDung { set; get; }

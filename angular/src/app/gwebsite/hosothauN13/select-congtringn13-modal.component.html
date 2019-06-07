@@ -75,15 +75,13 @@
                                     </th>
         
                                     <th>
-                                        Thời gian thực hiện
+                                        Kinh phí đề xuất
                                     </th>
         
                                     <th>
-                                        Kinh phí đề xuất
+                                        Kinh phí được duyệt
                                     </th>
-                                    <th >
-                                        Ghi chú
-                                    </th>
+                               
                                     <!--<th pSortableColumn="info">
                                                 Thông tin
                                                 <p-sortIcon field="info"></p-sortIcon>
@@ -108,7 +106,7 @@
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Dự kiến xây dựng</span>
-                                        <span title="{{record.duKienXayDung}}">{{truncateString(record.duKienXayDung)}}</span>
+                                        <span title="{{record.duKienXayDung| date:'dd-MMM-yyyy'}}">{{truncateString(record.duKienXayDung)| date:'dd-MMM-yyyy'}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Dự kiến hoàn thành</span>
@@ -116,11 +114,6 @@
                                             title="{{record.duKienHoanThanh| date:'dd-MMM-yyyy'}}">{{truncateString(record.duKienHoanThanh)| date:'dd-MMM-yyyy'}}</span>
                                     </td>
         
-                                    <td>
-                                        <span class="ui-column-title">Thời gian thực hiện</span>
-                                        <span
-                                            title="{{record.ngayThiCongThucTe| date:'dd-MMM-yyyy'}}">{{truncateString(record.ngayThiCongThucTe)| date:'dd-MMM-yyyy'}}</span>
-                                    </td>
         
                                     <td>
                                         <span class="ui-column-title">Kinh phí đề xuất</span>
@@ -129,9 +122,11 @@
                                     </td>
         
                                     <td>
-                                        <span class="ui-column-title">Ghi chú</span>
-                                        <span title="{{record.ghiChu}}">{{truncateString(record.ghiChu)}}</span>
+                                        <span class="ui-column-title">Kinh phí được duyệt</span>
+                                        <span
+                                            title="{{record.kinhPhiDuocDuyet | number}}">{{truncateString(record.kinhPhiDuocDuyet | number) }}</span>
                                     </td>
+        
         
                                     <td>
                                         <button class="btn btn-primary" (click)="setSelectedCongTrinh(record.id)"><i class="fa fa-plus"></i>

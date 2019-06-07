@@ -1,5 +1,4 @@
-﻿using Abp.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.DonViThau.DTO
 {
-    public class DonViThauInput : Entity<int>
+    public class DonViThauN13ForViewDto
     {
         public string MaDonViThau { set; get; }
         public string MaGoiThau { set; get; }

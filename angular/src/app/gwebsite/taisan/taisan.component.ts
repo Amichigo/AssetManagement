@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { TaiSanServiceProxy } from '@shared/service-proxies/service-proxies';
+import { TaiSanN13ServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditTaiSanModalComponent } from './create-or-edit-taisan-modal.component';
 import { ModalDirective } from 'ngx-bootstrap';
 
@@ -36,7 +36,7 @@ export class TaiSanComponent extends AppComponentBase implements AfterViewInit, 
     loaitaisan:string;
     constructor(
         injector: Injector,
-        private _taisanService: TaiSanServiceProxy,
+        private _taisanService: TaiSanN13ServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);

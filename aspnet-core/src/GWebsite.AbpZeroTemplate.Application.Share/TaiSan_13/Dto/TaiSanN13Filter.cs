@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.TaiSan_13.Dto
 {
-   public class TaiSanFilter : PagedAndSortedInputDto
+   public class TaiSanN13Filter : PagedAndSortedInputDto
     {
         public string MaTaiSan { set; get; }
         public string MaNhomTaiSan { set; get; }

@@ -24,11 +24,11 @@ export class ViewCongTrinhModalComponent extends AppComponentBase {
     show(congtrinhId?: number | null | undefined): void {
         this._congtrinhService.getCongTrinhForView(congtrinhId).subscribe(result => {
             this.congtrinh = result;
-            this.modal.show();
+         
         })
     }
 
     close() : void{
-        this.modal.hide();
+     
     }
 }

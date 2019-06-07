@@ -16,7 +16,7 @@
                 <div class="modal-body">
                     <div class="form-group m-form__group row">
                         <div class="form-control">
-                            <label for="SampleDatePicker" class="col-md-12">Thông tin tài sản</label>
+                            <label for="SampleDatePicker" class="col-md-12" style="color: royalblue">Thông tin tài sản</label>
                             <div class="form-group">
                                     <label>Mã tài sản*</label>
                                 <div class="row m--margin-bottom-10">
@@ -94,7 +94,7 @@
 
 
 
-                    <label>Thông tin bất động sản*</label>
+                    <label style="color: royalblue" >Thông tin bất động sản*</label>
                     <div class="form-group">
                         <label>Hiện trạng bất động sản*</label>
                         <input #hientrangInput="ngModel" class="form-control" type="text" name="HienTrang"
@@ -106,7 +106,7 @@
                         <label>{{l("Loại Bất động sản")}} *</label>
                         <select *ngIf="!batdongsan.id" #categoryCombobox name="loaibatdongsan" class="form-control"
                             [(ngModel)]="batdongsan.maLoaiBDS" title="Select type..."  required>
-                            
+                            <option selected disabled value="">---Chọn Loại BDS---</option>
                             <option *ngFor="let item of listItems" [value]="item.id">{{item.name}}</option>
                         </select>
 
@@ -206,6 +206,7 @@
                         <select *ngIf="!batdongsan.id" #categoryCombobox name="loaisohuu" class="form-control"
                             [(ngModel)]="batdongsan.maLoaiSoHuu" title="Select loaisohuu..." 
                             required>
+                            <option selected disabled value="">---Chọn Loại Sở hữu---</option>
                             <option *ngFor="let item of listLSH" [value]="item.id">{{item.name}}</option>
                         </select>
 

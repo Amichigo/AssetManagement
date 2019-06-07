@@ -1,4 +1,4 @@
-import { CustomerForViewDto, TaiSanServiceProxy } from './../../../shared/service-proxies/service-proxies';
+import { CustomerForViewDto, TaiSanN13ServiceProxy } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild, Output, EventEmitter } from "@angular/core";
 import { CustomerServiceProxy } from "@shared/service-proxies/service-proxies";
@@ -22,7 +22,7 @@ export class SelectTaiSanModalComponent extends AppComponentBase {
     @ViewChild('paginator') paginator: Paginator;
     constructor(
         injector: Injector,
-        private _taisanService: TaiSanServiceProxy,
+        private _taisanService: TaiSanN13ServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);

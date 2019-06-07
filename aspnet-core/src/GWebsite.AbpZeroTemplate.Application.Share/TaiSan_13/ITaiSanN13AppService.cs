@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.TaiSan_13
 {
-    public interface  ITaiSanAppService
+    public interface  ITaiSanN13AppService
     {
-        void CreateOrEditTaiSan(TaiSanInput taiSanInput);
-
-        TaiSanInput GetTaiSanForEdit(int id);
+        void CreateOrEditTaiSan(TaiSanN13Input taiSanInput);
+        TaiSanN13Input GetTaiSanForEdit(int id);
         void DeleteTaiSan(int id);
-        PagedResultDto<TaiSanDto> GetTaiSans(TaiSanFilter input);
-        TaiSanForViewDto GetTaiSanForView(int id);
+        PagedResultDto<TaiSanDto> GetTaiSans(TaiSanN13Filter input);
+        TaiSanN13ForViewDto GetTaiSanForView(int id);
     }
 }

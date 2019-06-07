@@ -32,7 +32,7 @@
                                 {{l('Hồ sơ thầu')}}
                             </button>
                         </ng-template>
-                     
+
                         <form #CTform autocomplete="off">
                             <div class="m-form m-form--label-align-right" id="TextsFilterForm">
                                 <div class="row align-items-center m--margin-bottom-10">
@@ -41,35 +41,35 @@
                                         <div class="row m--margin-bottom-10">
                                             <div class="col-xl-6">
                                                 <label>{{l("Mã Hồ sơ thầu")}} *</label>
-                                                <input [(ngModel)]="mahosothau" name="mahosothau" class="form-control"
+                                                <input [(ngModel)]="maHoSoThau" name="maHoSoThau" class="form-control"
                                                     placeholder=" Nhập Mã Hồ sơ thầu" type="text">
                                             </div>
                                             <div class="col-xl-6">
                                                 <label>{{l("Hạng mục thầu")}} *</label>
-                                                <input [(ngModel)]="hosothauName" name="hosothauName"
-                                                    class="form-control" placeholder="Nhập Hạng mục thầu" type="text">
+                                                <input [(ngModel)]="hangMucThau" name="hangMucThau" class="form-control"
+                                                    placeholder="Nhập Hạng mục thầu" type="text">
                                             </div>
                                         </div>
                                         <div class="row m--margin-bottom-10">
                                             <div class="col-xl-6">
                                                 <label>{{l("Ngày phát hồ sơ thầu")}} *</label>
-                                                <input [(ngModel)]="mahosothau" name="mact" class="form-control"
-                                                    placeholder="Mã tài sản" type="date">
+                                                <input [(ngModel)]="ngayPhat" name="ngayPhat" class="form-control"
+                                                    type="date">
                                             </div>
                                             <div class="col-xl-6">
                                                 <label>{{l("Ngày hết hạn nộp hồ sơ thầu")}} *</label>
-                                                <input [(ngModel)]="hosothauName" name="tenhosothau"
-                                                    class="form-control" placeholder="Nhập tên tài sản" type="date">
+                                                <input [(ngModel)]="ngayhetHan" name="ngayhetHan" class="form-control"
+                                                    placeholder="Nhập tên tài sản" type="date">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="form-group m-form__group row">
-                                                    <label>{{l("Hình thức thầu")}}</label>
+                                                <label>{{l("Hình thức thầu")}}</label>
                                                 <div class="col-lg-2 col-md-3 col-sm-4">
-                                                    
+
                                                     <div class="form-group">
                                                         <input #taisanInput="ngModel" class="form-control" type="text"
-                                                            name="TaiSan" [(ngModel)]="mahosothau" disabled required
+                                                            name="hinhThucThau" [(ngModel)]="hinhThucThau" required
                                                             maxlength="64">
                                                         <validation-messages [formCtrl]="taisanInput">
                                                         </validation-messages>
@@ -81,25 +81,35 @@
 
                                                     <div class="form-group">
                                                         <input #tentaisanInput="ngModel" class="form-control"
-                                                            type="text" name="mahosothau" [(ngModel)]="hosothauName"
-                                                            disabled required>
+                                                            type="text" name="duAnXD" [(ngModel)]="duAnXD" required>
                                                         <validation-messages [formCtrl]="tentaisanInput">
                                                         </validation-messages>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-2 col-md-3 col-sm-4">
-                                                    <button class="btn btn-primary"><i class="fa fa-plus"></i>
-                                                        {{l("Chọn dự án")}}</button>
+                                                    
                                                 </div>
                                             </div>
 
                                         </div>
                                         <div class="input-group">
-                                            <span class="input-group-btn">
-                                                <button (click)="applyFilters()" class="btn btn-primary"
-                                                    type="submit"><i class="icon-refresh"></i>
-                                                    {{l("Refresh")}}</button>
-                                            </span>
+                                            <div class="col-lg-2 col-md-3 col-sm-4">
+                                                <span class="input-group-btn">
+                                                    <button (click)="applyFilters()" class="btn btn-primary"
+                                                        type="submit"><i class="icon-refresh"></i>
+                                                        {{l("Refresh")}}</button>
+                                                </span>
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-4">
+                                                <span class="input-group-btn">
+                                                    <button (click)="ResetFilter()" class="btn btn-primary"
+                                                        type="submit"><i class="icon-refresh"></i>
+                                                        {{l("Reset")}}</button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+
                                         </div>
 
                                     </div>
@@ -140,12 +150,12 @@
                                             <th>
                                                 Dự án xây dựng cơ bản
                                             </th>
-                                            <th>
+                                            <!-- <th>
                                                 Tên dự án
                                             </th>
                                             <th>
                                                 Ghi chú
-                                            </th>
+                                            </th> -->
 
                                             <!--<th pSortableColumn="info">
                                                             Thông tin
@@ -154,11 +164,11 @@
                                             <th>{{l('Edit')}}</th>
                                         </tr>
                                     </ng-template>
-                                    <ng-template pTemplate="body" let-record="$implicit">
+                                    <ng-template pTemplate="body" let-record="$implicit" let-i="rowIndex">
                                         <tr>
                                             <td>
                                                 <span class="ui-column-title">STT</span>
-                                                <span title="{{record.id}}">{{truncateString(record.id)}}</span>
+                                                <span title="{{i+1}}">{{truncateString(i+1)}}</span>
                                             </td>
                                             <td>
                                                 <span class="ui-column-title">Mã hồ sơ thầu</span>
@@ -169,32 +179,32 @@
                                             <td>
                                                 <span class="ui-column-title">Hạng mục thầu</span>
                                                 <span
-                                                    title="{{record.tenHoSoThau}}">{{truncateString(record.tenHoSoThau)}}</span>
+                                                    title="{{record.hangMucThau}}">{{truncateString(record.hangMucThau)}}</span>
                                             </td>
                                             <td>
                                                 <span class="ui-column-title">Ngày phát hồ sơ thầu</span>
                                                 <span
-                                                    title="{{record.maNhomHoSoThau}}">{{truncateString(record.maNhomHoSoThau)}}</span>
+                                                    title="{{record.ngayNhapHoSoThau| date:'dd-MMM-yyyy'}}">{{truncateString(record.ngayNhapHoSoThau)| date:'dd-MMM-yyyy'}}</span>
                                             </td>
                                             <td>
                                                 <span class="ui-column-title">Hình thức thầu</span>
                                                 <span
-                                                    title="{{record.kinhPhiDuocDuyet |number}}">{{truncateString(record.kinhPhiDuocDuyet) |number}}</span>
+                                                    title="{{record.maHinhThucThau }}">{{truncateString(record.maHinhThucThau) }}</span>
                                             </td>
 
                                             <td>
                                                 <span class="ui-column-title">Số tiền bảo lãnh dự thầu</span>
                                                 <span
-                                                    title="{{record.chiPhiDaSuDung}}">{{truncateString(record.chiPhiDaSuDung)}}</span>
+                                                    title="{{record.baoLanhDuThauBD |number}}">{{truncateString(record.baoLanhDuThauBD)|number}}</span>
                                             </td>
 
                                             <td>
                                                 <span class="ui-column-title">Dự án xây dựng cơ bản</span>
                                                 <span
-                                                    title="{{record.tienDoThucHien}}">{{truncateString(record.tienDoThucHien)}}</span>
+                                                    title="{{record.maCongTrinh}}">{{truncateString(record.maCongTrinh)}}</span>
                                             </td>
 
-                                            <td>
+                                            <!-- <td>
                                                 <span class="ui-column-title">Tên dự án</span>
                                                 <span
                                                     title="{{record.tienDoThucHien}}">{{truncateString(record.tienDoThucHien)}}</span>
@@ -203,16 +213,17 @@
                                                 <span class="ui-column-title">Ghi chú</span>
                                                 <span
                                                     title="{{record.tienDoThucHien}}">{{truncateString(record.tienDoThucHien)}}</span>
-                                            </td>
+                                            </td> -->
                                             <td>
                                                 <button
                                                     class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                    title="{{l('Edit')}}">
+                                                    (click)="InitTabUpdate(record.id)" title="{{l('Edit')}}">
                                                     <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
                                                 </button>
 
                                                 <button
                                                     class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                    (click)="deleteHoSoThau(record.id)"
                                                     title="{{l('Delete')}}">
                                                     <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                                 </button>
@@ -255,7 +266,7 @@
                         </ng-template>
                         <!-- <createHoSoThauN13Modal></createHoSoThauN13Modal> -->
                         <!-- <createHoSoThauN13Modal #createHoSoThauN13Modal></createHoSoThauN13Modal> -->
-                        <createHoSoThauN13Modal #createHoSoThauN13Modal></createHoSoThauN13Modal>
+                        <createHoSoThauN13Modal #createHoSoThauN13Modal  (modalSave)="SaveNew()" ></createHoSoThauN13Modal>
                     </tab>
                     <!-- >
                         Tab Update
@@ -267,6 +278,7 @@
                                 {{l('Cập nhật')}}
                             </button>
                         </ng-template>
+                        <editHoSoThauN13Modal #editHoSoThauN13Modal (modalSave)="SaveNew()"></editHoSoThauN13Modal>
                     </tab>
                     <!-- 
                         Tab View

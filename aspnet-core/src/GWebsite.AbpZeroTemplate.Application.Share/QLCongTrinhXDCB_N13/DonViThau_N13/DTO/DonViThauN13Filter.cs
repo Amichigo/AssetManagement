@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.DonViThau.DTO
 {
-    public class DonViThauFilter : PagedAndSortedInputDto
+    public class DonViThauN13Filter : PagedAndSortedInputDto
     {
         public string MaDonViThau { set; get; }
         public string MaGoiThau { set; get; }

@@ -11,8 +11,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.RealEstas.BatDongSan
 {
     public interface IBatDongSanAppService
     {
-        void CreateOrEditBatDongSan(BatDongSanInput BatDongSanInput,int idTaiSan=0);
-
+        void CreateOrEditBatDongSan(BatDongSanInput BatDongSanInput);
         BatDongSanInput GetBatDongSanForEdit(int id);
         void DeleteBatDongSan(int id);
         PagedResultDto<BatDongSanDto> GetBatDongSans(BatDongSanFilter input);

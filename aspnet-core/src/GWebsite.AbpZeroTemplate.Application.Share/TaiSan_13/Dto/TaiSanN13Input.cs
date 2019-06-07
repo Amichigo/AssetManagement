@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.TaiSan_13.Dto
 {
-    public class TaiSanInput : Entity<int>
+    public class TaiSanN13Input : Entity<int>
     {
         public string MaTaiSan { set; get; }
         public string MaNhomTaiSan { set; get; }

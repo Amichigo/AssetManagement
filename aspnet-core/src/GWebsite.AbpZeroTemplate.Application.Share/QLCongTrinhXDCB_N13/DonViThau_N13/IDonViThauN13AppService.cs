@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.DonViThau
 {
-    public interface  IDonViThauAppService
+    public interface  IDonViThauN13AppService
     {
-        void CreateOrEditDonViThau(DonViThauInput taiSanInput);
+        void CreateOrEditDonViThau(DonViThauN13Input taiSanInput);
 
-        DonViThauInput GetDonViThauForEdit(int id);
+        DonViThauN13Input GetDonViThauForEdit(int id);
         void DeleteDonViThau(int id);
-        PagedResultDto<DonViThauDto> GetDonViThaus(DonViThauFilter input);
-        DonViThauForViewDto GetDonViThauForView(int id);
+        PagedResultDto<DonViThauN13Dto> GetDonViThaus(DonViThauN13Filter input);
+        DonViThauN13ForViewDto GetDonViThauForView(int id);
     }
 }

@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { BatDongSanServiceProxy, TaiSanInput } from '@shared/service-proxies/service-proxies';
+import { BatDongSanServiceProxy, TaiSanN13Input } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditBatDongSanModalComponent } from './create-or-edit-batdongsan-modal.component';
 import { TaiSanComponent } from '../taisan/taisan.component';
 import { LoaiBatDongSanDto } from '../loaibatdongsan/dto/loaibatdongsandto';
@@ -39,7 +39,7 @@ export class BatDongSanComponent extends AppComponentBase implements AfterViewIn
     batdongsanName: string;
     mataisanName: string;
     maloaibds: string;
-    taisan: TaiSanInput = new TaiSanInput();
+    taisan: TaiSanN13Input = new TaiSanN13Input();
     listItems: Array<LoaiBatDongSanDto> = [];
     listTaiSans: Array<TaiSanDto> = [];
     selectedLBDS: number;
@@ -60,23 +60,25 @@ export class BatDongSanComponent extends AppComponentBase implements AfterViewIn
 
 
     getListTypes(): void {
-        // get loaibatdongsan type
+     //   get loaibatdongsan type
         this._apiService.get('api/LoaiBatDongSan/GetLoaiBatDongSansByFilter').subscribe(result => {
             this.listItems = result.items;
         });
+    
+     
     }
 
 
     getListTaiSan(): void {
 
-        this._apiService.get('api/TaiSan/GetTaiSansByFilter').subscribe(result => {
+        this._apiService.get('api/TaiSanN13/GetTaiSansByFilter').subscribe(result => {
             this.listTaiSans = result.items;
 
         });
     }
 
     onChangeTaiSan(): void {
-        this._apiService.getForEdit('api/TaiSan/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
+        this._apiService.getForEdit('api/TaiSanN13/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
             this.mataisanName = result.maTaiSan;
             this.taisan.maTaiSan = result.maTaiSan;
             this.taisan.diaChi = result.diaChi;
@@ -205,7 +207,7 @@ export class BatDongSanComponent extends AppComponentBase implements AfterViewIn
         }
         if(this.selectTaiSanModel.selectedMaTS!=-1){
             this.selectedTaiSan=this.selectTaiSanModel.selectedMaTS;
-            this._apiService.getForEdit('api/TaiSan/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
+            this._apiService.getForEdit('api/TaiSanN13/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
                 this.mataisanName = result.maTaiSan;
                 this.taisan.maTaiSan = result.maTaiSan;
                 this.taisan.diaChi = result.diaChi;

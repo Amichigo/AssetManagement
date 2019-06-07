@@ -26,7 +26,7 @@
                             <div class="col-sm-12">
 
                                 <div class="form-control">
-                                    <label>{{l("Thông tin tài sản")}} *</label>
+                                    <label style="color: royalblue">{{l("Thông tin tài sản")}} *</label>
                                     <br>
                                     <div class="form-group">
                                         <label>{{l("Mã tài sản")}} *</label>
@@ -83,7 +83,7 @@
 
                                     <div class="form-group">
                                         <label>Nguyên giá tài sản*</label>
-                                        <input #nguyengiataisanInput="ngModel" class="form-control" type="number"
+                                        <input #nguyengiataisanInput="ngModel" class="form-control" type="number" 
                                             name="NguyenGia" [(ngModel)]="taisan.nguyenGiaTaiSan" disabled required>
                                         <validation-messages [formCtrl]="nguyengiataisanInput">
                                         </validation-messages>
@@ -103,7 +103,7 @@
                                         placeholder="Nhập mã loại bđs" type="text">
                                          -->
                                 <div class="form-control">
-                                    <label>{{l("Tìm theo bất động sản")}} *</label>
+                                    <label style="color: royalblue">{{l("Tìm theo bất động sản")}} *</label>
                                     <br>
                                     <div class="row m--margin-bottom-10">
                                         <div class="col-xl-6">

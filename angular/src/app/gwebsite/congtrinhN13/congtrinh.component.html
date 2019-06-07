@@ -37,30 +37,26 @@
                             <div class="m-form m-form--label-align-right" id="TextsFilterForm">
                                 <div class="row align-items-center m--margin-bottom-10">
                                     <div class="form-control">
-                                        <label>{{l("Tìm kiếm công trình")}} *</label>
+                                        <label  style="color: royalblue" >{{l("Tìm kiếm công trình")}} *</label>
                                         <div class="row m--margin-bottom-10">
                                             <div class="col-xl-6">
                                                 <label>{{l("Mã Công trình")}} *</label>
                                                 <input [(ngModel)]="macongtrinh" name="macongtrinh" autoFocus
-                                                    class="form-control" placeholder="Mã tài sản" type="text">
+                                                    class="form-control" placeholder="Mã mã công trình" type="text">
                                             </div>
                                             <div class="col-xl-6">
                                                 <label>{{l("Tên Công trình")}} *</label>
                                                 <input [(ngModel)]="congtrinhName" name="congtrinhName" autoFocus
-                                                    class="form-control" placeholder="Nhập tên tài sản" type="text">
+                                                    class="form-control" placeholder="Nhập tên công trình" type="text">
                                             </div>
                                         </div>
                                         <div class="row m--margin-bottom-10">
                                             <div class="col-xl-6">
                                                 <label>{{l("Mã Kế hoạch")}} *</label>
-                                                <input [(ngModel)]="macongtrinh" name="mact" autoFocus
-                                                    class="form-control" placeholder="Mã tài sản" type="text">
+                                                <input [(ngModel)]="maKeHoach" name="mact" autoFocus
+                                                    class="form-control" placeholder="Mã kế hoạch" type="text">
                                             </div>
-                                            <div class="col-xl-6">
-                                                <label>{{l("Năm thực hiện")}} *</label>
-                                                <input [(ngModel)]="congtrinhName" name="tencongtrinh" autoFocus
-                                                    class="form-control" placeholder="Nhập tên tài sản" type="text">
-                                            </div>
+                                        
                                         </div>
                                         <div class="input-group">
 
@@ -131,7 +127,7 @@
                                             <td>
                                                 <span class="ui-column-title">Năm thực hiện</span>
                                                 <span
-                                                    title="{{record.maNhomCongTrinh}}">{{truncateString(record.maNhomCongTrinh)}}</span>
+                                                    title="{{record.namThucHien}}">{{truncateString(record.namThucHien)}}</span>
                                             </td>
                                             <td>
                                                 <span class="ui-column-title">Tổng chi phí</span>
@@ -155,7 +151,7 @@
                                             <td>
                                                 <button
                                                     class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                    (click)="createCongTrinhModal.show(record.id)" title="{{l('Edit')}}">
+                                                    (click)="InitTabUpdate(record.id)" title="{{l('Edit')}}">
                                                     <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
                                                 </button>
 
@@ -165,11 +161,11 @@
                                                     <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                                 </button>
 
-                                                <!-- <button
+                                                <button
                                                     class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                    (click)="viewCongTrinhModal.show(record.id)" title="{{l('View')}}">
+                                                    (click)="InitTabView(record.id)" title="{{l('View')}}">
                                                     <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
-                                                </button> -->
+                                                </button>
                                             </td>
                                         </tr>
                                     </ng-template>
@@ -198,10 +194,10 @@
                     <tab customClass="m-tabs__item"(select)="InitTabCreate()" [active]='activeTabCreate'>
                         <ng-template tabHeading>
                             <button class="btn btn-default" type="submit" >
-                                {{l('Tạo mới')}}
+                                <i class="fa fa-plus"></i> {{l('Tạo mới')}}
                             </button>
                         </ng-template>
-                        <createCongTrinhModal #createCongTrinhModal (modalSave)="reloadPage()"></createCongTrinhModal>
+                        <createCongTrinhModal #createCongTrinhModal (modalSave)="SaveNew()"></createCongTrinhModal>
                     </tab>
                     <!-- 
                         Tab Update
@@ -210,9 +206,10 @@
                     <tab customClass="m-tabs__item"  [disabled]="GetDisableTabUpdate()" [active]='activeTabUpdate'>
                         <ng-template tabHeading>
                             <button class="btn btn-default" type="submit" [disabled]="GetDisableTabUpdate()">
-                                {{l('Cập nhật')}}
+                                <i class="fa fa-edit"></i> {{l('Cập nhật')}}
                             </button>
                         </ng-template>
+                        <editCongTrinhModal #editCongTrinhModal (modalSave)="SaveNew()" ></editCongTrinhModal>
                     </tab>
                     <!-- 
                         Tab View
@@ -221,9 +218,10 @@
                     <tab customClass="m-tabs__item" [disabled]="GetDisableTabView()" [active]='activeTabView'>
                         <ng-template tabHeading>
                             <button class="btn btn-default" type="submit" [disabled]="GetDisableTabView()">
-                                {{l('View')}}
+                                <i class="fa fa-eye"></i> {{l('Xem chi tiết')}}
                             </button>
                         </ng-template>
+                        <viewCongTrinhModal #viewCongTrinhModal></viewCongTrinhModal>
                     </tab>
                     <!-- 
                         Tab Duyet
@@ -241,5 +239,4 @@
             </div>
         </div>
     </div>
-    <viewCongTrinhModal #viewCongTrinhModal></viewCongTrinhModal>
 </div>

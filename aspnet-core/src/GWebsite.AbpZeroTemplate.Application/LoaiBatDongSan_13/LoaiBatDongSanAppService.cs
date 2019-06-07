@@ -26,6 +26,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.LoaiBatDongSans
             this.loaiBatDongSanRepository = loaiBatDongSanRepository;
         }
 
+        public List<LoaiBatDongSanDto> GetAllLoaiBDS()
+        {
+            var query = loaiBatDongSanRepository.GetAll().Where(x => !x.IsDelete);
+            var list = query.OrderBy(x=>x.Id).ToList();
+            var items = list.Select(item => ObjectMapper.Map<LoaiBatDongSanDto>(item)).ToList();
+            return items; 
+        }
         #region Public Method
 
         public void CreateOrEditLoaiBatDongSan(LoaiBatDongSanInput loaiBatDongSanInput)

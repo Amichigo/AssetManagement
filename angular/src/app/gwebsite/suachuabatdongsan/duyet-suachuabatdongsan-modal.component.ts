@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { SuaChuaBatDongSanServiceProxy, SuaChuaBatDongSanInput, LoaiSoHuuDto, TaiSanInput, TaiSanDto, BatDongSanInput, BatDongSanDto, ResetPasswordInput } from '@shared/service-proxies/service-proxies';
+import { SuaChuaBatDongSanServiceProxy, SuaChuaBatDongSanInput, LoaiSoHuuDto, TaiSanDto, BatDongSanInput, BatDongSanDto, ResetPasswordInput, TaiSanN13Input } from '@shared/service-proxies/service-proxies';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 import { ViewSuaChuaBatDongSanModalComponent } from './view-suachuabatdongsan-modal.component';
 import { SelectTaiSanModalComponent } from '../taisan/select-taisan-modal.component';
@@ -33,7 +33,7 @@ export class DuyetBatDongSanModalComponent extends AppComponentBase {
     saving = false;
 
     suachuabatdongsan: SuaChuaBatDongSanInput = new SuaChuaBatDongSanInput();
-    taisan: TaiSanInput = new TaiSanInput();
+    taisan: TaiSanN13Input = new TaiSanN13Input();
     batdongsan: BatDongSanInput = new BatDongSanInput();
     trangThai: TrangThai;
     constructor(
@@ -68,7 +68,7 @@ export class DuyetBatDongSanModalComponent extends AppComponentBase {
 
     getListTaiSan(): void {
 
-        this._apiService.get('api/TaiSan/GetTaiSansByFilter').subscribe(result => {
+        this._apiService.get('api/TaiSanN13/GetTaiSansByFilter').subscribe(result => {
             this.listTaiSans = result.items;
 
         });
@@ -82,7 +82,7 @@ export class DuyetBatDongSanModalComponent extends AppComponentBase {
 
     onChangeTaiSan(): void {
 
-        this._apiService.getForEdit('api/TaiSan/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
+        this._apiService.getForEdit('api/TaiSanN13/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
             // this.suachuabatdongsan.maTaiSan = result.maTaiSan;
             this.taisan.maTaiSan = result.maTaiSan;
             this.taisan.diaChi = result.diaChi;
@@ -100,7 +100,7 @@ export class DuyetBatDongSanModalComponent extends AppComponentBase {
             if (Constain.showConsoleLog) {
                 console.log("Selected IDtaisan=" + this.selectedTaiSan);
             }
-            this._apiService.getForEdit('api/TaiSan/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
+            this._apiService.getForEdit('api/TaiSanN13/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
                 // this.suachuabatdongsan.maTaiSan = result.maTaiSan;
                 this.taisan.maTaiSan = result.maTaiSan;
                 this.taisan.diaChi = result.diaChi;

@@ -41,7 +41,7 @@ export class CreateCongTrinhModalComponent extends AppComponentBase {
     show(congtrinhId?: number | null | undefined): void {
         this.saving = false;
         this.makh="";
-     
+
     }
 
     reset():void{
@@ -54,29 +54,34 @@ export class CreateCongTrinhModalComponent extends AppComponentBase {
         this.congtrinh.kinhPhiDuocDuyet=null;
         this.congtrinh.duKienXayDung='';
         this.congtrinh.moTaCongTrinh='';
+        this.congtrinh.maCongTrinh='';
         this.makh='';
     }
 
     save(): void {
         console.log("Tu dong luu");
-        this.congtrinh.maDuAnXayDungCoBan="DAXD"+this.congtrinh.maCongTrinh+"00"+this.congtrinh.id;
+        this.congtrinh.maDuAnXayDungCoBan="DAXD"+this.congtrinh.maCongTrinh;
         this.congtrinh.tienDoThucHien="Chưa xây dựng";
         this.congtrinh.chiPhiDaSuDung=0;
         let input = this.congtrinh;
         this.saving = true;
-
+            console.log("ID");
         this._congtrinhService.createOrEditCongTrinh(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));
+            console.log("ID");
             this.close();
         })
         this.close();
     }
     setThongTinCongTrinh(){
         this._congtrinhService.getCongTrinhForEdit(this.selectKeHoachXayDungModal.selectedIDCongTrinh).subscribe(result => {
+            console.log("Selected"+ this.selectKeHoachXayDungModal.selectedIDCongTrinh );
             this.congtrinh.maCongTrinh=result.maCongTrinh;
+            this.congtrinh.maKeHoach=result.maKeHoach;
             this.congtrinh.tenCongTrinh=result.tenCongTrinh;
             this.congtrinh.kinhPhiDuocDuyet=result.kinhPhiDuocDuyet;
-            this.congtrinh.duKienXayDung=result.duKienXayDung;   
+            this.congtrinh.duKienXayDung=result.duKienXayDung; 
+            this.congtrinh.id=result.id;  
         })
         this.makh=this.selectKeHoachXayDungModal.selectedMaKH;
     }

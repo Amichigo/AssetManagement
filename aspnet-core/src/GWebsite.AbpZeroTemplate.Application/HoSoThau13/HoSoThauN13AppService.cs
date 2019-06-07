@@ -20,10 +20,14 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HoSoThau13
     public class HoSoThauN13AppService : GWebsiteAppServiceBase, IHoSoThauN13AppService
     {
         private readonly IRepository<HoSoThau_N13> hoSoThauRepository;
-
-        public HoSoThauN13AppService(IRepository<HoSoThau_N13> hoSoThauRepository)
+        private readonly IRepository<CongTrinh_N13> congTrinhRepository;
+        private readonly IRepository<DonViThau_N13> donvithauRepository;
+   
+        public HoSoThauN13AppService(IRepository<HoSoThau_N13> hoSoThauRepository, IRepository<CongTrinh_N13> congTrinhRepository, IRepository<DonViThau_N13> donvithauRepository)
         {
             this.hoSoThauRepository = hoSoThauRepository;
+            this.congTrinhRepository = congTrinhRepository;
+            this.donvithauRepository = donvithauRepository;
         }
 
         #region Public Method
@@ -69,6 +73,85 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HoSoThau13
                 return null;
             }
             return ObjectMapper.Map<HoSoThauN13ForViewDto>(hoSoThauEntity);
+        }
+        //Lay ds ho so thau da co dv trung thau
+        public PagedResultDto<HoSoThauN13Dto> GetDSHoSoThauChoHopDong(HoSoThauN13Filter input)
+        {
+            var query = hoSoThauRepository.GetAll().Where(x => !x.IsDelete);
+            var dvt = donvithauRepository.GetAll().Where(x => !x.IsDelete).Where(y=>y.IsTrungThau==true);
+            var congTrinh = congTrinhRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.MaDuAnXayDungCoBan != null);
+
+            if (dvt == null || congTrinh==null )
+            {
+                return null;
+            }
+            var listItem = from gt in query
+                           join ct in congTrinh
+                           on gt.MaCongTrinh equals ct.MaCongTrinh
+                           join dvtt in dvt
+                           on gt.MaHoSoThau equals dvtt.MaGoiThau
+                           select new HoSoThauN13Dto
+                           {
+                               
+                               MaHoSoThau = gt.MaHoSoThau,
+                               IDHoSoThau = gt.Id,
+                               IDCongTrinh=ct.Id,
+                               MaHinhThucThau=gt.MaHinhThucThau,
+                               TenCongTrinh=ct.TenCongTrinh,
+                               TenDonViTrungThau=dvtt.TenDonViThamGiaThau,
+                               MaDonViTrungThau=dvtt.MaDonViThau,
+                               TenHoSoThau=gt.TenHoSoThau,
+                               HangMucThau=gt.HangMucThau,
+                               MaCongTrinh=ct.MaCongTrinh,
+                           };
+            // filter by value
+            if (input.MaHoSoThau != null)
+            {
+                query = query.Where(x => x.MaHoSoThau.ToLower().Equals(input.MaHoSoThau));
+            }
+
+            // filter by value
+            if (input.MaCongTrinh != null)
+            {
+                query = query.Where(x => x.MaCongTrinh.ToLower().Equals(input.MaCongTrinh));
+            }
+            // filter by value
+            if (input.NgayNhapHoSoThau != null)
+            {
+                query = query.Where(x => x.NgayNhapHoSoThau.ToLower().Equals(input.NgayNhapHoSoThau));
+            }
+            // filter by value
+            if (input.NgayHetHanNopHoSoThau != null)
+            {
+                query = query.Where(x => x.NgayHetHanNopHoSoThau.ToLower().Equals(input.NgayHetHanNopHoSoThau));
+            }
+            // filter by value
+            if (input.HangMucThau != null)
+            {
+                query = query.Where(x => x.HangMucThau.ToLower().Equals(input.HangMucThau));
+            }
+            // filter by value
+            if (input.MaHinhThucThau != null)
+            {
+                query = query.Where(x => x.MaHinhThucThau.ToLower().Equals(input.MaHinhThucThau));
+            }
+
+            var totalCount = listItem.Count();
+
+            // sorting
+            if (!string.IsNullOrWhiteSpace(input.Sorting))
+            {
+                listItem = listItem.OrderBy(input.Sorting);
+            }
+
+            // paging
+            var items = listItem.PageBy(input).ToList();
+
+            // result
+            return new PagedResultDto<HoSoThauN13Dto>(
+                totalCount,
+                items.ToList());
+
         }
 
         public PagedResultDto<HoSoThauN13Dto> GetHoSoThaus(HoSoThauN13Filter input)
@@ -129,8 +212,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HoSoThau13
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Create)]
         private void Create(HoSoThauN13Input hoSoThauInput)
         {
-            int nextID = hoSoThauRepository.GetAll().Count() + 1;
-            hoSoThauInput.MaHoSoThau = "TS000" + nextID;
+            hoSoThauInput.MaHoSoThau = hoSoThauInput.MaHoSoThau + "_" + hoSoThauInput.MaCongTrinh;
             var hoSoThauEntity = ObjectMapper.Map<HoSoThau_N13>(hoSoThauInput);
             SetAuditInsert(hoSoThauEntity);
             hoSoThauRepository.Insert(hoSoThauEntity);

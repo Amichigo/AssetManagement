@@ -1,0 +1,515 @@
+<div class="modal-content">
+    <form #editForm="ngForm" novalidate>
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span>Tạo mới hợp đồng</span>
+            </h4>
+            <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-control">
+                <h5 style="color: royalblue">Thông tin Hợp đồng</h5>
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="form-group">
+                            <label>Mã số hợp đồng *</label>
+                            <input #mahdInput="ngModel" class="form-control" type="text" name="maHopDong"
+                                [(ngModel)]="hopDongInput.maHopDong" disabled maxlength="64">
+                            <validation-messages [formCtrl]="mahdInput"></validation-messages>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="form-group">
+                            <label>Số hợp đồng *</label>
+                            <input #shdInput="ngModel" class="form-control" type="text" name="soHopDong"
+                                [(ngModel)]="hopDongInput.soHopDong" required maxlength="64">
+                            <validation-messages [formCtrl]="shdInput"></validation-messages>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>{{l("Nội dung hợp đồng")}} *</label>
+                    <textarea #ndInput="ngModel" class="form-control" rows="5" name="noiDungHopDong"
+                        class="form-control" [(ngModel)]="hopDongInput.noiDungHopDong" maxlength="256"></textarea>
+                    <validation-messages [formCtrl]="ndInput">
+                    </validation-messages>
+                </div>
+
+                <div class="row m--margin-bottom-10">
+                    <div class="col-xl-6">
+                        <div class="form-group">
+                            <label>Tổng giá trị hợp đồng *</label>
+                            <input #gtInput="ngModel" class="form-control" type="number" min="1000"
+                                name="tongGiaTriHopDong" [(ngModel)]="hopDongInput.tongGiaTriHopDong" required
+                                maxlength="64">
+                            <validation-messages [formCtrl]="gtInput"></validation-messages>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="form-group">
+                            <label>Tiến độ thi công *</label>
+                            <input #dtInput="ngModel" class="form-control" type="text" name="maHinhThucThau"
+                                [(ngModel)]="inputvalue" maxlength="64">
+                            <validation-messages [formCtrl]="dtInput"></validation-messages>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-control">
+                <h5 style="color: royalblue">Thông tin Hồ sơ thầu</h5>
+                <div class="form-group">
+                    <label>{{l("Gói thầu")}} *</label>
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #magoithauInput="ngModel" class="form-control" type="text" name="maHoSoThau"
+                                    [(ngModel)]="goiThauForView.maHoSoThau" disabled required maxlength="64">
+                                <validation-messages [formCtrl]="magoithauInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <button (click)="showHoSoThau()" class="btn btn-primary"><i class="fa fa-plus"></i>
+                                {{l("Chọn")}}</button>
+                        </div>
+                        <label>{{l("Hạng mục thầu")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+
+                            <div class="form-group">
+                                <input #hmtInput="ngModel" class="form-control" type="text" name="hangMucThau"
+                                    [(ngModel)]="goiThauForView.hangMucThau" disabled required>
+                                <validation-messages [formCtrl]="hmtInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group ">
+                    <label>{{l("Hình thức thầu")}} *</label>
+                    <input #httInput="ngModel" class="form-control" type="text" name="maHinhThucThau"
+                        [(ngModel)]="goiThauForView.maHinhThucThau" disabled required>
+                    <validation-messages [formCtrl]="httInput">
+                    </validation-messages>
+                </div>
+                <div class="form-group">
+                    <label>{{l("Mã đơn vị trúng thầu")}} *</label>
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #madvttIT="ngModel" class="form-control" type="text" name="madvttIT"
+                                    [(ngModel)]="madvtt" disabled required maxlength="64">
+                                <validation-messages [formCtrl]="madvttIT">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <label>{{l("Tên đơn vị trúng thầu")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+
+                            <div class="form-group">
+                                <input #tendvttIT="ngModel" class="form-control" type="text" name="tendvtt"
+                                    [(ngModel)]="tendvtt" disabled required>
+                                <validation-messages [formCtrl]="tendvttIT">
+                                </validation-messages>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>{{l("Giá trúng thầu")}} *</label>
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #kehoachInput="ngModel" class="form-control" type="text" name="maKeHoach"
+                                    [(ngModel)]="inputvalue" disabled required maxlength="64">
+                                <validation-messages [formCtrl]="kehoachInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                    </div>
+                    <label>{{l("Thời gian thi công")}} *</label>
+
+                    <div class="col-lg-2 col-md-3 col-sm-4">
+                        <div class="form-group">
+                            <input #kehoachInput="ngModel" class="form-control" type="text" name="maKeHoach"
+                                [(ngModel)]="inputvalue" disabled required maxlength="64">
+                            <validation-messages [formCtrl]="kehoachInput">
+                            </validation-messages>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-control">
+                <h5 style="color: royalblue">Thông tin về công trình</h5>
+                <div class="form-group">
+                    <label>{{l("Mã công trình")}} *</label>
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #maCongTrinh="ngModel" class="form-control" type="text" name="maCongTrinh"
+                                    [(ngModel)]="congtrinhForView.maCongTrinh" disabled required maxlength="64">
+                                <validation-messages [formCtrl]="maCongTrinh">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <label>{{l("Tên công trình")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+
+                            <div class="form-group">
+                                <input #tenCongTrinh="ngModel" class="form-control" type="text" name="tenCongTrinh"
+                                    [(ngModel)]="congtrinhForView.tenCongTrinh" disabled required>
+                                <validation-messages [formCtrl]="tenCongTrinh">
+                                </validation-messages>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>{{l("Địa chỉ công trình")}} *</label>
+                    <input #diaChiCongTrinh="ngModel" class="form-control" type="text" name="diaChiCongTrinh"
+                        [(ngModel)]="congtrinhForView.diaChiCongTrinh" disabled required>
+                    <validation-messages [formCtrl]="diaChiCongTrinh">
+                    </validation-messages>
+                </div>
+                <div class="form-group">
+                    <label>{{l("Loại công trình")}} *</label>
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #maLoaiCongTrinh="ngModel" class="form-control" type="text"
+                                    name="maLoaiCongTrinh" [(ngModel)]="congtrinhForView.maLoaiCongTrinh" disabled
+                                    required maxlength="64">
+                                <validation-messages [formCtrl]="maLoaiCongTrinh">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <label>{{l("Diện tích công trình")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+
+                            <div class="form-group">
+                                <input #dientichInput="ngModel" class="form-control" type="text"
+                                    name="DienTichCongTrinh" [(ngModel)]="congtrinhForView.dienTichCongTrinh" disabled
+                                    required>
+                                <validation-messages [formCtrl]="dientichInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>{{l("Kế hoạch")}} *</label>
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #kehoachInput="ngModel" class="form-control" type="text" name="maKeHoach"
+                                    [(ngModel)]="congtrinhForView.maKeHoach" disabled required maxlength="64">
+                                <validation-messages [formCtrl]="kehoachInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>{{l("Chi phí dự án")}} *</label>
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #kpddInput="ngModel" class="form-control" type="text" name="kinhPhiDuocDuyet"
+                                    [(ngModel)]="congtrinhForView.kinhPhiDuocDuyet" disabled required maxlength="64">
+                                <validation-messages [formCtrl]="kpddInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <label>{{l("Chi phí đã sử dụng")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+
+                            <div class="form-group">
+                                <input #cpdsdInput="ngModel" class="form-control" type="text" name="chiPhiDaSuDung"
+                                    [(ngModel)]="congtrinhForView.chiPhiDaSuDung" disabled required>
+                                <validation-messages [formCtrl]="cpdsdInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>{{l("Mô tả công trình")}} *</label>
+
+                    <textarea #moTaCongTrinh="ngModel" class="form-control" rows="5" name="moTaCongTrinh"
+                        class="form-control" [(ngModel)]="congtrinhForView.moTaCongTrinh" maxlength="256"
+                        disabled></textarea>
+                    <validation-messages [formCtrl]="moTaCongTrinh">
+                    </validation-messages>
+                </div>
+            </div>
+
+            <div class="form-control">
+                <h5 style="color: royalblue">Tờ trình</h5>
+                <div class="form-group">
+                    <label>{{l("Số tờ trình")}} *</label>
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #sottInput="ngModel" class="form-control" type="text" name="soToTrinh"
+                                    [(ngModel)]="hopDongInput.soToTrinh" required maxlength="64">
+                                <validation-messages [formCtrl]="sottInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <label>{{l("Nội dung tờ trình")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+
+                            <div class="form-group">
+                                <input #ndttInput="ngModel" class="form-control" type="text" name="noiDungToTrinh"
+                                    [(ngModel)]="hopDongInput.noiDungToTrinh" required>
+                                <validation-messages [formCtrl]="ndttInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>{{l("Ngày ký")}} *</label>
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #ngaykyInput="ngModel" class="form-control" type="date" name="ngayKyTT"
+                                    [(ngModel)]="hopDongInput.ngayKyTT" required maxlength="64">
+                                <validation-messages [formCtrl]="ngaykyInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <label>{{l("Chi phí duyệt")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+
+                            <div class="form-group">
+                                <input #cpdttInput="ngModel" class="form-control" type="number" min="1000"
+                                    name="chiPhiDuyetTT" [(ngModel)]="hopDongInput.chiPhiDuyetTT" required>
+                                <validation-messages [formCtrl]="cpdttInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-control">
+                <h5 style="color: royalblue">Bảo lãnh hợp đồng</h5>
+                <div class="form-group">
+                    <label>{{l("Hình thức bảo lãnh")}} *</label>
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #htbldhInput="ngModel" class="form-control" type="text"
+                                    name="maHinhThucBaoLanhHD" [(ngModel)]="hopDongInput.maHinhThucBaoLanhHD" required
+                                    maxlength="64">
+                                <validation-messages [formCtrl]="htbldhInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <label>{{l("Số chứng từ bảo lãnh")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+
+                            <div class="form-group">
+                                <input #ctblhdInput="ngModel" class="form-control" type="text" name="soChungTuBaoLanhHD"
+                                    [(ngModel)]="hopDongInput.soChungTuBaoLanhHD" required>
+                                <validation-messages [formCtrl]="ctblhdInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>{{l("Ngân hàng bảo lãnh")}} *</label>
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #nhbldInput="ngModel" class="form-control" type="text" name="nganHangBaoLanhHD"
+                                    [(ngModel)]="hopDongInput.nganHangBaoLanhHD" required maxlength="64">
+                                <validation-messages [formCtrl]="nhbldInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <label>{{l("Số tiền bảo lãnh")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #stblInput="ngModel" class="form-control" type="number" min="1000"
+                                    name="soTienBaoLanhHD" [(ngModel)]="hopDongInput.soTienBaoLanhHD" required>
+                                <validation-messages [formCtrl]="stblInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <label>{{l("Ngày hết hạn chứng từ")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+
+                            <div class="form-group">
+                                <input #nhhInput="ngModel" class="form-control" type="date" name="ngayHetHanChungTuHD"
+                                    [(ngModel)]="hopDongInput.ngayHetHanChungTuHD" required>
+                                <validation-messages [formCtrl]="nhhInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="form-control">
+                <h5 style="color: royalblue">Bảo lãnh bảo hành</h5>
+                <div class="form-group">
+                    <label>{{l("Hình thức bảo lãnh")}} *</label>
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #htblbhInput="ngModel" class="form-control" type="text"
+                                    name="maHinhThucBaoLanhBH" [(ngModel)]="hopDongInput.maHinhThucBaoLanhBH" required
+                                    maxlength="64">
+                                <validation-messages [formCtrl]="htblbhInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <label>{{l("Số chứng từ bảo lãnh")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+
+                            <div class="form-group">
+                                <input #soChungTuBaoLanhBH="ngModel" class="form-control" type="text"
+                                    name="soChungTuBaoLanhBH" [(ngModel)]="hopDongInput.soChungTuBaoLanhBH" required>
+                                <validation-messages [formCtrl]="soChungTuBaoLanhBH">
+                                </validation-messages>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>{{l("Ngân hàng bảo lãnh")}} *</label>
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #nganHangBaoLanhBH="ngModel" class="form-control" type="text"
+                                    name="nganHangBaoLanhBH" [(ngModel)]="hopDongInput.nganHangBaoLanhBH" required
+                                    maxlength="64">
+                                <validation-messages [formCtrl]="nganHangBaoLanhBH">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <label>{{l("Số tiền bảo lãnh")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+
+                            <div class="form-group">
+                                <input #SoTienBaoLanhBH="ngModel" class="form-control" type="number" min="1000"
+                                    name="soTienBaoLanhBH" [(ngModel)]="hopDongInput.soTienBaoLanhBH" required>
+                                <validation-messages [formCtrl]="SoTienBaoLanhBH">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <label>{{l("Ngày hết hạn chứng từ")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+
+                            <div class="form-group">
+                                <input #ngayHetHanChungTuBH="ngModel" class="form-control" type="date"
+                                    name="ngayHetHanChungTuBH" [(ngModel)]="hopDongInput.ngayHetHanChungTuBH" required>
+                                <validation-messages [formCtrl]="ngayHetHanChungTuBH">
+                                </validation-messages>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-control">
+                <div class="form-group">
+                    <button class="btn btn-primary" (click)="showThanhToan()">
+                        Thêm Thanh toán
+                    </button>
+                </div>
+                <div class="row align-items-center">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    STT
+                                </th>
+                                <th>
+                                    Ngày dự kiến thanh toán
+                                </th>
+                                <th>
+                                    Số tiền thanh toán
+                                </th>
+                                <th>
+                                    Đã thanh toán
+
+                                </th>
+                                <th>
+                                    Ngày thanh toán
+                                </th>
+                                <th>
+                                    Nội dung thanh toán
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let item of dsThanhToan" i="index">
+                            <td>
+
+                             
+                            </td>
+                            <td>
+
+                                <span
+                                    title="{{item.ngayDuKienThanhToan | date:'dd-MMM-yyyy'}}">{{truncateString(item.ngayDuKienThanhToan)| date:'dd-MMM-yyyy'}}</span>
+                            </td>
+                            <td>
+
+                                <span
+                                    title="{{item.soTienThanhToan |number}}">{{truncateString(item.soTienThanhToan)|number}}</span>
+                            </td>
+                            <td>
+
+                                <span
+                                    title="{{item.daThanhToan|number}}">{{truncateString(item.daThanhToan)|number}}</span>
+                            </td>
+                            <td>
+
+                                <span
+                                    title="{{item.ngayThanhToan| date:'dd-MMM-yyyy'}}">{{truncateString(item.ngayThanhToan)| date:'dd-MMM-yyyy'}}</span>
+                            </td>
+                            <td>
+
+                                <span title="{{item.noiDungThanhToan}}">{{truncateString(item.noiDungThanhToan)}}</span>
+                            </td>
+
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+            <button type="submit" class="btn btn-primary" [buttonBusy]="saving" (click)="save()"
+                [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                <span>{{l("Save")}}</span></button>
+        </div>
+
+    </form>
+</div>
+<selectHoSoThauN13Modal #selectHoSoThauN13Modal (modalSave)="SetThongTinCongTrinh()"></selectHoSoThauN13Modal>
+<createThanhToan13Modal #createThanhToan13Modal (modalSave)="ThemThanhToan()"></createThanhToan13Modal>

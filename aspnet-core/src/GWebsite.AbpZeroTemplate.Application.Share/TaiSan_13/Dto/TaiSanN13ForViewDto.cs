@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.TaiSan_13.Dto
 {
-    public class TaiSanForViewDto
+    public class TaiSanN13ForViewDto
     {
         public string MaTaiSan { set; get; }
         public string MaNhomTaiSan { set; get; }

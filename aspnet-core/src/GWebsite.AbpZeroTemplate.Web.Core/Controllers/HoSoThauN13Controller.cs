@@ -27,6 +27,11 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
+        public PagedResultDto<HoSoThauN13Dto> GetDSHoSoThauChoHopDong(HoSoThauN13Filter hoSoThauFilter)
+        {
+            return HoSoThauAppService.GetDSHoSoThauChoHopDong(hoSoThauFilter);
+        }
+        [HttpGet]
         public HoSoThauN13Input GetHoSoThauForEdit(int id)
         {
             return HoSoThauAppService.GetHoSoThauForEdit(id);

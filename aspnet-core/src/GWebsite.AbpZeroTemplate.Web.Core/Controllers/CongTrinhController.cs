@@ -60,5 +60,11 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         {
             return congTrinhAppService.GetCongTrinhForView(id);
         }
+        [HttpGet]
+        public CongTrinhForViewDto GetCongTrinhForViewByMCT(string id)
+        {
+            return congTrinhAppService.GetCongTrinhForViewByMCT(id);
+        }
+        
     }
 }

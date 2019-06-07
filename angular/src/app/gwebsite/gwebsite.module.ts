@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, LoaiBatDongSanServiceProxy, NhomTaiSanServiceProxy, LoaiSoHuuServiceProxy, MucDichSuDungDatServiceProxy, BatDongSanServiceProxy, HienTrangPhapLyServiceProxy, TinhTrangSuDungDatServiceProxy, TaiSanServiceProxy, SuaChuaBatDongSanServiceProxy, KeHoachXayDungServiceProxy, CongTrinhServiceProxy, HoSoThauN13ServiceProxy, DonViThauServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, LoaiBatDongSanServiceProxy, NhomTaiSanServiceProxy, LoaiSoHuuServiceProxy, MucDichSuDungDatServiceProxy, BatDongSanServiceProxy, HienTrangPhapLyServiceProxy, TinhTrangSuDungDatServiceProxy, SuaChuaBatDongSanServiceProxy, KeHoachXayDungServiceProxy, CongTrinhServiceProxy, HoSoThauN13ServiceProxy, HopDongN13ServiceProxy, ThanhToanN13Dto, ThanhToanN13ServiceProxy, DonViThauN13ServiceProxy, TaiSanN13ServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -56,6 +56,12 @@ import { HoSoThauN13Component } from './hosothauN13/hosothaun13.component';
 import { CreateHoSoThauN13ModalComponent } from './hosothauN13/create-hosothau13-modal.component';
 import { SelectCongTrinhN13ModalComponent } from './hosothauN13/select-congtrinhn13-modal.component';
 import { CreateDonViThauN13Component } from './hosothauN13/create-donvithaun13-modal.component';
+import { HopDongN13Component } from './hopdongN13/hopdongn13.component';
+import { CreateHopDongN13ModalComponent } from './hopdongN13/create-hopdong13-modal.component';
+import { SelectHoSoThauN13ModalComponent } from './hopdongN13/select-hosothaun13-modal.component';
+import { EditCongTrinhModalComponent } from './congtrinhN13/edit-congtrinh-modal.component';
+import { EditHoSoThauN13ModalComponent } from './hosothauN13/edit-hosothau13-modal.component';
+import { CreateThanhToanN13Component } from './hopdongN13/create-thanhtoann13-modal.component';
 
 
 
@@ -92,6 +98,7 @@ import { CreateDonViThauN13Component } from './hosothauN13/create-donvithaun13-m
         KeHoachXayDungComponent, CreateOrEditKeHoachXayDungModalComponent,ViewKeHoachXayDungModalComponent,SelectKHCongTrinhModalComponent,
         CongTrinhComponent, CreateOrEditCongTrinhModalComponent,ViewCongTrinhModalComponent,SelectKeHoachXayDungModalComponent,
         CreateCongTrinhModalComponent,HoSoThauN13Component,CreateHoSoThauN13ModalComponent,SelectCongTrinhN13ModalComponent,CreateDonViThauN13Component,
+        HopDongN13Component,CreateHopDongN13ModalComponent,SelectHoSoThauN13ModalComponent,EditCongTrinhModalComponent,EditHoSoThauN13ModalComponent,CreateThanhToanN13Component,
     ],
     providers: [
         DemoModelServiceProxy,
@@ -102,12 +109,14 @@ import { CreateDonViThauN13Component } from './hosothauN13/create-donvithaun13-m
         BatDongSanServiceProxy,
         HienTrangPhapLyServiceProxy,
         TinhTrangSuDungDatServiceProxy,
-        TaiSanServiceProxy,
+        TaiSanN13ServiceProxy,
         SuaChuaBatDongSanServiceProxy,
         KeHoachXayDungServiceProxy,
         CongTrinhServiceProxy,
         HoSoThauN13ServiceProxy,
-        DonViThauServiceProxy,
+        DonViThauN13ServiceProxy,
+        HopDongN13ServiceProxy,
+        ThanhToanN13ServiceProxy,
     ]
 })
 export class GWebsiteModule { }

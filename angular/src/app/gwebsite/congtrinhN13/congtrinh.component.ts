@@ -11,6 +11,7 @@ import { CongTrinhServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditCongTrinhModalComponent } from './create-or-edit-congtrinh-modal.component';
 import { ModalDirective } from 'ngx-bootstrap';
 import { CreateCongTrinhModalComponent } from './create-congtrinh-modal.component';
+import { EditCongTrinhModalComponent } from './edit-congtrinh-modal.component';
 
 @Component({
 
@@ -26,14 +27,16 @@ export class CongTrinhComponent extends AppComponentBase implements AfterViewIni
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
     @ViewChild('createCongTrinhModal') createCongTrinhModal: CreateCongTrinhModalComponent;
+    @ViewChild('editCongTrinhModal') editCongTrinhModal: EditCongTrinhModalComponent;
     @ViewChild('CongTrinhModal') modal: ModalDirective;
+    @ViewChild('viewCongTrinhModal') viewCongTrinhModal: ViewCongTrinhModalComponent;
     /**
      * tạo các biến dể filters
      */
     congtrinhName: string;
     macongtrinh: string;
     maKeHoach: string;
-    loaicongtrinh: string;
+    namthuchien: string;
 
     /**
      * Tab values
@@ -93,21 +96,27 @@ export class CongTrinhComponent extends AppComponentBase implements AfterViewIni
             this.disableTabUpdate = true;
             this.disableTabSetActive = true;
             this.createCongTrinhModal.reset();
+            this.createCongTrinhModal.show();
         }
    
     }
 
     InitTabView(idRecond: number): void {
-        this.disableTabView = false;
-        this.activeTabView = true;
-
-        this.activeTabSuaChua = false;
-        this.activeTabUpdate = false;
-        this.activeTabCreate = false;
-        this.activeTabSetActive = false;
-
-        this.disableTabSetActive = true;
-        this.disableTabUpdate = true;
+        if(this.activeTabView==false)
+        {
+            this.disableTabView = false;
+            this.activeTabView = true;
+    
+            this.activeTabSuaChua = false;
+            this.activeTabUpdate = false;
+            this.activeTabCreate = false;
+            this.activeTabSetActive = false;
+    
+            this.disableTabSetActive = true;
+            this.disableTabUpdate = true;
+            this.viewCongTrinhModal.show(idRecond);
+        }
+  
     }
 
     InitTabUpdate(idRecond: number) {
@@ -122,10 +131,15 @@ export class CongTrinhComponent extends AppComponentBase implements AfterViewIni
             this.activeTabView = false;
             this.activeTabCreate = false;
             this.activeTabSetActive = false;
+            this.editCongTrinhModal.reset();
+            this.editCongTrinhModal.show(idRecond);
         }
      
     }
-
+    SaveNew() {
+     
+        this.activeTabSuaChua = true;
+    }
     InitTabActive(idRecond: number) {
         console.log("ID recond" + idRecond);
         this.disableTabSetActive = false;
@@ -207,8 +221,8 @@ export class CongTrinhComponent extends AppComponentBase implements AfterViewIni
         this._activatedRoute.params.subscribe((params: Params) => {
             this.congtrinhName = params['TenCongTrinh'] || '';
             this.macongtrinh = params['MaCongTrinh'] || '';
-            this.maKeHoach = params['MamaKeHoach'] || '';
-            this.loaicongtrinh = params['MaLoaiCongTrinh'] || '';
+            this.maKeHoach = params['MaKeHoach'] || '';
+            this.namthuchien = params['MaLoaiCongTrinh'] || '';
             this.reloadList(this.congtrinhName, this.macongtrinh, this.maKeHoach, null);
         });
     }

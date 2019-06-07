@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body">
             <div class="form-control">
-                <h5>Thông tin Hồ sơ thầu</h5>
+                <h5  style="color: royalblue">Thông tin Hồ sơ thầu</h5>
                 <div class="row">
                     <div class="col-xl-6">
                         <div class="form-group">
@@ -70,20 +70,13 @@
                 <div class="row m--margin-bottom-10">
                     <div class="col-xl-4">
                         <div class="form-group">
-                            <label>Bảo lãnh dự thầu *</label>
+                            <label>Số tiền Bảo lãnh dự thầu *</label>
                             <input #kpddInput="ngModel" class="form-control" type="number" min="0"
                                 name="baoLanhDuThauBD" [(ngModel)]="hosothau.baoLanhDuThauBD" required maxlength="64">
                             <validation-messages [formCtrl]="kpddInput"></validation-messages>
                         </div>
                     </div>
-                    <div class="col-xl-4">
-                        <label>%</label>
-                        <div class="form-group">
-                            <input #dkxdInput="ngModel" class="form-control" type="number" min="0"
-                                name="baoLanhDuThauKT" [(ngModel)]="hosothau.baoLanhDuThauKT" required maxlength="64">
-                            <validation-messages [formCtrl]="dkxdInput"></validation-messages>
-                        </div>
-                    </div>
+                   
                 </div>
 
                 <div class="form-group">
@@ -100,7 +93,7 @@
                     </div> -->
             </div>
             <div class="form-control">
-                <h5>Thông tin về công trình</h5>
+                <h5  style="color: royalblue">Thông tin về công trình</h5>
                 <div class="form-group">
                     <label>{{l("Mã công trình")}} *</label>
                     <div class="form-group m-form__group row">
@@ -180,8 +173,8 @@
                     <div class="form-group m-form__group row">
                         <div class="col-lg-2 col-md-3 col-sm-4">
                             <div class="form-group">
-                                <input #kpddInput="ngModel" class="form-control" type="text" name="kinhPhiDeXuat"
-                                    [(ngModel)]="congTrinhForView.kinhPhiDeXuat" disabled required maxlength="64">
+                                <input #kpddInput="ngModel" class="form-control" type="text" name="kinhPhiDuocDuyet"
+                                    [(ngModel)]="congTrinhForView.kinhPhiDuocDuyet" disabled required maxlength="64">
                                 <validation-messages [formCtrl]="kpddInput">
                                 </validation-messages>
                             </div>

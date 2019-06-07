@@ -12,29 +12,29 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
 {
 
     [Route("api/[controller]/[action]")]
-    public class TaiSanController : GWebsiteControllerBase
+    public class TaiSanN13Controller : GWebsiteControllerBase
     {
-        private readonly ITaiSanAppService taiSanAppService;
+        private readonly ITaiSanN13AppService taiSanAppService;
 
-        public TaiSanController(ITaiSanAppService taiSanAppService)
+        public TaiSanN13Controller(ITaiSanN13AppService taiSanAppService)
         {
             this.taiSanAppService = taiSanAppService;
         }
 
         [HttpGet]
-        public PagedResultDto<TaiSanDto> GetTaiSansByFilter(TaiSanFilter taiSanFilter)
+        public PagedResultDto<TaiSanDto> GetTaiSansByFilter(TaiSanN13Filter taiSanFilter)
         {
             return taiSanAppService.GetTaiSans(taiSanFilter);
         }
 
         [HttpGet]
-        public TaiSanInput GetTaiSanForEdit(int id)
+        public TaiSanN13Input GetTaiSanForEdit(int id)
         {
             return taiSanAppService.GetTaiSanForEdit(id);
         }
 
         [HttpPost]
-        public void CreateOrEditTaiSan([FromBody] TaiSanInput input)
+        public void CreateOrEditTaiSan([FromBody] TaiSanN13Input input)
         {
             taiSanAppService.CreateOrEditTaiSan(input);
         }
@@ -46,7 +46,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public TaiSanForViewDto GetTaiSanForView(int id)
+        public TaiSanN13ForViewDto GetTaiSanForView(int id)
         {
             return taiSanAppService.GetTaiSanForView(id);
         }

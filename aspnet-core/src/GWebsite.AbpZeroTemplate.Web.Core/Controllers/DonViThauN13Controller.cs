@@ -11,29 +11,29 @@ using System.Threading.Tasks;
 namespace GWebsite.AbpZeroTemplate.Application.Controllers
 {
     [Route("api/[controller]/[action]")]
-    public class DonViThauController : GWebsiteControllerBase
+    public class DonViThauN13Controller : GWebsiteControllerBase
     {
-        private readonly IDonViThauAppService donViThauAppService;
+        private readonly IDonViThauN13AppService donViThauAppService;
 
-        public DonViThauController(IDonViThauAppService donViThauAppService)
+        public DonViThauN13Controller(IDonViThauN13AppService donViThauAppService)
         {
             this.donViThauAppService = donViThauAppService;
         }
 
         [HttpGet]
-        public PagedResultDto<DonViThauDto> GetDonViThausByFilter(DonViThauFilter donViThauFilter)
+        public PagedResultDto<DonViThauN13Dto> GetDonViThausByFilter(DonViThauN13Filter donViThauFilter)
         {
             return donViThauAppService.GetDonViThaus(donViThauFilter);
         }
 
         [HttpGet]
-        public DonViThauInput GetDonViThauForEdit(int id)
+        public DonViThauN13Input GetDonViThauForEdit(int id)
         {
             return donViThauAppService.GetDonViThauForEdit(id);
         }
 
         [HttpPost]
-        public void CreateOrEditDonViThau([FromBody] DonViThauInput input)
+        public void CreateOrEditDonViThau([FromBody] DonViThauN13Input input)
         {
             donViThauAppService.CreateOrEditDonViThau(input);
         }
@@ -45,7 +45,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public DonViThauForViewDto GetDonViThauForView(int id)
+        public DonViThauN13ForViewDto GetDonViThauForView(int id)
         {
             return donViThauAppService.GetDonViThauForView(id);
         }

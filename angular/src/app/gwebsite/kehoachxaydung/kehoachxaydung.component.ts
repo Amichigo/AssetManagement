@@ -34,8 +34,8 @@ export class KeHoachXayDungComponent extends AppComponentBase implements AfterVi
      */
     kehoachxaydungName: string;
     makehoachxaydung:string;
-    nhomkehoachxaydung:string;
-    loaikehoachxaydung:string;
+    trangthai:string;
+    namthuchien:string;
     constructor(
         injector: Injector,
         private _kehoachxaydungService: KeHoachXayDungServiceProxy,
@@ -85,8 +85,8 @@ export class KeHoachXayDungComponent extends AppComponentBase implements AfterVi
 
     }
 
-    reloadList(tenkh,makh,trangthai,them, event?: LazyLoadEvent) {
-        this._kehoachxaydungService.getKeHoachXayDungsByFilter(null,null,null,null,null, this.primengTableHelper.getSorting(this.dataTable),
+    reloadList(makh,tenkh,trangthai,nam, event?: LazyLoadEvent) {
+        this._kehoachxaydungService.getKeHoachXayDungsByFilter(makh,tenkh,null,trangthai,nam, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -107,9 +107,9 @@ export class KeHoachXayDungComponent extends AppComponentBase implements AfterVi
         this._activatedRoute.params.subscribe((params: Params) => {
             this.kehoachxaydungName = params['TenKeHoachXayDung'] || '';
             this.makehoachxaydung = params['MaKeHoachXayDung'] || '';
-            this.nhomkehoachxaydung= params['MaNhomKeHoachXayDung'] || '';
-            this.loaikehoachxaydung= params['MaLoaiKeHoachXayDung'] || '';
-            this.reloadList(this.kehoachxaydungName,this.makehoachxaydung,this.nhomkehoachxaydung,this.loaikehoachxaydung, null);
+            this.trangthai= params['MaNhomKeHoachXayDung'] || '';
+            this.namthuchien= params['MaLoaiKeHoachXayDung'] || '';
+            this.reloadList(this.makehoachxaydung,this.kehoachxaydungName,this.trangthai,this.namthuchien, null);
         });
     }
 
@@ -119,7 +119,7 @@ export class KeHoachXayDungComponent extends AppComponentBase implements AfterVi
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.kehoachxaydungName,this.makehoachxaydung,this.nhomkehoachxaydung,this.loaikehoachxaydung, null);
+        this.reloadList(this.makehoachxaydung,this.kehoachxaydungName,this.trangthai,this.namthuchien, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);

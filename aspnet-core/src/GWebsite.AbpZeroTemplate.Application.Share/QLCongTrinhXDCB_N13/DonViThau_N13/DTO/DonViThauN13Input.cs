@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.DonViThau.DTO
 {
-    public class DonViThauDto : Entity<int>
+    public class DonViThauN13Input : Entity<int>
     {
         public string MaDonViThau { set; get; }
         public string MaGoiThau { set; get; }

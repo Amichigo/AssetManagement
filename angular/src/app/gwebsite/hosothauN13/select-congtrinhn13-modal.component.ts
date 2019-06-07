@@ -1,4 +1,4 @@
-import { CustomerForViewDto, TaiSanServiceProxy, CongTrinhServiceProxy, CongTrinhForViewDto } from './../../../shared/service-proxies/service-proxies';
+import { CustomerForViewDto, TaiSanN13ServiceProxy, CongTrinhServiceProxy, CongTrinhForViewDto } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild, Output, EventEmitter } from "@angular/core";
 import { CustomerServiceProxy } from "@shared/service-proxies/service-proxies";

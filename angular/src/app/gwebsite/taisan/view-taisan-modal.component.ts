@@ -1,7 +1,6 @@
-import { TaiSanForViewDto } from './../../../shared/service-proxies/service-proxies';
+import {  TaiSanN13ServiceProxy, TaiSanN13ForViewDto } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild } from "@angular/core";
-import { TaiSanServiceProxy } from "@shared/service-proxies/service-proxies";
 import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
@@ -11,12 +10,12 @@ import { ModalDirective } from 'ngx-bootstrap';
 
 export class ViewTaiSanModalComponent extends AppComponentBase {
 
-    taisan : TaiSanForViewDto = new TaiSanForViewDto();
+    taisan : TaiSanN13ForViewDto = new TaiSanN13ForViewDto();
     @ViewChild('viewModal') modal: ModalDirective;
 
     constructor(
         injector: Injector,
-        private _taisanService: TaiSanServiceProxy
+        private _taisanService: TaiSanN13ServiceProxy
     ) {
         super(injector);
     }

@@ -13,6 +13,7 @@ import { SuaChuaBatDongSanComponent } from './suachuabatdongsan/suachuabatdongsa
 import { KeHoachXayDungComponent } from './kehoachxaydung/kehoachxaydung.component';
 import { CongTrinhComponent } from './congtrinhN13/congtrinh.component';
 import { HoSoThauN13Component } from './hosothauN13/hosothaun13.component';
+import { HopDongN13Component } from './hopdongN13/hopdongn13.component';
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -152,6 +153,17 @@ import { HoSoThauN13Component } from './hosothauN13/hosothaun13.component';
                 ]
 
             },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'hopdongn13', component: HopDongN13Component,
+                        data: { permission: 'Pages.Administration.QuanLyCongTrinhDoDang.HopDong' }
+                    },
+                ]
+
+            },
+          
         ])
     ],
     exports: [

@@ -16,5 +16,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.HoSoTha
         void DeleteHoSoThau(int id);
         PagedResultDto<HoSoThauN13Dto> GetHoSoThaus(HoSoThauN13Filter input);
         HoSoThauN13ForViewDto GetHoSoThauForView(int id);
+        PagedResultDto<HoSoThauN13Dto> GetDSHoSoThauChoHopDong(HoSoThauN13Filter input);
     }
 }

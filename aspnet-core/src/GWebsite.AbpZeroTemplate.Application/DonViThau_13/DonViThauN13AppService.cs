@@ -17,18 +17,18 @@ using GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.DonViThau;
 namespace GWebsite.AbpZeroTemplate.Web.Core.DonViThau_13
 {
     [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau)]
-    public class DonViThauAppService : GWebsiteAppServiceBase, IDonViThauAppService
+    public class DonViThauN13AppService : GWebsiteAppServiceBase, IDonViThauN13AppService
     {
         private readonly IRepository<DonViThau_N13> taiSanRepository;
 
-        public DonViThauAppService(IRepository<DonViThau_N13> taiSanRepository)
+        public DonViThauN13AppService(IRepository<DonViThau_N13> taiSanRepository)
         {
             this.taiSanRepository = taiSanRepository;
         }
 
         #region Public Method
 
-        public void CreateOrEditDonViThau(DonViThauInput taiSanInput)
+        public void CreateOrEditDonViThau(DonViThauN13Input taiSanInput)
         {
             if (taiSanInput.Id == 0)
             {
@@ -51,27 +51,27 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DonViThau_13
             }
         }
 
-        public DonViThauInput GetDonViThauForEdit(int id)
+        public DonViThauN13Input GetDonViThauForEdit(int id)
         {
             var taiSanEntity = taiSanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (taiSanEntity == null)
             {
                 return null;
             }
-            return ObjectMapper.Map<DonViThauInput>(taiSanEntity);
+            return ObjectMapper.Map<DonViThauN13Input>(taiSanEntity);
         }
 
-        public DonViThauForViewDto GetDonViThauForView(int id)
+        public DonViThauN13ForViewDto GetDonViThauForView(int id)
         {
             var taiSanEntity = taiSanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (taiSanEntity == null)
             {
                 return null;
             }
-            return ObjectMapper.Map<DonViThauForViewDto>(taiSanEntity);
+            return ObjectMapper.Map<DonViThauN13ForViewDto>(taiSanEntity);
         }
 
-        public PagedResultDto<DonViThauDto> GetDonViThaus(DonViThauFilter input)
+        public PagedResultDto<DonViThauN13Dto> GetDonViThaus(DonViThauN13Filter input)
         {
             var query = taiSanRepository.GetAll().Where(x => !x.IsDelete);
             // filter by value
@@ -98,9 +98,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DonViThau_13
             var items = query.PageBy(input).ToList();
 
             // result
-            return new PagedResultDto<DonViThauDto>(
+            return new PagedResultDto<DonViThauN13Dto>(
                 totalCount,
-                items.Select(item => ObjectMapper.Map<DonViThauDto>(item)).ToList());
+                items.Select(item => ObjectMapper.Map<DonViThauN13Dto>(item)).ToList());
         }
 
         #endregion
@@ -108,10 +108,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DonViThau_13
         #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Create)]
-        private void Create(DonViThauInput taiSanInput)
+        private void Create(DonViThauN13Input taiSanInput)
         {
-            int nextID = taiSanRepository.GetAll().Count() + 1;
-            taiSanInput.MaDonViThau = "TS000" + nextID;
+            taiSanInput.MaDonViThau = taiSanInput.MaDonViThau +taiSanInput.MaGoiThau;
             var taiSanEntity = ObjectMapper.Map<DonViThau_N13>(taiSanInput);
             SetAuditInsert(taiSanEntity);
             taiSanRepository.Insert(taiSanEntity);
@@ -119,7 +118,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DonViThau_13
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Edit)]
-        private void Update(DonViThauInput taiSanInput)
+        private void Update(DonViThauN13Input taiSanInput)
         {
             var taiSanEntity = taiSanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == taiSanInput.Id);
             if (taiSanEntity == null)

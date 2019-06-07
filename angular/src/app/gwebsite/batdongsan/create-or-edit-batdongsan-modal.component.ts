@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { BatDongSanServiceProxy, BatDongSanInput, LoaiBatDongSanDto, LoaiSoHuuDto, TaiSanInput, TaiSanDto } from '@shared/service-proxies/service-proxies';
+import { BatDongSanServiceProxy, BatDongSanInput, LoaiBatDongSanDto, LoaiSoHuuDto, TaiSanDto, TaiSanN13Input } from '@shared/service-proxies/service-proxies';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 import * as moment from 'moment';
 import { ViewBatDongSanModalComponent } from './view-batdongsan-modal.component';
@@ -33,7 +33,7 @@ export class CreateOrEditBatDongSanModalComponent extends AppComponentBase {
     saving = false;
 
     batdongsan: BatDongSanInput = new BatDongSanInput();
-    taisan: TaiSanInput = new TaiSanInput();
+    taisan: TaiSanN13Input = new TaiSanN13Input();
 
 
     constructor(
@@ -73,7 +73,7 @@ export class CreateOrEditBatDongSanModalComponent extends AppComponentBase {
 
     getListTaiSan(): void {
 
-        this._apiService.get('api/TaiSan/GetTaiSansByFilter').subscribe(result => {
+        this._apiService.get('api/TaiSanN13/GetTaiSansByFilter').subscribe(result => {
             this.listTaiSans = result.items;
 
         });
@@ -81,7 +81,7 @@ export class CreateOrEditBatDongSanModalComponent extends AppComponentBase {
 
     onChangeTaiSan(): void {
 
-        this._apiService.getForEdit('api/TaiSan/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
+        this._apiService.getForEdit('api/TaiSanN13/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
             // this.batdongsan.maTaiSan = result.maTaiSan;
             this.taisan.maTaiSan = result.maTaiSan;
             this.taisan.diaChi = result.diaChi;
@@ -97,7 +97,7 @@ export class CreateOrEditBatDongSanModalComponent extends AppComponentBase {
         console.log("update data");
         if (this.selectTaiSanModel.selectedMaTS != -1) {
             this.selectedTaiSan = this.selectTaiSanModel.selectedMaTS;
-            this._apiService.getForEdit('api/TaiSan/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
+            this._apiService.getForEdit('api/TaiSanN13/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
                 // this.batdongsan.maTaiSan = result.maTaiSan;
                 this.taisan.maTaiSan = result.maTaiSan;
                 this.taisan.diaChi = result.diaChi;
@@ -145,6 +145,13 @@ export class CreateOrEditBatDongSanModalComponent extends AppComponentBase {
 
 
             }
+            if(!batdongsanId){
+                this.batdongsan.maLoaiBDS="";
+                this.batdongsan.maLoaiSoHuu="";
+                console.log("Chay vao day");
+            }
+
+     
             this.modal.show();
 
         })
@@ -162,8 +169,9 @@ export class CreateOrEditBatDongSanModalComponent extends AppComponentBase {
             console.log("tu dong luu");
         this.batdongsan.maTaiSan = this.taisan.maTaiSan;
         let input = this.batdongsan;
+        console.log(this.batdongsan.chuSoHuu);
         this.saving = true;
-        this._batdongsanService.createOrEditBatDongSan(input, this.selectedTaiSan).subscribe(result => {
+        this._batdongsanService.createOrEditBatDongSan(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));
             this.close();
         })

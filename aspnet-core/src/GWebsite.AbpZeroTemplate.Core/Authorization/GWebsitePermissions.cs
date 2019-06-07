@@ -101,5 +101,10 @@
         public const string Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Edit = "Pages.Administration.QuanLyCongTrinhDoDang.HoSoThau.Edit";
         public const string Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Delete = "Pages.Administration.QuanLyCongTrinhDoDang.HoSoThau.Delete";
 
+
+        public const string Pages_Administration_QuanLyCongTrinhDoDang_HopDong = "Pages.Administration.QuanLyCongTrinhDoDang.HopDong";
+        public const string Pages_Administration_QuanLyCongTrinhDoDang_HopDong_Create = "Pages.Administration.QuanLyCongTrinhDoDang.HopDong.Create";
+        public const string Pages_Administration_QuanLyCongTrinhDoDang_HopDong_Edit = "Pages.Administration.QuanLyCongTrinhDoDang.HopDong.Edit";
+        public const string Pages_Administration_QuanLyCongTrinhDoDang_HopDong_Delete = "Pages.Administration.QuanLyCongTrinhDoDang.HopDong.Delete";
     }
 }

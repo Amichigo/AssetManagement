@@ -85,7 +85,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.KeHoach_13
             {
                 query = query.Where(x => x.TenKeHoach.ToLower().Equals(input.TenKeHoach));
             }
-           
+            // filter by value
+            if (input.TrangThaiDuyet != null)
+            {
+                query = query.Where(x => x.TrangThaiDuyet.ToLower().Equals(input.TrangThaiDuyet));
+            }
+            // filter by value
+            if (input.NamThucHien != null)
+            {
+                query = query.Where(x => x.NamThucHien.ToLower().Equals(input.NamThucHien));
+            }
             var totalCount = query.Count();
 
             // sorting

@@ -18,18 +18,18 @@ using System.Threading.Tasks;
 namespace GWebsite.AbpZeroTemplate.Web.Core.Asset_13
 {
     [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_TaiSan)]
-    public class TaiSanAppService : GWebsiteAppServiceBase, ITaiSanAppService
+    public class TaiSanN13AppService : GWebsiteAppServiceBase, ITaiSanN13AppService
     {
         private readonly IRepository<TaiSan_13> taiSanRepository;
 
-        public TaiSanAppService(IRepository<TaiSan_13> taiSanRepository)
+        public TaiSanN13AppService(IRepository<TaiSan_13> taiSanRepository)
         {
             this.taiSanRepository = taiSanRepository;
         }
 
         #region Public Method
 
-        public void CreateOrEditTaiSan(TaiSanInput taiSanInput)
+        public void CreateOrEditTaiSan(TaiSanN13Input taiSanInput)
         {
             if (taiSanInput.Id == 0)
             {
@@ -52,27 +52,27 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset_13
             }
         }
 
-        public TaiSanInput GetTaiSanForEdit(int id)
+        public TaiSanN13Input GetTaiSanForEdit(int id)
         {
             var taiSanEntity = taiSanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (taiSanEntity == null)
             {
                 return null;
             }
-            return ObjectMapper.Map<TaiSanInput>(taiSanEntity);
+            return ObjectMapper.Map<TaiSanN13Input>(taiSanEntity);
         }
 
-        public TaiSanForViewDto GetTaiSanForView(int id)
+        public TaiSanN13ForViewDto GetTaiSanForView(int id)
         {
             var taiSanEntity = taiSanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (taiSanEntity == null)
             {
                 return null;
             }
-            return ObjectMapper.Map<TaiSanForViewDto>(taiSanEntity);
+            return ObjectMapper.Map<TaiSanN13ForViewDto>(taiSanEntity);
         }
 
-        public PagedResultDto<TaiSanDto> GetTaiSans(TaiSanFilter input)
+        public PagedResultDto<TaiSanDto> GetTaiSans(TaiSanN13Filter input)
         {
             var query = taiSanRepository.GetAll().Where(x => !x.IsDelete);    
             // filter by value
@@ -118,7 +118,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset_13
         #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_TaiSan_Create)]
-        private void Create(TaiSanInput taiSanInput)
+        private void Create(TaiSanN13Input taiSanInput)
         {
             int nextID = taiSanRepository.GetAll().Count() + 1;
             taiSanInput.MaTaiSan = "TS000" + nextID;
@@ -129,7 +129,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset_13
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_TaiSan_Edit)]
-        private void Update(TaiSanInput taiSanInput)
+        private void Update(TaiSanN13Input taiSanInput)
         {
             var taiSanEntity = taiSanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == taiSanInput.Id);
             if (taiSanEntity == null)

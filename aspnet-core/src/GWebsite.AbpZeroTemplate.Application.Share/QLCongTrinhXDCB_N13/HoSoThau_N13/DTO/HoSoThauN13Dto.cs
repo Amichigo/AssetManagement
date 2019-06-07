@@ -28,5 +28,11 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.HoSoTha
 
 
         public string FileDinhKem { set; get; }
+        public string TenCongTrinh { set; get; }
+        public string MaDonViTrungThau { set; get; }
+        public string TenDonViTrungThau { set; get; }
+        public int IDHoSoThau { set; get; }
+        public int IDCongTrinh { set; get; }
+            
     }
 }

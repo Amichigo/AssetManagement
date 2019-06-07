@@ -10,6 +10,7 @@ import { Table } from 'primeng/components/table/table';
 import { ModalDirective } from 'ngx-bootstrap';
 import { HoSoThauN13ServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateHoSoThauN13ModalComponent } from './create-hosothau13-modal.component';
+import { EditHoSoThauN13ModalComponent } from './edit-hosothau13-modal.component';
 @Component({
 
     templateUrl: './hosothaun13.component.html',
@@ -24,13 +25,16 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
     @ViewChild('paginator') paginator: Paginator;
     @ViewChild('HoSoThauN13Modal') modal: ModalDirective;
     @ViewChild('createHoSoThauN13Modal') createHoSoThauN13Modal:CreateHoSoThauN13ModalComponent;
+    @ViewChild('editHoSoThauN13Modal') editHoSoThauN13Modal:EditHoSoThauN13ModalComponent;
     /**
      * tạo các biến dể filters
      */
-    hosothauName: string;
-    mahosothau: string;
-    maKeHoach: string;
-    loaihosothau: string;
+    maHoSoThau:string;
+    hangMucThau:string;
+    ngayPhat:string;
+    ngayhetHan:string;
+    hinhThucThau:string;
+    duAnXD:string;
 
     
     /**
@@ -65,7 +69,7 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
 
     InitTabHoSoThau(): void {
 
-        this.reloadList(null, null, null);
+        this.reloadList(null, null, null,null,null,null);
         this.activeTabCreate = false;
         this.activeTabUpdate = false;
         this.activeTabView = false;
@@ -124,6 +128,7 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
             this.activeTabView = false;
             this.activeTabCreate = false;
             this.activeTabSetActive = false;
+            this.editHoSoThauN13Modal.show(idRecond);
         }
 
    
@@ -178,12 +183,12 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-        this.reloadList(null, null, null, event);
+        this.reloadList(null, null, null,null,null,null, event);
 
     }
 
-    reloadList(hosothauName, mahosothau, maKeHoach, event?: LazyLoadEvent) {
-        this._hosothauService.getHoSoThausByFilter(mahosothau, maKeHoach, hosothauName,null,null,null, this.primengTableHelper.getSorting(this.dataTable),
+    reloadList(mahst, mact, ngaynhap,ngayhethan,hanmuc,hinhthuc, event?: LazyLoadEvent) {
+        this._hosothauService.getHoSoThausByFilter(mahst, mact, ngaynhap,ngayhethan,hanmuc,hinhthuc, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -193,6 +198,18 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
         });
     }
 
+    ResetFilter(){
+   this.maHoSoThau=''
+    this.hangMucThau=''
+    this.ngayPhat=''
+    this.ngayhetHan=''
+    this.hinhThucThau=''
+    this.duAnXD=''
+    this.reloadPage();
+    }
+    SaveNew() {
+        this.activeTabHoSoThau = true;
+    }
     deleteHoSoThau(id): void {
         this._hosothauService.deleteHoSoThau(id).subscribe(() => {
             this.reloadPage();
@@ -202,11 +219,13 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
-            this.hosothauName = params['TenHoSoThau'] || '';
-            this.mahosothau = params['MaHoSoThau'] || '';
-            this.maKeHoach = params['MamaKeHoach'] || '';
-            this.loaihosothau = params['MaLoaiHoSoThau'] || '';
-            this.reloadList(this.hosothauName, this.mahosothau, this.maKeHoach, null);
+            this.maHoSoThau = params['TenHoSoThau'] || '';
+            this.hinhThucThau = params['MaHoSoThau'] || '';
+            this.hangMucThau = params['MamaKeHoach'] || '';
+            this.ngayPhat = params['MaLoaiHoSoThau'] || '';
+            this.ngayhetHan='';
+            this.duAnXD='';
+            this.reloadList(this.maHoSoThau, this.duAnXD, this.ngayPhat, this.ngayhetHan,this.hangMucThau,this.hinhThucThau);
         });
     }
 
@@ -216,7 +235,7 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.hosothauName, this.mahosothau, this.maKeHoach, null);
+        this.reloadList(this.maHoSoThau, this.duAnXD, this.ngayPhat, this.ngayhetHan,this.hangMucThau,this.hinhThucThau,null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);

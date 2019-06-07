@@ -28,36 +28,31 @@
                                                     class="form-control" placeholder=" Nhập Mã kế hoạch" type="text">
                                             </div>
                                             <div class="col-xl-6">
-                                                <label>{{l("Năm thực hiện")}} *</label>
-                                                <input [(ngModel)]="kehoachxaydungName" name="kehoachxaydungName"
-                                                    autoFocus class="form-control" placeholder="Nhập Năm thực hiện"
-                                                    type="text">
+                                                <label>{{l("Tên kế hoạch")}} *</label>
+                                                <input [(ngModel)]="kehoachxaydungName" name="kehoachxaydungName" autoFocus
+                                                    class="form-control" placeholder=" Nhập Mã kế hoạch" type="text">
                                             </div>
-                                        </div>
-
-                                        <div class="row m--margin-bottom-10">
                                             <div class="col-xl-6">
-                                                <label>{{l("Đơn vị")}} *</label>
-                                                <input [(ngModel)]="nhomkehoachxaydung" name="nhomkehoachxaydung"
-                                                    autoFocus class="form-control" placeholder="Nhập Đơn vị"
-                                                    type="text">
+                                                <label>{{l("Năm thực hiện")}} *</label>
+                                                <input [(ngModel)]="namthuchien" name="namthuchien" autoFocus
+                                                    class="form-control" placeholder="Nhập Năm thực hiện" type="text">
                                             </div>
                                             <div class="col-xl-6">
                                                 <label>{{l("Trạng thái duyệt")}} *</label>
-                                                <input [(ngModel)]="loaikehoachxaydung" name="loaikehoachxaydung"
-                                                    autoFocus class="form-control" placeholder="Nhập Trạng thái duyệt"
-                                                    type="text">
+                                                <input [(ngModel)]="trangthai" name="trangthai" autoFocus
+                                                    class="form-control" placeholder="Nhập Trạng thái duyệt" type="text">
                                             </div>
                                         </div>
+        
                                         <div class="input-group">
-
+        
                                             <span class="input-group-btn">
-                                                <button (click)="applyFilters()" class="btn btn-primary"
-                                                    type="submit"><i class="icon-refresh"></i>
+                                                <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
+                                                        class="icon-refresh"></i>
                                                     {{l("Refresh")}}</button>
                                             </span>
                                         </div>
-
+        
                                     </div>
                                 </div>
                             </div>

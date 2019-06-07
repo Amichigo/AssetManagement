@@ -57,6 +57,9 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
 
         public virtual DbSet<DonViThau_N13> DonViThau_N13 { get; set; }
 
+        public virtual DbSet<HopDong_N13> HopDong_N13 { get; set; }
+        public virtual DbSet<ThanhToan_N13> ThanhToan_N13 { get; set; }
+
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>

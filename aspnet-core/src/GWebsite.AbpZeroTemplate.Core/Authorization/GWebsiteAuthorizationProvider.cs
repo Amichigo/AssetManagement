@@ -123,6 +123,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             dvtN13.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Edit, L("EditingHoSoThau"));
             dvtN13.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Delete, L("DeletingHoSoThau"));
 
+
+            var hdN13 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HopDong, L("HopDong"));
+            hdN13.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HopDong_Create, L("CreatingNewHopDong"));
+            hdN13.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HopDong_Edit, L("EditingHopDong"));
+            hdN13.CreateChildPermission(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HopDong_Delete, L("DeletingHopDong"));
         }
         private static ILocalizableString L(string name)
         {

@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { TaiSanServiceProxy, TaiSanInput } from '@shared/service-proxies/service-proxies';
+import {TaiSanN13Input, TaiSanN13ServiceProxy } from '@shared/service-proxies/service-proxies';
     
 @Component({
     selector: 'createOrEditTaiSanModal',
@@ -24,11 +24,11 @@ export class CreateOrEditTaiSanModalComponent extends AppComponentBase {
 
     saving = false;
 
-    taisan: TaiSanInput = new TaiSanInput();
+    taisan: TaiSanN13Input = new TaiSanN13Input();
 
     constructor(
         injector: Injector,
-        private _taisanService: TaiSanServiceProxy
+        private _taisanService: TaiSanN13ServiceProxy
     ) {
         super(injector);
     }

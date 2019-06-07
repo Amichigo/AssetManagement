@@ -12,6 +12,7 @@ using GWebsite.AbpZeroTemplate.Application;
 using Abp.Application.Services.Dto;
 using System.Linq.Dynamic.Core;
 using Abp.Linq.Extensions;
+using GWebsite.AbpZeroTemplate.Core.Models.KeHoachXayDung_N13;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
 {
@@ -19,10 +20,11 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
     public class CongTrinhAppService : GWebsiteAppServiceBase, ICongTrinhAppService
     {
         private readonly IRepository<CongTrinh_N13> congTrinhRepository;
-
-        public CongTrinhAppService(IRepository<CongTrinh_N13> congTrinhRepository)
+        private readonly IRepository<KeHoachXayDung_N13> keHoachXayDungRepository;
+        public CongTrinhAppService(IRepository<CongTrinh_N13> congTrinhRepository, IRepository<KeHoachXayDung_N13> keHoachXayDungRepository)
         {
             this.congTrinhRepository = congTrinhRepository;
+            this.keHoachXayDungRepository = keHoachXayDungRepository;
         }
 
         #region Public Method
@@ -70,6 +72,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
             return ObjectMapper.Map<CongTrinhForViewDto>(congTrinhEntity);
         }
 
+        
+        public CongTrinhForViewDto GetCongTrinhForViewByMCT(string GetCongTrinhForViewByMCT)
+        {
+            var congTrinhEntity = congTrinhRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.MaCongTrinh == GetCongTrinhForViewByMCT);
+            if (congTrinhEntity == null)
+            {
+                return null;
+            }
+            return ObjectMapper.Map<CongTrinhForViewDto>(congTrinhEntity);
+        }
         public PagedResultDto<CongTrinhDto> GetCongTrinhs(CongTrinhFilter input)
         {
             var query = congTrinhRepository.GetAll().Where(x => !x.IsDelete);
@@ -84,11 +96,18 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
             {
                 query = query.Where(x => x.TenCongTrinh.ToLower().Equals(input.TenCongTrinh));
             }
+
             // filter by value
             if (input.MaKeHoach != null)
             {
                 query = query.Where(x => x.MaKeHoach.ToLower().Equals(input.MaKeHoach));
             }
+
+
+          
+
+
+
 
             var totalCount = query.Count();
 
@@ -110,6 +129,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
         public PagedResultDto<CongTrinhDto> GetDsCongTrinhTheoDuAn(CongTrinhFilter input)
         {
             var query = congTrinhRepository.GetAll().Where(x => !x.IsDelete).Where(da=>da.MaDuAnXayDungCoBan!=null);
+            var khquery = keHoachXayDungRepository.GetAll().Where(x => !x.IsDelete);
             // filter by value
             if (input.MaCongTrinh != null)
             {
@@ -127,21 +147,40 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
                 query = query.Where(x => x.MaKeHoach.ToLower().Equals(input.MaKeHoach));
             }
 
-            var totalCount = query.Count();
+            var listCT = from ct in query
+                         join kt in khquery
+                         on ct.MaKeHoach equals kt.MaKeHoach
+                         select new CongTrinhDto
+                         {
+                             Id=ct.Id,
+                             MaCongTrinh = ct.MaCongTrinh,
+                             MaKeHoach = ct.MaKeHoach,
+                             TenCongTrinh = ct.TenCongTrinh,
+                             NamThucHien = kt.NamThucHien,
+                             KinhPhiDuocDuyet = ct.KinhPhiDuocDuyet,
+                             KinhPhiDeXuat=ct.KinhPhiDeXuat,
+                             ChiPhiDaSuDung = ct.ChiPhiDaSuDung,
+                             TienDoThucHien = ct.TienDoThucHien,
+                             DuKienXayDung = ct.DuKienXayDung,
+                             DuKienHoanThanh = ct.DuKienHoanThanh,
+                             GhiChu = ct.GhiChu,
+                             NgayThiCongThucTe = ct.NgayThiCongThucTe,
+                         };
+            var totalCount = listCT.Count();
 
             // sorting
             if (!string.IsNullOrWhiteSpace(input.Sorting))
             {
-                query = query.OrderBy(input.Sorting);
+                listCT = listCT.OrderBy(input.Sorting);
             }
 
             // paging
-            var items = query.PageBy(input).ToList();
+            var items = listCT.PageBy(input).ToList();
 
             // result
             return new PagedResultDto<CongTrinhDto>(
                 totalCount,
-                items.Select(item => ObjectMapper.Map<CongTrinhDto>(item)).ToList());
+                items.ToList());
         }
         public PagedResultDto<CongTrinhDto> GetCongTrinhKhongThuocDuAn(CongTrinhFilter input)
         {
@@ -187,8 +226,8 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_CongTrinhDoDang_Create)]
         private void Create(CongTrinhInput congTrinhInput)
         {
-           // int nextID = congTrinhRepository.GetAll().Count() + 1;
-           // congTrinhInput.MaCongTrinh = "CT000" + nextID;
+           int nextID = congTrinhRepository.GetAll().Count() + 1;
+            congTrinhInput.MaCongTrinh = congTrinhInput.MaCongTrinh +"_00"+nextID;
             var congTrinhEntity = ObjectMapper.Map<CongTrinh_N13>(congTrinhInput);
             SetAuditInsert(congTrinhEntity);
             congTrinhRepository.Insert(congTrinhEntity);

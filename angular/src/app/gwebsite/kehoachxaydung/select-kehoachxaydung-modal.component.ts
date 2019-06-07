@@ -34,8 +34,8 @@ export class SelectKeHoachXayDungModalComponent extends AppComponentBase {
     active=false;
     kehoachxaydungName: string;
     makehoachxaydung:string;
-    nhomkehoachxaydung:string;
-    loaikehoachxaydung:string;
+    trangthai:string;
+    namthuchien:string;
     public selectedIDCongTrinh:number;
     selectedMaKH:string;
     //@Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
@@ -53,9 +53,9 @@ export class SelectKeHoachXayDungModalComponent extends AppComponentBase {
         this._activatedRoute.params.subscribe((params: Params) => {
             this.kehoachxaydungName = params['TenKeHoachXayDung'] || '';
             this.makehoachxaydung = params['MaKeHoachXayDung'] || '';
-            this.nhomkehoachxaydung= params['MaNhomKeHoachXayDung'] || '';
-            this.loaikehoachxaydung= params['MaLoaiKeHoachXayDung'] || '';
-            this.reloadList(this.kehoachxaydungName,this.makehoachxaydung,this.nhomkehoachxaydung,this.loaikehoachxaydung, null);
+            this.trangthai= params['MaNhomKeHoachXayDung'] || '';
+            this.namthuchien= params['MaLoaiKeHoachXayDung'] || '';
+            this.reloadList(this.kehoachxaydungName,this.makehoachxaydung,this.trangthai,this.namthuchien, null);
         });
            
             this.modal.show();
@@ -100,8 +100,8 @@ export class SelectKeHoachXayDungModalComponent extends AppComponentBase {
     }
 
 
-    reloadList(kehoachxaydungName,makehoachxaydung,nhomkehoachxaydung,loaikehoachxaydung, event?: LazyLoadEvent) {
-        this._kehoachxaydungService.getKeHoachXayDungsByFilter(null,makehoachxaydung,nhomkehoachxaydung,loaikehoachxaydung,kehoachxaydungName, this.primengTableHelper.getSorting(this.dataTable),
+    reloadList(makh,tenkh,trangthai,nam, event?: LazyLoadEvent) {
+        this._kehoachxaydungService.getKeHoachXayDungsByFilter(makh,tenkh,null,trangthai,nam, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -115,7 +115,8 @@ export class SelectKeHoachXayDungModalComponent extends AppComponentBase {
     
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.kehoachxaydungName,this.makehoachxaydung,this.nhomkehoachxaydung,this.loaikehoachxaydung, null);
+        this.reloadList(this.makehoachxaydung,this.kehoachxaydungName,this.trangthai,this.namthuchien, null);
+
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);
             return;

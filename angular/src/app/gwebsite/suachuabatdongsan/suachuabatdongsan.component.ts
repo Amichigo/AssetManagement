@@ -1,5 +1,5 @@
 import { ViewSuaChuaBatDongSanModalComponent } from './view-suachuabatdongsan-modal.component';
-import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild, Input, Output, Directive } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { SuaChuaBatDongSanServiceProxy, TaiSanInput } from '@shared/service-proxies/service-proxies';
+import { SuaChuaBatDongSanServiceProxy, TaiSanN13Input } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditSuaChuaBatDongSanModalComponent } from './createSuachuabatdongsan-modal.component';
 import { TaiSanComponent } from '../taisan/taisan.component';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
@@ -22,6 +22,11 @@ import { DuyetBatDongSanModalComponent } from './duyet-suachuabatdongsan-modal.c
     templateUrl: './suachuabatdongsan.component.html',
     animations: [appModuleAnimation()]
 })
+
+@Directive({
+    selector: '[var]',
+    exportAs: 'var'
+  })
 export class SuaChuaBatDongSanComponent extends AppComponentBase implements AfterViewInit, OnInit {
 
     /**
@@ -45,7 +50,7 @@ export class SuaChuaBatDongSanComponent extends AppComponentBase implements Afte
     ngayDeXuat: string;
     ngaySuaXong: string;
     maloaibds: string;
-    taisan: TaiSanInput = new TaiSanInput();
+    taisan: TaiSanN13Input = new TaiSanN13Input();
     //   listItems: Array<LoaiSuaChuaBatDongSanDto> = [];
     listTaiSans: Array<TaiSanDto> = [];
     selectedLBDS: number;
@@ -90,13 +95,13 @@ export class SuaChuaBatDongSanComponent extends AppComponentBase implements Afte
 
     getListTaiSan(): void {
 
-        this._apiService.get('api/TaiSan/GetTaiSansByFilter').subscribe(result => {
+        this._apiService.get('api/TaiSanN13/GetTaiSansByFilter').subscribe(result => {
             this.listTaiSans = result.items;
         });
     }
     onChangeTaiSan(): void {
 
-        this._apiService.getForEdit('api/TaiSan/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
+        this._apiService.getForEdit('api/TaiSanN13/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
             this.mataisanName = result.maTaiSan;
             this.taisan.maTaiSan = result.maTaiSan;
             this.taisan.diaChi = result.diaChi;
@@ -119,7 +124,8 @@ export class SuaChuaBatDongSanComponent extends AppComponentBase implements Afte
         if (Constain.showConsoleLog) {
             console.log("Init Tab Sua Chua");
         }
-        this.reloadList(null, null, null);
+        // this.reloadList(null, null, null);
+        this.reloadPage();
         this.activeTabCreate = false;
         this.activeTabUpdate = false;
         this.activeTabView = false;
@@ -163,7 +169,7 @@ export class SuaChuaBatDongSanComponent extends AppComponentBase implements Afte
 
     InitTabUpdate(idRecond: number) {
 
-        if (this.activeTabSuaChua == false) {
+        if (this.activeTabUpdate == false) {
             this.disableTabUpdate = false;
             this.activeTabUpdate = true;
             this.disableTabView = true;
@@ -338,7 +344,7 @@ export class SuaChuaBatDongSanComponent extends AppComponentBase implements Afte
         console.log("update data");
         if (this.selectTaiSanModel.selectedMaTS != -1) {
             this.selectedTaiSan = this.selectTaiSanModel.selectedMaTS;
-            this._apiService.getForEdit('api/TaiSan/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
+            this._apiService.getForEdit('api/TaiSanN13/GetTaiSanForView', this.selectedTaiSan).subscribe(result => {
                 this.taisan.maTaiSan = result.maTaiSan;
                 this.taisan.tenTaiSan = result.tenTaiSan;
                 this.mataisanName = result.maTaiSan;

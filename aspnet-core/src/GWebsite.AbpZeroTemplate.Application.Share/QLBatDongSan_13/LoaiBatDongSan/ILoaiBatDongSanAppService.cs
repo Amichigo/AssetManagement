@@ -11,6 +11,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.RealEstas.LoaiBatDongSan
     public interface ILoaiBatDongSanAppService
     {
         void CreateOrEditLoaiBatDongSan(LoaiBatDongSanInput LoaiBatDongSanInput);
+        List<LoaiBatDongSanDto> GetAllLoaiBDS();
         LoaiBatDongSanInput GetLoaiBatDongSanForEdit(int id);
         void DeleteLoaiBatDongSan(int id);
         PagedResultDto<LoaiBatDongSanDto> GetLoaiBatDongSans(LoaiBatDongSanFilter input);
