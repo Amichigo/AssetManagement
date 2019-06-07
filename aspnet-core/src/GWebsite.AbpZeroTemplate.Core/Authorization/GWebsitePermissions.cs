@@ -46,5 +46,14 @@
         public const string Pages_Administration_ConstructionPlanDetail_Edit = "Pages.Administration.ConstructionPlanDetail.Edit";
         public const string Pages_Administration_ConstructionPlanDetail_Delete = "Pages.Administration.ConstructionPlanDetail.Delete";
 
+        public const string Pages_Administration_DisposalPlan = "Pages.Administration.DisposalPlan";
+        public const string Pages_Administration_DisposalPlan_Create = "Pages.Administration.Disposal.Create";
+        public const string Pages_Administration_DisposalPlan_Edit = "Pages.Administration.Disposal.Edit";
+        public const string Pages_Administration_DisposalPlan_Delete = "Pages.Administration.Disposal.Delete";
+
+        public const string Pages_Administration_DisposalPlanDetail = "Pages.Administration.DisposalPlanDetail";
+        public const string Pages_Administration_DisposalPlanDetail_Create = "Pages.Administration.DisposalPlanDetail.Create";
+        public const string Pages_Administration_DisposalPlanDetail_Edit = "Pages.Administration.DisposalPlanDetail.Edit";
+        public const string Pages_Administration_DisposalPlanDetail_Delete = "Pages.Administration.DisposalPlanDetail.Delete";
     }
 }

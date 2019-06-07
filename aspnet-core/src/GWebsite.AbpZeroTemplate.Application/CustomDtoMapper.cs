@@ -6,6 +6,8 @@ using GWebsite.AbpZeroTemplate.Application.Share.ShoppingPlanDetails.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ShoppingPlans.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ConstructionPlans.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ConstructionPlanDetails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.DisposalPlans.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.DisposalPlanDetails.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Applications
@@ -37,6 +39,7 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<ShoppingPlan, ShoppingPlanInput>();
             configuration.CreateMap<ShoppingPlan, ShoppingPlanForViewDto>();
 
+            //ShoppingPlanDetail
             configuration.CreateMap<ShoppingPlanDetail, ShoppingPlanDetailDto>();
             configuration.CreateMap<ShoppingPlanDetailInput, ShoppingPlanDetail>();
             configuration.CreateMap<ShoppingPlanDetail, ShoppingPlanDetailInput>();
@@ -51,6 +54,17 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<ConstructionPlanDetail, ConstructionPlanDetailDto>();
             configuration.CreateMap<ConstructionPlanDetailInput, ConstructionPlanDetail>();
             configuration.CreateMap<ConstructionPlanDetail, ConstructionPlanDetailInput>();
+
+            //DisposalPlan
+            configuration.CreateMap<DisposalPlan, DisposalPlanDto>();
+            configuration.CreateMap<DisposalPlanInput, DisposalPlan>();
+            configuration.CreateMap<DisposalPlan, DisposalPlanInput>();
+            configuration.CreateMap<DisposalPlan, DisposalPlanForViewDto>();
+
+            //DisposalPlanDetail
+            configuration.CreateMap<DisposalPlanDetail, DisposalPlanDetailDto>();
+            configuration.CreateMap<DisposalPlanDetailInput, DisposalPlanDetail>();
+            configuration.CreateMap<DisposalPlanDetail, DisposalPlanDetailInput>();
         }
     }
 }
