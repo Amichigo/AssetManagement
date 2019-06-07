@@ -24,13 +24,9 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<MenuClient> MenuClients { get; set; }
         public virtual DbSet<DemoModel> DemoModels { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<RentalAsset> RentalAssets { get; set; }
-        public virtual DbSet<TypeOfRentalAsset> TypeOfRentalAssets { get; set; }
-        public virtual DbSet<FormOfRentingAsset> FormOfRentingAssets { get; set; }
-        public virtual DbSet<AssetRentingFile> AssetRentingFiles { get; set; }
-        public virtual DbSet<AssetRentingContract> AssetRentingContracts { get; set; }
-
-
+        public virtual DbSet<TypeOfAsset> TypeOfAssets { get; set; }
+        public virtual DbSet<AssetGroup> AssetGroups { get; set; }
+        public virtual DbSet<Asset> Assets { get; set; }
 
 
         /// <summary>

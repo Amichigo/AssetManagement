@@ -24,29 +24,19 @@
         public const string Pages_Administration_Customer_Edit = "Pages.Administration.Customer.Edit";
         public const string Pages_Administration_Customer_Delete = "Pages.Administration.Customer.Delete";
 
-        public const string Pages_Administration_RentalAsset = "Pages.Administration.RentalAsset";
-        public const string Pages_Administration_RentalAsset_Create = "Pages.Administration.RentalAsset.Create";
-        public const string Pages_Administration_RentalAsset_Edit = "Pages.Administration.RentalAsset.Edit ";
-        public const string Pages_Administration_RentalAsset_Delete = "Pages.Administration.RentalAsset.Delete";
+        public const string Pages_Administration_TypeOfAsset = "Pages.Administration.TypeOfAsset";
+        public const string Pages_Administration_TypeOfAsset_Create = "Pages.Administration.TypeOfAsset.Create";
+        public const string Pages_Administration_TypeOfAsset_Edit = "Pages.Administration.TypeOfAsset.Edit ";
+        public const string Pages_Administration_TypeOfAsset_Delete = "Pages.Administration.TypeOfAsset.Delete";
 
-        public const string Pages_Administration_TypeOfRentalAsset = "Pages.Administration.TypeOfRentalAsset";
-        public const string Pages_Administration_TypeOfRentalAsset_Create = "Pages.Administration.TypeOfRentalAsset.Create";
-        public const string Pages_Administration_TypeOfRentalAsset_Edit = "Pages.Administration.TypeOfRentalAsset.Edit ";
-        public const string Pages_Administration_TypeOfRentalAsset_Delete = "Pages.Administration.TypeOfRentalAsset.Delete";
+        public const string Pages_Administration_AssetGroup = "Pages.Administration.AssetGroup";
+        public const string Pages_Administration_AssetGroup_Create = "Pages.Administration.AssetGroup.Create";
+        public const string Pages_Administration_AssetGroup_Edit = "Pages.Administration.AssetGroup.Edit ";
+        public const string Pages_Administration_AssetGroup_Delete = "Pages.Administration.AssetGroup.Delete";
 
-        public const string Pages_Administration_FormOfRentingAsset = "Pages.Administration.FormOfRentingAsset";
-        public const string Pages_Administration_FormOfRentingAsset_Create = "Pages.Administration.FormOfRentingAsset.Create";
-        public const string Pages_Administration_FormOfRentingAsset_Edit = "Pages.Administration.FormOfRentingAsset.Edit ";
-        public const string Pages_Administration_FormOfRentingAsset_Delete = "Pages.Administration.FormOfRentingAsset.Delete";
-
-        public const string Pages_Administration_AssetRentingFile = "Pages.Administration.AssetRentingFile";
-        public const string Pages_Administration_AssetRentingFile_Create = "Pages.Administration.AssetRentingFile.Create";
-        public const string Pages_Administration_AssetRentingFile_Edit = "Pages.Administration.AssetRentingFile.Edit ";
-        public const string Pages_Administration_AssetRentingFile_Delete = "Pages.Administration.AssetRentingFile.Delete";
-
-        public const string Pages_Administration_AssetRentingContract = "Pages.Administration.AssetRentingContract";
-        public const string Pages_Administration_AssetRentingContract_Create = "Pages.Administration.AssetRentingContract.Create";
-        public const string Pages_Administration_AssetRentingContract_Edit = "Pages.Administration.AssetRentingContract.Edit ";
-        public const string Pages_Administration_AssetRentingContract_Delete = "Pages.Administration.AssetRentingContract.Delete";
+        public const string Pages_Administration_Asset = "Pages.Administration.Asset";
+        public const string Pages_Administration_Asset_Create = "Pages.Administration.Asset.Create";
+        public const string Pages_Administration_Asset_Edit = "Pages.Administration.Asset.Edit ";
+        public const string Pages_Administration_Asset_Delete = "Pages.Administration.Asset.Delete";
     }
 }

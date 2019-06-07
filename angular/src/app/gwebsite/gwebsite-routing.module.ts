@@ -3,11 +3,9 @@ import { RouterModule } from '@angular/router';
 import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.component';
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
-import { RentalAssetComponent } from './rental-asset/rental-asset.component';
-import { TypeOfRentalAssetComponent } from './type-of-rental-asset/type-of-rental-asset.component';
-import { FormOfRentingAssetComponent } from './form-of-renting-asset/form-of-renting-asset.component';
-import { AssetRentingFileComponent } from './asset-renting-file/asset-renting-file.component';
-import { AssetRentingContractComponent } from './asset-renting-contract/asset-renting-contract.component';
+import { TypeOfAssetComponent } from './type-of-asset/type-of-asset.component';
+import { AssetGroupComponent } from './asset-group/asset-group.component';
+import { AssetComponent } from './asset/asset.component';
 
 @NgModule({
     imports: [
@@ -43,8 +41,8 @@ import { AssetRentingContractComponent } from './asset-renting-contract/asset-re
                 path: '',
                 children: [
                     {
-                        path: 'rental-asset', component: RentalAssetComponent,
-                        data: { permission: 'Pages.Administration.RentalAsset' }
+                        path: 'type-of-asset', component: TypeOfAssetComponent,
+                        data: { permission: 'Pages.Administration.TypeOfAsset' }
                     },
                 ]
             },
@@ -52,8 +50,8 @@ import { AssetRentingContractComponent } from './asset-renting-contract/asset-re
                 path: '',
                 children: [
                     {
-                        path: 'type-of-rental-asset', component: TypeOfRentalAssetComponent,
-                        data: { permission: 'Pages.Administration.TypeOfRentalAsset' }
+                        path: 'asset-group', component: AssetGroupComponent,
+                        data: { permission: 'Pages.Administration.AssetGroup' }
                     },
                 ]
             },
@@ -61,26 +59,8 @@ import { AssetRentingContractComponent } from './asset-renting-contract/asset-re
                 path: '',
                 children: [
                     {
-                        path: 'form-of-renting-asset', component: FormOfRentingAssetComponent,
-                        data: { permission: 'Pages.Administration.FormOfRentingAsset' }
-                    },
-                ]
-            },
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'asset-renting-file', component: AssetRentingFileComponent,
-                        data: { permission: 'Pages.Administration.AssetRentingFile' }
-                    },
-                ]
-            },
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'asset-renting-contract', component: AssetRentingContractComponent,
-                        data: { permission: 'Pages.Administration.AssetRentingContract' }
+                        path: 'asset', component: AssetComponent,
+                        data: { permission: 'Pages.Administration.Asset' }
                     },
                 ]
             },

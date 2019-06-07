@@ -2,11 +2,10 @@ using AutoMapper;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.RentalAssets.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.TypeOfRentalAssets.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.FormOfRentingAssets.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.AssetRentingFiles.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.AssetRentingContracts.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.TypeOfAssets.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.AssetGroups.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Assets.Dto;
+
 
 using GWebsite.AbpZeroTemplate.Core.Models;
 
@@ -33,37 +32,23 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<Customer, CustomerInput>();
             configuration.CreateMap<Customer, CustomerForViewDto>();
 
-     
+            // TypeOfAsset
+            configuration.CreateMap<TypeOfAsset, TypeOfAssetDto>();
+            configuration.CreateMap<TypeOfAssetInput, TypeOfAsset>();
+            configuration.CreateMap<TypeOfAsset, TypeOfAssetInput>();
+            configuration.CreateMap<TypeOfAsset, TypeOfAssetForViewDto>();
 
-            // RentalAsset
-            configuration.CreateMap<RentalAsset, RentalAssetDto>();
-            configuration.CreateMap<RentalAssetInput, RentalAsset>();
-            configuration.CreateMap<RentalAsset, RentalAssetInput>();
-            configuration.CreateMap<RentalAsset, RentalAssetForViewDto>();
+            // AssetGroup
+            configuration.CreateMap<AssetGroup, AssetGroupDto>();
+            configuration.CreateMap<AssetGroupInput, AssetGroup>();
+            configuration.CreateMap<AssetGroup, AssetGroupInput>();
+            configuration.CreateMap<AssetGroup, AssetGroupForViewDto>();
 
-             // TypeOfRentalAsset
-            configuration.CreateMap<TypeOfRentalAsset, TypeOfRentalAssetDto>();
-            configuration.CreateMap<TypeOfRentalAssetInput, TypeOfRentalAsset>();
-            configuration.CreateMap<TypeOfRentalAsset, TypeOfRentalAssetInput>();
-            configuration.CreateMap<TypeOfRentalAsset, TypeOfRentalAssetForViewDto>();
-
-            // FormOfRentingAsset
-            configuration.CreateMap<FormOfRentingAsset, FormOfRentingAssetDto>();
-            configuration.CreateMap<FormOfRentingAssetInput, FormOfRentingAsset>();
-            configuration.CreateMap<FormOfRentingAsset, FormOfRentingAssetInput>();
-            configuration.CreateMap<FormOfRentingAsset, FormOfRentingAssetForViewDto>();
-
-            // AssetRentingFile
-            configuration.CreateMap<AssetRentingFile, AssetRentingFileDto>();
-            configuration.CreateMap<AssetRentingFileInput, AssetRentingFile>();
-            configuration.CreateMap<AssetRentingFile, AssetRentingFileInput>();
-            configuration.CreateMap<AssetRentingFile, AssetRentingFileForViewDto>();
-
-            // AssetRentingContract
-            configuration.CreateMap<AssetRentingContract, AssetRentingContractDto>();
-            configuration.CreateMap<AssetRentingContractInput, AssetRentingContract>();
-            configuration.CreateMap<AssetRentingContract, AssetRentingContractInput>();
-            configuration.CreateMap<AssetRentingContract, AssetRentingContractForViewDto>();
+            // Asset
+            configuration.CreateMap<Asset, AssetDto>();
+            configuration.CreateMap<AssetInput, Asset>();
+            configuration.CreateMap<Asset, AssetInput>();
+            configuration.CreateMap<Asset, AssetForViewDto>();
         }
     }
 }

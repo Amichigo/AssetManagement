@@ -572,7 +572,7 @@ export class AccountServiceProxy {
 }
 
 @Injectable()
-export class AssetRentingContractServiceProxy {
+export class AssetServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
@@ -583,16 +583,25 @@ export class AssetRentingContractServiceProxy {
     }
 
     /**
-     * @contractName (optional) 
+     * @assetName (optional) 
+     * @assetCode (optional) 
+     * @assetType (optional) 
+     * @assetGroupName (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getAssetRentingContractsByFilter(contractName: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfAssetRentingContractDto> {
-        let url_ = this.baseUrl + "/api/AssetRentingContract/GetAssetRentingContractsByFilter?";
-        if (contractName !== undefined)
-            url_ += "ContractName=" + encodeURIComponent("" + contractName) + "&"; 
+    getAssetsByFilter(assetName: string | null | undefined, assetCode: string | null | undefined, assetType: string | null | undefined, assetGroupName: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfAssetDto> {
+        let url_ = this.baseUrl + "/api/Asset/GetAssetsByFilter?";
+        if (assetName !== undefined)
+            url_ += "AssetName=" + encodeURIComponent("" + assetName) + "&"; 
+        if (assetCode !== undefined)
+            url_ += "AssetCode=" + encodeURIComponent("" + assetCode) + "&"; 
+        if (assetType !== undefined)
+            url_ += "AssetType=" + encodeURIComponent("" + assetType) + "&"; 
+        if (assetGroupName !== undefined)
+            url_ += "AssetGroupName=" + encodeURIComponent("" + assetGroupName) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -611,20 +620,20 @@ export class AssetRentingContractServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAssetRentingContractsByFilter(response_);
+            return this.processGetAssetsByFilter(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAssetRentingContractsByFilter(<any>response_);
+                    return this.processGetAssetsByFilter(<any>response_);
                 } catch (e) {
-                    return <Observable<PagedResultDtoOfAssetRentingContractDto>><any>_observableThrow(e);
+                    return <Observable<PagedResultDtoOfAssetDto>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<PagedResultDtoOfAssetRentingContractDto>><any>_observableThrow(response_);
+                return <Observable<PagedResultDtoOfAssetDto>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetAssetRentingContractsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfAssetRentingContractDto> {
+    protected processGetAssetsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfAssetDto> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -635,7 +644,7 @@ export class AssetRentingContractServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfAssetRentingContractDto.fromJS(resultData200) : new PagedResultDtoOfAssetRentingContractDto();
+            result200 = resultData200 ? PagedResultDtoOfAssetDto.fromJS(resultData200) : new PagedResultDtoOfAssetDto();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -643,15 +652,15 @@ export class AssetRentingContractServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<PagedResultDtoOfAssetRentingContractDto>(<any>null);
+        return _observableOf<PagedResultDtoOfAssetDto>(<any>null);
     }
 
     /**
      * @id (optional) 
      * @return Success
      */
-    getAssetRentingContractForEdit(id: number | null | undefined): Observable<AssetRentingContractInput> {
-        let url_ = this.baseUrl + "/api/AssetRentingContract/GetAssetRentingContractForEdit?";
+    getAssetForEdit(id: number | null | undefined): Observable<AssetInput> {
+        let url_ = this.baseUrl + "/api/Asset/GetAssetForEdit?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -666,20 +675,20 @@ export class AssetRentingContractServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAssetRentingContractForEdit(response_);
+            return this.processGetAssetForEdit(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAssetRentingContractForEdit(<any>response_);
+                    return this.processGetAssetForEdit(<any>response_);
                 } catch (e) {
-                    return <Observable<AssetRentingContractInput>><any>_observableThrow(e);
+                    return <Observable<AssetInput>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<AssetRentingContractInput>><any>_observableThrow(response_);
+                return <Observable<AssetInput>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetAssetRentingContractForEdit(response: HttpResponseBase): Observable<AssetRentingContractInput> {
+    protected processGetAssetForEdit(response: HttpResponseBase): Observable<AssetInput> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -690,7 +699,7 @@ export class AssetRentingContractServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? AssetRentingContractInput.fromJS(resultData200) : new AssetRentingContractInput();
+            result200 = resultData200 ? AssetInput.fromJS(resultData200) : new AssetInput();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -698,15 +707,15 @@ export class AssetRentingContractServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<AssetRentingContractInput>(<any>null);
+        return _observableOf<AssetInput>(<any>null);
     }
 
     /**
      * @id (optional) 
      * @return Success
      */
-    getAssetRentingFileComboboxForEditAsync(id: number | null | undefined): Observable<AssetRentingFileOutput> {
-        let url_ = this.baseUrl + "/api/AssetRentingContract/GetAssetRentingFileComboboxForEditAsync?";
+    getTypeOfAssetComboboxForEditAsync(id: number | null | undefined): Observable<TypeOfAssetOutput> {
+        let url_ = this.baseUrl + "/api/Asset/GetTypeOfAssetComboboxForEditAsync?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -721,20 +730,20 @@ export class AssetRentingContractServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAssetRentingFileComboboxForEditAsync(response_);
+            return this.processGetTypeOfAssetComboboxForEditAsync(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAssetRentingFileComboboxForEditAsync(<any>response_);
+                    return this.processGetTypeOfAssetComboboxForEditAsync(<any>response_);
                 } catch (e) {
-                    return <Observable<AssetRentingFileOutput>><any>_observableThrow(e);
+                    return <Observable<TypeOfAssetOutput>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<AssetRentingFileOutput>><any>_observableThrow(response_);
+                return <Observable<TypeOfAssetOutput>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetAssetRentingFileComboboxForEditAsync(response: HttpResponseBase): Observable<AssetRentingFileOutput> {
+    protected processGetTypeOfAssetComboboxForEditAsync(response: HttpResponseBase): Observable<TypeOfAssetOutput> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -745,7 +754,7 @@ export class AssetRentingContractServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? AssetRentingFileOutput.fromJS(resultData200) : new AssetRentingFileOutput();
+            result200 = resultData200 ? TypeOfAssetOutput.fromJS(resultData200) : new TypeOfAssetOutput();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -753,15 +762,70 @@ export class AssetRentingContractServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<AssetRentingFileOutput>(<any>null);
+        return _observableOf<TypeOfAssetOutput>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getAssetGroupComboboxForEditAsync(id: number | null | undefined): Observable<AssetGroupOutput> {
+        let url_ = this.baseUrl + "/api/Asset/GetAssetGroupComboboxForEditAsync?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAssetGroupComboboxForEditAsync(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAssetGroupComboboxForEditAsync(<any>response_);
+                } catch (e) {
+                    return <Observable<AssetGroupOutput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<AssetGroupOutput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAssetGroupComboboxForEditAsync(response: HttpResponseBase): Observable<AssetGroupOutput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? AssetGroupOutput.fromJS(resultData200) : new AssetGroupOutput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<AssetGroupOutput>(<any>null);
     }
 
     /**
      * @input (optional) 
      * @return Success
      */
-    createOrEditAssetRentingContract(input: AssetRentingContractInput | null | undefined): Observable<void> {
-        let url_ = this.baseUrl + "/api/AssetRentingContract/CreateOrEditAssetRentingContract";
+    createOrEditAsset(input: AssetInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/Asset/CreateOrEditAsset";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -776,11 +840,11 @@ export class AssetRentingContractServiceProxy {
         };
 
         return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processCreateOrEditAssetRentingContract(response_);
+            return this.processCreateOrEditAsset(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processCreateOrEditAssetRentingContract(<any>response_);
+                    return this.processCreateOrEditAsset(<any>response_);
                 } catch (e) {
                     return <Observable<void>><any>_observableThrow(e);
                 }
@@ -789,7 +853,7 @@ export class AssetRentingContractServiceProxy {
         }));
     }
 
-    protected processCreateOrEditAssetRentingContract(response: HttpResponseBase): Observable<void> {
+    protected processCreateOrEditAsset(response: HttpResponseBase): Observable<void> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -811,8 +875,8 @@ export class AssetRentingContractServiceProxy {
     /**
      * @return Success
      */
-    deleteAssetRentingContract(id: number): Observable<void> {
-        let url_ = this.baseUrl + "/api/AssetRentingContract/DeleteAssetRentingContract/{id}";
+    deleteAsset(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/Asset/DeleteAsset/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
         url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
@@ -827,11 +891,11 @@ export class AssetRentingContractServiceProxy {
         };
 
         return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processDeleteAssetRentingContract(response_);
+            return this.processDeleteAsset(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processDeleteAssetRentingContract(<any>response_);
+                    return this.processDeleteAsset(<any>response_);
                 } catch (e) {
                     return <Observable<void>><any>_observableThrow(e);
                 }
@@ -840,7 +904,7 @@ export class AssetRentingContractServiceProxy {
         }));
     }
 
-    protected processDeleteAssetRentingContract(response: HttpResponseBase): Observable<void> {
+    protected processDeleteAsset(response: HttpResponseBase): Observable<void> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -863,8 +927,8 @@ export class AssetRentingContractServiceProxy {
      * @id (optional) 
      * @return Success
      */
-    getAssetRentingContractForView(id: number | null | undefined): Observable<AssetRentingContractForViewDto> {
-        let url_ = this.baseUrl + "/api/AssetRentingContract/GetAssetRentingContractForView?";
+    getAssetForView(id: number | null | undefined): Observable<AssetForViewDto> {
+        let url_ = this.baseUrl + "/api/Asset/GetAssetForView?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -879,20 +943,20 @@ export class AssetRentingContractServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAssetRentingContractForView(response_);
+            return this.processGetAssetForView(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAssetRentingContractForView(<any>response_);
+                    return this.processGetAssetForView(<any>response_);
                 } catch (e) {
-                    return <Observable<AssetRentingContractForViewDto>><any>_observableThrow(e);
+                    return <Observable<AssetForViewDto>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<AssetRentingContractForViewDto>><any>_observableThrow(response_);
+                return <Observable<AssetForViewDto>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetAssetRentingContractForView(response: HttpResponseBase): Observable<AssetRentingContractForViewDto> {
+    protected processGetAssetForView(response: HttpResponseBase): Observable<AssetForViewDto> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -903,7 +967,7 @@ export class AssetRentingContractServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? AssetRentingContractForViewDto.fromJS(resultData200) : new AssetRentingContractForViewDto();
+            result200 = resultData200 ? AssetForViewDto.fromJS(resultData200) : new AssetForViewDto();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -911,12 +975,12 @@ export class AssetRentingContractServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<AssetRentingContractForViewDto>(<any>null);
+        return _observableOf<AssetForViewDto>(<any>null);
     }
 }
 
 @Injectable()
-export class AssetRentingFileServiceProxy {
+export class AssetGroupServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
@@ -927,16 +991,16 @@ export class AssetRentingFileServiceProxy {
     }
 
     /**
-     * @fileName (optional) 
+     * @assetGroupName (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getAssetRentingFilesByFilter(fileName: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfAssetRentingFileDto> {
-        let url_ = this.baseUrl + "/api/AssetRentingFile/GetAssetRentingFilesByFilter?";
-        if (fileName !== undefined)
-            url_ += "FileName=" + encodeURIComponent("" + fileName) + "&"; 
+    getAssetGroupsByFilter(assetGroupName: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfAssetGroupDto> {
+        let url_ = this.baseUrl + "/api/AssetGroup/GetAssetGroupsByFilter?";
+        if (assetGroupName !== undefined)
+            url_ += "AssetGroupName=" + encodeURIComponent("" + assetGroupName) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -955,20 +1019,20 @@ export class AssetRentingFileServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAssetRentingFilesByFilter(response_);
+            return this.processGetAssetGroupsByFilter(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAssetRentingFilesByFilter(<any>response_);
+                    return this.processGetAssetGroupsByFilter(<any>response_);
                 } catch (e) {
-                    return <Observable<PagedResultDtoOfAssetRentingFileDto>><any>_observableThrow(e);
+                    return <Observable<PagedResultDtoOfAssetGroupDto>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<PagedResultDtoOfAssetRentingFileDto>><any>_observableThrow(response_);
+                return <Observable<PagedResultDtoOfAssetGroupDto>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetAssetRentingFilesByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfAssetRentingFileDto> {
+    protected processGetAssetGroupsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfAssetGroupDto> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -979,7 +1043,7 @@ export class AssetRentingFileServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfAssetRentingFileDto.fromJS(resultData200) : new PagedResultDtoOfAssetRentingFileDto();
+            result200 = resultData200 ? PagedResultDtoOfAssetGroupDto.fromJS(resultData200) : new PagedResultDtoOfAssetGroupDto();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -987,15 +1051,70 @@ export class AssetRentingFileServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<PagedResultDtoOfAssetRentingFileDto>(<any>null);
+        return _observableOf<PagedResultDtoOfAssetGroupDto>(<any>null);
+    }
+
+    /**
+     * @assetTypeId (optional) 
+     * @return Success
+     */
+    getAssetGroupsByFilterId(assetTypeId: string | null | undefined): Observable<AssetGroupOutput> {
+        let url_ = this.baseUrl + "/api/AssetGroup/GetAssetGroupsByFilterId?";
+        if (assetTypeId !== undefined)
+            url_ += "assetTypeId=" + encodeURIComponent("" + assetTypeId) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAssetGroupsByFilterId(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAssetGroupsByFilterId(<any>response_);
+                } catch (e) {
+                    return <Observable<AssetGroupOutput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<AssetGroupOutput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAssetGroupsByFilterId(response: HttpResponseBase): Observable<AssetGroupOutput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? AssetGroupOutput.fromJS(resultData200) : new AssetGroupOutput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<AssetGroupOutput>(<any>null);
     }
 
     /**
      * @id (optional) 
      * @return Success
      */
-    getAssetRentingFileForEdit(id: number | null | undefined): Observable<AssetRentingFileInput> {
-        let url_ = this.baseUrl + "/api/AssetRentingFile/GetAssetRentingFileForEdit?";
+    getAssetGroupForEdit(id: number | null | undefined): Observable<AssetGroupInput> {
+        let url_ = this.baseUrl + "/api/AssetGroup/GetAssetGroupForEdit?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -1010,20 +1129,20 @@ export class AssetRentingFileServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAssetRentingFileForEdit(response_);
+            return this.processGetAssetGroupForEdit(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAssetRentingFileForEdit(<any>response_);
+                    return this.processGetAssetGroupForEdit(<any>response_);
                 } catch (e) {
-                    return <Observable<AssetRentingFileInput>><any>_observableThrow(e);
+                    return <Observable<AssetGroupInput>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<AssetRentingFileInput>><any>_observableThrow(response_);
+                return <Observable<AssetGroupInput>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetAssetRentingFileForEdit(response: HttpResponseBase): Observable<AssetRentingFileInput> {
+    protected processGetAssetGroupForEdit(response: HttpResponseBase): Observable<AssetGroupInput> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -1034,7 +1153,7 @@ export class AssetRentingFileServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? AssetRentingFileInput.fromJS(resultData200) : new AssetRentingFileInput();
+            result200 = resultData200 ? AssetGroupInput.fromJS(resultData200) : new AssetGroupInput();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -1042,15 +1161,15 @@ export class AssetRentingFileServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<AssetRentingFileInput>(<any>null);
+        return _observableOf<AssetGroupInput>(<any>null);
     }
 
     /**
      * @id (optional) 
      * @return Success
      */
-    getRentalAssetComboboxForEditAsync(id: number | null | undefined): Observable<RentalAssetOutput> {
-        let url_ = this.baseUrl + "/api/AssetRentingFile/GetRentalAssetComboboxForEditAsync?";
+    getTypeOfAssetComboboxForEditAsync(id: number | null | undefined): Observable<TypeOfAssetOutput> {
+        let url_ = this.baseUrl + "/api/AssetGroup/GetTypeOfAssetComboboxForEditAsync?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -1065,20 +1184,20 @@ export class AssetRentingFileServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetRentalAssetComboboxForEditAsync(response_);
+            return this.processGetTypeOfAssetComboboxForEditAsync(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetRentalAssetComboboxForEditAsync(<any>response_);
+                    return this.processGetTypeOfAssetComboboxForEditAsync(<any>response_);
                 } catch (e) {
-                    return <Observable<RentalAssetOutput>><any>_observableThrow(e);
+                    return <Observable<TypeOfAssetOutput>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<RentalAssetOutput>><any>_observableThrow(response_);
+                return <Observable<TypeOfAssetOutput>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetRentalAssetComboboxForEditAsync(response: HttpResponseBase): Observable<RentalAssetOutput> {
+    protected processGetTypeOfAssetComboboxForEditAsync(response: HttpResponseBase): Observable<TypeOfAssetOutput> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -1089,7 +1208,7 @@ export class AssetRentingFileServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? RentalAssetOutput.fromJS(resultData200) : new RentalAssetOutput();
+            result200 = resultData200 ? TypeOfAssetOutput.fromJS(resultData200) : new TypeOfAssetOutput();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -1097,70 +1216,15 @@ export class AssetRentingFileServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<RentalAssetOutput>(<any>null);
-    }
-
-    /**
-     * @id (optional) 
-     * @return Success
-     */
-    getFormOfRentingAssetComboboxForEditAsync(id: number | null | undefined): Observable<FormOfRentingAssetOutput> {
-        let url_ = this.baseUrl + "/api/AssetRentingFile/GetFormOfRentingAssetComboboxForEditAsync?";
-        if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetFormOfRentingAssetComboboxForEditAsync(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetFormOfRentingAssetComboboxForEditAsync(<any>response_);
-                } catch (e) {
-                    return <Observable<FormOfRentingAssetOutput>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<FormOfRentingAssetOutput>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetFormOfRentingAssetComboboxForEditAsync(response: HttpResponseBase): Observable<FormOfRentingAssetOutput> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? FormOfRentingAssetOutput.fromJS(resultData200) : new FormOfRentingAssetOutput();
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<FormOfRentingAssetOutput>(<any>null);
+        return _observableOf<TypeOfAssetOutput>(<any>null);
     }
 
     /**
      * @input (optional) 
      * @return Success
      */
-    createOrEditAssetRentingFile(input: AssetRentingFileInput | null | undefined): Observable<void> {
-        let url_ = this.baseUrl + "/api/AssetRentingFile/CreateOrEditAssetRentingFile";
+    createOrEditAssetGroup(input: AssetGroupInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/AssetGroup/CreateOrEditAssetGroup";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -1175,11 +1239,11 @@ export class AssetRentingFileServiceProxy {
         };
 
         return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processCreateOrEditAssetRentingFile(response_);
+            return this.processCreateOrEditAssetGroup(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processCreateOrEditAssetRentingFile(<any>response_);
+                    return this.processCreateOrEditAssetGroup(<any>response_);
                 } catch (e) {
                     return <Observable<void>><any>_observableThrow(e);
                 }
@@ -1188,7 +1252,7 @@ export class AssetRentingFileServiceProxy {
         }));
     }
 
-    protected processCreateOrEditAssetRentingFile(response: HttpResponseBase): Observable<void> {
+    protected processCreateOrEditAssetGroup(response: HttpResponseBase): Observable<void> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -1210,8 +1274,8 @@ export class AssetRentingFileServiceProxy {
     /**
      * @return Success
      */
-    deleteAssetRentingFile(id: number): Observable<void> {
-        let url_ = this.baseUrl + "/api/AssetRentingFile/DeleteAssetRentingFile/{id}";
+    deleteAssetGroup(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/AssetGroup/DeleteAssetGroup/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
         url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
@@ -1226,11 +1290,11 @@ export class AssetRentingFileServiceProxy {
         };
 
         return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processDeleteAssetRentingFile(response_);
+            return this.processDeleteAssetGroup(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processDeleteAssetRentingFile(<any>response_);
+                    return this.processDeleteAssetGroup(<any>response_);
                 } catch (e) {
                     return <Observable<void>><any>_observableThrow(e);
                 }
@@ -1239,7 +1303,7 @@ export class AssetRentingFileServiceProxy {
         }));
     }
 
-    protected processDeleteAssetRentingFile(response: HttpResponseBase): Observable<void> {
+    protected processDeleteAssetGroup(response: HttpResponseBase): Observable<void> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -1262,8 +1326,8 @@ export class AssetRentingFileServiceProxy {
      * @id (optional) 
      * @return Success
      */
-    getAssetRentingFileForView(id: number | null | undefined): Observable<AssetRentingFileForViewDto> {
-        let url_ = this.baseUrl + "/api/AssetRentingFile/GetAssetRentingFileForView?";
+    getAssetGroupForView(id: number | null | undefined): Observable<AssetGroupForViewDto> {
+        let url_ = this.baseUrl + "/api/AssetGroup/GetAssetGroupForView?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -1278,20 +1342,20 @@ export class AssetRentingFileServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAssetRentingFileForView(response_);
+            return this.processGetAssetGroupForView(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAssetRentingFileForView(<any>response_);
+                    return this.processGetAssetGroupForView(<any>response_);
                 } catch (e) {
-                    return <Observable<AssetRentingFileForViewDto>><any>_observableThrow(e);
+                    return <Observable<AssetGroupForViewDto>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<AssetRentingFileForViewDto>><any>_observableThrow(response_);
+                return <Observable<AssetGroupForViewDto>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetAssetRentingFileForView(response: HttpResponseBase): Observable<AssetRentingFileForViewDto> {
+    protected processGetAssetGroupForView(response: HttpResponseBase): Observable<AssetGroupForViewDto> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -1302,7 +1366,7 @@ export class AssetRentingFileServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? AssetRentingFileForViewDto.fromJS(resultData200) : new AssetRentingFileForViewDto();
+            result200 = resultData200 ? AssetGroupForViewDto.fromJS(resultData200) : new AssetGroupForViewDto();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -1310,7 +1374,7 @@ export class AssetRentingFileServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<AssetRentingFileForViewDto>(<any>null);
+        return _observableOf<AssetGroupForViewDto>(<any>null);
     }
 }
 
@@ -3502,295 +3566,6 @@ export class EditionServiceProxy {
             }));
         }
         return _observableOf<SubscribableEditionComboboxItemDto[]>(<any>null);
-    }
-}
-
-@Injectable()
-export class FormOfRentingAssetServiceProxy {
-    private http: HttpClient;
-    private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
-
-    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl ? baseUrl : "";
-    }
-
-    /**
-     * @formOfRenting (optional) 
-     * @sorting (optional) 
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
-     * @return Success
-     */
-    getFormOfRentingAssetsByFilter(formOfRenting: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfFormOfRentingAssetDto> {
-        let url_ = this.baseUrl + "/api/FormOfRentingAsset/GetFormOfRentingAssetsByFilter?";
-        if (formOfRenting !== undefined)
-            url_ += "FormOfRenting=" + encodeURIComponent("" + formOfRenting) + "&"; 
-        if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
-        if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
-        if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetFormOfRentingAssetsByFilter(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetFormOfRentingAssetsByFilter(<any>response_);
-                } catch (e) {
-                    return <Observable<PagedResultDtoOfFormOfRentingAssetDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<PagedResultDtoOfFormOfRentingAssetDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetFormOfRentingAssetsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfFormOfRentingAssetDto> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfFormOfRentingAssetDto.fromJS(resultData200) : new PagedResultDtoOfFormOfRentingAssetDto();
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<PagedResultDtoOfFormOfRentingAssetDto>(<any>null);
-    }
-
-    /**
-     * @id (optional) 
-     * @return Success
-     */
-    getFormOfRentingAssetForEdit(id: number | null | undefined): Observable<FormOfRentingAssetInput> {
-        let url_ = this.baseUrl + "/api/FormOfRentingAsset/GetFormOfRentingAssetForEdit?";
-        if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetFormOfRentingAssetForEdit(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetFormOfRentingAssetForEdit(<any>response_);
-                } catch (e) {
-                    return <Observable<FormOfRentingAssetInput>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<FormOfRentingAssetInput>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetFormOfRentingAssetForEdit(response: HttpResponseBase): Observable<FormOfRentingAssetInput> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? FormOfRentingAssetInput.fromJS(resultData200) : new FormOfRentingAssetInput();
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<FormOfRentingAssetInput>(<any>null);
-    }
-
-    /**
-     * @input (optional) 
-     * @return Success
-     */
-    createOrEditFormOfRentingAsset(input: FormOfRentingAssetInput | null | undefined): Observable<void> {
-        let url_ = this.baseUrl + "/api/FormOfRentingAsset/CreateOrEditFormOfRentingAsset";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-
-        let options_ : any = {
-            body: content_,
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-            })
-        };
-
-        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processCreateOrEditFormOfRentingAsset(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processCreateOrEditFormOfRentingAsset(<any>response_);
-                } catch (e) {
-                    return <Observable<void>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<void>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processCreateOrEditFormOfRentingAsset(response: HttpResponseBase): Observable<void> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return _observableOf<void>(<any>null);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<void>(<any>null);
-    }
-
-    /**
-     * @return Success
-     */
-    deleteFormOfRentingAsset(id: number): Observable<void> {
-        let url_ = this.baseUrl + "/api/FormOfRentingAsset/DeleteFormOfRentingAsset/{id}";
-        if (id === undefined || id === null)
-            throw new Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-            })
-        };
-
-        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processDeleteFormOfRentingAsset(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processDeleteFormOfRentingAsset(<any>response_);
-                } catch (e) {
-                    return <Observable<void>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<void>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processDeleteFormOfRentingAsset(response: HttpResponseBase): Observable<void> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return _observableOf<void>(<any>null);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<void>(<any>null);
-    }
-
-    /**
-     * @id (optional) 
-     * @return Success
-     */
-    getFormOfRentingAssetForView(id: number | null | undefined): Observable<FormOfRentingAssetForViewDto> {
-        let url_ = this.baseUrl + "/api/FormOfRentingAsset/GetFormOfRentingAssetForView?";
-        if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetFormOfRentingAssetForView(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetFormOfRentingAssetForView(<any>response_);
-                } catch (e) {
-                    return <Observable<FormOfRentingAssetForViewDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<FormOfRentingAssetForViewDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetFormOfRentingAssetForView(response: HttpResponseBase): Observable<FormOfRentingAssetForViewDto> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? FormOfRentingAssetForViewDto.fromJS(resultData200) : new FormOfRentingAssetForViewDto();
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<FormOfRentingAssetForViewDto>(<any>null);
     }
 }
 
@@ -7322,350 +7097,6 @@ export class ProfileServiceProxy {
 }
 
 @Injectable()
-export class RentalAssetServiceProxy {
-    private http: HttpClient;
-    private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
-
-    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl ? baseUrl : "";
-    }
-
-    /**
-     * @assetName (optional) 
-     * @sorting (optional) 
-     * @maxResultCount (optional) 
-     * @skipCount (optional) 
-     * @return Success
-     */
-    getRentalAssetsByFilter(assetName: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfRentalAssetDto> {
-        let url_ = this.baseUrl + "/api/RentalAsset/GetRentalAssetsByFilter?";
-        if (assetName !== undefined)
-            url_ += "AssetName=" + encodeURIComponent("" + assetName) + "&"; 
-        if (sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
-        if (maxResultCount !== undefined)
-            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
-        if (skipCount !== undefined)
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetRentalAssetsByFilter(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetRentalAssetsByFilter(<any>response_);
-                } catch (e) {
-                    return <Observable<PagedResultDtoOfRentalAssetDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<PagedResultDtoOfRentalAssetDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetRentalAssetsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfRentalAssetDto> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfRentalAssetDto.fromJS(resultData200) : new PagedResultDtoOfRentalAssetDto();
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<PagedResultDtoOfRentalAssetDto>(<any>null);
-    }
-
-    /**
-     * @id (optional) 
-     * @return Success
-     */
-    getRentalAssetForEdit(id: number | null | undefined): Observable<RentalAssetInput> {
-        let url_ = this.baseUrl + "/api/RentalAsset/GetRentalAssetForEdit?";
-        if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetRentalAssetForEdit(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetRentalAssetForEdit(<any>response_);
-                } catch (e) {
-                    return <Observable<RentalAssetInput>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<RentalAssetInput>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetRentalAssetForEdit(response: HttpResponseBase): Observable<RentalAssetInput> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? RentalAssetInput.fromJS(resultData200) : new RentalAssetInput();
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<RentalAssetInput>(<any>null);
-    }
-
-    /**
-     * @id (optional) 
-     * @return Success
-     */
-    getTypeOfRentalAssetComboboxForEditAsync(id: number | null | undefined): Observable<TypeOfRentalAssetOutput> {
-        let url_ = this.baseUrl + "/api/RentalAsset/GetTypeOfRentalAssetComboboxForEditAsync?";
-        if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetTypeOfRentalAssetComboboxForEditAsync(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetTypeOfRentalAssetComboboxForEditAsync(<any>response_);
-                } catch (e) {
-                    return <Observable<TypeOfRentalAssetOutput>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<TypeOfRentalAssetOutput>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetTypeOfRentalAssetComboboxForEditAsync(response: HttpResponseBase): Observable<TypeOfRentalAssetOutput> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? TypeOfRentalAssetOutput.fromJS(resultData200) : new TypeOfRentalAssetOutput();
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<TypeOfRentalAssetOutput>(<any>null);
-    }
-
-    /**
-     * @input (optional) 
-     * @return Success
-     */
-    createOrEditRentalAsset(input: RentalAssetInput | null | undefined): Observable<void> {
-        let url_ = this.baseUrl + "/api/RentalAsset/CreateOrEditRentalAsset";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-
-        let options_ : any = {
-            body: content_,
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-            })
-        };
-
-        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processCreateOrEditRentalAsset(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processCreateOrEditRentalAsset(<any>response_);
-                } catch (e) {
-                    return <Observable<void>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<void>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processCreateOrEditRentalAsset(response: HttpResponseBase): Observable<void> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return _observableOf<void>(<any>null);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<void>(<any>null);
-    }
-
-    /**
-     * @return Success
-     */
-    deleteRentalAsset(id: number): Observable<void> {
-        let url_ = this.baseUrl + "/api/RentalAsset/DeleteRentalAsset/{id}";
-        if (id === undefined || id === null)
-            throw new Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-            })
-        };
-
-        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processDeleteRentalAsset(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processDeleteRentalAsset(<any>response_);
-                } catch (e) {
-                    return <Observable<void>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<void>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processDeleteRentalAsset(response: HttpResponseBase): Observable<void> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return _observableOf<void>(<any>null);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<void>(<any>null);
-    }
-
-    /**
-     * @id (optional) 
-     * @return Success
-     */
-    getRentalAssetForView(id: number | null | undefined): Observable<RentalAssetForViewDto> {
-        let url_ = this.baseUrl + "/api/RentalAsset/GetRentalAssetForView?";
-        if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetRentalAssetForView(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetRentalAssetForView(<any>response_);
-                } catch (e) {
-                    return <Observable<RentalAssetForViewDto>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<RentalAssetForViewDto>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetRentalAssetForView(response: HttpResponseBase): Observable<RentalAssetForViewDto> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? RentalAssetForViewDto.fromJS(resultData200) : new RentalAssetForViewDto();
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<RentalAssetForViewDto>(<any>null);
-    }
-}
-
-@Injectable()
 export class RoleServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -9830,7 +9261,7 @@ export class TokenAuthServiceProxy {
 }
 
 @Injectable()
-export class TypeOfRentalAssetServiceProxy {
+export class TypeOfAssetServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
@@ -9841,16 +9272,16 @@ export class TypeOfRentalAssetServiceProxy {
     }
 
     /**
-     * @typeOfAsset (optional) 
+     * @assetType (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getTypeOfRentalAssetsByFilter(typeOfAsset: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfTypeOfRentalAssetDto> {
-        let url_ = this.baseUrl + "/api/TypeOfRentalAsset/GetTypeOfRentalAssetsByFilter?";
-        if (typeOfAsset !== undefined)
-            url_ += "TypeOfAsset=" + encodeURIComponent("" + typeOfAsset) + "&"; 
+    getTypeOfAssetsByFilter(assetType: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfTypeOfAssetDto> {
+        let url_ = this.baseUrl + "/api/TypeOfAsset/GetTypeOfAssetsByFilter?";
+        if (assetType !== undefined)
+            url_ += "AssetType=" + encodeURIComponent("" + assetType) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -9869,20 +9300,20 @@ export class TypeOfRentalAssetServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetTypeOfRentalAssetsByFilter(response_);
+            return this.processGetTypeOfAssetsByFilter(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetTypeOfRentalAssetsByFilter(<any>response_);
+                    return this.processGetTypeOfAssetsByFilter(<any>response_);
                 } catch (e) {
-                    return <Observable<PagedResultDtoOfTypeOfRentalAssetDto>><any>_observableThrow(e);
+                    return <Observable<PagedResultDtoOfTypeOfAssetDto>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<PagedResultDtoOfTypeOfRentalAssetDto>><any>_observableThrow(response_);
+                return <Observable<PagedResultDtoOfTypeOfAssetDto>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetTypeOfRentalAssetsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfTypeOfRentalAssetDto> {
+    protected processGetTypeOfAssetsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfTypeOfAssetDto> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -9893,7 +9324,7 @@ export class TypeOfRentalAssetServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? PagedResultDtoOfTypeOfRentalAssetDto.fromJS(resultData200) : new PagedResultDtoOfTypeOfRentalAssetDto();
+            result200 = resultData200 ? PagedResultDtoOfTypeOfAssetDto.fromJS(resultData200) : new PagedResultDtoOfTypeOfAssetDto();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -9901,15 +9332,15 @@ export class TypeOfRentalAssetServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<PagedResultDtoOfTypeOfRentalAssetDto>(<any>null);
+        return _observableOf<PagedResultDtoOfTypeOfAssetDto>(<any>null);
     }
 
     /**
      * @id (optional) 
      * @return Success
      */
-    getTypeOfRentalAssetForEdit(id: number | null | undefined): Observable<TypeOfRentalAssetInput> {
-        let url_ = this.baseUrl + "/api/TypeOfRentalAsset/GetTypeOfRentalAssetForEdit?";
+    getTypeOfAssetForEdit(id: number | null | undefined): Observable<TypeOfAssetInput> {
+        let url_ = this.baseUrl + "/api/TypeOfAsset/GetTypeOfAssetForEdit?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -9924,20 +9355,20 @@ export class TypeOfRentalAssetServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetTypeOfRentalAssetForEdit(response_);
+            return this.processGetTypeOfAssetForEdit(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetTypeOfRentalAssetForEdit(<any>response_);
+                    return this.processGetTypeOfAssetForEdit(<any>response_);
                 } catch (e) {
-                    return <Observable<TypeOfRentalAssetInput>><any>_observableThrow(e);
+                    return <Observable<TypeOfAssetInput>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<TypeOfRentalAssetInput>><any>_observableThrow(response_);
+                return <Observable<TypeOfAssetInput>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetTypeOfRentalAssetForEdit(response: HttpResponseBase): Observable<TypeOfRentalAssetInput> {
+    protected processGetTypeOfAssetForEdit(response: HttpResponseBase): Observable<TypeOfAssetInput> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -9948,7 +9379,7 @@ export class TypeOfRentalAssetServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? TypeOfRentalAssetInput.fromJS(resultData200) : new TypeOfRentalAssetInput();
+            result200 = resultData200 ? TypeOfAssetInput.fromJS(resultData200) : new TypeOfAssetInput();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -9956,15 +9387,15 @@ export class TypeOfRentalAssetServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<TypeOfRentalAssetInput>(<any>null);
+        return _observableOf<TypeOfAssetInput>(<any>null);
     }
 
     /**
      * @input (optional) 
      * @return Success
      */
-    createOrEditTypeOfRentalAsset(input: TypeOfRentalAssetInput | null | undefined): Observable<void> {
-        let url_ = this.baseUrl + "/api/TypeOfRentalAsset/CreateOrEditTypeOfRentalAsset";
+    createOrEditTypeOfAsset(input: TypeOfAssetInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/TypeOfAsset/CreateOrEditTypeOfAsset";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -9979,11 +9410,11 @@ export class TypeOfRentalAssetServiceProxy {
         };
 
         return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processCreateOrEditTypeOfRentalAsset(response_);
+            return this.processCreateOrEditTypeOfAsset(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processCreateOrEditTypeOfRentalAsset(<any>response_);
+                    return this.processCreateOrEditTypeOfAsset(<any>response_);
                 } catch (e) {
                     return <Observable<void>><any>_observableThrow(e);
                 }
@@ -9992,7 +9423,7 @@ export class TypeOfRentalAssetServiceProxy {
         }));
     }
 
-    protected processCreateOrEditTypeOfRentalAsset(response: HttpResponseBase): Observable<void> {
+    protected processCreateOrEditTypeOfAsset(response: HttpResponseBase): Observable<void> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -10014,8 +9445,8 @@ export class TypeOfRentalAssetServiceProxy {
     /**
      * @return Success
      */
-    deleteTypeOfRentalAsset(id: number): Observable<void> {
-        let url_ = this.baseUrl + "/api/TypeOfRentalAsset/DeleteTypeOfRentalAsset/{id}";
+    deleteTypeOfAsset(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/TypeOfAsset/DeleteTypeOfAsset/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
         url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
@@ -10030,11 +9461,11 @@ export class TypeOfRentalAssetServiceProxy {
         };
 
         return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processDeleteTypeOfRentalAsset(response_);
+            return this.processDeleteTypeOfAsset(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processDeleteTypeOfRentalAsset(<any>response_);
+                    return this.processDeleteTypeOfAsset(<any>response_);
                 } catch (e) {
                     return <Observable<void>><any>_observableThrow(e);
                 }
@@ -10043,7 +9474,7 @@ export class TypeOfRentalAssetServiceProxy {
         }));
     }
 
-    protected processDeleteTypeOfRentalAsset(response: HttpResponseBase): Observable<void> {
+    protected processDeleteTypeOfAsset(response: HttpResponseBase): Observable<void> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -10066,8 +9497,8 @@ export class TypeOfRentalAssetServiceProxy {
      * @id (optional) 
      * @return Success
      */
-    getTypeOfRentalAssetForView(id: number | null | undefined): Observable<TypeOfRentalAssetForViewDto> {
-        let url_ = this.baseUrl + "/api/TypeOfRentalAsset/GetTypeOfRentalAssetForView?";
+    getTypeOfAssetForView(id: number | null | undefined): Observable<TypeOfAssetForViewDto> {
+        let url_ = this.baseUrl + "/api/TypeOfAsset/GetTypeOfAssetForView?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -10082,20 +9513,20 @@ export class TypeOfRentalAssetServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetTypeOfRentalAssetForView(response_);
+            return this.processGetTypeOfAssetForView(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetTypeOfRentalAssetForView(<any>response_);
+                    return this.processGetTypeOfAssetForView(<any>response_);
                 } catch (e) {
-                    return <Observable<TypeOfRentalAssetForViewDto>><any>_observableThrow(e);
+                    return <Observable<TypeOfAssetForViewDto>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<TypeOfRentalAssetForViewDto>><any>_observableThrow(response_);
+                return <Observable<TypeOfAssetForViewDto>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetTypeOfRentalAssetForView(response: HttpResponseBase): Observable<TypeOfRentalAssetForViewDto> {
+    protected processGetTypeOfAssetForView(response: HttpResponseBase): Observable<TypeOfAssetForViewDto> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -10106,7 +9537,7 @@ export class TypeOfRentalAssetServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 ? TypeOfRentalAssetForViewDto.fromJS(resultData200) : new TypeOfRentalAssetForViewDto();
+            result200 = resultData200 ? TypeOfAssetForViewDto.fromJS(resultData200) : new TypeOfAssetForViewDto();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -10114,7 +9545,7 @@ export class TypeOfRentalAssetServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<TypeOfRentalAssetForViewDto>(<any>null);
+        return _observableOf<TypeOfAssetForViewDto>(<any>null);
     }
 }
 
@@ -11826,11 +11257,11 @@ export interface ISwitchToLinkedAccountOutput {
     tenancyName: string | undefined;
 }
 
-export class PagedResultDtoOfAssetRentingContractDto implements IPagedResultDtoOfAssetRentingContractDto {
+export class PagedResultDtoOfAssetDto implements IPagedResultDtoOfAssetDto {
     totalCount!: number | undefined;
-    items!: AssetRentingContractDto[] | undefined;
+    items!: AssetDto[] | undefined;
 
-    constructor(data?: IPagedResultDtoOfAssetRentingContractDto) {
+    constructor(data?: IPagedResultDtoOfAssetDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -11845,14 +11276,14 @@ export class PagedResultDtoOfAssetRentingContractDto implements IPagedResultDtoO
             if (data["items"] && data["items"].constructor === Array) {
                 this.items = [];
                 for (let item of data["items"])
-                    this.items.push(AssetRentingContractDto.fromJS(item));
+                    this.items.push(AssetDto.fromJS(item));
             }
         }
     }
 
-    static fromJS(data: any): PagedResultDtoOfAssetRentingContractDto {
+    static fromJS(data: any): PagedResultDtoOfAssetDto {
         data = typeof data === 'object' ? data : {};
-        let result = new PagedResultDtoOfAssetRentingContractDto();
+        let result = new PagedResultDtoOfAssetDto();
         result.init(data);
         return result;
     }
@@ -11869,189 +11300,26 @@ export class PagedResultDtoOfAssetRentingContractDto implements IPagedResultDtoO
     }
 }
 
-export interface IPagedResultDtoOfAssetRentingContractDto {
+export interface IPagedResultDtoOfAssetDto {
     totalCount: number | undefined;
-    items: AssetRentingContractDto[] | undefined;
+    items: AssetDto[] | undefined;
 }
 
-export class AssetRentingContractDto implements IAssetRentingContractDto {
-    contractName!: string | undefined;
-    contractCode!: string | undefined;
-    fileCode!: string | undefined;
-    rentalPartner!: string | undefined;
-    signDate!: moment.Moment | undefined;
-    linkofImage!: string | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IAssetRentingContractDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.contractName = data["contractName"];
-            this.contractCode = data["contractCode"];
-            this.fileCode = data["fileCode"];
-            this.rentalPartner = data["rentalPartner"];
-            this.signDate = data["signDate"] ? moment(data["signDate"].toString()) : <any>undefined;
-            this.linkofImage = data["linkofImage"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): AssetRentingContractDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new AssetRentingContractDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["contractName"] = this.contractName;
-        data["contractCode"] = this.contractCode;
-        data["fileCode"] = this.fileCode;
-        data["rentalPartner"] = this.rentalPartner;
-        data["signDate"] = this.signDate ? this.signDate : <any>undefined;
-        data["linkofImage"] = this.linkofImage;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IAssetRentingContractDto {
-    contractName: string | undefined;
-    contractCode: string | undefined;
-    fileCode: string | undefined;
-    rentalPartner: string | undefined;
-    signDate: moment.Moment | undefined;
-    linkofImage: string | undefined;
-    id: number | undefined;
-}
-
-export class AssetRentingContractInput implements IAssetRentingContractInput {
-    contractName!: string | undefined;
-    contractCode!: string | undefined;
-    fileCode!: string | undefined;
-    rentalPartner!: string | undefined;
-    signDate!: moment.Moment | undefined;
-    linkofImage!: string | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IAssetRentingContractInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.contractName = data["contractName"];
-            this.contractCode = data["contractCode"];
-            this.fileCode = data["fileCode"];
-            this.rentalPartner = data["rentalPartner"];
-            this.signDate = data["signDate"] ? moment(data["signDate"].toString()) : <any>undefined;
-            this.linkofImage = data["linkofImage"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): AssetRentingContractInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new AssetRentingContractInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["contractName"] = this.contractName;
-        data["contractCode"] = this.contractCode;
-        data["fileCode"] = this.fileCode;
-        data["rentalPartner"] = this.rentalPartner;
-        data["signDate"] = this.signDate ? this.signDate : <any>undefined;
-        data["linkofImage"] = this.linkofImage;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IAssetRentingContractInput {
-    contractName: string | undefined;
-    contractCode: string | undefined;
-    fileCode: string | undefined;
-    rentalPartner: string | undefined;
-    signDate: moment.Moment | undefined;
-    linkofImage: string | undefined;
-    id: number | undefined;
-}
-
-export class AssetRentingFileOutput implements IAssetRentingFileOutput {
-    assetRentingFile!: AssetRentingFileDto | undefined;
-    assetRentingFiles!: ComboboxItemDto[] | undefined;
-
-    constructor(data?: IAssetRentingFileOutput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.assetRentingFile = data["assetRentingFile"] ? AssetRentingFileDto.fromJS(data["assetRentingFile"]) : <any>undefined;
-            if (data["assetRentingFiles"] && data["assetRentingFiles"].constructor === Array) {
-                this.assetRentingFiles = [];
-                for (let item of data["assetRentingFiles"])
-                    this.assetRentingFiles.push(ComboboxItemDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): AssetRentingFileOutput {
-        data = typeof data === 'object' ? data : {};
-        let result = new AssetRentingFileOutput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["assetRentingFile"] = this.assetRentingFile ? this.assetRentingFile.toJSON() : <any>undefined;
-        if (this.assetRentingFiles && this.assetRentingFiles.constructor === Array) {
-            data["assetRentingFiles"] = [];
-            for (let item of this.assetRentingFiles)
-                data["assetRentingFiles"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IAssetRentingFileOutput {
-    assetRentingFile: AssetRentingFileDto | undefined;
-    assetRentingFiles: ComboboxItemDto[] | undefined;
-}
-
-export class AssetRentingFileDto implements IAssetRentingFileDto {
-    fileName!: string | undefined;
-    fileCode!: string | undefined;
+export class AssetDto implements IAssetDto {
+    assetName!: string | undefined;
     assetCode!: string | undefined;
-    formOfRenting!: string | undefined;
-    fileCreatedDate!: moment.Moment | undefined;
+    assetType!: string | undefined;
+    assetGroupName!: string | undefined;
+    description!: string | undefined;
+    assetStatus!: string | undefined;
+    assetValue!: number | undefined;
+    supplier!: string | undefined;
+    addDate!: moment.Moment | undefined;
+    note!: string | undefined;
     linkofImage!: string | undefined;
     id!: number | undefined;
 
-    constructor(data?: IAssetRentingFileDto) {
+    constructor(data?: IAssetDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -12062,43 +11330,226 @@ export class AssetRentingFileDto implements IAssetRentingFileDto {
 
     init(data?: any) {
         if (data) {
-            this.fileName = data["fileName"];
-            this.fileCode = data["fileCode"];
+            this.assetName = data["assetName"];
             this.assetCode = data["assetCode"];
-            this.formOfRenting = data["formOfRenting"];
-            this.fileCreatedDate = data["fileCreatedDate"] ? moment(data["fileCreatedDate"].toString()) : <any>undefined;
+            this.assetType = data["assetType"];
+            this.assetGroupName = data["assetGroupName"];
+            this.description = data["description"];
+            this.assetStatus = data["assetStatus"];
+            this.assetValue = data["assetValue"];
+            this.supplier = data["supplier"];
+            this.addDate = data["addDate"] ? moment(data["addDate"].toString()) : <any>undefined;
+            this.note = data["note"];
             this.linkofImage = data["linkofImage"];
             this.id = data["id"];
         }
     }
 
-    static fromJS(data: any): AssetRentingFileDto {
+    static fromJS(data: any): AssetDto {
         data = typeof data === 'object' ? data : {};
-        let result = new AssetRentingFileDto();
+        let result = new AssetDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["fileName"] = this.fileName;
-        data["fileCode"] = this.fileCode;
+        data["assetName"] = this.assetName;
         data["assetCode"] = this.assetCode;
-        data["formOfRenting"] = this.formOfRenting;
-        data["fileCreatedDate"] = this.fileCreatedDate ? this.fileCreatedDate : <any>undefined;
+        data["assetType"] = this.assetType;
+        data["assetGroupName"] = this.assetGroupName;
+        data["description"] = this.description;
+        data["assetStatus"] = this.assetStatus;
+        data["assetValue"] = this.assetValue;
+        data["supplier"] = this.supplier;
+        data["addDate"] = this.addDate ? this.addDate : <any>undefined;
+        data["note"] = this.note;
         data["linkofImage"] = this.linkofImage;
         data["id"] = this.id;
         return data; 
     }
 }
 
-export interface IAssetRentingFileDto {
-    fileName: string | undefined;
-    fileCode: string | undefined;
+export interface IAssetDto {
+    assetName: string | undefined;
     assetCode: string | undefined;
-    formOfRenting: string | undefined;
-    fileCreatedDate: moment.Moment | undefined;
+    assetType: string | undefined;
+    assetGroupName: string | undefined;
+    description: string | undefined;
+    assetStatus: string | undefined;
+    assetValue: number | undefined;
+    supplier: string | undefined;
+    addDate: moment.Moment | undefined;
+    note: string | undefined;
     linkofImage: string | undefined;
+    id: number | undefined;
+}
+
+export class AssetInput implements IAssetInput {
+    assetName!: string | undefined;
+    assetCode!: string | undefined;
+    assetType!: string | undefined;
+    assetGroupName!: string | undefined;
+    description!: string | undefined;
+    assetStatus!: string | undefined;
+    assetValue!: number | undefined;
+    supplier!: string | undefined;
+    addDate!: moment.Moment | undefined;
+    note!: string | undefined;
+    linkofImage!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IAssetInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.assetName = data["assetName"];
+            this.assetCode = data["assetCode"];
+            this.assetType = data["assetType"];
+            this.assetGroupName = data["assetGroupName"];
+            this.description = data["description"];
+            this.assetStatus = data["assetStatus"];
+            this.assetValue = data["assetValue"];
+            this.supplier = data["supplier"];
+            this.addDate = data["addDate"] ? moment(data["addDate"].toString()) : <any>undefined;
+            this.note = data["note"];
+            this.linkofImage = data["linkofImage"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): AssetInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new AssetInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["assetName"] = this.assetName;
+        data["assetCode"] = this.assetCode;
+        data["assetType"] = this.assetType;
+        data["assetGroupName"] = this.assetGroupName;
+        data["description"] = this.description;
+        data["assetStatus"] = this.assetStatus;
+        data["assetValue"] = this.assetValue;
+        data["supplier"] = this.supplier;
+        data["addDate"] = this.addDate ? this.addDate : <any>undefined;
+        data["note"] = this.note;
+        data["linkofImage"] = this.linkofImage;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IAssetInput {
+    assetName: string | undefined;
+    assetCode: string | undefined;
+    assetType: string | undefined;
+    assetGroupName: string | undefined;
+    description: string | undefined;
+    assetStatus: string | undefined;
+    assetValue: number | undefined;
+    supplier: string | undefined;
+    addDate: moment.Moment | undefined;
+    note: string | undefined;
+    linkofImage: string | undefined;
+    id: number | undefined;
+}
+
+export class TypeOfAssetOutput implements ITypeOfAssetOutput {
+    typeOfAsset!: TypeOfAssetDto | undefined;
+    typeOfAssets!: ComboboxItemDto[] | undefined;
+
+    constructor(data?: ITypeOfAssetOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.typeOfAsset = data["typeOfAsset"] ? TypeOfAssetDto.fromJS(data["typeOfAsset"]) : <any>undefined;
+            if (data["typeOfAssets"] && data["typeOfAssets"].constructor === Array) {
+                this.typeOfAssets = [];
+                for (let item of data["typeOfAssets"])
+                    this.typeOfAssets.push(ComboboxItemDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): TypeOfAssetOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new TypeOfAssetOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["typeOfAsset"] = this.typeOfAsset ? this.typeOfAsset.toJSON() : <any>undefined;
+        if (this.typeOfAssets && this.typeOfAssets.constructor === Array) {
+            data["typeOfAssets"] = [];
+            for (let item of this.typeOfAssets)
+                data["typeOfAssets"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface ITypeOfAssetOutput {
+    typeOfAsset: TypeOfAssetDto | undefined;
+    typeOfAssets: ComboboxItemDto[] | undefined;
+}
+
+export class TypeOfAssetDto implements ITypeOfAssetDto {
+    assetType!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: ITypeOfAssetDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.assetType = data["assetType"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): TypeOfAssetDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new TypeOfAssetDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["assetType"] = this.assetType;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface ITypeOfAssetDto {
+    assetType: string | undefined;
     id: number | undefined;
 }
 
@@ -12146,15 +11597,11 @@ export interface IComboboxItemDto {
     isSelected: boolean | undefined;
 }
 
-export class AssetRentingContractForViewDto implements IAssetRentingContractForViewDto {
-    contractName!: string | undefined;
-    contractCode!: string | undefined;
-    fileCode!: string | undefined;
-    rentalPartner!: string | undefined;
-    signDate!: moment.Moment | undefined;
-    linkofImage!: string | undefined;
+export class AssetGroupOutput implements IAssetGroupOutput {
+    assetGroup!: AssetGroupDto | undefined;
+    assetGroups!: ComboboxItemDto[] | undefined;
 
-    constructor(data?: IAssetRentingContractForViewDto) {
+    constructor(data?: IAssetGroupOutput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -12165,48 +11612,168 @@ export class AssetRentingContractForViewDto implements IAssetRentingContractForV
 
     init(data?: any) {
         if (data) {
-            this.contractName = data["contractName"];
-            this.contractCode = data["contractCode"];
-            this.fileCode = data["fileCode"];
-            this.rentalPartner = data["rentalPartner"];
-            this.signDate = data["signDate"] ? moment(data["signDate"].toString()) : <any>undefined;
-            this.linkofImage = data["linkofImage"];
+            this.assetGroup = data["assetGroup"] ? AssetGroupDto.fromJS(data["assetGroup"]) : <any>undefined;
+            if (data["assetGroups"] && data["assetGroups"].constructor === Array) {
+                this.assetGroups = [];
+                for (let item of data["assetGroups"])
+                    this.assetGroups.push(ComboboxItemDto.fromJS(item));
+            }
         }
     }
 
-    static fromJS(data: any): AssetRentingContractForViewDto {
+    static fromJS(data: any): AssetGroupOutput {
         data = typeof data === 'object' ? data : {};
-        let result = new AssetRentingContractForViewDto();
+        let result = new AssetGroupOutput();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["contractName"] = this.contractName;
-        data["contractCode"] = this.contractCode;
-        data["fileCode"] = this.fileCode;
-        data["rentalPartner"] = this.rentalPartner;
-        data["signDate"] = this.signDate ? this.signDate : <any>undefined;
+        data["assetGroup"] = this.assetGroup ? this.assetGroup.toJSON() : <any>undefined;
+        if (this.assetGroups && this.assetGroups.constructor === Array) {
+            data["assetGroups"] = [];
+            for (let item of this.assetGroups)
+                data["assetGroups"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IAssetGroupOutput {
+    assetGroup: AssetGroupDto | undefined;
+    assetGroups: ComboboxItemDto[] | undefined;
+}
+
+export class AssetGroupDto implements IAssetGroupDto {
+    assetGroupName!: string | undefined;
+    assetGroupCode!: string | undefined;
+    assetType!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IAssetGroupDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.assetGroupName = data["assetGroupName"];
+            this.assetGroupCode = data["assetGroupCode"];
+            this.assetType = data["assetType"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): AssetGroupDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new AssetGroupDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["assetGroupName"] = this.assetGroupName;
+        data["assetGroupCode"] = this.assetGroupCode;
+        data["assetType"] = this.assetType;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IAssetGroupDto {
+    assetGroupName: string | undefined;
+    assetGroupCode: string | undefined;
+    assetType: string | undefined;
+    id: number | undefined;
+}
+
+export class AssetForViewDto implements IAssetForViewDto {
+    assetName!: string | undefined;
+    assetCode!: string | undefined;
+    assetType!: string | undefined;
+    assetGroupName!: string | undefined;
+    description!: string | undefined;
+    assetStatus!: string | undefined;
+    assetValue!: number | undefined;
+    supplier!: string | undefined;
+    addDate!: moment.Moment | undefined;
+    note!: string | undefined;
+    linkofImage!: string | undefined;
+
+    constructor(data?: IAssetForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.assetName = data["assetName"];
+            this.assetCode = data["assetCode"];
+            this.assetType = data["assetType"];
+            this.assetGroupName = data["assetGroupName"];
+            this.description = data["description"];
+            this.assetStatus = data["assetStatus"];
+            this.assetValue = data["assetValue"];
+            this.supplier = data["supplier"];
+            this.addDate = data["addDate"] ? moment(data["addDate"].toString()) : <any>undefined;
+            this.note = data["note"];
+            this.linkofImage = data["linkofImage"];
+        }
+    }
+
+    static fromJS(data: any): AssetForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new AssetForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["assetName"] = this.assetName;
+        data["assetCode"] = this.assetCode;
+        data["assetType"] = this.assetType;
+        data["assetGroupName"] = this.assetGroupName;
+        data["description"] = this.description;
+        data["assetStatus"] = this.assetStatus;
+        data["assetValue"] = this.assetValue;
+        data["supplier"] = this.supplier;
+        data["addDate"] = this.addDate ? this.addDate : <any>undefined;
+        data["note"] = this.note;
         data["linkofImage"] = this.linkofImage;
         return data; 
     }
 }
 
-export interface IAssetRentingContractForViewDto {
-    contractName: string | undefined;
-    contractCode: string | undefined;
-    fileCode: string | undefined;
-    rentalPartner: string | undefined;
-    signDate: moment.Moment | undefined;
+export interface IAssetForViewDto {
+    assetName: string | undefined;
+    assetCode: string | undefined;
+    assetType: string | undefined;
+    assetGroupName: string | undefined;
+    description: string | undefined;
+    assetStatus: string | undefined;
+    assetValue: number | undefined;
+    supplier: string | undefined;
+    addDate: moment.Moment | undefined;
+    note: string | undefined;
     linkofImage: string | undefined;
 }
 
-export class PagedResultDtoOfAssetRentingFileDto implements IPagedResultDtoOfAssetRentingFileDto {
+export class PagedResultDtoOfAssetGroupDto implements IPagedResultDtoOfAssetGroupDto {
     totalCount!: number | undefined;
-    items!: AssetRentingFileDto[] | undefined;
+    items!: AssetGroupDto[] | undefined;
 
-    constructor(data?: IPagedResultDtoOfAssetRentingFileDto) {
+    constructor(data?: IPagedResultDtoOfAssetGroupDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -12221,14 +11788,14 @@ export class PagedResultDtoOfAssetRentingFileDto implements IPagedResultDtoOfAss
             if (data["items"] && data["items"].constructor === Array) {
                 this.items = [];
                 for (let item of data["items"])
-                    this.items.push(AssetRentingFileDto.fromJS(item));
+                    this.items.push(AssetGroupDto.fromJS(item));
             }
         }
     }
 
-    static fromJS(data: any): PagedResultDtoOfAssetRentingFileDto {
+    static fromJS(data: any): PagedResultDtoOfAssetGroupDto {
         data = typeof data === 'object' ? data : {};
-        let result = new PagedResultDtoOfAssetRentingFileDto();
+        let result = new PagedResultDtoOfAssetGroupDto();
         result.init(data);
         return result;
     }
@@ -12245,21 +11812,18 @@ export class PagedResultDtoOfAssetRentingFileDto implements IPagedResultDtoOfAss
     }
 }
 
-export interface IPagedResultDtoOfAssetRentingFileDto {
+export interface IPagedResultDtoOfAssetGroupDto {
     totalCount: number | undefined;
-    items: AssetRentingFileDto[] | undefined;
+    items: AssetGroupDto[] | undefined;
 }
 
-export class AssetRentingFileInput implements IAssetRentingFileInput {
-    fileName!: string | undefined;
-    fileCode!: string | undefined;
-    assetCode!: string | undefined;
-    formOfRenting!: string | undefined;
-    fileCreatedDate!: moment.Moment | undefined;
-    linkofImage!: string | undefined;
+export class AssetGroupInput implements IAssetGroupInput {
+    assetGroupName!: string | undefined;
+    assetGroupCode!: string | undefined;
+    assetType!: string | undefined;
     id!: number | undefined;
 
-    constructor(data?: IAssetRentingFileInput) {
+    constructor(data?: IAssetGroupInput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -12270,51 +11834,43 @@ export class AssetRentingFileInput implements IAssetRentingFileInput {
 
     init(data?: any) {
         if (data) {
-            this.fileName = data["fileName"];
-            this.fileCode = data["fileCode"];
-            this.assetCode = data["assetCode"];
-            this.formOfRenting = data["formOfRenting"];
-            this.fileCreatedDate = data["fileCreatedDate"] ? moment(data["fileCreatedDate"].toString()) : <any>undefined;
-            this.linkofImage = data["linkofImage"];
+            this.assetGroupName = data["assetGroupName"];
+            this.assetGroupCode = data["assetGroupCode"];
+            this.assetType = data["assetType"];
             this.id = data["id"];
         }
     }
 
-    static fromJS(data: any): AssetRentingFileInput {
+    static fromJS(data: any): AssetGroupInput {
         data = typeof data === 'object' ? data : {};
-        let result = new AssetRentingFileInput();
+        let result = new AssetGroupInput();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["fileName"] = this.fileName;
-        data["fileCode"] = this.fileCode;
-        data["assetCode"] = this.assetCode;
-        data["formOfRenting"] = this.formOfRenting;
-        data["fileCreatedDate"] = this.fileCreatedDate ? this.fileCreatedDate : <any>undefined;
-        data["linkofImage"] = this.linkofImage;
+        data["assetGroupName"] = this.assetGroupName;
+        data["assetGroupCode"] = this.assetGroupCode;
+        data["assetType"] = this.assetType;
         data["id"] = this.id;
         return data; 
     }
 }
 
-export interface IAssetRentingFileInput {
-    fileName: string | undefined;
-    fileCode: string | undefined;
-    assetCode: string | undefined;
-    formOfRenting: string | undefined;
-    fileCreatedDate: moment.Moment | undefined;
-    linkofImage: string | undefined;
+export interface IAssetGroupInput {
+    assetGroupName: string | undefined;
+    assetGroupCode: string | undefined;
+    assetType: string | undefined;
     id: number | undefined;
 }
 
-export class RentalAssetOutput implements IRentalAssetOutput {
-    rentalAsset!: RentalAssetDto | undefined;
-    rentalAssets!: ComboboxItemDto[] | undefined;
+export class AssetGroupForViewDto implements IAssetGroupForViewDto {
+    assetGroupName!: string | undefined;
+    assetGroupCode!: string | undefined;
+    assetType!: string | undefined;
 
-    constructor(data?: IRentalAssetOutput) {
+    constructor(data?: IAssetGroupForViewDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -12325,253 +11881,32 @@ export class RentalAssetOutput implements IRentalAssetOutput {
 
     init(data?: any) {
         if (data) {
-            this.rentalAsset = data["rentalAsset"] ? RentalAssetDto.fromJS(data["rentalAsset"]) : <any>undefined;
-            if (data["rentalAssets"] && data["rentalAssets"].constructor === Array) {
-                this.rentalAssets = [];
-                for (let item of data["rentalAssets"])
-                    this.rentalAssets.push(ComboboxItemDto.fromJS(item));
-            }
+            this.assetGroupName = data["assetGroupName"];
+            this.assetGroupCode = data["assetGroupCode"];
+            this.assetType = data["assetType"];
         }
     }
 
-    static fromJS(data: any): RentalAssetOutput {
+    static fromJS(data: any): AssetGroupForViewDto {
         data = typeof data === 'object' ? data : {};
-        let result = new RentalAssetOutput();
+        let result = new AssetGroupForViewDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["rentalAsset"] = this.rentalAsset ? this.rentalAsset.toJSON() : <any>undefined;
-        if (this.rentalAssets && this.rentalAssets.constructor === Array) {
-            data["rentalAssets"] = [];
-            for (let item of this.rentalAssets)
-                data["rentalAssets"].push(item.toJSON());
-        }
+        data["assetGroupName"] = this.assetGroupName;
+        data["assetGroupCode"] = this.assetGroupCode;
+        data["assetType"] = this.assetType;
         return data; 
     }
 }
 
-export interface IRentalAssetOutput {
-    rentalAsset: RentalAssetDto | undefined;
-    rentalAssets: ComboboxItemDto[] | undefined;
-}
-
-export class RentalAssetDto implements IRentalAssetDto {
-    assetName!: string | undefined;
-    assetCode!: string | undefined;
-    description!: string | undefined;
-    typeOfAsset!: string | undefined;
-    assetValue!: number | undefined;
-    quantity!: number | undefined;
-    rentalDate!: moment.Moment | undefined;
-    isActive!: boolean | undefined;
-    linkofImage!: string | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IRentalAssetDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.assetName = data["assetName"];
-            this.assetCode = data["assetCode"];
-            this.description = data["description"];
-            this.typeOfAsset = data["typeOfAsset"];
-            this.assetValue = data["assetValue"];
-            this.quantity = data["quantity"];
-            this.rentalDate = data["rentalDate"] ? moment(data["rentalDate"].toString()) : <any>undefined;
-            this.isActive = data["isActive"];
-            this.linkofImage = data["linkofImage"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): RentalAssetDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new RentalAssetDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["assetName"] = this.assetName;
-        data["assetCode"] = this.assetCode;
-        data["description"] = this.description;
-        data["typeOfAsset"] = this.typeOfAsset;
-        data["assetValue"] = this.assetValue;
-        data["quantity"] = this.quantity;
-        data["rentalDate"] = this.rentalDate ? this.rentalDate : <any>undefined;
-        data["isActive"] = this.isActive;
-        data["linkofImage"] = this.linkofImage;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IRentalAssetDto {
-    assetName: string | undefined;
-    assetCode: string | undefined;
-    description: string | undefined;
-    typeOfAsset: string | undefined;
-    assetValue: number | undefined;
-    quantity: number | undefined;
-    rentalDate: moment.Moment | undefined;
-    isActive: boolean | undefined;
-    linkofImage: string | undefined;
-    id: number | undefined;
-}
-
-export class FormOfRentingAssetOutput implements IFormOfRentingAssetOutput {
-    formOfRentingAsset!: FormOfRentingAssetDto | undefined;
-    formOfRentingAssets!: ComboboxItemDto[] | undefined;
-
-    constructor(data?: IFormOfRentingAssetOutput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.formOfRentingAsset = data["formOfRentingAsset"] ? FormOfRentingAssetDto.fromJS(data["formOfRentingAsset"]) : <any>undefined;
-            if (data["formOfRentingAssets"] && data["formOfRentingAssets"].constructor === Array) {
-                this.formOfRentingAssets = [];
-                for (let item of data["formOfRentingAssets"])
-                    this.formOfRentingAssets.push(ComboboxItemDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): FormOfRentingAssetOutput {
-        data = typeof data === 'object' ? data : {};
-        let result = new FormOfRentingAssetOutput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["formOfRentingAsset"] = this.formOfRentingAsset ? this.formOfRentingAsset.toJSON() : <any>undefined;
-        if (this.formOfRentingAssets && this.formOfRentingAssets.constructor === Array) {
-            data["formOfRentingAssets"] = [];
-            for (let item of this.formOfRentingAssets)
-                data["formOfRentingAssets"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IFormOfRentingAssetOutput {
-    formOfRentingAsset: FormOfRentingAssetDto | undefined;
-    formOfRentingAssets: ComboboxItemDto[] | undefined;
-}
-
-export class FormOfRentingAssetDto implements IFormOfRentingAssetDto {
-    formOfRenting!: string | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IFormOfRentingAssetDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.formOfRenting = data["formOfRenting"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): FormOfRentingAssetDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new FormOfRentingAssetDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["formOfRenting"] = this.formOfRenting;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IFormOfRentingAssetDto {
-    formOfRenting: string | undefined;
-    id: number | undefined;
-}
-
-export class AssetRentingFileForViewDto implements IAssetRentingFileForViewDto {
-    fileName!: string | undefined;
-    fileCode!: string | undefined;
-    assetCode!: string | undefined;
-    formOfRenting!: string | undefined;
-    fileCreatedDate!: moment.Moment | undefined;
-    linkofImage!: string | undefined;
-
-    constructor(data?: IAssetRentingFileForViewDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.fileName = data["fileName"];
-            this.fileCode = data["fileCode"];
-            this.assetCode = data["assetCode"];
-            this.formOfRenting = data["formOfRenting"];
-            this.fileCreatedDate = data["fileCreatedDate"] ? moment(data["fileCreatedDate"].toString()) : <any>undefined;
-            this.linkofImage = data["linkofImage"];
-        }
-    }
-
-    static fromJS(data: any): AssetRentingFileForViewDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new AssetRentingFileForViewDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["fileName"] = this.fileName;
-        data["fileCode"] = this.fileCode;
-        data["assetCode"] = this.assetCode;
-        data["formOfRenting"] = this.formOfRenting;
-        data["fileCreatedDate"] = this.fileCreatedDate ? this.fileCreatedDate : <any>undefined;
-        data["linkofImage"] = this.linkofImage;
-        return data; 
-    }
-}
-
-export interface IAssetRentingFileForViewDto {
-    fileName: string | undefined;
-    fileCode: string | undefined;
-    assetCode: string | undefined;
-    formOfRenting: string | undefined;
-    fileCreatedDate: moment.Moment | undefined;
-    linkofImage: string | undefined;
+export interface IAssetGroupForViewDto {
+    assetGroupName: string | undefined;
+    assetGroupCode: string | undefined;
+    assetType: string | undefined;
 }
 
 export class PagedResultDtoOfAuditLogListDto implements IPagedResultDtoOfAuditLogListDto {
@@ -14584,130 +13919,6 @@ export class CreateOrUpdateEditionDto implements ICreateOrUpdateEditionDto {
 export interface ICreateOrUpdateEditionDto {
     edition: EditionEditDto;
     featureValues: NameValueDto[];
-}
-
-export class PagedResultDtoOfFormOfRentingAssetDto implements IPagedResultDtoOfFormOfRentingAssetDto {
-    totalCount!: number | undefined;
-    items!: FormOfRentingAssetDto[] | undefined;
-
-    constructor(data?: IPagedResultDtoOfFormOfRentingAssetDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.totalCount = data["totalCount"];
-            if (data["items"] && data["items"].constructor === Array) {
-                this.items = [];
-                for (let item of data["items"])
-                    this.items.push(FormOfRentingAssetDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): PagedResultDtoOfFormOfRentingAssetDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new PagedResultDtoOfFormOfRentingAssetDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["totalCount"] = this.totalCount;
-        if (this.items && this.items.constructor === Array) {
-            data["items"] = [];
-            for (let item of this.items)
-                data["items"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IPagedResultDtoOfFormOfRentingAssetDto {
-    totalCount: number | undefined;
-    items: FormOfRentingAssetDto[] | undefined;
-}
-
-export class FormOfRentingAssetInput implements IFormOfRentingAssetInput {
-    formOfRenting!: string | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IFormOfRentingAssetInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.formOfRenting = data["formOfRenting"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): FormOfRentingAssetInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new FormOfRentingAssetInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["formOfRenting"] = this.formOfRenting;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IFormOfRentingAssetInput {
-    formOfRenting: string | undefined;
-    id: number | undefined;
-}
-
-export class FormOfRentingAssetForViewDto implements IFormOfRentingAssetForViewDto {
-    formOfRenting!: string | undefined;
-
-    constructor(data?: IFormOfRentingAssetForViewDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.formOfRenting = data["formOfRenting"];
-        }
-    }
-
-    static fromJS(data: any): FormOfRentingAssetForViewDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new FormOfRentingAssetForViewDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["formOfRenting"] = this.formOfRenting;
-        return data; 
-    }
-}
-
-export interface IFormOfRentingAssetForViewDto {
-    formOfRenting: string | undefined;
 }
 
 export class CreateFriendshipRequestInput implements ICreateFriendshipRequestInput {
@@ -18760,282 +17971,6 @@ export interface IChangeUserLanguageDto {
     languageName: string;
 }
 
-export class PagedResultDtoOfRentalAssetDto implements IPagedResultDtoOfRentalAssetDto {
-    totalCount!: number | undefined;
-    items!: RentalAssetDto[] | undefined;
-
-    constructor(data?: IPagedResultDtoOfRentalAssetDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.totalCount = data["totalCount"];
-            if (data["items"] && data["items"].constructor === Array) {
-                this.items = [];
-                for (let item of data["items"])
-                    this.items.push(RentalAssetDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): PagedResultDtoOfRentalAssetDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new PagedResultDtoOfRentalAssetDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["totalCount"] = this.totalCount;
-        if (this.items && this.items.constructor === Array) {
-            data["items"] = [];
-            for (let item of this.items)
-                data["items"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IPagedResultDtoOfRentalAssetDto {
-    totalCount: number | undefined;
-    items: RentalAssetDto[] | undefined;
-}
-
-export class RentalAssetInput implements IRentalAssetInput {
-    assetName!: string | undefined;
-    assetCode!: string | undefined;
-    description!: string | undefined;
-    typeOfAsset!: string | undefined;
-    assetValue!: number | undefined;
-    quantity!: number | undefined;
-    rentalDate!: moment.Moment | undefined;
-    isActive!: boolean | undefined;
-    linkofImage!: string | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IRentalAssetInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.assetName = data["assetName"];
-            this.assetCode = data["assetCode"];
-            this.description = data["description"];
-            this.typeOfAsset = data["typeOfAsset"];
-            this.assetValue = data["assetValue"];
-            this.quantity = data["quantity"];
-            this.rentalDate = data["rentalDate"] ? moment(data["rentalDate"].toString()) : <any>undefined;
-            this.isActive = data["isActive"];
-            this.linkofImage = data["linkofImage"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): RentalAssetInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new RentalAssetInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["assetName"] = this.assetName;
-        data["assetCode"] = this.assetCode;
-        data["description"] = this.description;
-        data["typeOfAsset"] = this.typeOfAsset;
-        data["assetValue"] = this.assetValue;
-        data["quantity"] = this.quantity;
-        data["rentalDate"] = this.rentalDate ? this.rentalDate : <any>undefined;
-        data["isActive"] = this.isActive;
-        data["linkofImage"] = this.linkofImage;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IRentalAssetInput {
-    assetName: string | undefined;
-    assetCode: string | undefined;
-    description: string | undefined;
-    typeOfAsset: string | undefined;
-    assetValue: number | undefined;
-    quantity: number | undefined;
-    rentalDate: moment.Moment | undefined;
-    isActive: boolean | undefined;
-    linkofImage: string | undefined;
-    id: number | undefined;
-}
-
-export class TypeOfRentalAssetOutput implements ITypeOfRentalAssetOutput {
-    typeOfRentalAsset!: TypeOfRentalAssetDto | undefined;
-    typeOfRentalAssets!: ComboboxItemDto[] | undefined;
-
-    constructor(data?: ITypeOfRentalAssetOutput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.typeOfRentalAsset = data["typeOfRentalAsset"] ? TypeOfRentalAssetDto.fromJS(data["typeOfRentalAsset"]) : <any>undefined;
-            if (data["typeOfRentalAssets"] && data["typeOfRentalAssets"].constructor === Array) {
-                this.typeOfRentalAssets = [];
-                for (let item of data["typeOfRentalAssets"])
-                    this.typeOfRentalAssets.push(ComboboxItemDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): TypeOfRentalAssetOutput {
-        data = typeof data === 'object' ? data : {};
-        let result = new TypeOfRentalAssetOutput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["typeOfRentalAsset"] = this.typeOfRentalAsset ? this.typeOfRentalAsset.toJSON() : <any>undefined;
-        if (this.typeOfRentalAssets && this.typeOfRentalAssets.constructor === Array) {
-            data["typeOfRentalAssets"] = [];
-            for (let item of this.typeOfRentalAssets)
-                data["typeOfRentalAssets"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface ITypeOfRentalAssetOutput {
-    typeOfRentalAsset: TypeOfRentalAssetDto | undefined;
-    typeOfRentalAssets: ComboboxItemDto[] | undefined;
-}
-
-export class TypeOfRentalAssetDto implements ITypeOfRentalAssetDto {
-    typeOfAsset!: string | undefined;
-    id!: number | undefined;
-
-    constructor(data?: ITypeOfRentalAssetDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.typeOfAsset = data["typeOfAsset"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): TypeOfRentalAssetDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new TypeOfRentalAssetDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["typeOfAsset"] = this.typeOfAsset;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface ITypeOfRentalAssetDto {
-    typeOfAsset: string | undefined;
-    id: number | undefined;
-}
-
-export class RentalAssetForViewDto implements IRentalAssetForViewDto {
-    assetName!: string | undefined;
-    assetCode!: string | undefined;
-    description!: string | undefined;
-    typeOfAsset!: string | undefined;
-    assetValue!: number | undefined;
-    quantity!: number | undefined;
-    rentalDate!: moment.Moment | undefined;
-    isActive!: boolean | undefined;
-    linkofImage!: string | undefined;
-
-    constructor(data?: IRentalAssetForViewDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.assetName = data["assetName"];
-            this.assetCode = data["assetCode"];
-            this.description = data["description"];
-            this.typeOfAsset = data["typeOfAsset"];
-            this.assetValue = data["assetValue"];
-            this.quantity = data["quantity"];
-            this.rentalDate = data["rentalDate"] ? moment(data["rentalDate"].toString()) : <any>undefined;
-            this.isActive = data["isActive"];
-            this.linkofImage = data["linkofImage"];
-        }
-    }
-
-    static fromJS(data: any): RentalAssetForViewDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new RentalAssetForViewDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["assetName"] = this.assetName;
-        data["assetCode"] = this.assetCode;
-        data["description"] = this.description;
-        data["typeOfAsset"] = this.typeOfAsset;
-        data["assetValue"] = this.assetValue;
-        data["quantity"] = this.quantity;
-        data["rentalDate"] = this.rentalDate ? this.rentalDate : <any>undefined;
-        data["isActive"] = this.isActive;
-        data["linkofImage"] = this.linkofImage;
-        return data; 
-    }
-}
-
-export interface IRentalAssetForViewDto {
-    assetName: string | undefined;
-    assetCode: string | undefined;
-    description: string | undefined;
-    typeOfAsset: string | undefined;
-    assetValue: number | undefined;
-    quantity: number | undefined;
-    rentalDate: moment.Moment | undefined;
-    isActive: boolean | undefined;
-    linkofImage: string | undefined;
-}
-
 export class ListResultDtoOfRoleListDto implements IListResultDtoOfRoleListDto {
     items!: RoleListDto[] | undefined;
 
@@ -21551,11 +20486,11 @@ export interface IExternalAuthenticateResultModel {
     returnUrl: string | undefined;
 }
 
-export class PagedResultDtoOfTypeOfRentalAssetDto implements IPagedResultDtoOfTypeOfRentalAssetDto {
+export class PagedResultDtoOfTypeOfAssetDto implements IPagedResultDtoOfTypeOfAssetDto {
     totalCount!: number | undefined;
-    items!: TypeOfRentalAssetDto[] | undefined;
+    items!: TypeOfAssetDto[] | undefined;
 
-    constructor(data?: IPagedResultDtoOfTypeOfRentalAssetDto) {
+    constructor(data?: IPagedResultDtoOfTypeOfAssetDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -21570,14 +20505,14 @@ export class PagedResultDtoOfTypeOfRentalAssetDto implements IPagedResultDtoOfTy
             if (data["items"] && data["items"].constructor === Array) {
                 this.items = [];
                 for (let item of data["items"])
-                    this.items.push(TypeOfRentalAssetDto.fromJS(item));
+                    this.items.push(TypeOfAssetDto.fromJS(item));
             }
         }
     }
 
-    static fromJS(data: any): PagedResultDtoOfTypeOfRentalAssetDto {
+    static fromJS(data: any): PagedResultDtoOfTypeOfAssetDto {
         data = typeof data === 'object' ? data : {};
-        let result = new PagedResultDtoOfTypeOfRentalAssetDto();
+        let result = new PagedResultDtoOfTypeOfAssetDto();
         result.init(data);
         return result;
     }
@@ -21594,16 +20529,16 @@ export class PagedResultDtoOfTypeOfRentalAssetDto implements IPagedResultDtoOfTy
     }
 }
 
-export interface IPagedResultDtoOfTypeOfRentalAssetDto {
+export interface IPagedResultDtoOfTypeOfAssetDto {
     totalCount: number | undefined;
-    items: TypeOfRentalAssetDto[] | undefined;
+    items: TypeOfAssetDto[] | undefined;
 }
 
-export class TypeOfRentalAssetInput implements ITypeOfRentalAssetInput {
-    typeOfAsset!: string | undefined;
+export class TypeOfAssetInput implements ITypeOfAssetInput {
+    assetType!: string | undefined;
     id!: number | undefined;
 
-    constructor(data?: ITypeOfRentalAssetInput) {
+    constructor(data?: ITypeOfAssetInput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -21614,35 +20549,35 @@ export class TypeOfRentalAssetInput implements ITypeOfRentalAssetInput {
 
     init(data?: any) {
         if (data) {
-            this.typeOfAsset = data["typeOfAsset"];
+            this.assetType = data["assetType"];
             this.id = data["id"];
         }
     }
 
-    static fromJS(data: any): TypeOfRentalAssetInput {
+    static fromJS(data: any): TypeOfAssetInput {
         data = typeof data === 'object' ? data : {};
-        let result = new TypeOfRentalAssetInput();
+        let result = new TypeOfAssetInput();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["typeOfAsset"] = this.typeOfAsset;
+        data["assetType"] = this.assetType;
         data["id"] = this.id;
         return data; 
     }
 }
 
-export interface ITypeOfRentalAssetInput {
-    typeOfAsset: string | undefined;
+export interface ITypeOfAssetInput {
+    assetType: string | undefined;
     id: number | undefined;
 }
 
-export class TypeOfRentalAssetForViewDto implements ITypeOfRentalAssetForViewDto {
-    typeOfAsset!: string | undefined;
+export class TypeOfAssetForViewDto implements ITypeOfAssetForViewDto {
+    assetType!: string | undefined;
 
-    constructor(data?: ITypeOfRentalAssetForViewDto) {
+    constructor(data?: ITypeOfAssetForViewDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -21653,26 +20588,26 @@ export class TypeOfRentalAssetForViewDto implements ITypeOfRentalAssetForViewDto
 
     init(data?: any) {
         if (data) {
-            this.typeOfAsset = data["typeOfAsset"];
+            this.assetType = data["assetType"];
         }
     }
 
-    static fromJS(data: any): TypeOfRentalAssetForViewDto {
+    static fromJS(data: any): TypeOfAssetForViewDto {
         data = typeof data === 'object' ? data : {};
-        let result = new TypeOfRentalAssetForViewDto();
+        let result = new TypeOfAssetForViewDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["typeOfAsset"] = this.typeOfAsset;
+        data["assetType"] = this.assetType;
         return data; 
     }
 }
 
-export interface ITypeOfRentalAssetForViewDto {
-    typeOfAsset: string | undefined;
+export interface ITypeOfAssetForViewDto {
+    assetType: string | undefined;
 }
 
 export class UiCustomizationSettingsEditDto implements IUiCustomizationSettingsEditDto {

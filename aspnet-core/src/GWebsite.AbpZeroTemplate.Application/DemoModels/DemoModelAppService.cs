@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.DemoModels
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_DemoModel)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
     public class DemoModelAppService : GWebsiteAppServiceBase, IDemoModelAppService
     {
         private readonly IRepository<DemoModel> demoModelRepository;
@@ -22,7 +22,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DemoModels
             this.demoModelRepository = demoModelRepository;
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_DemoModel_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
         public DemoModelDto CreateOrEditDemoModel(DemoModelInput demoModelInput)
         {
             DemoModel demoModelEntity = null;

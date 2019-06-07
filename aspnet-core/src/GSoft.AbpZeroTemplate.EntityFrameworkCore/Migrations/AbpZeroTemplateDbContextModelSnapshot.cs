@@ -1551,62 +1551,39 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("AppUserRoles");
                 });
 
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.AssetRentingContract", b =>
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Asset", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ContractCode");
-
-                    b.Property<string>("ContractName");
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("FileCode");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("LinkofImage");
-
-                    b.Property<string>("RentalPartner");
-
-                    b.Property<DateTime>("SignDate");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AssetRentingContracts");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.AssetRentingFile", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<DateTime>("AddDate");
 
                     b.Property<string>("AssetCode");
 
+                    b.Property<string>("AssetGroupName");
+
+                    b.Property<string>("AssetName");
+
+                    b.Property<string>("AssetStatus");
+
+                    b.Property<string>("AssetType");
+
+                    b.Property<float>("AssetValue");
+
                     b.Property<string>("CreatedBy");
 
                     b.Property<DateTime?>("CreatedDate");
 
-                    b.Property<string>("FileCode");
-
-                    b.Property<DateTime>("FileCreatedDate");
-
-                    b.Property<string>("FileName");
-
-                    b.Property<string>("FormOfRenting");
+                    b.Property<string>("Description");
 
                     b.Property<bool>("IsDelete");
 
                     b.Property<string>("LinkofImage");
+
+                    b.Property<string>("Note");
+
+                    b.Property<string>("Supplier");
 
                     b.Property<string>("UpdatedBy");
 
@@ -1614,7 +1591,34 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AssetRentingFiles");
+                    b.ToTable("Assets");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.AssetGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AssetGroupCode");
+
+                    b.Property<string>("AssetGroupName");
+
+                    b.Property<string>("AssetType");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssetGroups");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Customer", b =>
@@ -1669,80 +1673,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DemoModels");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.FixedAsset", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AssetTag");
-
-                    b.Property<string>("Categocy");
-
-                    b.Property<float>("Cost");
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<float>("DepreciationValue");
-
-                    b.Property<string>("Description");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("LinkofImage");
-
-                    b.Property<string>("Location");
-
-                    b.Property<string>("Name");
-
-                    b.Property<float>("OperatingCosts");
-
-                    b.Property<string>("PONumber");
-
-                    b.Property<DateTime>("PurchaseDate");
-
-                    b.Property<string>("PurchaseFrom");
-
-                    b.Property<int>("Quantity");
-
-                    b.Property<string>("TypeofAsset");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<bool>("isActive");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FixedAssets");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.FormOfRentingAsset", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("FormOfRenting");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FormOfRentingAssets");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Function", b =>
@@ -1864,50 +1794,13 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("GPermissions");
                 });
 
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.RentalAsset", b =>
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.TypeOfAsset", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AssetCode");
-
-                    b.Property<string>("AssetName");
-
-                    b.Property<float>("AssetValue");
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("Description");
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("LinkofImage");
-
-                    b.Property<int>("Quantity");
-
-                    b.Property<DateTime>("RentalDate");
-
-                    b.Property<string>("TypeOfAsset");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RentalAssets");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.TypeOfRentalAsset", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("AssetType");
 
                     b.Property<string>("CreatedBy");
 
@@ -1915,15 +1808,13 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<bool>("IsDelete");
 
-                    b.Property<string>("TypeOfAsset");
-
                     b.Property<string>("UpdatedBy");
 
                     b.Property<DateTime?>("UpdatedDate");
 
                     b.HasKey("Id");
 
-                    b.ToTable("TypeOfRentalAssets");
+                    b.ToTable("TypeOfAssets");
                 });
 
             modelBuilder.Entity("GSoft.AbpZeroTemplate.Editions.SubscribableEdition", b =>

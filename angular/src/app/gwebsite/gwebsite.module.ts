@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, RentalAssetServiceProxy, TypeOfRentalAssetServiceProxy, FormOfRentingAssetServiceProxy, AssetRentingFileServiceProxy, AssetRentingContractServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, TypeOfAssetServiceProxy, AssetGroupServiceProxy, AssetServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,21 +18,15 @@ import { DemoModelServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CustomerComponent } from './customer/customer.component';
 import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
 import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
-import { RentalAssetComponent } from './rental-asset/rental-asset.component'
-import { CreateOrEditRentalAssetModalComponent } from './rental-asset/create-or-edit-rental-asset-modal.component';
-import { ViewRentalAssetModalComponent } from './rental-asset/view-rental-asset-modal.component';
-import { TypeOfRentalAssetComponent } from './type-of-rental-asset/type-of-rental-asset.component'
-import { CreateOrEditTypeOfRentalAssetModalComponent } from './type-of-rental-asset/create-or-edit-type-of-rental-asset-modal.component';
-import { ViewTypeOfRentalAssetModalComponent } from './type-of-rental-asset/view-type-of-rental-asset-modal.component';
-import { FormOfRentingAssetComponent } from './form-of-renting-asset/form-of-renting-asset.component'
-import { CreateOrEditFormOfRentingAssetModalComponent } from './form-of-renting-asset/create-or-edit-form-of-renting-asset-modal.component';
-import { ViewFormOfRentingAssetModalComponent } from './form-of-renting-asset/view-form-of-renting-asset-modal.component';
-import { AssetRentingFileComponent } from './asset-renting-file/asset-renting-file.component'
-import { CreateOrEditAssetRentingFileModalComponent } from './asset-renting-file/create-or-edit-asset-renting-file-modal.component';
-import { ViewAssetRentingFileModalComponent } from './asset-renting-file/view-asset-renting-file-modal.component';
-import { AssetRentingContractComponent } from './asset-renting-contract/asset-renting-contract.component'
-import { CreateOrEditAssetRentingContractModalComponent } from './asset-renting-contract/create-or-edit-asset-renting-contract-modal.component';
-import { ViewAssetRentingContractModalComponent } from './asset-renting-contract/view-asset-renting-contract-modal.component';
+import { TypeOfAssetComponent } from './type-of-asset/type-of-asset.component'
+import { CreateOrEditTypeOfAssetModalComponent } from './type-of-asset/create-or-edit-type-of-asset-modal.component';
+import { ViewTypeOfAssetModalComponent } from './type-of-asset/view-type-of-asset-modal.component';
+import { AssetGroupComponent } from './asset-group/asset-group.component'
+import { CreateOrEditAssetGroupModalComponent } from './asset-group/create-or-edit-asset-group-modal.component';
+import { ViewAssetGroupModalComponent } from './asset-group/view-asset-group-modal.component';
+import { AssetComponent } from './asset/asset.component'
+import { CreateOrEditAssetModalComponent } from './asset/create-or-edit-asset-modal.component';
+import { ViewAssetModalComponent } from './asset/view-asset-modal.component';
 import {
     MatAutocompleteModule,
     MatBadgeModule,
@@ -129,20 +123,16 @@ import {
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
-        RentalAssetComponent, CreateOrEditRentalAssetModalComponent, ViewRentalAssetModalComponent,
-        TypeOfRentalAssetComponent, CreateOrEditTypeOfRentalAssetModalComponent, ViewTypeOfRentalAssetModalComponent,
-        FormOfRentingAssetComponent, CreateOrEditFormOfRentingAssetModalComponent, ViewFormOfRentingAssetModalComponent,
-        AssetRentingFileComponent, CreateOrEditAssetRentingFileModalComponent, ViewAssetRentingFileModalComponent,
-        AssetRentingContractComponent, CreateOrEditAssetRentingContractModalComponent, ViewAssetRentingContractModalComponent,
+        TypeOfAssetComponent, CreateOrEditTypeOfAssetModalComponent, ViewTypeOfAssetModalComponent,
+        AssetGroupComponent, CreateOrEditAssetGroupModalComponent, ViewAssetGroupModalComponent,
+        AssetComponent, CreateOrEditAssetModalComponent, ViewAssetModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
-        RentalAssetServiceProxy,
-        TypeOfRentalAssetServiceProxy,
-        FormOfRentingAssetServiceProxy,
-        AssetRentingFileServiceProxy,
-        AssetRentingContractServiceProxy,
+        TypeOfAssetServiceProxy,
+        AssetGroupServiceProxy,
+        AssetServiceProxy,
     ]
 })
 export class GWebsiteModule { }
