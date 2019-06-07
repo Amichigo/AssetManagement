@@ -1,3 +1,4 @@
+import { Asset11Component } from './asset11/asset11.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CategoryComponent } from './category/category-general.component';
@@ -38,6 +39,8 @@ import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/
 import { RealEstateManagementComponent } from './real-estate-management/real-estate-management.component';
 import { RealEstateTypeComponent } from './real-estate-type/real-estate-type.component';
 import { RealEstateRepairComponent } from './real-estate-repair/real-estate-repair.component';
+import { Debit11Component } from './debit11/debit11.component';
+import { Credit11Component } from './credit11/credit11.component';
 
 @NgModule({
     imports: [
@@ -400,7 +403,36 @@ import { RealEstateRepairComponent } from './real-estate-repair/real-estate-repa
                         data: { permission: 'Pages.Administration.RealEstateRepair9' }
                     }
                 ]
-            }
+            },
+              {
+                path: '',
+                children: [
+                    {
+                        path: 'asset11', component: Asset11Component,
+                        data: { permission: 'Pages.Administration.Asset11' }
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'debit11',
+                        component: Debit11Component,
+                        data: { permission: 'Pages.Administration.Debit11' }
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'credit11',
+                        component: Credit11Component,
+                        data: { permission: 'Pages.Administration.Credit11' }
+                    }
+                ]
+            },
         ])
     ],
     exports: [

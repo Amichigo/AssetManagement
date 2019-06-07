@@ -138,7 +138,7 @@ import {
     MatTreeModule,
 } from '@angular/material';
 
-import { AssetActivityServiceProxy } from '@shared/service-proxies/service-proxies';
+import { AssetActivityServiceProxy, Asset11ServiceProxy, Debit11ServiceProxy, Credit11ServiceProxy } from '@shared/service-proxies/service-proxies';
 import { PurchasedAssetsComponent } from './asset-investment-efficiency/pages/purchased-assets/purchased-assets.component';
 import { SoleAssetsComponent } from './asset-investment-efficiency/pages/sole-assets/sole-assets.component';
 import { MaintainedAssetsComponent } from './asset-investment-efficiency/pages/maintained-assets/maintained-assets.component';
@@ -147,6 +147,11 @@ import { PlannedToPurchaseAssetsComponent } from './asset-investment-efficiency/
 import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/pages/planned-to-maintain-assets/planned-to-maintain-assets.component';
 import { OperatingAssetsComponent } from './asset-investment-efficiency/pages/operating-assets/operating-assets.component';
 import { ChartsModule } from 'ng2-charts';
+import { Asset11Component } from './asset11/asset11.component';
+import { CreateOrEditAsset11ModalComponent } from './asset11/create-or-edit-asset11-modal.component';
+import { ViewAsset11ModalComponent } from './asset11/view-asset11-modal.component';
+import { Debit11Component } from './debit11/debit11.component';
+import { Credit11Component } from './credit11/credit11.component';
 
 @NgModule({
     imports: [
@@ -238,6 +243,11 @@ import { ChartsModule } from 'ng2-charts';
         RealEstateTypeComponent, CreateOrEditRealEstateTypeModalComponent,
         RealEstateRepairComponent, CreateOrEditRealEstateRepairModalComponent, ViewRealEstateRepairModalComponent,
         RealEstateModalComponent, ApprovedRealEstateRepairModalComponent, UpdateRealEstateRepairModalComponent,
+        Asset11Component,
+        CreateOrEditAsset11ModalComponent,
+        ViewAsset11ModalComponent,
+        Debit11Component,
+        Credit11Component,
     ],
     providers: [
         CategoryServiceProxy,
@@ -273,7 +283,10 @@ import { ChartsModule } from 'ng2-charts';
         RealEstateServiceProxy,
         AssetServiceProxy,
         RealEstateTypeServiceProxy,
-        RealEstateRepairServiceProxy
+        RealEstateRepairServiceProxy,
+        Asset11ServiceProxy,
+        Debit11ServiceProxy,
+        Credit11ServiceProxy
     ]
 })
 export class GWebsiteModule { }
