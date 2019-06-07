@@ -18,11 +18,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset11s
         private readonly IRepository<Asset11> asset11Repository;
 
         private readonly IRepository<Debit11> debit11Repository;
+        private readonly IRepository<Credit11> credit11Repository;
 
-        public Asset11AppService(IRepository<Asset11> asset11Repository, IRepository<Debit11> debit11Repository)
+        public Asset11AppService(IRepository<Asset11> asset11Repository, IRepository<Debit11> debit11Repository, IRepository<Credit11> credit11Repository)
         {
             this.asset11Repository = asset11Repository;
             this.debit11Repository = debit11Repository;
+            this.credit11Repository = credit11Repository;
         }
 
         #region Public Method
@@ -100,8 +102,46 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset11s
         public void Accounting()
         {
             var listAsset = asset11Repository.GetAll().Where(x => !x.IsDelete && !x.IsAccounted);
-            CreateDebit11();
-            // CreateCredit11(listAsset);
+            foreach (var asset in listAsset)
+            {
+                var debitAccountVar = new Debit11();
+                var debitAccount = new Debit11();
+                if (asset.Vat > 0)
+                {
+                    debitAccountVar = new Debit11();
+                    debitAccountVar.AssetId = asset.AssetId;
+                    debitAccountVar.AccountType = 331;
+                    debitAccountVar.Price = (((double)asset.Vat / 100) * asset.Price) * asset.Quantity;
+                    SetAuditInsert(debitAccountVar);
+                    debit11Repository.Insert(debitAccountVar);
+
+                    debitAccount.AssetId = asset.AssetId;
+                    debitAccount.AccountType = asset.DebitAccount;
+                    debitAccount.Price = asset.Price * asset.Quantity - debitAccountVar.Price;
+                    SetAuditInsert(debitAccount);
+                    debit11Repository.Insert(debitAccount);
+                }
+                else
+                {
+                    debitAccount.AssetId = asset.AssetId;
+                    debitAccount.AccountType = asset.DebitAccount;
+                    debitAccount.Price = asset.Price * asset.Quantity;
+                    SetAuditInsert(debitAccount);
+                    debit11Repository.Insert(debitAccount);
+                }
+
+                var creditAccount = new Credit11();
+                creditAccount.AssetId = asset.AssetId;
+                creditAccount.AccountType = asset.CreditAccount;
+                creditAccount.Price = asset.Price * asset.Quantity;
+                SetAuditInsert(creditAccount);
+                credit11Repository.Insert(creditAccount);
+
+                asset.IsAccounted = true;
+
+                CurrentUnitOfWork.SaveChanges();
+            }
+
         }
 
         #endregion
@@ -130,31 +170,6 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset11s
             asset11Repository.Update(asset11Entity);
             CurrentUnitOfWork.SaveChanges();
         }
-
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Asset11_CreateDebit11)]
-        public void CreateDebit11()
-        {
-            var listAsset = asset11Repository.GetAll().Where(x => !x.IsDelete && !x.IsAccounted);
-            foreach (var asset in listAsset)
-            {
-                var debitAccount = new Debit11();
-                debitAccount.AssetId = asset.AssetId;
-                debitAccount.AccountType = asset.DebitAccount;
-                debitAccount.Price = asset.Price;
-                SetAuditInsert(debitAccount);
-                debit11Repository.Insert(debitAccount);
-
-                var debitAccountVar = new Debit11();
-                debitAccountVar.AssetId = asset.AssetId;
-                debitAccountVar.AccountType = 331;
-                debitAccountVar.Price = ((double)asset.Vat / 100) * asset.Price;
-                SetAuditInsert(debitAccountVar);
-                debit11Repository.Insert(debitAccountVar);
-                CurrentUnitOfWork.SaveChanges();
-            }
-        }
-
-
 
         #endregion
     }
