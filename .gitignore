@@ -3,6 +3,8 @@
 # Edit at https://www.gitignore.io/?templates=csharp,angular,aspnetcore,visualstudio,visualstudiocode
 
 service-proxies.ts
+aspnet-core/src/GSoft.AbpZeroTemplate.EntityFrameworkCore/Migrations/*
+!aspnet-core/src/GSoft.AbpZeroTemplate.EntityFrameworkCore/Migrations/Seed
 
 ### Angular ###
 ## Angular ##
