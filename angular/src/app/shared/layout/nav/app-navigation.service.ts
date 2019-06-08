@@ -85,7 +85,7 @@ export class AppNavigationService {
                 new AppMenuItem('Computer', 'Pages.Administration.Computer', 'flaticon-menu-1', '/app/gwebsite/computer'),
                 new AppMenuItem('Software', 'Pages.Administration.Software', 'flaticon-menu-1', '/app/gwebsite/software')
             ]),
-            new AppMenuItem('Nhóm 11 - Quản Lý Tài Sản Kế Toán', '', 'flaticon-interface-8', '', [
+            new AppMenuItem('Nhóm 11 - Quản Lý Tài Khoản Kế Toán', '', 'flaticon-interface-8', '', [
                 new AppMenuItem('Asset11', 'Pages.Administration.Asset11', 'flaticon-menu-1', '/app/gwebsite/asset11'),
                 new AppMenuItem('Debit11', 'Pages.Administration.Debit11', 'flaticon-menu-1', '/app/gwebsite/debit11'),
                  new AppMenuItem('Credit11', 'Pages.Administration.Credit11', 'flaticon-menu-1', '/app/gwebsite/credit11')
