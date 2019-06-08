@@ -289,5 +289,21 @@
         public const string Pages_Administration_ContractPayment_Create = "Pages.Administration.ContractPayment.Create";
         public const string Pages_Administration_ContractPayment_Edit = "Pages.Administration.ContractPayment.Edit";
         public const string Pages_Administration_ContractPayment_Delete = "Pages.Administration.ContractPayment.Delete";
+        public const string Pages_Administration_Asset11 = "Pages.Administration.Asset11";
+        public const string Pages_Administration_Asset11_Create = "Pages.Administration.Asset11.Create";
+        public const string Pages_Administration_Asset11_CreateDebit11 = "Pages.Administration.Asset11.CreateDebit11";
+        public const string Pages_Administration_Asset11_Edit = "Pages.Administration.Asset11.Edit";
+        public const string Pages_Administration_Asset11_Delete = "Pages.Administration.Asset11.Delete";
+
+        public const string Pages_Administration_Debit11 = "Pages.Administration.Debit11";
+        public const string Pages_Administration_Debit11_Create = "Pages.Administration.Debit11.Create";
+        public const string Pages_Administration_Debit11_Edit = "Pages.Administration.Debit11.Edit";
+        public const string Pages_Administration_Debit11_Delete = "Pages.Administration.Debit11.Delete";
+
+        public const string Pages_Administration_Credit11 = "Pages.Administration.Credit11";
+        public const string Pages_Administration_Credit11_Create = "Pages.Administration.Credit11.Create";
+        public const string Pages_Administration_Credit11_Edit = "Pages.Administration.Credit11.Edit";
+        public const string Pages_Administration_Credit11_Delete = "Pages.Administration.Credit11.Delete";
+
     }
 }

@@ -1,3 +1,4 @@
+import { Asset11Component } from './asset11/asset11.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CategoryComponent } from './category/category-general.component';
@@ -47,6 +48,8 @@ import { ConstructionPlanComponent } from './constructionPlan/constructionPlan.c
 import { DisposalPlanComponent } from './disposalPlan/disposalPlan.component';
 import { DisposalPlanDetailComponent } from './disposalPlan/disposalPlanDetail.component';
 import { ConstructionPlanDetailComponent } from './constructionPlan/constructionPlanDetail.component';
+import { Debit11Component } from './debit11/debit11.component';
+import { Credit11Component } from './credit11/credit11.component';
 
 @NgModule({
     imports: [
@@ -495,11 +498,40 @@ import { ConstructionPlanDetailComponent } from './constructionPlan/construction
                 path: '',
                 children: [
                     {
+                        path: 'asset11', component: Asset11Component,
+                        data: { permission: 'Pages.Administration.Asset11' }
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'debit11',
+                        component: Debit11Component,
+                        data: { permission: 'Pages.Administration.Debit11' }
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
                         path: 'DisposalPlan', component: DisposalPlanDetailComponent,
                         data: { permission: 'Pages.Administration.DisposalPlanDetail' }
                     },
                 ]
-            }
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'credit11',
+                        component: Credit11Component,
+                        data: { permission: 'Pages.Administration.Credit11' }
+                    }
+                ]
+            },
         ])
     ],
     exports: [

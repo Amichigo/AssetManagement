@@ -309,6 +309,22 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             AssetGroup_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetGroup_05_Edit, L("EditingAssetGroup_05"));
             AssetGroup_05.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetGroup_05_Delete, L("DeletingAssetGroup_05"));
 
+            var asset11 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset11, L("Asset11"));
+            asset11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset11_Create, L("CreatingNewAsset11"));
+            asset11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset11_CreateDebit11, L("CreatingDebit11"));
+            asset11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset11_Edit, L("EditingAsset11"));
+            asset11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset11_Delete, L("DeletingAsset11"));
+
+            var debit11 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Debit11, L("Debit11"));
+            debit11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Debit11_Create, L("CreatingNewDebit11"));
+            debit11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Debit11_Edit, L("EditingDebit11"));
+            debit11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Debit11_Delete, L("DeletingDebit11"));
+
+            var credit11 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Credit11, L("Credit11"));
+            credit11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Credit11_Create, L("CreatingNewCredit11"));
+            credit11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Credit11_Edit, L("EditingCredit11"));
+            credit11.CreateChildPermission(GWebsitePermissions.Pages_Administration_Credit11_Delete, L("DeletingCredit11"));
+
         }
         private static ILocalizableString L(string name)
         {
