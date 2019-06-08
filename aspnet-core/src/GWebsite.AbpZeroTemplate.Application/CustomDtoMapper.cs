@@ -5,6 +5,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.TypeOfAssets.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.AssetGroups.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Assets.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.RentalAssets.Dto;
 
 
 using GWebsite.AbpZeroTemplate.Core.Models;
@@ -49,6 +50,12 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<AssetInput, Asset>();
             configuration.CreateMap<Asset, AssetInput>();
             configuration.CreateMap<Asset, AssetForViewDto>();
+
+            // RentalAsset
+            configuration.CreateMap<RentalAsset, RentalAssetDto>();
+            configuration.CreateMap<RentalAssetInput, RentalAsset>();
+            configuration.CreateMap<RentalAsset, RentalAssetInput>();
+            configuration.CreateMap<RentalAsset, RentalAssetForViewDto>();
         }
     }
 }

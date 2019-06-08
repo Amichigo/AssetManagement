@@ -1583,6 +1583,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<string>("Note");
 
+                    b.Property<string>("RentalAssetCode");
+
                     b.Property<string>("Supplier");
 
                     b.Property<string>("UpdatedBy");
@@ -1792,6 +1794,39 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("GPermissions");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.RentalAsset", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AssetCode");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<float>("DepreciationRate");
+
+                    b.Property<float>("DepreciationValue");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Note");
+
+                    b.Property<string>("RentalAssetCode");
+
+                    b.Property<float>("RentalValue");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RentalAssets");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.TypeOfAsset", b =>

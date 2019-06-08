@@ -20,25 +20,25 @@
                                     <div class="row m--margin-bottom-10">
                                         <div class="col-xl-6">
                                             <label>{{l("Tên tài sản")}} *</label>
-                                            <input [(ngModel)]="assetName" name="AssetName" autoFocus class="form-control"
+                                            <input [(ngModel)]="assetName" name="assetName" autoFocus class="form-control"
                                                 placeholder="Nhập tên tài sản" type="text">
                                         </div>
                                         <div class="col-xl-6">
                                             <label>{{l("Mã tài sản")}} *</label>
-                                            <input [(ngModel)]="assetCode" name="AssetCode" autoFocus class="form-control"
+                                            <input [(ngModel)]="assetCode" name="assetCode" autoFocus class="form-control"
                                                 placeholder="Mã tài sản" type="text">
                                         </div>
                                     </div>
-    
-                                    <div class="col-xl-6">
-                                            <label>{{l("Loại tài sản")}} *</label>
-                                            <input [(ngModel)]="assetType" name="AssetType" autoFocus class="form-control"
-                                                placeholder="Nhập loại tài sản" type="text">
-                                    </div>
+                                    
                                     <div class="row m--margin-bottom-10">
                                         <div class="col-xl-6">
+                                            <label>{{l("Loại tài sản")}} *</label>
+                                            <input [(ngModel)]="assetType" name="assetType" autoFocus class="form-control"
+                                                placeholder="Nhập loại tài sản" type="text">
+                                        </div>
+                                        <div class="col-xl-6">
                                             <label>{{l("Nhóm tài sản")}} *</label>
-                                            <input [(ngModel)]="assetGroupName" name="AssetGroupName" autoFocus class="form-control"
+                                            <input [(ngModel)]="assetGroupName" name="assetGroupName" autoFocus class="form-control"
                                                 placeholder="Nhập nhóm tài sản" type="text">
                                         </div>
                                     </div>
@@ -76,6 +76,7 @@
                                         Tên tài sản
                                         <p-sortIcon field="assetName"></p-sortIcon>
                                     </th>
+
                                     <th pSortableColumn="assetCode">
                                         Mã tài sản
                                         <p-sortIcon field="assetCode"></p-sortIcon>
@@ -88,12 +89,6 @@
                                         Nhóm tài sản
                                         <p-sortIcon field="assetGroupName"></p-sortIcon>
                                     </th>
-                                    <!-- <th >
-                                        Nhóm tài sản
-                                    </th>
-                                    <th >
-                                        Loại tài sản
-                                    </th> -->
                                     <th pSortableColumn="assetStatus">
                                         Tình trạng
                                         <p-sortIcon field="assetStatus"></p-sortIcon>
@@ -109,22 +104,7 @@
                                     <th pSortableColumn="linkofImage">
                                             Image
                                     </th>
-                                    <!-- <th pSortableColumn="ngaynhaptaisan">
-                                        Ngày nhập tài sản
-                                        <p-sortIcon field="ngaynhaptaisan"></p-sortIcon>
-                                    </th>
-
-                                    <th pSortableColumn="nguyengiataisan">
-                                        Nguyên giá
-                                        <p-sortIcon field="nguyengiataisan"></p-sortIcon>
-                                    </th>
-                                    <th >
-                                        Khấu hao
-                                    </th>
-                                    <th >
-                                        Ghi chú
-                                    </th> -->
-
+                                    
                                     <!--<th pSortableColumn="info">
                                         Thông tin
                                         <p-sortIcon field="info"></p-sortIcon>
@@ -143,11 +123,11 @@
                                         <span class="ui-column-title">Tên tài sản</span>
                                         <span title="{{record.assetName}}">{{truncateString(record.assetName)}}</span>
                                     </td>
+
                                     <td>
                                         <span class="ui-column-title">Mã tài sản</span>
                                         <span title="{{record.assetCode}}">{{truncateString(record.assetCode)}}</span>
                                     </td>
-
                                     <td>
                                         <span class="ui-column-title">Loại tài sản</span>
                                         <span
@@ -158,48 +138,28 @@
                                         <span
                                             title="{{record.assetGroupName}}">{{truncateString(record.assetGroupName)}}</span>
                                     </td>
+
                                     <td>
                                         <span class="ui-column-title">Tình trạng</span>
                                         <span
                                             title="{{record.assetStatus}}">{{truncateString(record.assetStatus)}}</span>
                                     </td>
+
                                     <td>
                                         <span class="ui-column-title">Giá trị</span>
                                         <span
-                                            title="{{record.assetValue}}">{{truncateString(record.assetValue)}}</span>
+                                            title="{{record.assetValue | number}}">{{truncateString(record.assetValue | number) }}</span>
                                     </td>
+
                                     <td>
                                         <span class="ui-column-title">Ghi chú</span>
-                                        <span
-                                            title="{{record.note}}">{{truncateString(record.note)}}</span>
+                                        <span title="{{record.note}}">{{truncateString(record.note)}}</span>
                                     </td>
+
                                     <td>
                                         <span class="ui-column-title">Image</span>
-                                        <img [src]="record.linkofImage || defaultImage" width="100" height="100" alt="image">
-                                        <!-- <span title="{{record.linkofImage}}">{{truncateString(record.linkofImage)}}</span> -->
+                                        <span title="{{record.linkofImage}}">{{truncateString(record.linkofImage)}}</span>
                                     </td>
-                                    
-                                    <!-- <td>
-                                        <span class="ui-column-title">Ngày nhập tài sản</span>
-                                        <span
-                                            title="{{record.ngayNhapTaiSan}}">{{truncateString(record.ngayNhapTaiSan)}}</span>
-                                    </td>
-
-                                    <td>
-                                        <span class="ui-column-title">Nguyên giá</span>
-                                        <span
-                                            title="{{record.nguyenGiaTaiSan | number}}">{{truncateString(record.nguyenGiaTaiSan | number) }}</span>
-                                    </td>
-
-                                    <td>
-                                        <span class="ui-column-title">Khấu hao</span>
-                                        <span title="{{record.khauHao}}">{{truncateString(record.khauHao)}}</span>
-                                    </td>
-
-                                    <td>
-                                        <span class="ui-column-title">Ghi chú</span>
-                                        <span title="{{record.ghiChu}}">{{truncateString(record.ghiChu)}}</span>
-                                    </td> -->
 
                                     <!--<td>
                                         <span class="ui-column-title">Thông tin</span>

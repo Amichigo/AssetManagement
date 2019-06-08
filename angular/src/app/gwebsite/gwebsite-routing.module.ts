@@ -5,7 +5,8 @@ import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
 import { TypeOfAssetComponent } from './type-of-asset/type-of-asset.component';
 import { AssetGroupComponent } from './asset-group/asset-group.component';
-import { AssetComponent } from './asset/asset.component';
+import { Asset7Component } from './asset/asset7.component';
+import { RentalAssetComponent } from './rental-asset/rental-asset.component';
 
 @NgModule({
     imports: [
@@ -59,8 +60,17 @@ import { AssetComponent } from './asset/asset.component';
                 path: '',
                 children: [
                     {
-                        path: 'asset', component: AssetComponent,
+                        path: 'asset', component: Asset7Component,
                         data: { permission: 'Pages.Administration.Asset' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'rental-asset', component: RentalAssetComponent,
+                        data: { permission: 'Pages.Administration.RentalAsset' }
                     },
                 ]
             },

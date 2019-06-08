@@ -38,5 +38,10 @@
         public const string Pages_Administration_Asset_Create = "Pages.Administration.Asset.Create";
         public const string Pages_Administration_Asset_Edit = "Pages.Administration.Asset.Edit ";
         public const string Pages_Administration_Asset_Delete = "Pages.Administration.Asset.Delete";
+
+        public const string Pages_Administration_RentalAsset = "Pages.Administration.RentalAsset";
+        public const string Pages_Administration_RentalAsset_Create = "Pages.Administration.RentalAsset.Create";
+        public const string Pages_Administration_RentalAsset_Edit = "Pages.Administration.RentalAsset.Edit ";
+        public const string Pages_Administration_RentalAsset_Delete = "Pages.Administration.RentalAsset.Delete";
     }
 }

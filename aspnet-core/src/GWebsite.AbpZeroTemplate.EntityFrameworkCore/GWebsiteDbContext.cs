@@ -27,6 +27,7 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<TypeOfAsset> TypeOfAssets { get; set; }
         public virtual DbSet<AssetGroup> AssetGroups { get; set; }
         public virtual DbSet<Asset> Assets { get; set; }
+        public virtual DbSet<RentalAsset> RentalAssets { get; set; }
 
 
         /// <summary>

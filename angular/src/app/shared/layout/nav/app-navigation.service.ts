@@ -23,6 +23,7 @@ export class AppNavigationService {
                 new AppMenuItem('Loại Tài Sản', 'Pages.Administration.TypeOfAsset', 'flaticon-menu-1', '/app/gwebsite/type-of-asset'),
                 new AppMenuItem('Nhóm Tài Sản', 'Pages.Administration.AssetGroup', 'flaticon-menu-1', '/app/gwebsite/asset-group'),
                 new AppMenuItem('Tài Sản', 'Pages.Administration.Asset', 'flaticon-menu-1', '/app/gwebsite/asset'),
+                new AppMenuItem('Tài Sản Cho Thuê', 'Pages.Administration.RentalAsset', 'flaticon-menu-1', '/app/gwebsite/rental-asset'),
             ]),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),

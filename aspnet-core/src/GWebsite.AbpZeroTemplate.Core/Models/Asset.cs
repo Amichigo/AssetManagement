@@ -10,6 +10,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
     {
         public string AssetName { get; set; }
         public string AssetCode { get; set; }
+        public string RentalAssetCode { get; set; }
         public string AssetType { get; set; }
         public string AssetGroupName { get; set; }
         public string Description { get; set; }

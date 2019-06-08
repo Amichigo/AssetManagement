@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, TypeOfAssetServiceProxy, AssetGroupServiceProxy, AssetServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, TypeOfAssetServiceProxy, AssetGroupServiceProxy, AssetServiceProxy, RentalAssetServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -24,9 +24,13 @@ import { ViewTypeOfAssetModalComponent } from './type-of-asset/view-type-of-asse
 import { AssetGroupComponent } from './asset-group/asset-group.component'
 import { CreateOrEditAssetGroupModalComponent } from './asset-group/create-or-edit-asset-group-modal.component';
 import { ViewAssetGroupModalComponent } from './asset-group/view-asset-group-modal.component';
-import { AssetComponent } from './asset/asset.component'
+import { Asset7Component } from './asset/asset7.component'
 import { CreateOrEditAssetModalComponent } from './asset/create-or-edit-asset-modal.component';
 import { ViewAssetModalComponent } from './asset/view-asset-modal.component';
+import { SelectAssetModalComponent } from './asset/select-asset-modal.component';
+import { RentalAssetComponent } from './rental-asset/rental-asset.component'
+import { CreateOrEditRentalAssetModalComponent } from './rental-asset/create-or-edit-rental-asset-modal.component';
+import { ViewRentalAssetModalComponent } from './rental-asset/view-rental-asset-modal.component';
 import {
     MatAutocompleteModule,
     MatBadgeModule,
@@ -125,7 +129,8 @@ import {
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
         TypeOfAssetComponent, CreateOrEditTypeOfAssetModalComponent, ViewTypeOfAssetModalComponent,
         AssetGroupComponent, CreateOrEditAssetGroupModalComponent, ViewAssetGroupModalComponent,
-        AssetComponent, CreateOrEditAssetModalComponent, ViewAssetModalComponent,
+        Asset7Component, CreateOrEditAssetModalComponent, ViewAssetModalComponent, SelectAssetModalComponent,
+        RentalAssetComponent, CreateOrEditRentalAssetModalComponent, ViewRentalAssetModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
@@ -133,6 +138,7 @@ import {
         TypeOfAssetServiceProxy,
         AssetGroupServiceProxy,
         AssetServiceProxy,
+        RentalAssetServiceProxy,
     ]
 })
 export class GWebsiteModule { }

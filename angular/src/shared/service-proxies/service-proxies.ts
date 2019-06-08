@@ -7097,6 +7097,353 @@ export class ProfileServiceProxy {
 }
 
 @Injectable()
+export class RentalAssetServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @rentalAssetCode (optional) 
+     * @assetCode (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getRentalAssetsByFilter(rentalAssetCode: string | null | undefined, assetCode: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfRentalAssetDto> {
+        let url_ = this.baseUrl + "/api/RentalAsset/GetRentalAssetsByFilter?";
+        if (rentalAssetCode !== undefined)
+            url_ += "RentalAssetCode=" + encodeURIComponent("" + rentalAssetCode) + "&"; 
+        if (assetCode !== undefined)
+            url_ += "AssetCode=" + encodeURIComponent("" + assetCode) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetRentalAssetsByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetRentalAssetsByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfRentalAssetDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfRentalAssetDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetRentalAssetsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfRentalAssetDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfRentalAssetDto.fromJS(resultData200) : new PagedResultDtoOfRentalAssetDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfRentalAssetDto>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    themAPI(): Observable<number> {
+        let url_ = this.baseUrl + "/api/RentalAsset/ThemAPI";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processThemAPI(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processThemAPI(<any>response_);
+                } catch (e) {
+                    return <Observable<number>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<number>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processThemAPI(response: HttpResponseBase): Observable<number> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<number>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getRentalAssetForEdit(id: number | null | undefined): Observable<RentalAssetInput> {
+        let url_ = this.baseUrl + "/api/RentalAsset/GetRentalAssetForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetRentalAssetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetRentalAssetForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<RentalAssetInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<RentalAssetInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetRentalAssetForEdit(response: HttpResponseBase): Observable<RentalAssetInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? RentalAssetInput.fromJS(resultData200) : new RentalAssetInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<RentalAssetInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @idAsset (optional) 
+     * @return Success
+     */
+    createOrEditRentalAsset(input: RentalAssetInput | null | undefined, idAsset: number | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/RentalAsset/CreateOrEditRentalAsset?";
+        if (idAsset !== undefined)
+            url_ += "idAsset=" + encodeURIComponent("" + idAsset) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditRentalAsset(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditRentalAsset(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditRentalAsset(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteRentalAsset(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/RentalAsset/DeleteRentalAsset/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteRentalAsset(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteRentalAsset(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteRentalAsset(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getRentalAssetForView(id: number | null | undefined): Observable<RentalAssetForViewDto> {
+        let url_ = this.baseUrl + "/api/RentalAsset/GetRentalAssetForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetRentalAssetForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetRentalAssetForView(<any>response_);
+                } catch (e) {
+                    return <Observable<RentalAssetForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<RentalAssetForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetRentalAssetForView(response: HttpResponseBase): Observable<RentalAssetForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? RentalAssetForViewDto.fromJS(resultData200) : new RentalAssetForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<RentalAssetForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class RoleServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -11390,6 +11737,7 @@ export class AssetInput implements IAssetInput {
     assetCode!: string | undefined;
     assetType!: string | undefined;
     assetGroupName!: string | undefined;
+    rentalAssetCode!: string | undefined;
     description!: string | undefined;
     assetStatus!: string | undefined;
     assetValue!: number | undefined;
@@ -11414,6 +11762,7 @@ export class AssetInput implements IAssetInput {
             this.assetCode = data["assetCode"];
             this.assetType = data["assetType"];
             this.assetGroupName = data["assetGroupName"];
+            this.rentalAssetCode = data["rentalAssetCode"];
             this.description = data["description"];
             this.assetStatus = data["assetStatus"];
             this.assetValue = data["assetValue"];
@@ -11438,6 +11787,7 @@ export class AssetInput implements IAssetInput {
         data["assetCode"] = this.assetCode;
         data["assetType"] = this.assetType;
         data["assetGroupName"] = this.assetGroupName;
+        data["rentalAssetCode"] = this.rentalAssetCode;
         data["description"] = this.description;
         data["assetStatus"] = this.assetStatus;
         data["assetValue"] = this.assetValue;
@@ -11455,6 +11805,7 @@ export interface IAssetInput {
     assetCode: string | undefined;
     assetType: string | undefined;
     assetGroupName: string | undefined;
+    rentalAssetCode: string | undefined;
     description: string | undefined;
     assetStatus: string | undefined;
     assetValue: number | undefined;
@@ -17969,6 +18320,302 @@ export class ChangeUserLanguageDto implements IChangeUserLanguageDto {
 
 export interface IChangeUserLanguageDto {
     languageName: string;
+}
+
+export class PagedResultDtoOfRentalAssetDto implements IPagedResultDtoOfRentalAssetDto {
+    totalCount!: number | undefined;
+    items!: RentalAssetDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfRentalAssetDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(RentalAssetDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfRentalAssetDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfRentalAssetDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfRentalAssetDto {
+    totalCount: number | undefined;
+    items: RentalAssetDto[] | undefined;
+}
+
+export class RentalAssetDto implements IRentalAssetDto {
+    rentalAssetCode!: string | undefined;
+    assetCode!: string | undefined;
+    assetName!: string | undefined;
+    assetType!: string | undefined;
+    assetGroupName!: string | undefined;
+    assetStatus!: string | undefined;
+    assetValue!: number | undefined;
+    linkofImage!: string | undefined;
+    depreciationValue!: number | undefined;
+    depreciationRate!: number | undefined;
+    rentalValue!: number | undefined;
+    note!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IRentalAssetDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.rentalAssetCode = data["rentalAssetCode"];
+            this.assetCode = data["assetCode"];
+            this.assetName = data["assetName"];
+            this.assetType = data["assetType"];
+            this.assetGroupName = data["assetGroupName"];
+            this.assetStatus = data["assetStatus"];
+            this.assetValue = data["assetValue"];
+            this.linkofImage = data["linkofImage"];
+            this.depreciationValue = data["depreciationValue"];
+            this.depreciationRate = data["depreciationRate"];
+            this.rentalValue = data["rentalValue"];
+            this.note = data["note"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): RentalAssetDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new RentalAssetDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["rentalAssetCode"] = this.rentalAssetCode;
+        data["assetCode"] = this.assetCode;
+        data["assetName"] = this.assetName;
+        data["assetType"] = this.assetType;
+        data["assetGroupName"] = this.assetGroupName;
+        data["assetStatus"] = this.assetStatus;
+        data["assetValue"] = this.assetValue;
+        data["linkofImage"] = this.linkofImage;
+        data["depreciationValue"] = this.depreciationValue;
+        data["depreciationRate"] = this.depreciationRate;
+        data["rentalValue"] = this.rentalValue;
+        data["note"] = this.note;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IRentalAssetDto {
+    rentalAssetCode: string | undefined;
+    assetCode: string | undefined;
+    assetName: string | undefined;
+    assetType: string | undefined;
+    assetGroupName: string | undefined;
+    assetStatus: string | undefined;
+    assetValue: number | undefined;
+    linkofImage: string | undefined;
+    depreciationValue: number | undefined;
+    depreciationRate: number | undefined;
+    rentalValue: number | undefined;
+    note: string | undefined;
+    id: number | undefined;
+}
+
+export class RentalAssetInput implements IRentalAssetInput {
+    rentalAssetCode!: string | undefined;
+    assetCode!: string | undefined;
+    assetName!: string | undefined;
+    assetType!: string | undefined;
+    assetGroupName!: string | undefined;
+    assetStatus!: string | undefined;
+    assetValue!: number | undefined;
+    linkofImage!: string | undefined;
+    depreciationValue!: number | undefined;
+    depreciationRate!: number | undefined;
+    rentalValue!: number | undefined;
+    note!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IRentalAssetInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.rentalAssetCode = data["rentalAssetCode"];
+            this.assetCode = data["assetCode"];
+            this.assetName = data["assetName"];
+            this.assetType = data["assetType"];
+            this.assetGroupName = data["assetGroupName"];
+            this.assetStatus = data["assetStatus"];
+            this.assetValue = data["assetValue"];
+            this.linkofImage = data["linkofImage"];
+            this.depreciationValue = data["depreciationValue"];
+            this.depreciationRate = data["depreciationRate"];
+            this.rentalValue = data["rentalValue"];
+            this.note = data["note"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): RentalAssetInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new RentalAssetInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["rentalAssetCode"] = this.rentalAssetCode;
+        data["assetCode"] = this.assetCode;
+        data["assetName"] = this.assetName;
+        data["assetType"] = this.assetType;
+        data["assetGroupName"] = this.assetGroupName;
+        data["assetStatus"] = this.assetStatus;
+        data["assetValue"] = this.assetValue;
+        data["linkofImage"] = this.linkofImage;
+        data["depreciationValue"] = this.depreciationValue;
+        data["depreciationRate"] = this.depreciationRate;
+        data["rentalValue"] = this.rentalValue;
+        data["note"] = this.note;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IRentalAssetInput {
+    rentalAssetCode: string | undefined;
+    assetCode: string | undefined;
+    assetName: string | undefined;
+    assetType: string | undefined;
+    assetGroupName: string | undefined;
+    assetStatus: string | undefined;
+    assetValue: number | undefined;
+    linkofImage: string | undefined;
+    depreciationValue: number | undefined;
+    depreciationRate: number | undefined;
+    rentalValue: number | undefined;
+    note: string | undefined;
+    id: number | undefined;
+}
+
+export class RentalAssetForViewDto implements IRentalAssetForViewDto {
+    rentalAssetCode!: string | undefined;
+    assetCode!: string | undefined;
+    assetName!: string | undefined;
+    assetType!: string | undefined;
+    assetGroupName!: string | undefined;
+    assetStatus!: string | undefined;
+    assetValue!: number | undefined;
+    linkofImage!: string | undefined;
+    depreciationValue!: number | undefined;
+    depreciationRate!: number | undefined;
+    rentalValue!: number | undefined;
+    note!: string | undefined;
+
+    constructor(data?: IRentalAssetForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.rentalAssetCode = data["rentalAssetCode"];
+            this.assetCode = data["assetCode"];
+            this.assetName = data["assetName"];
+            this.assetType = data["assetType"];
+            this.assetGroupName = data["assetGroupName"];
+            this.assetStatus = data["assetStatus"];
+            this.assetValue = data["assetValue"];
+            this.linkofImage = data["linkofImage"];
+            this.depreciationValue = data["depreciationValue"];
+            this.depreciationRate = data["depreciationRate"];
+            this.rentalValue = data["rentalValue"];
+            this.note = data["note"];
+        }
+    }
+
+    static fromJS(data: any): RentalAssetForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new RentalAssetForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["rentalAssetCode"] = this.rentalAssetCode;
+        data["assetCode"] = this.assetCode;
+        data["assetName"] = this.assetName;
+        data["assetType"] = this.assetType;
+        data["assetGroupName"] = this.assetGroupName;
+        data["assetStatus"] = this.assetStatus;
+        data["assetValue"] = this.assetValue;
+        data["linkofImage"] = this.linkofImage;
+        data["depreciationValue"] = this.depreciationValue;
+        data["depreciationRate"] = this.depreciationRate;
+        data["rentalValue"] = this.rentalValue;
+        data["note"] = this.note;
+        return data; 
+    }
+}
+
+export interface IRentalAssetForViewDto {
+    rentalAssetCode: string | undefined;
+    assetCode: string | undefined;
+    assetName: string | undefined;
+    assetType: string | undefined;
+    assetGroupName: string | undefined;
+    assetStatus: string | undefined;
+    assetValue: number | undefined;
+    linkofImage: string | undefined;
+    depreciationValue: number | undefined;
+    depreciationRate: number | undefined;
+    rentalValue: number | undefined;
+    note: string | undefined;
 }
 
 export class ListResultDtoOfRoleListDto implements IListResultDtoOfRoleListDto {
