@@ -10,6 +10,7 @@ import { Table } from 'primeng/components/table/table';
 import { ProjectServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditDuAnModalComponent } from './create-or-edit-duan-modal.component';
 
+
 @Component({
     templateUrl: './duan.component.html',
     animations: [appModuleAnimation()]
@@ -35,6 +36,7 @@ export class DuAnComponent extends AppComponentBase implements AfterViewInit, On
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
+        this.ngAfterViewInit();
     }
 
     /**

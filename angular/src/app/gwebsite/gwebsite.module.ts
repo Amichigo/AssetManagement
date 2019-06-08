@@ -13,17 +13,10 @@ import { GWebsiteRoutingModule } from './gwebsite-routing.module';
 import {
     CategoryComponent, ViewCategoryModalComponent, CreateOrEditCategoryModalComponent,
     CategoryTypeComponent, CreateOrEditTypeModalComponent, ViewCategoryTypeModalComponent,
-    DuAnComponent, ViewDuAnModalComponent, CreateOrEditDuAnModalComponent,
-    HoSoThauComponent, ViewHoSoThauModalComponent, CreateOrEditHoSoThauModalComponent,
-    NhaCungCapComponent, ViewNhaCungCapModalComponent, CreateOrEditNhaCungCapModalComponent,
-    HopDongThauComponent, ViewHopDongThauModalComponent, CreateOrEditHopDongThauModalComponent,
-    PhieuGoiHangComponent, ViewPhieuGoiHangModalComponent, CreateOrEditPhieuGoiHangModalComponent,
-    HangHoaComponent, ViewHangHoaModalComponent, CreateOrEditHangHoaModalComponent,
     DirectorShoppingPlanComponent, ViewDirectorShoppingPlanModalComponent, CreateOrEditDirectorShoppingPlanModalComponent,
 } from './index';
 
 import { CategoryServiceProxy, CategoryTypeServiceProxy,
-    ProjectServiceProxy, BidServiceProxy, SupplierServiceProxy, ContractServiceProxy, GoodsInvoiceServiceProxy, GoodsServiceProxy,
     ShoppingPlanServiceProxy, DirectorShoppingPlanServiceProxy, ShoppingPlanDetailServiceProxy, ConstructionPlanServiceProxy,
     LoaiBatDongSanServiceProxy, NhomTaiSanServiceProxy, LoaiSoHuuServiceProxy, MucDichSuDungDatServiceProxy, BatDongSanServiceProxy,
     HienTrangPhapLyServiceProxy, TinhTrangSuDungDatServiceProxy, TaiSanServiceProxy, SuaChuaBatDongSanServiceProxy, KeHoachXayDungServiceProxy, CongTrinhServiceProxy, HoSoThauN13ServiceProxy,
@@ -166,6 +159,35 @@ import { CreateOrEditDisposalPlanDetailModalComponent } from './disposalPlan/cre
 
 import { ConstructionPlanDetailComponent } from './constructionPlan/constructionPlanDetail.component';
 import { CreateOrEditConstructionPlanDetailModalComponent } from './constructionPlan/create-or-edit-constructionPlanDetail-modal.component';
+import { DemoModelServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ProjectServiceProxy } from '@shared/service-proxies/service-proxies';
+import { BidServiceProxy } from '@shared/service-proxies/service-proxies';
+import { SupplierServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ContractServiceProxy } from '@shared/service-proxies/service-proxies';
+import { GoodsInvoiceServiceProxy } from '@shared/service-proxies/service-proxies';
+import { GoodsServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ContractPaymentServiceProxy } from '@shared/service-proxies/service-proxies';
+import { CustomerComponent } from './customer/customer.component';
+import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
+import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
+import { DuAnComponent } from './duan/duan.component';
+import { ViewDuAnModalComponent } from './duan/view-duan-modal.component';
+import { CreateOrEditDuAnModalComponent } from './duan/create-or-edit-duan-modal.component';
+import { HoSoThauComponent } from './hosothau/hosothau.component';
+import { ViewHoSoThauModalComponent } from './hosothau/view-hosothau-modal.component';
+import { CreateOrEditHoSoThauModalComponent } from './hosothau/create-or-edit-hosothau-modal.component';
+import { NhaCungCapComponent } from './nhacungcap/nhacungcap.component';
+import { ViewNhaCungCapModalComponent } from './nhacungcap/view-nhacungcap-modal.component';
+import { CreateOrEditNhaCungCapModalComponent } from './nhacungcap/create-or-edit-nhacungcap-modal.component';
+import { HopDongThauComponent } from './hopdongthau/hopdongthau.component';
+import { ViewHopDongThauModalComponent } from './hopdongthau/view-hopdongthau-modal.component';
+import { CreateOrEditHopDongThauModalComponent } from './hopdongthau/create-or-edit-hopdongthau-modal.component';
+import { PhieuGoiHangComponent } from './phieugoihang/phieugoihang.component';
+import { ViewPhieuGoiHangModalComponent } from './phieugoihang/view-phieugoihang-modal.component';
+import { CreateOrEditPhieuGoiHangModalComponent } from './phieugoihang/create-or-edit-phieugoihang-modal.component';
+import { HangHoaComponent } from './hanghoa/hanghoa.component';
+import { ViewHangHoaModalComponent } from './hanghoa/view-hanghoa-modal.component';
+import { CreateOrEditHangHoaModalComponent } from './hanghoa/create-or-edit-hanghoa-modal.component';
 
 @NgModule({
     imports: [
@@ -306,7 +328,8 @@ import { CreateOrEditConstructionPlanDetailModalComponent } from './construction
         ConstructionPlanDetailServiceProxy,
         ConstructionPlanServiceProxy,
         DisposalPlanServiceProxy,
-        DisposalPlanDetailServiceProxy
+        DisposalPlanDetailServiceProxy,
+        ContractPaymentServiceProxy,
     ]
 })
 export class GWebsiteModule { }

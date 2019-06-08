@@ -35,6 +35,7 @@ export class NhaCungCapComponent extends AppComponentBase implements AfterViewIn
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
+        this.ngAfterViewInit();
     }
 
     /**

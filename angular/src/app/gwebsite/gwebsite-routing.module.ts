@@ -4,9 +4,15 @@ import { CategoryComponent } from './category/category-general.component';
 import { CategoryTypeComponent } from './category-type/category-type-general.component';
 import { DuAnComponent } from './duan/duan.component';
 import { HoSoThauComponent } from './hosothau/hosothau.component';
+import { CreateOrEditHoSoThauModalComponent } from './hosothau/create-or-edit-hosothau-modal.component';
+import { ViewHoSoThauModalComponent } from './hosothau/view-hosothau-modal.component';
 import { NhaCungCapComponent } from './nhacungcap/nhacungcap.component';
 import { HopDongThauComponent } from './hopdongthau/hopdongthau.component';
+import { CreateOrEditHopDongThauModalComponent } from './hopdongthau/create-or-edit-hopdongthau-modal.component';
+import { ViewHopDongThauModalComponent } from './hopdongthau/view-hopdongthau-modal.component';
 import { PhieuGoiHangComponent } from './phieugoihang/phieugoihang.component';
+import { CreateOrEditPhieuGoiHangModalComponent } from './phieugoihang/create-or-edit-phieugoihang-modal.component';
+import { ViewPhieuGoiHangModalComponent } from './phieugoihang/view-phieugoihang-modal.component';
 import { HangHoaComponent } from './hanghoa/hanghoa.component';
 import { DirectorShoppingPlanComponent } from './directorShoppingPlan/directorShoppingPlan.component';
 import { LoaiBatDongSanComponent } from './loaibatdongsan/loaibatdongsan.component';
@@ -94,6 +100,33 @@ import { ConstructionPlanDetailComponent } from './constructionPlan/construction
                 path: '',
                 children: [
                     {
+                        path: 'hosothau_modal', component: CreateOrEditHoSoThauModalComponent,
+                        data: { permission: 'Pages.Administration.Bid' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'view_hosothau_modal', component: ViewHoSoThauModalComponent,
+                        data: { permission: 'Pages.Administration.Bid' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'nhacungcap', component: NhaCungCapComponent,
+                        data: { permission: 'Pages.Administration.Supplier' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
                         path: 'fixed-asset', component: FixedAssetComponent,
                         data: { permission: 'Pages.Administration.FixedAsset' }
                     },
@@ -112,16 +145,52 @@ import { ConstructionPlanDetailComponent } from './constructionPlan/construction
                 path: '',
                 children: [
                     {
+                        path: 'hopdongthau_modal', component: CreateOrEditHopDongThauModalComponent,
+                        data: { permission: 'Pages.Administration.Contract' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
                         path: 'asset-dashboard', component: AssetDashboardComponent,
                         data: { permission: 'Pages.Administration.AssetDashboard' }
                     },
                 ]
             },
             {
-            path: '',
+                path: '',
+                children: [
+                    {
+                        path: 'view_hopdongthau_modal', component: ViewHopDongThauModalComponent,
+                        data: { permission: 'Pages.Administration.Contract' }
+                    },
+                ]
+            },
+            {
+                path: '',
                 children: [
                     {
                         path: 'phieugoihang', component: PhieuGoiHangComponent,
+                        data: { permission: 'Pages.Administration.GoodsInvoice' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'phieugoihang_modal', component: CreateOrEditPhieuGoiHangModalComponent,
+                        data: { permission: 'Pages.Administration.GoodsInvoice' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'view_phieugoihang_modal', component: ViewPhieuGoiHangModalComponent,
                         data: { permission: 'Pages.Administration.GoodsInvoice' }
                     },
                 ]

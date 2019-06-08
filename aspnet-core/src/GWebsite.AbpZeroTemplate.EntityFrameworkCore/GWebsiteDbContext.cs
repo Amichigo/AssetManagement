@@ -110,6 +110,7 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<AssetActivity> AssetActivities { get; set; }
         public virtual DbSet<DisposalPlan> DisposalPlans { get; set; }
         public virtual DbSet<DisposalPlanDetail> DisposalPlanDetails { get; set; }
+        public virtual DbSet<ContractPayment> ContractPayments { get; set; }
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>

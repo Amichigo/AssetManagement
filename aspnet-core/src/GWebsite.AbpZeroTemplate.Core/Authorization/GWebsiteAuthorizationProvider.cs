@@ -96,6 +96,12 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             hanghoa.CreateChildPermission(GWebsitePermissions.Pages_Administration_Goods_Edit, L("EditingGoods"));
             hanghoa.CreateChildPermission(GWebsitePermissions.Pages_Administration_Goods_Delete, L("DeletingGoods"));
 
+            ///contractPayment
+            var contractpayment = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractPayment, L("ContractPayment"));
+            contractpayment.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractPayment_Create, L("CreatingNewContractPayment"));
+            contractpayment.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractPayment_Edit, L("EditingContractPayment"));
+            contractpayment.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractPayment_Delete, L("DeletingContractPayment"));
+
             var shoppingPlan = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ShoppingPlan, L("ShoppingPlan"));
             shoppingPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_ShoppingPlan_Create, L("CreatingNewShoppingPlan"));
             shoppingPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_ShoppingPlan_Edit, L("EditingShoppingPlan"));

@@ -35,6 +35,7 @@ export class HoSoThauComponent extends AppComponentBase implements AfterViewInit
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
+        this.ngAfterViewInit();
     }
 
     /**

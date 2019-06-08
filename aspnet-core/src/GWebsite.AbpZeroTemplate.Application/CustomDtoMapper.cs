@@ -52,6 +52,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.HoSoThau_N1
 using GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.DonViThau.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.FixedAssets.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.AssetGroups_05.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ContractPayments.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.AssetTypes_05.Dto;
@@ -397,6 +398,11 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<DisposalPlanDetail, DisposalPlanDetailDto>();
             configuration.CreateMap<DisposalPlanDetailInput, DisposalPlanDetail>();
             configuration.CreateMap<DisposalPlanDetail, DisposalPlanDetailInput>();
+            //contractPayment
+            configuration.CreateMap<ContractPayment, ContractPaymentDto>();
+            configuration.CreateMap<ContractPaymentInput, ContractPayment>();
+            configuration.CreateMap<ContractPayment, ContractPaymentInput>();
+            configuration.CreateMap<ContractPayment, ContractPaymentForViewDto>();
         }
     }
 }

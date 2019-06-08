@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using GSoft.AbpZeroTemplate.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 
-namespace GWebsite.AbpZeroTemplate.Application.Share.GoodsInvoices.Dto
+namespace GWebsite.AbpZeroTemplate.Application.Share.ContractPayments.Dto
 {
     /// <summary>
-    /// <model cref="GoodsInvoice"></model>
+    /// <model cref="ContractPayment"></model>
     /// </summary>
-    public class GoodsInvoiceFilter : PagedAndSortedInputDto
+    public class ContractPaymentFilter : PagedAndSortedInputDto
     {
-        public string POName { get; set; }
+        public string ContractCode { get; set; }
     }
 }
