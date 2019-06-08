@@ -8,10 +8,7 @@ import { NhaCungCapComponent } from './nhacungcap/nhacungcap.component';
 import { HopDongThauComponent } from './hopdongthau/hopdongthau.component';
 import { PhieuGoiHangComponent } from './phieugoihang/phieugoihang.component';
 import { HangHoaComponent } from './hanghoa/hanghoa.component';
-import { ShoppingPlanComponent } from './shoppingPlan/shoppingPlan.component';
 import { DirectorShoppingPlanComponent } from './directorShoppingPlan/directorShoppingPlan.component';
-import { ShoppingPlanDetailComponent } from './shoppingPlan/shoppingPlanDetail.component';
-import { ConstructionPlanComponent } from './constructionPlan/constructionPlan.component';
 import { LoaiBatDongSanComponent } from './loaibatdongsan/loaibatdongsan.component';
 import { LoaiSoHuuComponent } from './loaisohuu/loaisohuu.component';
 import { HienTrangPhapLyComponent } from './hientrangphaply/hientrangphaply.component';
@@ -38,6 +35,12 @@ import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/
 import { RealEstateManagementComponent } from './real-estate-management/real-estate-management.component';
 import { RealEstateTypeComponent } from './real-estate-type/real-estate-type.component';
 import { RealEstateRepairComponent } from './real-estate-repair/real-estate-repair.component';
+import { ShoppingPlanComponent } from './shoppingPlan/shoppingPlan.component';
+import { ShoppingPlanDetailComponent } from './shoppingPlan/shoppingPlanDetail.component';
+import { ConstructionPlanComponent } from './constructionPlan/constructionPlan.component';
+import { DisposalPlanComponent } from './disposalPlan/disposalPlan.component';
+import { DisposalPlanDetailComponent } from './disposalPlan/disposalPlanDetail.component';
+import { ConstructionPlanDetailComponent } from './constructionPlan/constructionPlanDetail.component';
 
 @NgModule({
     imports: [
@@ -276,6 +279,15 @@ import { RealEstateRepairComponent } from './real-estate-repair/real-estate-repa
                 path: '',
                 children: [
                     {
+                        path: 'constructionPlan', component: ConstructionPlanDetailComponent,
+                        data: { permission: 'Pages.Administration.ConstructionPlanDetail' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
 
                         path: 'asset-investment-efficiency/purchased-assets', component: PurchasedAssetsComponent,
                         data: { permission: ''}
@@ -288,6 +300,15 @@ import { RealEstateRepairComponent } from './real-estate-repair/real-estate-repa
                     {
                         path: 'kehoachxaydung', component: KeHoachXayDungComponent,
                         data: { permission: 'Pages.Administration.QuanLyKeHoachXayDung.KeHoachXayDung' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'disposalPlan', component: DisposalPlanComponent,
+                        data: { permission: 'Pages.Administration.DisposalPlan' }
                     },
                 ]
             },
@@ -399,6 +420,15 @@ import { RealEstateRepairComponent } from './real-estate-repair/real-estate-repa
                         path: 'real-estate-repair', component: RealEstateRepairComponent,
                         data: { permission: 'Pages.Administration.RealEstateRepair9' }
                     }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'DisposalPlan', component: DisposalPlanDetailComponent,
+                        data: { permission: 'Pages.Administration.DisposalPlanDetail' }
+                    },
                 ]
             }
         ])

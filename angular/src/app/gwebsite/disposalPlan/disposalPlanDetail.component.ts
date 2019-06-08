@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild,Input, Output, EventEmitter } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild,Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
@@ -6,41 +6,39 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { ShoppingPlanDetailServiceProxy, ShoppingPlanInput, ShoppingPlanServiceProxy } from '@shared/service-proxies/service-proxies';
-import { CreateOrEditShoppingPlanDetailModalComponent } from './create-or-edit-shoppingPlanDetail-modal.component';
+import { DisposalPlanDetailServiceProxy, DisposalPlanInput, DisposalPlanServiceProxy } from '@shared/service-proxies/service-proxies';
+import { CreateOrEditDisposalPlanDetailModalComponent } from './create-or-edit-disposalPlanDetail-modal.component';
 import { ModalDirective } from 'ngx-bootstrap';
 import { filter } from 'rxjs/operators';
 
 @Component({
-    templateUrl: './shoppingPlanDetail.component.html',
+    templateUrl: './disposalPlanDetail.component.html',
     animations: [appModuleAnimation()],
-    styles:[`.hide{display:none;}`],
-    selector: 'viewDetailModal'
+    selector: 'viewDisposalPlanDetailModal'
 })
-export class ShoppingPlanDetailComponent extends AppComponentBase implements AfterViewInit, OnInit {
+export class DisposalPlanDetailComponent extends AppComponentBase implements AfterViewInit, OnInit {
 
     /**
      * @ViewChild là dùng get control và call thuộc tính, functions của control đó
      */
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
-    @ViewChild('createOrEditModal') createOrEditModal: CreateOrEditShoppingPlanDetailModalComponent;
+    @ViewChild('createOrEditModal') createOrEditModal: CreateOrEditDisposalPlanDetailModalComponent;
     @ViewChild('viewDetailModal') viewDetailModal: ModalDirective;
 
     /**
      * tạo các biến dể filters
      */
-    shoppingPlanMaKeHoach: string;
+    disposalPlanMaKeHoach: string;
     /*
      * bien nhan thong tin tu parent form
      */
-    @Input() selectedRow: ShoppingPlanInput = new ShoppingPlanInput();
-    @Output() detailSave: EventEmitter<any> = new EventEmitter<any>();
+    @Input() selectedRow: DisposalPlanInput = new DisposalPlanInput();
 
     constructor(
         injector: Injector,
-        private _shoppingPlanDetailService: ShoppingPlanDetailServiceProxy,
-        private __shoppingPlanService: ShoppingPlanServiceProxy,
+        private _disposalPlanDetailService: DisposalPlanDetailServiceProxy,
+        private __disposalPlanService: DisposalPlanServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -64,29 +62,28 @@ export class ShoppingPlanDetailComponent extends AppComponentBase implements Aft
 
     show(): void {
         this.viewDetailModal.show();
-        this.shoppingPlanMaKeHoach = this.selectedRow.maKeHoach;
+        this.disposalPlanMaKeHoach = this.selectedRow.maKeHoach;
         this.applyFilters();
     }
 
     close(): void {
         this.viewDetailModal.hide();
-        this.detailSave.emit(null);
     }
     /**
-     * Hàm get danh sách shoppingPlans
+     * Hàm get danh sách disposalPlans
      * @param event
      */
-    getShoppingPlanDetails(event?: LazyLoadEvent) {
+    getDisposalPlanDetails(event?: LazyLoadEvent) {
         if (!this.paginator || !this.dataTable) {
             return;
         }
         //show loading trong gridview
         this.primengTableHelper.showLoadingIndicator();
-        this.reloadList(this.shoppingPlanMaKeHoach, event);
+        this.reloadList(this.disposalPlanMaKeHoach, event);
     }
 
-    reloadList(shoppingPlanMaKeHoach, event?: LazyLoadEvent) {
-        this._shoppingPlanDetailService.getShoppingPlansByFilter(shoppingPlanMaKeHoach,this.primengTableHelper.getSorting(this.dataTable),
+    reloadList(disposalPlanMaKeHoach, event?: LazyLoadEvent) {
+        this._disposalPlanDetailService.getDisposalPlanDetailsByFilter(disposalPlanMaKeHoach,this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -96,8 +93,8 @@ export class ShoppingPlanDetailComponent extends AppComponentBase implements Aft
         });
     }
 
-    deleteShoppingPlanDetail(id): void {
-        this._shoppingPlanDetailService.deleteShoppingPlanDetail(id).subscribe(() => {
+    deleteDisposalPlanDetail(id): void {
+        this._disposalPlanDetailService.deleteDisposalPlanDetail(id).subscribe(() => {
             this.reloadPage();
         })
     }
@@ -105,8 +102,8 @@ export class ShoppingPlanDetailComponent extends AppComponentBase implements Aft
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
-            this.shoppingPlanMaKeHoach = params['maKeHoach'] || '';;
-            this.reloadList(this.shoppingPlanMaKeHoach,null);
+            this.disposalPlanMaKeHoach = params['maKeHoach'] || '';;
+            this.reloadList(this.disposalPlanMaKeHoach,null);
         });
     }
 
@@ -116,7 +113,7 @@ export class ShoppingPlanDetailComponent extends AppComponentBase implements Aft
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.shoppingPlanMaKeHoach,null);
+        this.reloadList(this.disposalPlanMaKeHoach,null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);
@@ -125,7 +122,7 @@ export class ShoppingPlanDetailComponent extends AppComponentBase implements Aft
     }
 
     //hàm show view create MenuClient
-    createShoppingPlanDetail() {
+    createDisposalPlanDetail() {
         this.createOrEditModal.show();
     }
 
@@ -137,13 +134,9 @@ export class ShoppingPlanDetailComponent extends AppComponentBase implements Aft
         return abp.utils.truncateStringWithPostfix(text, 32, '...');
     }
 
-    checkShoppingPlan(): void {
-        if (this.selectedRow.tinhTrang == "not check" || this.selectedRow.tinhTrang == null)
-            this.selectedRow.tinhTrang = "checking";
-        else this.selectedRow.tinhTrang = "checked";
-        let input = this.selectedRow;
-        console.log(input);
-        this.__shoppingPlanService.createOrEditShoppingPlan(input).subscribe(result => {
+    checkDisposalPlan(): void {
+        this.selectedRow.trangThai = "Đã duyệt";
+        this.__disposalPlanService.createOrEditDisposalPlan(this.selectedRow).subscribe(result => {
             this.notify.info(this.l('Duyet thanh cong!'));
             this.close();
         });

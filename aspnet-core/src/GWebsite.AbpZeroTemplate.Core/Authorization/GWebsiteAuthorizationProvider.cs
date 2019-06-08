@@ -119,6 +119,8 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             software.CreateChildPermission(GWebsitePermissions.Pages_Administration_Software_Create, L("CreatingNewSoftware"));
             software.CreateChildPermission(GWebsitePermissions.Pages_Administration_Software_Edit, L("EditingSoftware"));
             software.CreateChildPermission(GWebsitePermissions.Pages_Administration_Software_Delete, L("DeletingSoftware"));
+            shoppingPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ShoppingPlanDetail_Check, L("CheckingShoppingPlanDetail"));
+
 
             var constructionPlan = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlan, L("ConstructionPlan"));
             constructionPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlan_Create, L("CreatingNewConstructionPlan"));
@@ -189,6 +191,17 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             realestaterepair_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateRepair9_Create, L("CreatingNewRealEstateRepair9"));
             realestaterepair_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateRepair9_Edit, L("EditingRealEstateRepair9"));
             realestaterepair_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_RealEstateRepair9_Delete, L("DeletingRealEstateRepair9"));
+
+            var disposalPlan = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlan, L("DisposalPlan"));
+            disposalPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlan_Create, L("CreatingNewDisposalPlan"));
+            disposalPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlan_Edit, L("EditingDisposalPlan"));
+            disposalPlan.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlan_Delete, L("DeletingDisposalPlan"));
+
+            var disposalPlanDetail = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlanDetail, L("DisposalPlanDetail"));
+            disposalPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlanDetail_Create, L("CreatingNewDisposalPlanDetail"));
+            disposalPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlanDetail_Edit, L("EditingDisposalPlanDetail"));
+            disposalPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlanDetail_Delete, L("DeletingDisposalPlanDetail"));
+            constructionPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlanDetail_Check, L("CheckingConstructionPlanDetail"));
 
             var bidmanager_9 = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_BidManager9, L("BidManager9"));
             bidmanager_9.CreateChildPermission(GWebsitePermissions.Pages_Administration_BidManager9_Create, L("CreatingNewBidManager9"));

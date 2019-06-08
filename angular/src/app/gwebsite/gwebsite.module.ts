@@ -1,3 +1,4 @@
+import { CustomerServiceProxy, ConstructionPlanDetailServiceProxy, DisposalPlanServiceProxy, DisposalPlanDetailServiceProxy} from './../../shared/service-proxies/service-proxies';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -18,10 +19,7 @@ import {
     HopDongThauComponent, ViewHopDongThauModalComponent, CreateOrEditHopDongThauModalComponent,
     PhieuGoiHangComponent, ViewPhieuGoiHangModalComponent, CreateOrEditPhieuGoiHangModalComponent,
     HangHoaComponent, ViewHangHoaModalComponent, CreateOrEditHangHoaModalComponent,
-    ShoppingPlanComponent, ViewShoppingPlanModalComponent, CreateOrEditShoppingPlanModalComponent,
     DirectorShoppingPlanComponent, ViewDirectorShoppingPlanModalComponent, CreateOrEditDirectorShoppingPlanModalComponent,
-    ShoppingPlanDetailComponent, CreateOrEditShoppingPlanDetailModalComponent,
-    ConstructionPlanComponent, ViewConstructionPlanModalComponent, CreateOrEditConstructionPlanModalComponent
 } from './index';
 
 import { CategoryServiceProxy, CategoryTypeServiceProxy,
@@ -148,6 +146,27 @@ import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/
 import { OperatingAssetsComponent } from './asset-investment-efficiency/pages/operating-assets/operating-assets.component';
 import { ChartsModule } from 'ng2-charts';
 
+import { ShoppingPlanComponent } from './shoppingPlan/shoppingPlan.component';
+import { ViewShoppingPlanModalComponent } from './shoppingPlan/view-shoppingPlan-modal.component';
+import { CreateOrEditShoppingPlanModalComponent } from './shoppingPlan/create-or-edit-shoppingPlan-modal.component';
+
+import { ShoppingPlanDetailComponent } from './shoppingPlan/shoppingPlanDetail.component';
+import { CreateOrEditShoppingPlanDetailModalComponent } from './shoppingPlan/create-or-edit-shoppingPlanDetail-modal.component';
+
+import { ConstructionPlanComponent } from './constructionPlan/constructionPlan.component';
+import { ViewConstructionPlanModalComponent } from './constructionPlan/view-constructionPlan-modal.component';
+import { CreateOrEditConstructionPlanModalComponent } from './constructionPlan/create-or-edit-constructionPlan-modal.component';
+
+import { DisposalPlanComponent } from './disposalPlan/disposalPlan.component';
+import { ViewDisposalPlanModalComponent } from './disposalPlan/view-disposalPlan-modal.component';
+import { CreateOrEditDisposalPlanModalComponent } from './disposalPlan/create-or-edit-disposalPlan-modal.component';
+
+import { DisposalPlanDetailComponent } from './disposalPlan/disposalPlanDetail.component';
+import { CreateOrEditDisposalPlanDetailModalComponent } from './disposalPlan/create-or-edit-disposalPlanDetail-modal.component';
+
+import { ConstructionPlanDetailComponent } from './constructionPlan/constructionPlanDetail.component';
+import { CreateOrEditConstructionPlanDetailModalComponent } from './constructionPlan/create-or-edit-constructionPlanDetail-modal.component';
+
 @NgModule({
     imports: [
         FormsModule,
@@ -238,6 +257,12 @@ import { ChartsModule } from 'ng2-charts';
         RealEstateTypeComponent, CreateOrEditRealEstateTypeModalComponent,
         RealEstateRepairComponent, CreateOrEditRealEstateRepairModalComponent, ViewRealEstateRepairModalComponent,
         RealEstateModalComponent, ApprovedRealEstateRepairModalComponent, UpdateRealEstateRepairModalComponent,
+        ShoppingPlanComponent, ViewShoppingPlanModalComponent, CreateOrEditShoppingPlanModalComponent,
+        ShoppingPlanDetailComponent, CreateOrEditShoppingPlanDetailModalComponent,
+        ConstructionPlanComponent, ViewConstructionPlanModalComponent, CreateOrEditConstructionPlanModalComponent,
+        DisposalPlanComponent, ViewDisposalPlanModalComponent, CreateOrEditDisposalPlanModalComponent,
+        DisposalPlanDetailComponent, CreateOrEditDisposalPlanDetailModalComponent,
+        ConstructionPlanDetailComponent, CreateOrEditConstructionPlanDetailModalComponent,
     ],
     providers: [
         CategoryServiceProxy,
@@ -273,7 +298,15 @@ import { ChartsModule } from 'ng2-charts';
         RealEstateServiceProxy,
         AssetServiceProxy,
         RealEstateTypeServiceProxy,
-        RealEstateRepairServiceProxy
+        RealEstateRepairServiceProxy,
+        CustomerServiceProxy,
+        ShoppingPlanServiceProxy,
+        ShoppingPlanDetailServiceProxy,
+        ConstructionPlanServiceProxy,
+        ConstructionPlanDetailServiceProxy,
+        ConstructionPlanServiceProxy,
+        DisposalPlanServiceProxy,
+        DisposalPlanDetailServiceProxy
     ]
 })
 export class GWebsiteModule { }

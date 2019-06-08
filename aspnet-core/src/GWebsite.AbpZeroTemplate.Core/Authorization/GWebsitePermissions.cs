@@ -98,6 +98,7 @@
         public const string Pages_Administration_ConstructionPlan_Create = "Pages.Administration.Construction.Create";
         public const string Pages_Administration_ConstructionPlan_Edit = "Pages.Administration.Construction.Edit";
         public const string Pages_Administration_ConstructionPlan_Delete = "Pages.Administration.Construction.Delete";
+        public const string Pages_Administration_ShoppingPlanDetail_Check = "Pages.Administration.ShoppingPlanDetail.Check";
 
         public const string Pages_Administration_ConstructionPlanDetail = "Pages.Administration.ConstructionPlanDetail";
         public const string Pages_Administration_ConstructionPlanDetail_Create = "Pages.Administration.ConstructionPlanDetail.Create";
@@ -272,5 +273,16 @@
         public const string Pages_Administration_WarrantyGuarantee9_Edit = "Pages.Administration.WarrantyGuarantee9.Edit";
         public const string Pages_Administration_WarrantyGuarantee9_Delete = "Pages.Administration.WarrantyGuarantee9.Delete";
 
+        public const string Pages_Administration_ConstructionPlanDetail_Check = "Pages.Administration.ConstructionPlanDetail.Check";
+
+        public const string Pages_Administration_DisposalPlan = "Pages.Administration.DisposalPlan";
+        public const string Pages_Administration_DisposalPlan_Create = "Pages.Administration.Disposal.Create";
+        public const string Pages_Administration_DisposalPlan_Edit = "Pages.Administration.Disposal.Edit";
+        public const string Pages_Administration_DisposalPlan_Delete = "Pages.Administration.Disposal.Delete";
+
+        public const string Pages_Administration_DisposalPlanDetail = "Pages.Administration.DisposalPlanDetail";
+        public const string Pages_Administration_DisposalPlanDetail_Create = "Pages.Administration.DisposalPlanDetail.Create";
+        public const string Pages_Administration_DisposalPlanDetail_Edit = "Pages.Administration.DisposalPlanDetail.Edit";
+        public const string Pages_Administration_DisposalPlanDetail_Delete = "Pages.Administration.DisposalPlanDetail.Delete";
     }
 }

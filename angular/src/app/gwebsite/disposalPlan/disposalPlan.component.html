@@ -4,20 +4,20 @@
         <div class="d-flex align-items-center">
             <div class="mr-auto col-xs-6">
                 <h3 class="m-subheader__title m-subheader__title--separator">
-                    <span>{{l("ConstructionPlan")}}</span>
+                    <span>{{l("DisposalPlan")}}</span>
                 </h3>
                 <span class="m-section__sub">
-                    {{l("ConstructionPlanInfo")}}
+                    {{l("DisposalPlanInfo")}}
                 </span>
             </div>
             <div class="col-xs-6 text-right">
-                <button (click)="createConstructionPlan()" *ngIf="isGranted('Pages.Administration.ConstructionPlan.Create')"
+                <button (click)="createDisposalPlan()" *ngIf="isGranted('Pages.Administration.DisposalPlan.Create')"
                         class="btn btn-primary">
-                    <i class="fa fa-plus"></i> {{l("CreateNewConstructionPlan")}}
+                    <i class="fa fa-plus"></i> {{l("CreateNewDisposalPlan")}}
                 </button>
             </div>
             <div class="col-xs-6 text-right">
-                <button (click)="constructionPlanDetail()"
+                <button (click)="disposalPlanDetail()"
                         class="btn btn-primary">
                     <i class="fa fa-plus"></i> {{l("Detail")}}
                 </button>
@@ -33,13 +33,13 @@
                         <div class="row align-items-center m--margin-bottom-10">
                             <div class="col-sm-12">
                                 <div class="input-group">
-                                    <input [(ngModel)]="constructionPlanKhuVuc" name="constructionPlanKhuVuc" autoFocus class="form-control"
+                                    <input [(ngModel)]="disposalPlanKhuVuc" name="disposalPlanKhuVuc" autoFocus class="form-control"
                                            placeholder="Nhập khu vực" type="text">
-                                    <input [(ngModel)]="constructionPlanPhongBan" name="constructionPlanPhongBan" autoFocus class="form-control"
+                                    <input [(ngModel)]="disposalPlanPhongBan" name="disposalPlanPhongBan" autoFocus class="form-control"
                                            placeholder="Nhập phòng ban" type="text">
-                                    <input [(ngModel)]="constructionPlanMaKeHoach" name="constructionPlanMaKeHoach" autoFocus class="form-control"
+                                    <input [(ngModel)]="disposalPlanMaKeHoach" name="disposalPlanMaKeHoach" autoFocus class="form-control"
                                            placeholder="Nhập mã kế hoạch" type="text">
-                                    <input [(ngModel)]="constructionPlanTinhTrang" name="constructionPlanTinhTrang" autoFocus class="form-control"
+                                    <input [(ngModel)]="disposalPlanTinhTrang" name="disposalPlanTinhTrang" autoFocus class="form-control"
                                            placeholder="Nhập tình trạng" type="text">
                                     <span class="input-group-btn">
                                         <button (click)="applyFilters()" class="btn btn-primary" type="submit">
@@ -55,7 +55,7 @@
                 <div class="row align-items-center">
                     <!--<Primeng-TurboTable-Start>-->
                     <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
-                        <p-table #dataTable (onLazyLoad)="getConstructionPlans($event)" [value]="primengTableHelper.records"
+                        <p-table #dataTable (onLazyLoad)="getDisposalPlans($event)" [value]="primengTableHelper.records"
                                  rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
                                  [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
@@ -76,9 +76,6 @@
                                     </th>
                                     <th pSortableColumn="kinhPhi">
                                         Kinh Phí
-                                    </th>
-                                    <th pSortableColumn="tinhTrang">
-                                        Tình Trạng
                                     </th>
                                     <th>{{l('Edit')}}</th>
                                 </tr>
@@ -106,22 +103,18 @@
                                         <span title="{{record.kinhPhi}}">{{truncateString(record.kinhPhi)}}</span>
                                     </td>
                                     <td>
-                                        <span class="ui-column-title">Tình Trạng</span>
-                                        <span title="{{record.tinhTrang}}">{{truncateString(record.tinhTrang)}}</span>
-                                    </td>
-                                    <td>
                                         <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}" [class.hide]="record.tinhTrang === 'checked'">
+                                                (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">
                                             <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
                                         </button>
 
                                         <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                (click)="deleteConstructionPlan(record.id)" title="{{l('Delete')}}" [class.hide]="record.tinhTrang === 'checked'">
+                                                (click)="deleteDisposalPlan(record.id)" title="{{l('Delete')}}">
                                             <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                         </button>
 
                                         <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                (click)="viewConstructionPlanModal.show(record.id)" title="{{l('View')}}">
+                                                (click)="viewDisposalPlanModal.show(record.id)" title="{{l('View')}}">
                                             <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
                                         </button>
                                     </td>
@@ -133,7 +126,7 @@
                         </div>
                         <div class="primeng-paging-container">
                             <p-paginator rows="{{primengTableHelper.defaultRecordsCountPerPage}}" #paginator
-                                         (onPageChange)="getConstructionPlans($event)"
+                                         (onPageChange)="getDisposalPlans($event)"
                                          [totalRecords]="primengTableHelper.totalRecordsCount"
                                          [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
                             </p-paginator>
@@ -147,7 +140,6 @@
             </div>
         </div>
     </div>
-    <createOrEditConstructionPlanModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditConstructionPlanModal>
-    <viewConstructionPlanModal #viewConstructionPlanModal></viewConstructionPlanModal>
-    <viewConstructionPlanDetailModal #viewDetailModal [selectedRow]="selectedRow"></viewConstructionPlanDetailModal>
-</div>
+    <createOrEditDisposalPlanModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditDisposalPlanModal>
+    <viewDisposalPlanModal #viewDisposalPlanModal></viewDisposalPlanModal>
+    <viewDisposalPlanDetailModal #viewDetailModal [selectedRow]="selectedRow"></viewDisposalPlanDetailModal>

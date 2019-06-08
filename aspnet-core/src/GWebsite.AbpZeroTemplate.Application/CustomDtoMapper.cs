@@ -32,6 +32,12 @@ using GWebsite.AbpZeroTemplate.Application.Share.AssetActivities.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ShoppingPlanDetails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ShoppingPlans.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ConstructionPlans.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ConstructionPlanDetails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.DisposalPlans.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.DisposalPlanDetails.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using GWebsite.AbpZeroTemplate.Application.Share.RealEstas.BatDongSan.DTO;
 using GWebsite.AbpZeroTemplate.Application.Share.TaiSan_13.Dto;
@@ -359,6 +365,38 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<WarrantyGuarantee, WarrantyGuaranteeInput>();
             configuration.CreateMap<WarrantyGuarantee, WarrantyGuaranteeForViewDto>();
 
+            //ShoppingPlan
+            configuration.CreateMap<ShoppingPlan, ShoppingPlanDto>();
+            configuration.CreateMap<ShoppingPlanInput, ShoppingPlan>();
+            configuration.CreateMap<ShoppingPlan, ShoppingPlanInput>();
+            configuration.CreateMap<ShoppingPlan, ShoppingPlanForViewDto>();
+
+            //ShoppingPlanDetail
+            configuration.CreateMap<ShoppingPlanDetail, ShoppingPlanDetailDto>();
+            configuration.CreateMap<ShoppingPlanDetailInput, ShoppingPlanDetail>();
+            configuration.CreateMap<ShoppingPlanDetail, ShoppingPlanDetailInput>();
+
+            //ConstructionPlan
+            configuration.CreateMap<ConstructionPlan, ConstructionPlanDto>();
+            configuration.CreateMap<ConstructionPlanInput, ConstructionPlan>();
+            configuration.CreateMap<ConstructionPlan, ConstructionPlanInput>();
+            configuration.CreateMap<ConstructionPlan, ConstructionPlanForViewDto>();
+
+            //ConstructionPlanDetail
+            configuration.CreateMap<ConstructionPlanDetail, ConstructionPlanDetailDto>();
+            configuration.CreateMap<ConstructionPlanDetailInput, ConstructionPlanDetail>();
+            configuration.CreateMap<ConstructionPlanDetail, ConstructionPlanDetailInput>();
+
+            //DisposalPlan
+            configuration.CreateMap<DisposalPlan, DisposalPlanDto>();
+            configuration.CreateMap<DisposalPlanInput, DisposalPlan>();
+            configuration.CreateMap<DisposalPlan, DisposalPlanInput>();
+            configuration.CreateMap<DisposalPlan, DisposalPlanForViewDto>();
+
+            //DisposalPlanDetail
+            configuration.CreateMap<DisposalPlanDetail, DisposalPlanDetailDto>();
+            configuration.CreateMap<DisposalPlanDetailInput, DisposalPlanDetail>();
+            configuration.CreateMap<DisposalPlanDetail, DisposalPlanDetailInput>();
         }
     }
 }

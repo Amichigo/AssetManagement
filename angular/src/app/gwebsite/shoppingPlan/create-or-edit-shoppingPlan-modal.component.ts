@@ -40,6 +40,9 @@ export class CreateOrEditShoppingPlanModalComponent extends AppComponentBase {
             if (this.shoppingPlan.trangThai == null) {
                 this.shoppingPlan.trangThai = 'Chưa duyệt';
             }
+            if (this.shoppingPlan.tinhTrang == null) {
+                this.shoppingPlan.tinhTrang = 'not check';
+            }
             this.modal.show();
         })
     }

@@ -40,6 +40,9 @@ export class CreateOrEditConstructionPlanModalComponent extends AppComponentBase
             if (this.constructionPlan.trangThai == null) {
                 this.constructionPlan.trangThai = 'Chưa duyệt';
             }
+            if (this.constructionPlan.tinhTrang == null) {
+                this.constructionPlan.tinhTrang = 'not check';
+            }
             this.modal.show();
         })
     }

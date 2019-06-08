@@ -7,17 +7,20 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { ShoppingPlanServiceProxy, ShoppingPlanInput } from '@shared/service-proxies/service-proxies';
+import { ShoppingPlanServiceProxy, ShoppingPlanInput,SessionServiceProxy,UserServiceProxy, GetCurrentLoginInformationsOutput, GetUserForEditOutput } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditShoppingPlanModalComponent } from './create-or-edit-shoppingPlan-modal.component';
 import { ShoppingPlanDetailComponent } from './shoppingPlanDetail.component';
 import { userInfo } from 'os';
+import { Subject, Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     templateUrl: './shoppingPlan.component.html',
     animations: [appModuleAnimation()],
     styles: [`.highlighted {
     background - color: #fff2ac;
-    background-image: linear-gradient(to right, #ffe359 0 %, #fff2ac 100 %);}`]
+    background-image: linear-gradient(to right, #ffe359 0 %, #fff2ac 100 %);}`,
+        `.hide { display: none;}`]
 })
 export class ShoppingPlanComponent extends AppComponentBase implements AfterViewInit, OnInit {
 
@@ -30,6 +33,9 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
     @ViewChild('viewShoppingPlanModal') viewShoppingPlanModal: ViewShoppingPlanModalComponent;
     @ViewChild('viewDetailModal') viewDetailModal: ShoppingPlanDetailComponent;
 
+    halfChecked: boolean = false;
+    role: any;
+    showActions: boolean = false;
     /**
      * tạo các biến dể filters
      */
@@ -38,6 +44,11 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
     shoppingPlanMaKeHoach: string;
     shoppingPlanTinhTrang: string;
     /*
+     * lấy user role hiện tại
+     */
+    currentSession: GetCurrentLoginInformationsOutput = new GetCurrentLoginInformationsOutput();
+    currentUser: GetUserForEditOutput = new GetUserForEditOutput();
+    /*
      * tạo biến để lưu và truyền qua form detail
      */
     selectedRow: ShoppingPlanInput = new ShoppingPlanInput();
@@ -45,6 +56,8 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
     constructor(
         injector: Injector,
         private _shoppingPlanService: ShoppingPlanServiceProxy,
+        private _sessionService: SessionServiceProxy,
+        private _userService: UserServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -70,19 +83,25 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
      * @param event
      */
     getShoppingPlans(event?: LazyLoadEvent) {
-        if (!this.paginator || !this.dataTable) {
-            return;
-        }
+        this._sessionService.getCurrentLoginInformations().subscribe(result => {
+            this.currentSession = result;
+            this._userService.getUserForEdit(this.currentSession.user.id).subscribe(user => {
+                this.currentUser = user;
 
-        //show loading trong gridview
-        this.primengTableHelper.showLoadingIndicator();
-
-        /**
-         * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
-         */
-
-        this.reloadList(null,null,null,null,event);
-
+                if (!this.paginator || !this.dataTable) {
+                       return;
+                }
+                this.primengTableHelper.showLoadingIndicator();
+                for (let i = 0; i < this.currentUser.roles.length; i++) {
+                    if (this.currentUser.roles[i].isAssigned == true && this.currentUser.roles[i].roleDisplayName == "hieu truong") {
+                        this.halfChecked = true;
+                        this.reloadList(null, null, null, "checking" && "checked", event);
+                    }
+                }
+                console.log(this.halfChecked);
+                if (this.halfChecked == false) this.reloadList(null, null, null,null, event);
+            })
+        })
     }
 
     reloadList(shoppingPlanKhuVuc,shoppingPlanPhongBan,shoppingPlanMaKeHoach,shoppingPlanTinhTrang, event?: LazyLoadEvent) {
@@ -95,6 +114,7 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
             this.primengTableHelper.records = result.items;
             this.primengTableHelper.hideLoadingIndicator();
         });
+        console.log(this.primengTableHelper.records);
     }
 
     deleteShoppingPlan(id): void {
@@ -110,8 +130,6 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
             this.shoppingPlanPhongBan = params['phongBan'] || '';
             this.shoppingPlanMaKeHoach = params['maKeHoach'] || '';
             this.shoppingPlanTinhTrang = params['tinhTrang'] || '';
-            this.reloadList(this.shoppingPlanKhuVuc, this.shoppingPlanPhongBan, this.shoppingPlanMaKeHoach,
-                this.shoppingPlanTinhTrang, null);
         });
     }
 
@@ -156,7 +174,8 @@ export class ShoppingPlanComponent extends AppComponentBase implements AfterView
         this.selectedRow.ngayHieuLuc = userInput.ngayHieuLuc;
         this.selectedRow.phongBan = userInput.phongBan;
         this.selectedRow.soLanThayDoi = userInput.soLanThayDoi;
-        this.selectedRow.trangThai = userInput.trangThai;
+        this.selectedRow.tinhTrang = userInput.tinhTrang;
         console.log(userInput);
     }
+
 }

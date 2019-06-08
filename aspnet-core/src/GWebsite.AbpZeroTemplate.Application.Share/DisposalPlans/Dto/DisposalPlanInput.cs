@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Domain.Entities;
-namespace GWebsite.AbpZeroTemplate.Application.Share.ConstructionPlans.Dto
+
+namespace GWebsite.AbpZeroTemplate.Application.Share.DisposalPlans.Dto
 {
-    public class ConstructionPlanInput : Entity<int>
+    public class DisposalPlanInput: Entity<int>
     {
         public string MaKeHoach { get; set; }
         public string KhuVuc { get; set; }
@@ -15,8 +16,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.ConstructionPlans.Dto
         public DateTime NgayHieuLuc { get; set; }
         public string KinhPhi { get; set; }
         public string TrangThai { get; set; }
-        public string TinhTrang { get; set; }
         public string SoLanThayDoi { get; set; }
     }
 }
-

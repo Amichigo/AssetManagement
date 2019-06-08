@@ -6,41 +6,41 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { ShoppingPlanDetailServiceProxy, ShoppingPlanInput, ShoppingPlanServiceProxy } from '@shared/service-proxies/service-proxies';
-import { CreateOrEditShoppingPlanDetailModalComponent } from './create-or-edit-shoppingPlanDetail-modal.component';
+import { ConstructionPlanDetailServiceProxy, ConstructionPlanInput, ConstructionPlanServiceProxy } from '@shared/service-proxies/service-proxies';
+import { CreateOrEditConstructionPlanDetailModalComponent } from './create-or-edit-constructionPlanDetail-modal.component';
 import { ModalDirective } from 'ngx-bootstrap';
 import { filter } from 'rxjs/operators';
 
 @Component({
-    templateUrl: './shoppingPlanDetail.component.html',
+    templateUrl: './constructionPlanDetail.component.html',
     animations: [appModuleAnimation()],
     styles:[`.hide{display:none;}`],
-    selector: 'viewDetailModal'
+    selector: 'viewConstructionPlanDetailModal'
 })
-export class ShoppingPlanDetailComponent extends AppComponentBase implements AfterViewInit, OnInit {
+export class ConstructionPlanDetailComponent extends AppComponentBase implements AfterViewInit, OnInit {
 
     /**
      * @ViewChild là dùng get control và call thuộc tính, functions của control đó
      */
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
-    @ViewChild('createOrEditModal') createOrEditModal: CreateOrEditShoppingPlanDetailModalComponent;
+    @ViewChild('createOrEditModal') createOrEditModal: CreateOrEditConstructionPlanDetailModalComponent;
     @ViewChild('viewDetailModal') viewDetailModal: ModalDirective;
 
     /**
      * tạo các biến dể filters
      */
-    shoppingPlanMaKeHoach: string;
+    constructionPlanMaKeHoach: string;
     /*
      * bien nhan thong tin tu parent form
      */
-    @Input() selectedRow: ShoppingPlanInput = new ShoppingPlanInput();
+    @Input() selectedRow: ConstructionPlanInput = new ConstructionPlanInput();
     @Output() detailSave: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(
         injector: Injector,
-        private _shoppingPlanDetailService: ShoppingPlanDetailServiceProxy,
-        private __shoppingPlanService: ShoppingPlanServiceProxy,
+        private _constructionPlanDetailService: ConstructionPlanDetailServiceProxy,
+        private __constructionPlanService: ConstructionPlanServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -64,7 +64,7 @@ export class ShoppingPlanDetailComponent extends AppComponentBase implements Aft
 
     show(): void {
         this.viewDetailModal.show();
-        this.shoppingPlanMaKeHoach = this.selectedRow.maKeHoach;
+        this.constructionPlanMaKeHoach = this.selectedRow.maKeHoach;
         this.applyFilters();
     }
 
@@ -73,20 +73,20 @@ export class ShoppingPlanDetailComponent extends AppComponentBase implements Aft
         this.detailSave.emit(null);
     }
     /**
-     * Hàm get danh sách shoppingPlans
+     * Hàm get danh sách constructionPlans
      * @param event
      */
-    getShoppingPlanDetails(event?: LazyLoadEvent) {
+    getConstructionPlanDetails(event?: LazyLoadEvent) {
         if (!this.paginator || !this.dataTable) {
             return;
         }
         //show loading trong gridview
         this.primengTableHelper.showLoadingIndicator();
-        this.reloadList(this.shoppingPlanMaKeHoach, event);
+        this.reloadList(this.constructionPlanMaKeHoach, event);
     }
 
-    reloadList(shoppingPlanMaKeHoach, event?: LazyLoadEvent) {
-        this._shoppingPlanDetailService.getShoppingPlansByFilter(shoppingPlanMaKeHoach,this.primengTableHelper.getSorting(this.dataTable),
+    reloadList(constructionPlanMaKeHoach, event?: LazyLoadEvent) {
+        this._constructionPlanDetailService.getConstructionPlansByFilter(constructionPlanMaKeHoach,this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -96,8 +96,8 @@ export class ShoppingPlanDetailComponent extends AppComponentBase implements Aft
         });
     }
 
-    deleteShoppingPlanDetail(id): void {
-        this._shoppingPlanDetailService.deleteShoppingPlanDetail(id).subscribe(() => {
+    deleteConstructionPlanDetail(id): void {
+        this._constructionPlanDetailService.deleteConstructionPlanDetail(id).subscribe(() => {
             this.reloadPage();
         })
     }
@@ -105,8 +105,8 @@ export class ShoppingPlanDetailComponent extends AppComponentBase implements Aft
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
-            this.shoppingPlanMaKeHoach = params['maKeHoach'] || '';;
-            this.reloadList(this.shoppingPlanMaKeHoach,null);
+            this.constructionPlanMaKeHoach = params['maKeHoach'] || '';;
+            this.reloadList(this.constructionPlanMaKeHoach,null);
         });
     }
 
@@ -116,7 +116,7 @@ export class ShoppingPlanDetailComponent extends AppComponentBase implements Aft
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.shoppingPlanMaKeHoach,null);
+        this.reloadList(this.constructionPlanMaKeHoach,null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);
@@ -125,7 +125,7 @@ export class ShoppingPlanDetailComponent extends AppComponentBase implements Aft
     }
 
     //hàm show view create MenuClient
-    createShoppingPlanDetail() {
+    createConstructionPlanDetail() {
         this.createOrEditModal.show();
     }
 
@@ -137,13 +137,13 @@ export class ShoppingPlanDetailComponent extends AppComponentBase implements Aft
         return abp.utils.truncateStringWithPostfix(text, 32, '...');
     }
 
-    checkShoppingPlan(): void {
+    checkConstructionPlan(): void {
         if (this.selectedRow.tinhTrang == "not check" || this.selectedRow.tinhTrang == null)
             this.selectedRow.tinhTrang = "checking";
         else this.selectedRow.tinhTrang = "checked";
         let input = this.selectedRow;
         console.log(input);
-        this.__shoppingPlanService.createOrEditShoppingPlan(input).subscribe(result => {
+        this.__constructionPlanService.createOrEditConstructionPlan(this.selectedRow).subscribe(result => {
             this.notify.info(this.l('Duyet thanh cong!'));
             this.close();
         });

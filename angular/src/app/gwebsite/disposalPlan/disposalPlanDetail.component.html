@@ -12,21 +12,21 @@
                     <div class="d-flex align-items-center">
                         <div class="mr-auto col-xs-6">
                             <h3 class="m-subheader__title m-subheader__title--separator">
-                                <span>{{l("ShoppingPlanDetail")}}</span>
+                                <span>{{l("DisposalPlanDetail")}}</span>
                             </h3>
                             <span class="m-section__sub">
-                                {{l("ShoppingPlanDetailInfo")}}
+                                {{l("DisposalPlanDetailInfo")}}
                             </span>
                         </div>
                         <div class="col-xs-6 text-right">
-                            <button (click)="createShoppingPlanDetail()" *ngIf="isGranted('Pages.Administration.ShoppingPlanDetail.Create')"
-                                    class="btn btn-primary" [class.hide]="selectedRow.tinhTrang == 'checked'">
+                            <button (click)="createDisposalPlanDetail()" *ngIf="isGranted('Pages.Administration.DisposalPlanDetail.Create')"
+                                    class="btn btn-primary">
                                 <i class="fa fa-plus"></i> {{l("CreateNewShopingPlanDetail")}}
                             </button>
                         </div>
                         <div class="col-xs-6 text-right">
-                            <button (click)="checkShoppingPlan()" *ngIf="isGranted('Pages.Administration.ShoppingPlanDetail.Check')"
-                                    class="btn btn-primary" [class.hide]="selectedRow.tinhTrang == 'checked'">
+                            <button (click)="checkDisposalPlan()" *ngIf="isGranted('Pages.Administration.DisposalPlanDetail.Create')"
+                                    class="btn btn-primary">
                                 <i class="fa fa-plus"></i> {{l("Check")}}
                             </button>
                         </div>
@@ -40,7 +40,7 @@
                                     <div class="row align-items-center m--margin-bottom-10">
                                         <div class="col-sm-12">
                                             <div class="input-group">
-                                                <input [(ngModel)]="shoppingPlanMaKeHoach" name="shoppingPlanMaKeHoach" autoFocus class="form-control"
+                                                <input [(ngModel)]="disposalPlanMaKeHoach" name="disposalPlanMaKeHoach" autoFocus class="form-control"
                                                        placeholder="Nhập mã kế hoạch" type="text">
                                                 <span class="input-group-btn">
                                                     <button (click)="applyFilters()" class="btn btn-primary" type="submit">
@@ -56,39 +56,36 @@
                             <div class="row align-items-center">
                                 <!--<Primeng-TurboTable-Start>-->
                                 <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
-                                    <p-table #dataTable (onLazyLoad)="getShoppingPlanDetails($event)" [value]="primengTableHelper.records"
+                                    <p-table #dataTable (onLazyLoad)="getDisposalPlanDetails($event)" [value]="primengTableHelper.records"
                                              rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
                                              [responsive]="primengTableHelper.isResponsive">
                                         <ng-template pTemplate="header">
                                             <tr>
-                                                <th pSortableColumn="maSP">
-                                                    MaSP
-                                                    <p-sortIcon field="maSP"></p-sortIcon>
+                                                <th pSortableColumn="maTS">
+                                                    MaTS
+                                                    <p-sortIcon field="maTS"></p-sortIcon>
                                                 </th>
-                                                <th pSortableColumn="tenSP">
-                                                    TenSP
-                                                    <p-sortIcon field="tenSP"></p-sortIcon>
+                                                <th pSortableColumn="tenTS">
+                                                    TenTS
+                                                    <p-sortIcon field="tenTS"></p-sortIcon>
                                                 </th>
-                                                <th pSortableColumn="donVi">
-                                                    DonVi
+                                                <th pSortableColumn="nguyenGia">
+                                                    NguyenGia
                                                 </th>
-                                                <th pSortableColumn="soLuong">
-                                                    SoLuong
+                                                <th pSortableColumn="giaTriConLai">
+                                                    GiaTriConLai
                                                 </th>
-                                                <th>
-                                                    Tong
+                                                <th pSortableColumn="giaDuKien">
+                                                    GiaDuKienThuHoi
                                                 </th>
-                                                <th pSortableColumn="thangKeHoach">
-                                                    ThangKeHoach
+                                                <th pSortableColumn="tinhTrangTS">
+                                                    TinhTrangTS
                                                 </th>
-                                                <th pSortableColumn="soLuongThucHien">
-                                                    DaThucHien
+                                                <th pSortableColumn="hinhThuc">
+                                                    HinhThuc
                                                 </th>
-                                                <th>
-                                                    ConLai
-                                                </th>
-                                                <th pSortableColumn="thanhThucHien">
-                                                    ThangThucHien
+                                                <th pSortableColumn="thangDuKien">
+                                                    ThangDuKienThanhLy
                                                 </th>
                                                 <th>{{l('Edit')}}</th>
                                             </tr>
@@ -96,51 +93,36 @@
                                         <ng-template pTemplate="body" let-record="$implicit">
                                             <tr>
                                                 <td>
-                                                    <span class="ui-column-title">maSP</span>
-                                                    <span title="{{record.maSP}}">{{truncateString(record.maSP)}}</span>
+                                                    <span class="ui-column-title">MaTS</span>
+                                                    <span title="{{record.maTS}}">{{truncateString(record.maTS)}}</span>
                                                 </td>
                                                 <td>
-                                                    <span class="ui-column-title">tenSP</span>
-                                                    <span title="{{record.tenSP}}">{{truncateString(record.tenSP)}}</span>
+                                                    <span class="ui-column-title">TenTS</span>
+                                                    <span title="{{record.tenTS}}">{{truncateString(record.tenTS)}}</span>
                                                 </td>
                                                 <td>
-                                                    <span class="ui-column-title">DonVi</span>
-                                                    <span title="{{record.donVi}}">{{record.donVi}}</span>
+                                                    <span class="ui-column-title">NguyenGia</span>
+                                                    <span title="{{record.nguyenGia}}">{{record.nguyenGia}}</span>
                                                 </td>
                                                 <td>
-                                                    <span class="ui-column-title">SoLuong</span>
-                                                    <span title="{{record.soLuong}}">{{record.soLuong}}</span>
+                                                    <span class="ui-column-title">GiaTriConlai</span>
+                                                    <span title="{{record.giaTriConLai}}">{{record.giaTriConLai}}</span>
                                                 </td>
                                                 <td>
-                                                    <span class="ui-column-title">Tong</span>
-                                                    <span>{{record.soLuong*record.giaTriMotSP}}</span>
+                                                    <span class="ui-column-title">GiaDuKienThuHoi</span>
+                                                    <span title="{{record.giaDuKien}}">{{record.giaDuKien}}</span>
                                                 </td>
                                                 <td>
-                                                    <span class="ui-column-title">ThangKeHoach</span>
-                                                    <span title="{{record.thangKeHoach}}">{{record.thangKeHoach}}</span>
+                                                    <span class="ui-column-title">TinhTrangTS</span>
+                                                    <span title="{{record.tinhTrangTS}}">{{record.tinhTrangTS}}</span>
                                                 </td>
                                                 <td>
-                                                    <span class="ui-column-title">DaThucHien</span>
-                                                    <span title="{{record.soLuongThucHien}}">{{record.soLuongThucHien}}</span>
+                                                    <span class="ui-column-title">HinhThuc</span>
+                                                    <span title="{{record.hinhThuc}}">{{record.hinhThuc}}</span>
                                                 </td>
                                                 <td>
-                                                    <span class="ui-column-title">ConLai</span>
-                                                    <span>{{record.soLuong - record.soLuongThucHien}}</span>
-                                                </td>
-                                                <td>
-                                                    <span class="ui-column-title">ThangThucHien</span>
-                                                    <span title="{{record.thanhThucHien}}">{{record.thanhThucHien}}</span>
-                                                </td>
-                                                <td>
-                                                    <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                            (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}" [class.hide]="selectedRow.tinhTrang == 'checked'">
-                                                        <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
-                                                    </button>
-
-                                                    <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                            (click)="deleteShoppingPlanDetail(record.id)" title="{{l('Delete')}}" [class.hide]="selectedRow.tinhTrang == 'checked'">
-                                                        <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
-                                                    </button>
+                                                    <span class="ui-column-title">ThangDuKienThanhLy</span>
+                                                    <span title="{{record.thangDuKien}}">{{record.thangDuKien}}</span>
                                                 </td>
                                             </tr>
                                         </ng-template>
@@ -150,7 +132,7 @@
                                     </div>
                                     <div class="primeng-paging-container">
                                         <p-paginator rows="{{primengTableHelper.defaultRecordsCountPerPage}}" #paginator
-                                                     (onPageChange)="getShoppingPlanDetails($event)"
+                                                     (onPageChange)="getDisposalPlanDetails($event)"
                                                      [totalRecords]="primengTableHelper.totalRecordsCount"
                                                      [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
                                         </p-paginator>
@@ -164,7 +146,7 @@
                         </div>
                     </div>
                 </div>
-                <createOrEditShoppingPlanDetailModal #createOrEditModal [maKeHoach] ="selectedRow.maKeHoach" (modalSave)="reloadPage()"></createOrEditShoppingPlanDetailModal>
+                <createOrEditDisposalPlanDetailModal #createOrEditModal [maKeHoach] ="selectedRow.maKeHoach" (modalSave)="reloadPage()"></createOrEditDisposalPlanDetailModal>
             </div>
             <div class="modal-footer">
                 <button [disabled]="saving" type="button" class="btn btn-default"

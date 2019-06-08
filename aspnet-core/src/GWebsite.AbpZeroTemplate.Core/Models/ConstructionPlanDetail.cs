@@ -14,6 +14,8 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public string DuKienHoanThanh { get; set; }
         public string ThoiGianThucHien { get; set; }
         public string KinhPhiDeXuat { get; set; }
+        public string KinhPhiTrinh { get; set; }
+        public string KinhPhiDuocDuyet { get; set; }
         public string GhiChu { get; set; }
         public string MaKeHoach { get; set; }
     }
