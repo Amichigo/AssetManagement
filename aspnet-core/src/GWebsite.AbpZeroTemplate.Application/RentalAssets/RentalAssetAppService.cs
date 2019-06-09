@@ -35,7 +35,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.RentalAssets
             if (rentalAssetInput.Id == 0)
             {
                 int nextID = rentalAssetRepository.GetAll().Count() + 1;
-                rentalAssetInput.RentalAssetCode = "TSCT0000" + nextID;
+                rentalAssetInput.RentalAssetCode = "TSCT000" + nextID;
                 Create(rentalAssetInput);
                 UpdateAsset(idAsset, rentalAssetInput.RentalAssetCode);
             }

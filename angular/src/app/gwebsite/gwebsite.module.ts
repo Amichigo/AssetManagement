@@ -21,7 +21,7 @@ import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-cu
 import { TypeOfAssetComponent } from './type-of-asset/type-of-asset.component'
 import { CreateOrEditTypeOfAssetModalComponent } from './type-of-asset/create-or-edit-type-of-asset-modal.component';
 import { ViewTypeOfAssetModalComponent } from './type-of-asset/view-type-of-asset-modal.component';
-import { AssetGroupComponent } from './asset-group/asset-group.component'
+import { AssetGroup7Component } from './asset-group/asset-group-7.component'
 import { CreateOrEditAssetGroupModalComponent } from './asset-group/create-or-edit-asset-group-modal.component';
 import { ViewAssetGroupModalComponent } from './asset-group/view-asset-group-modal.component';
 import { Asset7Component } from './asset/asset7.component'
@@ -128,7 +128,7 @@ import {
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
         TypeOfAssetComponent, CreateOrEditTypeOfAssetModalComponent, ViewTypeOfAssetModalComponent,
-        AssetGroupComponent, CreateOrEditAssetGroupModalComponent, ViewAssetGroupModalComponent,
+        AssetGroup7Component, CreateOrEditAssetGroupModalComponent, ViewAssetGroupModalComponent,
         Asset7Component, CreateOrEditAssetModalComponent, ViewAssetModalComponent, SelectAssetModalComponent,
         RentalAssetComponent, CreateOrEditRentalAssetModalComponent, ViewRentalAssetModalComponent,
     ],

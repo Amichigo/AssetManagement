@@ -109,10 +109,9 @@
                                         </div>
 
                                         <div class="form-group">
-                                                <label>Ảnh</label>
-                                                <img [src]="imageURL" height="200" width="200" position="center" *ngIf="imageURL">
-                                                <input #file type="file" accept='image/*' (change)="chooseImage(file.files)" disabled required>
-                                        </div>
+                                            <label>Ảnh:</label>
+                                            <img class="rounded d-block" src={{asset.linkofImage}} width="200" height="200" alt="image" disabled>
+                                    </div>
                                     </div>
                                     <!-- <input [(ngModel)]="maloaibds" name="maloaibds" autoFocus class="form-control"
                                             placeholder="Nhập mã loại bđs" type="text">

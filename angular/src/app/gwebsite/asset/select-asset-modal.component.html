@@ -157,8 +157,9 @@
                                     </td>
 
                                     <td>
-                                        <span class="ui-column-title">Image</span>
-                                        <span title="{{record.linkofImage}}">{{truncateString(record.linkofImage)}}</span>
+                                        <span class="ui-column-title">Ảnh</span>
+                                        <img [src]="record.linkofImage || defaultImage" width="100" height="100" alt="image">
+                                        <!-- <span title="{{record.linkofImage}}">{{truncateString(record.linkofImage)}}</span> -->
                                     </td>
 
                                     <!--<td>

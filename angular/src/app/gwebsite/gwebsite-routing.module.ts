@@ -4,7 +4,7 @@ import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.compo
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
 import { TypeOfAssetComponent } from './type-of-asset/type-of-asset.component';
-import { AssetGroupComponent } from './asset-group/asset-group.component';
+import { AssetGroup7Component } from './asset-group/asset-group-7.component';
 import { Asset7Component } from './asset/asset7.component';
 import { RentalAssetComponent } from './rental-asset/rental-asset.component';
 
@@ -51,7 +51,7 @@ import { RentalAssetComponent } from './rental-asset/rental-asset.component';
                 path: '',
                 children: [
                     {
-                        path: 'asset-group', component: AssetGroupComponent,
+                        path: 'asset-group', component: AssetGroup7Component,
                         data: { permission: 'Pages.Administration.AssetGroup' }
                     },
                 ]
