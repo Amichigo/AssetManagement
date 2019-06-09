@@ -50,17 +50,115 @@ import { DisposalPlanDetailComponent } from './disposalPlan/disposalPlanDetail.c
 import { ConstructionPlanDetailComponent } from './constructionPlan/constructionPlanDetail.component';
 import { Debit11Component } from './debit11/debit11.component';
 import { Credit11Component } from './credit11/credit11.component';
+import { CustomerComponent } from "./customer/customer.component";
+import { TypeVehicleComponent } from "./typevehicle/typevehicle.component";
+import { VehicleComponent } from "./vehicle/vehicle.component";
+import { Asset_8Component } from "./asset_8/asset_8.component";
+import { BrandVehicleComponent } from "./brandvehicle/brandvehicle.component";
+import { ModelVehicleComponent } from "./modelvehicle/modelvehicle.component";
+import { OperateVehicleComponent } from "./operatevehicle/operatevehicle.component";
+import { RoadFeeVehicleComponent } from "./roadfeevehicle/roadfeevehicle.component";
+import { InsurranceTypeComponent } from './insurrancetype/insurrancetype.component';
+import { InsurranceComponent } from './insurrance/insurrance.component';
 
 @NgModule({
     imports: [
         RouterModule.forChild([
             {
-                path: '',
+                path: "",
                 children: [
                     {
                         path: 'duan', component: DuAnComponent,
                         data: { permission: 'Pages.Administration.Project' }
                     },
+                ]
+            },
+            {
+                path: "",
+                children: [
+                    {
+                        path: "customer",
+                        component: CustomerComponent,
+                        data: { permission: "Pages.Administration.Customer" }
+                    }
+                ]
+            },
+            {
+                path: "",
+                children: [
+                    {
+                        path: "vehicle",
+                        component: VehicleComponent,
+                        data: { permission: "Pages.Administration.Vehicle" }
+                    }
+                ]
+            },
+            {
+                path: "",
+                children: [
+                    {
+                        path: "typevehicle",
+                        component: TypeVehicleComponent,
+                        data: { permission: "Pages.Administration.TypeVehicle" }
+                    }
+                ]
+            },
+            {
+                path: "",
+                children: [
+                    {
+                        path: "asset",
+                        component: Asset_8Component,
+                        data: { permission: "Pages.QuanLyXe.Asset" }
+                    }
+                ]
+            },
+            {
+                path: "",
+                children: [
+                    {
+                        path: "brandvehicle",
+                        component: BrandVehicleComponent,
+                        data: {
+                            permission: "Pages.Administration.BrandVehicle"
+                        }
+                    }
+                ]
+            },
+            {
+                path: "",
+                children: [
+                    {
+                        path: "modelvehicle",
+                        component: ModelVehicleComponent,
+                        data: {
+                            permission: "Pages.Administration.ModelVehicle"
+                        }
+                    }
+                ]
+            },
+            {
+                path: "",
+                children: [
+                    {
+                        path: "operatevehicle",
+                        component: OperateVehicleComponent,
+                        data: {
+                            permission: "Pages.Administration.OperateVehicle"
+                        }
+                    }
+                ]
+            },
+            {
+                path: "",
+                children: [
+                    {
+                        path: "roadfeevehicle",
+                        component: RoadFeeVehicleComponent,
+                        data: {
+                            permission: "Pages.Administration.RoadFeeVehicle"
+                        }
+                    }
                 ]
             },
             {
@@ -76,8 +174,26 @@ import { Credit11Component } from './credit11/credit11.component';
                 path: '',
                 children: [
                     {
+                        path: 'insurrance', component: InsurranceComponent,
+                        data: { permission: 'Pages.Administration.Insurrance' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
                         path: 'nhacungcap', component: NhaCungCapComponent,
                         data: { permission: 'Pages.Administration.Supplier' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'insurrancetype', component: InsurranceTypeComponent,
+                        data: { permission: 'Pages.Administration.InsurranceType' }
                     },
                 ]
             },
@@ -534,8 +650,6 @@ import { Credit11Component } from './credit11/credit11.component';
             },
         ])
     ],
-    exports: [
-        RouterModule
-    ]
+    exports: [RouterModule]
 })
-export class GWebsiteRoutingModule { }
+export class GWebsiteRoutingModule {}

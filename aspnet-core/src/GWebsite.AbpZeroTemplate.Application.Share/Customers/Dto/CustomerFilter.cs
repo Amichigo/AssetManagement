@@ -6,6 +6,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto
 {
     public class CustomerFilter : PagedAndSortedInputDto
     {
-        public string Name { get; set; }
+        public String Name { get; set; }
     }
 }
