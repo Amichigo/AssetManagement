@@ -1,7 +1,12 @@
 using AutoMapper;
 using GWebsite.AbpZeroTemplate.Application.Share.CategoryTypes.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Categories.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.LoaiNhaCungCaps.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.NhaCungCapHangHoas.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.OrderPackages.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ProductTypes.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.SanPhams.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Templates.Slider.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Videos.VideoInstructionCategories.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Videos.VideoInstructions.Dto;
@@ -478,6 +483,31 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<InsurranceTypeInput, InsurranceType>();
             configuration.CreateMap<InsurranceType, InsurranceTypeInput>();
             configuration.CreateMap<InsurranceType, InsurranceTypeForViewDto>();
+            //NhaCungCapHangHoa
+            configuration.CreateMap<NhaCungCapHangHoa, NhaCungCapHangHoaDto>();
+            configuration.CreateMap<NhaCungCapHangHoaInput, NhaCungCapHangHoa>();
+            configuration.CreateMap<NhaCungCapHangHoa, NhaCungCapHangHoaInput>();
+            configuration.CreateMap<NhaCungCapHangHoa, NhaCungCapHangHoaForViewDto>();
+
+            //ProductType
+
+            configuration.CreateMap<ProductType, ProductTypeDto>();
+            configuration.CreateMap<ProductTypeInput, ProductType>();
+            configuration.CreateMap<ProductType, ProductTypeInput>();
+            configuration.CreateMap<ProductType, ProductTypeForViewDto>();
+
+            //Product
+            configuration.CreateMap<SanPham, SanPhamDto>();
+            configuration.CreateMap<SanPhamInput, SanPham>();
+            configuration.CreateMap<SanPham, SanPhamInput>();
+            configuration.CreateMap<SanPham, SanPhamForViewDto>();
+
+            // LoaiNhaCungCap
+            configuration.CreateMap<LoaiNhaCungCap, LoaiNhaCungCapDto>();
+            configuration.CreateMap<LoaiNhaCungCapInput, LoaiNhaCungCap>();
+            configuration.CreateMap<LoaiNhaCungCap, LoaiNhaCungCapInput>();
+            configuration.CreateMap<LoaiNhaCungCap, LoaiNhaCungCapForViewDto>();
+
         }
     }
 }

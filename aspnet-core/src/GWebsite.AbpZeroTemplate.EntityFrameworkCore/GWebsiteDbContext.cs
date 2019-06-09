@@ -162,6 +162,10 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<Asset11> Asset11s { get; set; }
         public virtual DbSet<Debit11> Debit11s { get; set; }
         public virtual DbSet<Credit11> Credit11s { get; set; }
+        public virtual DbSet<LoaiNhaCungCap> LoaiNhaCungCaps { get; set; }
+        public virtual DbSet<NhaCungCapHangHoa> NhaCungCapHangHoas { get; set; }
+        public virtual DbSet<ProductType> ProductTypes { get; set; }
+        public virtual DbSet<SanPham> SanPhams { get; set; }
 
         /// <summary>
         /// 

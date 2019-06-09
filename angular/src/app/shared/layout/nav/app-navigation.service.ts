@@ -73,6 +73,12 @@ export class AppNavigationService {
                 new AppMenuItem('RealEstateType', 'Pages.Administration.RealEstateType9', 'flaticon-menu-1', '/app/gwebsite/real-estate-type'),
                 new AppMenuItem('RealEstateRepair', 'Pages.Administration.RealEstateRepair9', 'flaticon-menu-1', '/app/gwebsite/real-estate-repair')
             ]),
+            new AppMenuItem('Nhóm 10 - Quản Lý Nhà Cung Cấp Hàng Hóa', '', 'flaticon-interface-8', '', [
+                new AppMenuItem('Loại Nhà Cung Cấp', 'Pages.Administration.LoaiNhaCungCap', 'flaticon-menu-1', '/app/gwebsite/LoaiNhaCungCap'),
+                new AppMenuItem('Nhà Cung Cấp Hàng Hóa', 'Pages.Administration.NhaCungCapHangHoa', 'flaticon-menu-1', '/app/gwebsite/NhaCungCapHangHoa'),
+                new AppMenuItem('Loại Sản Phẩm', 'Pages.Administration.ProductType', 'flaticon-menu-1', '/app/gwebsite/ProductType'),
+                new AppMenuItem('Sản Phẩm', 'Pages.Administration.Product', 'flaticon-menu-1', '/app/gwebsite/Product')
+            ]),
             new AppMenuItem('Nhóm 11 - Quản Lý Tài Khoản Kế Toán', '', 'flaticon-interface-8', '', [
                 new AppMenuItem('Asset11', 'Pages.Administration.Asset11', 'flaticon-menu-1', '/app/gwebsite/asset11'),
                 new AppMenuItem('Debit11', 'Pages.Administration.Debit11', 'flaticon-menu-1', '/app/gwebsite/debit11'),

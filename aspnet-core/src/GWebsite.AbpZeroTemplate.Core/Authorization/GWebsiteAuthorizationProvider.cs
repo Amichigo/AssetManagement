@@ -238,6 +238,25 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             roadfeevehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_RoadFeeVehicle_Edit, L("EditingRoadFeeVehicle"));
             roadfeevehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_RoadFeeVehicle_Delete, L("DeletingRoadFeeVehicle"));
 
+            var LoaiNhaCungCap = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiNhaCungCap, L("LoaiNhaCungCap"));
+            LoaiNhaCungCap.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiNhaCungCap_Create, L("CreatingNewLoaiNhaCungCap"));
+            LoaiNhaCungCap.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiNhaCungCap_Edit, L("EditingLoaiNhaCungCap"));
+            LoaiNhaCungCap.CreateChildPermission(GWebsitePermissions.Pages_Administration_LoaiNhaCungCap_Delete, L("DeletingLoaiNhaCungCap"));
+
+            var NhaCungCapHangHoa = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhaCungCapHangHoa, L("NhaCungCapHangHoa"));
+            NhaCungCapHangHoa.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhaCungCapHangHoa_Create, L("CreatingNewNhaCungCapHangHoa"));
+            NhaCungCapHangHoa.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhaCungCapHangHoa_Edit, L("EditingNhaCungCapHangHoa"));
+            NhaCungCapHangHoa.CreateChildPermission(GWebsitePermissions.Pages_Administration_NhaCungCapHangHoa_Delete, L("DeletingNhaCungCapHangHoa"));
+
+            var ProductType = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductType, L("ProductType"));
+            ProductType.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductType_Create, L("CreatingNewProductType"));
+            ProductType.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductType_Edit, L("EditingProductType"));
+            ProductType.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductType_Delete, L("DeletingProductType"));
+
+            var SanPham = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Product, L("Product"));
+            SanPham.CreateChildPermission(GWebsitePermissions.Pages_Administration_Product_Create, L("CreatingNewProduct"));
+            SanPham.CreateChildPermission(GWebsitePermissions.Pages_Administration_Product_Edit, L("EditingProduct"));
+            SanPham.CreateChildPermission(GWebsitePermissions.Pages_Administration_Product_Delete, L("DeletingProduct"));
 
             var insurrance = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Insurrance, L("Insurrance"));
             insurrance.CreateChildPermission(GWebsitePermissions.Pages_Administration_Insurrance_Create, L("CreatingNewInsurrance"));

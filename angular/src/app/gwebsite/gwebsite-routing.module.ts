@@ -60,6 +60,11 @@ import { OperateVehicleComponent } from "./operatevehicle/operatevehicle.compone
 import { RoadFeeVehicleComponent } from "./roadfeevehicle/roadfeevehicle.component";
 import { InsurranceTypeComponent } from './insurrancetype/insurrancetype.component';
 import { InsurranceComponent } from './insurrance/insurrance.component';
+import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.component';
+import { LoaiNhaCungCapComponent } from './LoaiNhaCungCap/LoaiNhaCungCap.component';
+import { NhaCungCapHangHoaComponent } from './NhaCungCapHangHoa/NhaCungCapHangHoa.component';
+import { ProductComponent } from './Product/Product.component';
+import { ProductTypeComponent } from './ProductType/ProductType.component';
 
 @NgModule({
     imports: [
@@ -327,6 +332,15 @@ import { InsurranceComponent } from './insurrance/insurrance.component';
                 path: '',
                 children: [
                     {
+                        path: 'LoaiNhaCungCap', component: LoaiNhaCungCapComponent,
+                        data: { permission: 'Pages.Administration.LoaiNhaCungCap' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
                         path: 'asset-group', component: AssetGroupComponent,
                         data: { permission: 'Pages.Administration.AssetGroup_05' }
                     },
@@ -336,8 +350,26 @@ import { InsurranceComponent } from './insurrance/insurrance.component';
                 path: '',
                 children: [
                     {
+                        path: 'NhaCungCapHangHoa', component: NhaCungCapHangHoaComponent,
+                        data: { permission: 'Pages.Administration.NhaCungCapHangHoa' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
                         path: 'category', component: CategoryComponent,
                         data: { permission: 'Pages.Categories.General' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'Product', component: ProductComponent,
+                        data: { permission: 'Pages.Administration.Product' }
                     },
                 ]
             },
@@ -648,6 +680,15 @@ import { InsurranceComponent } from './insurrance/insurrance.component';
                     }
                 ]
             },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'ProductType', component: ProductTypeComponent,
+                        data: { permission: 'Pages.Administration.ProductType' }
+                    },
+                ]
+            }
         ])
     ],
     exports: [RouterModule]
