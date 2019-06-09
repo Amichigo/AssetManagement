@@ -120,9 +120,8 @@ export class AppNavigationService {
                             "flaticon-menu-1",
                             "/app/gwebsite/insurrancetype"
                         )
-                            ]
-                    ]
-                )
+                            ]),
+                    ])
             ]),
             new AppMenuItem("Systems", "", "flaticon-layers", "", [
                 new AppMenuItem(
