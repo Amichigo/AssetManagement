@@ -143,7 +143,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SoleAssets",
+                name: "SoldAssets",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -161,7 +161,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SoleAssets", x => x.Id);
+                    table.PrimaryKey("PK_SoldAssets", x => x.Id);
                 });
         }
 
@@ -186,7 +186,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
                 name: "PurchasedAssets");
 
             migrationBuilder.DropTable(
-                name: "SoleAssets");
+                name: "SoldAssets");
         }
     }
 }
