@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Debit11s
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_Debit11)]
     public class Debit11AppService : GWebsiteAppServiceBase, IDebit11AppService
     {
         private readonly IRepository<Debit11> debit11Repository;

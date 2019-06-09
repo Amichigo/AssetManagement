@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Credit11s
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_Credit11)]
     public class Credit11AppService : GWebsiteAppServiceBase, ICredit11AppService
     {
         private readonly IRepository<Credit11> credit11Repository;
@@ -92,6 +92,11 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Credit11s
             return new PagedResultDto<Credit11Dto>(
                 totalCount,
                 items.Select(item => ObjectMapper.Map<Credit11Dto>(item)).ToList());
+        }
+
+        public void test()
+        {
+
         }
 
         #endregion
