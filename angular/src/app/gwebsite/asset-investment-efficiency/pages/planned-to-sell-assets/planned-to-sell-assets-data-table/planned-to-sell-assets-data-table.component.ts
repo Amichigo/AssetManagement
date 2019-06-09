@@ -96,8 +96,8 @@ export class PlannedToSellAssetsDataTableComponent extends Component implements 
          'Tên nhóm tài sản': record['assetTypeName'],
          'Số lượng (Tài sản)': addThousandSeparator(record['quantity']),
          'Tỉ lệ % (Số lượng tài sản)': ((record['quantity'] / this.totalQuantity) * 100).toFixed(2),
-         'Giá trị đầu tư (VNĐ)': addThousandSeparator(record['amount']),
-         'Tỉ lệ % (Giá trị đầu tư)': ((record['amount'] / this.totalAmount) * 100).toFixed(2)
+         'Giá trị thu về (VNĐ)': addThousandSeparator(record['amount']),
+         'Tỉ lệ % (Giá trị thu về)': ((record['amount'] / this.totalAmount) * 100).toFixed(2)
       });
    }
 

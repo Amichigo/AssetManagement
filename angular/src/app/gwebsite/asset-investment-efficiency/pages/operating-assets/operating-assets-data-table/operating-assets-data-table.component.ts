@@ -52,8 +52,8 @@ export class OperatingAssetsDataTableComponent extends Component implements OnCh
       if (generalStatisticsData && generalStatisticsData.currentValue) {
          this.totalAmount = generalStatisticsData.currentValue[0] && generalStatisticsData.currentValue[0].value;
          this.totalQuantity = generalStatisticsData.currentValue[1] && generalStatisticsData.currentValue[1].value;
-         this.totalAmount = generalStatisticsData.currentValue[2] && generalStatisticsData.currentValue[2].value;
-         this.totalQuantity = generalStatisticsData.currentValue[3] && generalStatisticsData.currentValue[3].value;
+         this.totalAmount1 = generalStatisticsData.currentValue[2] && generalStatisticsData.currentValue[2].value;
+         this.totalQuantity1 = generalStatisticsData.currentValue[3] && generalStatisticsData.currentValue[3].value;
       }
 
       if (timePeriod && timePeriod.currentValue !== timePeriod.previousValue) {

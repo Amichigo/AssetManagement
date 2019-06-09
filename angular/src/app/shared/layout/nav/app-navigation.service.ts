@@ -28,7 +28,7 @@ export class AppNavigationService {
                         new AppMenuItem('Bảo trì tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/planned-to-maintain-assets')
                     ]),
                     new AppMenuItem('QL giá trị đã thu về', '', 'flaticon-menu-1', '', [
-                        new AppMenuItem('Thanh lý tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/sole-assets'),
+                        new AppMenuItem('Thanh lý tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/sold-assets'),
                     ]),
                     new AppMenuItem('QL giá trị dự kiến thu về', '', 'flaticon-menu-1', '', [
                         new AppMenuItem('Thanh lý tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/planned-to-sell-assets'),

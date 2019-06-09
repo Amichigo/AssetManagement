@@ -23,14 +23,14 @@ export class PlannedToSellAssetsComponent extends AppComponentBase implements On
     private generalStatisticsData = [];
     private detailedData = [];
 
-    private section1Tabs = ['Số vốn dự kiến thu về', 'Số lượng tài sản dự kiến thanh lý'];
+    private section1Tabs = ['Giá trị dự kiến thu về', 'Số lượng tài sản dự kiến thanh lý'];
     private section1Data = [];
     private section1Labels = [];
     private section1XAxeLabel = 'Thời gian (Ngày/ Tháng/ Năm)';
     private section1YAxeLabel = '';
     private section1Legend = true;
 
-    private section2Tabs = ['Số vốn dự kiến thu về', 'Số lượng tài sản dự kiến thanh lý'];
+    private section2Tabs = ['Giá trị dự kiến thu về', 'Số lượng tài sản dự kiến thanh lý'];
     private section2Data = [];
     private section2Labels = [];
     private section2Legend = true;
@@ -333,7 +333,7 @@ export class PlannedToSellAssetsComponent extends AppComponentBase implements On
     loadGeneralStatisticsData(data) {
         this.generalStatisticsData = [
             {
-                title: "Tổng số vốn dự kiến thu về",
+                title: "Tổng giá trị dự kiến thu về",
                 startingDate: this.startingDate,
                 endingDate: this.endingDate,
                 value: data['currentTotalAmount'],
@@ -386,8 +386,8 @@ export class PlannedToSellAssetsComponent extends AppComponentBase implements On
         }
 
         this.section1Labels = labels;
-        this.section1Data = [{ data: temp, label: 'Số vốn dự kiến thu về (VNĐ)' }];
-        this.section1YAxeLabel = 'Số vốn dự kiến thu về (VNĐ)';
+        this.section1Data = [{ data: temp, label: 'Giá trị dự kiến thu về (VNĐ)' }];
+        this.section1YAxeLabel = 'Giá trị dự kiến thu về (VNĐ)';
     }
 
     loadTotalInvestedAmountChartInPercentage() {
@@ -428,8 +428,8 @@ export class PlannedToSellAssetsComponent extends AppComponentBase implements On
         }
 
         this.section1Labels = labels;
-        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng số vốn dự kiến thu về (%)' }];
-        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng số vốn dự kiến thu về (%)';
+        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng giá trị dự kiến thu về (%)' }];
+        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng giá trị dự kiến thu về (%)';
     }
 
     loadTotalInvestedAmountChartWithComparison() {
@@ -529,7 +529,7 @@ export class PlannedToSellAssetsComponent extends AppComponentBase implements On
 
         this.section1Labels = labels;
         this.section1Data = data;
-        this.section1YAxeLabel = 'Số vốn dự kiến thu về (VNĐ)';
+        this.section1YAxeLabel = 'Giá trị dự kiến thu về (VNĐ)';
     }
 
     loadTotalPlannedToSellAssetsChartInOriginalValue() {

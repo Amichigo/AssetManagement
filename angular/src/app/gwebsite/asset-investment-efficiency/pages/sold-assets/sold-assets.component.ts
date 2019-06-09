@@ -23,14 +23,14 @@ export class SoldAssetsComponent extends AppComponentBase implements OnInit {
     private generalStatisticsData = [];
     private detailedData = [];
 
-    private section1Tabs = ['Số vốn đã thu về', 'Số lượng tài sản đã thanh lý'];
+    private section1Tabs = ['Giá trị đã thu về', 'Số lượng tài sản đã thanh lý'];
     private section1Data = [];
     private section1Labels = [];
     private section1XAxeLabel = 'Thời gian (Ngày/ Tháng/ Năm)';
     private section1YAxeLabel = '';
     private section1Legend = true;
 
-    private section2Tabs = ['Số vốn đã thu về', 'Số lượng tài sản đã thanh lý'];
+    private section2Tabs = ['Giá trị đã thu về', 'Số lượng tài sản đã thanh lý'];
     private section2Data = [];
     private section2Labels = [];
     private section2Legend = true;
@@ -333,7 +333,7 @@ export class SoldAssetsComponent extends AppComponentBase implements OnInit {
     loadGeneralStatisticsData(data) {
         this.generalStatisticsData = [
             {
-                title: "Tổng số vốn đã thu về",
+                title: "Tổng giá trị đã thu về",
                 startingDate: this.startingDate,
                 endingDate: this.endingDate,
                 value: data['currentTotalAmount'],
@@ -386,8 +386,8 @@ export class SoldAssetsComponent extends AppComponentBase implements OnInit {
         }
 
         this.section1Labels = labels;
-        this.section1Data = [{ data: temp, label: 'Số vốn đã thu về (VNĐ)' }];
-        this.section1YAxeLabel = 'Số vốn đã thu về (VNĐ)';
+        this.section1Data = [{ data: temp, label: 'Giá trị đã thu về (VNĐ)' }];
+        this.section1YAxeLabel = 'Giá trị đã thu về (VNĐ)';
     }
 
     loadTotalInvestedAmountChartInPercentage() {
@@ -428,8 +428,8 @@ export class SoldAssetsComponent extends AppComponentBase implements OnInit {
         }
 
         this.section1Labels = labels;
-        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng số vốn đã thu về (%)' }];
-        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng số vốn đã thu về (%)';
+        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng giá trị đã thu về (%)' }];
+        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng giá trị đã thu về (%)';
     }
 
     loadTotalInvestedAmountChartWithComparison() {
@@ -529,7 +529,7 @@ export class SoldAssetsComponent extends AppComponentBase implements OnInit {
 
         this.section1Labels = labels;
         this.section1Data = data;
-        this.section1YAxeLabel = 'Số vốn đã thu về (VNĐ)';
+        this.section1YAxeLabel = 'Giá trị đã thu về (VNĐ)';
     }
 
     loadTotalSoldAssetsChartInOriginalValue() {

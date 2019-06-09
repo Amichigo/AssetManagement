@@ -49,7 +49,7 @@
                     <label>Nhóm tài sản</label>
                     <select class="form-control" [(ngModel)]="selectedAssetType" (ngModelChange)="loadTableData()">
                         <option value="-1">Tất cả</option>
-                        <option [value]="type['AssetTypeId']" *ngFor="let type of assetTypes">{{ type['AssetTypeName'] }}</option>
+                        <option [value]="type['assetTypeId']" *ngFor="let type of assetTypes">{{ type['assetTypeName'] }}</option>
                     </select>
                 </div>
             </div>
@@ -59,13 +59,13 @@
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th (click)="onSort('RecordedDate')">Ngày ghi nhận <span class="sort-button" *ngIf="this.sortField === 'RecordedDate'" ><i class="fas fa-sort"></i></span></th>
-                        <th (click)="onSort('AssetTypeId')">Mã nhóm tài sản <span class="sort-button" *ngIf="this.sortField === 'AssetTypeId'" ><i class="fas fa-sort"></i></span></th>
-                        <th (click)="onSort('AssetTypeName')">Tên nhóm tài sản <span class="sort-button" *ngIf="this.sortField === 'AssetTypeName'" ><i class="fas fa-sort"></i></span></th>
-                        <th (click)="onSort('Quantity')">Số lượng (Tài sản) <span class="sort-button" *ngIf="this.sortField === 'Quantity'" ><i class="fas fa-sort"></i></span></th>
-                        <th (click)="onSort('Quantity')">Tỉ lệ % (Số lượng tài sản) <span class="sort-button" *ngIf="this.sortField === 'Quantity'" ><i class="fas fa-sort"></i></span></th>
-                        <th (click)="onSort('Amount')">Giá trị đầu tư (VNĐ) <span class="sort-button" *ngIf="this.sortField === 'Amount'" ><i class="fas fa-sort"></i></span></th>
-                        <th (click)="onSort('Amount')">Tỉ lệ % (Giá trị đầu tư) <span class="sort-button" *ngIf="this.sortField === 'Amount'" ><i class="fas fa-sort"></i></span></th>
+                        <th (click)="onSort('recordedDate')">Ngày ghi nhận <span class="sort-button" *ngIf="this.sortField === 'recordedDate'" ><i class="fas fa-sort"></i></span></th>
+                        <th (click)="onSort('assetTypeId')">Mã nhóm tài sản <span class="sort-button" *ngIf="this.sortField === 'assetTypeId'" ><i class="fas fa-sort"></i></span></th>
+                        <th (click)="onSort('assetTypeName')">Tên nhóm tài sản <span class="sort-button" *ngIf="this.sortField === 'assetTypeName'" ><i class="fas fa-sort"></i></span></th>
+                        <th (click)="onSort('quantity')">Số lượng (Tài sản) <span class="sort-button" *ngIf="this.sortField === 'quantity'" ><i class="fas fa-sort"></i></span></th>
+                        <th (click)="onSort('quantity')">Tỉ lệ % (Số lượng tài sản) <span class="sort-button" *ngIf="this.sortField === 'quantity'" ><i class="fas fa-sort"></i></span></th>
+                        <th (click)="onSort('amount')">Giá trị đầu tư (VNĐ) <span class="sort-button" *ngIf="this.sortField === 'amount'" ><i class="fas fa-sort"></i></span></th>
+                        <th (click)="onSort('amount')">Tỉ lệ % (Giá trị đầu tư) <span class="sort-button" *ngIf="this.sortField === 'amount'" ><i class="fas fa-sort"></i></span></th>
                     </tr>
                 </thead>
         
@@ -148,22 +148,22 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Số lượng tài sản đang được khấu hao (Tài sản)</label>
-                        <input class="form-control" type="text" [value]="addThousandSeparator(detailedRecord['quantity'])" disabled />
+                        <input class="form-control" type="text" [value]="addThousandSeparator(detailedRecord['depreciatedQuantity'])" disabled />
                     </div>
         
                     <div class="form-group">
                         <label>Tỉ lệ % so với tổng số lượng tài sản đang được khấu hao (%)</label>
-                        <input class="form-control" type="text" [value]="((detailedRecord['quantity'] / totalQuantity1) * 100).toFixed(2)" disabled />
+                        <input class="form-control" type="text" [value]="((detailedRecord['depreciatedQuantity'] / totalQuantity1) * 100).toFixed(2)" disabled />
                     </div>
 
                     <div class="form-group">
                         <label>Giá trị trích cho khấu hao (VNĐ)</label>
-                        <input class="form-control" type="text" [value]="addThousandSeparator(detailedRecord['amount'])" disabled />
+                        <input class="form-control" type="text" [value]="addThousandSeparator(detailedRecord['depreciatedAmount'])" disabled />
                     </div>
         
                     <div class="form-group">
                         <label>Tỉ lệ % so với tổng giá trị đã trích cho khấu hao (%)</label>
-                        <input class="form-control" type="text" [value]="((detailedRecord['amount'] / totalAmount1) * 100).toFixed(2)" disabled />
+                        <input class="form-control" type="text" [value]="((detailedRecord['depreciatedAmount'] / totalAmount1) * 100).toFixed(2)" disabled />
                     </div>
         
                     <div class="form-group">

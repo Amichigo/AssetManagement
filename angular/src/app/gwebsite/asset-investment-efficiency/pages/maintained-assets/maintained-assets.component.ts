@@ -23,14 +23,14 @@ export class MaintainedAssetsComponent extends AppComponentBase implements OnIni
     private generalStatisticsData = [];
     private detailedData = [];
 
-    private section1Tabs = ['Số vốn đã đầu tư', 'Số lượng tài sản đã bảo trì'];
+    private section1Tabs = ['Giá trị đã đầu tư', 'Số lượng tài sản đã bảo trì'];
     private section1Data = [];
     private section1Labels = [];
     private section1XAxeLabel = 'Thời gian (Ngày/ Tháng/ Năm)';
     private section1YAxeLabel = '';
     private section1Legend = true;
 
-    private section2Tabs = ['Số vốn đã đầu tư', 'Số lượng tài sản đã bảo trì'];
+    private section2Tabs = ['Giá trị đã đầu tư', 'Số lượng tài sản đã bảo trì'];
     private section2Data = [];
     private section2Labels = [];
     private section2Legend = true;
@@ -333,7 +333,7 @@ export class MaintainedAssetsComponent extends AppComponentBase implements OnIni
     loadGeneralStatisticsData(data) {
         this.generalStatisticsData = [
             {
-                title: "Tổng số vốn đã đầu tư",
+                title: "Tổng giá trị đã đầu tư",
                 startingDate: this.startingDate,
                 endingDate: this.endingDate,
                 value: data['currentTotalAmount'],
@@ -386,8 +386,8 @@ export class MaintainedAssetsComponent extends AppComponentBase implements OnIni
         }
 
         this.section1Labels = labels;
-        this.section1Data = [{ data: temp, label: 'Số vốn đã đầu tư (VNĐ)' }];
-        this.section1YAxeLabel = 'Số vốn đã đầu tư (VNĐ)';
+        this.section1Data = [{ data: temp, label: 'Giá trị đã đầu tư (VNĐ)' }];
+        this.section1YAxeLabel = 'Giá trị đã đầu tư (VNĐ)';
     }
 
     loadTotalInvestedAmountChartInPercentage() {
@@ -428,8 +428,8 @@ export class MaintainedAssetsComponent extends AppComponentBase implements OnIni
         }
 
         this.section1Labels = labels;
-        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng số vốn đã đầu tư (%)' }];
-        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng số vốn đã đầu tư (%)';
+        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng giá trị đã đầu tư (%)' }];
+        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng giá trị đã đầu tư (%)';
     }
 
     loadTotalInvestedAmountChartWithComparison() {
@@ -529,7 +529,7 @@ export class MaintainedAssetsComponent extends AppComponentBase implements OnIni
 
         this.section1Labels = labels;
         this.section1Data = data;
-        this.section1YAxeLabel = 'Số vốn đã đầu tư (VNĐ)';
+        this.section1YAxeLabel = 'Giá trị đã đầu tư (VNĐ)';
     }
 
     loadTotalMaintainedAssetsChartInOriginalValue() {

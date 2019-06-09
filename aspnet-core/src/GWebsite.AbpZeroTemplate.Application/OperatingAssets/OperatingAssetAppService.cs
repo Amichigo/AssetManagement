@@ -60,7 +60,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperatingAssets
         private double GetRandomNumber(double minimum, double maximum)
         {
             Random random = new Random();
-            return random.NextDouble() * (maximum - minimum) + minimum;
+            return Math.Round(random.NextDouble() * (maximum - minimum) + minimum, 0);
         }
 
         public OperatingAssetGeneralStatistics GetGeneralStatistics(OperatingAssetFilter input)
@@ -69,7 +69,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperatingAssets
             double MIN_QUANTITY = 0;
             double MIN_AMOUNT = 100000;
             double MAX_QUANTITY = 100;
-            double MAX_AMOUNT = 1000000;
+            double MAX_AMOUNT = 10000000;
 
             // ****** GIÁ TRỊ MẶC ĐỊNH ******
             // SỐ LƯỢNG
