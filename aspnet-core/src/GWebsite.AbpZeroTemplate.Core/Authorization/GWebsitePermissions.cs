@@ -41,5 +41,26 @@
         public const string Pages_Administration_AssetGroup_05_Create = "Pages.Administration.AssetGroup_05.Create";
         public const string Pages_Administration_AssetGroup_05_Edit = "Pages.Administration.AssetGroup_05.Edit ";
         public const string Pages_Administration_AssetGroup_05_Delete = "Pages.Administration.AssetGroup_05.Delete";
+
+        public const string Pages_Administration_Warranty_05 = "Pages.Administration.Warranty_05";
+        public const string Pages_Administration_Warranty_05_Create = "Pages.Administration.Warranty_05.Create";
+        public const string Pages_Administration_Warranty_05_Edit = "Pages.Administration.Warranty_05.Edit ";
+        public const string Pages_Administration_Warranty_05_Delete = "Pages.Administration.Warranty_05.Delete";
+
+        public const string Pages_Administration_TransferringAsset = "Pages.Administration.TransferringAsset";
+        public const string Pages_Administration_TransferringAsset_Create = "Pages.Administration.TransferringAsset.Create";
+        public const string Pages_Administration_TransferringAsset_Edit = "Pages.Administration.TransferringAsset.Edit";
+        public const string Pages_Administration_TransferringAsset_Delete = "Pages.Administration.TransferringAsset.Delete";
+
+        public const string Pages_Administration_ExportingUsedAsset = "Pages.Administration.ExportingUsedAsset";
+        public const string Pages_Administration_ExportingUsedAsset_Create = "Pages.Administration.ExportingUsedAsset.Create";
+        public const string Pages_Administration_ExportingUsedAsset_Edit = "Pages.Administration.ExportingUsedAsset.Edit";
+        public const string Pages_Administration_ExportingUsedAsset_Delete = "Pages.Administration.ExportingUsedAsset.Delete";
+
+        public const string Pages_Administration_PurchaseOrder_05 = "Pages.Administration.PurchaseOrder_05";
+
+
     }
 }
+
+

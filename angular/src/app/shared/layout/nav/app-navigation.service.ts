@@ -17,6 +17,7 @@ export class AppNavigationService {
             new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-list-3', '/app/admin/tenants'),
             new AppMenuItem('AssetDashboard', 'Pages.Administration.AssetDashboard', 'flaticon-line-graph', '/app/gwebsite/asset-dashboard'),
             new AppMenuItem('Editions', 'Pages.Editions', 'flaticon-app', '/app/admin/editions'),
+            new AppMenuItem('TransferringAsset', 'Pages.Administration.TransferringAsset', 'flaticon-line-graph', '/app/gwebsite/transferring-asset'),
             new AppMenuItem('Administration', '', 'flaticon-interface-8', '', [
                 new AppMenuItem('MenuClient', 'Pages.Administration.MenuClient', 'flaticon-menu-1', '/app/gwebsite/menu-client'),
                 new AppMenuItem('DemoModel', 'Pages.Administration.DemoModel', 'flaticon-menu-1', '/app/gwebsite/demo-model'),
@@ -24,6 +25,7 @@ export class AppNavigationService {
                 new AppMenuItem('FixedAsset', 'Pages.Administration.FixedAsset', 'flaticon-menu-1', '/app/gwebsite/fixed-asset'),
                 new AppMenuItem('AssetGroup', 'Pages.Administration.AssetGroup_05', 'flaticon-menu-1', '/app/gwebsite/asset-group'),
                 new AppMenuItem('Asset', 'Pages.Administration.Asset_05', 'flaticon-menu-1', '/app/gwebsite/asset'),
+                new AppMenuItem('ExportingUsedAsset', 'Pages.Administration.ExportingUsedAsset', 'flaticon-menu-1', '/app/gwebsite/exporting-used-asset'),
 
             ]),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [

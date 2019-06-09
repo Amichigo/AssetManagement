@@ -22,7 +22,6 @@ export class AssetComponent extends AppComponentBase implements AfterViewInit, O
   @ViewChild('dataTable') dataTable: Table;
   @ViewChild('paginator') paginator: Paginator;
   @ViewChild('createOrEditModal') createOrEditModal: CreateOrEditAssetModalComponent;
-  @ViewChild('viewAssetModal') viewAssetModal: ViewAssetModalComponent;
 
   /**
    * tạo các biến dể filters
@@ -49,6 +48,7 @@ export class AssetComponent extends AppComponentBase implements AfterViewInit, O
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.init();
+      this.reloadPage();
     });
   }
 
@@ -109,11 +109,6 @@ export class AssetComponent extends AppComponentBase implements AfterViewInit, O
       this.paginator.changePage(0);
       return;
     }
-  }
-
-  //hàm show view create MenuClient
-  createAsset() {
-    this.createOrEditModal.show();
   }
 
   /**

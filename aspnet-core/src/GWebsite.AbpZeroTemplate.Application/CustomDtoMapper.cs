@@ -7,6 +7,9 @@ using GWebsite.AbpZeroTemplate.Application.Share.AssetGroups_05.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.AssetTypes_05.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.TransferringAssets.MainDto;
+using GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Warranty_Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ExportingUsedAssets;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {
@@ -54,6 +57,18 @@ namespace GWebsite.AbpZeroTemplate.Applications
             //AssetType_05
             configuration.CreateMap<AssetType_05, AssetTypeDto_05>();
             configuration.CreateMap<AssetType_05, AssetForViewDto_05>();
+
+            configuration.CreateMap<TransferringAssetDataInput, TransferringAsset>();
+            configuration.CreateMap<TransferringAsset, TransferringAssetDataInput>();
+
+            configuration.CreateMap<Warranty_05, WarrantyDto>();
+
+            // ExportingUsedAsset
+            configuration.CreateMap<ExportingUsedAsset, ExportingUsedAssetDto>();
+            configuration.CreateMap<ExportingUsedAssetInput, ExportingUsedAsset>();
+            configuration.CreateMap<ExportingUsedAsset, ExportingUsedAssetInput>();
+            configuration.CreateMap<ExportingUsedAsset, ExportingUsedAssetForViewDto>();
+
         }
     }
 }

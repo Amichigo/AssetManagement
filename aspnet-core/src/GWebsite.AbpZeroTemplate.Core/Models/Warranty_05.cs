@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Abp.Domain.Entities;
 
 namespace GWebsite.AbpZeroTemplate.Core.Models
 {
     public class Warranty_05 : Entity<int>
     {
-        public int WarrantyDetailId { get; set; }
+        public string AssetId { get; set; }
+        public float Warrantyperiod { get; set; }
+        public DateTime WarrantyDate { get; set; }
+        public string InterpretationContent { get; set; }
     }
 }

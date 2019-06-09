@@ -19,11 +19,17 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Dto
 
         public string Description { get; set; }//Mô tả
 
-        public DateTime DateAdded { get; set; }//Ngày nhận
+        public DateTime? DateAdded { get; set; }//Ngày nhận
 
         public int TotalMonthDepreciation { get; set; }//Số tháng khấu hao
 
+        public string NameAssetType { get; set; }//Tên
+
         public int AssetTypeId { get; set; }
+
+        public string PurchaseOderId { get; set; }
+
+        public string Supplier { get; set; }
 
         public float DepreciationRate { get; set; }//Tỉ lệ khấu hao
 
@@ -38,6 +44,14 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Dto
         public bool IsActive { get; set; }//đang hoạt động
 
         public string AssetGroupId { get; set; }
+
+        public string NameAssetGroup { get; set; }//Tên
+
+        public DateTime PurchaseDate { get; set; }
+
+        public string Categocy { get; set; }
+
+        public string PurchaseFrom { get; set; }
 
         public string AssetDetailId { get; set; }
 

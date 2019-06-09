@@ -1,6 +1,6 @@
 import {
     CustomerServiceProxy, FixedAssetServiceProxy, AssetDashboardServiceProxy,
-    AssetGroupController_05ServiceProxy, AssetController_05ServiceProxy
+    AssetGroupController_05ServiceProxy, AssetController_05ServiceProxy, TransferringAssetServiceProxy, ExportingUsedAssetServiceProxy
 } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
@@ -30,6 +30,16 @@ import { CreateOrEditAssetGroupModalComponent } from './asset-group/create-or-ed
 import { CreateOrEditAssetModalComponent } from './asset/create-or-edit-asset-modal.component';
 import { AssetComponent } from './asset/asset.component';
 import { ViewAssetModalComponent } from './asset/view-asset-modal.component';
+import { TransferringAssetComponent } from './transferring-asset/transferring-asset.component';
+import { ViewTransferringAssetModalComponent } from './transferring-asset/view-transferring-asset-modal.component';
+import { CreateOrEditTransferringAssetModalComponent } from './transferring-asset/create-or-edit-transferring-asset-modal.component';
+import { SearchAssetComponent } from './transferring-asset/search-asset.component';
+import { SearchUnitComponent } from './transferring-asset/search-unit.component';
+import { SearchUserComponent } from './transferring-asset/search-user.component';
+import { ExportingUsedAssetComponent } from './exporting-used-asset/exporting-used-asset.component';
+import { SearchAssetComponent2 } from './exporting-used-asset/search-asset.component';
+import { CreateOrEditExportingUsedAssetModalComponent } from './exporting-used-asset/create-or-edit-exporting-used-asset-modal.component';
+import { ViewExportingUsedAssetModalComponent } from './exporting-used-asset/view-exporting-used-asset-modal.component';
 
 import {
     MatAutocompleteModule,
@@ -68,6 +78,7 @@ import {
     MatTooltipModule,
     MatTreeModule,
 } from '@angular/material';
+
 
 @NgModule({
     imports: [
@@ -130,7 +141,10 @@ import {
         FixedAssetComponent, CreateOrEditFixedAssetModalComponent, ViewFixedAssetModalComponent,
         AssetDashboardComponent,
         AssetGroupComponent, CreateOrEditAssetGroupModalComponent, ViewAssetGroupModalComponent,
-        AssetComponent, CreateOrEditAssetModalComponent, ViewAssetModalComponent
+        AssetComponent, CreateOrEditAssetModalComponent, ViewAssetModalComponent, TransferringAssetComponent, CreateOrEditTransferringAssetModalComponent, ViewTransferringAssetModalComponent,
+        SearchAssetComponent, SearchUnitComponent, SearchUserComponent,
+        SearchAssetComponent2, ExportingUsedAssetComponent, CreateOrEditExportingUsedAssetModalComponent,
+        ViewExportingUsedAssetModalComponent, 
 
     ],
     providers: [
@@ -139,7 +153,9 @@ import {
         FixedAssetServiceProxy,
         AssetDashboardServiceProxy,
         AssetGroupController_05ServiceProxy,
-        AssetController_05ServiceProxy
+        AssetController_05ServiceProxy,
+        TransferringAssetServiceProxy,
+        ExportingUsedAssetServiceProxy
     ]
 })
 export class GWebsiteModule { }

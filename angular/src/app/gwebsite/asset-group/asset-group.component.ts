@@ -1,4 +1,3 @@
-import { ViewAssetGroupModalComponent } from './view-asset-group-modal.component'
 import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
@@ -8,7 +7,6 @@ import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
 import { AssetGroupController_05ServiceProxy } from '@shared/service-proxies/service-proxies';
-import { CreateOrEditAssetGroupModalComponent } from './create-or-edit-asset-group-modal.component'
 
 @Component({
   templateUrl: './asset-group.component.html',
@@ -22,8 +20,6 @@ export class AssetGroupComponent extends AppComponentBase implements AfterViewIn
    */
   @ViewChild('dataTable') dataTable: Table;
   @ViewChild('paginator') paginator: Paginator;
-  @ViewChild('createOrEditModal') createOrEditModal: CreateOrEditAssetGroupModalComponent;
-  @ViewChild('viewAssetGroupModal') viewAssetGroupModal: ViewAssetGroupModalComponent;
 
   /**
    * tạo các biến dể filters
@@ -43,6 +39,7 @@ export class AssetGroupComponent extends AppComponentBase implements AfterViewIn
    * Hàm xử lý trước khi View được init
    */
   ngOnInit(): void {
+    this.primengTableHelper.showLoadingIndicator();
   }
 
   /**
@@ -110,11 +107,6 @@ export class AssetGroupComponent extends AppComponentBase implements AfterViewIn
       this.paginator.changePage(0);
       return;
     }
-  }
-
-  //hàm show view create MenuClient
-  createOrEditAssetGroup() {
-    this.createOrEditModal.show();
   }
 
   /**

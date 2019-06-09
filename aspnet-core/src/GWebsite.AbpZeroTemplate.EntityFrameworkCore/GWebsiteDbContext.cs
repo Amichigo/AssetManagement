@@ -2,8 +2,8 @@
 using Abp.Authorization.Users;
 using Abp.MultiTenancy;
 using Abp.Zero.EntityFrameworkCore;
+using GWebsite.AbpZeroTemplate.Core;
 using GWebsite.AbpZeroTemplate.Core.Models;
-using GWebsite.AbpZeroTemplate.Core.Models.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
@@ -27,9 +27,9 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<FixedAsset> FixedAssets { get; set; }
         public virtual DbSet<Asset_05> Assets_05 { get; set; }
-       // public virtual DbSet<AssetDetail_05> AssetDetails_05 { get; set; }
         public virtual DbSet<AssetType_05> AssetTypes_05 { get; set; }
         public virtual DbSet<AssetGroup_05> AssetGroups_05 { get; set; }
+
         //public virtual DbSet<Depreciation_05> Depreciations_05 { get; set; }
         //public virtual DbSet<DepreciationDetail_05> DepreciationDetails_05 { get; set; }
         //public virtual DbSet<Liquidation_05> Liquidations_05 { get; set; }
@@ -38,10 +38,16 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         //public virtual DbSet<RepairDetail_05> RepairDetails_05 { get; set; }
         //public virtual DbSet<UsingProcess_05> UsingProcess_05 { get; set; }
         //public virtual DbSet<UsingProcessDetail_05> UsingProcessDetail_05 { get; set; }
-        //public virtual DbSet<Warranty_05> Warrantys_05 { get; set; }
-        //public virtual DbSet<WarrantyDetail_05> WarrantyDetails_05 { get; set; }
-
-
+        public virtual DbSet<Warranty_05> Warrantys_05 { get; set; }
+        public virtual DbSet<PurchaseOder_05> PurchaseOders_05 { get; set; }
+        public virtual DbSet<ExportingUsedAsset> ExportingUsedAsset { get; set; }
+        public virtual DbSet<TransferringAsset> TransferringAsset { get; set; }
+        public virtual DbSet<AssetUnitFather_05> AssetUnitFather_05 { get; set; }
+        public virtual DbSet<AssetRegion_05> AssetRegion_05 { get; set; }
+        public virtual DbSet<AssetUnit_05> AssetUnit_05 { get; set; }
+        public virtual DbSet<AssetUser_05> AssetUser_05 { get; set; }
+        public virtual DbSet<Liquidation_05> Liquidation_05 { get; set; }
+        public virtual DbSet<UsingProcess_05> UsingProcess_05 { get; set; }
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>

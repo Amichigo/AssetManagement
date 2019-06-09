@@ -6,12 +6,9 @@
                 <h3 class="m-subheader__title m-subheader__title--separator">
                     <span>{{l("AssetGroup")}}</span>
                 </h3>
-                <span class="m-section__sub">
-                    {{l("AssetGroupInfo")}}
-                </span>
-            </div>
-            <div class="col-xs-6 text-right">
-                <button (click)="createOrEditAssetGroup()" *ngIf="isGranted('Pages.Administration.AssetGroup_05.Create')" class="btn btn-primary"><i class="fa fa-plus"></i> {{l("Create")}}</button>
+                <button class="btn btn-primary" [routerLink]="['/app/gwebsite/asset-group/create-or-edit-asset-group']">
+                     <i class="fa fa-plus "></i> {{l("Create New Asset Group ")}}
+                </button>
             </div>
         </div>
     </div>
@@ -52,9 +49,6 @@
                                     <th pSortableColumn="level">
                                         Cấp tài sản
                                     </th>
-                                    <th pSortableColumn="fatherAssetGroup">
-                                        Nhóm tài sản cha
-                                    </th>
                                     <th pSortableColumn="monthsDepreciation">
                                         Số tháng khấu hao
                                     </th>
@@ -79,10 +73,6 @@
                                         <span title="{{record.level}}">{{truncateString(record.level)}}</span>
                                     </td>
                                     <td>
-                                        <span class="ui-column-title">Nhóm tài sản cha</span>
-                                        <span title="{{record.fatherAssetGroup}}">{{truncateString(record.fatherAssetGroup)}}</span>
-                                    </td>
-                                    <td>
                                         <span class="ui-column-title">Số tháng khấu hao</span>
                                         <span title="{{record.monthsDepreciation}}">{{truncateString(record.monthsDepreciation)}}</span>
                                     </td>
@@ -91,15 +81,15 @@
                                         <span title="{{record.depreciationRates}}">{{truncateString(record.depreciationRates)}}</span>
                                     </td>
                                     <td>
-                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" (click)="createOrEditModal.show(record.assetGroupId)" title="{{l('Create')}}">
-                                            <i class="fa fa-edit" [attr.aria-label]="l('Create')"></i>
+                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" [routerLink]="['/app/gwebsite/asset-group/create-or-edit-asset-group',record.assetGroupId, true]" title="{{l('Edit')}}">
+                                           <i class="fa fa-edit" [attr.aria-label]="l( 'Edit') "></i>
                                         </button>
 
                                         <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" (click)="deleteAssetGroup(record.assetGroupId)" title="{{l('Delete')}}">
                                             <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                         </button>
 
-                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" (click)="viewAssetGroupModal.show(record.assetGroupId)" title="{{l('View')}}">
+                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" [routerLink]="['/app/gwebsite/asset-group/create-or-edit-asset-group',record.assetGroupId, true]" title="{{l('View')}}">
                                             <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
                                         </button>
                                     </td>
@@ -121,7 +111,4 @@
             </div>
         </div>
     </div>
-    <createOrEditAssetGroupModal #createOrEditModal (modalSave)="reloadPage()">
-    </createOrEditAssetGroupModal>
-    <viewAssetGroupModal #viewAssetGroupModal></viewAssetGroupModal>
 </div>
