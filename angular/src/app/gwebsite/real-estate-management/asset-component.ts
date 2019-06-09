@@ -1,7 +1,4 @@
-
-
-
-import { AssetServiceProxy } from './../../../shared/service-proxies/service-proxies';
+import { AssetController_9ServiceProxy } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild, Output, EventEmitter } from "@angular/core";
 import { CustomerServiceProxy } from "@shared/service-proxies/service-proxies";
@@ -16,7 +13,7 @@ import { ActivatedRoute, Params } from '@angular/router';
     templateUrl: './asset-component.html',
 })
 
-export class AssetComponent extends AppComponentBase {
+export class AssetComponent9 extends AppComponentBase {
 
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
@@ -30,7 +27,7 @@ export class AssetComponent extends AppComponentBase {
 
     constructor(
         injector: Injector,
-        private _assetService: AssetServiceProxy,
+        private _assetService: AssetController_9ServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {  
         super(injector);

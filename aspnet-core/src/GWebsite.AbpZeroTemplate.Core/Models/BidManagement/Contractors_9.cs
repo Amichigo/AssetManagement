@@ -8,6 +8,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 {
     public class Contractors_9 : FullAuditModel
     {
+        public string MaHoSoThau { get; set; }
         public string MaDonViThau { get; set; }
         public string TenDonViThau { get; set; }
         public string NgayNopHS { get; set; }

@@ -57,6 +57,18 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Constructions
             return ObjectMapper.Map<ConstructionInput>(ConstructionEntity);
         }
 
+        public ConstructionInput GetConstructionForEditWithMaCongTrinh(string maCongTrinh)
+        {
+            var ConstructionEntity = ConstructionRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.MaCongTrinh == maCongTrinh);
+            if (ConstructionEntity == null)
+            {
+                return null;
+            }
+            return ObjectMapper.Map<ConstructionInput>(ConstructionEntity);
+        }
+
+        
+
 
         public ConstructionForViewDto GetConstructionForView(int id)
         {

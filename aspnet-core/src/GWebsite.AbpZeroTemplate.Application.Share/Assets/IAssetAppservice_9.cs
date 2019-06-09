@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.Assets
 {
-    public interface IAssetAppService
+    public interface IAssetAppService_9
     {
         void CreateOrEditAsset(AssetInput_9 assetInput);
         AssetInput_9 GetAssetForEdit(int id);

@@ -27,6 +27,12 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
             return ConstructionAppService.GetConstructionForEdit(id);
         }
 
+        [HttpGet]
+        public ConstructionInput GetConstructionForEditWithMaCongTrinh(string id)
+        {
+            return ConstructionAppService.GetConstructionForEditWithMaCongTrinh(id);
+        }
+
         [HttpPost]
         public void CreateOrEditConstruction([FromBody] ConstructionInput input)
         {

@@ -6,6 +6,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { RealEstateManagementComponent } from './real-estate-management/real-estate-management.component';
 import { RealEstateTypeComponent } from './real-estate-type/real-estate-type.component';
 import { RealEstateRepairComponent } from './real-estate-repair/real-estate-repair.component';
+import { PlanComponent, ConstructionComponent, BidManagerComponent } from '.';
 
 @NgModule({
     imports: [
@@ -61,6 +62,33 @@ import { RealEstateRepairComponent } from './real-estate-repair/real-estate-repa
                     {
                         path: 'real-estate-repair', component: RealEstateRepairComponent,
                         data: { permission: 'Pages.Administration.RealEstateRepair9' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'plan', component: PlanComponent,
+                        data: { permission: 'Pages.Administration.Plan9' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'construction', component: ConstructionComponent,
+                        data: { permission: 'Pages.Administration.Construction9' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'bid-manager', component: BidManagerComponent,
+                        data: { permission: 'Pages.Administration.BidManager9' }
                     },
                 ]
             }

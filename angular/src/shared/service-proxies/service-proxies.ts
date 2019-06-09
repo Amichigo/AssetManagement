@@ -572,7 +572,7 @@ export class AccountServiceProxy {
 }
 
 @Injectable()
-export class AssetServiceProxy {
+export class AssetController_9ServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
@@ -591,7 +591,7 @@ export class AssetServiceProxy {
      * @return Success
      */
     getAssetsByFilter(maTaiSan: string | null | undefined, loaiTaiSan: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfAssetDto_9> {
-        let url_ = this.baseUrl + "/api/Asset/GetAssetsByFilter?";
+        let url_ = this.baseUrl + "/api/AssetController_9/GetAssetsByFilter?";
         if (maTaiSan !== undefined)
             url_ += "MaTaiSan=" + encodeURIComponent("" + maTaiSan) + "&"; 
         if (loaiTaiSan !== undefined)
@@ -654,7 +654,7 @@ export class AssetServiceProxy {
      * @return Success
      */
     getAssetForEdit(id: number | null | undefined): Observable<AssetInput_9> {
-        let url_ = this.baseUrl + "/api/Asset/GetAssetForEdit?";
+        let url_ = this.baseUrl + "/api/AssetController_9/GetAssetForEdit?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -709,7 +709,7 @@ export class AssetServiceProxy {
      * @return Success
      */
     getAssetForEditWithMTS(maTaiSan: string | null | undefined): Observable<AssetInput_9> {
-        let url_ = this.baseUrl + "/api/Asset/GetAssetForEditWithMTS?";
+        let url_ = this.baseUrl + "/api/AssetController_9/GetAssetForEditWithMTS?";
         if (maTaiSan !== undefined)
             url_ += "maTaiSan=" + encodeURIComponent("" + maTaiSan) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -764,7 +764,7 @@ export class AssetServiceProxy {
      * @return Success
      */
     createOrEditAsset(input: AssetInput_9 | null | undefined): Observable<void> {
-        let url_ = this.baseUrl + "/api/Asset/CreateOrEditAsset";
+        let url_ = this.baseUrl + "/api/AssetController_9/CreateOrEditAsset";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -815,7 +815,7 @@ export class AssetServiceProxy {
      * @return Success
      */
     deleteAsset(id: number): Observable<void> {
-        let url_ = this.baseUrl + "/api/Asset/DeleteAsset/{id}";
+        let url_ = this.baseUrl + "/api/AssetController_9/DeleteAsset/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
         url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
@@ -867,7 +867,7 @@ export class AssetServiceProxy {
      * @return Success
      */
     getAssetForView(id: number | null | undefined): Observable<AssetForViewDto_9> {
-        let url_ = this.baseUrl + "/api/Asset/GetAssetForView?";
+        let url_ = this.baseUrl + "/api/AssetController_9/GetAssetForView?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -2327,6 +2327,61 @@ export class ConstructionServiceProxy {
     }
 
     /**
+     * @id (optional) 
+     * @return Success
+     */
+    getConstructionForEditWithMaCongTrinh(id: string | null | undefined): Observable<ConstructionInput> {
+        let url_ = this.baseUrl + "/api/Construction/GetConstructionForEditWithMaCongTrinh?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetConstructionForEditWithMaCongTrinh(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetConstructionForEditWithMaCongTrinh(<any>response_);
+                } catch (e) {
+                    return <Observable<ConstructionInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ConstructionInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetConstructionForEditWithMaCongTrinh(response: HttpResponseBase): Observable<ConstructionInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? ConstructionInput.fromJS(resultData200) : new ConstructionInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ConstructionInput>(<any>null);
+    }
+
+    /**
      * @input (optional) 
      * @return Success
      */
@@ -3184,6 +3239,61 @@ export class ContractorServiceProxy {
     }
 
     protected processGetContractorForEdit(response: HttpResponseBase): Observable<ContractorInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? ContractorInput.fromJS(resultData200) : new ContractorInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ContractorInput>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getContractorForEditWithMaHoSoThau(id: string | null | undefined): Observable<ContractorInput> {
+        let url_ = this.baseUrl + "/api/Contractor/GetContractorForEditWithMaHoSoThau?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetContractorForEditWithMaHoSoThau(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetContractorForEditWithMaHoSoThau(<any>response_);
+                } catch (e) {
+                    return <Observable<ContractorInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ContractorInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetContractorForEditWithMaHoSoThau(response: HttpResponseBase): Observable<ContractorInput> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -16635,7 +16745,10 @@ export class ConstructionDto implements IConstructionDto {
     maLoaiCongTrinh!: string | undefined;
     maKeHoach!: string | undefined;
     dienTichCongTrinh!: string | undefined;
-    chiPhiCongTrinh!: string | undefined;
+    chiPhiDuocDuyet!: number | undefined;
+    chiPhiDeXuat!: number | undefined;
+    chiPhiTrinh!: number | undefined;
+    namThucHien!: number | undefined;
     ngayDuKienThucHien!: string | undefined;
     thoiGianDuKienHT!: string | undefined;
     moTaCongTrinh!: string | undefined;
@@ -16664,7 +16777,10 @@ export class ConstructionDto implements IConstructionDto {
             this.maLoaiCongTrinh = data["maLoaiCongTrinh"];
             this.maKeHoach = data["maKeHoach"];
             this.dienTichCongTrinh = data["dienTichCongTrinh"];
-            this.chiPhiCongTrinh = data["chiPhiCongTrinh"];
+            this.chiPhiDuocDuyet = data["chiPhiDuocDuyet"];
+            this.chiPhiDeXuat = data["chiPhiDeXuat"];
+            this.chiPhiTrinh = data["chiPhiTrinh"];
+            this.namThucHien = data["namThucHien"];
             this.ngayDuKienThucHien = data["ngayDuKienThucHien"];
             this.thoiGianDuKienHT = data["thoiGianDuKienHT"];
             this.moTaCongTrinh = data["moTaCongTrinh"];
@@ -16693,7 +16809,10 @@ export class ConstructionDto implements IConstructionDto {
         data["maLoaiCongTrinh"] = this.maLoaiCongTrinh;
         data["maKeHoach"] = this.maKeHoach;
         data["dienTichCongTrinh"] = this.dienTichCongTrinh;
-        data["chiPhiCongTrinh"] = this.chiPhiCongTrinh;
+        data["chiPhiDuocDuyet"] = this.chiPhiDuocDuyet;
+        data["chiPhiDeXuat"] = this.chiPhiDeXuat;
+        data["chiPhiTrinh"] = this.chiPhiTrinh;
+        data["namThucHien"] = this.namThucHien;
         data["ngayDuKienThucHien"] = this.ngayDuKienThucHien;
         data["thoiGianDuKienHT"] = this.thoiGianDuKienHT;
         data["moTaCongTrinh"] = this.moTaCongTrinh;
@@ -16715,7 +16834,10 @@ export interface IConstructionDto {
     maLoaiCongTrinh: string | undefined;
     maKeHoach: string | undefined;
     dienTichCongTrinh: string | undefined;
-    chiPhiCongTrinh: string | undefined;
+    chiPhiDuocDuyet: number | undefined;
+    chiPhiDeXuat: number | undefined;
+    chiPhiTrinh: number | undefined;
+    namThucHien: number | undefined;
     ngayDuKienThucHien: string | undefined;
     thoiGianDuKienHT: string | undefined;
     moTaCongTrinh: string | undefined;
@@ -16735,7 +16857,10 @@ export class ConstructionInput implements IConstructionInput {
     maLoaiCongTrinh!: string | undefined;
     maKeHoach!: string | undefined;
     dienTichCongTrinh!: string | undefined;
-    chiPhiCongTrinh!: string | undefined;
+    chiPhiDuocDuyet!: number | undefined;
+    chiPhiDeXuat!: number | undefined;
+    chiPhiTrinh!: number | undefined;
+    namThucHien!: number | undefined;
     ngayDuKienThucHien!: string | undefined;
     thoiGianDuKienHT!: string | undefined;
     moTaCongTrinh!: string | undefined;
@@ -16764,7 +16889,10 @@ export class ConstructionInput implements IConstructionInput {
             this.maLoaiCongTrinh = data["maLoaiCongTrinh"];
             this.maKeHoach = data["maKeHoach"];
             this.dienTichCongTrinh = data["dienTichCongTrinh"];
-            this.chiPhiCongTrinh = data["chiPhiCongTrinh"];
+            this.chiPhiDuocDuyet = data["chiPhiDuocDuyet"];
+            this.chiPhiDeXuat = data["chiPhiDeXuat"];
+            this.chiPhiTrinh = data["chiPhiTrinh"];
+            this.namThucHien = data["namThucHien"];
             this.ngayDuKienThucHien = data["ngayDuKienThucHien"];
             this.thoiGianDuKienHT = data["thoiGianDuKienHT"];
             this.moTaCongTrinh = data["moTaCongTrinh"];
@@ -16793,7 +16921,10 @@ export class ConstructionInput implements IConstructionInput {
         data["maLoaiCongTrinh"] = this.maLoaiCongTrinh;
         data["maKeHoach"] = this.maKeHoach;
         data["dienTichCongTrinh"] = this.dienTichCongTrinh;
-        data["chiPhiCongTrinh"] = this.chiPhiCongTrinh;
+        data["chiPhiDuocDuyet"] = this.chiPhiDuocDuyet;
+        data["chiPhiDeXuat"] = this.chiPhiDeXuat;
+        data["chiPhiTrinh"] = this.chiPhiTrinh;
+        data["namThucHien"] = this.namThucHien;
         data["ngayDuKienThucHien"] = this.ngayDuKienThucHien;
         data["thoiGianDuKienHT"] = this.thoiGianDuKienHT;
         data["moTaCongTrinh"] = this.moTaCongTrinh;
@@ -16815,7 +16946,10 @@ export interface IConstructionInput {
     maLoaiCongTrinh: string | undefined;
     maKeHoach: string | undefined;
     dienTichCongTrinh: string | undefined;
-    chiPhiCongTrinh: string | undefined;
+    chiPhiDuocDuyet: number | undefined;
+    chiPhiDeXuat: number | undefined;
+    chiPhiTrinh: number | undefined;
+    namThucHien: number | undefined;
     ngayDuKienThucHien: string | undefined;
     thoiGianDuKienHT: string | undefined;
     moTaCongTrinh: string | undefined;
@@ -16835,7 +16969,10 @@ export class ConstructionForViewDto implements IConstructionForViewDto {
     maLoaiCongTrinh!: string | undefined;
     maKeHoach!: string | undefined;
     dienTichCongTrinh!: string | undefined;
-    chiPhiCongTrinh!: string | undefined;
+    chiPhiDuocDuyet!: number | undefined;
+    chiPhiDeXuat!: number | undefined;
+    chiPhiTrinh!: number | undefined;
+    namThucHien!: number | undefined;
     ngayDuKienThucHien!: string | undefined;
     thoiGianDuKienHT!: string | undefined;
     moTaCongTrinh!: string | undefined;
@@ -16863,7 +17000,10 @@ export class ConstructionForViewDto implements IConstructionForViewDto {
             this.maLoaiCongTrinh = data["maLoaiCongTrinh"];
             this.maKeHoach = data["maKeHoach"];
             this.dienTichCongTrinh = data["dienTichCongTrinh"];
-            this.chiPhiCongTrinh = data["chiPhiCongTrinh"];
+            this.chiPhiDuocDuyet = data["chiPhiDuocDuyet"];
+            this.chiPhiDeXuat = data["chiPhiDeXuat"];
+            this.chiPhiTrinh = data["chiPhiTrinh"];
+            this.namThucHien = data["namThucHien"];
             this.ngayDuKienThucHien = data["ngayDuKienThucHien"];
             this.thoiGianDuKienHT = data["thoiGianDuKienHT"];
             this.moTaCongTrinh = data["moTaCongTrinh"];
@@ -16891,7 +17031,10 @@ export class ConstructionForViewDto implements IConstructionForViewDto {
         data["maLoaiCongTrinh"] = this.maLoaiCongTrinh;
         data["maKeHoach"] = this.maKeHoach;
         data["dienTichCongTrinh"] = this.dienTichCongTrinh;
-        data["chiPhiCongTrinh"] = this.chiPhiCongTrinh;
+        data["chiPhiDuocDuyet"] = this.chiPhiDuocDuyet;
+        data["chiPhiDeXuat"] = this.chiPhiDeXuat;
+        data["chiPhiTrinh"] = this.chiPhiTrinh;
+        data["namThucHien"] = this.namThucHien;
         data["ngayDuKienThucHien"] = this.ngayDuKienThucHien;
         data["thoiGianDuKienHT"] = this.thoiGianDuKienHT;
         data["moTaCongTrinh"] = this.moTaCongTrinh;
@@ -16912,7 +17055,10 @@ export interface IConstructionForViewDto {
     maLoaiCongTrinh: string | undefined;
     maKeHoach: string | undefined;
     dienTichCongTrinh: string | undefined;
-    chiPhiCongTrinh: string | undefined;
+    chiPhiDuocDuyet: number | undefined;
+    chiPhiDeXuat: number | undefined;
+    chiPhiTrinh: number | undefined;
+    namThucHien: number | undefined;
     ngayDuKienThucHien: string | undefined;
     thoiGianDuKienHT: string | undefined;
     moTaCongTrinh: string | undefined;
@@ -17505,6 +17651,7 @@ export interface IPagedResultDtoOfContractorDto {
 }
 
 export class ContractorDto implements IContractorDto {
+    maHoSoThau!: string | undefined;
     maDonViThau!: string | undefined;
     tenDonViThau!: string | undefined;
     ngayNopHS!: string | undefined;
@@ -17527,6 +17674,7 @@ export class ContractorDto implements IContractorDto {
 
     init(data?: any) {
         if (data) {
+            this.maHoSoThau = data["maHoSoThau"];
             this.maDonViThau = data["maDonViThau"];
             this.tenDonViThau = data["tenDonViThau"];
             this.ngayNopHS = data["ngayNopHS"];
@@ -17549,6 +17697,7 @@ export class ContractorDto implements IContractorDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["maHoSoThau"] = this.maHoSoThau;
         data["maDonViThau"] = this.maDonViThau;
         data["tenDonViThau"] = this.tenDonViThau;
         data["ngayNopHS"] = this.ngayNopHS;
@@ -17564,6 +17713,7 @@ export class ContractorDto implements IContractorDto {
 }
 
 export interface IContractorDto {
+    maHoSoThau: string | undefined;
     maDonViThau: string | undefined;
     tenDonViThau: string | undefined;
     ngayNopHS: string | undefined;
@@ -17577,6 +17727,7 @@ export interface IContractorDto {
 }
 
 export class ContractorInput implements IContractorInput {
+    maHoSoThau!: string | undefined;
     maDonViThau!: string | undefined;
     tenDonViThau!: string | undefined;
     ngayNopHS!: string | undefined;
@@ -17599,6 +17750,7 @@ export class ContractorInput implements IContractorInput {
 
     init(data?: any) {
         if (data) {
+            this.maHoSoThau = data["maHoSoThau"];
             this.maDonViThau = data["maDonViThau"];
             this.tenDonViThau = data["tenDonViThau"];
             this.ngayNopHS = data["ngayNopHS"];
@@ -17621,6 +17773,7 @@ export class ContractorInput implements IContractorInput {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["maHoSoThau"] = this.maHoSoThau;
         data["maDonViThau"] = this.maDonViThau;
         data["tenDonViThau"] = this.tenDonViThau;
         data["ngayNopHS"] = this.ngayNopHS;
@@ -17636,6 +17789,7 @@ export class ContractorInput implements IContractorInput {
 }
 
 export interface IContractorInput {
+    maHoSoThau: string | undefined;
     maDonViThau: string | undefined;
     tenDonViThau: string | undefined;
     ngayNopHS: string | undefined;
@@ -17649,6 +17803,7 @@ export interface IContractorInput {
 }
 
 export class ContractorForViewDto implements IContractorForViewDto {
+    maHoSoThau!: string | undefined;
     maDonViThau!: string | undefined;
     tenDonViThau!: string | undefined;
     ngayNopHS!: string | undefined;
@@ -17670,6 +17825,7 @@ export class ContractorForViewDto implements IContractorForViewDto {
 
     init(data?: any) {
         if (data) {
+            this.maHoSoThau = data["maHoSoThau"];
             this.maDonViThau = data["maDonViThau"];
             this.tenDonViThau = data["tenDonViThau"];
             this.ngayNopHS = data["ngayNopHS"];
@@ -17691,6 +17847,7 @@ export class ContractorForViewDto implements IContractorForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["maHoSoThau"] = this.maHoSoThau;
         data["maDonViThau"] = this.maDonViThau;
         data["tenDonViThau"] = this.tenDonViThau;
         data["ngayNopHS"] = this.ngayNopHS;
@@ -17705,6 +17862,7 @@ export class ContractorForViewDto implements IContractorForViewDto {
 }
 
 export interface IContractorForViewDto {
+    maHoSoThau: string | undefined;
     maDonViThau: string | undefined;
     tenDonViThau: string | undefined;
     ngayNopHS: string | undefined;
@@ -23465,7 +23623,7 @@ export class PlanDto implements IPlanDto {
     ngayLapKeHoach!: string | undefined;
     trangThaiDuyet!: string | undefined;
     ngayHieuLuc!: string | undefined;
-    namThucHien!: string | undefined;
+    namThucHien!: number | undefined;
     tongChiPhi!: string | undefined;
     tongChiPhiĐuocDuyet!: string | undefined;
     id!: number | undefined;
@@ -23524,7 +23682,7 @@ export interface IPlanDto {
     ngayLapKeHoach: string | undefined;
     trangThaiDuyet: string | undefined;
     ngayHieuLuc: string | undefined;
-    namThucHien: string | undefined;
+    namThucHien: number | undefined;
     tongChiPhi: string | undefined;
     tongChiPhiĐuocDuyet: string | undefined;
     id: number | undefined;
@@ -23537,7 +23695,7 @@ export class PlanInput implements IPlanInput {
     ngayLapKeHoach!: string | undefined;
     trangThaiDuyet!: string | undefined;
     ngayHieuLuc!: string | undefined;
-    namThucHien!: string | undefined;
+    namThucHien!: number | undefined;
     tongChiPhi!: string | undefined;
     tongChiPhiĐuocDuyet!: string | undefined;
     id!: number | undefined;
@@ -23596,7 +23754,7 @@ export interface IPlanInput {
     ngayLapKeHoach: string | undefined;
     trangThaiDuyet: string | undefined;
     ngayHieuLuc: string | undefined;
-    namThucHien: string | undefined;
+    namThucHien: number | undefined;
     tongChiPhi: string | undefined;
     tongChiPhiĐuocDuyet: string | undefined;
     id: number | undefined;
@@ -23609,7 +23767,7 @@ export class PlanForViewDto implements IPlanForViewDto {
     ngayLapKeHoach!: string | undefined;
     trangThaiDuyet!: string | undefined;
     ngayHieuLuc!: string | undefined;
-    namThucHien!: string | undefined;
+    namThucHien!: number | undefined;
     tongChiPhi!: string | undefined;
     tongChiPhiĐuocDuyet!: string | undefined;
 
@@ -23665,7 +23823,7 @@ export interface IPlanForViewDto {
     ngayLapKeHoach: string | undefined;
     trangThaiDuyet: string | undefined;
     ngayHieuLuc: string | undefined;
-    namThucHien: string | undefined;
+    namThucHien: number | undefined;
     tongChiPhi: string | undefined;
     tongChiPhiĐuocDuyet: string | undefined;
 }

@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace GWebsite.AbpZeroTemplate.Application.Controllers
 {
     [Route("api/[controller]/[action]")]
-    public class AssetController : GWebsiteControllerBase
+    public class AssetController_9 : GWebsiteControllerBase
     {
-        private readonly IAssetAppService AssetAppService;
+        private readonly IAssetAppService_9 AssetAppService;
 
-        public AssetController(IAssetAppService AssetAppService)
+        public AssetController_9(IAssetAppService_9 AssetAppService)
         {
             this.AssetAppService = AssetAppService;
         }

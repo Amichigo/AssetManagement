@@ -1781,9 +1781,13 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ChiPhiCongTrinh");
-
                     b.Property<string>("ChiPhiDaThucHien");
+
+                    b.Property<int>("ChiPhiDeXuat");
+
+                    b.Property<int>("ChiPhiDuocDuyet");
+
+                    b.Property<int>("ChiPhiTrinh");
 
                     b.Property<string>("CreatedBy");
 
@@ -1804,6 +1808,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<string>("MaLoaiCongTrinh");
 
                     b.Property<string>("MoTaCongTrinh");
+
+                    b.Property<int>("NamThucHien");
 
                     b.Property<string>("NgayDuKienThucHien");
 
@@ -1963,6 +1969,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<bool>("IsDelete");
 
                     b.Property<string>("MaDonViThau");
+
+                    b.Property<string>("MaHoSoThau");
 
                     b.Property<string>("NgayNopHS");
 
@@ -2914,7 +2922,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<string>("MaKeHoach");
 
-                    b.Property<string>("NamThucHien");
+                    b.Property<int>("NamThucHien");
 
                     b.Property<string>("NgayHieuLuc");
 
