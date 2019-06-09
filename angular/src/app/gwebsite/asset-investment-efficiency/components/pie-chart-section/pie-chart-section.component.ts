@@ -30,7 +30,7 @@ export class PieChartSectionComponent extends Component implements OnInit, OnCha
     private keyword = '';
 
     constructor() {
-        // super();
+        super(null);
     }
 
     ngOnInit() {

@@ -18,7 +18,7 @@ export class TimePeriodPickerComponent extends Component {
    private previousEndingDate = moment().format('YYYY-MM-DD');
 
    constructor() {
-      // super();
+      super(null);
    }
 
    onChangeTimePeriod() {

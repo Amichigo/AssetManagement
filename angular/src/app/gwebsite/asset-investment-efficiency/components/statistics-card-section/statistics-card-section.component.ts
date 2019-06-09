@@ -10,6 +10,6 @@ export class StatisticsCardSectionComponent extends Component {
    @Input() data;
 
    constructor() {
-      // super();
+      super(null);
    }
 }

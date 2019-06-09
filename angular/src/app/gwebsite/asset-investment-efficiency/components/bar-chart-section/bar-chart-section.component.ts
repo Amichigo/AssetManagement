@@ -23,7 +23,7 @@ export class BarChartSectionComponent extends Component {
     private options;
 
     constructor() {
-        // super();
+        super(null);
     }
 
     ngOnChanges(changes: SimpleChanges): void {

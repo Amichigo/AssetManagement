@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, SimpleChanges, SimpleChange } from '@angular/core';
 import { addThousandSeparator } from '../../utils';
 import moment from 'moment';
 
@@ -19,7 +19,7 @@ export class StatisticsCardComponent extends Component implements OnChanges {
    private addThousandSeparator;
 
    constructor() {
-      // super();
+      super(null);
    }
 
    ngOnChanges(changes: SimpleChanges): void {

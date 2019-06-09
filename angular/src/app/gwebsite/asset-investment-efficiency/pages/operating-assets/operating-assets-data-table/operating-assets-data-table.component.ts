@@ -36,7 +36,7 @@ export class OperatingAssetsDataTableComponent extends Component implements OnCh
    private detailedRecord;
 
    constructor(private excelService: ExcelService) {
-      // super();
+      super(null);
    }
 
    ngOnChanges(changes: SimpleChanges) {
@@ -70,7 +70,7 @@ export class OperatingAssetsDataTableComponent extends Component implements OnCh
          let originalCondition = isDateBetween(moment(new Date(recordedDate)).format('YYYY-MM-DD'), this.timePeriodStartingDate, this.timePeriodEndingDate) && isDateBetween(moment(new Date(recordedDate)).format('YYYY-MM-DD'), this.startingDate, this.endingDate);
          let condition = originalCondition;
 
-         if (parseInt(this.selectedAssetType) !== -1) {
+         if (this.selectedAssetType !== -1) {
             condition = condition && (record['assetTypeId'] === this.selectedAssetType);
          }
          else {
