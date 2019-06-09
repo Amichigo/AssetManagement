@@ -17,7 +17,6 @@ export class PieChartSectionComponent extends Component implements OnInit, OnCha
     @Output() update: EventEmitter<any> = new EventEmitter<any>();
 
     private activeTabIndex = 0;
-    private comparisonMode = 0;
     private valueType = 0;
     private showValueTypeSelection = true;
     private options;
@@ -31,7 +30,7 @@ export class PieChartSectionComponent extends Component implements OnInit, OnCha
     private keyword = '';
 
     constructor() {
-        super();
+        // super();
     }
 
     ngOnInit() {
@@ -43,31 +42,17 @@ export class PieChartSectionComponent extends Component implements OnInit, OnCha
         const data: SimpleChange = changes.data;
         const labels: SimpleChange = changes.labels;
 
-        this.mainData = data.currentValue;
-        this.mainLabels = labels.currentValue;
-        this.filteredLabels = labels.currentValue;
+        if (data && data.currentValue) {
+            this.mainData = data.currentValue;
+        }
+
+        if (labels && labels.currentValue) {
+            this.mainLabels = labels.currentValue;
+            this.filteredLabels = labels.currentValue;
+        }
+
         this.updateColors();
     }
-
-    // ngOnChanges(changes: SimpleChanges): void {
-    //     const timePeriod: SimpleChange = changes.timePeriod;
-    //     const data: SimpleChange = changes.data;
-
-    //     if (timePeriod && timePeriod.currentValue !== timePeriod.previousValue) {
-    //         // this.onReset();
-    //     }
-
-    //     if (data && data.currentValue) {
-    //         this.updateColors();
-    //     }
-    //  }
-
-    // updateOptions() {
-    //     this.options = {
-    //         scaleShowVerticalLines: false,
-    //         responsive: true
-    //     };
-    // }
 
     updateColors() {
         this.colors = [{
@@ -77,14 +62,9 @@ export class PieChartSectionComponent extends Component implements OnInit, OnCha
         }];
     }
 
-    // updateDateRanges() {
-    //     this.pieChart1DateRange = this.currentStartingDate;
-    // }
-
     onChange() {
         this.update.emit({
             activeTabIndex: this.activeTabIndex,
-            comparisonMode: this.comparisonMode,
             valueType: this.valueType
         });
     }
@@ -92,7 +72,6 @@ export class PieChartSectionComponent extends Component implements OnInit, OnCha
     onChangeTab(tabIndex) {
         this.activeTabIndex = tabIndex;
         this.valueType = 0;
-        this.comparisonMode = 0;
         this.selectedLabels = [];
         this.keyword = '';
         this.onChange();
@@ -104,28 +83,6 @@ export class PieChartSectionComponent extends Component implements OnInit, OnCha
         this.keyword = '';
         this.onChange();
     }
-
-    // onChangeComparisonMode(e) {
-    //     const value = parseInt(e.target.value);
-
-    //     if (value === 0) {
-    //         this.showValueTypeSelection = true;
-    //     }
-    //     else {
-    //         this.showValueTypeSelection = false;
-    //     }
-
-    //     this.comparisonMode = parseInt(e.target.value);
-    //     this.valueType = 0;
-    //     this.onChange();
-    // }
-
-    // onReset() {
-    //     this.activeTabIndex = 0;
-    //     this.valueType = 0;
-    //     this.comparisonMode = 0;
-    //     this.showValueTypeSelection = true;
-    // }
 
     onShowPieChartPopup() {
         this.showPieChartPopup = true;

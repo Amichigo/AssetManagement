@@ -6,14 +6,14 @@ import moment from 'moment';
 import { isDateBetween, groupBy } from '../../utils';
 import { HttpClient } from '@angular/common/http';
 
-const BASE_API_URL = 'http://localhost:5000/api/PurchasedAsset';
+const BASE_API_URL = 'http://localhost:5000/api/OperatingAsset';
 
 @Component({
-    templateUrl: './purchased-assets.component.html',
-    styleUrls: ['./purchased-assets.component.css'],
+    templateUrl: './operating-assets.component.html',
+    styleUrls: ['./operating-assets.component.css'],
     animations: [appModuleAnimation()]
 })
-export class PurchasedAssetsComponent extends AppComponentBase implements OnInit {
+export class OperatingAssetsComponent extends AppComponentBase implements OnInit {
     private statisticsPeriod = 0;
     private startingDate = moment().format('YYYY-MM-DD');
     private endingDate = moment().format('YYYY-MM-DD');
@@ -23,14 +23,14 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
     private generalStatisticsData = [];
     private detailedData = [];
 
-    private section1Tabs = ['Số vốn đã đầu tư', 'Số lượng tài sản đã mua'];
+    private section1Tabs = ['Giá trị đã đầu tư', 'Số lượng tài sản đang vận hành'];
     private section1Data = [];
     private section1Labels = [];
     private section1XAxeLabel = 'Thời gian (Ngày/ Tháng/ Năm)';
     private section1YAxeLabel = '';
     private section1Legend = true;
 
-    private section2Tabs = ['Số vốn đã đầu tư', 'Số lượng tài sản đã mua'];
+    private section2Tabs = ['Giá trị đã đầu tư', 'Số lượng tài sản đang vận hành'];
     private section2Data = [];
     private section2Labels = [];
     private section2Legend = true;
@@ -132,17 +132,17 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
                     case 0:
                         switch (valueType) {
                             case 0:
-                                this.loadTotalPurchasedAssetsChartInOriginalValue();
+                                this.loadTotalOperatingAssetsChartInOriginalValue();
                                 break;
 
                             case 1:
-                                this.loadTotalPurchasedAssetsChartInPercentage();
+                                this.loadTotalOperatingAssetsChartInPercentage();
                                 break;
                         }
                         break;
 
                     case 1:
-                        this.loadTotalPurchasedAssetsChartWithComparison();
+                        this.loadTotalOperatingAssetsChartWithComparison();
                         break;
                 }
                 break;
@@ -168,18 +168,18 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
             case 1:
                 switch (valueType) {
                     case 0:
-                        this.loadPurchasedAssetsByTypesInOriginalValue();
+                        this.loadOperatingAssetsByTypesInOriginalValue();
                         break;
 
                     case 1:
-                        this.loadPurchasedAssetsByTypesInPercentage();
+                        this.loadOperatingAssetsByTypesInPercentage();
                         break;
                 }
                 break;
         }
     }
 
-    loadPurchasedAssetsByTypesInPercentage() {
+    loadOperatingAssetsByTypesInPercentage() {
         let labels = [];
         let processedData = [];
 
@@ -220,7 +220,7 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
          this.section2Data = temp;
     }
 
-    loadPurchasedAssetsByTypesInOriginalValue() {
+    loadOperatingAssetsByTypesInOriginalValue() {
         let labels = [];
         let processedData = [];
         let abc = [];
@@ -333,20 +333,204 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
     loadGeneralStatisticsData(data) {
         this.generalStatisticsData = [
             {
-                title: "Tổng số vốn đã đầu tư",
+                title: "Tổng giá trị đã đầu tư",
                 startingDate: this.startingDate,
                 endingDate: this.endingDate,
-                value: data['currentTotalAmount'],
+                value: data['currentAmount'],
                 rate: data['amountRatio'],
                 unit: "VNĐ"
             },
             {
-                title: 'Tổng số tài sản đã mua',
+                title: 'Tổng số tài sản đang vận hành',
                 startingDate: this.startingDate,
                 endingDate: this.endingDate,
-                value: data['currentTotalQuantity'],
+                value: data['currentQuantity'],
                 rate: data['quantityRatio'],
                 unit: "Tài sản"
+            },
+            {
+                title: 'Tổng giá trị đã trích cho khấu hao',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentDepreciatedAmount'],
+                rate: data['depreciatedAmountRatio'],
+                unit: "VNĐ"
+            },
+            {
+                title: 'Tổng số lượng tài sản đang được khấu hao',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationDepreciatingQuantity'],
+                rate: data['inOperationDepreciatingQuantityRatio'],
+                unit: "Tài sản"
+            },
+            {
+                title: 'Tổng giá trị nguyên giá của tài sản nói chung',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentOriginalAmount'],
+                rate: data['originalAmountRatio'],
+                unit: "VNĐ"
+            },
+            {
+                title: 'Tổng số lượng tài sản trong kho',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInWareQuantity'],
+                rate: data['inWareQuantityRatio'],
+                unit: "Tài sản"
+            },
+            {
+                title: 'Tổng giá trị nguyên giá của các tài sản trong kho',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInWareOriginalAmount'],
+                rate: data['inWareOriginalAmountRatio'],
+                unit: "VNĐ"
+            },
+            {
+                title: 'Tổng số lượng tài sản đang được vận hành nói chung',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationQuantity'],
+                rate: data['inOperationQuantityRatio'],
+                unit: "Tài sản"
+            },
+            {
+                title: 'Tổng giá trị nguyên giá của các tài sản đang được vận hành nói chung',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationOriginalAmount'],
+                rate: data['inOperationOriginalAmountRatio'],
+                unit: "VNĐ"
+            },
+            {
+                title: 'Tổng giá trị trích cho khấu hao của các tài sản đang được vận hành nói chung',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationDepreciatingAmount'],
+                rate: data['inOperationDepreciatingAmountRatio'],
+                unit: "VNĐ"
+            },
+            {
+                title: 'Tổng số lượng tài sản đang được vận hành, không tính khấu hao nói chung',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationNotDepreciatingQuantity'],
+                rate: data['inOperationNotDepreciatingQuantityRatio'],
+                unit: "Tài sản"
+            },
+            {
+                title: 'Tổng số lượng tài sản đang được vận hành và được sử dụng',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationAndUsingQuantity'],
+                rate: data['inOperationAndUsingQuantityRatio'],
+                unit: "Tài sản"
+            },
+            {
+                title: 'Tổng giá trị nguyên giá của các tài sản đang được vận hành và được sử dụng',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationAndUsingOriginalAmount'],
+                rate: data['inOperationAndUsingOriginalAmountRatio'],
+                unit: "VNĐ"
+            },
+            {
+                title: 'Tổng số lượng tài sản đang được vận hành và được sử dụng, có tính khấu hao',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationAndUsingDepreciatingQuantity'],
+                rate: data['inOperationAndUsingDepreciatingQuantityRatio'],
+                unit: "Tài sản"
+            },
+            {
+                title: 'Tổng giá trị nguyên giá của các tài sản đang được vận hành và được sử dụng, có tính khấu hao',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationAndUsingDepreciatingOriginalAmount'],
+                rate: data['inOperationAndUsingDepreciatingOriginalAmountRatio'],
+                unit: "VNĐ"
+            },
+            {
+                title: 'Tổng giá trị trích cho khấu hao của các tài sản đang được vận hành và được sử dụng, có tính khấu hao',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['CurrentInOperationAndUsingDepreciatingAmount'],
+                rate: data['InOperationAndUsingDepreciatingAmountRatio'],
+                unit: "VNĐ"
+            },
+            {
+                title: 'Tổng số lượng tài sản đang được vận hành và được sử dụng, không tính khấu hao',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationAndUsingNotDepreciatingQuantity'],
+                rate: data['inOperationAndUsingNotDepreciatingQuantityRatio'],
+                unit: "Tài sản"
+            },
+            {
+                title: 'Tổng giá trị nguyên giá của các tài sản đang được vận hành và được sử dụng, không tính khấu hao',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationAndUsingNotDepreciatingOriginalAmount'],
+                rate: data['inOperationAndUsingNotDepreciatingOriginalAmountRatio'],
+                unit: "VNĐ"
+            },
+            {
+                title: 'Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationButNotUsingQuantity'],
+                rate: data['inOperationButNotUsingQuantityRatio'],
+                unit: "Tài sản"
+            },
+            {
+                title: 'Tổng giá trị nguyên giá của các tài sản đang được vận hành nhưng không được sử dụng',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationAndNotUsingOriginalAmount'],
+                rate: data['inOperationAndNotUsingOriginalAmountRatio'],
+                unit: "VNĐ"
+            },
+            {
+                title: 'Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng, có tính khấu hao',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationButNotUsingDepreciatingQuantity'],
+                rate: data['inOperationButNotUsingDepreciatingQuantityRatio'],
+                unit: "Tài sản"
+            },
+            {
+                title: 'Tổng giá trị nguyên giá của các tài sản đang được vận hành nhưng không được sử dụng, có tính khấu hao',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationAndNotUsingDepreciatingOriginalAmount'],
+                rate: data['inOperationAndNotUsingDepreciatingOriginalAmountRatio'],
+                unit: "VN"
+            },
+            {
+                title: 'Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng, không tính khấu hao',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationButNotUsingNotDepreciatingQuantity'],
+                rate: data['inOperationButNotUsingNotDepreciatingQuantityRatio'],
+                unit: "Tài sản"
+            },
+            {
+                title: 'Tổng giá trị nguyên giá của các tài sản đang được vận hành nhưng không được sử dụng, không tính khấu hao',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationAndNotUsingNotDepreciatingOriginalAmount'],
+                rate: data['inOperationAndNotUsingNotDepreciatingOriginalAmountRatio'],
+                unit: "VNĐ"
+            },
+            {
+                title: 'Tổng giá trị trích cho khấu hao của các tài sản đang được vận hành nhưng không được sử dụng, có tính khấu hao',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentInOperationAndNotUsingDepreciatingAmount'],
+                rate: data['inOperationAndNotUsingDepreciatingAmountRatio'],
+                unit: "VNĐ"
             }
         ];
     }
@@ -386,8 +570,8 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
         }
 
         this.section1Labels = labels;
-        this.section1Data = [{ data: temp, label: 'Số vốn đã đầu tư (VNĐ)' }];
-        this.section1YAxeLabel = 'Số vốn đã đầu tư (VNĐ)';
+        this.section1Data = [{ data: temp, label: 'Giá trị đã đầu tư (VNĐ)' }];
+        this.section1YAxeLabel = 'Giá trị đã đầu tư (VNĐ)';
     }
 
     loadTotalInvestedAmountChartInPercentage() {
@@ -428,8 +612,8 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
         }
 
         this.section1Labels = labels;
-        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng số vốn đã đầu tư (%)' }];
-        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng số vốn đã đầu tư (%)';
+        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng giá trị đã đầu tư (%)' }];
+        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng giá trị đã đầu tư (%)';
     }
 
     loadTotalInvestedAmountChartWithComparison() {
@@ -529,10 +713,10 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
 
         this.section1Labels = labels;
         this.section1Data = data;
-        this.section1YAxeLabel = 'Số vốn đã đầu tư (VNĐ)';
+        this.section1YAxeLabel = 'Giá trị đã đầu tư (VNĐ)';
     }
 
-    loadTotalPurchasedAssetsChartInOriginalValue() {
+    loadTotalOperatingAssetsChartInOriginalValue() {
         let labels = [];
         let processedData = [];
 
@@ -563,11 +747,11 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
         }
 
         this.section1Labels = labels;
-        this.section1Data = [{ data: temp, label: 'Số lượng tài sản đã mua (Tài sản)' }];
-        this.section1YAxeLabel = 'Số lượng tài sản đã mua (Tài sản)';
+        this.section1Data = [{ data: temp, label: 'Số lượng tài sản đang vận hành (Tài sản)' }];
+        this.section1YAxeLabel = 'Số lượng tài sản đang vận hành (Tài sản)';
     }
 
-    loadTotalPurchasedAssetsChartInPercentage() {
+    loadTotalOperatingAssetsChartInPercentage() {
         let labels = [];
         let processedData = [];
 
@@ -605,11 +789,11 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
         }
 
         this.section1Labels = labels;
-        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng số lượng tài sản đã mua (%)';
-        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng số lượng tài sản đã mua (%)' }];
+        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng số lượng tài sản đang vận hành (%)';
+        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng số lượng tài sản đang vận hành (%)' }];
     }
 
-    loadTotalPurchasedAssetsChartWithComparison() {
+    loadTotalOperatingAssetsChartWithComparison() {
         let processedData1 = [];
         let processedData2 = [];
         let labels = [];
@@ -706,7 +890,7 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
 
         this.section1Labels = labels;
         this.section1Data = data;
-        this.section1YAxeLabel = 'Số lượng tài sản đã mua (Tài sản)';
+        this.section1YAxeLabel = 'Số lượng tài sản đang vận hành (Tài sản)';
     }
 
     onPrint() {

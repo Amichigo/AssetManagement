@@ -4,7 +4,7 @@ import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.compo
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
 import { PurchasedAssetsComponent } from './asset-investment-efficiency/pages/purchased-assets/purchased-assets.component';
-import { SoleAssetsComponent } from './asset-investment-efficiency/pages/sole-assets/sole-assets.component';
+import { SoldAssetsComponent } from './asset-investment-efficiency/pages/sold-assets/sold-assets.component';
 import { MaintainedAssetsComponent } from './asset-investment-efficiency/pages/maintained-assets/maintained-assets.component';
 import { PlannedToSellAssetsComponent } from './asset-investment-efficiency/pages/planned-to-sell-assets/planned-to-sell-assets.component';
 import { OperatingAssetsComponent } from './asset-investment-efficiency/pages/operating-assets/operating-assets.component';
@@ -46,7 +46,7 @@ import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/
                 children: [
                     {
                         path: 'asset-investment-efficiency/purchased-assets', component: PurchasedAssetsComponent,
-                        data: { permission: ''}
+                        data: { permission: 'Pages.Administration.PurchasedAsset'}
                     }
                 ]
             },
@@ -54,8 +54,8 @@ import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/
                 path: '',
                 children: [
                     {
-                        path: 'asset-investment-efficiency/sole-assets', component: SoleAssetsComponent,
-                        data: { permission: ''}
+                        path: 'asset-investment-efficiency/sold-assets', component: SoldAssetsComponent,
+                        data: { permission: 'Pages.Administration.SoldAsset'}
                     }
                 ]
             },
@@ -64,7 +64,7 @@ import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/
                 children: [
                     {
                         path: 'asset-investment-efficiency/maintained-assets', component: MaintainedAssetsComponent,
-                        data: { permission: ''}
+                        data: { permission: 'Pages.Administration.MaintainedAsset'}
                     }
                 ]
             },
@@ -73,7 +73,7 @@ import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/
                 children: [
                     {
                         path: 'asset-investment-efficiency/planned-to-sell-assets', component: PlannedToSellAssetsComponent,
-                        data: { permission: ''}
+                        data: { permission: 'Pages.Administration.PlannedToSellAsset'}
                     }
                 ]
             },
@@ -82,7 +82,7 @@ import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/
                 children: [
                     {
                         path: 'asset-investment-efficiency/operating-assets', component: OperatingAssetsComponent,
-                        data: { permission: ''}
+                        data: { permission: 'Pages.Administration.OperatingAsset'}
                     }
                 ]
             },
@@ -91,7 +91,7 @@ import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/
                 children: [
                     {
                         path: 'asset-investment-efficiency/planned-to-purchase-assets', component: PlannedToPurchaseAssetsComponent,
-                        data: { permission: ''}
+                        data: { permission: 'Pages.Administration.PlannedToPurchaseAsset'}
                     }
                 ]
             },
@@ -100,7 +100,7 @@ import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/
                 children: [
                     {
                         path: 'asset-investment-efficiency/planned-to-maintain-assets', component: PlannedToMaintainAssetsComponent,
-                        data: { permission: ''}
+                        data: { permission: 'Pages.Administration.PlannedToMaintainAsset'}
                     }
                 ]
             }

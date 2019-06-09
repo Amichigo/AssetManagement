@@ -6,14 +6,14 @@ import moment from 'moment';
 import { isDateBetween, groupBy } from '../../utils';
 import { HttpClient } from '@angular/common/http';
 
-const BASE_API_URL = 'http://localhost:5000/api/PurchasedAsset';
+const BASE_API_URL = 'http://localhost:5000/api/PlannedToSellAsset';
 
 @Component({
-    templateUrl: './purchased-assets.component.html',
-    styleUrls: ['./purchased-assets.component.css'],
+    templateUrl: './planned-to-sell-assets.component.html',
+    styleUrls: ['./planned-to-sell-assets.component.css'],
     animations: [appModuleAnimation()]
 })
-export class PurchasedAssetsComponent extends AppComponentBase implements OnInit {
+export class PlannedToSellAssetsComponent extends AppComponentBase implements OnInit {
     private statisticsPeriod = 0;
     private startingDate = moment().format('YYYY-MM-DD');
     private endingDate = moment().format('YYYY-MM-DD');
@@ -23,14 +23,14 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
     private generalStatisticsData = [];
     private detailedData = [];
 
-    private section1Tabs = ['Số vốn đã đầu tư', 'Số lượng tài sản đã mua'];
+    private section1Tabs = ['Số vốn dự kiến thu về', 'Số lượng tài sản dự kiến thanh lý'];
     private section1Data = [];
     private section1Labels = [];
     private section1XAxeLabel = 'Thời gian (Ngày/ Tháng/ Năm)';
     private section1YAxeLabel = '';
     private section1Legend = true;
 
-    private section2Tabs = ['Số vốn đã đầu tư', 'Số lượng tài sản đã mua'];
+    private section2Tabs = ['Số vốn dự kiến thu về', 'Số lượng tài sản dự kiến thanh lý'];
     private section2Data = [];
     private section2Labels = [];
     private section2Legend = true;
@@ -132,17 +132,17 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
                     case 0:
                         switch (valueType) {
                             case 0:
-                                this.loadTotalPurchasedAssetsChartInOriginalValue();
+                                this.loadTotalPlannedToSellAssetsChartInOriginalValue();
                                 break;
 
                             case 1:
-                                this.loadTotalPurchasedAssetsChartInPercentage();
+                                this.loadTotalPlannedToSellAssetsChartInPercentage();
                                 break;
                         }
                         break;
 
                     case 1:
-                        this.loadTotalPurchasedAssetsChartWithComparison();
+                        this.loadTotalPlannedToSellAssetsChartWithComparison();
                         break;
                 }
                 break;
@@ -168,18 +168,18 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
             case 1:
                 switch (valueType) {
                     case 0:
-                        this.loadPurchasedAssetsByTypesInOriginalValue();
+                        this.loadPlannedToSellAssetsByTypesInOriginalValue();
                         break;
 
                     case 1:
-                        this.loadPurchasedAssetsByTypesInPercentage();
+                        this.loadPlannedToSellAssetsByTypesInPercentage();
                         break;
                 }
                 break;
         }
     }
 
-    loadPurchasedAssetsByTypesInPercentage() {
+    loadPlannedToSellAssetsByTypesInPercentage() {
         let labels = [];
         let processedData = [];
 
@@ -220,7 +220,7 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
          this.section2Data = temp;
     }
 
-    loadPurchasedAssetsByTypesInOriginalValue() {
+    loadPlannedToSellAssetsByTypesInOriginalValue() {
         let labels = [];
         let processedData = [];
         let abc = [];
@@ -333,7 +333,7 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
     loadGeneralStatisticsData(data) {
         this.generalStatisticsData = [
             {
-                title: "Tổng số vốn đã đầu tư",
+                title: "Tổng số vốn dự kiến thu về",
                 startingDate: this.startingDate,
                 endingDate: this.endingDate,
                 value: data['currentTotalAmount'],
@@ -341,7 +341,7 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
                 unit: "VNĐ"
             },
             {
-                title: 'Tổng số tài sản đã mua',
+                title: 'Tổng số tài sản dự kiến thanh lý',
                 startingDate: this.startingDate,
                 endingDate: this.endingDate,
                 value: data['currentTotalQuantity'],
@@ -386,8 +386,8 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
         }
 
         this.section1Labels = labels;
-        this.section1Data = [{ data: temp, label: 'Số vốn đã đầu tư (VNĐ)' }];
-        this.section1YAxeLabel = 'Số vốn đã đầu tư (VNĐ)';
+        this.section1Data = [{ data: temp, label: 'Số vốn dự kiến thu về (VNĐ)' }];
+        this.section1YAxeLabel = 'Số vốn dự kiến thu về (VNĐ)';
     }
 
     loadTotalInvestedAmountChartInPercentage() {
@@ -428,8 +428,8 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
         }
 
         this.section1Labels = labels;
-        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng số vốn đã đầu tư (%)' }];
-        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng số vốn đã đầu tư (%)';
+        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng số vốn dự kiến thu về (%)' }];
+        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng số vốn dự kiến thu về (%)';
     }
 
     loadTotalInvestedAmountChartWithComparison() {
@@ -529,10 +529,10 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
 
         this.section1Labels = labels;
         this.section1Data = data;
-        this.section1YAxeLabel = 'Số vốn đã đầu tư (VNĐ)';
+        this.section1YAxeLabel = 'Số vốn dự kiến thu về (VNĐ)';
     }
 
-    loadTotalPurchasedAssetsChartInOriginalValue() {
+    loadTotalPlannedToSellAssetsChartInOriginalValue() {
         let labels = [];
         let processedData = [];
 
@@ -563,11 +563,11 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
         }
 
         this.section1Labels = labels;
-        this.section1Data = [{ data: temp, label: 'Số lượng tài sản đã mua (Tài sản)' }];
-        this.section1YAxeLabel = 'Số lượng tài sản đã mua (Tài sản)';
+        this.section1Data = [{ data: temp, label: 'Số lượng tài sản dự kiến thanh lý (Tài sản)' }];
+        this.section1YAxeLabel = 'Số lượng tài sản dự kiến thanh lý (Tài sản)';
     }
 
-    loadTotalPurchasedAssetsChartInPercentage() {
+    loadTotalPlannedToSellAssetsChartInPercentage() {
         let labels = [];
         let processedData = [];
 
@@ -605,11 +605,11 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
         }
 
         this.section1Labels = labels;
-        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng số lượng tài sản đã mua (%)';
-        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng số lượng tài sản đã mua (%)' }];
+        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng số lượng tài sản dự kiến thanh lý (%)';
+        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng số lượng tài sản dự kiến thanh lý (%)' }];
     }
 
-    loadTotalPurchasedAssetsChartWithComparison() {
+    loadTotalPlannedToSellAssetsChartWithComparison() {
         let processedData1 = [];
         let processedData2 = [];
         let labels = [];
@@ -706,7 +706,7 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
 
         this.section1Labels = labels;
         this.section1Data = data;
-        this.section1YAxeLabel = 'Số lượng tài sản đã mua (Tài sản)';
+        this.section1YAxeLabel = 'Số lượng tài sản dự kiến thanh lý (Tài sản)';
     }
 
     onPrint() {

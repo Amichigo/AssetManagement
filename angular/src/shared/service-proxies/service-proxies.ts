@@ -20736,3 +20736,35 @@ function blobToText(blob: any): Observable<string> {
         }
     });
 }
+
+@Injectable()
+export class PurchasedAssetServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    getDetailedData(currentStartingDate, currentEndingDate, previousStartingDate, previousEndingDate): Observable<any> {
+        let url_ = this.baseUrl + "/api/PurchasedAssets/GetDetailedData?";
+
+        url_ += "CurrentStartingDate=" + encodeURIComponent("" + currentStartingDate) + "&";
+        url_ += "CurrentEndingDate=" + encodeURIComponent("" + currentEndingDate) + "&";
+        url_ += "PreviousEndingDate=" + encodeURIComponent("" + previousEndingDate) + "&";
+        url_ += "PreviousEndingDate=" + encodeURIComponent("" + previousEndingDate);
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_);
+    }
+}

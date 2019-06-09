@@ -6,14 +6,14 @@ import moment from 'moment';
 import { isDateBetween, groupBy } from '../../utils';
 import { HttpClient } from '@angular/common/http';
 
-const BASE_API_URL = 'http://localhost:5000/api/PurchasedAsset';
+const BASE_API_URL = 'http://localhost:5000/api/MaintainedAsset';
 
 @Component({
-    templateUrl: './purchased-assets.component.html',
-    styleUrls: ['./purchased-assets.component.css'],
+    templateUrl: './maintained-assets.component.html',
+    styleUrls: ['./maintained-assets.component.css'],
     animations: [appModuleAnimation()]
 })
-export class PurchasedAssetsComponent extends AppComponentBase implements OnInit {
+export class MaintainedAssetsComponent extends AppComponentBase implements OnInit {
     private statisticsPeriod = 0;
     private startingDate = moment().format('YYYY-MM-DD');
     private endingDate = moment().format('YYYY-MM-DD');
@@ -23,14 +23,14 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
     private generalStatisticsData = [];
     private detailedData = [];
 
-    private section1Tabs = ['Số vốn đã đầu tư', 'Số lượng tài sản đã mua'];
+    private section1Tabs = ['Số vốn đã đầu tư', 'Số lượng tài sản đã bảo trì'];
     private section1Data = [];
     private section1Labels = [];
     private section1XAxeLabel = 'Thời gian (Ngày/ Tháng/ Năm)';
     private section1YAxeLabel = '';
     private section1Legend = true;
 
-    private section2Tabs = ['Số vốn đã đầu tư', 'Số lượng tài sản đã mua'];
+    private section2Tabs = ['Số vốn đã đầu tư', 'Số lượng tài sản đã bảo trì'];
     private section2Data = [];
     private section2Labels = [];
     private section2Legend = true;
@@ -132,17 +132,17 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
                     case 0:
                         switch (valueType) {
                             case 0:
-                                this.loadTotalPurchasedAssetsChartInOriginalValue();
+                                this.loadTotalMaintainedAssetsChartInOriginalValue();
                                 break;
 
                             case 1:
-                                this.loadTotalPurchasedAssetsChartInPercentage();
+                                this.loadTotalMaintainedAssetsChartInPercentage();
                                 break;
                         }
                         break;
 
                     case 1:
-                        this.loadTotalPurchasedAssetsChartWithComparison();
+                        this.loadTotalMaintainedAssetsChartWithComparison();
                         break;
                 }
                 break;
@@ -168,18 +168,18 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
             case 1:
                 switch (valueType) {
                     case 0:
-                        this.loadPurchasedAssetsByTypesInOriginalValue();
+                        this.loadMaintainedAssetsByTypesInOriginalValue();
                         break;
 
                     case 1:
-                        this.loadPurchasedAssetsByTypesInPercentage();
+                        this.loadMaintainedAssetsByTypesInPercentage();
                         break;
                 }
                 break;
         }
     }
 
-    loadPurchasedAssetsByTypesInPercentage() {
+    loadMaintainedAssetsByTypesInPercentage() {
         let labels = [];
         let processedData = [];
 
@@ -220,7 +220,7 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
          this.section2Data = temp;
     }
 
-    loadPurchasedAssetsByTypesInOriginalValue() {
+    loadMaintainedAssetsByTypesInOriginalValue() {
         let labels = [];
         let processedData = [];
         let abc = [];
@@ -341,7 +341,7 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
                 unit: "VNĐ"
             },
             {
-                title: 'Tổng số tài sản đã mua',
+                title: 'Tổng số tài sản đã bảo trì',
                 startingDate: this.startingDate,
                 endingDate: this.endingDate,
                 value: data['currentTotalQuantity'],
@@ -532,7 +532,7 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
         this.section1YAxeLabel = 'Số vốn đã đầu tư (VNĐ)';
     }
 
-    loadTotalPurchasedAssetsChartInOriginalValue() {
+    loadTotalMaintainedAssetsChartInOriginalValue() {
         let labels = [];
         let processedData = [];
 
@@ -563,11 +563,11 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
         }
 
         this.section1Labels = labels;
-        this.section1Data = [{ data: temp, label: 'Số lượng tài sản đã mua (Tài sản)' }];
-        this.section1YAxeLabel = 'Số lượng tài sản đã mua (Tài sản)';
+        this.section1Data = [{ data: temp, label: 'Số lượng tài sản đã bảo trì (Tài sản)' }];
+        this.section1YAxeLabel = 'Số lượng tài sản đã bảo trì (Tài sản)';
     }
 
-    loadTotalPurchasedAssetsChartInPercentage() {
+    loadTotalMaintainedAssetsChartInPercentage() {
         let labels = [];
         let processedData = [];
 
@@ -605,11 +605,11 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
         }
 
         this.section1Labels = labels;
-        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng số lượng tài sản đã mua (%)';
-        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng số lượng tài sản đã mua (%)' }];
+        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng số lượng tài sản đã bảo trì (%)';
+        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng số lượng tài sản đã bảo trì (%)' }];
     }
 
-    loadTotalPurchasedAssetsChartWithComparison() {
+    loadTotalMaintainedAssetsChartWithComparison() {
         let processedData1 = [];
         let processedData2 = [];
         let labels = [];
@@ -706,7 +706,7 @@ export class PurchasedAssetsComponent extends AppComponentBase implements OnInit
 
         this.section1Labels = labels;
         this.section1Data = data;
-        this.section1YAxeLabel = 'Số lượng tài sản đã mua (Tài sản)';
+        this.section1YAxeLabel = 'Số lượng tài sản đã bảo trì (Tài sản)';
     }
 
     onPrint() {

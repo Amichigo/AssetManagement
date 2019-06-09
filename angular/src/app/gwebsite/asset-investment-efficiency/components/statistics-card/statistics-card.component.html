@@ -8,8 +8,8 @@
 
    <div class="statistics-card-body">
       <span class="statistics-card-value">{{ value ? addThousandSeparator(value) : 0 }}</span>
-         <span *ngIf="showComparison" [class]="tendency === 'up' ? 'statistics-card-offset--up' : 'statistics-card-offset--down'">
-            <i [class]="tendency === 'up' > 0 ? 'fas fa-caret-up' : 'fas fa-caret-down'"></i> {{ rate ? rate.toFixed(2) : 0 }}%
+         <span *ngIf="rate !== 0" [class]="rate > 0 ? 'statistics-card-offset--up' : 'statistics-card-offset--down'">
+            <i [class]="rate > 0 ? 'fas fa-caret-up' : 'fas fa-caret-down'"></i> {{ rate ? rate.toFixed(2) : 0 }}%
          </span>
    </div>
 

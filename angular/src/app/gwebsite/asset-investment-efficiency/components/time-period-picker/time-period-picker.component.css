@@ -6,3 +6,13 @@
     border-radius: 6px;
     margin-bottom: 24px;
 }
+
+label {
+    font-weight: bold;
+}
+
+@media print {
+    .time-period-picker {
+        display: none;
+    }
+}

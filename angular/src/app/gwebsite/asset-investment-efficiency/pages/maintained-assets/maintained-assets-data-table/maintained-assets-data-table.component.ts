@@ -4,11 +4,11 @@ import { isDateBetween, addThousandSeparator, sortBy } from '../../../utils';
 import { ExcelService } from '../../../utils/excel.service';
 
 @Component({
-    selector: 'app-purchased-assets-data-table',
-    templateUrl: './purchased-assets-data-table.component.html',
-    styleUrls: ['./purchased-assets-data-table.component.css']
+    selector: 'app-maintained-assets-data-table',
+    templateUrl: './maintained-assets-data-table.component.html',
+    styleUrls: ['./maintained-assets-data-table.component.css']
 })
-export class PurchasedAssetsDataTableComponent extends Component implements OnChanges {
+export class MaintainedAssetsDataTableComponent extends Component implements OnChanges {
    @Input() data;
    @Input() generalStatisticsData;
    @Input() timePeriodStartingDate;
@@ -150,7 +150,7 @@ export class PurchasedAssetsDataTableComponent extends Component implements OnCh
    }
 
    onExport() {
-      this.excelService.exportAsExcelFile(this.dataToExport, 'Thống kê mua tài sản');
+      this.excelService.exportAsExcelFile(this.dataToExport, 'Thống kê bảo trì tài sản');
    }
 
    onSort(sortField) {

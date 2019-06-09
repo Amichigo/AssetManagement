@@ -9,6 +9,33 @@
 
 .statistics-card-section-body {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
     grid-column-gap: 12px;
+}
+
+@media (max-width: 420px) {
+    .statistics-card-section-body {
+        grid-template-columns: 1fr !important;
+    }
+
+    .form-group {
+        margin-bottom: 6px;
+    }
+}
+
+@media (max-width: 823px) {
+    .statistics-card-section-body {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form-group {
+        margin-bottom: 6px;
+    }
+}
+
+@media print {
+    .statistics-card-section-body {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
 }

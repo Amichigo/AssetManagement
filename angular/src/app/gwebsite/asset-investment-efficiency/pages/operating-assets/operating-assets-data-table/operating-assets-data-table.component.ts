@@ -4,11 +4,11 @@ import { isDateBetween, addThousandSeparator, sortBy } from '../../../utils';
 import { ExcelService } from '../../../utils/excel.service';
 
 @Component({
-    selector: 'app-purchased-assets-data-table',
-    templateUrl: './purchased-assets-data-table.component.html',
-    styleUrls: ['./purchased-assets-data-table.component.css']
+    selector: 'app-operating-assets-data-table',
+    templateUrl: './operating-assets-data-table.component.html',
+    styleUrls: ['./operating-assets-data-table.component.css']
 })
-export class PurchasedAssetsDataTableComponent extends Component implements OnChanges {
+export class OperatingAssetsDataTableComponent extends Component implements OnChanges {
    @Input() data;
    @Input() generalStatisticsData;
    @Input() timePeriodStartingDate;
@@ -28,6 +28,8 @@ export class PurchasedAssetsDataTableComponent extends Component implements OnCh
    private addThousandSeparator = addThousandSeparator;
    private totalAmount;
    private totalQuantity;
+   private totalAmount1;
+   private totalQuantity1;
    private sortField = 'recordedDate';
    private sortValue = -1;
    private showDetailedPopup = false;
@@ -50,6 +52,8 @@ export class PurchasedAssetsDataTableComponent extends Component implements OnCh
       if (generalStatisticsData && generalStatisticsData.currentValue) {
          this.totalAmount = generalStatisticsData.currentValue[0] && generalStatisticsData.currentValue[0].value;
          this.totalQuantity = generalStatisticsData.currentValue[1] && generalStatisticsData.currentValue[1].value;
+         this.totalAmount = generalStatisticsData.currentValue[2] && generalStatisticsData.currentValue[2].value;
+         this.totalQuantity = generalStatisticsData.currentValue[3] && generalStatisticsData.currentValue[3].value;
       }
 
       if (timePeriod && timePeriod.currentValue !== timePeriod.previousValue) {
@@ -97,7 +101,11 @@ export class PurchasedAssetsDataTableComponent extends Component implements OnCh
          'Số lượng (Tài sản)': addThousandSeparator(record['quantity']),
          'Tỉ lệ % (Số lượng tài sản)': ((record['quantity'] / this.totalQuantity) * 100).toFixed(2),
          'Giá trị đầu tư (VNĐ)': addThousandSeparator(record['amount']),
-         'Tỉ lệ % (Giá trị đầu tư)': ((record['amount'] / this.totalAmount) * 100).toFixed(2)
+         'Tỉ lệ % (Giá trị đầu tư)': ((record['amount'] / this.totalAmount) * 100).toFixed(2),
+         'Số lượng đang được khấu hao': 1,
+         'Tỉ lệ % (Số lượng đang được khấu hao)': 1,
+         'Giá trị trích cho khấu hao (VNĐ)': 1,
+         'Tỉ lệ % (Giá trị trích cho khấu hao)': 1
       });
    }
 
@@ -150,7 +158,7 @@ export class PurchasedAssetsDataTableComponent extends Component implements OnCh
    }
 
    onExport() {
-      this.excelService.exportAsExcelFile(this.dataToExport, 'Thống kê mua tài sản');
+      this.excelService.exportAsExcelFile(this.dataToExport, 'Thống kê vận hành tài sản');
    }
 
    onSort(sortField) {

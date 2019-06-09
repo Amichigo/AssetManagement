@@ -133,9 +133,7 @@
                         <label>Tỉ lệ % so với tổng số lượng tài sản (%)</label>
                         <input class="form-control" type="text" [value]="((detailedRecord['quantity'] / totalQuantity) * 100).toFixed(2)" disabled />
                     </div>
-                </div>
 
-                <div class="col-md-6">
                     <div class="form-group">
                         <label>Giá trị đầu tư (VNĐ)</label>
                         <input class="form-control" type="text" [value]="addThousandSeparator(detailedRecord['amount'])" disabled />
@@ -144,6 +142,28 @@
                     <div class="form-group">
                         <label>Tỉ lệ % so với tổng giá trị đã đầu tư (%)</label>
                         <input class="form-control" type="text" [value]="((detailedRecord['amount'] / totalAmount) * 100).toFixed(2)" disabled />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Số lượng tài sản đang được khấu hao (Tài sản)</label>
+                        <input class="form-control" type="text" [value]="addThousandSeparator(detailedRecord['quantity'])" disabled />
+                    </div>
+        
+                    <div class="form-group">
+                        <label>Tỉ lệ % so với tổng số lượng tài sản đang được khấu hao (%)</label>
+                        <input class="form-control" type="text" [value]="((detailedRecord['quantity'] / totalQuantity1) * 100).toFixed(2)" disabled />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Giá trị trích cho khấu hao (VNĐ)</label>
+                        <input class="form-control" type="text" [value]="addThousandSeparator(detailedRecord['amount'])" disabled />
+                    </div>
+        
+                    <div class="form-group">
+                        <label>Tỉ lệ % so với tổng giá trị đã trích cho khấu hao (%)</label>
+                        <input class="form-control" type="text" [value]="((detailedRecord['amount'] / totalAmount1) * 100).toFixed(2)" disabled />
                     </div>
         
                     <div class="form-group">

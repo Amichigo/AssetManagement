@@ -8,9 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class StatisticsCardSectionComponent extends Component {
    @Input() title;
    @Input() data;
-   @Input() showComparison;
 
    constructor() {
-      super();
+      // super();
    }
 }

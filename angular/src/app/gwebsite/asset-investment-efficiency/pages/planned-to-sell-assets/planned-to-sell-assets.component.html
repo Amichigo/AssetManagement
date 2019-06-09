@@ -4,7 +4,7 @@
             <div class="d-flex align-items-center">
                 <div class="mr-auto col-xs-12">
                     <h3 class="m-subheader__title">
-                        <span>{{l("Quản lý giá trị đã đầu tư cho việc mua tài sản")}}</span>
+                        <span>{{l("Quản lý giá trị dự kiến thu về nhờ việc thanh lý tài sản")}}</span>
                     </h3>
                 </div>
 
@@ -46,13 +46,13 @@
             (update)="changeSection2($event)">
         </app-pie-chart-section>
 
-        <app-purchased-assets-data-table 
+        <app-planned-to-sell-assets-data-table 
             *ngIf="generalStatisticsData"
             [data]="detailedData"
             [generalStatisticsData]="generalStatisticsData"
             [timePeriodStartingDate]="startingDate"
             [timePeriodEndingDate]="endingDate"
             [timePeriod]="statisticsPeriod">
-        </app-purchased-assets-data-table>
+        </app-planned-to-sell-assets-data-table>
     </div>
 </div>
