@@ -1,4 +1,4 @@
-import { ViewAssetModalComponent } from "./view-asset-modal.component";
+import { ViewAsset_8ModalComponent } from "./view-asset_8-modal.component";
 import {
     AfterViewInit,
     Component,
@@ -15,15 +15,15 @@ import { LazyLoadEvent } from "primeng/components/common/lazyloadevent";
 import { Paginator } from "primeng/components/paginator/paginator";
 import { Table } from "primeng/components/table/table";
 import { Asset_8ServiceProxy } from "@shared/service-proxies/service-proxies";
-import { CreateOrEditAssetModalComponent } from "./create-or-edit-asset-modal.component";
+import { CreateOrEditAsset_8ModalComponent } from "./create-or-edit-asset_8-modal.component";
 import { ModalDirective } from "ngx-bootstrap";
 
 @Component({
-    templateUrl: "./asset.component.html",
-    selector: "AssetModal",
+    templateUrl: "./asset_8.component.html",
+    selector: "Asset_8Modal",
     animations: [appModuleAnimation()]
 })
-export class AssetComponent extends AppComponentBase
+export class Asset_8Component extends AppComponentBase
     implements AfterViewInit, OnInit {
     /**
      * @ViewChild là dùng get control và call thuộc tính, functions của control đó
@@ -31,8 +31,8 @@ export class AssetComponent extends AppComponentBase
     @ViewChild("dataTable") dataTable: Table;
     @ViewChild("paginator") paginator: Paginator;
     @ViewChild("createOrEditModal")
-    createOrEditModal: CreateOrEditAssetModalComponent;
-    @ViewChild("viewAssetModal") viewAssetModal: ViewAssetModalComponent;
+    createOrEditModal: CreateOrEditAsset_8ModalComponent;
+    @ViewChild("viewAssetModal") viewAssetModal: ViewAsset_8ModalComponent;
     @ViewChild("AssetModal") modal: ModalDirective;
     /**
      * tạo các biến dể filters

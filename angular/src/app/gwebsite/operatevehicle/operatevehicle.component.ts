@@ -93,6 +93,7 @@ export class OperateVehicleComponent extends AppComponentBase
             .getOperateVehiclesByFilter(
                 operatevehicleName,
                 number,
+                null,
                 this.primengTableHelper.getSorting(this.dataTable),
                 this.primengTableHelper.getMaxResultCount(
                     this.paginator,

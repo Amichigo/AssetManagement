@@ -12,6 +12,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.OperateVehicles.Dto
     public class OperateVehicleFilter : PagedAndSortedInputDto
     {
         public string NgayVanHanh { get; set; }
+        public string MaVanHanh { get; set; }
         public string Number { get; set; }
     }
 }

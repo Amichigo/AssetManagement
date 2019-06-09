@@ -21,5 +21,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Vehicles.Dto
         public string HostName { get; set; }
         public string NameEngine { get; set; }
         public string IdModel { get; set; }
+        public string SoKmDaDi { get; set; }
+        public string DinhMucNhienLieu { get; set; }
     }
 }

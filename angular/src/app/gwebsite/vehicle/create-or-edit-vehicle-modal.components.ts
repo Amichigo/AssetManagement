@@ -19,7 +19,7 @@ import {
 } from "@shared/service-proxies/service-proxies";
 import { ActivatedRoute, Router } from "@angular/router";
 import { WebApiServiceProxy } from "@shared/service-proxies/webapi.service";
-import { SelectAssetModalComponent } from "../asset/select-asset-modal.component";
+import { SelectAsset_8ModalComponent } from "../asset_8/select-asset_8-modal.component";
 import { nextTick } from "q";
 import { Asset_8ServiceProxy } from "@shared/service-proxies/service-proxies";
 
@@ -34,7 +34,8 @@ export class CreateOrEditVehicleModalComponent extends AppComponentBase {
     @ViewChild("dateInput") dateInput: ElementRef;
     @ViewChild("TypeVehicleCombobox") TypeVehicleCombobox: ElementRef;
     @ViewChild("ModelVehicleCombobox") ModelVehicleCombobox: ElementRef;
-    @ViewChild("selectAssetModal") selectAssetModal: SelectAssetModalComponent;
+    @ViewChild("selectAsset_8Modal")
+    selectAsset_8Modal: SelectAsset_8ModalComponent;
     /**
      * @Output dùng để public event cho component khác xử lý
      */
@@ -130,7 +131,7 @@ export class CreateOrEditVehicleModalComponent extends AppComponentBase {
 
     showTaiSan(): void {
         console.log("Mo tai san");
-        this.selectAssetModal.show();
+        this.selectAsset_8Modal.show();
     }
     save(): void {
         let input = this.vehicle;
@@ -143,8 +144,8 @@ export class CreateOrEditVehicleModalComponent extends AppComponentBase {
             });
     }
     updateAsset(): void {
-        if (this.selectAssetModal.selectedMaTS != -1) {
-            this.selectedAsset = this.selectAssetModal.selectedMaTS;
+        if (this.selectAsset_8Modal.selectedMaTS != -1) {
+            this.selectedAsset = this.selectAsset_8Modal.selectedMaTS;
             this._apiService
                 .getForEdit("api/Asset_8/GetAsset_8ForView", this.selectedAsset)
                 .subscribe(result => {

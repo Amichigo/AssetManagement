@@ -1,9 +1,14 @@
-import { CustomerServiceProxy } from "./../../shared/service-proxies/service-proxies";
+import {
+    CustomerServiceProxy,
+    InsurranceServiceProxy,
+    InsurranceTypeServiceProxy
+} from "./../../shared/service-proxies/service-proxies";
 import { VehicleServiceProxy } from "./../../shared/service-proxies/service-proxies";
 import { TypeVehicleServiceProxy } from "./../../shared/service-proxies/service-proxies";
 import { BrandVehicleServiceProxy } from "./../../shared/service-proxies/service-proxies";
 import { ModelVehicleServiceProxy } from "./../../shared/service-proxies/service-proxies";
 import { OperateVehicleServiceProxy } from "./../../shared/service-proxies/service-proxies";
+import { RoadFeeVehicleServiceProxy } from "./../../shared/service-proxies/service-proxies";
 import { Asset_8ServiceProxy } from "./../../shared/service-proxies/service-proxies";
 import { ViewDemoModelModalComponent } from "./demo-model/view-demo-model-modal.component";
 import { NgModule } from "@angular/core";
@@ -51,10 +56,10 @@ import { TypeVehicleComponent } from "./typevehicle/typevehicle.component";
 import { ViewTypeVehicleModalComponent } from "./typevehicle/view-typevehicle-modal.componenent";
 import { CreateOrEditTypeVehicleModalComponent } from "./typevehicle/create-or-edit-typevehicle-modal.components";
 
-import { AssetComponent } from "./asset/asset.component";
-import { ViewAssetModalComponent } from "./asset/view-asset-modal.component";
-import { CreateOrEditAssetModalComponent } from "./asset/create-or-edit-asset-modal.component";
-import { SelectAssetModalComponent } from "./asset/select-asset-modal.component";
+import { Asset_8Component } from "./asset_8/asset_8.component";
+import { ViewAsset_8ModalComponent } from "./asset_8/view-asset_8-modal.component";
+import { CreateOrEditAsset_8ModalComponent } from "./asset_8/create-or-edit-asset_8-modal.component";
+import { SelectAsset_8ModalComponent } from "./asset_8/select-asset_8-modal.component";
 
 import { BrandVehicleComponent } from "./brandvehicle/brandvehicle.component";
 import { ViewBrandVehicleModalComponent } from "./brandvehicle/view-brandvehicle-modal.component";
@@ -63,7 +68,16 @@ import { CreateOrEditBrandVehicleModalComponent } from "./brandvehicle/create-or
 import { OperateVehicleComponent } from "./operatevehicle/operatevehicle.component";
 import { ViewOperateVehicleModalComponent } from "./operatevehicle/view-operatevehicle-modal.component";
 import { CreateOrEditOperateVehicleModalComponent } from "./operatevehicle/create-or-edit-operatevehicle-modal.component";
+import { RoadFeeVehicleComponent } from "./roadfeevehicle/roadfeevehicle.component";
+import { ViewRoadFeeVehicleModalComponent } from "./roadfeevehicle/view-roadfeevehicle-modal.component";
+import { CreateOrEditRoadFeeVehicleModalComponent } from "./roadfeevehicle/create-or-edit-roadfeevehicle-modal.component";
 import { SelectVehicleModalComponent } from "./vehicle/select-vehicle-modal.component";
+import { InsurranceComponent } from "./insurrance/insurrance.component";
+import { ViewInsurranceModalComponent } from "./insurrance/view-insurrance-modal.component";
+import { CreateOrEditInsurranceModalComponent } from "./insurrance/create-or-edit-insurrance-modal.component";
+import { InsurranceTypeComponent } from "./insurrancetype/insurrancetype.component";
+import { ViewInsurranceTypeModalComponent } from "./insurrancetype/view-insurrancetype-modal.component";
+import { CreateOrEditInsurranceTypeModalComponent } from "./insurrancetype/create-or-edit-insurrancetype-modal.component";
 @NgModule({
     imports: [
         FormsModule,
@@ -98,10 +112,10 @@ import { SelectVehicleModalComponent } from "./vehicle/select-vehicle-modal.comp
         TypeVehicleComponent,
         CreateOrEditTypeVehicleModalComponent,
         ViewTypeVehicleModalComponent,
-        AssetComponent,
-        CreateOrEditAssetModalComponent,
-        ViewAssetModalComponent,
-        SelectAssetModalComponent,
+        Asset_8Component,
+        CreateOrEditAsset_8ModalComponent,
+        ViewAsset_8ModalComponent,
+        SelectAsset_8ModalComponent,
         BrandVehicleComponent,
         CreateOrEditBrandVehicleModalComponent,
         ViewBrandVehicleModalComponent,
@@ -111,7 +125,16 @@ import { SelectVehicleModalComponent } from "./vehicle/select-vehicle-modal.comp
         OperateVehicleComponent,
         CreateOrEditOperateVehicleModalComponent,
         ViewOperateVehicleModalComponent,
-        SelectVehicleModalComponent
+        RoadFeeVehicleComponent,
+        CreateOrEditRoadFeeVehicleModalComponent,
+        ViewRoadFeeVehicleModalComponent,
+        SelectVehicleModalComponent,
+        InsurranceComponent,
+        CreateOrEditInsurranceModalComponent,
+        ViewInsurranceModalComponent,
+        InsurranceTypeComponent,
+        CreateOrEditInsurranceTypeModalComponent,
+        ViewInsurranceTypeModalComponent
     ],
     providers: [
         DemoModelServiceProxy,
@@ -121,7 +144,10 @@ import { SelectVehicleModalComponent } from "./vehicle/select-vehicle-modal.comp
         Asset_8ServiceProxy,
         BrandVehicleServiceProxy,
         ModelVehicleServiceProxy,
-        OperateVehicleServiceProxy
+        OperateVehicleServiceProxy,
+        RoadFeeVehicleServiceProxy,
+        InsurranceServiceProxy,
+        InsurranceTypeServiceProxy
     ]
 })
 export class GWebsiteModule {}

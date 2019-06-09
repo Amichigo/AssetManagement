@@ -21,7 +21,7 @@ import {
 } from "@shared/service-proxies/service-proxies";
 import { VehicleServiceProxy } from "@shared/service-proxies/service-proxies";
 import { CreateOrEditVehicleModalComponent } from "./create-or-edit-vehicle-modal.components";
-import { SelectAssetModalComponent } from "../asset/select-asset-modal.component";
+import { SelectAsset_8ModalComponent } from "../asset_8/select-asset_8-modal.component";
 import { WebApiServiceProxy } from "@shared/service-proxies/webapi.service";
 import { Asset_8ServiceProxy } from "@shared/service-proxies/service-proxies";
 @Component({
@@ -39,7 +39,8 @@ export class VehicleComponent extends AppComponentBase
     createOrEditModal: CreateOrEditVehicleModalComponent;
     @ViewChild("viewVehicleModal") viewVehicleModal: ViewVehicleModalComponent;
     // gọi modal select ra để hiển thị trong component vehicle;
-    @ViewChild("selectAssetModal") selectAssetModal: SelectAssetModalComponent;
+    @ViewChild("selectAsset_8Modal")
+    selectAsset_8Modal: SelectAsset_8ModalComponent;
     /**
      * tạo các biến dể filters
      */
@@ -87,13 +88,14 @@ export class VehicleComponent extends AppComponentBase
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-        this.reloadList(null, event);
+        this.reloadList(null, null, event);
     }
 
-    reloadList(vehicleName, event?: LazyLoadEvent) {
+    reloadList(vehicleName, mataisanName, event?: LazyLoadEvent) {
         this._vehicleService
             .getVehiclesByFilter(
                 vehicleName,
+                mataisanName,
                 this.primengTableHelper.getSorting(this.dataTable),
                 this.primengTableHelper.getMaxResultCount(
                     this.paginator,
@@ -118,7 +120,8 @@ export class VehicleComponent extends AppComponentBase
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
             this.vehicleName = params["name"] || "";
-            this.reloadList(this.vehicleName, null);
+            this.mataisanName = "";
+            this.reloadList(this.vehicleName, this.mataisanName, null);
         });
     }
 
@@ -128,7 +131,7 @@ export class VehicleComponent extends AppComponentBase
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.vehicleName, null);
+        this.reloadList(this.vehicleName, this.mataisanName, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);
@@ -143,13 +146,14 @@ export class VehicleComponent extends AppComponentBase
 
     //Lấy ra thông tin tài sản ứng với id tài sản vừa chọn
     updateAsset(): void {
-        if (this.selectAssetModal.selectedMaTS != -1) {
-            this.selectedAsset = this.selectAssetModal.selectedMaTS;
+        if (this.selectAsset_8Modal.selectedMaTS != -1) {
+            this.selectedAsset = this.selectAsset_8Modal.selectedMaTS;
             this._apiService
                 .getForEdit("api/Asset_8/GetAsset_8ForView", this.selectedAsset)
                 .subscribe(result => {
                     // this.mataisanName = result.maTaiSan;
                     this.taisan = result; //ghi vậy ngắn hơn
+                    this.mataisanName = this.taisan.maTaiSan;
                 });
         }
     }
@@ -157,7 +161,7 @@ export class VehicleComponent extends AppComponentBase
     // hiển thị  modal select lên cái màn hình vehicle
     // gọi nó trong button, khi button click gọi vào hàm này,
     showTaiSan(): void {
-        this.selectAssetModal.show();
+        this.selectAsset_8Modal.show();
     }
     /**
      * Tạo pipe thay vì tạo từng hàm truncate như thế này

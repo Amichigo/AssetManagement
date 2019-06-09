@@ -1,7 +1,7 @@
 import {
     CustomerForViewDto,
     Asset_8ServiceProxy
-} from "./../../../shared/service-proxies/service-proxies";
+} from "../../../shared/service-proxies/service-proxies";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import {
     AfterViewInit,
@@ -19,10 +19,10 @@ import { Paginator } from "primeng/components/paginator/paginator";
 import { ActivatedRoute, Params } from "@angular/router";
 
 @Component({
-    selector: "selectAssetModal",
-    templateUrl: "./select-asset-modal.component.html"
+    selector: "selectAsset_8Modal",
+    templateUrl: "./select-asset_8-modal.component.html"
 })
-export class SelectAssetModalComponent extends AppComponentBase {
+export class SelectAsset_8ModalComponent extends AppComponentBase {
     customer: CustomerForViewDto = new CustomerForViewDto();
     @ViewChild("viewModal") modal: ModalDirective;
     @ViewChild("dataTable") dataTable: Table;

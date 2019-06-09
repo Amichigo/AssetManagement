@@ -12,6 +12,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Vehicles.Dto
    public  class VehicleFilter : PagedAndSortedInputDto
     {
         public string Name { get; set; }
-    
+        public string MaTaiSan { set; get; }
+
     }
 }

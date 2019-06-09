@@ -31,11 +31,11 @@ export class SelectVehicleModalComponent extends AppComponentBase {
     }
 
     vehicleName: string;
+    mataisan: string;
     public selectedMaXe: number;
 
     // Output sự kiện cho component khác xử lý, khi cái modol này lưu, thì biến modalSave sẽ thay đổi
 
-    //@Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
     show(customerId?: number | null | undefined): void {
@@ -46,7 +46,8 @@ export class SelectVehicleModalComponent extends AppComponentBase {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
             this.vehicleName = params["Name"] || "";
-            this.reloadList(this.vehicleName, null);
+            this.mataisan = "";
+            this.reloadList(this.vehicleName, this.mataisan, null);
         });
         this.selectedMaXe = -1;
         this.modal.show();
@@ -73,17 +74,18 @@ export class SelectVehicleModalComponent extends AppComponentBase {
         //show loading trong gridview
         this.primengTableHelper.showLoadingIndicator();
 
-        /** 
+        /**
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-        this.reloadList(null, event);
+        this.reloadList(null, null, event);
     }
 
-    reloadList(vehicleName, event?: LazyLoadEvent) {
+    reloadList(vehicleName, taisanName, event?: LazyLoadEvent) {
         this._vehicleService
             .getVehiclesByFilter(
                 vehicleName,
+                taisanName,
                 this.primengTableHelper.getSorting(this.dataTable),
                 this.primengTableHelper.getMaxResultCount(
                     this.paginator,
@@ -100,7 +102,7 @@ export class SelectVehicleModalComponent extends AppComponentBase {
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.vehicleName, null);
+        this.reloadList(this.vehicleName, this.mataisan, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);

@@ -43,6 +43,27 @@
                             <validation-messages [formCtrl]="tenxeInput"></validation-messages>
                         </div>
 
+                        <div class="row m--margin-bottom-10">
+                            <div class="col-xl-6">
+                                <label>Model *</label>
+                                <input #dinhmucInput="ngModel" class="form-control" type="text" name="dinhMucNhienLieu"
+                                    [(ngModel)]="xe.dinhMucNhienLieu" required disabled maxlength="64" />
+                                <validation-messages [formCtrl]="dinhmucInput"></validation-messages>
+                            </div>
+                            <div class="col-xl-6">
+                                <label>Số Km Đã đi *</label>
+                                <input #loaitsInput="ngModel" class="form-control" type="number" name="maLoaiTaiSan"
+                                    [(ngModel)]="xe.soKmDaDi" required disabled maxlength="64" />
+                                <validation-messages [formCtrl]="loaitsInput"></validation-messages>
+                            </div>
+                        </div>
+
+                        <span class="input-group-btn">
+                            <button (click)="applyFilters()" class="btn btn-primary" type="submit">
+                                <i class="icon-refresh"></i>
+                                {{ l("Refresh") }}
+                            </button>
+                        </span>
 
                         <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
                             <p-table #dataTable (onLazyLoad)="getOperateVehicles($event)"

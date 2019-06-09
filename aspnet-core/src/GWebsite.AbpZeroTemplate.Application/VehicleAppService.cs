@@ -12,7 +12,7 @@ using System.Linq.Dynamic.Core;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Vehicles
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_Vehicle)]
     public class VehicleAppService : GWebsiteAppServiceBase, IVehicleAppService
     {
         private readonly IRepository<Vehicle> vehicleRepository;
@@ -49,8 +49,11 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vehicles
             var vehicleEntity = vehicleRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (vehicleEntity != null)
             {
+                var taiSanEntity = assetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.IdVehicle == vehicleEntity.IdVehicle);
+                taiSanEntity.IdVehicle = null;
                 vehicleEntity.IsDelete = true;
                 vehicleRepository.Update(vehicleEntity);
+                assetRepository.Update(taiSanEntity);
                 CurrentUnitOfWork.SaveChanges();
             }
         }
@@ -68,6 +71,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vehicles
         public VehicleForViewDto GetVehicleForView(int id)
         {
             var vehicleEntity = vehicleRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+
             if (vehicleEntity == null)
             {
                 return null;
@@ -85,16 +89,8 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vehicles
                 query = query.Where(x => x.Name.ToLower().Contains(input.Name.ToLower()));
             }
 
-            var totalCount = query.Count();
+    
 
-            // sorting
-            if (!string.IsNullOrWhiteSpace(input.Sorting))
-            {
-                query = query.OrderBy(input.Sorting);
-            }
-
-            // paging
-            var items = query.PageBy(input).ToList();
 
             var listVehicle = from vh in query
                               join ts in tsquery
@@ -115,9 +111,27 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vehicles
                                   Name = vh.Name,
                                   NameEngine = vh.NameEngine,
                                   Number = vh.Number,
-                                  Price = vh.Price
+                                  Price = vh.Price,
+                                  SoKmDaDi=vh.SoKmDaDi,
+                                  DinhMucNhienLieu=vh.DinhMucNhienLieu
 
                               };
+
+            if (input.MaTaiSan != null)
+            {
+                listVehicle = listVehicle.Where(x => x.MaTaiSan.ToLower().Contains(input.MaTaiSan.ToLower()));
+            }
+            var totalCount = listVehicle.Count();
+
+            // sorting
+            if (!string.IsNullOrWhiteSpace(input.Sorting))
+            {
+                listVehicle = listVehicle.OrderBy(input.Sorting);
+            }
+
+            // paging
+            var items = listVehicle.PageBy(input).ToList();
+
             // result
             return new PagedResultDto<VehicleDto>(
                 totalCount,
@@ -150,7 +164,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vehicles
            // CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Vehicle_Create)]
         private void UpdateTaiSan(int selectedTS,string maVehicle)
         {
             var taiSanEntity = assetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == selectedTS);

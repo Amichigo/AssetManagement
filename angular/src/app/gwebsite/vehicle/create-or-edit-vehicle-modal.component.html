@@ -53,10 +53,16 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Giá *</label>
-                        <input #priceInput="ngModel" class="form-control" type="number" name="Price"
-                            [(ngModel)]="vehicle.price" required maxlength="64" />
-                        <validation-messages [formCtrl]="priceInput"></validation-messages>
+                        <label>Số Km Đã đi *</label>
+                        <input #sokmInput="ngModel" class="form-control" type="number" name="soKmDaDi"
+                            [(ngModel)]="vehicle.soKmDaDi" required maxlength="64" />
+                        <validation-messages [formCtrl]="sokmInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Định mực nhiên liệu *</label>
+                        <input #dinhmucInput="ngModel" class="form-control" type="number" name="dinhMucNhienLieu"
+                            [(ngModel)]="vehicle.dinhMucNhienLieu" required maxlength="64" />
+                        <validation-messages [formCtrl]="dinhmucInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Trạng thái *</label>
@@ -109,5 +115,5 @@
             </form>
         </div>
     </div>
-    <selectAssetModal #selectAssetModal (modalSave)="updateAsset()"></selectAssetModal>
+    <selectAsset_8Modal #selectAsset_8Modal (modalSave)="updateAsset()"></selectAsset_8Modal>
 </div>

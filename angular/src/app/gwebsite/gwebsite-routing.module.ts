@@ -5,10 +5,13 @@ import { DemoModelComponent } from "./demo-model/demo-model.component";
 import { CustomerComponent } from "./customer/customer.component";
 import { TypeVehicleComponent } from "./typevehicle/typevehicle.component";
 import { VehicleComponent } from "./vehicle/vehicle.component";
-import { AssetComponent } from "./asset/asset.component";
+import { Asset_8Component } from "./asset_8/asset_8.component";
 import { BrandVehicleComponent } from "./brandvehicle/brandvehicle.component";
 import { ModelVehicleComponent } from "./modelvehicle/modelvehicle.component";
 import { OperateVehicleComponent } from "./operatevehicle/operatevehicle.component";
+import { RoadFeeVehicleComponent } from "./roadfeevehicle/roadfeevehicle.component";
+import { InsurranceTypeComponent } from './insurrancetype/insurrancetype.component';
+import { InsurranceComponent } from './insurrance/insurrance.component';
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -67,7 +70,7 @@ import { OperateVehicleComponent } from "./operatevehicle/operatevehicle.compone
                 children: [
                     {
                         path: "asset",
-                        component: AssetComponent,
+                        component: Asset_8Component,
                         data: { permission: "Pages.QuanLyXe.Asset" }
                     }
                 ]
@@ -106,6 +109,36 @@ import { OperateVehicleComponent } from "./operatevehicle/operatevehicle.compone
                             permission: "Pages.Administration.OperateVehicle"
                         }
                     }
+                ]
+            },
+            {
+                path: "",
+                children: [
+                    {
+                        path: "roadfeevehicle",
+                        component: RoadFeeVehicleComponent,
+                        data: {
+                            permission: "Pages.Administration.RoadFeeVehicle"
+                        }
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'insurrance', component: InsurranceComponent,
+                        data: { permission: 'Pages.Administration.Insurrance' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'insurrancetype', component: InsurranceTypeComponent,
+                        data: { permission: 'Pages.Administration.InsurranceType' }
+                    },
                 ]
             }
         ])

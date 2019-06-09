@@ -27,5 +27,9 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Vehicles.Dto
         public string TenTaiSan { set; get; }
         public float NguyenGiaTaiSan { set; get; }
         public string IdModel { get; set; }
+        public string SoKmDaDi { get; set; }
+        public string DinhMucNhienLieu { get; set; }
+
+        public string MaVanHanh { get; set; }
     }
 }

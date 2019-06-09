@@ -52,44 +52,77 @@ export class AppNavigationService {
                     "flaticon-menu-1",
                     "/app/gwebsite/customer"
                 ),
-                new AppMenuItem("Vehicle Manager", "", "flaticon-interface-8", "", [
-                    new AppMenuItem(
-                        "Vehicle",
-                        "Pages.Administration.Vehicle",
-                        "flaticon-menu-1",
-                        "/app/gwebsite/vehicle"
-                    ),
-                    new AppMenuItem(
-                        "TypeVehicle",
-                        "Pages.Administration.TypeVehicle",
-                        "flaticon-menu-1",
-                        "/app/gwebsite/typevehicle"
-                    ),
-                    new AppMenuItem(
-                        "Asset",
-                        "Pages.QuanLyXe.Asset",
-                        "flaticon-menu-1",
-                        "/app/gwebsite/asset"
-                    ),
-                    new AppMenuItem(
-                        "BrandVehicle",
-                        "Pages.Administration.BrandVehicle",
-                        "flaticon-menu-1",
-                        "/app/gwebsite/brandvehicle"
-                    ),
-                    new AppMenuItem(
-                        "ModelVehicle",
-                        "Pages.Administration.ModelVehicle",
-                        "flaticon-menu-1",
-                        "/app/gwebsite/modelvehicle"
-                    ),
-                    new AppMenuItem(
-                        "OperateVehicle",
-                        "Pages.Administration.OperateVehicle",
-                        "flaticon-menu-1",
-                        "/app/gwebsite/operatevehicle"
-                    )
-                ]),            
+                new AppMenuItem(
+                    "Vehicle Manager N8",
+                    "",
+                    "flaticon-interface-8",
+                    "",
+                    [
+                        new AppMenuItem(
+                            "Asset",
+                            "Pages.QuanLyXe.Asset",
+                            "flaticon-menu-1",
+                            "/app/gwebsite/asset"
+                        ),
+                        
+                        new AppMenuItem(
+                            "Vehicle",
+                            "Pages.Administration.Vehicle",
+                            "flaticon-menu-1",
+                            "/app/gwebsite/vehicle"
+                        ),
+                        new AppMenuItem(
+                            "TypeVehicle",
+                            "Pages.Administration.TypeVehicle",
+                            "flaticon-menu-1",
+                            "/app/gwebsite/typevehicle"
+                        ),
+                       
+                        new AppMenuItem(
+                            "BrandVehicle",
+                            "Pages.Administration.BrandVehicle",
+                            "flaticon-menu-1",
+                            "/app/gwebsite/brandvehicle"
+                        ),
+                        new AppMenuItem(
+                            "ModelVehicle",
+                            "Pages.Administration.ModelVehicle",
+                            "flaticon-menu-1",
+                            "/app/gwebsite/modelvehicle"
+                        ),
+                        new AppMenuItem(
+                            "OperateVehicle",
+                            "Pages.Administration.OperateVehicle",
+                            "flaticon-menu-1",
+                            "/app/gwebsite/operatevehicle"
+                        ),
+                        new AppMenuItem(
+                            "RoadFeeVehicle",
+                            "Pages.Administration.RoadFeeVehicle",
+                            "flaticon-menu-1",
+                            "/app/gwebsite/roadfeevehicle"
+                        ),
+                        new AppMenuItem(
+                            "Insurrance Manager",
+                            "",
+                            "flaticon-interface-8",
+                            "",
+                            [
+                        new AppMenuItem(
+                            "InsurranceVehicle",
+                            "Pages.Administration.Insurrance",
+                            "flaticon-menu-1",
+                            "/app/gwebsite/insurrance"
+                        ),
+                        new AppMenuItem(
+                            "InsurranceTypeVehicle",
+                            "Pages.Administration.InsurranceType",
+                            "flaticon-menu-1",
+                            "/app/gwebsite/insurrancetype"
+                        )
+                            ]
+                    ]
+                )
             ]),
             new AppMenuItem("Systems", "", "flaticon-layers", "", [
                 new AppMenuItem(

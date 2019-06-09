@@ -16,7 +16,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperateVehicles
     public class OperateVehicleAppService : GWebsiteAppServiceBase, IOperateVehicleAppService
     {
         private readonly IRepository<OperateVehicle> operatevehicleRepository;
-
+   
         public OperateVehicleAppService(IRepository<OperateVehicle> operateVehicleRepository)
         {
             this.operatevehicleRepository = operateVehicleRepository;
@@ -70,7 +70,6 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperateVehicles
         public PagedResultDto<OperateVehicleDto> GetOperateVehicles(OperateVehicleFilter input)
         {
             var query = operatevehicleRepository.GetAll().Where(x => !x.IsDelete);
-
             // filter by value
             if (input.NgayVanHanh != null)
             {

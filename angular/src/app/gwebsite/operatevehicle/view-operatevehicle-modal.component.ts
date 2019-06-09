@@ -1,4 +1,4 @@
-import { OperateVehicleForViewDto } from "./../../../shared/service-proxies/service-proxies";
+import { OperateVehicleForViewDto } from "../../../shared/service-proxies/service-proxies";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild } from "@angular/core";
 import { OperateVehicleServiceProxy } from "@shared/service-proxies/service-proxies";

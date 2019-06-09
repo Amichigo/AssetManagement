@@ -40,7 +40,7 @@
                                                 <label>Mã tài sản *</label>
 
                                                 <input #matsInput="ngModel" class="form-control" type="text"
-                                                    name="maTaiSan" [(ngModel)]="taisan.maTaiSan" required disabled
+                                                    name="maTaiSan" [(ngModel)]="mataisanName" required disabled
                                                     maxlength="64" />
                                                 <validation-messages [formCtrl]="matsInput"></validation-messages>
 
@@ -132,30 +132,31 @@
                             }}" [paginator]="false" [lazy]="true" [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
-                                    <th pSortableColumn="mats">
+                                    <th pSortableColumn="mataisan">
                                         Mã tài sản
-                                        <p-sortIcon field="mats"></p-sortIcon>
+                                        <p-sortIcon field="mataisan"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="tents">
                                         Tên tài sản
                                         <p-sortIcon field="tents"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="nguyengia">
-                                        Nguyên giá tài sản
-                                        <p-sortIcon field="nguyengia"></p-sortIcon>
-                                    </th>
                                     <th pSortableColumn="name">
                                         Tên xe
                                         <p-sortIcon field="Name"></p-sortIcon>
                                     </th>
+                                    <th pSortableColumn="soKmDaDi">
+                                        Số Km đã đi
+                                        <p-sortIcon field="soKmDaDi"></p-sortIcon>
+                                    </th>
+
                                     <th pSortableColumn="number">
                                         Số xe
                                     </th>
                                     <th pSortableColumn="idTypeCar">
                                         Loại xe
                                     </th>
-                                    <th pSortableColumn="price">
-                                        Giá xe
+                                    <th pSortableColumn="dinhMucNhienLieu">
+                                        Định mức nhiên liệu
                                     </th>
                                     <th pSortableColumn="status">
                                         Trạng thái
@@ -182,27 +183,28 @@
                                 <tr>
                                     <td>
                                         <span class="ui-column-title">Mã tài sản</span>
-                                        <span title="{{ record.name }}">{{
+                                        <span title="{{ record.maTaiSan }}">{{
                                                     truncateString(record.maTaiSan)
                                                 }}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Tên tài sản</span>
-                                        <span title="{{ record.name }}">{{
+                                        <span title="{{ record.tenTaiSan }}">{{
                                                         truncateString(record.tenTaiSan)
                                                     }}</span>
                                     </td>
-                                    <td>
-                                        <span class="ui-column-title">Nguyên giá tài sản</span>
-                                        <span title="{{ record.name }}">{{
-                                                            truncateString(record.nguyenGiaTaiSan)
-                                                        }}</span>
-                                    </td>
+
                                     <td>
                                         <span class="ui-column-title">Tên xe</span>
                                         <span title="{{ record.name }}">{{
                                             truncateString(record.name)
                                         }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Số Km đã đi</span>
+                                        <span title="{{ record.soKmDaDi }}">{{
+                                                            truncateString(record.soKmDaDi)
+                                                        }}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Số xe</span>
@@ -217,9 +219,9 @@
                                         }}</span>
                                     </td>
                                     <td>
-                                        <span class="ui-column-title">Giá xe</span>
-                                        <span title="{{ record.price }}">{{
-                                            truncateString(record.price)
+                                        <span class="ui-column-title">Định mức nhiên liệu</span>
+                                        <span title="{{ record.dinhMucNhienLieu }}">{{
+                                            truncateString(record.dinhMucNhienLieu)
                                         }}</span>
                                     </td>
                                     <td>
@@ -321,5 +323,5 @@
         <viewVehicleModal #viewVehicleModal></viewVehicleModal>
         <!-- Khi gọi modal trong component cần có dòng dưới, và nó bắt cái modalSave(tức là nếu mình chọn tài sản, rồi
         page chọn tài sản đóng lại) nó sẽ chạy vào hàm updateAsset() -->
-        <selectAssetModal #selectAssetModal (modalSave)="updateAsset()"></selectAssetModal>
+        <selectAsset_8Modal #selectAsset_8Modal (modalSave)="updateAsset()"></selectAsset_8Modal>
     </div>

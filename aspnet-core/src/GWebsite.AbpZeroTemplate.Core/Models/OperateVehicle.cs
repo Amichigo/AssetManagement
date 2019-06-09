@@ -8,6 +8,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 {
     public class OperateVehicle : FullAuditModel
     {
+        public string MaVanHanh { get; set; }
         public string NgayVanHanh { get; set; }
         public float SoKm { get; set; }
         public string XangTieuThu { get; set; }

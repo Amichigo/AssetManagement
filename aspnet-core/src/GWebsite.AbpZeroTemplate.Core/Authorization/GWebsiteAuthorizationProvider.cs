@@ -76,6 +76,22 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             operatevehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_OperateVehicle_Create, L("CreatingNewOperateVehicle"));
             operatevehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_OperateVehicle_Edit, L("EditingOperateVehicle"));
            operatevehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_OperateVehicle_Delete, L("DeletingOperateVehicle"));
+
+            var roadfeevehicle = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_RoadFeeVehicle, L("RoadFeeVehicle"));
+            roadfeevehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_RoadFeeVehicle_Create, L("CreatingNewRoadFeeVehicle"));
+            roadfeevehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_RoadFeeVehicle_Edit, L("EditingRoadFeeVehicle"));
+            roadfeevehicle.CreateChildPermission(GWebsitePermissions.Pages_Administration_RoadFeeVehicle_Delete, L("DeletingRoadFeeVehicle"));
+
+
+            var insurrance = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Insurrance, L("Insurrance"));
+            insurrance.CreateChildPermission(GWebsitePermissions.Pages_Administration_Insurrance_Create, L("CreatingNewInsurrance"));
+            insurrance.CreateChildPermission(GWebsitePermissions.Pages_Administration_Insurrance_Edit, L("EditingInsurrance"));
+            insurrance.CreateChildPermission(GWebsitePermissions.Pages_Administration_Insurrance_Delete, L("DeletingInsurrance"));
+
+            var insurrancetype = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_InsurranceType, L("InsurranceType"));
+            insurrancetype.CreateChildPermission(GWebsitePermissions.Pages_Administration_InsurranceType_Create, L("CreatingNewInsurranceType"));
+            insurrancetype.CreateChildPermission(GWebsitePermissions.Pages_Administration_InsurranceType_Edit, L("EditingInsurranceType"));
+            insurrancetype.CreateChildPermission(GWebsitePermissions.Pages_Administration_InsurranceType_Delete, L("DeletingInsurranceType"));
         }
 
         private static ILocalizableString L(string name)

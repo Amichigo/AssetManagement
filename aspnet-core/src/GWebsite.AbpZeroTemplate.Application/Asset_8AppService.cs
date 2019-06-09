@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Assets_8
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
+    [AbpAuthorize(GWebsitePermissions.Pages_QuanLyXe_Asset)]
     public class Asset_8AppService : GWebsiteAppServiceBase, IAsset_8AppService
     {
         private readonly IRepository<Asset_8> asset_8Repository;

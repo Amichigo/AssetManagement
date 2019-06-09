@@ -14,10 +14,10 @@ import {
 } from "@shared/service-proxies/service-proxies";
 
 @Component({
-    selector: "createOrEditAssetModal",
-    templateUrl: "./create-or-edit-asset-modal.component.html"
+    selector: "createOrEditAsset_8Modal",
+    templateUrl: "./create-or-edit-asset_8-modal.component.html"
 })
-export class CreateOrEditAssetModalComponent extends AppComponentBase {
+export class CreateOrEditAsset_8ModalComponent extends AppComponentBase {
     @ViewChild("createOrEditModal") modal: ModalDirective;
     @ViewChild("assetCombobox") assetCombobox: ElementRef;
     @ViewChild("iconCombobox") iconCombobox: ElementRef;

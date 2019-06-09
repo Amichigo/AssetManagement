@@ -53,5 +53,21 @@
         public const string Pages_Administration_OperateVehicle_Create = "Pages.Administration.OperateVehicle.Create";
         public const string Pages_Administration_OperateVehicle_Edit = "Pages.Administration.OperateVehicle.Edit";
         public const string Pages_Administration_OperateVehicle_Delete = "Pages.Administration.OperateVehicle.Delete";
+
+        public const string Pages_Administration_RoadFeeVehicle = "Pages.Administration.RoadFeeVehicle";
+        public const string Pages_Administration_RoadFeeVehicle_Create = "Pages.Administration.RoadFeeVehicle.Create";
+        public const string Pages_Administration_RoadFeeVehicle_Edit = "Pages.Administration.RoadFeeVehicle.Edit";
+        public const string Pages_Administration_RoadFeeVehicle_Delete = "Pages.Administration.RoadFeeVehicle.Delete";
+
+        public const string Pages_Administration_Insurrance = "Pages.Administration.Insurrance";
+        public const string Pages_Administration_Insurrance_Create = "Pages.Administration.Insurrance.Create";
+        public const string Pages_Administration_Insurrance_Edit = "Pages.Administration.Insurrance.Edit";
+        public const string Pages_Administration_Insurrance_Delete = "Pages.Administration.Insurrance.Delete";
+
+        public const string Pages_Administration_InsurranceType = "Pages.Administration.InsurranceType";
+        public const string Pages_Administration_InsurranceType_Create = "Pages.Administration.InsurranceType.Create";
+        public const string Pages_Administration_InsurranceType_Edit = "Pages.Administration.InsurranceType.Edit";
+        public const string Pages_Administration_InsurranceType_Delete = "Pages.Administration.InsurranceType.Delete";
+
     }
 }

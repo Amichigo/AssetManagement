@@ -1712,6 +1712,68 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("Functions");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Insurrance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Company");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("Duration");
+
+                    b.Property<string>("ExpiryDate");
+
+                    b.Property<string>("InsurranceId");
+
+                    b.Property<string>("InsurranceTypeId");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Payments");
+
+                    b.Property<string>("PurchaseDate");
+
+                    b.Property<string>("Status");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Insurrances");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.InsurranceType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("InsurranceTypeId");
+
+                    b.Property<string>("InsurranceTypeName");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("InsurranceTypes");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.MenuClient", b =>
                 {
                     b.Property<int>("Id")
@@ -1806,6 +1868,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<bool>("IsDelete");
 
+                    b.Property<string>("MaVanHanh");
+
                     b.Property<string>("NgayVanHanh");
 
                     b.Property<float>("SoKm");
@@ -1854,6 +1918,43 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("GPermissions");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.RoadFeeVehicle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("DonViThuPhi");
+
+                    b.Property<string>("GhiChu");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("LoaiPhi");
+
+                    b.Property<string>("MaPhiDuongBo");
+
+                    b.Property<string>("NgayBatDau");
+
+                    b.Property<string>("NgayKetThuc");
+
+                    b.Property<string>("SoTien");
+
+                    b.Property<string>("TrangThaiDuyet");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RoadFeeVehicles");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.TypeVehicle", b =>
                 {
                     b.Property<int>("Id")
@@ -1891,6 +1992,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime?>("CreatedDate");
 
+                    b.Property<string>("DinhMucNhienLieu");
+
                     b.Property<string>("HostName");
 
                     b.Property<string>("IdModel");
@@ -1912,6 +2015,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<string>("Number");
 
                     b.Property<string>("Price");
+
+                    b.Property<string>("SoKmDaDi");
 
                     b.Property<string>("Status");
 

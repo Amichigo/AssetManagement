@@ -5,9 +5,12 @@ using GWebsite.AbpZeroTemplate.Application.Share.OperateVehicles.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.TypeVehicles.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ModelVehicles.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.BrandVehicles.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.RoadFeeVehicles.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
+using GWebsite.AbpZeroTemplate.Application.Share.Insurrances.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.InsurranceTypes.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Applications
@@ -63,6 +66,24 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<OperateVehicleInput, OperateVehicle>();
             configuration.CreateMap<OperateVehicle, OperateVehicleInput>();
             configuration.CreateMap<OperateVehicle, OperateVehicleForViewDto>();
+
+            configuration.CreateMap<RoadFeeVehicle, RoadFeeVehicleDto>();
+            configuration.CreateMap<RoadFeeVehicleInput, RoadFeeVehicle>();
+            configuration.CreateMap<RoadFeeVehicle, RoadFeeVehicleInput>();
+            configuration.CreateMap<RoadFeeVehicle, RoadFeeVehicleForViewDto>();
+
+
+            // Insurrance
+            configuration.CreateMap<Insurrance, InsurranceDto>();
+            configuration.CreateMap<InsurranceInput, Insurrance>();
+            configuration.CreateMap<Insurrance, InsurranceInput>();
+            configuration.CreateMap<Insurrance, InsurranceForViewDto>();
+
+            // InsurranceType
+            configuration.CreateMap<InsurranceType, InsurranceTypeDto>();
+            configuration.CreateMap<InsurranceTypeInput, InsurranceType>();
+            configuration.CreateMap<InsurranceType, InsurranceTypeInput>();
+            configuration.CreateMap<InsurranceType, InsurranceTypeForViewDto>();
         }
     }
 }

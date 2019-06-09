@@ -17,5 +17,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.OperateVehicles.Dto
         public string TrangThaiDuyet { get; set; }
         public string GhiChu { get; set; }
         public string Number { get; set; }
+        public string MaVanHanh { get; set; }
     }
 }
