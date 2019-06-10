@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Assets_05;
 using GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Warranty_Dto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GWebsite.AbpZeroTemplate.Application.Controllers
@@ -46,9 +47,16 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public AssetOutput_05 GetAsseEdit(string id)
+        public AssetOutput_05 GetAssetEdit(string id)
         {
             return assetAppService.GetAssetEdit(id);
         }
+
+        [HttpGet]
+        public PagedResultDto<WarrantyDto> GetWarrantysForView(string assetId)
+        {
+            return assetAppService.GetWarrantysForView(assetId);
+        }
+
     }
 }

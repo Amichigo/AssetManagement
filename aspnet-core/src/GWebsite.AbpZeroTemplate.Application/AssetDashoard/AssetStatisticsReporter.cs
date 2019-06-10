@@ -14,9 +14,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.AssetDashboard
 {
     public class AssetStatisticsService : GWebsiteAppServiceBase, IAssetStatisticsService
     {
-        private readonly IRepository<FixedAsset> assetDashboardRepository;
+        private readonly IRepository<Asset_05> assetDashboardRepository;
 
-        public AssetStatisticsService(IRepository<FixedAsset> assetDashboardRepository)
+        public AssetStatisticsService(IRepository<Asset_05> assetDashboardRepository)
         {
             this.assetDashboardRepository = assetDashboardRepository;
         }

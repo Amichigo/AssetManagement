@@ -32,9 +32,10 @@ export class AppNavigationService {
                 new AppMenuItem('Phiếu gọi hàng', 'Pages.Administration.GoodsInvoice', 'flaticon-menu-1', '/app/gwebsite/phieugoihang'),
             ]),
             new AppMenuItem('Nhóm 5 - Quản lý tài sản cố định', '', 'flaticon-interface-8', '', [
-                new AppMenuItem('FixedAsset', 'Pages.Administration.FixedAsset', 'flaticon-menu-1', '/app/gwebsite/fixed-asset'),
+                new AppMenuItem('TransferringAsset', 'Pages.Administration.TransferringAsset', 'flaticon-line-graph', '/app/gwebsite/transferring-asset'),
                 new AppMenuItem('AssetGroup', 'Pages.Administration.AssetGroup_05', 'flaticon-menu-1', '/app/gwebsite/asset-group'),
                 new AppMenuItem('Asset', 'Pages.Administration.Asset_05', 'flaticon-menu-1', '/app/gwebsite/asset'),
+                new AppMenuItem('ExportingUsedAsset', 'Pages.Administration.ExportingUsedAsset', 'flaticon-menu-1', '/app/gwebsite/exporting-used-asset'),
             ]),
             new AppMenuItem('Nhóm 6 - Quản lý hiệu quả đầu tư TSCĐ', '', 'flaticon-menu-1', '', [
                 new AppMenuItem('QL giá trị đã đầu tư', '', 'flaticon-menu-1', '', [

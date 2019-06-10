@@ -128,8 +128,15 @@ using GSoft.AbpZeroTemplate.Notifications.Dto;
 using GSoft.AbpZeroTemplate.Organizations.Dto;
 using GSoft.AbpZeroTemplate.Sessions.Dto;
 using System;
+using GWebsite.AbpZeroTemplate.Application.Share.AssetGroups_05.Dto;
+using GWebsite.AbpZeroTemplate.Core.Models;
+using GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.AssetTypes_05.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.TransferringAssets.MainDto;
+using GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Warranty_Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ExportingUsedAssets;
 
-namespace GSoft.AbpZeroTemplate.Applications
+namespace GWebsite.AbpZeroTemplate.Applications
 {
     internal static class CustomDtoMapper
     {
@@ -686,6 +693,35 @@ namespace GSoft.AbpZeroTemplate.Applications
             configuration.CreateMap<OrganizationUnit, OrganizationUnitDto>();
 
             /* ADD YOUR OWN CUSTOM AUTOMAPPER MAPPINGS HERE */
+           // AssetGroup
+            configuration.CreateMap<AssetGroup_05, AssetGroupDto_05>();//get filter assetGroup
+            configuration.CreateMap<AssetGroupDto_05, AssetGroup_05>();//create
+            configuration.CreateMap<AssetGroup_05, AssetGroupInput_05>();//get for edit
+            configuration.CreateMap<AssetGroup_05, AssetGroupOutput_05>();//get for edit
+            configuration.CreateMap<AssetGroup_05, AssetGroupForViewDto_05>();//view
+
+           // Asset_05
+            configuration.CreateMap<Asset_05, AssetDto_05>();
+            configuration.CreateMap<AssetDto_05, Asset_05>();
+            configuration.CreateMap<Asset_05, AssetDto_05>();
+            configuration.CreateMap<Asset_05, AssetForViewDto_05>();
+            configuration.CreateMap<Asset_05, AssetOutput_05>();//get for edit
+
+            //AssetType_05
+            configuration.CreateMap<AssetType_05, AssetTypeDto_05>();
+            configuration.CreateMap<AssetType_05, AssetForViewDto_05>();
+
+            configuration.CreateMap<TransferringAssetDataInput, TransferringAsset>();
+            configuration.CreateMap<TransferringAsset, TransferringAssetDataInput>();
+
+            configuration.CreateMap<Warranty_05, WarrantyDto>();
+
+            // ExportingUsedAsset
+            configuration.CreateMap<ExportingUsedAsset, ExportingUsedAssetDto>();
+            configuration.CreateMap<ExportingUsedAssetInput, ExportingUsedAsset>();
+            configuration.CreateMap<ExportingUsedAsset, ExportingUsedAssetInput>();
+            configuration.CreateMap<ExportingUsedAsset, ExportingUsedAssetForViewDto>();
+
         }
     }
 }
