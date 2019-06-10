@@ -87,7 +87,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DisposalPlanDetails
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_DisposalPlanDetail_Create)]
         private void Create(DisposalPlanDetailInput disposalPlanInput)
         {
             var disposalPlanEntity = ObjectMapper.Map<DisposalPlanDetail>(disposalPlanInput);
@@ -96,7 +96,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DisposalPlanDetails
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_DisposalPlanDetail_Edit)]
         private void Update(DisposalPlanDetailInput disposalPlanInput)
         {
             var disposalPlanEntity = disposalPlanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == disposalPlanInput.Id);

@@ -88,7 +88,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ShoppingPlansDetails
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_ShoppingPlanDetail_Create)]
         private void Create(ShoppingPlanDetailInput shoppingPlanInput)
         {
             var shoppingPlanEntity = ObjectMapper.Map<ShoppingPlanDetail>(shoppingPlanInput);
@@ -97,7 +97,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ShoppingPlansDetails
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_ShoppingPlanDetail_Edit)]
         private void Update(ShoppingPlanDetailInput shoppingPlanInput)
         {
             var shoppingPlanEntity = shoppingPlanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == shoppingPlanInput.Id);

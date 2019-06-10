@@ -87,7 +87,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ConstructionPlanDetails
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_ConstructionPlanDetail_Create)]
         private void Create(ConstructionPlanDetailInput constructionPlanInput)
         {
             var constructionPlanEntity = ObjectMapper.Map<ConstructionPlanDetail>(constructionPlanInput);
@@ -96,7 +96,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ConstructionPlanDetails
             CurrentUnitOfWork.SaveChanges();
         }
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_ConstructionPlanDetail_Edit)]
         private void Update(ConstructionPlanDetailInput constructionPlanInput)
         {
             var constructionPlanEntity = constructionPlanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == constructionPlanInput.Id);
