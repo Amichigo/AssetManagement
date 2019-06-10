@@ -1683,6 +1683,121 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("DemoModels");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.DisposalPlan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("KhuVuc");
+
+                    b.Property<string>("KinhPhi");
+
+                    b.Property<string>("MaKeHoach");
+
+                    b.Property<int>("Nam");
+
+                    b.Property<DateTime>("NgayHieuLuc");
+
+                    b.Property<string>("PhongBan");
+
+                    b.Property<int>("SoLanThayDoi");
+
+                    b.Property<string>("TinhTrang");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DisposalPlans");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.DisposalPlanDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<float>("GiaDuKien");
+
+                    b.Property<float>("GiaTriConLai");
+
+                    b.Property<string>("HinhThuc");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("MaKeHoach");
+
+                    b.Property<string>("MaTS");
+
+                    b.Property<float>("NguyenGia");
+
+                    b.Property<string>("TenTS");
+
+                    b.Property<int>("ThangDuKien");
+
+                    b.Property<string>("TinhTrangTS");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DisposalPlanDetails");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.DisposalProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<float>("GiaDuKien");
+
+                    b.Property<float>("GiaTriConLai");
+
+                    b.Property<string>("HinhThuc");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("MaKeHoach");
+
+                    b.Property<string>("MaTS");
+
+                    b.Property<float>("NguyenGia");
+
+                    b.Property<string>("TenTS");
+
+                    b.Property<int>("ThangDuKien");
+
+                    b.Property<string>("TinhTrangTS");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DisposalProducts");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Function", b =>
                 {
                     b.Property<string>("Id")
