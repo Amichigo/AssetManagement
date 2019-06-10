@@ -4107,6 +4107,88 @@ export class FriendshipServiceProxy {
 }
 
 @Injectable()
+export class GoodServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @maSP (optional) 
+     * @tenSP (optional) 
+     * @gia (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getGoodsByFilter(maSP: string | null | undefined, tenSP: string | null | undefined, gia: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfGoodDto> {
+        let url_ = this.baseUrl + "/api/Good/GetGoodsByFilter?";
+        if (maSP !== undefined)
+            url_ += "MaSP=" + encodeURIComponent("" + maSP) + "&"; 
+        if (tenSP !== undefined)
+            url_ += "TenSP=" + encodeURIComponent("" + tenSP) + "&"; 
+        if (gia !== undefined)
+            url_ += "Gia=" + encodeURIComponent("" + gia) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetGoodsByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetGoodsByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfGoodDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfGoodDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetGoodsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfGoodDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfGoodDto.fromJS(resultData200) : new PagedResultDtoOfGoodDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfGoodDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class HostDashboardServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -14827,6 +14909,102 @@ export class AcceptFriendshipRequestInput implements IAcceptFriendshipRequestInp
 export interface IAcceptFriendshipRequestInput {
     userId: number | undefined;
     tenantId: number | undefined;
+}
+
+export class PagedResultDtoOfGoodDto implements IPagedResultDtoOfGoodDto {
+    totalCount!: number | undefined;
+    items!: GoodDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfGoodDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(GoodDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfGoodDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfGoodDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfGoodDto {
+    totalCount: number | undefined;
+    items: GoodDto[] | undefined;
+}
+
+export class GoodDto implements IGoodDto {
+    maSP!: string | undefined;
+    tenSP!: string | undefined;
+    gia!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IGoodDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maSP = data["maSP"];
+            this.tenSP = data["tenSP"];
+            this.gia = data["gia"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): GoodDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new GoodDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maSP"] = this.maSP;
+        data["tenSP"] = this.tenSP;
+        data["gia"] = this.gia;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IGoodDto {
+    maSP: string | undefined;
+    tenSP: string | undefined;
+    gia: string | undefined;
+    id: number | undefined;
 }
 
 export class HostDashboardData implements IHostDashboardData {
