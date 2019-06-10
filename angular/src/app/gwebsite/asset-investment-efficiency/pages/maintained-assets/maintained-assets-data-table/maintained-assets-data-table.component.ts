@@ -54,7 +54,6 @@ export class MaintainedAssetsDataTableComponent extends Component implements OnC
 
       if (timePeriod && timePeriod.currentValue !== timePeriod.previousValue) {
          this.onResetFilters();
-         this.assetTypes = [];
       }
 
       console.log('FIRST: ', this.assetTypes);
@@ -119,7 +118,7 @@ export class MaintainedAssetsDataTableComponent extends Component implements OnC
             });
 
             if (!contained) {
-               assetTypes.push({ AssetTypeName: record['assetTypeName'], AssetTypeId: record['assetTypeId'] });
+               assetTypes.push({ assetTypeName: record['assetTypeName'], assetTypeId: record['assetTypeId'] });
             }
          }
       });

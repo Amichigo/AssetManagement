@@ -116,7 +116,7 @@ export class PurchasedAssetsDataTableComponent extends Component implements OnCh
             });
 
             if (!contained) {
-               assetTypes.push({ AssetTypeName: record['assetTypeName'], AssetTypeId: record['assetTypeId'] });
+               assetTypes.push({ assetTypeName: record['assetTypeName'], assetTypeId: record['assetTypeId'] });
             }
          }
       });
