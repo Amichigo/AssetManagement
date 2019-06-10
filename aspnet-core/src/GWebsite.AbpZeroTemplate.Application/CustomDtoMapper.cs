@@ -1,140 +1,87 @@
-using Abp.Application.Editions;
-using Abp.Application.Features;
-using Abp.Auditing;
-using Abp.Authorization;
-using Abp.Authorization.Users;
-using Abp.EntityHistory;
-using Abp.Localization;
-using Abp.Notifications;
-using Abp.Organizations;
-using Abp.UI.Inputs;
 using AutoMapper;
-using GSoft.AbpZeroTemplate.Auditing.Dto;
-using GSoft.AbpZeroTemplate.Authorization.Accounts.Dto;
-using GSoft.AbpZeroTemplate.Authorization.Permissions.Dto;
-using GSoft.AbpZeroTemplate.Authorization.Roles;
-using GSoft.AbpZeroTemplate.Authorization.Roles.Dto;
-using GSoft.AbpZeroTemplate.Authorization.Users;
-using GSoft.AbpZeroTemplate.Authorization.Users.Dto;
-using GSoft.AbpZeroTemplate.Authorization.Users.Profile.Dto;
-using GSoft.AbpZeroTemplate.Chat;
-using GSoft.AbpZeroTemplate.Chat.Dto;
-using GSoft.AbpZeroTemplate.Editions;
-using GSoft.AbpZeroTemplate.Editions.Dto;
-using GSoft.AbpZeroTemplate.Friendships;
-using GSoft.AbpZeroTemplate.Friendships.Cache;
-using GSoft.AbpZeroTemplate.Friendships.Dto;
-using GSoft.AbpZeroTemplate.Localization.Dto;
-using GSoft.AbpZeroTemplate.MultiTenancy;
-using GSoft.AbpZeroTemplate.MultiTenancy.Dto;
-using GSoft.AbpZeroTemplate.MultiTenancy.HostDashboard.Dto;
-using GSoft.AbpZeroTemplate.MultiTenancy.Payments;
-using GSoft.AbpZeroTemplate.MultiTenancy.Payments.Dto;
-using GSoft.AbpZeroTemplate.Notifications.Dto;
-using GSoft.AbpZeroTemplate.Organizations.Dto;
-using GSoft.AbpZeroTemplate.Sessions.Dto;
-using System;
+using GWebsite.AbpZeroTemplate.Application.Share.AssetActivities.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.MaintainedAssets.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.OperatingAssets.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.PlannedToMaintainAssets.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.PlannedToPurchaseAssets.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.PlannedToSellAssets.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.PurchasedAssets.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.SoldAssets.Dto;
+using GWebsite.AbpZeroTemplate.Core.Models;
 
-namespace GSoft.AbpZeroTemplate
+namespace GWebsite.AbpZeroTemplate.Applications
 {
     internal static class CustomDtoMapper
     {
         public static void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            //Inputs
-            configuration.CreateMap<CheckboxInputType, FeatureInputTypeDto>();
-            configuration.CreateMap<SingleLineStringInputType, FeatureInputTypeDto>();
-            configuration.CreateMap<ComboboxInputType, FeatureInputTypeDto>();
-            configuration.CreateMap<IInputType, FeatureInputTypeDto>()
-                .Include<CheckboxInputType, FeatureInputTypeDto>()
-                .Include<SingleLineStringInputType, FeatureInputTypeDto>()
-                .Include<ComboboxInputType, FeatureInputTypeDto>();
-            configuration.CreateMap<StaticLocalizableComboboxItemSource, LocalizableComboboxItemSourceDto>();
-            configuration.CreateMap<ILocalizableComboboxItemSource, LocalizableComboboxItemSourceDto>()
-                .Include<StaticLocalizableComboboxItemSource, LocalizableComboboxItemSourceDto>();
-            configuration.CreateMap<LocalizableComboboxItem, LocalizableComboboxItemDto>();
-            configuration.CreateMap<ILocalizableComboboxItem, LocalizableComboboxItemDto>()
-                .Include<LocalizableComboboxItem, LocalizableComboboxItemDto>();
+            configuration.CreateMap<MenuClient, MenuClientDto>();
+            configuration.CreateMap<MenuClient, MenuClientListDto>();
+            configuration.CreateMap<CreateMenuClientInput, MenuClient>();
+            configuration.CreateMap<UpdateMenuClientInput, MenuClient>();
 
-            configuration.CreateMap<string, DateTime?>()
-                .ConvertUsing(x => DateTime.ParseExact(x, "dd/MM/yyyy",
-                                       System.Globalization.CultureInfo.InvariantCulture));
+            // DemoModel
+            configuration.CreateMap<DemoModel, DemoModelDto>();
+            configuration.CreateMap<DemoModelInput, DemoModel>();
+            configuration.CreateMap<DemoModel, DemoModelInput>();
+            configuration.CreateMap<DemoModel, DemoModelForViewDto>();
 
-            configuration.CreateMap<DateTime?, string>()
-                .ConvertUsing(x => x?.ToString("dd/MM/yyyy"));
+            // Customer
+            configuration.CreateMap<Customer, CustomerDto>();
+            configuration.CreateMap<CustomerInput, Customer>();
+            configuration.CreateMap<Customer, CustomerInput>();
+            configuration.CreateMap<Customer, CustomerForViewDto>();
 
-            //Chat
-            configuration.CreateMap<ChatMessage, ChatMessageDto>();
+            // AssetActivity
+            configuration.CreateMap<AssetActivity, AssetActivityDto>();
+            configuration.CreateMap<AssetActivityInput, AssetActivity>();
+            configuration.CreateMap<AssetActivity, AssetActivityInput>();
+            configuration.CreateMap<AssetActivity, AssetActivityForViewDto>();
 
-            //Feature
-            configuration.CreateMap<FlatFeatureSelectDto, Feature>().ReverseMap();
-            configuration.CreateMap<Feature, FlatFeatureDto>();
+            // SoldAsset
+            configuration.CreateMap<SoldAsset, SoldAssetDto>();
+            configuration.CreateMap<SoldAssetInput, SoldAsset>();
+            configuration.CreateMap<SoldAsset, SoldAssetInput>();
+            configuration.CreateMap<SoldAsset, SoldAssetForViewDto>();
 
-            //Role
-            configuration.CreateMap<RoleEditDto, Role>().ReverseMap();
-            configuration.CreateMap<Role, RoleListDto>();
-            configuration.CreateMap<UserRole, UserListRoleDto>();
+            // PurchasedAsset
+            configuration.CreateMap<PurchasedAsset, PurchasedAssetDto>();
+            configuration.CreateMap<PurchasedAssetInput, PurchasedAsset>();
+            configuration.CreateMap<PurchasedAsset, PurchasedAssetInput>();
+            configuration.CreateMap<PurchasedAsset, PurchasedAssetForViewDto>();
 
-            //Edition
-            configuration.CreateMap<EditionEditDto, SubscribableEdition>().ReverseMap();
-            configuration.CreateMap<EditionSelectDto, SubscribableEdition>().ReverseMap();
-            configuration.CreateMap<SubscribableEdition, EditionInfoDto>();
+            // MaintainedAsset
+            configuration.CreateMap<MaintainedAsset, MaintainedAssetDto>();
+            configuration.CreateMap<MaintainedAssetInput, MaintainedAsset>();
+            configuration.CreateMap<MaintainedAsset, MaintainedAssetInput>();
+            configuration.CreateMap<MaintainedAsset, MaintainedAssetForViewDto>();
 
-            configuration.CreateMap<Edition, EditionInfoDto>().Include<SubscribableEdition, EditionInfoDto>();
+            // PlannedToMaintainAsset
+            configuration.CreateMap<PlannedToMaintainAsset, PlannedToMaintainAssetDto>();
+            configuration.CreateMap<PlannedToMaintainAssetInput, PlannedToMaintainAsset>();
+            configuration.CreateMap<PlannedToMaintainAsset, PurchasedAssetInput>();
+            configuration.CreateMap<PlannedToMaintainAsset, PlannedToMaintainAssetForViewDto>();
 
-            configuration.CreateMap<Edition, EditionListDto>();
-            configuration.CreateMap<Edition, EditionEditDto>();
-            configuration.CreateMap<Edition, SubscribableEdition>();
-            configuration.CreateMap<Edition, EditionSelectDto>();
+            // PlannedToPurchaseAsset
+            configuration.CreateMap<PlannedToPurchaseAsset, PlannedToPurchaseAssetDto>();
+            configuration.CreateMap<PlannedToPurchaseAssetInput, PlannedToPurchaseAsset>();
+            configuration.CreateMap<PlannedToPurchaseAsset, PurchasedAssetInput>();
+            configuration.CreateMap<PlannedToPurchaseAsset, PlannedToPurchaseAssetForViewDto>();
 
+            // PlannedToSellAsset
+            configuration.CreateMap<PlannedToSellAsset, PlannedToSellAssetDto>();
+            configuration.CreateMap<PlannedToSellAssetInput, PlannedToSellAsset>();
+            configuration.CreateMap<PlannedToSellAsset, PurchasedAssetInput>();
+            configuration.CreateMap<PlannedToSellAsset, PlannedToSellAssetForViewDto>();
 
-            //Payment
-            configuration.CreateMap<SubscriptionPaymentDto, SubscriptionPayment>().ReverseMap();
-            configuration.CreateMap<SubscriptionPaymentListDto, SubscriptionPayment>().ReverseMap();
-            configuration.CreateMap<SubscriptionPayment, SubscriptionPaymentInfoDto>();
-
-            //Permission
-            configuration.CreateMap<Permission, FlatPermissionDto>();
-            configuration.CreateMap<Permission, FlatPermissionWithLevelDto>();
-
-            //Language
-            configuration.CreateMap<ApplicationLanguage, ApplicationLanguageEditDto>();
-            configuration.CreateMap<ApplicationLanguage, ApplicationLanguageListDto>();
-            configuration.CreateMap<NotificationDefinition, NotificationSubscriptionWithDisplayNameDto>();
-            configuration.CreateMap<ApplicationLanguage, ApplicationLanguageEditDto>()
-                .ForMember(ldto => ldto.IsEnabled, options => options.MapFrom(l => !l.IsDisabled));
-
-            //Tenant
-            configuration.CreateMap<Tenant, RecentTenant>();
-            configuration.CreateMap<Tenant, TenantLoginInfoDto>();
-            configuration.CreateMap<Tenant, TenantListDto>();
-            configuration.CreateMap<TenantEditDto, Tenant>().ReverseMap();
-            configuration.CreateMap<CurrentTenantInfoDto, Tenant>().ReverseMap();
-
-            //User
-            configuration.CreateMap<User, UserEditDto>()
-                .ForMember(dto => dto.Password, options => options.Ignore())
-                .ReverseMap()
-                .ForMember(user => user.Password, options => options.Ignore());
-            configuration.CreateMap<User, UserLoginInfoDto>();
-            configuration.CreateMap<User, UserListDto>();
-            configuration.CreateMap<User, ChatUserDto>();
-            configuration.CreateMap<User, OrganizationUnitUserListDto>();
-            configuration.CreateMap<CurrentUserProfileEditDto, User>().ReverseMap();
-            configuration.CreateMap<UserLoginAttemptDto, UserLoginAttempt>().ReverseMap();
-
-            //AuditLog
-            configuration.CreateMap<AuditLog, AuditLogListDto>();
-            configuration.CreateMap<EntityChange, EntityChangeListDto>();
-
-            //Friendship
-            configuration.CreateMap<Friendship, FriendDto>();
-            configuration.CreateMap<FriendCacheItem, FriendDto>();
-
-            //OrganizationUnit
-            configuration.CreateMap<OrganizationUnit, OrganizationUnitDto>();
-
-            /* ADD YOUR OWN CUSTOM AUTOMAPPER MAPPINGS HERE */
+            // OperatingAsset
+            configuration.CreateMap<OperatingAsset, OperatingAssetDto>();
+            configuration.CreateMap<OperatingAssetInput, OperatingAsset>();
+            configuration.CreateMap<OperatingAsset, OperatingAssetInput>();
+            configuration.CreateMap<OperatingAsset, OperatingAssetForViewDto>();
         }
     }
 }

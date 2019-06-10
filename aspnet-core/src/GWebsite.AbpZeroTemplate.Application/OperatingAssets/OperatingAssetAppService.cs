@@ -69,7 +69,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperatingAssets
             double MIN_QUANTITY = 0;
             double MIN_AMOUNT = 100000;
             double MAX_QUANTITY = 100;
-            double MAX_AMOUNT = 10000000;
+            double MAX_AMOUNT = 1000000;
 
             // ****** GIÁ TRỊ MẶC ĐỊNH ******
             // SỐ LƯỢNG
@@ -88,12 +88,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperatingAssets
             var currentInOperationQuantity = 0.0;
             var inOperationQuantityRatio = 0.0;
 
-            // Tổng số lượng tài sản đang được vận hành, có tính khấu hao nói chung
+            // Tổng số lượng tài sản đang được vận hành có áp dụng khấu hao nói chung
             var previousInOperationDepreciatingQuantity = 0.0;
             var currentInOperationDepreciatingQuantity = 0.0;
             var inOperationDepreciatingQuantityRatio = 0.0;
 
-            // Tổng số lượng tài sản đang được vận hành, không tính khấu hao nói chung
+            // Tổng số lượng tài sản đang được vận hành không áp dụng khấu hao nói chung
             var previousInOperationNotDepreciatingQuantity = 0.0;
             var currentInOperationNotDepreciatingQuantity = 0.0;
             var inOperationNotDepreciatingQuantityRatio = 0.0;
@@ -103,12 +103,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperatingAssets
             var currentInOperationAndUsingQuantity = 0.0;
             var inOperationAndUsingQuantityRatio = 0.0;
 
-            // Tổng số lượng tài sản đang được vận hành và được sử dụng, có tính khấu hao
+            // Tổng số lượng tài sản đang được vận hành và được sử dụng có áp dụng khấu hao
             var previousInOperationAndUsingDepreciatingQuantity = 0.0;
             var currentInOperationAndUsingDepreciatingQuantity = 0.0;
             var inOperationAndUsingDepreciatingQuantityRatio = 0.0;
 
-            // Tổng số lượng tài sản đang được vận hành và được sử dụng nhưng, không tính khấu hao
+            // Tổng số lượng tài sản đang được vận hành và được sử dụng nhưng không áp dụng khấu hao
             var previousInOperationAndUsingNotDepreciatingQuantity = 0.0;
             var currentInOperationAndUsingNotDepreciatingQuantity = 0.0;
             var inOperationAndUsingNotDepreciatingQuantityRatio = 0.0;
@@ -118,12 +118,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperatingAssets
             var currentInOperationButNotUsingQuantity = 0.0;
             var inOperationButNotUsingQuantityRatio = 0.0;
 
-            // Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng, có tính khấu hao
+            // Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng có áp dụng khấu hao
             var previousInOperationButNotUsingDepreciatingQuantity = 0.0;
             var currentInOperationButNotUsingDepreciatingQuantity = 0.0;
             var inOperationButNotUsingDepreciatingQuantityRatio = 0.0;
 
-            // Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng, không tính khấu hao
+            // Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng không áp dụng khấu hao
             var previousInOperationButNotUsingNotDepreciatingQuantity = 0.0;
             var currentInOperationButNotUsingNotDepreciatingQuantity = 0.0;
             var inOperationButNotUsingNotDepreciatingQuantityRatio = 0.0;
@@ -216,12 +216,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperatingAssets
             currentInOperationQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             inOperationQuantityRatio = Math.Round(((currentInOperationQuantity - previousInOperationQuantity) / previousInOperationQuantity) * 100, 2);
 
-            // Tổng số lượng tài sản đang được vận hành, có tính khấu hao nói chung
+            // Tổng số lượng tài sản đang được vận hành có áp dụng khấu hao nói chung
             previousInOperationDepreciatingQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             currentInOperationDepreciatingQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             inOperationDepreciatingQuantityRatio = Math.Round(((currentInOperationDepreciatingQuantity - previousInOperationDepreciatingQuantity) / previousInOperationDepreciatingQuantity) * 100, 2); ;
 
-            // Tổng số lượng tài sản đang được vận hành, không tính khấu hao nói chung
+            // Tổng số lượng tài sản đang được vận hành không áp dụng khấu hao nói chung
             previousInOperationNotDepreciatingQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             currentInOperationNotDepreciatingQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             inOperationNotDepreciatingQuantityRatio = Math.Round(((currentInOperationNotDepreciatingQuantity - previousInOperationNotDepreciatingQuantity) / previousInOperationNotDepreciatingQuantity) * 100, 2); ;
@@ -231,12 +231,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperatingAssets
             currentInOperationAndUsingQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             inOperationAndUsingQuantityRatio = Math.Round(((currentInOperationAndUsingQuantity - previousInOperationAndUsingQuantity) / previousInOperationAndUsingQuantity) * 100, 2); ;
 
-            // Tổng số lượng tài sản đang được vận hành và được sử dụng, có tính khấu hao
+            // Tổng số lượng tài sản đang được vận hành và được sử dụng có áp dụng khấu hao
             previousInOperationAndUsingDepreciatingQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             currentInOperationAndUsingDepreciatingQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             inOperationAndUsingDepreciatingQuantityRatio = Math.Round(((currentInOperationAndUsingDepreciatingQuantity - previousInOperationAndUsingDepreciatingQuantity) / previousInOperationAndUsingDepreciatingQuantity) * 100, 2); ;
 
-            // Tổng số lượng tài sản đang được vận hành và được sử dụng nhưng, không tính khấu hao
+            // Tổng số lượng tài sản đang được vận hành và được sử dụng nhưng không áp dụng khấu hao
             previousInOperationAndUsingNotDepreciatingQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             currentInOperationAndUsingNotDepreciatingQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             inOperationAndUsingNotDepreciatingQuantityRatio = Math.Round(((currentInOperationAndUsingNotDepreciatingQuantity - previousInOperationAndUsingNotDepreciatingQuantity) / previousInOperationAndUsingNotDepreciatingQuantity) * 100, 2); ;
@@ -246,12 +246,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperatingAssets
             currentInOperationButNotUsingQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             inOperationButNotUsingQuantityRatio = Math.Round(((currentInOperationButNotUsingQuantity - previousInOperationButNotUsingQuantity) / previousInOperationButNotUsingQuantity) * 100, 2); ;
 
-            // Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng, có tính khấu hao
+            // Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng có áp dụng khấu hao
             previousInOperationButNotUsingDepreciatingQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             currentInOperationButNotUsingDepreciatingQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             inOperationButNotUsingDepreciatingQuantityRatio = Math.Round(((currentInOperationButNotUsingDepreciatingQuantity - previousInOperationButNotUsingDepreciatingQuantity) / previousInOperationButNotUsingDepreciatingQuantity) * 100, 2); ;
 
-            // Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng, không tính khấu hao
+            // Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng không áp dụng khấu hao
             previousInOperationButNotUsingNotDepreciatingQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             currentInOperationButNotUsingNotDepreciatingQuantity = GetRandomNumber(MIN_QUANTITY, MAX_QUANTITY);
             inOperationButNotUsingNotDepreciatingQuantityRatio = Math.Round(((currentInOperationButNotUsingNotDepreciatingQuantity - previousInOperationButNotUsingNotDepreciatingQuantity) / previousInOperationButNotUsingNotDepreciatingQuantity) * 100, 2); ;
@@ -345,12 +345,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperatingAssets
             statistics.CurrentInOperationQuantity = isValidDouble(currentInOperationQuantity) ? currentInOperationQuantity : 0;
             statistics.InOperationQuantityRatio = isValidDouble(inOperationQuantityRatio) ? inOperationQuantityRatio : 0;
 
-            // Tổng số lượng tài sản đang được vận hành, có tính khấu hao nói chung
+            // Tổng số lượng tài sản đang được vận hành có áp dụng khấu hao nói chung
             statistics.PreviousInOperationDepreciatingQuantity = isValidDouble(previousInOperationDepreciatingQuantity) ? previousInOperationDepreciatingQuantity : 0;
             statistics.CurrentInOperationDepreciatingQuantity = isValidDouble(currentInOperationDepreciatingQuantity) ? currentInOperationDepreciatingQuantity : 0;
             statistics.InOperationDepreciatingQuantityRatio = isValidDouble(inOperationDepreciatingQuantityRatio) ? inOperationDepreciatingQuantityRatio : 0;
 
-            // Tổng số lượng tài sản đang được vận hành, không tính khấu hao nói chung
+            // Tổng số lượng tài sản đang được vận hành không áp dụng khấu hao nói chung
             statistics.PreviousInOperationNotDepreciatingQuantity = isValidDouble(previousInOperationNotDepreciatingQuantity) ? previousInOperationNotDepreciatingQuantity : 0;
             statistics.CurrentInOperationNotDepreciatingQuantity = isValidDouble(currentInOperationNotDepreciatingQuantity) ? currentInOperationNotDepreciatingQuantity : 0;
             statistics.InOperationNotDepreciatingQuantityRatio = isValidDouble(inOperationNotDepreciatingQuantityRatio) ? inOperationNotDepreciatingQuantityRatio : 0;
@@ -360,12 +360,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperatingAssets
             statistics.CurrentInOperationAndUsingQuantity = isValidDouble(currentInOperationAndUsingQuantity) ? currentInOperationAndUsingQuantity : 0;
             statistics.InOperationAndUsingQuantityRatio = isValidDouble(inOperationAndUsingQuantityRatio) ? inOperationAndUsingQuantityRatio : 0;
 
-            // Tổng số lượng tài sản đang được vận hành và được sử dụng, có tính khấu hao
+            // Tổng số lượng tài sản đang được vận hành và được sử dụng có áp dụng khấu hao
             statistics.PreviousInOperationAndUsingDepreciatingQuantity = isValidDouble(previousInOperationAndUsingDepreciatingQuantity) ? previousInOperationAndUsingDepreciatingQuantity : 0;
             statistics.CurrentInOperationAndUsingDepreciatingQuantity = isValidDouble(currentInOperationAndUsingDepreciatingQuantity) ? currentInOperationAndUsingDepreciatingQuantity : 0;
             statistics.InOperationAndUsingDepreciatingQuantityRatio = isValidDouble(inOperationAndUsingDepreciatingQuantityRatio) ? inOperationAndUsingDepreciatingQuantityRatio : 0;
 
-            // Tổng số lượng tài sản đang được vận hành và được sử dụng, không tính khấu hao
+            // Tổng số lượng tài sản đang được vận hành và được sử dụng nhưng không áp dụng khấu hao
             statistics.PreviousInOperationAndUsingNotDepreciatingQuantity = isValidDouble(previousInOperationAndUsingNotDepreciatingQuantity) ? previousInOperationAndUsingNotDepreciatingQuantity : 0;
             statistics.CurrentInOperationAndUsingNotDepreciatingQuantity = isValidDouble(currentInOperationAndUsingNotDepreciatingQuantity) ? currentInOperationAndUsingNotDepreciatingQuantity : 0;
             statistics.InOperationAndUsingNotDepreciatingQuantityRatio = isValidDouble(inOperationAndUsingNotDepreciatingQuantityRatio) ? inOperationAndUsingNotDepreciatingQuantityRatio : 0;
@@ -375,12 +375,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.OperatingAssets
             statistics.CurrentInOperationButNotUsingQuantity = isValidDouble(currentInOperationButNotUsingQuantity) ? currentInOperationButNotUsingQuantity : 0;
             statistics.InOperationButNotUsingQuantityRatio = isValidDouble(inOperationButNotUsingQuantityRatio) ? inOperationButNotUsingQuantityRatio : 0;
 
-            // Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng có tính khấu hao
+            // Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng có áp dụng khấu hao
             statistics.PreviousInOperationButNotUsingDepreciatingQuantity = isValidDouble(previousInOperationButNotUsingDepreciatingQuantity) ? previousInOperationButNotUsingDepreciatingQuantity : 0;
             statistics.CurrentInOperationButNotUsingDepreciatingQuantity = isValidDouble(currentInOperationButNotUsingDepreciatingQuantity) ? currentInOperationButNotUsingDepreciatingQuantity : 0;
             statistics.InOperationButNotUsingDepreciatingQuantityRatio = isValidDouble(inOperationButNotUsingDepreciatingQuantityRatio) ? inOperationButNotUsingDepreciatingQuantityRatio : 0;
 
-            // Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng, không tính khấu hao
+            // Tổng số lượng tài sản đang được vận hành nhưng không được sử dụng không áp dụng khấu hao
             statistics.PreviousInOperationButNotUsingNotDepreciatingQuantity = isValidDouble(previousInOperationButNotUsingNotDepreciatingQuantity) ? previousInOperationButNotUsingNotDepreciatingQuantity : 0;
             statistics.CurrentInOperationButNotUsingNotDepreciatingQuantity = isValidDouble(currentInOperationButNotUsingNotDepreciatingQuantity) ? currentInOperationButNotUsingNotDepreciatingQuantity : 0;
             statistics.InOperationButNotUsingNotDepreciatingQuantityRatio = isValidDouble(inOperationButNotUsingNotDepreciatingQuantityRatio) ? inOperationButNotUsingNotDepreciatingQuantityRatio : 0;
