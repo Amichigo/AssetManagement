@@ -1,5 +1,5 @@
 import {
-    CustomerServiceProxy, FixedAssetServiceProxy, AssetDashboardServiceProxy,
+    CustomerServiceProxy, AssetDashboardServiceProxy,
     AssetGroupController_05ServiceProxy, AssetController_05ServiceProxy, TransferringAssetServiceProxy, ExportingUsedAssetServiceProxy
 } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
@@ -20,9 +20,6 @@ import { DemoModelServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CustomerComponent } from './customer/customer.component';
 import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
 import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
-import { FixedAssetComponent } from './fixed-asset/fixed-asset.component'
-import { CreateOrEditFixedAssetModalComponent } from './fixed-asset/create-or-edit-fixed-asset-modal.component';
-import { ViewFixedAssetModalComponent } from './fixed-asset/view-fixed-asset-modal.component';
 import { AssetDashboardComponent } from './asset-dashboard/asset-dashboard.component';
 import { AssetGroupComponent } from './asset-group/asset-group.component';
 import { ViewAssetGroupModalComponent } from './asset-group/view-asset-group-modal.component';
@@ -138,19 +135,17 @@ import {
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
-        FixedAssetComponent, CreateOrEditFixedAssetModalComponent, ViewFixedAssetModalComponent,
         AssetDashboardComponent,
         AssetGroupComponent, CreateOrEditAssetGroupModalComponent, ViewAssetGroupModalComponent,
         AssetComponent, CreateOrEditAssetModalComponent, ViewAssetModalComponent, TransferringAssetComponent, CreateOrEditTransferringAssetModalComponent, ViewTransferringAssetModalComponent,
         SearchAssetComponent, SearchUnitComponent, SearchUserComponent,
         SearchAssetComponent2, ExportingUsedAssetComponent, CreateOrEditExportingUsedAssetModalComponent,
-        ViewExportingUsedAssetModalComponent, 
+        ViewExportingUsedAssetModalComponent,
 
     ],
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
-        FixedAssetServiceProxy,
         AssetDashboardServiceProxy,
         AssetGroupController_05ServiceProxy,
         AssetController_05ServiceProxy,

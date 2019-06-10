@@ -3,7 +3,6 @@ import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
 import { ExportingUsedAssetServiceProxy, ExportingUsedAssetInput, TransferringAssetServiceProxy, SearchAssetUnitDataOutput, SearchAssetUserDataOutput, AssetController_05ServiceProxy, AssetForViewDto_05 } from '@shared/service-proxies/service-proxies';
 import { CustomerServiceProxy } from '@shared/service-proxies/service-proxies';
-import { FixedAssetServiceProxy } from '@shared/service-proxies/service-proxies';
 import { Logs } from 'selenium-webdriver';
 import { Asset } from './asset';
 import { AssetDashboardComponent } from '../asset-dashboard/asset-dashboard.component';
@@ -187,7 +186,7 @@ export class CreateOrEditExportingUsedAssetModalComponent extends AppComponentBa
                 this.close();
             });
         }
-        
+
 
     }
 

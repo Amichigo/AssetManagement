@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.component';
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
-import { FixedAssetComponent } from './fixed-asset/fixed-asset.component';
 import { AssetDashboardComponent } from './asset-dashboard/asset-dashboard.component';
 import { AssetGroupComponent } from "./asset-group/asset-group.component";
 import { AssetComponent } from "./asset/asset.component";
@@ -41,15 +40,6 @@ import { ExportingUsedAssetComponent } from './exporting-used-asset/exporting-us
                     {
                         path: 'customer', component: CustomerComponent,
                         data: { permission: 'Pages.Administration.Customer' }
-                    },
-                ]
-            },
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'fixed-asset', component: FixedAssetComponent,
-                        data: { permission: 'Pages.Administration.FixedAsset' }
                     },
                 ]
             },
@@ -143,11 +133,11 @@ import { ExportingUsedAssetComponent } from './exporting-used-asset/exporting-us
                     },
                 ]
             },
-               {
+            {
                 path: '',
                 children: [
                     {
-                        path: 'exporting-used-asset', component:ExportingUsedAssetComponent ,
+                        path: 'exporting-used-asset', component: ExportingUsedAssetComponent,
                         data: { permission: 'Pages.Administration.ExportingUsedAsset' }
                     },
                 ]
@@ -155,21 +145,21 @@ import { ExportingUsedAssetComponent } from './exporting-used-asset/exporting-us
             {
                 path: 'exporting-used-asset',
                 children: [
-                {
-                    path: 'create-or-edit-exporting-used-asset', component: CreateOrEditExportingUsedAssetModalComponent,
-                    data: { permission: 'Pages.Administration.ExportingUsedAsset.Create' }
-                },
-            ]
+                    {
+                        path: 'create-or-edit-exporting-used-asset', component: CreateOrEditExportingUsedAssetModalComponent,
+                        data: { permission: 'Pages.Administration.ExportingUsedAsset.Create' }
+                    },
+                ]
             },
-           {
+            {
                 path: 'exporting-used-asset',
                 children: [
-                {
-                    path: 'create-or-edit-exporting-used-asset/:exportingUsedId', component: CreateOrEditExportingUsedAssetModalComponent,
-                    data: { permission: 'Pages.Administration.ExportingUsedAsset.Edit' }
-                },
-            ]
-           },
+                    {
+                        path: 'create-or-edit-exporting-used-asset/:exportingUsedId', component: CreateOrEditExportingUsedAssetModalComponent,
+                        data: { permission: 'Pages.Administration.ExportingUsedAsset.Edit' }
+                    },
+                ]
+            },
 
         ])
     ],

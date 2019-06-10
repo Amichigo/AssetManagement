@@ -6,8 +6,8 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { FixedAssetServiceProxy, AssetController_05ServiceProxy } from '@shared/service-proxies/service-proxies';
-import {Asset} from './asset';
+import { AssetController_05ServiceProxy } from '@shared/service-proxies/service-proxies';
+import { Asset } from './asset';
 import { ModalDirective } from 'ngx-bootstrap';
 import { Moment } from 'moment';
 
@@ -26,7 +26,7 @@ export class SearchAssetComponent2 extends AppComponentBase {
 
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
-    
+
     /**
      * @Output dùng để public event cho component khác xử lý
      */
@@ -35,7 +35,7 @@ export class SearchAssetComponent2 extends AppComponentBase {
     assetTypes = ['Tài sản cố định', 'Công cụ lao động'];
     info: string[] = ['aksldhalksfd'];
     infoofAsset: string[] = [' '];
-    
+
     // Tạo các biến để filter
     assetName: string;
 
@@ -45,22 +45,21 @@ export class SearchAssetComponent2 extends AppComponentBase {
 
     constructor(
         injector: Injector,
-        private _fixedAssetServiceProxy: FixedAssetServiceProxy,
         private _activatedRoute: ActivatedRoute,
         private _assetService: AssetController_05ServiceProxy
     ) {
         super(injector);
     }
 
-      /**
-     * Hàm xử lý trước khi View được init
-     */
+    /**
+   * Hàm xử lý trước khi View được init
+   */
     ngOnInit(): void {
     }
 
-      /**
-     * Hàm xử lý sau khi View được init
-     */
+    /**
+   * Hàm xử lý sau khi View được init
+   */
     ngAfterViewInit(): void {
         setTimeout(() => {
             this.saving = false;
@@ -87,7 +86,7 @@ export class SearchAssetComponent2 extends AppComponentBase {
         this.reloadList(null, event);
 
     }
-   
+
 
     reloadList(assetName, event?: LazyLoadEvent) {
         this._assetService.getAssetsByFilter(assetName, this.primengTableHelper.getSorting(this.dataTable),
@@ -99,7 +98,7 @@ export class SearchAssetComponent2 extends AppComponentBase {
             this.primengTableHelper.hideLoadingIndicator();
         });
     }
-   
+
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
@@ -126,10 +125,10 @@ export class SearchAssetComponent2 extends AppComponentBase {
         this.saving = false;
         this.modal.show();
     }
-    
-     /**
-     * Hàm xử lý sau khi View được init
-     */
+
+    /**
+    * Hàm xử lý sau khi View được init
+    */
     acccept(): void {
         if (this.selectedAssetId == null)
             this.notify.warn(this.l('Select Asset Then Save'));
@@ -140,7 +139,7 @@ export class SearchAssetComponent2 extends AppComponentBase {
         }
     }
 
-    getIdofSelectedAsset(value: string): void{
+    getIdofSelectedAsset(value: string): void {
 
         this.selectedAssetId = value;
     }
@@ -148,10 +147,10 @@ export class SearchAssetComponent2 extends AppComponentBase {
     close(): void {
         this.modal.hide();
     }
-     /**
-     * Tạo pipe thay vì tạo từng hàm truncate như thế này
-     * @param text
-     */
+    /**
+    * Tạo pipe thay vì tạo từng hàm truncate như thế này
+    * @param text
+    */
     truncateString(text): string {
         return abp.utils.truncateStringWithPostfix(text, 32, '...');
     }
