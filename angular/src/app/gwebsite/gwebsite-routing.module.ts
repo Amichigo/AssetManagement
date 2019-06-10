@@ -33,7 +33,7 @@ import { AssetDashboardComponent } from './asset-dashboard/asset-dashboard.compo
 import { AssetGroupComponent } from './asset-group/asset-group.component';
 import { AssetComponent } from './asset/asset.component';
 import { PurchasedAssetsComponent } from './asset-investment-efficiency/pages/purchased-assets/purchased-assets.component';
-import { SoleAssetsComponent } from './asset-investment-efficiency/pages/sole-assets/sole-assets.component';
+import { SoldAssetsComponent } from './asset-investment-efficiency/pages/sold-assets/sold-assets.component';
 import { MaintainedAssetsComponent } from './asset-investment-efficiency/pages/maintained-assets/maintained-assets.component';
 import { PlannedToSellAssetsComponent } from './asset-investment-efficiency/pages/planned-to-sell-assets/planned-to-sell-assets.component';
 import { OperatingAssetsComponent } from './asset-investment-efficiency/pages/operating-assets/operating-assets.component';
@@ -65,7 +65,7 @@ import { LoaiNhaCungCapComponent } from './LoaiNhaCungCap/LoaiNhaCungCap.compone
 import { NhaCungCapHangHoaComponent } from './NhaCungCapHangHoa/NhaCungCapHangHoa.component';
 import { ProductComponent } from './Product/Product.component';
 import { ProductTypeComponent } from './ProductType/ProductType.component';
-import { SoldAssetsComponent } from './asset-investment-efficiency/pages/sold-assets/sold-assets.component';
+// import { SoldAssetsComponent } from './asset-investment-efficiency/pages/sold-assets/sold-assets.component';
 import { PlanComponent, ConstructionComponent, BidManagerComponent } from '.';
 
 @NgModule({
@@ -506,16 +506,16 @@ import { PlanComponent, ConstructionComponent, BidManagerComponent } from '.';
                     },
                 ]
             },
-            {
-                path: '',
-                children: [
-                    {
+            // {
+            //     path: '',
+            //     children: [
+            //         {
 
-                        path: 'asset-investment-efficiency/purchased-assets', component: PurchasedAssetsComponent,
-                        data: { permission: ''}
-                    }
-                ]
-            },
+            //             path: 'asset-investment-efficiency/purchased-assets', component: PurchasedAssetsComponent,
+            //             data: { permission: ''}
+            //         }
+            //     ]
+            // },
             {
                 path: '',
                 children: [
@@ -539,8 +539,8 @@ import { PlanComponent, ConstructionComponent, BidManagerComponent } from '.';
                 children: [
                     {
 
-                        path: 'asset-investment-efficiency/sole-assets', component: SoleAssetsComponent,
-                        data: { permission: '' }
+                        path: 'asset-investment-efficiency/sold-assets', component: SoldAssetsComponent,
+                        data: { permission: 'Pages.Administration.SoldAsset' }
                     }
                 ]
             },
@@ -553,16 +553,16 @@ import { PlanComponent, ConstructionComponent, BidManagerComponent } from '.';
                     },
                 ]
             },
-            {
-                path: '',
-                children: [
-                    {
+            // {
+            //     path: '',
+            //     children: [
+            //         {
 
-                        path: 'asset-investment-efficiency/maintained-assets', component: MaintainedAssetsComponent,
-                        data: { permission: ''}
-                    }
-                ]
-            },
+            //             path: 'asset-investment-efficiency/maintained-assets', component: MaintainedAssetsComponent,
+            //             data: { permission: ''}
+            //         }
+            //     ]
+            // },
             {
                 path: '',
                 children: [
@@ -572,15 +572,15 @@ import { PlanComponent, ConstructionComponent, BidManagerComponent } from '.';
                     }
                 ]
             },
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'asset-investment-efficiency/planned-to-sell-assets', component: PlannedToSellAssetsComponent,
-                        data: { permission: ''}
-                    }
-                ]
-            },
+            // {
+            //     path: '',
+            //     children: [
+            //         {
+            //             path: 'asset-investment-efficiency/planned-to-sell-assets', component: PlannedToSellAssetsComponent,
+            //             data: { permission: ''}
+            //         }
+            //     ]
+            // },
             {
                 path: '',
                 children: [
@@ -590,15 +590,15 @@ import { PlanComponent, ConstructionComponent, BidManagerComponent } from '.';
                     }
                 ]
             },
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'asset-investment-efficiency/operating-assets', component: OperatingAssetsComponent,
-                        data: { permission: ''}
-                    }
-                ]
-            },
+            // {
+            //     path: '',
+            //     children: [
+            //         {
+            //             path: 'asset-investment-efficiency/operating-assets', component: OperatingAssetsComponent,
+            //             data: { permission: ''}
+            //         }
+            //     ]
+            // },
             {
                 path: '',
                 children: [
@@ -608,15 +608,15 @@ import { PlanComponent, ConstructionComponent, BidManagerComponent } from '.';
                     }
                 ]
             },
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'asset-investment-efficiency/planned-to-purchase-assets', component: PlannedToPurchaseAssetsComponent,
-                        data: { permission: ''}
-                    }
-                ]
-            },
+            // {
+            //     path: '',
+            //     children: [
+            //         {
+            //             path: 'asset-investment-efficiency/planned-to-purchase-assets', component: PlannedToPurchaseAssetsComponent,
+            //             data: { permission: ''}
+            //         }
+            //     ]
+            // },
             {
                 path: '',
                 children: [
@@ -626,15 +626,15 @@ import { PlanComponent, ConstructionComponent, BidManagerComponent } from '.';
                     }
                 ]
             },
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'asset-investment-efficiency/planned-to-maintain-assets', component: PlannedToMaintainAssetsComponent,
-                        data: { permission: ''}
-                    }
-                ]
-            },
+            // {
+            //     path: '',
+            //     children: [
+            //         {
+            //             path: 'asset-investment-efficiency/planned-to-maintain-assets', component: PlannedToMaintainAssetsComponent,
+            //             data: { permission: ''}
+            //         }
+            //     ]
+            // },
             {
                 path: '',
                 children: [
@@ -700,15 +700,15 @@ import { PlanComponent, ConstructionComponent, BidManagerComponent } from '.';
                     }
                 ]
             },
-            {
-                path: '',
-                children: [
-                    {
-                        path: 'asset-investment-efficiency/sold-assets', component: SoldAssetsComponent,
-                        data: { permission: 'Pages.Administration.SoldAsset'}
-                    }
-                ]
-            },
+            // {
+            //     path: '',
+            //     children: [
+            //         {
+            //             path: 'asset-investment-efficiency/sold-assets', component: SoldAssetsComponent,
+            //             data: { permission: 'Pages.Administration.SoldAsset'}
+            //         }
+            //     ]
+            // },
             {
                 path: '',
                 children: [

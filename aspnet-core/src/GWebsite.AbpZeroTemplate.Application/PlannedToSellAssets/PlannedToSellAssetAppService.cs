@@ -65,9 +65,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.PlannedToSellAssets
             var amountRatio = 0.0;
             var quantityRatio = 0.0;
 
-            var query = plannedToSellAssetRepository.GetAll().Where(x => !x.IsDelete);
-
-            query = query.Where(x => x.RecordedDate >= input.PreviousStartingDate && x.RecordedDate <= input.CurrentEndingDate);
+            var query = plannedToSellAssetRepository.GetAll().Where(x => !x.IsDelete && x.RecordedDate >= input.PreviousStartingDate && x.RecordedDate <= input.CurrentEndingDate);
 
             foreach (var record in query.ToList())
             {

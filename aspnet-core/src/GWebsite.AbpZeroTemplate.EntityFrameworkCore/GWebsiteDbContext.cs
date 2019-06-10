@@ -123,7 +123,7 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
 
         public virtual DbSet<PurchasedAsset> PurchasedAssets { get; set; }
         public virtual DbSet<PlannedToPurchaseAsset> PlannedToPurchaseAssets { get; set; }
-        public virtual DbSet<SoldAsset> SoleAssets { get; set; }
+        public virtual DbSet<SoldAsset> SoldAssets { get; set; }
         public virtual DbSet<PlannedToSellAsset> PlannedToSellAssets { get; set; }
         public virtual DbSet<MaintainedAsset> MaintainedAssets { get; set; }
         public virtual DbSet<PlannedToMaintainAsset> PlannedToMaintainAssets { get; set; }

@@ -162,7 +162,8 @@
               "src/assets/metronic/src/js/framework/components/plugins/forms/bootstrap-timepicker.init.js",
               "src/assets/metronic/src/js/framework/components/plugins/forms/jquery-validation.init.js",
               "src/assets/metronic/src/js/app/base/main.js",
-              "src/assets/metronic/src/js/demo/default/base/layout.js"
+              "src/assets/metronic/src/js/demo/default/base/layout.js",
+              "src/assets/xlxs/xlsx.min.js"
             ]
           },
           "configurations": {

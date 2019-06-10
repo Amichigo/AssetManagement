@@ -116,7 +116,7 @@ export class SoldAssetsDataTableComponent extends Component implements OnChanges
             });
 
             if (!contained) {
-               assetTypes.push({ AssetTypeName: record['assetTypeName'], AssetTypeId: record['assetTypeId'] });
+               assetTypes.push({ assetTypeName: record['assetTypeName'], assetTypeId: record['assetTypeId'] });
             }
          }
       });
