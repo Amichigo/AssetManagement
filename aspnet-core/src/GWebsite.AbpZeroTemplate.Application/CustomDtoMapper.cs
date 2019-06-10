@@ -129,7 +129,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.TransferringAssets.MainDto;
 using GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Warranty_Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ExportingUsedAssets;
 
-namespace GSoft.AbpZeroTemplate
+namespace GWebsite.AbpZeroTemplate.Applications
 {
     internal static class CustomDtoMapper
     {

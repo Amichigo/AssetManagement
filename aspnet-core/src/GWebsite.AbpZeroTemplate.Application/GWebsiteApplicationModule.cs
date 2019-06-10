@@ -1,7 +1,7 @@
 ﻿using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
-using GSoft.AbpZeroTemplate;
+using GWebsite.AbpZeroTemplate.Applications;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
 
 namespace GWebsite.AbpZeroTemplate.Application
