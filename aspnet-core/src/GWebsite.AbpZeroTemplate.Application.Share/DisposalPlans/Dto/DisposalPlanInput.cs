@@ -15,7 +15,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.DisposalPlans.Dto
         public int Nam { get; set; }
         public DateTime NgayHieuLuc { get; set; }
         public string KinhPhi { get; set; }
-        public string TrangThai { get; set; }
+        public string TinhTrang { get; set; }
         public string SoLanThayDoi { get; set; }
     }
 }

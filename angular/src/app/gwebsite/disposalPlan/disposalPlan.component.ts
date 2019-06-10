@@ -7,17 +7,18 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { DisposalPlanServiceProxy,DisposalPlanInput } from '@shared/service-proxies/service-proxies';
+import { DisposalPlanServiceProxy,DisposalPlanInput, SessionServiceProxy,UserServiceProxy, GetCurrentLoginInformationsOutput, GetUserForEditOutput } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditDisposalPlanModalComponent } from './create-or-edit-disposalPlan-modal.component';
 import { DisposalPlanDetailComponent } from './disposalPlanDetail.component';
 import { userInfo } from 'os';
-
+ 
 @Component({
     templateUrl: './disposalPlan.component.html',
     animations: [appModuleAnimation()],
     styles: [`.highlighted {
-    background - color: #fff2ac;
-    background-image: linear-gradient(to right, #ffe359 0 %, #fff2ac 100 %);}`]
+        background - color: #fff2ac;
+        background-image: linear-gradient(to right, #ffe359 0 %, #fff2ac 100 %);}`,
+            `.hide { display: none;}`]
 })
 export class DisposalPlanComponent extends AppComponentBase implements AfterViewInit, OnInit {
 
@@ -30,6 +31,9 @@ export class DisposalPlanComponent extends AppComponentBase implements AfterView
     @ViewChild('viewDisposalPlanModal') viewDisposalPlanModal: ViewDisposalPlanModalComponent;
     @ViewChild('viewDetailModal') viewDetailModal: DisposalPlanDetailComponent;
 
+    halfChecked: boolean = false;
+    role: any;
+    showActions: boolean = false;
     /**
      * tạo các biến dể filters
      */
@@ -37,6 +41,11 @@ export class DisposalPlanComponent extends AppComponentBase implements AfterView
     disposalPlanPhongBan: string;
     disposalPlanMaKeHoach: string;
     disposalPlanTinhTrang: string;
+    /*
+     * lấy user role hiện tại
+     */
+    currentSession: GetCurrentLoginInformationsOutput = new GetCurrentLoginInformationsOutput();
+    currentUser: GetUserForEditOutput = new GetUserForEditOutput();
     /*
      * tạo biến để lưu và truyền qua form detail
      */
@@ -46,6 +55,8 @@ export class DisposalPlanComponent extends AppComponentBase implements AfterView
         injector: Injector,
         private _disposalPlanService: DisposalPlanServiceProxy,
         private _activatedRoute: ActivatedRoute,
+        private _userService: UserServiceProxy,
+        private _sessionService: SessionServiceProxy,
     ) {
         super(injector);
     }
@@ -70,19 +81,25 @@ export class DisposalPlanComponent extends AppComponentBase implements AfterView
      * @param event
      */
     getDisposalPlans(event?: LazyLoadEvent) {
-        if (!this.paginator || !this.dataTable) {
-            return;
-        }
+        this._sessionService.getCurrentLoginInformations().subscribe(result => {
+            this.currentSession = result;
+            this._userService.getUserForEdit(this.currentSession.user.id).subscribe(user => {
+                this.currentUser = user;
 
-        //show loading trong gridview
-        this.primengTableHelper.showLoadingIndicator();
-
-        /**
-         * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
-         */
-
-        this.reloadList(null,null,null,null,event);
-
+                if (!this.paginator || !this.dataTable) {
+                       return;
+                }
+                this.primengTableHelper.showLoadingIndicator();
+                for (let i = 0; i < this.currentUser.roles.length; i++) {
+                    if (this.currentUser.roles[i].isAssigned == true && this.currentUser.roles[i].roleDisplayName == "hieu truong") {
+                        this.halfChecked = true;
+                        this.reloadList(null, null, null, "checking" && "checked", event);
+                    }
+                }
+                console.log(this.halfChecked);
+                if (this.halfChecked == false) this.reloadList(null, null, null,null, event);
+            })
+        })
     }
 
     reloadList(disposalPlanKhuVuc,disposalPlanPhongBan,disposalPlanMaKeHoach,disposalPlanTinhTrang, event?: LazyLoadEvent) {
@@ -95,6 +112,7 @@ export class DisposalPlanComponent extends AppComponentBase implements AfterView
             this.primengTableHelper.records = result.items;
             this.primengTableHelper.hideLoadingIndicator();
         });
+        console.log(this.primengTableHelper.records);
     }
 
     deleteDisposalPlan(id): void {
@@ -110,8 +128,6 @@ export class DisposalPlanComponent extends AppComponentBase implements AfterView
             this.disposalPlanPhongBan = params['phongBan'] || '';
             this.disposalPlanMaKeHoach = params['maKeHoach'] || '';
             this.disposalPlanTinhTrang = params['tinhTrang'] || '';
-            this.reloadList(this.disposalPlanKhuVuc, this.disposalPlanPhongBan, this.disposalPlanMaKeHoach,
-                this.disposalPlanTinhTrang, null);
         });
     }
 
@@ -156,7 +172,7 @@ export class DisposalPlanComponent extends AppComponentBase implements AfterView
         this.selectedRow.ngayHieuLuc = userInput.ngayHieuLuc;
         this.selectedRow.phongBan = userInput.phongBan;
         this.selectedRow.soLanThayDoi = userInput.soLanThayDoi;
-        this.selectedRow.trangThai = userInput.trangThai;
+        this.selectedRow.tinhTrang = userInput.tinhTrang;
         console.log(userInput);
     }
 

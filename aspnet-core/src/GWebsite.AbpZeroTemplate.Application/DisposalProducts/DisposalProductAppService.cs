@@ -3,29 +3,28 @@ using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using GWebsite.AbpZeroTemplate.Application;
-using GWebsite.AbpZeroTemplate.Application.Share.DisposalPlans;
-using GWebsite.AbpZeroTemplate.Application.Share.DisposalPlans.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.DisposalProducts;
+using GWebsite.AbpZeroTemplate.Application.Share.DisposalProducts.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 
-
-namespace GWebsite.AbpZeroTemplate.Web.Core.DisposalPlans
+namespace GWebsite.AbpZeroTemplate.Web.Core.DisposalProducts
 {
-    [AbpAuthorize(GWebsitePermissions.Pages_Administration_DisposalPlan)]
-    public class DisposalPlanAppService: GWebsiteAppServiceBase, IDisposalPlanAppService
+    [AbpAuthorize(GWebsitePermissions.Pages_Administration_DisposalProduct)]
+    public class DisposalProductAppService: GWebsiteAppServiceBase, IDisposalProductAppService
     {
-        private readonly IRepository<DisposalPlan> disposalPlanRepository;
+        private readonly IRepository<DisposalProduct> disposalPlanRepository;
 
-        public DisposalPlanAppService(IRepository<DisposalPlan> disposalPlanRepository)
+        public DisposalProductAppService(IRepository<DisposalProduct> disposalPlanRepository)
         {
             this.disposalPlanRepository = disposalPlanRepository;
         }
 
         #region Public Method
 
-        public void CreateOrEditDisposalPlan(DisposalPlanInput disposalPlanInput)
+        public void CreateOrEditDisposalProduct(DisposalProductInput disposalPlanInput)
         {
             if (disposalPlanInput.Id == 0)
             {
@@ -37,9 +36,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DisposalPlans
             }
         }
 
-        public void DeleteDisposalPlan(int id)
+        public void DeleteDisposalProduct(int id)
         {
-            var disposalPlanEntity = disposalPlanRepository.GetAll().Where(x => !x.IsDelete && x.TinhTrang != "Đã Duyệt").SingleOrDefault(x => x.Id == id);
+            var disposalPlanEntity = disposalPlanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (disposalPlanEntity != null)
             {
                 disposalPlanEntity.IsDelete = true;
@@ -48,49 +47,23 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DisposalPlans
             }
         }
 
-        public DisposalPlanInput GetDisposalPlanForEdit(int id)
+        public DisposalProductInput GetDisposalProductForEdit(int id)
         {
             var disposalPlanEntity = disposalPlanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (disposalPlanEntity == null)
             {
                 return null;
             }
-            return ObjectMapper.Map<DisposalPlanInput>(disposalPlanEntity);
+            return ObjectMapper.Map<DisposalProductInput>(disposalPlanEntity);
         }
 
-        public DisposalPlanForViewDto GetDisposalPlanForView(int id)
-        {
-            var disposalPlanEntity = disposalPlanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
-            if (disposalPlanEntity == null)
-            {
-                return null;
-            }
-            return ObjectMapper.Map<DisposalPlanForViewDto>(disposalPlanEntity);
-        }
-
-        public PagedResultDto<DisposalPlanDto> GetDisposalPlans(DisposalPlanFilter input)
+        public PagedResultDto<DisposalProductDto> GetDisposalProducts(DisposalProductFilter input)
         {
             var query = disposalPlanRepository.GetAll().Where(x => !x.IsDelete);
-
             // filter by value
-            if (input.KhuVuc != null)
+            if (input.MaTS != null)
             {
-                query = query.Where(x => x.KhuVuc.ToLower().Equals(input.KhuVuc));
-            }
-
-            if (input.PhongBan != null)
-            {
-                query = query.Where(x => x.PhongBan.ToLower().Equals(input.PhongBan));
-            }
-
-            if (input.MaKeHoach != null)
-            {
-                query = query.Where(x => x.MaKeHoach.ToLower().Equals(input.MaKeHoach));
-            }
-
-            if (input.TinhTrang != null)
-            {
-                query = query.Where(x => x.TinhTrang.ToLower().Contains(input.TinhTrang));
+                query = query.Where(x => x.MaTS.ToLower().Equals(input.MaTS));
             }
 
             var totalCount = query.Count();
@@ -105,9 +78,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DisposalPlans
             var items = query.PageBy(input).ToList();
 
             // result
-            return new PagedResultDto<DisposalPlanDto>(
+            return new PagedResultDto<DisposalProductDto>(
                 totalCount,
-                items.Select(item => ObjectMapper.Map<DisposalPlanDto>(item)).ToList());
+                items.Select(item => ObjectMapper.Map<DisposalProductDto>(item)).ToList());
         }
 
         #endregion
@@ -115,16 +88,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DisposalPlans
         #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
-        private void Create(DisposalPlanInput disposalPlanInput)
+        private void Create(DisposalProductInput disposalPlanInput)
         {
-            var disposalPlanEntity = ObjectMapper.Map<DisposalPlan>(disposalPlanInput);
+            var disposalPlanEntity = ObjectMapper.Map<DisposalProduct>(disposalPlanInput);
             SetAuditInsert(disposalPlanEntity);
             disposalPlanRepository.Insert(disposalPlanEntity);
             CurrentUnitOfWork.SaveChanges();
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
-        private void Update(DisposalPlanInput disposalPlanInput)
+        private void Update(DisposalProductInput disposalPlanInput)
         {
             var disposalPlanEntity = disposalPlanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == disposalPlanInput.Id);
             if (disposalPlanEntity == null)

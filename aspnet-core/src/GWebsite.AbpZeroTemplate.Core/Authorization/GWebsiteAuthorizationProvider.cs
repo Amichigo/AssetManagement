@@ -77,6 +77,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             disposalPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlanDetail_Create, L("CreatingNewDisposalPlanDetail"));
             disposalPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlanDetail_Edit, L("EditingDisposalPlanDetail"));
             disposalPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalPlanDetail_Delete, L("DeletingDisposalPlanDetail"));
+
+            var disposalProduct = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalProduct, L("DisposalProduct"));
+            disposalProduct.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalProduct_Create, L("CreatingNewDisposalProduct"));
+            disposalProduct.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalProduct_Edit, L("EditingDisposalProduct"));
+            disposalProduct.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalProduct_Delete, L("DeletingDisposalProduct"));
         }
 
         private static ILocalizableString L(string name)

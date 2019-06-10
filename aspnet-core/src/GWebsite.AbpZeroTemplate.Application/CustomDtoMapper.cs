@@ -8,6 +8,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.ConstructionPlans.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ConstructionPlanDetails.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DisposalPlans.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DisposalPlanDetails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.DisposalProducts.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Applications
@@ -65,6 +66,11 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<DisposalPlanDetail, DisposalPlanDetailDto>();
             configuration.CreateMap<DisposalPlanDetailInput, DisposalPlanDetail>();
             configuration.CreateMap<DisposalPlanDetail, DisposalPlanDetailInput>();
+
+            //DisposalProduct
+            configuration.CreateMap<DisposalProduct, DisposalProductDto>();
+            configuration.CreateMap<DisposalProductInput, DisposalProduct>();
+            configuration.CreateMap<DisposalProduct, DisposalProductInput>();
         }
     }
 }

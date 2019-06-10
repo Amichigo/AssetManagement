@@ -37,8 +37,8 @@ export class CreateOrEditDisposalPlanModalComponent extends AppComponentBase {
         this.saving = false;
         this._disposalPlanService.getDisposalPlanForEdit(disposalPlanId).subscribe(result => {
             this.disposalPlan = result;
-            if (this.disposalPlan.trangThai == null) {
-                this.disposalPlan.trangThai = 'Chưa duyệt';
+            if (this.disposalPlan.tinhTrang == null) {
+                this.disposalPlan.tinhTrang = 'Not yet checked';
             }
             this.modal.show();
         })

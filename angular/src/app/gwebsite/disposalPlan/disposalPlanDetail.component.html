@@ -20,13 +20,13 @@
                         </div>
                         <div class="col-xs-6 text-right">
                             <button (click)="createDisposalPlanDetail()" *ngIf="isGranted('Pages.Administration.DisposalPlanDetail.Create')"
-                                    class="btn btn-primary">
+                                    class="btn btn-primary" [class.hide]="selectedRow.tinhTrang == 'checked'">
                                 <i class="fa fa-plus"></i> {{l("CreateNewShopingPlanDetail")}}
                             </button>
                         </div>
                         <div class="col-xs-6 text-right">
                             <button (click)="checkDisposalPlan()" *ngIf="isGranted('Pages.Administration.DisposalPlanDetail.Create')"
-                                    class="btn btn-primary">
+                                    class="btn btn-primary" [class.hide]="selectedRow.tinhTrang == 'checked'">
                                 <i class="fa fa-plus"></i> {{l("Check")}}
                             </button>
                         </div>
@@ -123,6 +123,22 @@
                                                 <td>
                                                     <span class="ui-column-title">ThangDuKienThanhLy</span>
                                                     <span title="{{record.thangDuKien}}">{{record.thangDuKien}}</span>
+                                                </td>
+                                                <td>
+                                                    <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                            (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}" [class.hide]="record.tinhTrang === 'checked'">
+                                                        <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
+                                                    </button>
+            
+                                                    <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                            (click)="deleteDisposalPlan(record.id)" title="{{l('Delete')}}"  [class.hide]="record.tinhTrang === 'checked'">
+                                                        <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
+                                                    </button>
+            
+                                                    <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                            (click)="viewDisposalPlanModal.show(record.id)" title="{{l('View')}}">
+                                                        <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         </ng-template>

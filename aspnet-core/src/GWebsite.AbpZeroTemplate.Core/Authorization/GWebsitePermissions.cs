@@ -1,4 +1,4 @@
-﻿namespace GWebsite.AbpZeroTemplate.Core.Authorization
+﻿    namespace GWebsite.AbpZeroTemplate.Core.Authorization
 {
     /// <summary>
     /// Defines string constants for application's permission names.
@@ -47,13 +47,18 @@
         public const string Pages_Administration_ConstructionPlanDetail_Delete = "Pages.Administration.ConstructionPlanDetail.Delete";
 
         public const string Pages_Administration_DisposalPlan = "Pages.Administration.DisposalPlan";
-        public const string Pages_Administration_DisposalPlan_Create = "Pages.Administration.Disposal.Create";
-        public const string Pages_Administration_DisposalPlan_Edit = "Pages.Administration.Disposal.Edit";
-        public const string Pages_Administration_DisposalPlan_Delete = "Pages.Administration.Disposal.Delete";
+        public const string Pages_Administration_DisposalPlan_Create = "Pages.Administration.DisposalPlan.Create";
+        public const string Pages_Administration_DisposalPlan_Edit = "Pages.Administration.DisposalPlan.Edit";
+        public const string Pages_Administration_DisposalPlan_Delete = "Pages.Administration.DisposalPlan.Delete";
 
         public const string Pages_Administration_DisposalPlanDetail = "Pages.Administration.DisposalPlanDetail";
         public const string Pages_Administration_DisposalPlanDetail_Create = "Pages.Administration.DisposalPlanDetail.Create";
         public const string Pages_Administration_DisposalPlanDetail_Edit = "Pages.Administration.DisposalPlanDetail.Edit";
         public const string Pages_Administration_DisposalPlanDetail_Delete = "Pages.Administration.DisposalPlanDetail.Delete";
+
+        public const string Pages_Administration_DisposalProduct = "Pages.Administration.DisposalProduct";
+        public const string Pages_Administration_DisposalProduct_Create = "Pages.Administration.DisposalProduct.Create";
+        public const string Pages_Administration_DisposalProduct_Edit = "Pages.Administration.DisposalProduct.Edit";
+        public const string Pages_Administration_DisposalProduct_Delete = "Pages.Administration.DisposalProduct.Delete";
     }
 }
