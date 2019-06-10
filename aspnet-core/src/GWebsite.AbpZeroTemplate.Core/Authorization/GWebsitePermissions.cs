@@ -368,5 +368,40 @@
         public const string Pages_Administration_Product_Edit = "Pages.Administration.Product.Edit";
         public const string Pages_Administration_Product_Delete = "Pages.Administration.Product.Delete";
 
+
+        public const string Pages_Administration_PurchasedAsset = "Pages.Administration.PurchasedAsset";
+        public const string Pages_Administration_PurchasedAsset_Create = "Pages.Administration.PurchasedAsset.Create";
+        public const string Pages_Administration_PurchasedAsset_Edit = "Pages.Administration.PurchasedAsset.Edit";
+        public const string Pages_Administration_PurchasedAsset_Delete = "Pages.Administration.PurchasedAsset.Delete";
+
+        public const string Pages_Administration_PlannedToPurchaseAsset = "Pages.Administration.PlannedToPurchaseAsset";
+        public const string Pages_Administration_PlannedToPurchaseAsset_Create = "Pages.Administration.PlannedToPurchaseAsset.Create";
+        public const string Pages_Administration_PlannedToPurchaseAsset_Edit = "Pages.Administration.PlannedToPurchaseAsset.Edit";
+        public const string Pages_Administration_PlannedToPurchaseAsset_Delete = "Pages.Administration.PlannedToPurchaseAsset.Delete";
+
+        public const string Pages_Administration_OperatingAsset = "Pages.Administration.OperatingAsset";
+        public const string Pages_Administration_OperatingAsset_Create = "Pages.Administration.OperatingAsset.Create";
+        public const string Pages_Administration_OperatingAsset_Edit = "Pages.Administration.OperatingAsset.Edit";
+        public const string Pages_Administration_OperatingAsset_Delete = "Pages.Administration.OperatingAsset.Delete";
+
+        public const string Pages_Administration_MaintainedAsset = "Pages.Administration.MaintainedAsset";
+        public const string Pages_Administration_MaintainedAsset_Create = "Pages.Administration.MaintainedAsset.Create";
+        public const string Pages_Administration_MaintainedAsset_Edit = "Pages.Administration.MaintainedAsset.Edit";
+        public const string Pages_Administration_MaintainedAsset_Delete = "Pages.Administration.MaintainedAsset.Delete";
+
+        public const string Pages_Administration_PlannedToMaintainAsset = "Pages.Administration.PlannedToMaintainAsset";
+        public const string Pages_Administration_PlannedToMaintainAsset_Create = "Pages.Administration.PlannedToMaintainAsset.Create";
+        public const string Pages_Administration_PlannedToMaintainAsset_Edit = "Pages.Administration.PlannedToMaintainAsset.Edit";
+        public const string Pages_Administration_PlannedToMaintainAsset_Delete = "Pages.Administration.PlannedToMaintainAsset.Delete";
+
+        public const string Pages_Administration_SoldAsset = "Pages.Administration.SoldAsset";
+        public const string Pages_Administration_SoldAsset_Create = "Pages.Administration.SoldAsset.Create";
+        public const string Pages_Administration_SoldAsset_Edit = "Pages.Administration.SoldAsset.Edit";
+        public const string Pages_Administration_SoldAsset_Delete = "Pages.Administration.SoldAsset.Delete";
+
+        public const string Pages_Administration_PlannedToSellAsset = "Pages.Administration.PlannedToSellAsset";
+        public const string Pages_Administration_PlannedToSellAsset_Create = "Pages.Administration.PlannedToSellAsset.Create";
+        public const string Pages_Administration_PlannedToSellAsset_Edit = "Pages.Administration.PlannedToSellAsset.Edit";
+        public const string Pages_Administration_PlannedToSellAsset_Delete = "Pages.Administration.PlannedToSellAsset.Delete";
     }
 }

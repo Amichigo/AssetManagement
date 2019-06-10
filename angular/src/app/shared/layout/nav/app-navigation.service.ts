@@ -36,24 +36,22 @@ export class AppNavigationService {
                 new AppMenuItem('AssetGroup', 'Pages.Administration.AssetGroup_05', 'flaticon-menu-1', '/app/gwebsite/asset-group'),
                 new AppMenuItem('Asset', 'Pages.Administration.Asset_05', 'flaticon-menu-1', '/app/gwebsite/asset'),
             ]),
-            new AppMenuItem('Nhóm 6 - Administration', '', 'flaticon-interface-8', '', [
-                new AppMenuItem('Quản lý hiệu quả đầu tư TSCĐ', '', 'flaticon-menu-1', '', [
-                    new AppMenuItem('QL giá trị đã đầu tư', '', 'flaticon-menu-1', '', [
-                        new AppMenuItem('Mua tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/purchased-assets'),
-                        new AppMenuItem('Vận hành tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/operating-assets'),
-                        new AppMenuItem('Bảo trì tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/maintained-assets')
-                    ]),
-                    new AppMenuItem('QL giá trị dự kiến đầu tư', '', 'flaticon-menu-1', '', [
-                        new AppMenuItem('Mua tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/planned-to-purchase-assets'),
-                        new AppMenuItem('Bảo trì tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/planned-to-maintain-assets')
-                    ]),
-                    new AppMenuItem('QL giá trị đã thu về', '', 'flaticon-menu-1', '', [
-                        new AppMenuItem('Thanh lý tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/sole-assets'),
-                    ]),
-                    new AppMenuItem('QL giá trị dự kiến thu về', '', 'flaticon-menu-1', '', [
-                        new AppMenuItem('Thanh lý tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/planned-to-sell-assets'),
-                    ])
+            new AppMenuItem('Nhoms 6 - Quản lý hiệu quả đầu tư TSCĐ', '', 'flaticon-menu-1', '', [
+                new AppMenuItem('QL giá trị đã đầu tư', '', 'flaticon-menu-1', '', [
+                    new AppMenuItem('Mua tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/purchased-assets'),
+                    new AppMenuItem('Vận hành tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/operating-assets'),
+                    new AppMenuItem('Bảo trì tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/maintained-assets')
                 ]),
+                new AppMenuItem('QL giá trị dự kiến đầu tư', '', 'flaticon-menu-1', '', [
+                    new AppMenuItem('Mua tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/planned-to-purchase-assets'),
+                    new AppMenuItem('Bảo trì tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/planned-to-maintain-assets')
+                ]),
+                new AppMenuItem('QL giá trị đã thu về', '', 'flaticon-menu-1', '', [
+                    new AppMenuItem('Thanh lý tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/sold-assets'),
+                ]),
+                new AppMenuItem('QL giá trị dự kiến thu về', '', 'flaticon-menu-1', '', [
+                    new AppMenuItem('Thanh lý tài sản', '', 'flaticon-menu-1', '/app/gwebsite/asset-investment-efficiency/planned-to-sell-assets'),
+                ])
             ]),
             new AppMenuItem('Nhóm 8 - Vehicle Manager', '', 'flaticon-interface-8', '', [
                 new AppMenuItem('Asset', 'Pages.QuanLyXe.Asset', 'flaticon-menu-1', '/app/gwebsite/asset'),

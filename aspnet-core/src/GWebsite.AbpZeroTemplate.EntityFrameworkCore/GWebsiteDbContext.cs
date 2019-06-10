@@ -120,6 +120,15 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<RoadFeeVehicle> RoadFeeVehicles { get; set; }
         public virtual DbSet<Insurrance> Insurrances { get; set; }
         public virtual DbSet<InsurranceType> InsurranceTypes { get; set; }
+
+        public virtual DbSet<PurchasedAsset> PurchasedAssets { get; set; }
+        public virtual DbSet<PlannedToPurchaseAsset> PlannedToPurchaseAssets { get; set; }
+        public virtual DbSet<SoldAsset> SoleAssets { get; set; }
+        public virtual DbSet<PlannedToSellAsset> PlannedToSellAssets { get; set; }
+        public virtual DbSet<MaintainedAsset> MaintainedAssets { get; set; }
+        public virtual DbSet<PlannedToMaintainAsset> PlannedToMaintainAssets { get; set; }
+        public virtual DbSet<OperatingAsset> OperatingAssets { get; set; }
+
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>

@@ -1,0 +1,71 @@
+<div class="pie-chart-section">
+    <div class="pie-chart-section-header">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="pie-chart-section-header-title">{{ title }}</h3>
+            </div>
+
+            <div class="col-md-6 pie-chart-section-filters">
+                <div class="row">                  
+                    <div class="col-md-3 ml-auto">
+                        <select class="form-control" *ngIf="showValueTypeSelection" [(ngModel)]="valueType" (change)="onChangeValueType($event)">
+                            <option value="0">Giá trị gốc</option>
+                            <option value="1">Tỉ lệ phần trăm</option>
+                        </select> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pie-chart-section-body">
+        <div class="pie-chart-section-body-tabs">
+            <span *ngFor="let tab of tabs; index as i" (click)="onChangeTab(i)" [class]="i === activeTabIndex ? 'tab-active' : 'tab'">{{ tab }}</span>
+            <span class="tab" (click)="onShowPieChartPopup()">Tùy chọn nhóm tài sản</span>
+        </div>
+
+        <div class="pie-chart-section-body-chart">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <canvas 
+                        *ngIf="data.length > 0" 
+                        baseChart
+                        [data]="mainData"
+                        [labels]="mainLabels"
+                        [colors]="colors"
+                        chartType="pie">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup-wrapper" *ngIf="showPieChartPopup">
+    <div class="popup">
+        <div class="popup-header">
+            <div class="popup-header-left">
+                <h3 class="popup-header-title">Tùy chọn nhóm tài sản hiển thị trong biểu đồ</h3>
+            </div>
+
+            <div class="popup-header-right">
+                <span class="popup-header-close-button" (click)="onClosePieChartPopup()"><i class="fas fa-times"></i></span>
+            </div>
+        </div>
+
+        <div class="popup-body">
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Nhập nội dung cần tìm kiếm" [(ngModel)]="keyword" (ngModelChange)="onChangeKeyword()" />
+            </div>
+
+            <div *ngFor="let label of filteredLabels" class="option">
+                <span [class]="mainLabels.indexOf(label) > -1 ? 'option-check--active' : 'option-check'" (click)="onChangeSelectedLabel(label)"></span>
+                {{ label }}
+            </div>
+        </div>
+
+        <div class="popup-footer text-right">
+            <span class="button" (click)="onClosePieChartPopup()">Đóng</span>
+        </div>
+    </div>
+</div>

@@ -2,17 +2,11 @@ import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild, NgModule } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { AssetActivityServiceProxy } from '@shared/service-proxies/service-proxies';
 import moment from 'moment';
-import { getGeneralStatisticsData, getDetailedData } from '../../api/asset-purchase';
+import { isDateBetween, groupBy } from '../../utils';
+import { HttpClient } from '@angular/common/http';
 
-import { 
-    addThousandSeparator,
-    getDateRangeString,
-    groupBy,
-    isDateBetween,
-    getRandomColor
-} from '../../utils';
+const BASE_API_URL = 'http://localhost:5000/api/PlannedToSellAsset';
 
 @Component({
     templateUrl: './planned-to-sell-assets.component.html',
@@ -20,68 +14,32 @@ import {
     animations: [appModuleAnimation()]
 })
 export class PlannedToSellAssetsComponent extends AppComponentBase implements OnInit {
-    private generalStatisticsData;
-    private generalStatisticsChart1Data;
-
-    private mainTabLabels = ['Thống kê chung', 'So sánh'];
-    private activeMainTab = 0;
-    private mainTabTitle = this.mainTabLabels[this.activeMainTab];
-
-    private activeGeneralStatisticsChart1Tab = 0;
-    private activeGeneralStatisticsChart2Tab = 0;
-
-    private addThousandSeparator = addThousandSeparator;
-    private getDateRangeString = getDateRangeString;
-
-    private showDateRangePicker = false;
-    private showGeneralStatisticsChart1ValueTypeSelection = true;
-    private showGeneralStatisticsChart2ValueTypeSelection = true;
-    private showDetailedPopup = false;
-
+    private statisticsPeriod = 0;
     private startingDate = moment().format('YYYY-MM-DD');
     private endingDate = moment().format('YYYY-MM-DD');
-    private statisticsPeriod = 0;
+    private previousStartingDate = moment().subtract(1, 'days').startOf('day').format('YYYY-MM-DD');
+    private previousEndingDate = moment().subtract(1, 'days').startOf('day').format('YYYY-MM-DD');
 
-    private detailedDataTableData = [];
-    private detailedDataTablePage = 1;
-    private detailedDataTableHasNextPage;
-    private detailedDataTableStartingDate = moment().format('YYYY-MM-DD');
-    private detailedDataTableEndingDate = moment().format('YYYY-MM-DD');
-    private detailedDataTableKeyword = '';
-    private detailedDataTablePageSize = 10;
-    private detailedDataTableAssetTypes = [];
-    private detailedDataTableTotalRecords = 0;
-    private detailedDataTableTotalPages = 0;
-    private detailedDataTableAssetType = -1;
-    private detailedPopupDate;
+    private generalStatisticsData = [];
+    private detailedData = [];
 
-    private generalStatisticsChart1Dataset;
-    private generalStatisticsChart1Labels;
-    private generalStatisticsChart1Options;
-    private generalStatisticsChart1Type = 'bar';
-    private generalStatisticsChart1ValueType = 0;
-    private generalStatisticsChart1HorizontalAxeLabel = 'Thời gian (Ngày/ Tháng/ Năm)';
-    private generalStatisticsChart1VerticalAxeLabel;
-    private generalStatisticsChart1ComparisonValue = 0;
+    private section1Tabs = ['Giá trị dự kiến thu về', 'Số lượng tài sản dự kiến thanh lý'];
+    private section1Data = [];
+    private section1Labels = [];
+    private section1XAxeLabel = 'Thời gian (Ngày/ Tháng/ Năm)';
+    private section1YAxeLabel = '';
+    private section1Legend = true;
 
-    private generalStatisticsChart2Dataset = [];
-    private generalStatisticsChart2Labels = [];
-    private generalStatisticsChart2Options = [];
-    private generalStatisticsChart2Colors = [];
-    private generalStatisticsChart2Type = 'pie';
-    private generalStatisticsChart2ValueType = 0;
-    private generalStatisticsChart2ComparisonValue = 0;
-
-    private generalStatisticsChart3Dataset = [];
-    private generalStatisticsChart3Labels = [];
-    private generalStatisticsChart3Options = [];
-    private generalStatisticsChart3Colors = [];
-    private generalStatisticsChart3Type = 'pie';
+    private section2Tabs = ['Giá trị dự kiến thu về', 'Số lượng tài sản dự kiến thanh lý'];
+    private section2Data = [];
+    private section2Labels = [];
+    private section2Legend = true;
+    private section2RawData = [];
 
     constructor(
         injector: Injector,
-        private _assetActivityService: AssetActivityServiceProxy,
         private _activatedRoute: ActivatedRoute,
+        private httpClient: HttpClient
     ) {
         super(injector);
     }
@@ -92,670 +50,666 @@ export class PlannedToSellAssetsComponent extends AppComponentBase implements On
 
     fetchData() {
         this.fetchGeneralStatisticsData();
-        this.fetchGeneralStatisticsChart1Data();
+        this.fetchDetailedData();
     }
 
-    fetchGeneralStatisticsData() {
-        setTimeout(() => {
-            this.generalStatisticsData = getGeneralStatisticsData({
-                starting_date: this.startingDate,
-                ending_date: this.endingDate,
-                statistics_period: this.statisticsPeriod
-            });
-        }, 1000);
+    formRequestUrl(route) {
+        let url = `${ BASE_API_URL }/${ route }`;
+
+        url += '?CurrentStartingDate=' + this.startingDate;
+        url += '&CurrentEndingDate=' + this.endingDate;
+        url += '&PreviousStartingDate=' + this.previousStartingDate;
+        url += '&PreviousEndingDate=' + this.previousEndingDate;
+
+        return url;
     }
 
-    fetchGeneralStatisticsChart1Data() {
-        setTimeout(() => {
-            this.generalStatisticsChart1Data = getDetailedData({
-                starting_date: this.startingDate,
-                ending_date: this.endingDate,
-                statistics_period: this.statisticsPeriod
-            });
-
-            this.loadGeneralStatisticsChart1();
-            this.loadGeneralStatisticsChart2();
-            this.loadDetailedDataTableData();
-        }, 1000);
-    }
-
-    changeMainTab(value) {
-        this.mainTabTitle = this.mainTabLabels[value];
-        this.activeMainTab = value;
-    }
-
-    changeGeneralStatisticsChart1Tab(value) {
-        this.activeGeneralStatisticsChart1Tab = value;
-        this.generalStatisticsChart1ValueType = 0;
-        this.loadGeneralStatisticsChart1();
-    }
-
-    changeGeneralStatisticsChart2Tab(value) {
-        this.activeGeneralStatisticsChart2Tab = value;
-        this.generalStatisticsChart2ValueType = 0;
-        this.loadGeneralStatisticsChart2();
-    }
-
-    changeStatisticsPeriod(e) {
-        const selectedValue = parseInt(e.target.value);
-
-        switch (selectedValue) {
-            case 0:
-                this.startingDate = moment().format('YYYY-MM-DD');
-                this.endingDate = moment().format('YYYY-MM-DD');
-                this.detailedDataTableStartingDate = moment().format('YYYY-MM-DD');
-                this.detailedDataTableEndingDate = moment().format('YYYY-MM-DD');
-                this.showDateRangePicker = false;
-                break;
-
-            case 1:
-                this.startingDate = moment().startOf('week').format('YYYY-MM-DD');
-                this.endingDate = moment().endOf('week').format('YYYY-MM-DD');
-                this.detailedDataTableStartingDate = moment().startOf('week').format('YYYY-MM-DD');
-                this.detailedDataTableEndingDate = moment().endOf('week').format('YYYY-MM-DD');
-                this.showDateRangePicker = false;
-                break;
-
-            case 2:
-                this.startingDate = moment().startOf('month').format('YYYY-MM-DD');
-                this.endingDate = moment().endOf('month').format('YYYY-MM-DD');
-                this.detailedDataTableStartingDate = moment().startOf('month').format('YYYY-MM-DD');
-                this.detailedDataTableEndingDate = moment().endOf('month').format('YYYY-MM-DD');
-                this.showDateRangePicker = false;
-                break;
-
-            case 3:
-                this.startingDate = moment().startOf('quarter').format('YYYY-MM-DD');
-                this.endingDate = moment().endOf('quarter').format('YYYY-MM-DD');
-                this.detailedDataTableStartingDate = moment().startOf('quarter').format('YYYY-MM-DD');
-                this.detailedDataTableEndingDate = moment().endOf('quarter').format('YYYY-MM-DD');
-                this.showDateRangePicker = false;
-                break;
-
-            case 4:
-                this.startingDate = moment().startOf('year').format('YYYY-MM-DD');
-                this.endingDate = moment().endOf('year').format('YYYY-MM-DD');
-                this.detailedDataTableStartingDate = moment().startOf('year').format('YYYY-MM-DD');
-                this.detailedDataTableEndingDate = moment().endOf('year').format('YYYY-MM-DD');
-                this.showDateRangePicker = false;
-                break;
-
-            case 5:
-                this.startingDate = moment().format('YYYY-MM-DD');
-                this.endingDate = moment().format('YYYY-MM-DD');
-                this.detailedDataTableStartingDate = moment().format('YYYY-MM-DD');
-                this.detailedDataTableEndingDate = moment().format('YYYY-MM-DD');
-                this.showDateRangePicker = true;
-                break;
-        }
-        
-        this.statisticsPeriod = parseInt(e.target.value);
-        this.activeGeneralStatisticsChart1Tab = 0;
-        this.activeGeneralStatisticsChart2Tab = 0;
-        this.generalStatisticsChart1ValueType = 0;
-        this.generalStatisticsChart2ValueType = 0;
-
-        this.resetDetailedDataTableFilters();
-        this.fetchData();
-    }
-
-    changeStartingDate(e) {
-        if (e.target.value === '' || new Date(e.target.value) > new Date(this.endingDate)) {
-            this.startingDate = moment().format('YYYY-MM-DD');
-        }
-        else {
-            this.fetchData();
-        }
-    }
-
-    changeEndingDate(e) {
-        if (e.target.value === '' || new Date(e.target.value) < new Date(this.startingDate)) {
-            this.endingDate = moment().format('YYYY-MM-DD');
-        }
-        else {
-            this.fetchData();
-        }
-    }
-
-    changeDetailedDataTableStartingDate(e) {
-        if (e.target.value === '' || new Date(e.target.value) < new Date(this.startingDate) || new Date(e.target.value) > new Date(this.detailedDataTableEndingDate)) {
-            this.detailedDataTableStartingDate = moment().format('YYYY-MM-DD');
-        }
-        else {
-            this.loadDetailedDataTableData();
-        }
-    }
-
-    changeDetailedDataTableEndingDate(e) {
-        if (e.target.value === '' || new Date(e.target.value) > new Date(this.endingDate) || new Date(e.target.value) < new Date(this.detailedDataTableStartingDate)) {
-            this.detailedDataTableEndingDate = moment().format('YYYY-MM-DD');
-        }
-        else {
-            this.loadDetailedDataTableData();
-        }
-    }
-
-    changeGeneralStatisticsChart1ValueType(e) {
-        this.generalStatisticsChart1ValueType = parseInt(e.target.value);
-        this.loadGeneralStatisticsChart1();
-    }
-
-    changeGeneralStatisticsChart2ValueType(e) {
-        this.generalStatisticsChart2ValueType = parseInt(e.target.value);
-        this.loadGeneralStatisticsChart2();
-    }
-
-    changeGeneralStatisticsChart1ComparisonValue(e) {
-        const value = parseInt(e.target.value);
-        this.generalStatisticsChart1ComparisonValue = value;
-
-        if (value === 1) {
-            this.showGeneralStatisticsChart1ValueTypeSelection = false;
-        }
-        else {
-            this.showGeneralStatisticsChart1ValueTypeSelection = true;
-        }
-
-        this.loadGeneralStatisticsChart1();
-    }
-
-    changeGeneralStatisticsChart2ComparisonValue(e) {
-        const value = parseInt(e.target.value);
-        this.generalStatisticsChart2ComparisonValue = value;
-
-        if (value === 1) {
-            this.showGeneralStatisticsChart2ValueTypeSelection = false;
-        }
-        else {
-            this.showGeneralStatisticsChart2ValueTypeSelection = true;
-        }
-
-        // this.fetchGeneralStatisticsChart2Data();
-    }
-
-    loadDetailedDataTableData() {
-        let assetTypes = [];
-        let totalRecords = 0;
-
-        this.detailedDataTableData = this.generalStatisticsChart1Data.filter(d => {
-            const recordedDate = d['RecordedDate'];
-            let condition = isDateBetween(recordedDate, this.detailedDataTableStartingDate, this.detailedDataTableEndingDate);
-
-            if (condition) {
-                let contained = false;
-
-                contained = assetTypes.find(type => {
-                    return type['AssetTypeId'] === d['AssetTypeId'];
-                });
-
-                if (!contained) assetTypes.push({ AssetTypeName: d['AssetTypeName'], AssetTypeId: d['AssetTypeId'] });
-            }
-        });
-
-        this.detailedDataTableData = this.generalStatisticsChart1Data.filter(d => {
-            const recordedDate = d['RecordedDate'];
-            let condition = isDateBetween(recordedDate, this.detailedDataTableStartingDate, this.detailedDataTableEndingDate);
-
-            if (this.detailedDataTableAssetType !== -1) {
-                condition = condition && (d['AssetTypeId'] === this.detailedDataTableAssetType);
-            }
-
-            if (this.detailedDataTableKeyword !== '') {
-                condition = condition && d['AssetTypeName'].toLowerCase().includes(this.detailedDataTableKeyword.toLowerCase());
-            }
-
-            if (condition) {
-                totalRecords++;
-                return d;
-            }
-        }).slice((this.detailedDataTablePage - 1) * this.detailedDataTablePageSize, (this.detailedDataTablePage - 1) * this.detailedDataTablePageSize + this.detailedDataTablePageSize - 1);
-        
-        this.detailedDataTableAssetTypes = assetTypes;
-        this.detailedDataTableTotalPages = Math.ceil(totalRecords / this.detailedDataTablePageSize);
-    }
-
-    loadGeneralStatisticsChart2() {
-        let chartLabels = [];
-        let chartData = [];
-
-        if (this.generalStatisticsChart2ComparisonValue === 0) {
-            let processedData = [];
-
-            this.generalStatisticsChart1Data.forEach(d => {
-                const recordedDate = d['RecordedDate'];
-
-                if (isDateBetween(recordedDate, this.startingDate, this.endingDate)) {
-                    processedData.push(d);
-                }
-            });
-
-            processedData = groupBy(processedData, 'AssetTypeName');
-
-            if (this.activeGeneralStatisticsChart2Tab === 0) {
-                if (this.generalStatisticsChart2ValueType === 0) {
-                    let tempData = [];
-    
-                    for(const key of Object.keys(processedData)) {
-                        chartLabels.push(key);
-                        let recordAmount = 0;
-        
-                        processedData[key].forEach(d => {
-                            recordAmount += d['Amount'];
-                        });
-        
-                        tempData.push(recordAmount);
-                    }
-    
-                    chartData = tempData;
-                }
-                else {
-                    let tempData = [];
-                    let totalAmount = 0;
-    
-                    for (const key of Object.keys(processedData)) {
-                        processedData[key].forEach(d => {
-                            totalAmount += d['Amount'];
-                        });
-                    }
-    
-                    for (const key of Object.keys(processedData)) {
-                        chartLabels.push(key);
-                        let recordAmount = 0;
-    
-                        processedData[key].forEach(d => {
-                            recordAmount += d['Amount'];
-                        });
-    
-                        tempData.push(((recordAmount / totalAmount) * 100).toFixed(2));
-                     }
-
-                     chartData = tempData;
-                }
-            }
-            else {
-                if (this.generalStatisticsChart2ValueType === 0) {
-                    let tempData = [];
-    
-                    for(const key of Object.keys(processedData)) {
-                        chartLabels.push(key);
-                        let recordAmount = 0;
-        
-                        processedData[key].forEach(d => {
-                            recordAmount += d['Quantity'];
-                        });
-        
-                        tempData.push(recordAmount);
-                    }
-    
-                    chartData = tempData;
-                }
-                else {
-                    let tempData = [];
-                    let totalAmount = 0;
-    
-                    for (const key of Object.keys(processedData)) {
-                        processedData[key].forEach(d => {
-                            totalAmount += d['Quantity'];
-                        });
-                    }
-    
-                    for (const key of Object.keys(processedData)) {
-                        chartLabels.push(key);
-                        let recordAmount = 0;
-    
-                        processedData[key].forEach(d => {
-                            recordAmount += d['Quantity'];
-                        });
-    
-                        tempData.push(((recordAmount / totalAmount) * 100).toFixed(2));
-                    }
-    
-                    chartData = tempData;
-                }
-            }
-        }
-        else {
-
-        }
-
-        this.generalStatisticsChart2Labels = chartLabels;
-        this.generalStatisticsChart2Dataset = chartData;
-        this.generalStatisticsChart2Colors = [{
-            backgroundColor: chartData.map(d => {
-                return getRandomColor();
-            })
-        }]
-    }
-
-    loadGeneralStatisticsChart1() {
-        let chartLabels = [];
-        let chartData = [];
-
-        if (this.generalStatisticsChart1ComparisonValue === 0) {
-            let processedData = [];
-
-            this.generalStatisticsChart1Data.forEach(d => {
-                const recordedDate = d['RecordedDate'];
-
-                if (isDateBetween(recordedDate, this.startingDate, this.endingDate)) {
-                    processedData.push({ ...d, RecordedDate: moment(recordedDate).format('DD/MM/YYYY') });
-                }
-            });
-
-            processedData = groupBy(processedData, 'RecordedDate');
-
-            if (this.activeGeneralStatisticsChart1Tab === 0) {
-                if (this.generalStatisticsChart1ValueType === 0) {
-                    // BIỂU ĐỒ TỔNG SỐ VỐN
-                    let tempData = [];
-
-                    for (const key of Object.keys(processedData)) {
-                        chartLabels.push(key);
-                        let recordAmount = 0;
-
-                        processedData[key].forEach(d => {
-                            recordAmount += d['Amount'];
-                        });
-
-                        tempData.push(recordAmount);
-                    }
-
-                    this.generalStatisticsChart1VerticalAxeLabel = 'Số vốn dự kiến thu về (VNĐ)';
-                    chartData = [{ data: tempData, label: 'Số vốn dự kiến thu về (VNĐ)' }];
-                }
-                else {
-                    // BIỂU ĐỒ TỈ LỆ SỐ VỐN
-                    let tempData = [];
-                    let totalAmount = 0;
-
-                    for (const key of Object.keys(processedData)) {
-                        processedData[key].forEach(d => {
-                            totalAmount += d['Amount'];
-                        });
-                    }
-
-                    for (const key of Object.keys(processedData)) {
-                        chartLabels.push(key);
-                        let recordAmount = 0;
-
-                        processedData[key].forEach(d => {
-                            recordAmount += d['Amount'];
-                        });
-
-                        tempData.push(((recordAmount / totalAmount) * 100).toFixed(2));
-                    }
-
-                    this.generalStatisticsChart1VerticalAxeLabel = 'Tỉ lệ phần trăm so với tổng số vốn dự kiến thu về (%)';
-                    chartData = [{ data: tempData, label: 'Tỉ lệ phần trăm so với tổng số vốn dự kiến thu về (%)' }];
-                }
-            }
-            else {
-                if (this.generalStatisticsChart1ValueType === 0) {
-                    // BIỂU ĐỒ TỔNG SỐ LƯỢNG TÀI SẢN
-                    let tempData = [];
-
-                    for (const key of Object.keys(processedData)) {
-                        chartLabels.push(key);
-                        let recordQuantity = 0;
-
-                        processedData[key].forEach(d => {
-                            recordQuantity += d['Quantity'];
-                        });
-
-                        tempData.push(recordQuantity);
-                    }
-
-                    this.generalStatisticsChart1VerticalAxeLabel = 'Số lượng tài sản dự kiến thanh lý (Tài sản)';
-                    chartData = [{ data: tempData, label: 'Số lượng tài sản dự kiến thanh lý (Tài sản)' }];
-                }
-                else {
-                    // BIỂU ĐỒ TỈ LỆ SỐ LƯỢNG TÀI SẢN
-                    let tempData = [];
-                    let totalQuantity = 0;
-
-                    for (const key of Object.keys(processedData)) {
-                        processedData[key].forEach(d => {
-                            totalQuantity += d['Quantity'];
-                        });
-                    }
-
-                    for (const key of Object.keys(processedData)) {
-                        chartLabels.push(key);
-                        let recordQuantity = 0;
-
-                        processedData[key].forEach(d => {
-                            recordQuantity += d['Quantity'];
-                        });
-
-                        tempData.push(((recordQuantity / totalQuantity) * 100).toFixed(2));
-                    }
-
-                    this.generalStatisticsChart1VerticalAxeLabel = 'Tỉ lệ phần trăm so với tổng số lượng tài sản dự kiến thanh lý (%)';
-                    chartData = [{ data: tempData, label: 'Tỉ lệ phần trăm so với tổng số lượng tài sản dự kiến thanh lý (%)' }];
-                }
-            }
-        }
-        else {
-            let processedData1 = [];
-            let processedData2 = [];
-
-            this.generalStatisticsChart1Data.forEach(d => {
-                const recordedDate = d['RecordedDate'];
-                const previousStartingDate = new Date(moment(new Date(this.startingDate)).subtract(1, 'years').startOf('day').toString());
-                const previousEndingDate = new Date(moment(new Date(this.endingDate)).subtract(1, 'years').endOf('day').toString());
-
-                if (isDateBetween(recordedDate, this.startingDate, this.endingDate)) {
-                    processedData1.push({ ...d, RecordedDate: moment(recordedDate).format('DD/MM/YYYY') });
-                }
-                else {
-                    if (this.statisticsPeriod <= 4) {
-                        processedData2.push({ ...d, RecordedDate: moment(recordedDate).format('DD/MM/YYYY') });
-                    }
-                    else {
-                        if (isDateBetween(recordedDate, previousStartingDate, previousEndingDate)) {
-                            processedData2.push({ ...d, RecordedDate: moment(recordedDate).format('DD/MM/YYYY') });
-                        }
-                    }
-                }
-            });
-
-            processedData1 = groupBy(processedData1, 'RecordedDate');
-            processedData2 = groupBy(processedData2, 'RecordedDate');
-
-            if (this.activeGeneralStatisticsChart1Tab === 0) {
-                // BIỂU ĐỒ TỔNG SỐ VỐN
-                let tempData1 = [];
-                let tempData2 = [];
-                let i = 0;
-
-                for (const key of Object.keys(processedData1)) {
-                    i++;
-                    switch (this.statisticsPeriod) {
-                        case 0:
-                            chartLabels.push('Hôm qua và hôm nay');
-                            break;
-                        
-                        case 1:
-                            const dayOfWeek = moment(key, 'DD/MM/YYYY').day();
-                            const dayOfWeekString = dayOfWeek === 0 ? 'Chủ nhật' : `Thứ ${ dayOfWeek + 1}`;
-                            chartLabels.push(dayOfWeekString);
-                            break;
-                        
-                        case 2:
-                            chartLabels.push(`Ngày ${ i }`);
-                            break;
-
-                        case 3:
-                            chartLabels.push(`Ngày ${ i }`);
-                            break;
-                        
-                        case 4:
-                            chartLabels.push(key.split('/').slice(0, 2).join('/'));
-                            break;
-
-                        case 5:
-                            chartLabels.push(key.split('/').slice(0, 2).join('/'));
-                            break;
-                    }
-
-                    let recordAmount = 0;
-
-                    processedData1[key].forEach(d => {
-                        recordAmount += d['Amount'];
-                    });
-
-                    tempData1.push(recordAmount);
-                }
-
-                for (const key of Object.keys(processedData2)) {
-                    let recordAmount = 0;
-
-                    processedData2[key].forEach(d => {
-                        recordAmount += d['Amount'];
-                    });
-
-                    tempData2.push(recordAmount);
-                }
-
-                this.generalStatisticsChart1VerticalAxeLabel = 'Số vốn dự kiến thu về (VNĐ)';
-
-                chartData = [
-                    { data: tempData1, label: `${ moment(new Date(this.startingDate)).format('DD/MM/YYYY') } - ${ moment(new Date(this.endingDate)).format('DD/MM/YYYY') }` },
-                    { data: tempData2, label: `${ Object.keys(processedData2)[0] } - ${ Object.keys(processedData2)[Object.keys(processedData2).length - 1] }` }
-                ];
-            }
-            else {
-                // BIỂU ĐỒ TỔNG SỐ LƯỢNG TÀI SẢN
-                let tempData1 = [];
-                let tempData2 = [];
-                let i = 0;
-
-                for (const key of Object.keys(processedData1)) {
-                    i++;
-                    switch (this.statisticsPeriod) {
-                        case 0:
-                            chartLabels.push('Hôm qua và hôm nay');
-                            break;
-                        
-                        case 1:
-                            const dayOfWeek = moment(key, 'DD/MM/YYYY').day();
-                            const dayOfWeekString = dayOfWeek === 0 ? 'Chủ nhật' : `Thứ ${ dayOfWeek + 1}`;
-                            chartLabels.push(dayOfWeekString);
-                            break;
-                        
-                        case 2:
-                            chartLabels.push(`Ngày ${ i }`);
-                            break;
-
-                        case 3:
-                            chartLabels.push(`Ngày ${ i }`);
-                            break;
-                        
-                        case 4:
-                            chartLabels.push(key.split('/').slice(0, 2).join('/'));
-                            break;
-
-                        case 5:
-                            chartLabels.push(key.split('/').slice(0, 2).join('/'));
-                            break;
-                    }
-
-                    let recordAmount = 0;
-
-                    processedData1[key].forEach(d => {
-                        recordAmount += d['Quantity'];
-                    });
-
-                    tempData1.push(recordAmount);
-                }
-
-                for (const key of Object.keys(processedData2)) {
-                    let recordAmount = 0;
-
-                    processedData2[key].forEach(d => {
-                        recordAmount += d['Quantity'];
-                    });
-
-                    tempData2.push(recordAmount);
-                }
-
-                this.generalStatisticsChart1VerticalAxeLabel = 'Số lượng tài sản dự kiến thanh lý (Tài sản)';
-
-                chartData = [
-                    { data: tempData1, label: `${ moment(new Date(this.startingDate)).format('DD/MM/YYYY') } - ${ moment(new Date(this.endingDate)).format('DD/MM/YYYY') }` },
-                    { data: tempData2, label: `${ Object.keys(processedData2)[0] } - ${ Object.keys(processedData2)[Object.keys(processedData2).length - 1] }` }
-                ];
-            }
-        }
-
-        this.generalStatisticsChart1Labels = chartLabels;
-        this.generalStatisticsChart1Dataset = chartData;
-        this.generalStatisticsChart1Options = {
-            scaleShowVerticalLines: false,
-            responsive: true,
-            scales: {
-                yAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: this.generalStatisticsChart1VerticalAxeLabel
-                    }
-                }],
-                xAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: this.generalStatisticsChart1HorizontalAxeLabel
-                    }
-                }]
-            }
+    formRequestHeaders() {
+        return {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${ abp.auth.getToken() }`
         };
     }
 
-    openDetailedPopup(record) {
-        this.detailedPopupDate = record['RecordedDate'];
-        this.showDetailedPopup = true;
+    fetchGeneralStatisticsData() {
+        let url = this.formRequestUrl('GetGeneralStatisticsData');
+        let headers = this.formRequestHeaders();
+
+        return this.httpClient.get<any>(url, { headers }).subscribe(data => {
+            this.loadGeneralStatisticsData(data.result);
+        });
     }
 
-    closeDetailedPopup() {
-        this.showDetailedPopup = false;
+    fetchDetailedData() {
+        let url = this.formRequestUrl('GetDetailedData');
+        let headers = this.formRequestHeaders();
+
+        return this.httpClient.get<any>(url, { headers }).subscribe(data => {
+            this.loadDetailedData(data.result.items);
+            this.changeSection1({ activeTabIndex: 0, valueType: 0, comparisonMode: 0 });
+            this.changeSection2({ activeTabIndex: 0, valueType: 0 });
+        });
     }
 
-    changeDetailedDataTableKeyword(e) {
-        this.detailedDataTableKeyword = e.target.value;
-        this.loadDetailedDataTableData();
+    changeTimePeriod(payload) {
+        const { timePeriod, startingDate, endingDate, previousStartingDate, previousEndingDate } = payload;
+
+        this.statisticsPeriod = timePeriod;
+        this.startingDate = startingDate;
+        this.endingDate = endingDate;
+        this.previousStartingDate = previousStartingDate;
+        this.previousEndingDate = previousEndingDate;
+
+        this.fetchData();
     }
 
-    changeDetailedDataTablePageSize(e) {
-        this.detailedDataTablePageSize = parseInt(e.target.value);
-        this.loadDetailedDataTableData();
-    }
+    changeSection1(payload) {
+        const { activeTabIndex, valueType, comparisonMode } = payload;
 
-    navigateToPreviousPage() {
-        if (this.detailedDataTablePage > 1) {
-            this.detailedDataTablePage--;
-            this.loadDetailedDataTableData();
+        switch (activeTabIndex) {
+            case 0:
+                switch (comparisonMode) {
+                    case 0:
+                        switch (valueType) {
+                            case 0:
+                                this.loadTotalInvestedAmountChartInOriginalValue();
+                                break;
+
+                            case 1:
+                                this.loadTotalInvestedAmountChartInPercentage();
+                                break;
+                        }
+                        break;
+
+                    case 1:
+                        this.loadTotalInvestedAmountChartWithComparison();
+                        break;
+                }
+                break;
+
+            case 1:
+                switch (comparisonMode) {
+                    case 0:
+                        switch (valueType) {
+                            case 0:
+                                this.loadTotalPlannedToSellAssetsChartInOriginalValue();
+                                break;
+
+                            case 1:
+                                this.loadTotalPlannedToSellAssetsChartInPercentage();
+                                break;
+                        }
+                        break;
+
+                    case 1:
+                        this.loadTotalPlannedToSellAssetsChartWithComparison();
+                        break;
+                }
+                break;
         }
     }
 
-    navigateToNextPage() {
-        if (this.detailedDataTablePage < this.detailedDataTableTotalPages) {
-            this.detailedDataTablePage++;
-            this.loadDetailedDataTableData();
+    changeSection2(payload) {
+        const { activeTabIndex, valueType } = payload;
+
+        switch (activeTabIndex) {
+            case 0:
+                switch (valueType) {
+                    case 0:
+                        this.loadInvestedAmountByTypesInOriginalValue();
+                        break;
+
+                    case 1:
+                        this.loadInvestedAmountByTypesInPercentage();
+                        break;
+                }
+                break;
+
+            case 1:
+                switch (valueType) {
+                    case 0:
+                        this.loadPlannedToSellAssetsByTypesInOriginalValue();
+                        break;
+
+                    case 1:
+                        this.loadPlannedToSellAssetsByTypesInPercentage();
+                        break;
+                }
+                break;
         }
     }
 
-    changeDetailedDataTableAssetType(e) {
-        if (parseInt(e.target.value) === -1) {
-            this.detailedDataTableAssetType = -1;
+    loadPlannedToSellAssetsByTypesInPercentage() {
+        let labels = [];
+        let processedData = [];
+
+        this.detailedData.forEach(record => {
+            const recordedDate = record['recordedDate'];
+
+            if (isDateBetween(moment(new Date(recordedDate)).format('YYYY-MM-DD'), this.startingDate, this.endingDate)) {
+                processedData.push({
+                    ...record,
+                    recordedDate: moment(recordedDate.substr(0, 10)).format('DD/MM/YYYY')
+                });
+            }
+        });
+
+        processedData = groupBy(processedData, 'assetTypeName');
+
+        let temp = [];
+        let total = 0;
+
+        for (const key of Object.keys(processedData)) {
+            processedData[key].forEach(d => {
+                total += d['quantity'];
+            });
         }
-        else {
-            this.detailedDataTableAssetType = e.target.value;
-        }
-        this.loadDetailedDataTableData();
+
+        for (const key of Object.keys(processedData)) {
+            labels.push(key);
+            let recordTotal = 0;
+
+            processedData[key].forEach(d => {
+                recordTotal += d['quantity'];
+            });
+
+            temp.push(((recordTotal / total) * 100).toFixed(2));
+         }
+
+         this.section2Labels = labels;
+         this.section2Data = temp;
     }
 
-    resetDetailedDataTableFilters() {
-        this.detailedDataTableAssetType = -1;
-        this.detailedDataTablePage = 1;
-        this.detailedDataTablePageSize = 10;
+    loadPlannedToSellAssetsByTypesInOriginalValue() {
+        let labels = [];
+        let processedData = [];
+        let abc = [];
+
+        this.detailedData.forEach(record => {
+            const recordedDate = record['recordedDate'];
+
+            if (isDateBetween(moment(new Date(recordedDate)).format('YYYY-MM-DD'), this.startingDate, this.endingDate)) {
+                processedData.push({
+                    ...record,
+                    recordedDate: moment(recordedDate.substr(0, 10)).format('DD/MM/YYYY')
+                });
+            }
+        });
+
+        processedData = groupBy(processedData, 'assetTypeName');
+
+        let temp = [];
+
+        for (const key of Object.keys(processedData)) {
+            labels.push(key);
+            let recordAmount = 0;
+
+            processedData[key].forEach(d => {
+                recordAmount += d['quantity'];
+            });
+
+            temp.push(recordAmount);
+        }
+
+        this.section2Data = temp;
+        this.section2Labels = labels;
+    }
+
+    loadInvestedAmountByTypesInPercentage() {
+        let labels = [];
+        let processedData = [];
+
+        this.detailedData.forEach(record => {
+            const recordedDate = record['recordedDate'];
+
+            if (isDateBetween(moment(new Date(recordedDate)).format('YYYY-MM-DD'), this.startingDate, this.endingDate)) {
+                processedData.push({
+                    ...record,
+                    recordedDate: moment(recordedDate.substr(0, 10)).format('DD/MM/YYYY')
+                });
+            }
+        });
+
+        processedData = groupBy(processedData, 'assetTypeName');
+
+        let temp = [];
+        let total = 0;
+
+        for (const key of Object.keys(processedData)) {
+            processedData[key].forEach(d => {
+                total += d['amount'];
+            });
+        }
+
+        for (const key of Object.keys(processedData)) {
+            labels.push(key);
+            let recordTotal = 0;
+
+            processedData[key].forEach(d => {
+                recordTotal += d['amount'];
+            });
+
+            temp.push(((recordTotal / total) * 100).toFixed(2));
+         }
+
+         this.section2Labels = labels;
+         this.section2Data = temp;
+    }
+
+    loadInvestedAmountByTypesInOriginalValue() {
+        let labels = [];
+        let processedData = [];
+
+        this.detailedData.forEach(record => {
+            const recordedDate = record['recordedDate'];
+
+            if (isDateBetween(moment(new Date(recordedDate)).format('YYYY-MM-DD'), this.startingDate, this.endingDate)) {
+                processedData.push({
+                    ...record,
+                    recordedDate: moment(recordedDate.substr(0, 10)).format('DD/MM/YYYY')
+                });
+            }
+        });
+
+        processedData = groupBy(processedData, 'assetTypeName');
+
+        let temp = [];
+
+        for (const key of Object.keys(processedData)) {
+            labels.push(key);
+            let recordAmount = 0;
+
+            processedData[key].forEach(d => {
+                recordAmount += d['amount'];
+            });
+
+            temp.push(recordAmount);
+        }
+
+        this.section2Data = temp;
+        this.section2Labels = labels;
+    }
+
+    loadGeneralStatisticsData(data) {
+        this.generalStatisticsData = [
+            {
+                title: "Tổng giá trị dự kiến thu về",
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentTotalAmount'],
+                rate: data['amountRatio'],
+                unit: "VNĐ"
+            },
+            {
+                title: 'Tổng số tài sản dự kiến thanh lý',
+                startingDate: this.startingDate,
+                endingDate: this.endingDate,
+                value: data['currentTotalQuantity'],
+                rate: data['quantityRatio'],
+                unit: "Tài sản"
+            }
+        ];
+    }
+
+    loadDetailedData(data) {
+        this.detailedData = data;
+    }
+
+    loadTotalInvestedAmountChartInOriginalValue() {
+        let labels = [];
+        let processedData = [];
+
+        this.detailedData.forEach(record => {
+            const recordedDate = record['recordedDate'];
+
+            if (isDateBetween(moment(new Date(recordedDate)).format('YYYY-MM-DD'), this.startingDate, this.endingDate)) {
+                processedData.push({
+                    ...record,
+                    recordedDate: moment(recordedDate.substr(0, 10)).format('DD/MM/YYYY')
+                });
+            }
+        });
+
+        processedData = groupBy(processedData, 'recordedDate');
+
+        let temp = [];
+
+        for (const key of Object.keys(processedData)) {
+            labels.push(key);
+            let total = 0;
+
+            processedData[key].forEach(d => {
+                total += d['amount'];
+            });
+
+            temp.push(total);
+        }
+
+        this.section1Labels = labels;
+        this.section1Data = [{ data: temp, label: 'Giá trị dự kiến thu về (VNĐ)' }];
+        this.section1YAxeLabel = 'Giá trị dự kiến thu về (VNĐ)';
+    }
+
+    loadTotalInvestedAmountChartInPercentage() {
+        let labels = [];
+        let processedData = [];
+
+        this.detailedData.forEach(record => {
+            const recordedDate = record['recordedDate'];
+
+            if (isDateBetween(moment(new Date(recordedDate)).format('YYYY-MM-DD'), this.startingDate, this.endingDate)) {
+                processedData.push({
+                    ...record,
+                    recordedDate: moment(recordedDate.substr(0, 10)).format('DD/MM/YYYY')
+                });
+            }
+        });
+
+        processedData = groupBy(processedData, 'recordedDate');
+
+        let temp = [];
+        let total = 0;
+
+        for (const key of Object.keys(processedData)) {
+            processedData[key].forEach(d => {
+                total += d['amount'];
+            });
+        }
+
+        for (const key of Object.keys(processedData)) {
+            labels.push(key);
+            let recordTotal = 0;
+
+            processedData[key].forEach(d => {
+                recordTotal += d['amount'];
+            });
+
+            temp.push(((recordTotal / total) * 100).toFixed(2));
+        }
+
+        this.section1Labels = labels;
+        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng giá trị dự kiến thu về (%)' }];
+        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng giá trị dự kiến thu về (%)';
+    }
+
+    loadTotalInvestedAmountChartWithComparison() {
+        let processedData1 = [];
+        let processedData2 = [];
+        let labels = [];
+
+        this.detailedData.forEach(d => {
+            const recordedDate = d['recordedDate'];
+            const previousStartingDate = new Date(this.previousStartingDate);
+            const previousEndingDate = new Date(this.previousEndingDate);
+
+            if (isDateBetween(moment(new Date(recordedDate)).format('YYYY-MM-DD'), this.startingDate, this.endingDate)) {
+                processedData1.push({ ...d, recordedDate: moment(recordedDate.substr(0, 10)).format('DD/MM/YYYY') });
+            }
+            else {
+                if (this.statisticsPeriod <= 4) {
+                    processedData2.push({ ...d, recordedDate: moment(recordedDate.substr(0, 10)).format('DD/MM/YYYY') });
+                }
+                else {
+                    if (isDateBetween(moment(new Date(recordedDate)).format('YYYY-MM-DD'), previousStartingDate, previousEndingDate)) {
+                        processedData2.push({ ...d, recordedDate: moment(recordedDate.substr(0, 10)).format('DD/MM/YYYY') });
+                    }
+                }
+            }
+        });
+
+        processedData1 = groupBy(processedData1, 'recordedDate');
+        processedData2 = groupBy(processedData2, 'recordedDate');
+
+        let tempData1 = [];
+        let tempData2 = [];
+        let i = 0;
+
+        for (const key of Object.keys(processedData1)) {
+            let statisticsPeriod;
+
+            if (typeof this.statisticsPeriod === 'string') {
+                statisticsPeriod = parseInt(this.statisticsPeriod);
+            }
+            i++;
+
+            switch (statisticsPeriod) {
+                case 0:
+                    labels.push('Hôm qua và hôm nay');
+                    break;
+
+                case 1:
+                    const dayOfWeek = moment(key, 'DD/MM/YYYY').day();
+                    const dayOfWeekString = dayOfWeek === 0 ? 'Chủ nhật' : `Thứ ${ dayOfWeek + 1}`;
+                    labels.push(dayOfWeekString);
+                    break;
+
+                case 2:
+                    labels.push(`Ngày ${ i }`);
+                    break;
+
+                case 3:
+                    labels.push(`Ngày ${ i }`);
+                    break;
+
+                case 4:
+                    labels.push(key.split('/').slice(0, 2).join('/'));
+                    break;
+
+                case 5:
+                    labels.push(key.split('/').slice(0, 2).join('/'));
+                    break;
+            }
+
+            let recordAmount = 0;
+
+            processedData1[key].forEach(d => {
+                recordAmount += d['amount'];
+            });
+
+            tempData1.push(recordAmount);
+
+            for (const key of Object.keys(processedData2)) {
+                let recordAmount = 0;
+
+                processedData2[key].forEach(d => {
+                    recordAmount += d['amount'];
+                });
+
+                tempData2.push(recordAmount);
+            }
+        }
+
+        let tempData1Label = `${ moment(new Date(this.startingDate)).format('DD/MM/YYYY') } - ${ moment(new Date(this.endingDate)).format('DD/MM/YYYY') }`;
+        let tempData2Label = `${ moment(new Date(this.previousStartingDate)).format('DD/MM/YYYY') } - ${ moment(new Date(this.previousEndingDate)).format('DD/MM/YYYY') }`;
+
+        let data = [
+            { data: tempData1, label: tempData1Label },
+            { data: tempData2, label: tempData2Label }
+        ];
+
+        this.section1Labels = labels;
+        this.section1Data = data;
+        this.section1YAxeLabel = 'Giá trị dự kiến thu về (VNĐ)';
+    }
+
+    loadTotalPlannedToSellAssetsChartInOriginalValue() {
+        let labels = [];
+        let processedData = [];
+
+        this.detailedData.forEach(record => {
+            const recordedDate = record['recordedDate'];
+
+            if (isDateBetween(moment(new Date(recordedDate)).format('YYYY-MM-DD'), this.startingDate, this.endingDate)) {
+                processedData.push({
+                    ...record,
+                    recordedDate: moment(recordedDate.substr(0, 10)).format('DD/MM/YYYY')
+                });
+            }
+        });
+
+        processedData = groupBy(processedData, 'recordedDate');
+
+        let temp = [];
+
+        for (const key of Object.keys(processedData)) {
+            labels.push(key);
+            let total = 0;
+
+            processedData[key].forEach(d => {
+                total += d['quantity'];
+            });
+
+            temp.push(total);
+        }
+
+        this.section1Labels = labels;
+        this.section1Data = [{ data: temp, label: 'Số lượng tài sản dự kiến thanh lý (Tài sản)' }];
+        this.section1YAxeLabel = 'Số lượng tài sản dự kiến thanh lý (Tài sản)';
+    }
+
+    loadTotalPlannedToSellAssetsChartInPercentage() {
+        let labels = [];
+        let processedData = [];
+
+        this.detailedData.forEach(record => {
+            const recordedDate = record['recordedDate'];
+
+            if (isDateBetween(moment(new Date(recordedDate)).format('YYYY-MM-DD'), this.startingDate, this.endingDate)) {
+                processedData.push({
+                    ...record,
+                    recordedDate: moment(recordedDate.substr(0, 10)).format('DD/MM/YYYY')
+                });
+            }
+        });
+
+        processedData = groupBy(processedData, 'recordedDate');
+
+        let temp = [];
+        let total = 0;
+
+        for (const key of Object.keys(processedData)) {
+            processedData[key].forEach(d => {
+                total += d['quantity'];
+            });
+        }
+
+        for (const key of Object.keys(processedData)) {
+            labels.push(key);
+            let recordTotal = 0;
+
+            processedData[key].forEach(d => {
+                recordTotal += d['quantity'];
+            });
+
+            temp.push(((recordTotal / total) * 100).toFixed(2));
+        }
+
+        this.section1Labels = labels;
+        this.section1YAxeLabel = 'Tỉ lệ phần trăm so với tổng số lượng tài sản dự kiến thanh lý (%)';
+        this.section1Data = [{ data: temp, label: 'Tỉ lệ phần trăm so với tổng số lượng tài sản dự kiến thanh lý (%)' }];
+    }
+
+    loadTotalPlannedToSellAssetsChartWithComparison() {
+        let processedData1 = [];
+        let processedData2 = [];
+        let labels = [];
+
+        this.detailedData.forEach(d => {
+            const recordedDate = d['recordedDate'];
+            const previousStartingDate = new Date(this.previousStartingDate);
+            const previousEndingDate = new Date(this.previousEndingDate);
+
+            if (isDateBetween(moment(new Date(recordedDate)).format('YYYY-MM-DD'), this.startingDate, this.endingDate)) {
+                processedData1.push({ ...d, recordedDate: moment(recordedDate.substr(0, 10)).format('DD/MM/YYYY') });
+            }
+            else {
+                if (this.statisticsPeriod <= 4) {
+                    processedData2.push({ ...d, recordedDate: moment(recordedDate.substr(0, 10)).format('DD/MM/YYYY') });
+                }
+                else {
+                    if (isDateBetween(moment(new Date(recordedDate)).format('YYYY-MM-DD'), previousStartingDate, previousEndingDate)) {
+                        processedData2.push({ ...d, recordedDate: moment(recordedDate.substr(0, 10)).format('DD/MM/YYYY') });
+                    }
+                }
+            }
+        });
+
+        processedData1 = groupBy(processedData1, 'recordedDate');
+        processedData2 = groupBy(processedData2, 'recordedDate');
+
+        let tempData1 = [];
+        let tempData2 = [];
+        let i = 0;
+
+        for (const key of Object.keys(processedData1)) {
+            let statisticsPeriod;
+
+            if (typeof this.statisticsPeriod === 'string') {
+                statisticsPeriod = parseInt(this.statisticsPeriod);
+            }
+            i++;
+
+            switch (statisticsPeriod) {
+                case 0:
+                    labels.push('Hôm qua và hôm nay');
+                    break;
+
+                case 1:
+                    const dayOfWeek = moment(key, 'DD/MM/YYYY').day();
+                    const dayOfWeekString = dayOfWeek === 0 ? 'Chủ nhật' : `Thứ ${ dayOfWeek + 1}`;
+                    labels.push(dayOfWeekString);
+                    break;
+
+                case 2:
+                    labels.push(`Ngày ${ i }`);
+                    break;
+
+                case 3:
+                    labels.push(`Ngày ${ i }`);
+                    break;
+
+                case 4:
+                    labels.push(key.split('/').slice(0, 2).join('/'));
+                    break;
+
+                case 5:
+                    labels.push(key.split('/').slice(0, 2).join('/'));
+                    break;
+            }
+
+            let recordAmount = 0;
+
+            processedData1[key].forEach(d => {
+                recordAmount += d['quantity'];
+            });
+
+            tempData1.push(recordAmount);
+
+            for (const key of Object.keys(processedData2)) {
+                let recordAmount = 0;
+
+                processedData2[key].forEach(d => {
+                    recordAmount += d['quantity'];
+                });
+
+                tempData2.push(recordAmount);
+            }
+        }
+
+        let tempData1Label = `${ moment(new Date(this.startingDate)).format('DD/MM/YYYY') } - ${ moment(new Date(this.endingDate)).format('DD/MM/YYYY') }`;
+        let tempData2Label = `${ moment(new Date(this.previousStartingDate)).format('DD/MM/YYYY') } - ${ moment(new Date(this.previousEndingDate)).format('DD/MM/YYYY') }`;
+
+        let data = [
+            { data: tempData1, label: tempData1Label },
+            { data: tempData2, label: tempData2Label }
+        ];
+
+        this.section1Labels = labels;
+        this.section1Data = data;
+        this.section1YAxeLabel = 'Số lượng tài sản dự kiến thanh lý (Tài sản)';
+    }
+
+    onPrint() {
+        window.print();
     }
 }

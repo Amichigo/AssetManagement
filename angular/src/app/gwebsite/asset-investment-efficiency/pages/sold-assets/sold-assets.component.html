@@ -1,0 +1,58 @@
+<div [@routerTransition]>
+    <div class="group-6">
+        <div class="m-subheader mb-3">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto col-xs-12">
+                    <h3 class="m-subheader__title">
+                        <span>{{l("Quản lý giá trị đã thu về nhờ việc thanh lý tài sản")}}</span>
+                    </h3>
+                </div>
+
+                <div class="col-md-6 col-xs-12 text-right page-buttons">
+                    <span class="button" (click)="onPrint()"><i class="fas fa-print"></i>&nbsp;&nbsp;In báo cáo</span>
+                </div>
+            </div>
+        </div>
+
+        <app-time-period-picker 
+            title="Chọn khoảng thời gian cần xem thống kê" 
+            (update)="changeTimePeriod($event)">
+        </app-time-period-picker>
+
+        <app-statistics-card-section 
+            title="Số liệu thống kê tổng quan"
+            [data]="generalStatisticsData">
+        </app-statistics-card-section>
+
+        <app-bar-chart-section 
+            *ngIf="generalStatisticsData"
+            title="Biểu đồ thống kê tổng quan"
+            [tabs]="section1Tabs"
+            [data]="section1Data"
+            [labels]="section1Labels"
+            [xAxeLabel]="section1XAxeLabel"
+            [yAxeLabel]="section1YAxeLabel"
+            [timePeriod]="statisticsPeriod"
+            (update)="changeSection1($event)">
+        </app-bar-chart-section>
+
+        <app-pie-chart-section 
+            *ngIf="generalStatisticsData"
+            title="Biểu đồ thống kê tỉ trọng giữa các nhóm tài sản"
+            [tabs]="section2Tabs"
+            [data]="section2Data"
+            [labels]="section2Labels"
+            [timePeriod]="statisticsPeriod"
+            (update)="changeSection2($event)">
+        </app-pie-chart-section>
+
+        <app-sold-assets-data-table 
+            *ngIf="generalStatisticsData"
+            [data]="detailedData"
+            [generalStatisticsData]="generalStatisticsData"
+            [timePeriodStartingDate]="startingDate"
+            [timePeriodEndingDate]="endingDate"
+            [timePeriod]="statisticsPeriod">
+        </app-sold-assets-data-table>
+    </div>
+</div>

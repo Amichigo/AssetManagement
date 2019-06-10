@@ -1,0 +1,18 @@
+.time-period-picker {
+    margin: 0 16px;
+    box-shadow: 0 1px 15px 1px rgba(69,65,78,.08);
+    background-color: #fff;
+    padding: 24px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+}
+
+label {
+    font-weight: bold;
+}
+
+@media print {
+    .time-period-picker {
+        display: none;
+    }
+}

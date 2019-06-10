@@ -217,7 +217,6 @@ table tr:hover td {
 
 .detailed-popup-header-title {
     font-weight: bold;
-    /* font-size: 18px; */
 }
 
 .detailed-popup-body {
@@ -230,4 +229,49 @@ table tr:hover td {
     margin-left: 12px;
     margin-right: 12px;
     margin-top: 12px;
+}
+
+.button {
+    border-radius: 3px;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    border: 1px solid gray;
+    text-align: center;
+    display: inline-block;
+}
+
+.button {
+    padding: 12px;
+}
+
+.button:hover {
+    color: white;
+    background-color: #36a3f7;
+    border: 1px solid white;
+}
+
+@media print {
+    .m-subheader__title {
+        font-size: 28px;
+    }
+
+    .page-buttons {
+        display: none;
+    }
+}
+
+@media (max-width: 420px) {
+    .m-subheader > div {
+        flex-direction: column;
+    }
+
+    .button {
+        padding: 10px 12px;
+    }
+
+    .page-buttons {
+        text-align: left !important;
+        padding: 0;
+    }
 }

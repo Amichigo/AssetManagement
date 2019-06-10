@@ -65,6 +65,7 @@ import { LoaiNhaCungCapComponent } from './LoaiNhaCungCap/LoaiNhaCungCap.compone
 import { NhaCungCapHangHoaComponent } from './NhaCungCapHangHoa/NhaCungCapHangHoa.component';
 import { ProductComponent } from './Product/Product.component';
 import { ProductTypeComponent } from './ProductType/ProductType.component';
+import { SoldAssetsComponent } from './asset-investment-efficiency/pages/sold-assets/sold-assets.component';
 
 @NgModule({
     imports: [
@@ -687,6 +688,69 @@ import { ProductTypeComponent } from './ProductType/ProductType.component';
                         path: 'ProductType', component: ProductTypeComponent,
                         data: { permission: 'Pages.Administration.ProductType' }
                     },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'asset-investment-efficiency/purchased-assets', component: PurchasedAssetsComponent,
+                        data: { permission: 'Pages.Administration.PurchasedAsset'}
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'asset-investment-efficiency/sold-assets', component: SoldAssetsComponent,
+                        data: { permission: 'Pages.Administration.SoldAsset'}
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'asset-investment-efficiency/maintained-assets', component: MaintainedAssetsComponent,
+                        data: { permission: 'Pages.Administration.MaintainedAsset'}
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'asset-investment-efficiency/planned-to-sell-assets', component: PlannedToSellAssetsComponent,
+                        data: { permission: 'Pages.Administration.PlannedToSellAsset'}
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'asset-investment-efficiency/operating-assets', component: OperatingAssetsComponent,
+                        data: { permission: 'Pages.Administration.OperatingAsset'}
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'asset-investment-efficiency/planned-to-purchase-assets', component: PlannedToPurchaseAssetsComponent,
+                        data: { permission: 'Pages.Administration.PlannedToPurchaseAsset'}
+                    }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'asset-investment-efficiency/planned-to-maintain-assets', component: PlannedToMaintainAssetsComponent,
+                        data: { permission: 'Pages.Administration.PlannedToMaintainAsset'}
+                    }
                 ]
             }
         ])

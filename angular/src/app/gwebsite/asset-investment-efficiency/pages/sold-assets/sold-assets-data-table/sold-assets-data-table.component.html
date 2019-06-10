@@ -1,0 +1,161 @@
+<div class="data-table-section">
+    <div class="data-table-section-header">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="data-table-section-header-title">Bảng số liệu thống kê chi tiết</h3>
+            </div>
+
+            <div class="col-md-6 text-right data-table-buttons">
+                <span class="button" (click)="onResetFilters()"><i class="fas fa-redo"></i>&nbsp;&nbsp;Làm lại</span>
+                <span class="button" (click)="onExport()"><i class="fas fa-file-download"></i>&nbsp;&nbsp;Xuất dữ liệu (*.xlsx)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="data-table-section-body">
+        <div class="data-table-filters mb-3">
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label>Từ khóa</label>
+                    <input class="form-control" type="text" placeholder="Nhập từ khóa cần tìm kiếm..." [(ngModel)]="keyword" (ngModelChange)="loadTableData()" />
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Ngày bắt đầu</label>
+                    <input class="form-control" type="date" [(ngModel)]="startingDate" (ngModelChange)="loadTableData()" required />
+                </div>
+    
+                <div class="col-md-3">
+                    <label>Ngày kết thúc</label>
+                    <input class="form-control" type="date" [(ngModel)]="endingDate" (ngModelChange)="loadTableData()" required />
+                </div>
+    
+                <div class="col-md-3">
+                    <label>Số kết quả hiển thị</label>
+                    <select class="form-control" [(ngModel)]="pageSize" (ngModelChange)="loadTableData()">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="500">500</option>
+                        <option value="1000">1000</option>
+                        <option value="2000">2000</option>
+                    </select>
+                </div>
+    
+                <div class="col-md-3">
+                    <label>Nhóm tài sản</label>
+                    <select class="form-control" [(ngModel)]="selectedAssetType" (ngModelChange)="loadTableData()">
+                        <option value="-1">Tất cả</option>
+                        <option [value]="type['assetTypeId']" *ngFor="let type of assetTypes">{{ type['assetTypeName'] }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    
+        <div class="table-wrapper">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th (click)="onSort('recordedDate')">Ngày ghi nhận <span class="sort-button" *ngIf="this.sortField === 'recordedDate'" ><i class="fas fa-sort"></i></span></th>
+                        <th (click)="onSort('assetTypeId')">Mã nhóm tài sản <span class="sort-button" *ngIf="this.sortField === 'assetTypeId'" ><i class="fas fa-sort"></i></span></th>
+                        <th (click)="onSort('assetTypeName')">Tên nhóm tài sản <span class="sort-button" *ngIf="this.sortField === 'assetTypeName'" ><i class="fas fa-sort"></i></span></th>
+                        <th (click)="onSort('quantity')">Số lượng (Tài sản) <span class="sort-button" *ngIf="this.sortField === 'quantity'" ><i class="fas fa-sort"></i></span></th>
+                        <th (click)="onSort('quantity')">Tỉ lệ % (Số lượng tài sản) <span class="sort-button" *ngIf="this.sortField === 'quantity'" ><i class="fas fa-sort"></i></span></th>
+                        <th (click)="onSort('amount')">Giá trị thu về (VNĐ) <span class="sort-button" *ngIf="this.sortField === 'amount'" ><i class="fas fa-sort"></i></span></th>
+                        <th (click)="onSort('amount')">Tỉ lệ % (Giá trị thu về) <span class="sort-button" *ngIf="this.sortField === 'amount'" ><i class="fas fa-sort"></i></span></th>
+                    </tr>
+                </thead>
+        
+                <tbody>
+                    <tr *ngFor="let record of tableData" (click)="onShowDetailedPopup(record)">
+                        <td>{{ record['recordedDate'] | date:'dd/MM/yyyy' }}</td>
+                        <td class="text-bold">{{ record['assetTypeId'] }}</td>
+                        <td>{{ record['assetTypeName'] }}</td>
+                        <td>{{ addThousandSeparator(record['quantity']) }}</td>
+                        <td class="text-bold">{{ ((record['quantity'] / totalQuantity) * 100).toFixed(2) }}</td>
+                        <td>{{ addThousandSeparator(record['amount']) }}</td>
+                        <td class="text-bold">{{ ((record['amount'] / totalAmount) * 100).toFixed(2) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    
+        <div class="table-pagination">
+            <div class="row">
+                <div class="col-md-6 col-xs-12 table-pagination-message">
+                    Trang <strong>{{ page }}</strong> trong tổng số <strong>{{ totalPages }}</strong> trang
+                </div>
+    
+                <div class="col-md-6 col-xs-12 table-pagination-buttons text-right">
+                    <span class="paging-button" (click)="navigateToPreviousPage()"><i class="fas fa-chevron-left"></i></span>
+                    <span class="paging-button" (click)="navigateToNextPage()"><i class="fas fa-chevron-right"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup-wrapper" *ngIf="showDetailedPopup">
+    <div class="popup">
+        <div class="popup-header">
+            <div class="popup-header-left">
+                <h3 class="popup-header-title">Số liệu thống kê chi tiết</h3>
+            </div>
+
+            <div class="popup-header-right">
+                <span class="popup-header-close-button" (click)="onCloseDetailedPopup()"><i class="fas fa-times"></i></span>
+            </div>
+        </div>
+
+        <div class="popup-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Mã nhóm tài sản</label>
+                        <input class="form-control" type="text" [value]="detailedRecord['assetTypeId']" disabled />
+                    </div>
+        
+                    <div class="form-group">
+                        <label>Tên nhóm tài sản</label>
+                        <input class="form-control" type="text" [value]="detailedRecord['assetTypeName']" disabled />
+                    </div>
+        
+                    <div class="form-group">
+                        <label>Số lượng tài sản (Tài sản)</label>
+                        <input class="form-control" type="text" [value]="addThousandSeparator(detailedRecord['quantity'])" disabled />
+                    </div>
+        
+                    <div class="form-group">
+                        <label>Tỉ lệ % so với tổng số lượng tài sản (%)</label>
+                        <input class="form-control" type="text" [value]="((detailedRecord['quantity'] / totalQuantity) * 100).toFixed(2)" disabled />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Giá trị thu về (VNĐ)</label>
+                        <input class="form-control" type="text" [value]="addThousandSeparator(detailedRecord['amount'])" disabled />
+                    </div>
+        
+                    <div class="form-group">
+                        <label>Tỉ lệ % so với tổng giá trị đã thu về (%)</label>
+                        <input class="form-control" type="text" [value]="((detailedRecord['amount'] / totalAmount) * 100).toFixed(2)" disabled />
+                    </div>
+        
+                    <div class="form-group">
+                        <label>Ngày cập nhật</label>
+                        <input class="form-control" type="text" [value]="detailedRecord['recordedDate'] | date:'dd/MM/yyyy'" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup-footer text-right">
+            <span class="button" (click)="onCloseDetailedPopup()">Đóng</span>
+        </div>
+    </div>
+</div>

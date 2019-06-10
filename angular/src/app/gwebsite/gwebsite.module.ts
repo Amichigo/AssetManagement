@@ -130,15 +130,8 @@ import {
     MatTreeModule,
 } from '@angular/material';
 
-import { AssetActivityServiceProxy, Asset11ServiceProxy, Debit11ServiceProxy, Credit11ServiceProxy } from '@shared/service-proxies/service-proxies';
-import { PurchasedAssetsComponent } from './asset-investment-efficiency/pages/purchased-assets/purchased-assets.component';
+import { Asset11ServiceProxy, Debit11ServiceProxy, Credit11ServiceProxy } from '@shared/service-proxies/service-proxies';
 import { SoleAssetsComponent } from './asset-investment-efficiency/pages/sole-assets/sole-assets.component';
-import { MaintainedAssetsComponent } from './asset-investment-efficiency/pages/maintained-assets/maintained-assets.component';
-import { PlannedToSellAssetsComponent } from './asset-investment-efficiency/pages/planned-to-sell-assets/planned-to-sell-assets.component';
-import { PlannedToPurchaseAssetsComponent } from './asset-investment-efficiency/pages/planned-to-purchase-assets/planned-to-purchase-assets.component';
-import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/pages/planned-to-maintain-assets/planned-to-maintain-assets.component';
-import { OperatingAssetsComponent } from './asset-investment-efficiency/pages/operating-assets/operating-assets.component';
-import { ChartsModule } from 'ng2-charts';
 import { Asset11Component } from './asset11/asset11.component';
 import { CreateOrEditAsset11ModalComponent } from './asset11/create-or-edit-asset11-modal.component';
 import { ViewAsset11ModalComponent } from './asset11/view-asset11-modal.component';
@@ -258,7 +251,30 @@ import { ViewProductTypeModalComponent } from './ProductType/view-ProductType-mo
 import { CreateOrEditProductTypeModalComponent } from './ProductType/create-or-edit-ProductType-modal.component';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { ExcelService } from './services/excel.service';
+import { AssetActivityServiceProxy } from '@shared/service-proxies/service-proxies';
+
+import { PurchasedAssetsComponent } from './asset-investment-efficiency/pages/purchased-assets/purchased-assets.component';
+import { SoldAssetsComponent } from './asset-investment-efficiency/pages/sold-assets/sold-assets.component';
+import { MaintainedAssetsComponent } from './asset-investment-efficiency/pages/maintained-assets/maintained-assets.component';
+import { PlannedToSellAssetsComponent } from './asset-investment-efficiency/pages/planned-to-sell-assets/planned-to-sell-assets.component';
+import { PlannedToPurchaseAssetsComponent } from './asset-investment-efficiency/pages/planned-to-purchase-assets/planned-to-purchase-assets.component';
+import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/pages/planned-to-maintain-assets/planned-to-maintain-assets.component';
+import { OperatingAssetsComponent } from './asset-investment-efficiency/pages/operating-assets/operating-assets.component';
+import { PurchasedAssetsDataTableComponent } from './asset-investment-efficiency/pages/purchased-assets/purchased-assets-data-table/purchased-assets-data-table.component';
+import { SoldAssetsDataTableComponent } from './asset-investment-efficiency/pages/sold-assets/sold-assets-data-table/sold-assets-data-table.component';
+import { MaintainedAssetsDataTableComponent } from './asset-investment-efficiency/pages/maintained-assets/maintained-assets-data-table/maintained-assets-data-table.component';
+import { PlannedToSellAssetsDataTableComponent } from './asset-investment-efficiency/pages/planned-to-sell-assets/planned-to-sell-assets-data-table/planned-to-sell-assets-data-table.component';
+import { PlannedToPurchaseAssetsDataTableComponent } from './asset-investment-efficiency/pages/planned-to-purchase-assets/planned-to-purchase-assets-data-table/planned-to-purchase-assets-data-table.component';
+import { PlannedToMaintainAssetsDataTableComponent } from './asset-investment-efficiency/pages/planned-to-maintain-assets/planned-to-maintain-assets-data-table/planned-to-maintain-assets-data-table.component';
+import { OperatingAssetsDataTableComponent } from './asset-investment-efficiency/pages/operating-assets/operating-assets-data-table/operating-assets-data-table.component';
+import { StatisticsCardComponent } from './asset-investment-efficiency/components/statistics-card/statistics-card.component';
+import { StatisticsCardSectionComponent } from './asset-investment-efficiency/components/statistics-card-section/statistics-card-section.component';
+import { TimePeriodPickerComponent } from './asset-investment-efficiency/components/time-period-picker/time-period-picker.component';
+import { BarChartSectionComponent } from './asset-investment-efficiency/components/bar-chart-section/bar-chart-section.component';
+import { PieChartSectionComponent } from './asset-investment-efficiency/components/pie-chart-section/pie-chart-section.component';
+import { ChartsModule } from 'ng2-charts';
+import { ExcelService } from './asset-investment-efficiency/utils/excel.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     imports: [
@@ -314,7 +330,8 @@ import { ExcelService } from './services/excel.service';
         MatTooltipModule,
         MatTreeModule,
         ChartsModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        HttpClientModule
     ],
     declarations: [
         DuAnComponent, CreateOrEditDuAnModalComponent, ViewDuAnModalComponent,
@@ -397,7 +414,27 @@ import { ExcelService } from './services/excel.service';
         LoaiNhaCungCapComponent, CreateOrEditLoaiNhaCungCapModalComponent, ViewLoaiNhaCungCapModalComponent,
         ProductComponent,CreateOrEditProductModalComponent,ViewProductModalComponent,
         ProductTypeComponent,CreateOrEditProductTypeModalComponent,ViewProductTypeModalComponent,
-        NhaCungCapHangHoaComponent, CreateOrEditNhaCungCapHangHoaModalComponent, ViewNhaCungCapHangHoaModalComponent
+        NhaCungCapHangHoaComponent, CreateOrEditNhaCungCapHangHoaModalComponent, ViewNhaCungCapHangHoaModalComponent,
+        PurchasedAssetsComponent,
+        SoldAssetsComponent,
+        MaintainedAssetsComponent,
+        PlannedToSellAssetsComponent,
+        OperatingAssetsComponent,
+        PlannedToPurchaseAssetsComponent,
+        PlannedToMaintainAssetsComponent,
+        PurchasedAssetsComponent,
+        StatisticsCardComponent,
+        StatisticsCardSectionComponent,
+        TimePeriodPickerComponent,
+        BarChartSectionComponent,
+        PurchasedAssetsDataTableComponent,
+        PieChartSectionComponent,
+        SoldAssetsDataTableComponent,
+        MaintainedAssetsDataTableComponent,
+        PlannedToSellAssetsDataTableComponent,
+        PlannedToPurchaseAssetsDataTableComponent,
+        PlannedToMaintainAssetsDataTableComponent,
+        OperatingAssetsDataTableComponent
     ],
     providers: [
         CategoryServiceProxy,
@@ -460,7 +497,9 @@ import { ExcelService } from './services/excel.service';
         SanPhamServiceProxy,
         ProductTypeServiceProxy,
         ExcelService,
-        WebApiServiceProxy
+        WebApiServiceProxy,
+        AssetActivityServiceProxy,
+        ExcelService
     ]
 })
 export class GWebsiteModule {}
