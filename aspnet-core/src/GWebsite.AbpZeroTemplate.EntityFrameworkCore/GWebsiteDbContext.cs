@@ -31,6 +31,7 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<DisposalPlan> DisposalPlans { get; set; }
         public virtual DbSet<DisposalPlanDetail> DisposalPlanDetails { get; set; }
         public virtual DbSet<DisposalProduct> DisposalProducts { get; set; }
+        public virtual DbSet<Good> Goods { get; set; }
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>

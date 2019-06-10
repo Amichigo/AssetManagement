@@ -4,14 +4,16 @@ using GSoft.AbpZeroTemplate.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    partial class AbpZeroTemplateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190609163309_add_goods")]
+    partial class add_goods
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1757,45 +1759,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DisposalPlanDetails");
-                });
-
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.DisposalProduct", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<float>("GiaDuKien");
-
-                    b.Property<float>("GiaTriConLai");
-
-                    b.Property<string>("HinhThuc");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("MaKeHoach");
-
-                    b.Property<string>("MaTS");
-
-                    b.Property<float>("NguyenGia");
-
-                    b.Property<string>("TenTS");
-
-                    b.Property<int>("ThangDuKien");
-
-                    b.Property<string>("TinhTrangTS");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DisposalProducts");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Function", b =>

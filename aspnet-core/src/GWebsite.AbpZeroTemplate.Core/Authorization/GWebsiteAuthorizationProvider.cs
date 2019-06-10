@@ -82,6 +82,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             disposalProduct.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalProduct_Create, L("CreatingNewDisposalProduct"));
             disposalProduct.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalProduct_Edit, L("EditingDisposalProduct"));
             disposalProduct.CreateChildPermission(GWebsitePermissions.Pages_Administration_DisposalProduct_Delete, L("DeletingDisposalProduct"));
+            constructionPlanDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ConstructionPlanDetail_Check, L("CheckingConstructionPlanDetail"));
         }
 
         private static ILocalizableString L(string name)
