@@ -11,7 +11,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.RealEstas.SuaChuaBatDongSan
     {
         public string MaSuaChuaBatDongSan { set; get; }
         public string MaTaiSan { set; get; }
-
+        public int? IdTaiSan { set; get; }
         public string NgayDeXuat { set; get; }
 
         public string NgayDuKienSuaXong { set; get; }

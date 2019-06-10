@@ -100,8 +100,8 @@
                     <div class="form-group m-form__group row">
                         <div class="col-lg-2 col-md-3 col-sm-4">
                             <div class="form-group">
-                                <input #madvttIT="ngModel" class="form-control" type="text" name="madvttIT"
-                                    [(ngModel)]="madvtt" disabled required maxlength="64">
+                                <input #madvttIT="ngModel" class="form-control" type="text" name="maDonViThau"
+                                    [(ngModel)]="donViThauForView.maDonViThau" disabled required maxlength="64">
                                 <validation-messages [formCtrl]="madvttIT">
                                 </validation-messages>
                             </div>
@@ -110,8 +110,8 @@
                         <div class="col-lg-2 col-md-3 col-sm-4">
 
                             <div class="form-group">
-                                <input #tendvttIT="ngModel" class="form-control" type="text" name="tendvtt"
-                                    [(ngModel)]="tendvtt" disabled required>
+                                <input #tendvttIT="ngModel" class="form-control" type="text" name="tenDonViThamGiaThau"
+                                    [(ngModel)]="donViThauForView.tenDonViThamGiaThau" disabled required>
                                 <validation-messages [formCtrl]="tendvttIT">
                                 </validation-messages>
                             </div>
@@ -124,9 +124,9 @@
                     <div class="form-group m-form__group row">
                         <div class="col-lg-2 col-md-3 col-sm-4">
                             <div class="form-group">
-                                <input #kehoachInput="ngModel" class="form-control" type="text" name="maKeHoach"
-                                    [(ngModel)]="inputvalue" disabled required maxlength="64">
-                                <validation-messages [formCtrl]="kehoachInput">
+                                <input #giaChaoThau="ngModel" class="form-control" type="text" name="giaChaoThau"
+                                    [(ngModel)]="donViThauForView.giaChaoThau" disabled required maxlength="64">
+                                <validation-messages [formCtrl]="giaChaoThau">
                                 </validation-messages>
                             </div>
                         </div>
@@ -211,12 +211,21 @@
                         <div class="col-lg-2 col-md-3 col-sm-4">
                             <div class="form-group">
                                 <input #kehoachInput="ngModel" class="form-control" type="text" name="maKeHoach"
-                                    [(ngModel)]="congtrinhForView.maKeHoach" disabled required maxlength="64">
+                                    [(ngModel)]="keHoachForView.maKeHoach" disabled required maxlength="64">
                                 <validation-messages [formCtrl]="kehoachInput">
                                 </validation-messages>
                             </div>
                         </div>
-
+                        <label>{{l("Tên kế hoạch")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #tenKeHoach="ngModel" class="form-control" type="text" name="tenKeHoach"
+                                    [(ngModel)]="keHoachForView.tenKeHoach" disabled required maxlength="64">
+                                <validation-messages [formCtrl]="tenKeHoach">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="form-group">

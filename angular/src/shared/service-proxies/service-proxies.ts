@@ -1033,19 +1033,19 @@ export class BatDongSanServiceProxy {
 
     /**
      * @maBatDongSan (optional) 
-     * @maLoaiBDS (optional) 
+     * @idLoaiBDS (optional) 
      * @maTaiSan (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getBatDongSansByFilter(maBatDongSan: string | null | undefined, maLoaiBDS: string | null | undefined, maTaiSan: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfBatDongSanDto> {
+    getBatDongSansByFilter(maBatDongSan: string | null | undefined, idLoaiBDS: number | null | undefined, maTaiSan: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfBatDongSanDto> {
         let url_ = this.baseUrl + "/api/BatDongSan/GetBatDongSansByFilter?";
         if (maBatDongSan !== undefined)
             url_ += "MaBatDongSan=" + encodeURIComponent("" + maBatDongSan) + "&"; 
-        if (maLoaiBDS !== undefined)
-            url_ += "MaLoaiBDS=" + encodeURIComponent("" + maLoaiBDS) + "&"; 
+        if (idLoaiBDS !== undefined)
+            url_ += "IdLoaiBDS=" + encodeURIComponent("" + idLoaiBDS) + "&"; 
         if (maTaiSan !== undefined)
             url_ += "MaTaiSan=" + encodeURIComponent("" + maTaiSan) + "&"; 
         if (sorting !== undefined)
@@ -1210,10 +1210,13 @@ export class BatDongSanServiceProxy {
 
     /**
      * @input (optional) 
+     * @idTaiSan (optional) 
      * @return Success
      */
-    createOrEditBatDongSan(input: BatDongSanInput | null | undefined): Observable<void> {
-        let url_ = this.baseUrl + "/api/BatDongSan/CreateOrEditBatDongSan";
+    createOrEditBatDongSan(input: BatDongSanInput | null | undefined, idTaiSan: number | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/BatDongSan/CreateOrEditBatDongSan?";
+        if (idTaiSan !== undefined)
+            url_ += "IdTaiSan=" + encodeURIComponent("" + idTaiSan) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -1896,19 +1899,19 @@ export class CongTrinhServiceProxy {
 
     /**
      * @maCongTrinh (optional) 
-     * @maKeHoach (optional) 
+     * @idKeHoach (optional) 
      * @tenCongTrinh (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getCongTrinhsByFilter(maCongTrinh: string | null | undefined, maKeHoach: string | null | undefined, tenCongTrinh: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfCongTrinhDto> {
+    getCongTrinhsByFilter(maCongTrinh: string | null | undefined, idKeHoach: number | null | undefined, tenCongTrinh: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfCongTrinhDto> {
         let url_ = this.baseUrl + "/api/CongTrinh/GetCongTrinhsByFilter?";
         if (maCongTrinh !== undefined)
             url_ += "MaCongTrinh=" + encodeURIComponent("" + maCongTrinh) + "&"; 
-        if (maKeHoach !== undefined)
-            url_ += "MaKeHoach=" + encodeURIComponent("" + maKeHoach) + "&"; 
+        if (idKeHoach !== undefined)
+            url_ += "idKeHoach=" + encodeURIComponent("" + idKeHoach) + "&"; 
         if (tenCongTrinh !== undefined)
             url_ += "TenCongTrinh=" + encodeURIComponent("" + tenCongTrinh) + "&"; 
         if (sorting !== undefined)
@@ -1966,19 +1969,19 @@ export class CongTrinhServiceProxy {
 
     /**
      * @maCongTrinh (optional) 
-     * @maKeHoach (optional) 
+     * @idKeHoach (optional) 
      * @tenCongTrinh (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getDsCongTrinhThuocDuAnByFilter(maCongTrinh: string | null | undefined, maKeHoach: string | null | undefined, tenCongTrinh: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfCongTrinhDto> {
+    getDsCongTrinhThuocDuAnByFilter(maCongTrinh: string | null | undefined, idKeHoach: number | null | undefined, tenCongTrinh: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfCongTrinhDto> {
         let url_ = this.baseUrl + "/api/CongTrinh/GetDsCongTrinhThuocDuAnByFilter?";
         if (maCongTrinh !== undefined)
             url_ += "MaCongTrinh=" + encodeURIComponent("" + maCongTrinh) + "&"; 
-        if (maKeHoach !== undefined)
-            url_ += "MaKeHoach=" + encodeURIComponent("" + maKeHoach) + "&"; 
+        if (idKeHoach !== undefined)
+            url_ += "idKeHoach=" + encodeURIComponent("" + idKeHoach) + "&"; 
         if (tenCongTrinh !== undefined)
             url_ += "TenCongTrinh=" + encodeURIComponent("" + tenCongTrinh) + "&"; 
         if (sorting !== undefined)
@@ -2036,19 +2039,19 @@ export class CongTrinhServiceProxy {
 
     /**
      * @maCongTrinh (optional) 
-     * @maKeHoach (optional) 
+     * @idKeHoach (optional) 
      * @tenCongTrinh (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getDsCongTrinhKhongThuocDuAnByFilter(maCongTrinh: string | null | undefined, maKeHoach: string | null | undefined, tenCongTrinh: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfCongTrinhDto> {
+    getDsCongTrinhKhongThuocDuAnByFilter(maCongTrinh: string | null | undefined, idKeHoach: number | null | undefined, tenCongTrinh: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfCongTrinhDto> {
         let url_ = this.baseUrl + "/api/CongTrinh/GetDsCongTrinhKhongThuocDuAnByFilter?";
         if (maCongTrinh !== undefined)
             url_ += "MaCongTrinh=" + encodeURIComponent("" + maCongTrinh) + "&"; 
-        if (maKeHoach !== undefined)
-            url_ += "MaKeHoach=" + encodeURIComponent("" + maKeHoach) + "&"; 
+        if (idKeHoach !== undefined)
+            url_ += "idKeHoach=" + encodeURIComponent("" + idKeHoach) + "&"; 
         if (tenCongTrinh !== undefined)
             url_ += "TenCongTrinh=" + encodeURIComponent("" + tenCongTrinh) + "&"; 
         if (sorting !== undefined)
@@ -3325,18 +3328,18 @@ export class DonViThauN13ServiceProxy {
 
     /**
      * @maDonViThau (optional) 
-     * @maGoiThau (optional) 
+     * @idHoSoThau (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getDonViThausByFilter(maDonViThau: string | null | undefined, maGoiThau: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfDonViThauN13Dto> {
+    getDonViThausByFilter(maDonViThau: string | null | undefined, idHoSoThau: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfDonViThauN13Dto> {
         let url_ = this.baseUrl + "/api/DonViThauN13/GetDonViThausByFilter?";
         if (maDonViThau !== undefined)
             url_ += "MaDonViThau=" + encodeURIComponent("" + maDonViThau) + "&"; 
-        if (maGoiThau !== undefined)
-            url_ += "MaGoiThau=" + encodeURIComponent("" + maGoiThau) + "&"; 
+        if (idHoSoThau !== undefined)
+            url_ += "IdHoSoThau=" + encodeURIComponent("" + idHoSoThau) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -3546,6 +3549,61 @@ export class DonViThauN13ServiceProxy {
             }));
         }
         return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getDonViThauByIdGoiThauForView(id: number | null | undefined): Observable<DonViThauN13ForViewDto> {
+        let url_ = this.baseUrl + "/api/DonViThauN13/GetDonViThauByIdGoiThauForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetDonViThauByIdGoiThauForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetDonViThauByIdGoiThauForView(<any>response_);
+                } catch (e) {
+                    return <Observable<DonViThauN13ForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<DonViThauN13ForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetDonViThauByIdGoiThauForView(response: HttpResponseBase): Observable<DonViThauN13ForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? DonViThauN13ForViewDto.fromJS(resultData200) : new DonViThauN13ForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<DonViThauN13ForViewDto>(<any>null);
     }
 
     /**
@@ -4598,10 +4656,13 @@ export class HopDongN13ServiceProxy {
 
     /**
      * @input (optional) 
+     * @idGoiThau (optional) 
      * @return Success
      */
-    createOrEditHopDong(input: HopDongN13Input | null | undefined): Observable<void> {
-        let url_ = this.baseUrl + "/api/HopDongN13/CreateOrEditHopDong";
+    createOrEditHopDong(input: HopDongN13Input | null | undefined, idGoiThau: number | null | undefined): Observable<number> {
+        let url_ = this.baseUrl + "/api/HopDongN13/CreateOrEditHopDong?";
+        if (idGoiThau !== undefined)
+            url_ += "idGoiThau=" + encodeURIComponent("" + idGoiThau) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -4612,6 +4673,7 @@ export class HopDongN13ServiceProxy {
             responseType: "blob",
             headers: new HttpHeaders({
                 "Content-Type": "application/json", 
+                "Accept": "application/json"
             })
         };
 
@@ -4622,14 +4684,14 @@ export class HopDongN13ServiceProxy {
                 try {
                     return this.processCreateOrEditHopDong(<any>response_);
                 } catch (e) {
-                    return <Observable<void>><any>_observableThrow(e);
+                    return <Observable<number>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<void>><any>_observableThrow(response_);
+                return <Observable<number>><any>_observableThrow(response_);
         }));
     }
 
-    protected processCreateOrEditHopDong(response: HttpResponseBase): Observable<void> {
+    protected processCreateOrEditHopDong(response: HttpResponseBase): Observable<number> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -4638,14 +4700,17 @@ export class HopDongN13ServiceProxy {
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return _observableOf<void>(<any>null);
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<void>(<any>null);
+        return _observableOf<number>(<any>null);
     }
 
     /**
@@ -4768,7 +4833,7 @@ export class HoSoThauN13ServiceProxy {
 
     /**
      * @maHoSoThau (optional) 
-     * @maCongTrinh (optional) 
+     * @idCongTrinh (optional) 
      * @ngayNhapHoSoThau (optional) 
      * @ngayHetHanNopHoSoThau (optional) 
      * @hangMucThau (optional) 
@@ -4778,12 +4843,12 @@ export class HoSoThauN13ServiceProxy {
      * @skipCount (optional) 
      * @return Success
      */
-    getHoSoThausByFilter(maHoSoThau: string | null | undefined, maCongTrinh: string | null | undefined, ngayNhapHoSoThau: string | null | undefined, ngayHetHanNopHoSoThau: string | null | undefined, hangMucThau: string | null | undefined, maHinhThucThau: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfHoSoThauN13Dto> {
+    getHoSoThausByFilter(maHoSoThau: string | null | undefined, idCongTrinh: number | null | undefined, ngayNhapHoSoThau: string | null | undefined, ngayHetHanNopHoSoThau: string | null | undefined, hangMucThau: string | null | undefined, maHinhThucThau: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfHoSoThauN13Dto> {
         let url_ = this.baseUrl + "/api/HoSoThauN13/GetHoSoThausByFilter?";
         if (maHoSoThau !== undefined)
             url_ += "MaHoSoThau=" + encodeURIComponent("" + maHoSoThau) + "&"; 
-        if (maCongTrinh !== undefined)
-            url_ += "MaCongTrinh=" + encodeURIComponent("" + maCongTrinh) + "&"; 
+        if (idCongTrinh !== undefined)
+            url_ += "IdCongTrinh=" + encodeURIComponent("" + idCongTrinh) + "&"; 
         if (ngayNhapHoSoThau !== undefined)
             url_ += "NgayNhapHoSoThau=" + encodeURIComponent("" + ngayNhapHoSoThau) + "&"; 
         if (ngayHetHanNopHoSoThau !== undefined)
@@ -4847,7 +4912,7 @@ export class HoSoThauN13ServiceProxy {
 
     /**
      * @maHoSoThau (optional) 
-     * @maCongTrinh (optional) 
+     * @idCongTrinh (optional) 
      * @ngayNhapHoSoThau (optional) 
      * @ngayHetHanNopHoSoThau (optional) 
      * @hangMucThau (optional) 
@@ -4857,12 +4922,12 @@ export class HoSoThauN13ServiceProxy {
      * @skipCount (optional) 
      * @return Success
      */
-    getDSHoSoThauChoHopDong(maHoSoThau: string | null | undefined, maCongTrinh: string | null | undefined, ngayNhapHoSoThau: string | null | undefined, ngayHetHanNopHoSoThau: string | null | undefined, hangMucThau: string | null | undefined, maHinhThucThau: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfHoSoThauN13Dto> {
+    getDSHoSoThauChoHopDong(maHoSoThau: string | null | undefined, idCongTrinh: number | null | undefined, ngayNhapHoSoThau: string | null | undefined, ngayHetHanNopHoSoThau: string | null | undefined, hangMucThau: string | null | undefined, maHinhThucThau: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfHoSoThauN13Dto> {
         let url_ = this.baseUrl + "/api/HoSoThauN13/GetDSHoSoThauChoHopDong?";
         if (maHoSoThau !== undefined)
             url_ += "MaHoSoThau=" + encodeURIComponent("" + maHoSoThau) + "&"; 
-        if (maCongTrinh !== undefined)
-            url_ += "MaCongTrinh=" + encodeURIComponent("" + maCongTrinh) + "&"; 
+        if (idCongTrinh !== undefined)
+            url_ += "IdCongTrinh=" + encodeURIComponent("" + idCongTrinh) + "&"; 
         if (ngayNhapHoSoThau !== undefined)
             url_ += "NgayNhapHoSoThau=" + encodeURIComponent("" + ngayNhapHoSoThau) + "&"; 
         if (ngayHetHanNopHoSoThau !== undefined)
@@ -4983,7 +5048,7 @@ export class HoSoThauN13ServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    createOrEditHoSoThau(input: HoSoThauN13Input | null | undefined): Observable<void> {
+    createOrEditHoSoThau(input: HoSoThauN13Input | null | undefined): Observable<number> {
         let url_ = this.baseUrl + "/api/HoSoThauN13/CreateOrEditHoSoThau";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -4995,6 +5060,7 @@ export class HoSoThauN13ServiceProxy {
             responseType: "blob",
             headers: new HttpHeaders({
                 "Content-Type": "application/json", 
+                "Accept": "application/json"
             })
         };
 
@@ -5005,14 +5071,14 @@ export class HoSoThauN13ServiceProxy {
                 try {
                     return this.processCreateOrEditHoSoThau(<any>response_);
                 } catch (e) {
-                    return <Observable<void>><any>_observableThrow(e);
+                    return <Observable<number>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<void>><any>_observableThrow(response_);
+                return <Observable<number>><any>_observableThrow(response_);
         }));
     }
 
-    protected processCreateOrEditHoSoThau(response: HttpResponseBase): Observable<void> {
+    protected processCreateOrEditHoSoThau(response: HttpResponseBase): Observable<number> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -5021,14 +5087,17 @@ export class HoSoThauN13ServiceProxy {
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return _observableOf<void>(<any>null);
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<void>(<any>null);
+        return _observableOf<number>(<any>null);
     }
 
     /**
@@ -5931,7 +6000,7 @@ export class KeHoachXayDungServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    createOrEditKeHoachXayDung(input: KeHoachXayDungInput | null | undefined): Observable<void> {
+    createOrEditKeHoachXayDung(input: KeHoachXayDungInput | null | undefined): Observable<number> {
         let url_ = this.baseUrl + "/api/KeHoachXayDung/CreateOrEditKeHoachXayDung";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -5943,6 +6012,7 @@ export class KeHoachXayDungServiceProxy {
             responseType: "blob",
             headers: new HttpHeaders({
                 "Content-Type": "application/json", 
+                "Accept": "application/json"
             })
         };
 
@@ -5953,14 +6023,14 @@ export class KeHoachXayDungServiceProxy {
                 try {
                     return this.processCreateOrEditKeHoachXayDung(<any>response_);
                 } catch (e) {
-                    return <Observable<void>><any>_observableThrow(e);
+                    return <Observable<number>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<void>><any>_observableThrow(response_);
+                return <Observable<number>><any>_observableThrow(response_);
         }));
     }
 
-    protected processCreateOrEditKeHoachXayDung(response: HttpResponseBase): Observable<void> {
+    protected processCreateOrEditKeHoachXayDung(response: HttpResponseBase): Observable<number> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -5969,14 +6039,17 @@ export class KeHoachXayDungServiceProxy {
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return _observableOf<void>(<any>null);
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<void>(<any>null);
+        return _observableOf<number>(<any>null);
     }
 
     /**
@@ -11246,9 +11319,10 @@ export class TaiSanN13ServiceProxy {
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
+     * @type (optional) 
      * @return Success
      */
-    getTaiSansByFilter(maTaiSan: string | null | undefined, maNhomTaiSan: string | null | undefined, maLoaiTaiSan: string | null | undefined, tenTaiSan: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfTaiSanDto> {
+    getTaiSansByFilter(maTaiSan: string | null | undefined, maNhomTaiSan: string | null | undefined, maLoaiTaiSan: string | null | undefined, tenTaiSan: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined, type: number | null | undefined): Observable<PagedResultDtoOfTaiSanDto> {
         let url_ = this.baseUrl + "/api/TaiSanN13/GetTaiSansByFilter?";
         if (maTaiSan !== undefined)
             url_ += "MaTaiSan=" + encodeURIComponent("" + maTaiSan) + "&"; 
@@ -11264,6 +11338,8 @@ export class TaiSanN13ServiceProxy {
             url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         if (skipCount !== undefined)
             url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (type !== undefined)
+            url_ += "type=" + encodeURIComponent("" + type) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -11503,6 +11579,61 @@ export class TaiSanN13ServiceProxy {
     }
 
     protected processGetTaiSanForView(response: HttpResponseBase): Observable<TaiSanN13ForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? TaiSanN13ForViewDto.fromJS(resultData200) : new TaiSanN13ForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<TaiSanN13ForViewDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getTaiSanForViewByIdBDS(id: number | null | undefined): Observable<TaiSanN13ForViewDto> {
+        let url_ = this.baseUrl + "/api/TaiSanN13/GetTaiSanForViewByIdBDS?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetTaiSanForViewByIdBDS(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetTaiSanForViewByIdBDS(<any>response_);
+                } catch (e) {
+                    return <Observable<TaiSanN13ForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<TaiSanN13ForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetTaiSanForViewByIdBDS(response: HttpResponseBase): Observable<TaiSanN13ForViewDto> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -12775,16 +12906,16 @@ export class ThanhToanN13ServiceProxy {
     }
 
     /**
-     * @maHopDong (optional) 
+     * @idHopDong (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getThanhToanN13sByFilter(maHopDong: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfThanhToanN13Dto> {
+    getThanhToanN13sByFilter(idHopDong: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfThanhToanN13Dto> {
         let url_ = this.baseUrl + "/api/ThanhToanN13/GetThanhToanN13sByFilter?";
-        if (maHopDong !== undefined)
-            url_ += "MaHopDong=" + encodeURIComponent("" + maHopDong) + "&"; 
+        if (idHopDong !== undefined)
+            url_ += "IdHopDong=" + encodeURIComponent("" + idHopDong) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -16433,9 +16564,8 @@ export class BatDongSanInput implements IBatDongSanInput {
     maPhongGiaoDich!: string | undefined;
     ngayMuaBatDongSan!: string | undefined;
     diaChi!: string | undefined;
-    maTaiSan!: string | undefined;
     hienTrangBDS!: string | undefined;
-    maLoaiBDS!: string | undefined;
+    idLoaiBDS!: number | undefined;
     chieuDai!: number | undefined;
     chieuRong!: number | undefined;
     dienTichDatNen!: number | undefined;
@@ -16446,7 +16576,7 @@ export class BatDongSanInput implements IBatDongSanInput {
     ketCauNha!: string | undefined;
     ranhGioi!: string | undefined;
     maHienTrangPhapLy!: string | undefined;
-    maLoaiSoHuu!: string | undefined;
+    idLoaiSoHuu!: number | undefined;
     chuSoHuu!: string | undefined;
     ghiChu!: string | undefined;
     fileDinhKem!: string | undefined;
@@ -16467,9 +16597,8 @@ export class BatDongSanInput implements IBatDongSanInput {
             this.maPhongGiaoDich = data["maPhongGiaoDich"];
             this.ngayMuaBatDongSan = data["ngayMuaBatDongSan"];
             this.diaChi = data["diaChi"];
-            this.maTaiSan = data["maTaiSan"];
             this.hienTrangBDS = data["hienTrangBDS"];
-            this.maLoaiBDS = data["maLoaiBDS"];
+            this.idLoaiBDS = data["idLoaiBDS"];
             this.chieuDai = data["chieuDai"];
             this.chieuRong = data["chieuRong"];
             this.dienTichDatNen = data["dienTichDatNen"];
@@ -16480,7 +16609,7 @@ export class BatDongSanInput implements IBatDongSanInput {
             this.ketCauNha = data["ketCauNha"];
             this.ranhGioi = data["ranhGioi"];
             this.maHienTrangPhapLy = data["maHienTrangPhapLy"];
-            this.maLoaiSoHuu = data["maLoaiSoHuu"];
+            this.idLoaiSoHuu = data["idLoaiSoHuu"];
             this.chuSoHuu = data["chuSoHuu"];
             this.ghiChu = data["ghiChu"];
             this.fileDinhKem = data["fileDinhKem"];
@@ -16501,9 +16630,8 @@ export class BatDongSanInput implements IBatDongSanInput {
         data["maPhongGiaoDich"] = this.maPhongGiaoDich;
         data["ngayMuaBatDongSan"] = this.ngayMuaBatDongSan;
         data["diaChi"] = this.diaChi;
-        data["maTaiSan"] = this.maTaiSan;
         data["hienTrangBDS"] = this.hienTrangBDS;
-        data["maLoaiBDS"] = this.maLoaiBDS;
+        data["idLoaiBDS"] = this.idLoaiBDS;
         data["chieuDai"] = this.chieuDai;
         data["chieuRong"] = this.chieuRong;
         data["dienTichDatNen"] = this.dienTichDatNen;
@@ -16514,7 +16642,7 @@ export class BatDongSanInput implements IBatDongSanInput {
         data["ketCauNha"] = this.ketCauNha;
         data["ranhGioi"] = this.ranhGioi;
         data["maHienTrangPhapLy"] = this.maHienTrangPhapLy;
-        data["maLoaiSoHuu"] = this.maLoaiSoHuu;
+        data["idLoaiSoHuu"] = this.idLoaiSoHuu;
         data["chuSoHuu"] = this.chuSoHuu;
         data["ghiChu"] = this.ghiChu;
         data["fileDinhKem"] = this.fileDinhKem;
@@ -16528,9 +16656,8 @@ export interface IBatDongSanInput {
     maPhongGiaoDich: string | undefined;
     ngayMuaBatDongSan: string | undefined;
     diaChi: string | undefined;
-    maTaiSan: string | undefined;
     hienTrangBDS: string | undefined;
-    maLoaiBDS: string | undefined;
+    idLoaiBDS: number | undefined;
     chieuDai: number | undefined;
     chieuRong: number | undefined;
     dienTichDatNen: number | undefined;
@@ -16541,7 +16668,7 @@ export interface IBatDongSanInput {
     ketCauNha: string | undefined;
     ranhGioi: string | undefined;
     maHienTrangPhapLy: string | undefined;
-    maLoaiSoHuu: string | undefined;
+    idLoaiSoHuu: number | undefined;
     chuSoHuu: string | undefined;
     ghiChu: string | undefined;
     fileDinhKem: string | undefined;
@@ -16553,7 +16680,6 @@ export class BatDongSanForViewDto implements IBatDongSanForViewDto {
     maPhongGiaoDich!: string | undefined;
     ngayMuaBatDongSan!: string | undefined;
     diaChi!: string | undefined;
-    maTaiSan!: string | undefined;
     hienTrangBDS!: string | undefined;
     maLoaiBDS!: string | undefined;
     chieuDai!: number | undefined;
@@ -16586,7 +16712,6 @@ export class BatDongSanForViewDto implements IBatDongSanForViewDto {
             this.maPhongGiaoDich = data["maPhongGiaoDich"];
             this.ngayMuaBatDongSan = data["ngayMuaBatDongSan"];
             this.diaChi = data["diaChi"];
-            this.maTaiSan = data["maTaiSan"];
             this.hienTrangBDS = data["hienTrangBDS"];
             this.maLoaiBDS = data["maLoaiBDS"];
             this.chieuDai = data["chieuDai"];
@@ -16619,7 +16744,6 @@ export class BatDongSanForViewDto implements IBatDongSanForViewDto {
         data["maPhongGiaoDich"] = this.maPhongGiaoDich;
         data["ngayMuaBatDongSan"] = this.ngayMuaBatDongSan;
         data["diaChi"] = this.diaChi;
-        data["maTaiSan"] = this.maTaiSan;
         data["hienTrangBDS"] = this.hienTrangBDS;
         data["maLoaiBDS"] = this.maLoaiBDS;
         data["chieuDai"] = this.chieuDai;
@@ -16645,7 +16769,6 @@ export interface IBatDongSanForViewDto {
     maPhongGiaoDich: string | undefined;
     ngayMuaBatDongSan: string | undefined;
     diaChi: string | undefined;
-    maTaiSan: string | undefined;
     hienTrangBDS: string | undefined;
     maLoaiBDS: string | undefined;
     chieuDai: number | undefined;
@@ -17435,7 +17558,7 @@ export interface ICongTrinhDto {
 export class CongTrinhInput implements ICongTrinhInput {
     maDuAnXayDungCoBan!: string | undefined;
     maCongTrinh!: string | undefined;
-    maKeHoach!: string | undefined;
+    idKeHoach!: number | undefined;
     tenCongTrinh!: string | undefined;
     duKienXayDung!: string | undefined;
     duKienHoanThanh!: string | undefined;
@@ -17465,7 +17588,7 @@ export class CongTrinhInput implements ICongTrinhInput {
         if (data) {
             this.maDuAnXayDungCoBan = data["maDuAnXayDungCoBan"];
             this.maCongTrinh = data["maCongTrinh"];
-            this.maKeHoach = data["maKeHoach"];
+            this.idKeHoach = data["idKeHoach"];
             this.tenCongTrinh = data["tenCongTrinh"];
             this.duKienXayDung = data["duKienXayDung"];
             this.duKienHoanThanh = data["duKienHoanThanh"];
@@ -17495,7 +17618,7 @@ export class CongTrinhInput implements ICongTrinhInput {
         data = typeof data === 'object' ? data : {};
         data["maDuAnXayDungCoBan"] = this.maDuAnXayDungCoBan;
         data["maCongTrinh"] = this.maCongTrinh;
-        data["maKeHoach"] = this.maKeHoach;
+        data["idKeHoach"] = this.idKeHoach;
         data["tenCongTrinh"] = this.tenCongTrinh;
         data["duKienXayDung"] = this.duKienXayDung;
         data["duKienHoanThanh"] = this.duKienHoanThanh;
@@ -17518,7 +17641,7 @@ export class CongTrinhInput implements ICongTrinhInput {
 export interface ICongTrinhInput {
     maDuAnXayDungCoBan: string | undefined;
     maCongTrinh: string | undefined;
-    maKeHoach: string | undefined;
+    idKeHoach: number | undefined;
     tenCongTrinh: string | undefined;
     duKienXayDung: string | undefined;
     duKienHoanThanh: string | undefined;
@@ -17537,9 +17660,10 @@ export interface ICongTrinhInput {
 }
 
 export class CongTrinhForViewDto implements ICongTrinhForViewDto {
+    id!: number | undefined;
     maDuAnXayDungCoBan!: string | undefined;
     maCongTrinh!: string | undefined;
-    maKeHoach!: string | undefined;
+    idKeHoach!: number | undefined;
     tenCongTrinh!: string | undefined;
     duKienXayDung!: string | undefined;
     duKienHoanThanh!: string | undefined;
@@ -17565,9 +17689,10 @@ export class CongTrinhForViewDto implements ICongTrinhForViewDto {
 
     init(data?: any) {
         if (data) {
+            this.id = data["id"];
             this.maDuAnXayDungCoBan = data["maDuAnXayDungCoBan"];
             this.maCongTrinh = data["maCongTrinh"];
-            this.maKeHoach = data["maKeHoach"];
+            this.idKeHoach = data["idKeHoach"];
             this.tenCongTrinh = data["tenCongTrinh"];
             this.duKienXayDung = data["duKienXayDung"];
             this.duKienHoanThanh = data["duKienHoanThanh"];
@@ -17593,9 +17718,10 @@ export class CongTrinhForViewDto implements ICongTrinhForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["maDuAnXayDungCoBan"] = this.maDuAnXayDungCoBan;
         data["maCongTrinh"] = this.maCongTrinh;
-        data["maKeHoach"] = this.maKeHoach;
+        data["idKeHoach"] = this.idKeHoach;
         data["tenCongTrinh"] = this.tenCongTrinh;
         data["duKienXayDung"] = this.duKienXayDung;
         data["duKienHoanThanh"] = this.duKienHoanThanh;
@@ -17614,9 +17740,10 @@ export class CongTrinhForViewDto implements ICongTrinhForViewDto {
 }
 
 export interface ICongTrinhForViewDto {
+    id: number | undefined;
     maDuAnXayDungCoBan: string | undefined;
     maCongTrinh: string | undefined;
-    maKeHoach: string | undefined;
+    idKeHoach: number | undefined;
     tenCongTrinh: string | undefined;
     duKienXayDung: string | undefined;
     duKienHoanThanh: string | undefined;
@@ -18246,7 +18373,7 @@ export interface IDonViThauN13Dto {
 
 export class DonViThauN13Input implements IDonViThauN13Input {
     maDonViThau!: string | undefined;
-    maGoiThau!: string | undefined;
+    idHoSoThau!: number | undefined;
     tenDonViThamGiaThau!: string | undefined;
     ngayNopHoSoThau!: string | undefined;
     giaChaoThau!: string | undefined;
@@ -18269,7 +18396,7 @@ export class DonViThauN13Input implements IDonViThauN13Input {
     init(data?: any) {
         if (data) {
             this.maDonViThau = data["maDonViThau"];
-            this.maGoiThau = data["maGoiThau"];
+            this.idHoSoThau = data["idHoSoThau"];
             this.tenDonViThamGiaThau = data["tenDonViThamGiaThau"];
             this.ngayNopHoSoThau = data["ngayNopHoSoThau"];
             this.giaChaoThau = data["giaChaoThau"];
@@ -18292,7 +18419,7 @@ export class DonViThauN13Input implements IDonViThauN13Input {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["maDonViThau"] = this.maDonViThau;
-        data["maGoiThau"] = this.maGoiThau;
+        data["idHoSoThau"] = this.idHoSoThau;
         data["tenDonViThamGiaThau"] = this.tenDonViThamGiaThau;
         data["ngayNopHoSoThau"] = this.ngayNopHoSoThau;
         data["giaChaoThau"] = this.giaChaoThau;
@@ -18308,7 +18435,7 @@ export class DonViThauN13Input implements IDonViThauN13Input {
 
 export interface IDonViThauN13Input {
     maDonViThau: string | undefined;
-    maGoiThau: string | undefined;
+    idHoSoThau: number | undefined;
     tenDonViThamGiaThau: string | undefined;
     ngayNopHoSoThau: string | undefined;
     giaChaoThau: string | undefined;
@@ -19743,6 +19870,7 @@ export class HoSoThauN13Dto implements IHoSoThauN13Dto {
     hangMucThau!: string | undefined;
     ngayNhapHoSoThau!: string | undefined;
     ngayHetHanNopHoSoThau!: string | undefined;
+    ngayThiCong!: string | undefined;
     ngayMoThau!: string | undefined;
     maHinhThucThau!: string | undefined;
     baoLanhDuThauBD!: number | undefined;
@@ -19754,6 +19882,7 @@ export class HoSoThauN13Dto implements IHoSoThauN13Dto {
     tenDonViTrungThau!: string | undefined;
     idHoSoThau!: number | undefined;
     idCongTrinh!: number | undefined;
+    giaTrungThau!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IHoSoThauN13Dto) {
@@ -19773,6 +19902,7 @@ export class HoSoThauN13Dto implements IHoSoThauN13Dto {
             this.hangMucThau = data["hangMucThau"];
             this.ngayNhapHoSoThau = data["ngayNhapHoSoThau"];
             this.ngayHetHanNopHoSoThau = data["ngayHetHanNopHoSoThau"];
+            this.ngayThiCong = data["ngayThiCong"];
             this.ngayMoThau = data["ngayMoThau"];
             this.maHinhThucThau = data["maHinhThucThau"];
             this.baoLanhDuThauBD = data["baoLanhDuThauBD"];
@@ -19784,6 +19914,7 @@ export class HoSoThauN13Dto implements IHoSoThauN13Dto {
             this.tenDonViTrungThau = data["tenDonViTrungThau"];
             this.idHoSoThau = data["idHoSoThau"];
             this.idCongTrinh = data["idCongTrinh"];
+            this.giaTrungThau = data["giaTrungThau"];
             this.id = data["id"];
         }
     }
@@ -19803,6 +19934,7 @@ export class HoSoThauN13Dto implements IHoSoThauN13Dto {
         data["hangMucThau"] = this.hangMucThau;
         data["ngayNhapHoSoThau"] = this.ngayNhapHoSoThau;
         data["ngayHetHanNopHoSoThau"] = this.ngayHetHanNopHoSoThau;
+        data["ngayThiCong"] = this.ngayThiCong;
         data["ngayMoThau"] = this.ngayMoThau;
         data["maHinhThucThau"] = this.maHinhThucThau;
         data["baoLanhDuThauBD"] = this.baoLanhDuThauBD;
@@ -19814,6 +19946,7 @@ export class HoSoThauN13Dto implements IHoSoThauN13Dto {
         data["tenDonViTrungThau"] = this.tenDonViTrungThau;
         data["idHoSoThau"] = this.idHoSoThau;
         data["idCongTrinh"] = this.idCongTrinh;
+        data["giaTrungThau"] = this.giaTrungThau;
         data["id"] = this.id;
         return data; 
     }
@@ -19826,6 +19959,7 @@ export interface IHoSoThauN13Dto {
     hangMucThau: string | undefined;
     ngayNhapHoSoThau: string | undefined;
     ngayHetHanNopHoSoThau: string | undefined;
+    ngayThiCong: string | undefined;
     ngayMoThau: string | undefined;
     maHinhThucThau: string | undefined;
     baoLanhDuThauBD: number | undefined;
@@ -19837,16 +19971,18 @@ export interface IHoSoThauN13Dto {
     tenDonViTrungThau: string | undefined;
     idHoSoThau: number | undefined;
     idCongTrinh: number | undefined;
+    giaTrungThau: string | undefined;
     id: number | undefined;
 }
 
 export class HoSoThauN13Input implements IHoSoThauN13Input {
     maHoSoThau!: string | undefined;
-    maCongTrinh!: string | undefined;
+    idCongTrinh!: number | undefined;
     tenHoSoThau!: string | undefined;
     hangMucThau!: string | undefined;
     ngayNhapHoSoThau!: string | undefined;
     ngayHetHanNopHoSoThau!: string | undefined;
+    ngayThiCong!: string | undefined;
     ngayMoThau!: string | undefined;
     maHinhThucThau!: string | undefined;
     baoLanhDuThauBD!: number | undefined;
@@ -19867,11 +20003,12 @@ export class HoSoThauN13Input implements IHoSoThauN13Input {
     init(data?: any) {
         if (data) {
             this.maHoSoThau = data["maHoSoThau"];
-            this.maCongTrinh = data["maCongTrinh"];
+            this.idCongTrinh = data["idCongTrinh"];
             this.tenHoSoThau = data["tenHoSoThau"];
             this.hangMucThau = data["hangMucThau"];
             this.ngayNhapHoSoThau = data["ngayNhapHoSoThau"];
             this.ngayHetHanNopHoSoThau = data["ngayHetHanNopHoSoThau"];
+            this.ngayThiCong = data["ngayThiCong"];
             this.ngayMoThau = data["ngayMoThau"];
             this.maHinhThucThau = data["maHinhThucThau"];
             this.baoLanhDuThauBD = data["baoLanhDuThauBD"];
@@ -19892,11 +20029,12 @@ export class HoSoThauN13Input implements IHoSoThauN13Input {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["maHoSoThau"] = this.maHoSoThau;
-        data["maCongTrinh"] = this.maCongTrinh;
+        data["idCongTrinh"] = this.idCongTrinh;
         data["tenHoSoThau"] = this.tenHoSoThau;
         data["hangMucThau"] = this.hangMucThau;
         data["ngayNhapHoSoThau"] = this.ngayNhapHoSoThau;
         data["ngayHetHanNopHoSoThau"] = this.ngayHetHanNopHoSoThau;
+        data["ngayThiCong"] = this.ngayThiCong;
         data["ngayMoThau"] = this.ngayMoThau;
         data["maHinhThucThau"] = this.maHinhThucThau;
         data["baoLanhDuThauBD"] = this.baoLanhDuThauBD;
@@ -19910,11 +20048,12 @@ export class HoSoThauN13Input implements IHoSoThauN13Input {
 
 export interface IHoSoThauN13Input {
     maHoSoThau: string | undefined;
-    maCongTrinh: string | undefined;
+    idCongTrinh: number | undefined;
     tenHoSoThau: string | undefined;
     hangMucThau: string | undefined;
     ngayNhapHoSoThau: string | undefined;
     ngayHetHanNopHoSoThau: string | undefined;
+    ngayThiCong: string | undefined;
     ngayMoThau: string | undefined;
     maHinhThucThau: string | undefined;
     baoLanhDuThauBD: number | undefined;
@@ -19925,12 +20064,14 @@ export interface IHoSoThauN13Input {
 }
 
 export class HoSoThauN13ForViewDto implements IHoSoThauN13ForViewDto {
+    id!: number | undefined;
     maHoSoThau!: string | undefined;
     maCongTrinh!: string | undefined;
     tenHoSoThau!: string | undefined;
     hangMucThau!: string | undefined;
     ngayNhapHoSoThau!: string | undefined;
     ngayHetHanNopHoSoThau!: string | undefined;
+    ngayThiCong!: string | undefined;
     ngayMoThau!: string | undefined;
     maHinhThucThau!: string | undefined;
     baoLanhDuThauBD!: number | undefined;
@@ -19949,12 +20090,14 @@ export class HoSoThauN13ForViewDto implements IHoSoThauN13ForViewDto {
 
     init(data?: any) {
         if (data) {
+            this.id = data["id"];
             this.maHoSoThau = data["maHoSoThau"];
             this.maCongTrinh = data["maCongTrinh"];
             this.tenHoSoThau = data["tenHoSoThau"];
             this.hangMucThau = data["hangMucThau"];
             this.ngayNhapHoSoThau = data["ngayNhapHoSoThau"];
             this.ngayHetHanNopHoSoThau = data["ngayHetHanNopHoSoThau"];
+            this.ngayThiCong = data["ngayThiCong"];
             this.ngayMoThau = data["ngayMoThau"];
             this.maHinhThucThau = data["maHinhThucThau"];
             this.baoLanhDuThauBD = data["baoLanhDuThauBD"];
@@ -19973,12 +20116,14 @@ export class HoSoThauN13ForViewDto implements IHoSoThauN13ForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["maHoSoThau"] = this.maHoSoThau;
         data["maCongTrinh"] = this.maCongTrinh;
         data["tenHoSoThau"] = this.tenHoSoThau;
         data["hangMucThau"] = this.hangMucThau;
         data["ngayNhapHoSoThau"] = this.ngayNhapHoSoThau;
         data["ngayHetHanNopHoSoThau"] = this.ngayHetHanNopHoSoThau;
+        data["ngayThiCong"] = this.ngayThiCong;
         data["ngayMoThau"] = this.ngayMoThau;
         data["maHinhThucThau"] = this.maHinhThucThau;
         data["baoLanhDuThauBD"] = this.baoLanhDuThauBD;
@@ -19990,12 +20135,14 @@ export class HoSoThauN13ForViewDto implements IHoSoThauN13ForViewDto {
 }
 
 export interface IHoSoThauN13ForViewDto {
+    id: number | undefined;
     maHoSoThau: string | undefined;
     maCongTrinh: string | undefined;
     tenHoSoThau: string | undefined;
     hangMucThau: string | undefined;
     ngayNhapHoSoThau: string | undefined;
     ngayHetHanNopHoSoThau: string | undefined;
+    ngayThiCong: string | undefined;
     ngayMoThau: string | undefined;
     maHinhThucThau: string | undefined;
     baoLanhDuThauBD: number | undefined;
@@ -25945,6 +26092,7 @@ export interface ISuaChuaBatDongSanDto {
 export class SuaChuaBatDongSanInput implements ISuaChuaBatDongSanInput {
     maSuaChuaBatDongSan!: string | undefined;
     maTaiSan!: string | undefined;
+    idTaiSan!: number | undefined;
     ngayDeXuat!: string | undefined;
     ngayDuKienSuaXong!: string | undefined;
     chiPhiDuKien!: number | undefined;
@@ -25976,6 +26124,7 @@ export class SuaChuaBatDongSanInput implements ISuaChuaBatDongSanInput {
         if (data) {
             this.maSuaChuaBatDongSan = data["maSuaChuaBatDongSan"];
             this.maTaiSan = data["maTaiSan"];
+            this.idTaiSan = data["idTaiSan"];
             this.ngayDeXuat = data["ngayDeXuat"];
             this.ngayDuKienSuaXong = data["ngayDuKienSuaXong"];
             this.chiPhiDuKien = data["chiPhiDuKien"];
@@ -26007,6 +26156,7 @@ export class SuaChuaBatDongSanInput implements ISuaChuaBatDongSanInput {
         data = typeof data === 'object' ? data : {};
         data["maSuaChuaBatDongSan"] = this.maSuaChuaBatDongSan;
         data["maTaiSan"] = this.maTaiSan;
+        data["idTaiSan"] = this.idTaiSan;
         data["ngayDeXuat"] = this.ngayDeXuat;
         data["ngayDuKienSuaXong"] = this.ngayDuKienSuaXong;
         data["chiPhiDuKien"] = this.chiPhiDuKien;
@@ -26031,6 +26181,7 @@ export class SuaChuaBatDongSanInput implements ISuaChuaBatDongSanInput {
 export interface ISuaChuaBatDongSanInput {
     maSuaChuaBatDongSan: string | undefined;
     maTaiSan: string | undefined;
+    idTaiSan: number | undefined;
     ngayDeXuat: string | undefined;
     ngayDuKienSuaXong: string | undefined;
     chiPhiDuKien: number | undefined;
@@ -26053,6 +26204,7 @@ export interface ISuaChuaBatDongSanInput {
 export class SuaChuaBatDongSanForViewDto implements ISuaChuaBatDongSanForViewDto {
     maSuaChuaBatDongSan!: string | undefined;
     maTaiSan!: string | undefined;
+    idTaiSan!: number | undefined;
     ngayDeXuat!: string | undefined;
     ngayDuKienSuaXong!: string | undefined;
     chiPhiDuKien!: number | undefined;
@@ -26083,6 +26235,7 @@ export class SuaChuaBatDongSanForViewDto implements ISuaChuaBatDongSanForViewDto
         if (data) {
             this.maSuaChuaBatDongSan = data["maSuaChuaBatDongSan"];
             this.maTaiSan = data["maTaiSan"];
+            this.idTaiSan = data["idTaiSan"];
             this.ngayDeXuat = data["ngayDeXuat"];
             this.ngayDuKienSuaXong = data["ngayDuKienSuaXong"];
             this.chiPhiDuKien = data["chiPhiDuKien"];
@@ -26113,6 +26266,7 @@ export class SuaChuaBatDongSanForViewDto implements ISuaChuaBatDongSanForViewDto
         data = typeof data === 'object' ? data : {};
         data["maSuaChuaBatDongSan"] = this.maSuaChuaBatDongSan;
         data["maTaiSan"] = this.maTaiSan;
+        data["idTaiSan"] = this.idTaiSan;
         data["ngayDeXuat"] = this.ngayDeXuat;
         data["ngayDuKienSuaXong"] = this.ngayDuKienSuaXong;
         data["chiPhiDuKien"] = this.chiPhiDuKien;
@@ -26136,6 +26290,7 @@ export class SuaChuaBatDongSanForViewDto implements ISuaChuaBatDongSanForViewDto
 export interface ISuaChuaBatDongSanForViewDto {
     maSuaChuaBatDongSan: string | undefined;
     maTaiSan: string | undefined;
+    idTaiSan: number | undefined;
     ngayDeXuat: string | undefined;
     ngayDuKienSuaXong: string | undefined;
     chiPhiDuKien: number | undefined;
@@ -26205,6 +26360,7 @@ export interface IPagedResultDtoOfTaiSanDto {
 export class TaiSanDto implements ITaiSanDto {
     maTaiSan!: string | undefined;
     maNhomTaiSan!: string | undefined;
+    idBatDongSan!: number | undefined;
     maLoaiTaiSan!: string | undefined;
     diaChi!: string | undefined;
     tenTaiSan!: string | undefined;
@@ -26231,6 +26387,7 @@ export class TaiSanDto implements ITaiSanDto {
         if (data) {
             this.maTaiSan = data["maTaiSan"];
             this.maNhomTaiSan = data["maNhomTaiSan"];
+            this.idBatDongSan = data["idBatDongSan"];
             this.maLoaiTaiSan = data["maLoaiTaiSan"];
             this.diaChi = data["diaChi"];
             this.tenTaiSan = data["tenTaiSan"];
@@ -26257,6 +26414,7 @@ export class TaiSanDto implements ITaiSanDto {
         data = typeof data === 'object' ? data : {};
         data["maTaiSan"] = this.maTaiSan;
         data["maNhomTaiSan"] = this.maNhomTaiSan;
+        data["idBatDongSan"] = this.idBatDongSan;
         data["maLoaiTaiSan"] = this.maLoaiTaiSan;
         data["diaChi"] = this.diaChi;
         data["tenTaiSan"] = this.tenTaiSan;
@@ -26276,6 +26434,7 @@ export class TaiSanDto implements ITaiSanDto {
 export interface ITaiSanDto {
     maTaiSan: string | undefined;
     maNhomTaiSan: string | undefined;
+    idBatDongSan: number | undefined;
     maLoaiTaiSan: string | undefined;
     diaChi: string | undefined;
     tenTaiSan: string | undefined;
@@ -26293,7 +26452,6 @@ export interface ITaiSanDto {
 export class TaiSanN13Input implements ITaiSanN13Input {
     maTaiSan!: string | undefined;
     maNhomTaiSan!: string | undefined;
-    maBatDongSan!: string | undefined;
     maLoaiTaiSan!: string | undefined;
     diaChi!: string | undefined;
     tenTaiSan!: string | undefined;
@@ -26320,7 +26478,6 @@ export class TaiSanN13Input implements ITaiSanN13Input {
         if (data) {
             this.maTaiSan = data["maTaiSan"];
             this.maNhomTaiSan = data["maNhomTaiSan"];
-            this.maBatDongSan = data["maBatDongSan"];
             this.maLoaiTaiSan = data["maLoaiTaiSan"];
             this.diaChi = data["diaChi"];
             this.tenTaiSan = data["tenTaiSan"];
@@ -26347,7 +26504,6 @@ export class TaiSanN13Input implements ITaiSanN13Input {
         data = typeof data === 'object' ? data : {};
         data["maTaiSan"] = this.maTaiSan;
         data["maNhomTaiSan"] = this.maNhomTaiSan;
-        data["maBatDongSan"] = this.maBatDongSan;
         data["maLoaiTaiSan"] = this.maLoaiTaiSan;
         data["diaChi"] = this.diaChi;
         data["tenTaiSan"] = this.tenTaiSan;
@@ -26367,7 +26523,6 @@ export class TaiSanN13Input implements ITaiSanN13Input {
 export interface ITaiSanN13Input {
     maTaiSan: string | undefined;
     maNhomTaiSan: string | undefined;
-    maBatDongSan: string | undefined;
     maLoaiTaiSan: string | undefined;
     diaChi: string | undefined;
     tenTaiSan: string | undefined;
@@ -26383,9 +26538,11 @@ export interface ITaiSanN13Input {
 }
 
 export class TaiSanN13ForViewDto implements ITaiSanN13ForViewDto {
+    id!: number | undefined;
     maTaiSan!: string | undefined;
     maNhomTaiSan!: string | undefined;
     maLoaiTaiSan!: string | undefined;
+    idBatDongSan!: number | undefined;
     diaChi!: string | undefined;
     tenTaiSan!: string | undefined;
     tinhTrangTaiSan!: string | undefined;
@@ -26408,9 +26565,11 @@ export class TaiSanN13ForViewDto implements ITaiSanN13ForViewDto {
 
     init(data?: any) {
         if (data) {
+            this.id = data["id"];
             this.maTaiSan = data["maTaiSan"];
             this.maNhomTaiSan = data["maNhomTaiSan"];
             this.maLoaiTaiSan = data["maLoaiTaiSan"];
+            this.idBatDongSan = data["idBatDongSan"];
             this.diaChi = data["diaChi"];
             this.tenTaiSan = data["tenTaiSan"];
             this.tinhTrangTaiSan = data["tinhTrangTaiSan"];
@@ -26433,9 +26592,11 @@ export class TaiSanN13ForViewDto implements ITaiSanN13ForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["maTaiSan"] = this.maTaiSan;
         data["maNhomTaiSan"] = this.maNhomTaiSan;
         data["maLoaiTaiSan"] = this.maLoaiTaiSan;
+        data["idBatDongSan"] = this.idBatDongSan;
         data["diaChi"] = this.diaChi;
         data["tenTaiSan"] = this.tenTaiSan;
         data["tinhTrangTaiSan"] = this.tinhTrangTaiSan;
@@ -26451,9 +26612,11 @@ export class TaiSanN13ForViewDto implements ITaiSanN13ForViewDto {
 }
 
 export interface ITaiSanN13ForViewDto {
+    id: number | undefined;
     maTaiSan: string | undefined;
     maNhomTaiSan: string | undefined;
     maLoaiTaiSan: string | undefined;
+    idBatDongSan: number | undefined;
     diaChi: string | undefined;
     tenTaiSan: string | undefined;
     tinhTrangTaiSan: string | undefined;
@@ -27925,7 +28088,7 @@ export class ThanhToanN13Dto implements IThanhToanN13Dto {
     ngayDuKienThanhToan!: string | undefined;
     soTienThanhToan!: number | undefined;
     daThanhToan!: number | undefined;
-    ngayThanhToan!: number | undefined;
+    ngayThanhToan!: string | undefined;
     noiDungThanhToan!: string | undefined;
     maHopDong!: string | undefined;
     id!: number | undefined;
@@ -27975,7 +28138,7 @@ export interface IThanhToanN13Dto {
     ngayDuKienThanhToan: string | undefined;
     soTienThanhToan: number | undefined;
     daThanhToan: number | undefined;
-    ngayThanhToan: number | undefined;
+    ngayThanhToan: string | undefined;
     noiDungThanhToan: string | undefined;
     maHopDong: string | undefined;
     id: number | undefined;
@@ -27985,9 +28148,9 @@ export class ThanhToanN13Input implements IThanhToanN13Input {
     ngayDuKienThanhToan!: string | undefined;
     soTienThanhToan!: number | undefined;
     daThanhToan!: number | undefined;
-    ngayThanhToan!: number | undefined;
+    ngayThanhToan!: string | undefined;
     noiDungThanhToan!: string | undefined;
-    maHopDong!: string | undefined;
+    idHopDong!: number | undefined;
     id!: number | undefined;
 
     constructor(data?: IThanhToanN13Input) {
@@ -28006,7 +28169,7 @@ export class ThanhToanN13Input implements IThanhToanN13Input {
             this.daThanhToan = data["daThanhToan"];
             this.ngayThanhToan = data["ngayThanhToan"];
             this.noiDungThanhToan = data["noiDungThanhToan"];
-            this.maHopDong = data["maHopDong"];
+            this.idHopDong = data["idHopDong"];
             this.id = data["id"];
         }
     }
@@ -28025,7 +28188,7 @@ export class ThanhToanN13Input implements IThanhToanN13Input {
         data["daThanhToan"] = this.daThanhToan;
         data["ngayThanhToan"] = this.ngayThanhToan;
         data["noiDungThanhToan"] = this.noiDungThanhToan;
-        data["maHopDong"] = this.maHopDong;
+        data["idHopDong"] = this.idHopDong;
         data["id"] = this.id;
         return data; 
     }
@@ -28035,9 +28198,9 @@ export interface IThanhToanN13Input {
     ngayDuKienThanhToan: string | undefined;
     soTienThanhToan: number | undefined;
     daThanhToan: number | undefined;
-    ngayThanhToan: number | undefined;
+    ngayThanhToan: string | undefined;
     noiDungThanhToan: string | undefined;
-    maHopDong: string | undefined;
+    idHopDong: number | undefined;
     id: number | undefined;
 }
 
@@ -28045,9 +28208,9 @@ export class ThanhToanN13ForViewDto implements IThanhToanN13ForViewDto {
     ngayDuKienThanhToan!: string | undefined;
     soTienThanhToan!: number | undefined;
     daThanhToan!: number | undefined;
-    ngayThanhToan!: number | undefined;
+    ngayThanhToan!: string | undefined;
     noiDungThanhToan!: string | undefined;
-    maHopDong!: string | undefined;
+    idHopDong!: number | undefined;
 
     constructor(data?: IThanhToanN13ForViewDto) {
         if (data) {
@@ -28065,7 +28228,7 @@ export class ThanhToanN13ForViewDto implements IThanhToanN13ForViewDto {
             this.daThanhToan = data["daThanhToan"];
             this.ngayThanhToan = data["ngayThanhToan"];
             this.noiDungThanhToan = data["noiDungThanhToan"];
-            this.maHopDong = data["maHopDong"];
+            this.idHopDong = data["idHopDong"];
         }
     }
 
@@ -28083,7 +28246,7 @@ export class ThanhToanN13ForViewDto implements IThanhToanN13ForViewDto {
         data["daThanhToan"] = this.daThanhToan;
         data["ngayThanhToan"] = this.ngayThanhToan;
         data["noiDungThanhToan"] = this.noiDungThanhToan;
-        data["maHopDong"] = this.maHopDong;
+        data["idHopDong"] = this.idHopDong;
         return data; 
     }
 }
@@ -28092,9 +28255,9 @@ export interface IThanhToanN13ForViewDto {
     ngayDuKienThanhToan: string | undefined;
     soTienThanhToan: number | undefined;
     daThanhToan: number | undefined;
-    ngayThanhToan: number | undefined;
+    ngayThanhToan: string | undefined;
     noiDungThanhToan: string | undefined;
-    maHopDong: string | undefined;
+    idHopDong: number | undefined;
 }
 
 export class ListResultDtoOfNameValueDto implements IListResultDtoOfNameValueDto {

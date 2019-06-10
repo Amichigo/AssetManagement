@@ -41,12 +41,12 @@ export class CreateDonViThauN13Component extends AppComponentBase {
         this.donViThauIp.ngayNopHoSoThau = null;
     }
 
-    show(mahst:string,congtrinhId?: number | null | undefined): void {
+    show(mahst:number,congtrinhId?: number | null | undefined): void {
         this.saving = false;
         this._donViThauAppService.getDonViThauForEdit(congtrinhId).subscribe(result => {
             this.donViThauIp = result;
             if(this.isSaveToDatabase==true){
-                this.donViThauIp.maGoiThau=mahst;
+                this.donViThauIp.idHoSoThau=mahst;
             }
             this.modal.show();
 

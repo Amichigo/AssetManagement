@@ -98,9 +98,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
             }
 
             // filter by value
-            if (input.MaKeHoach != null)
+            if (input.idKeHoach != null)
             {
-                query = query.Where(x => x.MaKeHoach.ToLower().Equals(input.MaKeHoach));
+                query = query.Where(x => x.idKeHoach==input.idKeHoach);
             }
 
 
@@ -137,24 +137,19 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
             }
 
             // filter by value
-            if (input.TenCongTrinh != null)
+            if (input.idKeHoach != null)
             {
-                query = query.Where(x => x.TenCongTrinh.ToLower().Equals(input.TenCongTrinh));
-            }
-            // filter by value
-            if (input.MaKeHoach != null)
-            {
-                query = query.Where(x => x.MaKeHoach.ToLower().Equals(input.MaKeHoach));
+                query = query.Where(x => x.idKeHoach == input.idKeHoach);
             }
 
             var listCT = from ct in query
                          join kt in khquery
-                         on ct.MaKeHoach equals kt.MaKeHoach
+                         on ct.idKeHoach equals kt.Id
                          select new CongTrinhDto
                          {
                              Id=ct.Id,
                              MaCongTrinh = ct.MaCongTrinh,
-                             MaKeHoach = ct.MaKeHoach,
+                             MaKeHoach = kt.MaKeHoach,
                              TenCongTrinh = ct.TenCongTrinh,
                              NamThucHien = kt.NamThucHien,
                              KinhPhiDuocDuyet = ct.KinhPhiDuocDuyet,
@@ -166,6 +161,8 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
                              GhiChu = ct.GhiChu,
                              NgayThiCongThucTe = ct.NgayThiCongThucTe,
                          };
+          
+
             var totalCount = listCT.Count();
 
             // sorting
@@ -197,9 +194,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
                 query = query.Where(x => x.TenCongTrinh.ToLower().Equals(input.TenCongTrinh));
             }
             // filter by value
-            if (input.MaKeHoach != null)
+            if (input.idKeHoach != null)
             {
-                query = query.Where(x => x.MaKeHoach.ToLower().Equals(input.MaKeHoach));
+                query = query.Where(x => x.idKeHoach==input.idKeHoach);
             }
 
             var totalCount = query.Count();

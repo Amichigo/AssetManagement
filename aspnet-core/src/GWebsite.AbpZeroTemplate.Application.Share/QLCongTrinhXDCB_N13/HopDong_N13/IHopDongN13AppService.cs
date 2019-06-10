@@ -10,7 +10,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.HopDong
 {
     public interface IHopDongN13AppService
     {
-        void CreateOrEditHopDong(HopDongN13Input taiSanInput);
+        int CreateOrEditHopDong(HopDongN13Input taiSanInput, int idGoiThau);
         HopDongN13Input GetHopDongForEdit(int id);
         void DeleteHopDong(int id);
         PagedResultDto<HopDongN13Dto> GetHopDongs(HopDongN13Filter input);

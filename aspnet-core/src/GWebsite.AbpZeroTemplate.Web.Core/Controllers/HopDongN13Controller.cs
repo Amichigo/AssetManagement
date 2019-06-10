@@ -33,9 +33,9 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpPost]
-        public void CreateOrEditHopDong([FromBody] HopDongN13Input input)
+        public int CreateOrEditHopDong([FromBody] HopDongN13Input input, int idGoiThau)
         {
-            HopDongAppService.CreateOrEditHopDong(input);
+          return  HopDongAppService.CreateOrEditHopDong(input, idGoiThau);
         }
 
         [HttpDelete("{id}")]

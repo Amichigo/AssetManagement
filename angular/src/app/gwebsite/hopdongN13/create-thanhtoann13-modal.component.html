@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label>Nội dung thanh toán*</label>
                         <input #noiDungThanhToan="ngModel" class="form-control" type="text" name="noiDungThanhToan"
-                            [(ngModel)]="ThanhToanIp.noiDungThanhToan" required maxlength="64">
+                            [(ngModel)]="ThanhToanIp.noiDungThanhToan"  maxlength="64">
                         <validation-messages [formCtrl]="noiDungThanhToan"></validation-messages>
                     </div>
 
@@ -62,7 +62,7 @@
                     <button [disabled]="saving" type="button" class="btn btn-default"
                         (click)="close()">{{l("Cancel")}}</button>
                     <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
-                        [disabled]="!editForm.form.valid" [busyText]="l('SavingWithThreeDot')"><i
+                         [busyText]="l('SavingWithThreeDot')"><i
                             class="fa fa-save"></i>
                         <span>{{l("Save")}}</span></button>
                 </div>

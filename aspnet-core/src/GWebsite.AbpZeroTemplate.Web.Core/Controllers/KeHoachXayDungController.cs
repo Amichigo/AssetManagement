@@ -33,9 +33,9 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpPost]
-        public void CreateOrEditKeHoachXayDung([FromBody] KeHoachXayDungInput input)
+        public int CreateOrEditKeHoachXayDung([FromBody] KeHoachXayDungInput input)
         {
-            keHoachXayDungAppService.CreateOrEditKeHoachXayDung(input);
+           return keHoachXayDungAppService.CreateOrEditKeHoachXayDung(input);
         }
 
         [HttpDelete("{id}")]

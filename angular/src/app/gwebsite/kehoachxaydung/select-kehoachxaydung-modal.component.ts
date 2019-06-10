@@ -37,7 +37,7 @@ export class SelectKeHoachXayDungModalComponent extends AppComponentBase {
     trangthai:string;
     namthuchien:string;
     public selectedIDCongTrinh:number;
-    selectedMaKH:string;
+    selectedMaKH:number;
     //@Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
      @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
@@ -48,7 +48,7 @@ export class SelectKeHoachXayDungModalComponent extends AppComponentBase {
         //     this.modal.show();
         // })
         //get params từ url để thực hiện filter
-        this.selectedMaKH='';
+        
         this.selectedIDCongTrinh=0;
         this._activatedRoute.params.subscribe((params: Params) => {
             this.kehoachxaydungName = params['TenKeHoachXayDung'] || '';
@@ -123,10 +123,10 @@ export class SelectKeHoachXayDungModalComponent extends AppComponentBase {
         }
     }
 
-    SetFilterSelectKHCongTrinh(kehoacName:string):void{
+    SetFilterSelectKHCongTrinh(idKeHoach:number):void{
         this.selectKHCongtrinhModal.showCongTrinh=true;
-        this.selectKHCongtrinhModal.show(kehoacName);
-        this.selectedMaKH=kehoacName;
+        this.selectKHCongtrinhModal.show(idKeHoach);
+        this.selectedMaKH=idKeHoach;
     }
   
     close() : void{

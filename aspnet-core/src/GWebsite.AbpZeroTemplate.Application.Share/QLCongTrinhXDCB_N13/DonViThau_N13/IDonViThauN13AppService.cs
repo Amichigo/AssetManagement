@@ -11,10 +11,10 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.DonViTh
     public interface  IDonViThauN13AppService
     {
         void CreateOrEditDonViThau(DonViThauN13Input taiSanInput);
-
         DonViThauN13Input GetDonViThauForEdit(int id);
         void DeleteDonViThau(int id);
         PagedResultDto<DonViThauN13Dto> GetDonViThaus(DonViThauN13Filter input);
         DonViThauN13ForViewDto GetDonViThauForView(int id);
+        DonViThauN13ForViewDto GetDonViThauByIdGoiThauForView(int id);
     }
 }

@@ -64,8 +64,8 @@
                                 <div class="form-group">
                                     <label>Mã kế hoạch *</label>
                                     <input #makhInput="ngModel" class="form-control" type="text" name="MaKeHoach"
-                                        [(ngModel)]="congtrinh.maKeHoach" required disabled maxlength="64">
-                                    <validation-messages [formCtrl]="congtrinh.maKeHoach"></validation-messages>
+                                        [(ngModel)]="keHoachForView.maKeHoach" required disabled maxlength="64">
+                                    <validation-messages [formCtrl]="makhInput"></validation-messages>
                                 </div>
                             </div>
                             <div class="col-xl-6">

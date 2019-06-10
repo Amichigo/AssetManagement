@@ -38,9 +38,9 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpPost]
-        public void CreateOrEditHoSoThau([FromBody] HoSoThauN13Input input)
+        public int CreateOrEditHoSoThau([FromBody] HoSoThauN13Input input)
         {
-            HoSoThauAppService.CreateOrEditHoSoThau(input);
+           return HoSoThauAppService.CreateOrEditHoSoThau(input);
         }
 
         [HttpDelete("{id}")]

@@ -1,8 +1,9 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { CongTrinhServiceProxy, CongTrinhInput } from '@shared/service-proxies/service-proxies';
+import { CongTrinhServiceProxy, CongTrinhInput, KeHoachXayDungForViewDto } from '@shared/service-proxies/service-proxies';
 import { SelectKeHoachXayDungModalComponent } from '../kehoachxaydung/select-kehoachxaydung-modal.component';
+import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
     
 @Component({
     selector: 'editCongTrinhModal',
@@ -23,14 +24,15 @@ export class EditCongTrinhModalComponent extends AppComponentBase {
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
     saving = false;
-
+    keHoachForView: KeHoachXayDungForViewDto = new KeHoachXayDungForViewDto();
     congtrinh: CongTrinhInput = new CongTrinhInput();
 
 
     makh:string;
     constructor(
         injector: Injector,
-        private _congtrinhService: CongTrinhServiceProxy
+        private _congtrinhService: CongTrinhServiceProxy,
+        private _apiService: WebApiServiceProxy,
     ) {
         super(injector);
     }
@@ -39,7 +41,9 @@ export class EditCongTrinhModalComponent extends AppComponentBase {
         this.saving = false;
         this._congtrinhService.getCongTrinhForEdit(congtrinhId).subscribe(result => {
             this.congtrinh = result;
-            this.makh=this.congtrinh.maKeHoach;
+            this._apiService.getForEdit('api/KeHoachXayDung/GetKeHoachXayDungForView', this.congtrinh.idKeHoach).subscribe(result => {
+                this.keHoachForView = result;
+            });
             this.modal.show();
         });
 

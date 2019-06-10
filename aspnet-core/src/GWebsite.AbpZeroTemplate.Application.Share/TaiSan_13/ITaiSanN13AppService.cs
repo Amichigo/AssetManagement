@@ -13,7 +13,8 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.TaiSan_13
         void CreateOrEditTaiSan(TaiSanN13Input taiSanInput);
         TaiSanN13Input GetTaiSanForEdit(int id);
         void DeleteTaiSan(int id);
-        PagedResultDto<TaiSanDto> GetTaiSans(TaiSanN13Filter input);
+        PagedResultDto<TaiSanDto> GetTaiSans(TaiSanN13Filter input, int type=-1);
         TaiSanN13ForViewDto GetTaiSanForView(int id);
+        TaiSanN13ForViewDto GetTaiSanForViewByIdBDS(int id);
     }
 }

@@ -62,34 +62,41 @@
                                                     placeholder="Nhập tên tài sản" type="date">
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="form-group m-form__group row">
+                                        <div class="row m--margin-bottom-10">
+                                            <div class="col-lg-2 col-md-3 col-sm-4">
                                                 <label>{{l("Hình thức thầu")}}</label>
-                                                <div class="col-lg-2 col-md-3 col-sm-4">
+                                                <div class="form-group">
+                                                    <select #trangthaiduyetCombobox name="hinhThucThau"
+                                                        class="form-control" [(ngModel)]="hinhThucThau"
+                                                        [attr.data-live-search]="true" jq-plugin="selectpicker"
+                                                        required>
+                                                        <option selected disabled value="">---Chọn Hình Thức Thầu---
+                                                        </option>
+                                                        <option [value]="">Đấu thầu</option>
+                                                        <option [value]="">Chỉ định</option>
+                                                    </select>
 
-                                                    <div class="form-group">
-                                                        <input #taisanInput="ngModel" class="form-control" type="text"
-                                                            name="hinhThucThau" [(ngModel)]="hinhThucThau" required
-                                                            maxlength="64">
-                                                        <validation-messages [formCtrl]="taisanInput">
-                                                        </validation-messages>
-                                                    </div>
-                                                </div>
-
-                                                <label>{{l("Dự án XDCB")}} *</label>
-                                                <div class="col-lg-2 col-md-3 col-sm-4">
-
-                                                    <div class="form-group">
-                                                        <input #tentaisanInput="ngModel" class="form-control"
-                                                            type="text" name="duAnXD" [(ngModel)]="duAnXD" required>
-                                                        <validation-messages [formCtrl]="tentaisanInput">
-                                                        </validation-messages>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2 col-md-3 col-sm-4">
-                                                    
                                                 </div>
                                             </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-4">
+                                                <label>{{l("Dự án XDCB")}} *</label>
+                                                <div class="form-group">
+                                                    <input #tentaisanInput="ngModel" class="form-control" type="text"
+                                                        name="duAnXD" [(ngModel)]="duAnXD" required disabled>
+                                                    <validation-messages [formCtrl]="tentaisanInput">
+                                                    </validation-messages>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-4">
+                                                    <label>{{l(" ")}} *</label>
+                                                <div class="form-group">
+                                                    <button class="btn btn-primary"
+                                                        (click)="showSelectCongTrinh()">Chọn</button>
+                                                </div>
+                                            </div>
+
 
                                         </div>
                                         <div class="input-group">
@@ -150,6 +157,9 @@
                                             <th>
                                                 Dự án xây dựng cơ bản
                                             </th>
+                                            <th>
+                                                Tên công trình
+                                            </th>
                                             <!-- <th>
                                                 Tên dự án
                                             </th>
@@ -204,6 +214,12 @@
                                                     title="{{record.maCongTrinh}}">{{truncateString(record.maCongTrinh)}}</span>
                                             </td>
 
+                                            
+                                            <td>
+                                                <span class="ui-column-title">Tên công trình</span>
+                                                <span
+                                                    title="{{record.tenCongTrinh}}">{{truncateString(record.tenCongTrinh)}}</span>
+                                            </td>
                                             <!-- <td>
                                                 <span class="ui-column-title">Tên dự án</span>
                                                 <span
@@ -223,8 +239,7 @@
 
                                                 <button
                                                     class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                    (click)="deleteHoSoThau(record.id)"
-                                                    title="{{l('Delete')}}">
+                                                    (click)="deleteHoSoThau(record.id)" title="{{l('Delete')}}">
                                                     <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                                 </button>
 
@@ -266,7 +281,8 @@
                         </ng-template>
                         <!-- <createHoSoThauN13Modal></createHoSoThauN13Modal> -->
                         <!-- <createHoSoThauN13Modal #createHoSoThauN13Modal></createHoSoThauN13Modal> -->
-                        <createHoSoThauN13Modal #createHoSoThauN13Modal  (modalSave)="SaveNew()" ></createHoSoThauN13Modal>
+                        <createHoSoThauN13Modal #createHoSoThauN13Modal (modalSave)="SaveNew()">
+                        </createHoSoThauN13Modal>
                     </tab>
                     <!-- >
                         Tab Update
@@ -307,3 +323,4 @@
         </div>
     </div>
 </div>
+<selectCongTrinhN13Modal #selectCongTrinhN13Modal (modalSave)="setThongTin()"></selectCongTrinhN13Modal>

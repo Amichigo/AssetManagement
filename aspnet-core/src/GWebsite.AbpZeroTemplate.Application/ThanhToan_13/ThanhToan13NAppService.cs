@@ -77,9 +77,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ThanhToan_13
             // filter by value
     
             // filter by value
-            if (input.MaHopDong != null)
+            if (input.IdHopDong != null)
             {
-                query = query.Where(x => x.MaHopDong.ToLower().Equals(input.MaHopDong));
+                query = query.Where(x => x.IdHopDong==input.IdHopDong);
             }
             
             var totalCount = query.Count();
@@ -106,7 +106,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ThanhToan_13
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HopDong_Create)]
         private void Create(ThanhToanN13Input thanhToanInput)
         {
-         
+           
             var thanhToanEntity = ObjectMapper.Map<ThanhToan_N13>(thanhToanInput);
             SetAuditInsert(thanhToanEntity);
             thanhToanRepository.Insert(thanhToanEntity);

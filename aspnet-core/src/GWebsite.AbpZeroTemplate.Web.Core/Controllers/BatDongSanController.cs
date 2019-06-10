@@ -38,11 +38,11 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         {
             return batdongsanAppService.GetBatDongSanForEdit(id);
         }
-
+        
         [HttpPost]
-        public void CreateOrEditBatDongSan([FromBody] BatDongSanInput input)
+        public void CreateOrEditBatDongSan([FromBody] BatDongSanInput input,int IdTaiSan)
         {
-            batdongsanAppService.CreateOrEditBatDongSan(input);
+            batdongsanAppService.CreateOrEditBatDongSan(input, IdTaiSan);
         }
 
         [HttpDelete("{id}")]

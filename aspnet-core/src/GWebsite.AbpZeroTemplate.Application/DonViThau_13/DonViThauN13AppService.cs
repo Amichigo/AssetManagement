@@ -71,6 +71,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DonViThau_13
             return ObjectMapper.Map<DonViThauN13ForViewDto>(taiSanEntity);
         }
 
+        public DonViThauN13ForViewDto GetDonViThauByIdGoiThauForView(int id)
+        {
+            var taiSanEntity = taiSanRepository.GetAll().Where(x => !x.IsDelete).Where(y=>y.IsTrungThau==true).FirstOrDefault(x => x.IdHoSoThau == id);
+            if (taiSanEntity == null)
+            {
+                return null;
+            }
+            return ObjectMapper.Map<DonViThauN13ForViewDto>(taiSanEntity);
+        }
+
         public PagedResultDto<DonViThauN13Dto> GetDonViThaus(DonViThauN13Filter input)
         {
             var query = taiSanRepository.GetAll().Where(x => !x.IsDelete);
@@ -81,9 +91,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DonViThau_13
             }
 
             // filter by value
-            if (input.MaGoiThau != null)
+            if (input.IdHoSoThau != null)
             {
-                query = query.Where(x => x.MaGoiThau.ToLower().Equals(input.MaGoiThau));
+                query = query.Where(x => x.IdHoSoThau==input.IdHoSoThau);
             }
            
             var totalCount = query.Count();
@@ -110,7 +120,8 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DonViThau_13
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Create)]
         private void Create(DonViThauN13Input taiSanInput)
         {
-            taiSanInput.MaDonViThau = taiSanInput.MaDonViThau +taiSanInput.MaGoiThau;
+            int nextID = taiSanRepository.GetAll().Count() + 1;
+            taiSanInput.MaDonViThau = taiSanInput.MaDonViThau + "00" + nextID;
             var taiSanEntity = ObjectMapper.Map<DonViThau_N13>(taiSanInput);
             SetAuditInsert(taiSanEntity);
             taiSanRepository.Insert(taiSanEntity);

@@ -13,6 +13,6 @@ namespace GWebsite.AbpZeroTemplate.Core.Models.QuanLyCongTrinh_N13
         public float DaThanhToan { set; get; }
         public string NgayThanhToan { set; get; }
         public string NoiDungThanhToan { set; get; }
-        public string MaHopDong { set; get; }
+        public int? IdHopDong { set; get; }
     }
 }

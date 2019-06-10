@@ -14,6 +14,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.ThanhTo
         public float DaThanhToan { set; get; }
         public string NgayThanhToan { set; get; }
         public string NoiDungThanhToan { set; get; }
-        public string MaHopDong { set; get; }
+        public int? IdHopDong { set; get; }
     }
 }

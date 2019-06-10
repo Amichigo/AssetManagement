@@ -32,16 +32,17 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HoSoThau13
 
         #region Public Method
 
-        public void CreateOrEditHoSoThau(HoSoThauN13Input hoSoThauInput)
+        public int CreateOrEditHoSoThau(HoSoThauN13Input hoSoThauInput)
         {
             if (hoSoThauInput.Id == 0)
             {
-                Create(hoSoThauInput);
+                return Create(hoSoThauInput);
             }
             else
             {
                 Update(hoSoThauInput);
             }
+            return 0;
         }
 
         public void DeleteHoSoThau(int id)
@@ -85,36 +86,18 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HoSoThau13
             {
                 return null;
             }
-            var listItem = from gt in query
-                           join ct in congTrinh
-                           on gt.MaCongTrinh equals ct.MaCongTrinh
-                           join dvtt in dvt
-                           on gt.MaHoSoThau equals dvtt.MaGoiThau
-                           select new HoSoThauN13Dto
-                           {
-                               
-                               MaHoSoThau = gt.MaHoSoThau,
-                               IDHoSoThau = gt.Id,
-                               IDCongTrinh=ct.Id,
-                               MaHinhThucThau=gt.MaHinhThucThau,
-                               TenCongTrinh=ct.TenCongTrinh,
-                               TenDonViTrungThau=dvtt.TenDonViThamGiaThau,
-                               MaDonViTrungThau=dvtt.MaDonViThau,
-                               TenHoSoThau=gt.TenHoSoThau,
-                               HangMucThau=gt.HangMucThau,
-                               MaCongTrinh=ct.MaCongTrinh,
-                           };
+            // filter by value
+            if (input.IdCongTrinh != null)
+            {
+                query = query.Where(x => x.IdCongTrinh == input.IdCongTrinh);
+            }
             // filter by value
             if (input.MaHoSoThau != null)
             {
                 query = query.Where(x => x.MaHoSoThau.ToLower().Equals(input.MaHoSoThau));
             }
 
-            // filter by value
-            if (input.MaCongTrinh != null)
-            {
-                query = query.Where(x => x.MaCongTrinh.ToLower().Equals(input.MaCongTrinh));
-            }
+
             // filter by value
             if (input.NgayNhapHoSoThau != null)
             {
@@ -135,6 +118,27 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HoSoThau13
             {
                 query = query.Where(x => x.MaHinhThucThau.ToLower().Equals(input.MaHinhThucThau));
             }
+            var listItem = from gt in query
+                           join ct in congTrinh
+                           on gt.IdCongTrinh equals ct.Id
+                           join dvtt in dvt
+                           on gt.Id equals dvtt.IdHoSoThau
+                           select new HoSoThauN13Dto
+                           {
+
+                               MaHoSoThau = gt.MaHoSoThau,
+                               IDHoSoThau = gt.Id,
+                               IDCongTrinh = ct.Id,
+                               MaHinhThucThau = gt.MaHinhThucThau,
+                               TenCongTrinh = ct.TenCongTrinh,
+                               TenDonViTrungThau = dvtt.TenDonViThamGiaThau,
+                               MaDonViTrungThau = dvtt.MaDonViThau,
+                               TenHoSoThau = gt.TenHoSoThau,
+                               HangMucThau = gt.HangMucThau,
+                               MaCongTrinh = ct.MaCongTrinh,
+                               GiaTrungThau = dvtt.GiaChaoThau,
+                           };
+       
 
             var totalCount = listItem.Count();
 
@@ -156,6 +160,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HoSoThau13
 
         public PagedResultDto<HoSoThauN13Dto> GetHoSoThaus(HoSoThauN13Filter input)
         {
+            var congTrinh = congTrinhRepository.GetAll().Where(x => !x.IsDelete);
             var query = hoSoThauRepository.GetAll().Where(x => !x.IsDelete);
             // filter by value
             if (input.MaHoSoThau != null)
@@ -164,9 +169,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HoSoThau13
             }
 
             // filter by value
-            if (input.MaCongTrinh != null)
+            if (input.IdCongTrinh != null)
             {
-                query = query.Where(x => x.MaCongTrinh.ToLower().Equals(input.MaCongTrinh));
+                query = query.Where(x => x.IdCongTrinh==input.IdCongTrinh);
             }
             // filter by value
             if (input.NgayNhapHoSoThau != null)
@@ -200,9 +205,24 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HoSoThau13
             var items = query.PageBy(input).ToList();
 
             // result
+            var listItem = from gt in query
+                           join ct in congTrinh
+                           on gt.IdCongTrinh equals ct.Id
+                           select new HoSoThauN13Dto
+                           {
+                                 Id=gt.Id,
+                                MaHoSoThau = gt.MaHoSoThau,
+                                HangMucThau=gt.HangMucThau,
+                                NgayNhapHoSoThau=gt.NgayNhapHoSoThau,
+                                MaHinhThucThau=gt.MaHinhThucThau,
+                                BaoLanhDuThauBD=gt.BaoLanhDuThauBD,
+                                TenCongTrinh=ct.TenCongTrinh,
+                                MaCongTrinh=ct.MaCongTrinh,
+                           };
+           
             return new PagedResultDto<HoSoThauN13Dto>(
                 totalCount,
-                items.Select(item => ObjectMapper.Map<HoSoThauN13Dto>(item)).ToList());
+                listItem.ToList());
         }
 
         #endregion
@@ -210,13 +230,15 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HoSoThau13
         #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Create)]
-        private void Create(HoSoThauN13Input hoSoThauInput)
+        private int Create(HoSoThauN13Input hoSoThauInput)
         {
-            hoSoThauInput.MaHoSoThau = hoSoThauInput.MaHoSoThau + "_" + hoSoThauInput.MaCongTrinh;
+            hoSoThauInput.MaHoSoThau = hoSoThauInput.MaHoSoThau + "_" + hoSoThauInput.IdCongTrinh;
             var hoSoThauEntity = ObjectMapper.Map<HoSoThau_N13>(hoSoThauInput);
             SetAuditInsert(hoSoThauEntity);
             hoSoThauRepository.Insert(hoSoThauEntity);
             CurrentUnitOfWork.SaveChanges();
+            var newHS = hoSoThauRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.MaHoSoThau == hoSoThauEntity.MaHoSoThau);
+            return newHS.Id;
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Edit)]

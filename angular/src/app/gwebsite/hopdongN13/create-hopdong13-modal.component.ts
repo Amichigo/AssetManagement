@@ -2,9 +2,10 @@ import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
 import { SelectKeHoachXayDungModalComponent } from '../kehoachxaydung/select-kehoachxaydung-modal.component';
-import { HoSoThauN13Input, HoSoThauN13ServiceProxy, CongTrinhInput, CongTrinhForViewDto, HopDongN13ServiceProxy, HoSoThauN13ForViewDto, HopDongN13Input, ThanhToanN13Input, ThanhToanN13ServiceProxy } from '@shared/service-proxies/service-proxies';
+import { HoSoThauN13Input, HoSoThauN13ServiceProxy, CongTrinhInput, CongTrinhForViewDto, HopDongN13ServiceProxy, HoSoThauN13ForViewDto, HopDongN13Input, ThanhToanN13Input, ThanhToanN13ServiceProxy, KeHoachXayDungForViewDto, DonViThauN13ForViewDto } from '@shared/service-proxies/service-proxies';
 import { SelectHoSoThauN13ModalComponent } from './select-hosothaun13-modal.component';
 import { CreateThanhToanN13Component } from './create-thanhtoann13-modal.component';
+import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
     
 @Component({
     selector: 'createHopDongN13Modal',
@@ -28,7 +29,8 @@ export class CreateHopDongN13ModalComponent extends AppComponentBase {
     dsThanhToan:Array<ThanhToanN13Input>=[];
     congtrinhForView:CongTrinhForViewDto=new CongTrinhForViewDto();
     goiThauForView:HoSoThauN13ForViewDto=new HoSoThauN13ForViewDto();
-
+    keHoachForView:KeHoachXayDungForViewDto=new KeHoachXayDungForViewDto();
+    donViThauForView:DonViThauN13ForViewDto=new DonViThauN13ForViewDto();
     madvtt:string;
     tendvtt:string;
     hopDongInput:HopDongN13Input=new HopDongN13Input();
@@ -36,6 +38,7 @@ export class CreateHopDongN13ModalComponent extends AppComponentBase {
         injector: Injector,
         private _hopDong: HopDongN13ServiceProxy,
         private _thanhtoanService:ThanhToanN13ServiceProxy,
+        private _apiService: WebApiServiceProxy,
         
     ) {
         super(injector);
@@ -66,19 +69,23 @@ export class CreateHopDongN13ModalComponent extends AppComponentBase {
     save(): void {
       
         this.saving = true;
-        this.hopDongInput.maHopDong="HDXD"+this.hopDongInput.soHopDong;
-       let input=this.hopDongInput;
-        this._hopDong.createOrEditHopDong(input).subscribe(result => {
+        this.hopDongInput.maHopDong=this.hopDongInput.soHopDong;
+         let input=this.hopDongInput;
+         if(this.goiThauForView.id==null) {
+            this.notify.info(this.l('Lưu không thành công'));
+            return
+         }
+         
+        this._hopDong.createOrEditHopDong(input,this.goiThauForView.id).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));
+            let id=result;
+            if(id==null) return;
             for(let item of this.dsThanhToan){
-                item.maHopDong=this.hopDongInput.maHopDong;
+                item.idHopDong=id;
                this._thanhtoanService.createOrEditThanhToanN13(item).subscribe(rs=>
                 {
                     this.notify.info(this.l('Lưu thanh toán'));
                 })
-
-
-
             }
             this.close();
         })
@@ -89,6 +96,16 @@ export class CreateHopDongN13ModalComponent extends AppComponentBase {
         this.goiThauForView=this.selectHoSoThauN13Modal.selecTedGoiThau;
         this.madvtt=this.selectHoSoThauN13Modal.maDVTrungThau;
         this.tendvtt=this.selectHoSoThauN13Modal.tenDVTrungThau;
+        if(this.congtrinhForView.idKeHoach==null) return;
+        this._apiService.getForEdit('api/KeHoachXayDung/GetKeHoachXayDungForView',this.congtrinhForView.idKeHoach).subscribe(result => {
+            this.keHoachForView = result;
+         
+        });
+        if(this.goiThauForView.id==null) return;
+        this._apiService.getForEdit('api/DonViThauN13/GetDonViThauByIdGoiThauForView',this.goiThauForView.id).subscribe(result => {
+            this.donViThauForView = result;
+        });
+
     }
     close(): void {
         this.modalSave.emit(null);

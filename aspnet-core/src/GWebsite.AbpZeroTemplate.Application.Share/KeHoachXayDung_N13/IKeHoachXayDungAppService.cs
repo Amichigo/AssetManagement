@@ -10,7 +10,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.KeHoachXayDung_N13
 {
     public interface IKeHoachXayDungAppService
     {
-        void CreateOrEditKeHoachXayDung(KeHoachXayDungInput KeHoachXayDungInput);
+        int CreateOrEditKeHoachXayDung(KeHoachXayDungInput KeHoachXayDungInput);
 
         KeHoachXayDungInput GetKeHoachXayDungForEdit(int id);
         void DeleteKeHoachXayDung(int id);

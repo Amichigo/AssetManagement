@@ -9,6 +9,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.ThanhTo
 {
     public class ThanhToanN13Filter : PagedAndSortedInputDto
     {
-        public string MaHopDong { set; get; }
+        public int? IdHopDong { set; get; }
     }
 }

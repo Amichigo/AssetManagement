@@ -35,11 +35,11 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
 
         #region Public Method
 
-        public void CreateOrEditBatDongSan(BatDongSanInput batdongsanInput)
+        public void CreateOrEditBatDongSan(BatDongSanInput batdongsanInput, int IdTaiSan = 0)
         {
             if (batdongsanInput.Id == 0)
             {
-                Create(batdongsanInput);
+                Create(batdongsanInput, IdTaiSan);
             }
             else
             {
@@ -50,10 +50,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
         public void DeleteBatDongSan(int id)
         {
             var batdongsanEntity = batdongsanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            var taiSanEntity = taisanRepos.GetAll().Where(x => !x.IsDelete).FirstOrDefault(y => y.IdBatDongSan == batdongsanEntity.Id);
             if (batdongsanEntity != null)
             {
                 batdongsanEntity.IsDelete = true;
                 batdongsanRepository.Update(batdongsanEntity);
+                taiSanEntity.IdBatDongSan = null;
+                taisanRepos.Update(taiSanEntity);
                 CurrentUnitOfWork.SaveChanges();
             }
         }
@@ -65,104 +68,126 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
             {
                 return null;
             }
+
             return ObjectMapper.Map<BatDongSanInput>(batdongsanEntity);
         }
 
         public BatDongSanForViewDto GetBatDongSanForView(int id)
         {
-            var batdongsanEntity = batdongsanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            var lquery = loaiBDSRepos.GetAll().Where(x => !x.IsDelete);
+            var lshquery = loaishRepos.GetAll().Where(x => !x.IsDelete);
+            var batdongsanEntity = batdongsanRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.Id == id);
             if (batdongsanEntity == null)
             {
                 return null;
             }
-            return ObjectMapper.Map<BatDongSanForViewDto>(batdongsanEntity);
+            var item = from bds in batdongsanEntity
+                       join lbds in lquery
+                       on bds.IdLoaiBDS equals lbds.Id
+                       join lsh in lshquery
+                       on bds.IdLoaiBDS equals lsh.Id
+                       select new BatDongSanForViewDto
+                       {
+                           MaBatDongSan = bds.MaBatDongSan,
+                           MaPhongGiaoDich = bds.MaPhongGiaoDich,
+                           NgayMuaBatDongSan = bds.NgayMuaBatDongSan,
+                           HienTrangBDS = bds.HienTrangBDS,
+                           MaLoaiBDS = lbds.Name,
+                           ChieuDai = bds.ChieuDai,
+                           ChieuRong = bds.ChieuRong,
+                           DienTichDatNen = bds.DienTichDatNen,
+                           DienTichXayDung = bds.DienTichXayDung,
+                           MaTinhTrangSuDungDat = bds.MaTinhTrangSuDungDat,
+                           MaTinhTrangXayDung = bds.MaTinhTrangXayDung,
+                           CongNangSuDung = bds.CongNangSuDung,
+                           KetCauNha = bds.KetCauNha,
+                           RanhGioi = bds.RanhGioi,
+                           MaHienTrangPhapLy = bds.MaHienTrangPhapLy,
+                           MaLoaiSoHuu = lsh.Name,
+                           ChuSoHuu = bds.ChuSoHuu,
+                           GhiChu = bds.GhiChu,
+                           FileDinhKem = bds.FileDinhKem,
+                       };
+            return item.SingleOrDefault();
         }
 
         public PagedResultDto<BatDongSanDto> GetBatDongSans(BatDongSanFilter input)
         {
             var query = batdongsanRepository.GetAll().Where(x => !x.IsDelete);
-
             var lquery = loaiBDSRepos.GetAll().Where(x => !x.IsDelete);
             var lshquery = loaishRepos.GetAll().Where(x => !x.IsDelete);
-            var tsquery = taisanRepos.GetAll().Where(x => !x.IsDelete);
+            var tsquery = taisanRepos.GetAll().Where(x => !x.IsDelete).Where(y => y.IdBatDongSan != null);
+
+
             // filter by value
             if (input.MaBatDongSan != null)
             {
                 query = query.Where(x => x.MaBatDongSan.ToLower().Equals(input.MaBatDongSan));
             }
+            // filter by loai bds
+            if (input.IdLoaiBDS != null)
+            {
+                query = query.Where(x => x.IdLoaiBDS == input.IdLoaiBDS);
+            }
 
 
-            // filter by maTaisan
+
+            var tableBDS = from bds in query
+                           join a in lquery
+                           on bds.IdLoaiBDS equals a.Id
+                           join lsh in lshquery
+                           on bds.IdLoaiSoHuu equals lsh.Id
+                           join t in tsquery
+                           on bds.Id equals t.IdBatDongSan
+                           select new BatDongSanDto
+                           {
+                               MaBatDongSan = bds.MaBatDongSan,
+                               DienTichDatNen = bds.DienTichDatNen,
+                               DiaChi = t.DiaChi,
+                               DienTichXayDung = bds.DienTichXayDung,
+                               ChieuDai = bds.ChieuDai,
+                               ChieuRong = bds.ChieuRong,
+                               ChuSoHuu = bds.ChuSoHuu,
+                               CongNangSuDung = bds.CongNangSuDung,
+                               FileDinhKem = bds.FileDinhKem,
+                               HienTrangBDS = bds.HienTrangBDS,
+                               MaLoaiBDS = a.Name,
+                               MaPhongGiaoDich = bds.MaPhongGiaoDich,
+                               MaTinhTrangSuDungDat = bds.MaTinhTrangSuDungDat,
+                               MaTinhTrangXayDung = bds.MaTinhTrangXayDung,
+                               NgayMuaBatDongSan = bds.NgayMuaBatDongSan,
+                               GhiChu = bds.GhiChu,
+                               Id = bds.Id,
+                               KetCauNha = bds.KetCauNha,
+                               MaHienTrangPhapLy = bds.MaHienTrangPhapLy,
+                               MaLoaiSoHuu = lsh.Name,
+                               MaTaiSan = t.MaTaiSan,
+                               NguyenGiaTaiSan = t.NguyenGiaTaiSan,
+                               RanhGioi = bds.RanhGioi,
+                           };
+
+            // filter by value
             if (input.MaTaiSan != null)
             {
-                query = query.Where(x => x.MaTaiSan.ToLower().Equals(input.MaTaiSan));
+                tableBDS = tableBDS.Where(x => x.MaTaiSan.ToLower().Equals(input.MaTaiSan));
             }
 
-            // filter by loai bds
-            if (input.MaLoaiBDS != null)
-            {
-                query = query.Where(x => x.MaLoaiBDS.ToLower().Equals(input.MaLoaiBDS));
-            }
-
-
-
-
-
-            var totalCount = query.Count();
+            var totalCount = tableBDS.Count();
 
             // sorting
             if (!string.IsNullOrWhiteSpace(input.Sorting))
             {
-                query = query.OrderBy(input.Sorting);
+                tableBDS = tableBDS.OrderBy(input.Sorting);
             }
-
             // paging
-            var items = query.PageBy(input);
-            var lbds = lquery;
-           
+            var items = tableBDS.PageBy(input);
 
-            var jointTable = from i in items
-                             join a in lbds
-                             on Int32.Parse(i.MaLoaiBDS) equals  a.Id
-                             join lsh in lshquery
-                             on Int32.Parse(i.MaLoaiSoHuu) equals lsh.Id
-                             join t in tsquery
-                             on i.MaTaiSan equals t.MaTaiSan
-                             select new BatDongSanDto
-                             {
-                                 MaBatDongSan = i.MaBatDongSan,
-                                 DienTichDatNen = i.DienTichDatNen,
-                                 DiaChi = t.DiaChi,
-                                 DienTichXayDung = i.DienTichXayDung,
-                                 ChieuDai = i.ChieuDai,
-                                 ChieuRong = i.ChieuRong,
-                                 ChuSoHuu = i.ChuSoHuu,
-                                 CongNangSuDung = i.CongNangSuDung,
-                                 FileDinhKem = i.FileDinhKem,
-                                 HienTrangBDS = i.HienTrangBDS,
-                                 MaLoaiBDS = a.Name,
-                                 MaPhongGiaoDich = i.MaPhongGiaoDich,
-                                 MaTinhTrangSuDungDat = i.MaTinhTrangSuDungDat,
-                                 MaTinhTrangXayDung = i.MaTinhTrangXayDung,
-                                 NgayMuaBatDongSan = i.NgayMuaBatDongSan,
-                                 GhiChu = i.GhiChu,
-                                 Id = i.Id,
-                                 KetCauNha = i.KetCauNha,
-                                 MaHienTrangPhapLy = i.MaHienTrangPhapLy,
-                                 MaLoaiSoHuu = lsh.Name,
-                                 MaTaiSan = i.MaTaiSan,
-                                 NguyenGiaTaiSan = t.NguyenGiaTaiSan,
-                                 RanhGioi = i.RanhGioi,
-                             };
-
-
-
-            var list = jointTable.PageBy(input).ToList();
+            var list = tableBDS.PageBy(input).ToList();
 
             // result
             return new PagedResultDto<BatDongSanDto>(
                 totalCount,
-                jointTable.ToList());
+                list.ToList());
         }
 
         #endregion
@@ -170,14 +195,27 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
         #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_BatDongSan_Create)]
-        private void Create(BatDongSanInput batdongsanInput)
+        private void Create(BatDongSanInput batdongsanInput, int IdTaiSan)
         {
-            batdongsanInput.MaBatDongSan = "BDS0000" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            int nextID = batdongsanRepository.GetAll().Count() + 1;
+            batdongsanInput.MaBatDongSan = "BDS0000" + nextID;
             var batdongsanEntity = ObjectMapper.Map<BatDongSan>(batdongsanInput);
             SetAuditInsert(batdongsanEntity);
             batdongsanRepository.Insert(batdongsanEntity);
             CurrentUnitOfWork.SaveChanges();
+            var newBDS = batdongsanRepository.GetAll().SingleOrDefault(x => x.MaBatDongSan == batdongsanEntity.MaBatDongSan);
+            int id = newBDS.Id;
+            // update cho TS
+            if (IdTaiSan == 0)
+            {
+                return;
+            }
+            var taisanEntiTy = taisanRepos.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == IdTaiSan);
+            taisanEntiTy.IdBatDongSan = id;
+            taisanRepos.Update(taisanEntiTy);
+
         }
+
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyBatDongSan_BatDongSan_Edit)]
         private void Update(BatDongSanInput batdongsanInput)
@@ -191,7 +229,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.BatDongSans
             batdongsanRepository.Update(batdongsanEntity);
             CurrentUnitOfWork.SaveChanges();
         }
-      
+
         #endregion
     }
 }

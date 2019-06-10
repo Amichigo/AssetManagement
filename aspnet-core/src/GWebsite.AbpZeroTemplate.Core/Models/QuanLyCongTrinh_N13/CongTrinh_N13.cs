@@ -10,8 +10,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models.QuanLyCongTrinh_N13
     {
         public string MaDuAnXayDungCoBan { set; get; }
         public string MaCongTrinh { set; get; }
-        public string MaKeHoach { set; get; }
-
+        public int? idKeHoach { set; get; }
         public string TenCongTrinh { set; get; }
 
         public string DuKienXayDung { set; get; }

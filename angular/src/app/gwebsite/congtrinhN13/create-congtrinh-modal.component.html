@@ -1,5 +1,5 @@
 <div class="modal-content">
-    <form #editForm="ngForm" novalidate >
+    <form #editForm="ngForm" novalidate>
         <div class="modal-header">
             <h4 class="modal-title">
                 <span>Tạo mới Dự án Công trình</span>
@@ -34,26 +34,31 @@
                     <div class="form-group">
                         <label>Địa chỉ công trình *</label>
                         <input #dcInput="ngModel" class="form-control" type="text" name="diaChiCongTrinh"
-                            [(ngModel)]="congtrinh.diaChiCongTrinh" required  maxlength="64">
+                            [(ngModel)]="congtrinh.diaChiCongTrinh" required maxlength="64">
                         <validation-messages [formCtrl]="dcInput"></validation-messages>
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="form-group">
-                        <label>Loại Công trình *</label>
-                        <input #loaictInput="ngModel" class="form-control" type="text" name="maLoaiCongTrinh"
-                            [(ngModel)]="congtrinh.maLoaiCongTrinh" required  maxlength="64">
-                        <validation-messages [formCtrl]="loaictInput"></validation-messages>
+                        <label>Loại công trình *</label>
+                        <select #trangthaiduyetCombobox name="maLoaiCongTrinh" class="form-control"
+                            [(ngModel)]="congtrinh.maLoaiCongTrinh" jq-plugin="selectpicker" required>
+                            <option selected disabled value="">---Chọn loại công trình---
+                            </option>
+                            <option [value]="">Sửa chữa</option>
+                            <option [value]="">Xây mới</option>
+                        </select>
                     </div>
                 </div>
             </div>
+
             <div class="row m--margin-bottom-10">
                 <div class="col-xl-6">
                     <div class="form-group">
                         <label>Mã kế hoạch *</label>
                         <input #makhInput="ngModel" class="form-control" type="text" name="MaKeHoach"
-                            [(ngModel)]="makh" required disabled maxlength="64">
-                        <validation-messages [formCtrl]="makh"></validation-messages>
+                            [(ngModel)]="keHoachForView.maKeHoach" required disabled maxlength="64">
+                        <validation-messages [formCtrl]="makhInput"></validation-messages>
                     </div>
                 </div>
                 <div class="col-xl-6">
@@ -107,10 +112,11 @@
 
         <div class="modal-footer">
             <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
-            <button type="submit" class="btn btn-primary" [buttonBusy]="saving" (click)="save()" [disabled]="!editForm.form.valid"
-                [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+            <button type="submit" class="btn btn-primary" [buttonBusy]="saving" (click)="save()"
+                [disabled]="!editForm.form.valid" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
                 <span>{{l("Save")}}</span></button>
         </div>
     </form>
-    <selectKeHoachXayDungModal #selectKeHoachXayDungModal (modalSave)="setThongTinCongTrinh()"></selectKeHoachXayDungModal>
+    <selectKeHoachXayDungModal #selectKeHoachXayDungModal (modalSave)="setThongTinCongTrinh()">
+    </selectKeHoachXayDungModal>
 </div>

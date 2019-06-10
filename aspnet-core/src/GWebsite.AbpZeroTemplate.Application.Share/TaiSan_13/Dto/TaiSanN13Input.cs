@@ -11,7 +11,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.TaiSan_13.Dto
     {
         public string MaTaiSan { set; get; }
         public string MaNhomTaiSan { set; get; }
-        public string MaBatDongSan { set; get; }
         public string MaLoaiTaiSan { set; get; }
 
         public string DiaChi { set; get; }

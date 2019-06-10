@@ -20,24 +20,26 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HopDong_13
     public class HopDongN13AppService : GWebsiteAppServiceBase, IHopDongN13AppService
     {
         private readonly IRepository<HopDong_N13> hopDongRepository;
-
-        public HopDongN13AppService(IRepository<HopDong_N13> hopDongRepository)
+        private readonly IRepository<HoSoThau_N13> hoSoThauRepository;
+        public HopDongN13AppService(IRepository<HopDong_N13> hopDongRepository, IRepository<HoSoThau_N13> hoSoThauRepository)
         {
             this.hopDongRepository = hopDongRepository;
+            this.hoSoThauRepository = hoSoThauRepository;
         }
 
         #region Public Method
 
-        public void CreateOrEditHopDong(HopDongN13Input hopDongInput)
+        public int CreateOrEditHopDong(HopDongN13Input hopDongInput, int idGoiThau)
         {
             if (hopDongInput.Id == 0)
             {
-                Create(hopDongInput);
+               return Create(hopDongInput, idGoiThau);
             }
             else
             {
                 Update(hopDongInput);
             }
+            return 0;
         }
 
         public void DeleteHopDong(int id)
@@ -102,12 +104,23 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HopDong_13
         #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HopDong_Create)]
-        private void Create(HopDongN13Input hopDongInput)
+        private int Create(HopDongN13Input hopDongInput,int idGoiThau)
         {
+            var nextId = hopDongRepository.GetAll().Count() + 1;
+            hopDongInput.MaHopDong = hopDongInput.MaHopDong + "HD00" + nextId;
+           
             var hopDongEntity = ObjectMapper.Map<HopDong_N13>(hopDongInput);
             SetAuditInsert(hopDongEntity);
             hopDongRepository.Insert(hopDongEntity);
             CurrentUnitOfWork.SaveChanges();
+
+            var newHD = hopDongRepository.GetAll().FirstOrDefault(x => x.MaHopDong == hopDongInput.MaHopDong);
+            if (newHD == null) return 0;
+            var hoSoThauEntity = hoSoThauRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == idGoiThau);
+            hoSoThauEntity.IdHopDong = newHD.Id;
+            hoSoThauRepository.Update(hoSoThauEntity);
+            return newHD.Id;
+        
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HopDong_Edit)]

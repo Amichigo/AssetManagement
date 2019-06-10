@@ -28,16 +28,17 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.KeHoach_13
 
         #region Public Method
 
-        public void CreateOrEditKeHoachXayDung(KeHoachXayDungInput keHoachXayDungInput)
+        public int CreateOrEditKeHoachXayDung(KeHoachXayDungInput keHoachXayDungInput)
         {
             if (keHoachXayDungInput.Id == 0)
             {
-                Create(keHoachXayDungInput);
+               return Create(keHoachXayDungInput);
             }
             else
             {
                 Update(keHoachXayDungInput);
             }
+            return 0;
         }
 
         public void DeleteKeHoachXayDung(int id)
@@ -117,12 +118,17 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.KeHoach_13
         #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyKeHoachXayDung_KeHoachXayDung_Create)]
-        private void Create(KeHoachXayDungInput keHoachXayDungInput)
+        private int Create(KeHoachXayDungInput keHoachXayDungInput)
         {
+            var nextID = keHoachXayDungRepository.GetAll().Count() + 1;
+            keHoachXayDungInput.MaKeHoach = keHoachXayDungInput.MaKeHoach + "00" + nextID;
             var keHoachXayDungEntity = ObjectMapper.Map<KeHoachXayDung_N13>(keHoachXayDungInput);
             SetAuditInsert(keHoachXayDungEntity);
             keHoachXayDungRepository.Insert(keHoachXayDungEntity);
             CurrentUnitOfWork.SaveChanges();
+            var newKH = keHoachXayDungRepository.GetAll().Where(x => !x.IsDelete).FirstOrDefault(x => x.MaKeHoach == keHoachXayDungInput.MaKeHoach);
+            if (newKH == null) return 0;
+            return newKH.Id;
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyKeHoachXayDung_KeHoachXayDung_Edit)]

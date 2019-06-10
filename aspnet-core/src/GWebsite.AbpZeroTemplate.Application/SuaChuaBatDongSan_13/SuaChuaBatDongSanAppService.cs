@@ -77,43 +77,18 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.SuaChuaBatDongSans
         {
             var query = suaChuaBatDongSanRepository.GetAll().Where(x => !x.IsDelete);
             var lquery = taisanRepos.GetAll().Where(x => !x.IsDelete);
-            // filter by ngaydexuat
-            if (input.NgayDeXuat != null)
-            {
-                query = query.Where(x => x.NgayDeXuat.ToLower().Equals(input.NgayDeXuat));
-            }
-            if (input.NgaySuaXong != null)
-            {
-                query = query.Where(x => x.NgaySuaXong.ToLower().Equals(input.NgaySuaXong));
-            }
-
-            if (input.MaTaiSan != null)
-            {
-                query = query.Where(x => x.MaTaiSan.ToLower().Equals(input.MaTaiSan));
-            }
+         
 
 
 
-
-            var totalCount = query.Count();
-
-            // sorting
-            if (!string.IsNullOrWhiteSpace(input.Sorting))
-            {
-                query = query.OrderBy(input.Sorting);
-            }
-
-            // paging
-            var items = query.PageBy(input).ToList();
-
-
-            var jointable = from sc in query
+       
+            var  suachuaQuery = from sc in query
                             join ts in lquery
-                            on sc.MaTaiSan equals ts.MaTaiSan
+                            on sc.IdTaiSan equals ts.Id
                             select new SuaChuaBatDongSanDto
                             {
                                 Id = sc.Id,
-                                MaTaiSan = sc.MaTaiSan,
+                                MaTaiSan = ts.MaTaiSan,
                                 TenTaiSan = ts.TenTaiSan,
                                 NgayDeXuat = sc.NgayDeXuat,
                                 NgaySuaXong = sc.NgaySuaXong,
@@ -125,11 +100,36 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.SuaChuaBatDongSans
 
 
                             };
+            // filter by ngaydexuat
+            if (input.NgayDeXuat != null)
+            {
+                suachuaQuery = suachuaQuery.Where(x => x.NgayDeXuat.ToLower().Equals(input.NgayDeXuat));
+            }
+            if (input.NgaySuaXong != null)
+            {
+                query = query.Where(x => x.NgaySuaXong.ToLower().Equals(input.NgaySuaXong));
+            }
+
+            if (input.MaTaiSan != null)
+            {
+                suachuaQuery = suachuaQuery.Where(x => x.MaTaiSan.ToLower().Equals(input.MaTaiSan));
+            }
+            var totalCount = query.Count();
+
+            // sorting
+            if (!string.IsNullOrWhiteSpace(input.Sorting))
+            {
+                suachuaQuery = suachuaQuery.OrderBy(input.Sorting);
+            }
+
+            // paging
+            var items = suachuaQuery.PageBy(input).ToList();
+
 
             // result
             return new PagedResultDto<SuaChuaBatDongSanDto>(
                 totalCount,
-               jointable.ToList());
+                items.ToList());
         }
 
         #endregion

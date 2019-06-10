@@ -9,12 +9,13 @@ namespace GWebsite.AbpZeroTemplate.Core.Models.QuanLyCongTrinh_N13
     public class HoSoThau_N13 : FullAuditModel
     {
         public string MaHoSoThau { set; get; }
-        public string MaCongTrinh { set; get; }
+        public int? IdCongTrinh { set; get; }
+        public int? IdHopDong { set; get; }
         public string TenHoSoThau { set; get; }
         public string HangMucThau { set; get; }
         public string NgayNhapHoSoThau { set; get; }
         public string NgayHetHanNopHoSoThau { set; get; }
-
+        public string NgayThiCong { set; get; }
         public string NgayMoThau { set; get; }
 
         public string MaHinhThucThau { set; get; }

@@ -131,7 +131,7 @@
                                                             <span title="{{record.info}}">{{truncateString(record.info)}}</span>
                                                         </td>-->
                                             <td>
-                                                <button (click)="SetFilterSelectKHCongTrinh(record.id)"
+                                                <button (click)="setKeHoach(record.id)"
                                                     class="btn btn-primary"><i class="fa fa-plus"></i>
                                                     {{l("Chọn")}}</button>
                                             </td>
@@ -160,7 +160,7 @@
             </div>
 
             <div class="modal-footer">
-                <selectKHCongtrinhModal #selectKHCongtrinhModal (modalSave)= "SetSelectedCongTrinhID()"></selectKHCongtrinhModal>
+            
             </div>
         </div>
 

@@ -86,7 +86,7 @@ export class TaiSanComponent extends AppComponentBase implements AfterViewInit, 
     reloadList(taisanName,mataisan,nhomtaisan,loaitaisan, event?: LazyLoadEvent) {
         this._taisanService.getTaiSansByFilter(mataisan,nhomtaisan,loaitaisan,taisanName, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
-            this.primengTableHelper.getSkipCount(this.paginator, event),
+            this.primengTableHelper.getSkipCount(this.paginator, event),-1
         ).subscribe(result => {
             this.primengTableHelper.totalRecordsCount = result.totalCount;
             this.primengTableHelper.records = result.items;

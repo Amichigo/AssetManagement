@@ -14,8 +14,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.RealEstas.BatDongSan.DTO
 
         public string NgayMuaBatDongSan { set; get; }
         public string DiaChi { set; get; }
-        public string MaTaiSan { set; get; }
-
         public string HienTrangBDS { set; get; }
 
         public string MaLoaiBDS { set; get; }

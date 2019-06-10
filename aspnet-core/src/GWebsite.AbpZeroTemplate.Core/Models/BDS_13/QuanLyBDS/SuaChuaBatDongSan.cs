@@ -9,7 +9,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models.RealEstasAsset.QuanLyBDS
     public class SuaChuaBatDongSan : FullAuditModel
     {
         public string MaSuaChuaBatDongSan { set; get; }
-        public string MaTaiSan { set; get; }
+        public int?  IdTaiSan { set; get; }
 
         public string NgayDeXuat { set; get; }
 

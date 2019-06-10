@@ -4,14 +4,16 @@ using GSoft.AbpZeroTemplate.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    partial class AbpZeroTemplateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190608132011_N13SuaBangBDSCacID")]
+    partial class N13SuaBangBDSCacID
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1973,6 +1975,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<string>("MaDuAnXayDungCoBan");
 
+                    b.Property<string>("MaKeHoach");
+
                     b.Property<string>("MaLoaiCongTrinh");
 
                     b.Property<string>("MoTaCongTrinh");
@@ -1986,8 +1990,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<string>("UpdatedBy");
 
                     b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<int?>("idKeHoach");
 
                     b.HasKey("Id");
 
@@ -2010,13 +2012,13 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<string>("HinhThucBaoLanh");
 
-                    b.Property<int?>("IdHoSoThau");
-
                     b.Property<bool>("IsDelete");
 
                     b.Property<bool>("IsTrungThau");
 
                     b.Property<string>("MaDonViThau");
+
+                    b.Property<string>("MaGoiThau");
 
                     b.Property<string>("NgayNopHoSoThau");
 
@@ -2058,6 +2060,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<string>("MaHinhThucBaoLanhBH");
 
                     b.Property<string>("MaHinhThucBaoLanhHD");
+
+                    b.Property<string>("MaHoSoThau");
 
                     b.Property<string>("MaHopDong");
 
@@ -2116,11 +2120,9 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<string>("HangMucThau");
 
-                    b.Property<int?>("IdCongTrinh");
-
-                    b.Property<int?>("IdHopDong");
-
                     b.Property<bool>("IsDelete");
+
+                    b.Property<string>("MaCongTrinh");
 
                     b.Property<string>("MaHinhThucThau");
 
@@ -2133,8 +2135,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<string>("NgayMoThau");
 
                     b.Property<string>("NgayNhapHoSoThau");
-
-                    b.Property<string>("NgayThiCong");
 
                     b.Property<string>("TenHoSoThau");
 
@@ -2159,9 +2159,9 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<float>("DaThanhToan");
 
-                    b.Property<int?>("IdHopDong");
-
                     b.Property<bool>("IsDelete");
+
+                    b.Property<string>("MaHopDong");
 
                     b.Property<string>("NgayDuKienThanhToan");
 

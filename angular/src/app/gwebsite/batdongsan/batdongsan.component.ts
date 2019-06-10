@@ -195,7 +195,7 @@ export class BatDongSanComponent extends AppComponentBase implements AfterViewIn
         {
             console.log("mo modal");
         }
-            
+        this.selectTaiSanModel.intType=-1;
         this.selectTaiSanModel.show();
 
     }

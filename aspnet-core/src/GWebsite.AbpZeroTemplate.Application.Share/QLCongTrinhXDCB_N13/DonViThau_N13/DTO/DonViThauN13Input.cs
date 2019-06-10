@@ -10,7 +10,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.DonViTh
     public class DonViThauN13Input : Entity<int>
     {
         public string MaDonViThau { set; get; }
-        public string MaGoiThau { set; get; }
+        public int? IdHoSoThau { set; get; }
         public string TenDonViThamGiaThau { set; get; }
 
         public string NgayNopHoSoThau { set; get; }

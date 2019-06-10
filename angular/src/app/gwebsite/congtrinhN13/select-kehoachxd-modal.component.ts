@@ -1,4 +1,4 @@
-import { CustomerForViewDto, TaiSanN13ServiceProxy } from './../../../shared/service-proxies/service-proxies';
+import { CustomerForViewDto, KeHoachXayDungServiceProxy } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild, Output, EventEmitter } from "@angular/core";
 import { CustomerServiceProxy } from "@shared/service-proxies/service-proxies";
@@ -8,71 +8,83 @@ import { Table } from 'primeng/table';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BatDongSanComponent } from '../batdongsan/batdongsan.component';
+import { NumericDictionary } from 'lodash';
 
 @Component({
-    selector: 'selectTaiSanModal',
-    templateUrl: './select-taisan-modal.component.html'
+    selector: 'selectKeHoachXDModal',
+    templateUrl: './select-kehoachxd-modal.component.html'
 })
 
-export class SelectTaiSanModalComponent extends AppComponentBase {
+export class SelectKeHoachXDModalComponent extends AppComponentBase {
 
-    customer : CustomerForViewDto = new CustomerForViewDto();
+    customer: CustomerForViewDto = new CustomerForViewDto();
     @ViewChild('viewModal') modal: ModalDirective;
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
     constructor(
         injector: Injector,
-        private _taisanService: TaiSanN13ServiceProxy,
+        private _kehoachxaydungService: KeHoachXayDungServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
     }
 
-
-    taisanName: string;
-    mataisan:string;
-    nhomtaisan:string;
-    loaitaisan:string;
-    intType:number;
-    public selectedMaTS:number;
-   
+    active = false;
+    kehoachxaydungName: string;
+    makehoachxaydung: string;
+    trangthai: string;
+    namthuchien: string;
+    public selectedIDCongTrinh: number;
+    selectedMaKH: number;
+    selectedName:string;
     //@Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
-     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
+    @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
 
-    show(): void {
-        // this._taisanService.getCustomerForView(customerId).subscribe(result => {
+    show(customerId?: number | null | undefined): void {
+        // this._kehoachxaydungService.getCustomerForView(customerId).subscribe(result => {
         //     this.customer = result;
         //     this.modal.show();
         // })
         //get params từ url để thực hiện filter
+
+        this.selectedIDCongTrinh = 0;
         this._activatedRoute.params.subscribe((params: Params) => {
-            this.taisanName = params['TenTaiSan'] || '';
-            this.mataisan = params['MaTaiSan'] || '';
-            this.nhomtaisan= params['MaNhomTaiSan'] || '';
-            this.loaitaisan= params['MaLoaiTaiSan'] || '';
-            this.reloadList(this.taisanName,this.mataisan,this.nhomtaisan,this.loaitaisan, null);
+            this.kehoachxaydungName = params['TenKeHoachXayDung'] || '';
+            this.makehoachxaydung = params['MaKeHoachXayDung'] || '';
+            this.trangthai = params['MaNhomKeHoachXayDung'] || '';
+            this.namthuchien = params['MaLoaiKeHoachXayDung'] || '';
+            this.reloadList(this.kehoachxaydungName, this.makehoachxaydung, this.trangthai, this.namthuchien, null);
         });
-            this.selectedMaTS=-1;
-            this.modal.show();
+
+        this.modal.show();
 
     }
 
 
+    setActive(): void {
+        this.active = true;
+    }
     reloadPage(): void {
         this.paginator.changePage(this.paginator.getPage());
     }
 
-    selectedTaiSan(mats):void{
-        this.selectedMaTS=mats;
-        this.close();
+
+    setKeHoach(id: number): void {
+        this._kehoachxaydungService.getKeHoachXayDungForView(id).subscribe(rs=>{
+                this.selectedName=rs.maKeHoach;
+                this.selectedMaKH = id;
+                this.close();
+        });
+       
     }
 
+
     /**
-     * Hàm get danh sách TaiSan
+     * Hàm get danh sách KeHoachXayDung
      * @param event
      */
-    getTaiSans(event?: LazyLoadEvent) {
+    getKeHoachXayDungs(event?: LazyLoadEvent) {
         if (!this.paginator || !this.dataTable) {
             return;
         }
@@ -84,24 +96,28 @@ export class SelectTaiSanModalComponent extends AppComponentBase {
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-         this.reloadList(null,null,null,null, event);
+        this.reloadList(null, null, null, null, event);
 
     }
 
 
-    reloadList(taisanName,mataisan,nhomtaisan,loaitaisan, event?: LazyLoadEvent) {
-        this._taisanService.getTaiSansByFilter(mataisan,nhomtaisan,loaitaisan,taisanName, this.primengTableHelper.getSorting(this.dataTable),
+    reloadList(makh, tenkh, trangthai, nam, event?: LazyLoadEvent) {
+        this._kehoachxaydungService.getKeHoachXayDungsByFilter(makh, tenkh, null, trangthai, nam, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
-            this.primengTableHelper.getSkipCount(this.paginator, event),this.intType       ).subscribe(result => {
+            this.primengTableHelper.getSkipCount(this.paginator, event),
+        ).subscribe(result => {
             this.primengTableHelper.totalRecordsCount = result.totalCount;
             this.primengTableHelper.records = result.items;
             this.primengTableHelper.hideLoadingIndicator();
         });
     }
-    
+
+
+
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.taisanName,this.mataisan,this.nhomtaisan,this.loaitaisan, null);
+        this.reloadList(this.makehoachxaydung, this.kehoachxaydungName, this.trangthai, this.namthuchien, null);
+
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);
             return;
@@ -109,8 +125,8 @@ export class SelectTaiSanModalComponent extends AppComponentBase {
     }
 
 
-  
-    close() : void{
+
+    close(): void {
         this.modal.hide();
         this.modalSave.emit(null);
     }

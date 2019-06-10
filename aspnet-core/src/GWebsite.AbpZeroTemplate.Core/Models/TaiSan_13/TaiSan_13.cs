@@ -11,9 +11,8 @@ namespace GWebsite.AbpZeroTemplate.Core.Models.TaiSan13
         public string MaTaiSan { set; get; }
         public string MaNhomTaiSan { set; get; }
 
-        public string MaBatDongSan { set; get; }
+        public int? IdBatDongSan { set; get; }
         public string MaLoaiTaiSan { set; get; }
-
         public string DiaChi { set; get; }
 
         public string TenTaiSan { set; get; }

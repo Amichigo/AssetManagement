@@ -2,9 +2,10 @@ import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
 import { SelectKeHoachXayDungModalComponent } from '../kehoachxaydung/select-kehoachxaydung-modal.component';
-import { HoSoThauN13Input, HoSoThauN13ServiceProxy, CongTrinhInput, CongTrinhForViewDto, DonViThauN13Input, DonViThauN13ServiceProxy } from '@shared/service-proxies/service-proxies';
+import { HoSoThauN13Input, HoSoThauN13ServiceProxy, CongTrinhInput, CongTrinhForViewDto, DonViThauN13Input, DonViThauN13ServiceProxy, KeHoachXayDungForViewDto } from '@shared/service-proxies/service-proxies';
 import { SelectCongTrinhN13ModalComponent } from './select-congtrinhn13-modal.component';
 import { CreateDonViThauN13Component } from './create-donvithaun13-modal.component';
+import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
     
 @Component({
     selector: 'createHoSoThauN13Modal',
@@ -27,20 +28,23 @@ export class CreateHoSoThauN13ModalComponent extends AppComponentBase {
     
     hosothau: HoSoThauN13Input = new HoSoThauN13Input();
     congTrinhForView:CongTrinhForViewDto=new CongTrinhForViewDto();
+    keHoachForView:KeHoachXayDungForViewDto=new KeHoachXayDungForViewDto();
     dsDonViThau: Array<DonViThauN13Input>=[];
-    donVitest:DonViThauN13Input=new DonViThauN13Input()
     constructor(
         injector: Injector,
         private _hosothauService: HoSoThauN13ServiceProxy,
         private _donvithauService: DonViThauN13ServiceProxy,
+        private _apiService: WebApiServiceProxy,
     ) {
         super(injector);
     }
 
-    show(): void {
+    show(id?: number | null | undefined): void {
         this.dsDonViThau=[];
         this.saving = false;
-        
+        this._hosothauService.getHoSoThauForEdit(id).subscribe(result => {
+            this.hosothau = result;
+        });
     }
 
     showSelectCongTrinh(){
@@ -73,14 +77,14 @@ export class CreateHoSoThauN13ModalComponent extends AppComponentBase {
         this.createDonViThauN13Modal.show(null);
     }
     save(): void {
-        this.hosothau.maCongTrinh= this.congTrinhForView.maCongTrinh;
+        this.hosothau.idCongTrinh= this.congTrinhForView.id;
         let input = this.hosothau;
         this.saving = true;
-
         this._hosothauService.createOrEditHoSoThau(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));
+            let nextID=result;
             for(let item of this.dsDonViThau){
-                item.maGoiThau=this.hosothau.maHoSoThau+"_"+this.hosothau.maCongTrinh;
+                item.idHoSoThau=nextID;
                 let dv=item;
                 this._donvithauService.createOrEditDonViThau(dv).subscribe(rs=>{
                     this.notify.info(this.l('Lưu đơn vị thành công'));
@@ -92,7 +96,14 @@ export class CreateHoSoThauN13ModalComponent extends AppComponentBase {
     }
     SetThongTinCongTrinh():void{
         this.congTrinhForView=this.selectCongTrinhN13Modal.congtrinhForView;
-        console.log(this.congTrinhForView.maCongTrinh);
+        console.log(this.congTrinhForView.id);
+        if(this.congTrinhForView.idKeHoach!=null){
+            this._apiService.getForEdit('api/KeHoachXayDung/GetKeHoachXayDungForView',this.congTrinhForView.idKeHoach).subscribe(result => {
+                this.keHoachForView=result;
+    
+            });
+        }
+       
     }
     close(): void {
         this.modalSave.emit(null);

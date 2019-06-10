@@ -12,6 +12,7 @@ import { CreateOrEditCongTrinhModalComponent } from './create-or-edit-congtrinh-
 import { ModalDirective } from 'ngx-bootstrap';
 import { CreateCongTrinhModalComponent } from './create-congtrinh-modal.component';
 import { EditCongTrinhModalComponent } from './edit-congtrinh-modal.component';
+import { SelectKeHoachXDModalComponent } from './select-kehoachxd-modal.component';
 
 @Component({
 
@@ -30,6 +31,8 @@ export class CongTrinhComponent extends AppComponentBase implements AfterViewIni
     @ViewChild('editCongTrinhModal') editCongTrinhModal: EditCongTrinhModalComponent;
     @ViewChild('CongTrinhModal') modal: ModalDirective;
     @ViewChild('viewCongTrinhModal') viewCongTrinhModal: ViewCongTrinhModalComponent;
+    
+    @ViewChild('selectKeHoachXDModal') selectKeHoachXDModal: SelectKeHoachXDModalComponent;
     /**
      * tạo các biến dể filters
      */
@@ -37,7 +40,7 @@ export class CongTrinhComponent extends AppComponentBase implements AfterViewIni
     macongtrinh: string;
     maKeHoach: string;
     namthuchien: string;
-
+    idKehoach:number;
     /**
      * Tab values
      */
@@ -71,7 +74,7 @@ export class CongTrinhComponent extends AppComponentBase implements AfterViewIni
 
     InitTabCongTrinh(): void {
 
-        this.reloadList(null, null, null);
+        this.reloadPage();
         this.activeTabCreate = false;
         this.activeTabUpdate = false;
         this.activeTabView = false;
@@ -223,24 +226,43 @@ export class CongTrinhComponent extends AppComponentBase implements AfterViewIni
             this.macongtrinh = params['MaCongTrinh'] || '';
             this.maKeHoach = params['MaKeHoach'] || '';
             this.namthuchien = params['MaLoaiCongTrinh'] || '';
-            this.reloadList(this.congtrinhName, this.macongtrinh, this.maKeHoach, null);
+            this.idKehoach=null;
+            this.reloadList(this.congtrinhName, this.macongtrinh, this.idKehoach, null);
         });
     }
 
+    resetFillter():void{
+        this.maKeHoach="";
+        this.idKehoach=null;
+        this.macongtrinh="";
+        this.congtrinhName="";
+        this.reloadPage();
+    }
     reloadPage(): void {
         this.paginator.changePage(this.paginator.getPage());
     }
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.congtrinhName, this.macongtrinh, this.maKeHoach, null);
+        this.reloadList(this.congtrinhName, this.macongtrinh, this.idKehoach, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);
             return;
         }
     }
+    setTimKiem():void{
+        this.idKehoach=this.selectKeHoachXDModal.selectedMaKH;
+        if(this.idKehoach!=null){
+            this.maKeHoach=this.selectKeHoachXDModal.selectedName;
+            console.log("  this.maKeHoach");
+        }
+        console.log("Có chạy vô");
+    }
 
+    showSelectKH():void{
+        this.selectKeHoachXDModal.show();
+    }
     //hàm show view create MenuClient
     createCongTrinh() {
 

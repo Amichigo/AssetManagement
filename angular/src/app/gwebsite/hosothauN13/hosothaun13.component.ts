@@ -1,6 +1,6 @@
 
 import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Params} from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import * as _ from 'lodash';
@@ -11,6 +11,7 @@ import { ModalDirective } from 'ngx-bootstrap';
 import { HoSoThauN13ServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateHoSoThauN13ModalComponent } from './create-hosothau13-modal.component';
 import { EditHoSoThauN13ModalComponent } from './edit-hosothau13-modal.component';
+import { SelectCongTrinhN13ModalComponent } from './select-congtrinhn13-modal.component';
 @Component({
 
     templateUrl: './hosothaun13.component.html',
@@ -24,19 +25,20 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
     @ViewChild('HoSoThauN13Modal') modal: ModalDirective;
-    @ViewChild('createHoSoThauN13Modal') createHoSoThauN13Modal:CreateHoSoThauN13ModalComponent;
-    @ViewChild('editHoSoThauN13Modal') editHoSoThauN13Modal:EditHoSoThauN13ModalComponent;
+    @ViewChild('createHoSoThauN13Modal') createHoSoThauN13Modal: CreateHoSoThauN13ModalComponent;
+    @ViewChild('editHoSoThauN13Modal') editHoSoThauN13Modal: EditHoSoThauN13ModalComponent;
+    @ViewChild('selectCongTrinhN13Modal') selectCongTrinhN13Modal: SelectCongTrinhN13ModalComponent;
     /**
      * tạo các biến dể filters
      */
-    maHoSoThau:string;
-    hangMucThau:string;
-    ngayPhat:string;
-    ngayhetHan:string;
-    hinhThucThau:string;
-    duAnXD:string;
+    maHoSoThau: string;
+    hangMucThau: string;
+    ngayPhat: string;
+    ngayhetHan: string;
+    hinhThucThau: string;
+    duAnXD: string;
+    idDuAn:number;
 
-    
     /**
      * Tab values
      */
@@ -68,8 +70,7 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
      */
 
     InitTabHoSoThau(): void {
-
-        this.reloadList(null, null, null,null,null,null);
+        this.reloadPage();
         this.activeTabCreate = false;
         this.activeTabUpdate = false;
         this.activeTabView = false;
@@ -82,15 +83,14 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
 
     }
     InitTabCreate(): void {
-        if(this.activeTabCreate==false)
-        {
+        if (this.activeTabCreate == false) {
 
             console.log("Init create");
             this.activeTabHoSoThau = false;
             this.activeTabUpdate = false;
             this.activeTabView = false;
             this.activeTabSetActive = false;
-            this.activeTabCreate=true;
+            this.activeTabCreate = true;
 
             this.disableTabView = true;
             this.disableTabUpdate = true;
@@ -98,9 +98,9 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
             this.createHoSoThauN13Modal.show();
 
         }
-      
-        
-      
+
+
+
     }
 
     InitTabView(idRecond: number): void {
@@ -117,13 +117,12 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
     }
 
     InitTabUpdate(idRecond: number) {
-        if(this.activeTabUpdate==false)
-        {
+        if (this.activeTabUpdate == false) {
             this.disableTabUpdate = false;
             this.activeTabUpdate = true;
             this.disableTabView = true;
             this.disableTabSetActive = true;
-    
+
             this.activeTabHoSoThau = false;
             this.activeTabView = false;
             this.activeTabCreate = false;
@@ -131,7 +130,7 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
             this.editHoSoThauN13Modal.show(idRecond);
         }
 
-   
+
     }
 
     InitTabActive(idRecond: number) {
@@ -183,12 +182,12 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-        this.reloadList(null, null, null,null,null,null, event);
+        this.reloadList(null, null, null, null, null, null, event);
 
     }
 
-    reloadList(mahst, mact, ngaynhap,ngayhethan,hanmuc,hinhthuc, event?: LazyLoadEvent) {
-        this._hosothauService.getHoSoThausByFilter(mahst, mact, ngaynhap,ngayhethan,hanmuc,hinhthuc, this.primengTableHelper.getSorting(this.dataTable),
+    reloadList(mahst, mact, ngaynhap, ngayhethan, hanmuc, hinhthuc, event?: LazyLoadEvent) {
+        this._hosothauService.getHoSoThausByFilter(mahst, mact, ngaynhap, ngayhethan, hanmuc, hinhthuc, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -198,14 +197,23 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
         });
     }
 
-    ResetFilter(){
-   this.maHoSoThau=''
-    this.hangMucThau=''
-    this.ngayPhat=''
-    this.ngayhetHan=''
-    this.hinhThucThau=''
-    this.duAnXD=''
-    this.reloadPage();
+    ResetFilter() {
+        this.maHoSoThau = "";
+        this.hangMucThau = "";
+        this.ngayPhat = "";
+        this.ngayhetHan = "";
+        this.hinhThucThau = "";
+        this.duAnXD = "";
+        this.idDuAn=null;
+        this.reloadPage();
+    }
+    showSelectCongTrinh(){
+        this.selectCongTrinhN13Modal.show();
+    }
+
+    setThongTin():void{
+        this.duAnXD=this.selectCongTrinhN13Modal.congtrinhForView.maCongTrinh;
+        this.idDuAn=this.selectCongTrinhN13Modal.congtrinhForView.id;
     }
     SaveNew() {
         this.activeTabHoSoThau = true;
@@ -223,9 +231,10 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
             this.hinhThucThau = params['MaHoSoThau'] || '';
             this.hangMucThau = params['MamaKeHoach'] || '';
             this.ngayPhat = params['MaLoaiHoSoThau'] || '';
-            this.ngayhetHan='';
-            this.duAnXD='';
-            this.reloadList(this.maHoSoThau, this.duAnXD, this.ngayPhat, this.ngayhetHan,this.hangMucThau,this.hinhThucThau);
+            this.ngayhetHan = '';
+            this.duAnXD = '';
+            this.idDuAn=null;
+            this.reloadList(this.maHoSoThau, this.idDuAn, this.ngayPhat, this.ngayhetHan, this.hangMucThau, this.hinhThucThau);
         });
     }
 
@@ -235,7 +244,7 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.maHoSoThau, this.duAnXD, this.ngayPhat, this.ngayhetHan,this.hangMucThau,this.hinhThucThau,null);
+        this.reloadList(this.maHoSoThau, this.idDuAn, this.ngayPhat, this.ngayhetHan, this.hangMucThau, this.hinhThucThau, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);
@@ -244,7 +253,7 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
     }
 
     //hàm show view create MenuClient
- 
+
 
     /**
      * Tạo pipe thay vì tạo từng hàm truncate như thế này

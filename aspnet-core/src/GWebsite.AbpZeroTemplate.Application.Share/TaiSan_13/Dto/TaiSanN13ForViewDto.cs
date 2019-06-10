@@ -8,11 +8,12 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.TaiSan_13.Dto
 {
     public class TaiSanN13ForViewDto
     {
+        public int Id { set; get; }
         public string MaTaiSan { set; get; }
         public string MaNhomTaiSan { set; get; }
 
         public string MaLoaiTaiSan { set; get; }
-
+        public int? IdBatDongSan { set; get; }
         public string DiaChi { set; get; }
 
         public string TenTaiSan { set; get; }

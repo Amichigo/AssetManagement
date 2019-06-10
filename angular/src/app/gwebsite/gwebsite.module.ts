@@ -62,6 +62,7 @@ import { SelectHoSoThauN13ModalComponent } from './hopdongN13/select-hosothaun13
 import { EditCongTrinhModalComponent } from './congtrinhN13/edit-congtrinh-modal.component';
 import { EditHoSoThauN13ModalComponent } from './hosothauN13/edit-hosothau13-modal.component';
 import { CreateThanhToanN13Component } from './hopdongN13/create-thanhtoann13-modal.component';
+import { SelectKeHoachXDModalComponent } from './congtrinhN13/select-kehoachxd-modal.component';
 
 
 
@@ -99,6 +100,7 @@ import { CreateThanhToanN13Component } from './hopdongN13/create-thanhtoann13-mo
         CongTrinhComponent, CreateOrEditCongTrinhModalComponent,ViewCongTrinhModalComponent,SelectKeHoachXayDungModalComponent,
         CreateCongTrinhModalComponent,HoSoThauN13Component,CreateHoSoThauN13ModalComponent,SelectCongTrinhN13ModalComponent,CreateDonViThauN13Component,
         HopDongN13Component,CreateHopDongN13ModalComponent,SelectHoSoThauN13ModalComponent,EditCongTrinhModalComponent,EditHoSoThauN13ModalComponent,CreateThanhToanN13Component,
+        SelectKeHoachXDModalComponent
     ],
     providers: [
         DemoModelServiceProxy,

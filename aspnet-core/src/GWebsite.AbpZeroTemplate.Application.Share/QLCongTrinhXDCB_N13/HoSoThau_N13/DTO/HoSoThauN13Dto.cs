@@ -15,7 +15,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.HoSoTha
         public string HangMucThau { set; get; }
         public string NgayNhapHoSoThau { set; get; }
         public string NgayHetHanNopHoSoThau { set; get; }
-
+        public string NgayThiCong { set; get; }
         public string NgayMoThau { set; get; }
 
         public string MaHinhThucThau { set; get; }
@@ -33,6 +33,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.HoSoTha
         public string TenDonViTrungThau { set; get; }
         public int IDHoSoThau { set; get; }
         public int IDCongTrinh { set; get; }
+        public string GiaTrungThau { set; get; }
             
     }
 }

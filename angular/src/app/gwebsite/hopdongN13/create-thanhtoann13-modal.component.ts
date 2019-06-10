@@ -36,12 +36,12 @@ export class CreateThanhToanN13Component extends AppComponentBase {
        
     }
 
-    show(mahst:string,congtrinhId?: number | null | undefined): void {
+    show(idHopDong:number,congtrinhId?: number | null | undefined): void {
         this.saving = false;
         this._ThanhToanAppService.getThanhToanN13ForEdit(congtrinhId).subscribe(result => {
             this.ThanhToanIp = result;
             if(this.isSaveToDatabase==true){
-                this.ThanhToanIp.maHopDong=mahst;
+                this.ThanhToanIp.idHopDong=idHopDong;
             }
             this.modal.show();
 

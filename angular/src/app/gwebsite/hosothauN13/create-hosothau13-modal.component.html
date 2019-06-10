@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body">
             <div class="form-control">
-                <h5  style="color: royalblue">Thông tin Hồ sơ thầu</h5>
+                <h5 style="color: royalblue">Thông tin Hồ sơ thầu</h5>
                 <div class="row">
                     <div class="col-xl-6">
                         <div class="form-group">
@@ -60,10 +60,15 @@
                     </div>
                     <div class="col-xl-6">
                         <div class="form-group">
-                            <label>Hình thức thầu *</label>
-                            <input #dtInput="ngModel" class="form-control" type="text" name="maHinhThucThau"
-                                [(ngModel)]="hosothau.maHinhThucThau" required maxlength="64">
-                            <validation-messages [formCtrl]="dtInput"></validation-messages>
+                                <label>Hình thức thầu *</label>
+                            <select #trangthaiduyetCombobox name="hinhThucThau" class="form-control"
+                                [(ngModel)]="hosothau.maHinhThucThau" [attr.data-live-search]="true"
+                                jq-plugin="selectpicker" required>
+                                <option selected disabled value="">---Chọn Hình Thức Thầu---
+                                </option>
+                                <option [value]="">Đấu thầu</option>
+                                <option [value]="">Chỉ định</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -76,16 +81,19 @@
                             <validation-messages [formCtrl]="kpddInput"></validation-messages>
                         </div>
                     </div>
-                   
+
+                    <div class="col-xl-4">
+                        <div class="form-group">
+                            <label>Ngày hết hạn bảo lãnh *</label>
+                            <input #mtctInput="ngModel" class="form-control" type="date" name="ngayHetHanBaoLanh"
+                                [(ngModel)]="hosothau.ngayHetHanBaoLanh" required maxlength="64">
+                            <validation-messages [formCtrl]="mtctInput"></validation-messages>
+
+                        </div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Ngày hết hạn bảo lãnh *</label>
-                    <input #mtctInput="ngModel" class="form-control" type="date" name="ngayHetHanBaoLanh"
-                        [(ngModel)]="hosothau.ngayHetHanBaoLanh" required maxlength="64">
-                    <validation-messages [formCtrl]="mtctInput"></validation-messages>
 
-                </div>
                 <!-- <div class="form-group">
                         <label for="checkbox-inline">
                         </label>
@@ -93,7 +101,7 @@
                     </div> -->
             </div>
             <div class="form-control">
-                <h5  style="color: royalblue">Thông tin về công trình</h5>
+                <h5 style="color: royalblue">Thông tin về công trình</h5>
                 <div class="form-group">
                     <label>{{l("Mã công trình")}} *</label>
                     <div class="form-group m-form__group row">
@@ -160,8 +168,17 @@
                         <div class="col-lg-2 col-md-3 col-sm-4">
                             <div class="form-group">
                                 <input #kehoachInput="ngModel" class="form-control" type="text" name="maKeHoach"
-                                    [(ngModel)]="congTrinhForView.maKeHoach" disabled required maxlength="64">
+                                    [(ngModel)]="keHoachForView.maKeHoach" disabled required maxlength="64">
                                 <validation-messages [formCtrl]="kehoachInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <label>{{l("Tên kế hoạch")}} *</label>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #tenKeHoach="ngModel" class="form-control" type="text" name="tenKeHoach"
+                                    [(ngModel)]="keHoachForView.tenKeHoach" disabled required maxlength="64">
+                                <validation-messages [formCtrl]="tenKeHoach">
                                 </validation-messages>
                             </div>
                         </div>

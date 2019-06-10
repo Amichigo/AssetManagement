@@ -10,7 +10,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.HoSoTha
 {
     public interface IHoSoThauN13AppService
     {
-        void CreateOrEditHoSoThau(HoSoThauN13Input taiSanInput);
+        int CreateOrEditHoSoThau(HoSoThauN13Input taiSanInput);
 
         HoSoThauN13Input GetHoSoThauForEdit(int id);
         void DeleteHoSoThau(int id);

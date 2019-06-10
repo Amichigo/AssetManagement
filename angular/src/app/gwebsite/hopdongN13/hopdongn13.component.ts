@@ -66,8 +66,7 @@ export class HopDongN13Component extends AppComponentBase implements AfterViewIn
      */
 
     InitTabHopDong(): void {
-
-        this.reloadList(null, null, null);
+        this.reloadPage();
         this.activeTabCreate = false;
         this.activeTabUpdate = false;
         this.activeTabView = false;

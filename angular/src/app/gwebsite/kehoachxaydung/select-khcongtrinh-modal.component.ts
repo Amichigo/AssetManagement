@@ -29,14 +29,14 @@ export class SelectKHCongTrinhModalComponent extends AppComponentBase {
     showCongTrinh:boolean=false;
     congtrinhName: string;
     macongtrinh:string;
-    makehoach:string;
+    idKeHoach:number;
     public selectedMaCongTrinh:number;
    
     //@Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
      @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
 
-    show(maKH:string): void {
+    show(maKH:number): void {
         // this._congtrinhService.getCustomerForView(customerId).subscribe(result => {
         //     this.customer = result;
         //     this.modal.show();
@@ -46,8 +46,8 @@ export class SelectKHCongTrinhModalComponent extends AppComponentBase {
         this._activatedRoute.params.subscribe((params: Params) => {
             this.congtrinhName = params['TenCongTrinh'] || '';
             this.macongtrinh = params['MaCongTrinh'] || '';
-            this.makehoach=maKH;
-            this.reloadList(this.macongtrinh,this.makehoach,this.congtrinhName, null);
+            this.idKeHoach=maKH;
+            this.reloadList(this.macongtrinh,this.idKeHoach,this.congtrinhName, null);
 
         });
           
@@ -88,9 +88,9 @@ export class SelectKHCongTrinhModalComponent extends AppComponentBase {
     }
 
 
-    reloadList(maCongTrinh,maKeHoach,congtrinhName, event?: LazyLoadEvent) {
+    reloadList(maCongTrinh,idKeHoach,congtrinhName, event?: LazyLoadEvent) {
        
-        this._congtrinhService.getDsCongTrinhKhongThuocDuAnByFilter(maCongTrinh ,maKeHoach ,congtrinhName, this.primengTableHelper.getSorting(this.dataTable),
+        this._congtrinhService.getDsCongTrinhKhongThuocDuAnByFilter(maCongTrinh ,idKeHoach ,congtrinhName, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -103,7 +103,7 @@ export class SelectKHCongTrinhModalComponent extends AppComponentBase {
     applyFilters(): void {
        
         //truyền params lên url thông qua router
-        this.reloadList(this.macongtrinh,this.makehoach,this.congtrinhName, null);
+        this.reloadList(this.macongtrinh,this.idKeHoach,this.congtrinhName, null);
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);
             return;

@@ -43,7 +43,11 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         {
             donViThauAppService.DeleteDonViThau(id);
         }
-
+        [HttpGet]
+        public DonViThauN13ForViewDto GetDonViThauByIdGoiThauForView(int id)
+        {
+            return donViThauAppService.GetDonViThauByIdGoiThauForView(id);
+        }
         [HttpGet]
         public DonViThauN13ForViewDto GetDonViThauForView(int id)
         {

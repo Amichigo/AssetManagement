@@ -10,6 +10,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.DonViTh
     public class DonViThauN13Filter : PagedAndSortedInputDto
     {
         public string MaDonViThau { set; get; }
-        public string MaGoiThau { set; get; }
+        public int? IdHoSoThau { set; get; }
     }
 }

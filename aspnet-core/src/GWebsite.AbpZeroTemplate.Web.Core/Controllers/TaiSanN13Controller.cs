@@ -22,9 +22,9 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public PagedResultDto<TaiSanDto> GetTaiSansByFilter(TaiSanN13Filter taiSanFilter)
+        public PagedResultDto<TaiSanDto> GetTaiSansByFilter(TaiSanN13Filter taiSanFilter,int type=-1)
         {
-            return taiSanAppService.GetTaiSans(taiSanFilter);
+            return taiSanAppService.GetTaiSans(taiSanFilter,type);
         }
 
         [HttpGet]
@@ -49,6 +49,11 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         public TaiSanN13ForViewDto GetTaiSanForView(int id)
         {
             return taiSanAppService.GetTaiSanForView(id);
+        }
+        [HttpGet]
+        public TaiSanN13ForViewDto GetTaiSanForViewByIdBDS(int id)
+        {
+            return taiSanAppService.GetTaiSanForViewByIdBDS(id);
         }
     }
 

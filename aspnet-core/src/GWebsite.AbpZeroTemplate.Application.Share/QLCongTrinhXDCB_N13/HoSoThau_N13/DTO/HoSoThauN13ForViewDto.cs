@@ -8,13 +8,14 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.HoSoTha
 {
     public class HoSoThauN13ForViewDto
     {
+        public int Id { set; get; }
         public string MaHoSoThau { set; get; }
         public string MaCongTrinh { set; get; }
         public string TenHoSoThau { set; get; }
         public string HangMucThau { set; get; }
         public string NgayNhapHoSoThau { set; get; }
         public string NgayHetHanNopHoSoThau { set; get; }
-
+        public string NgayThiCong { set; get; }
         public string NgayMoThau { set; get; }
 
         public string MaHinhThucThau { set; get; }

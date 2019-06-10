@@ -5,6 +5,7 @@ import { KeHoachXayDungServiceProxy, KeHoachXayDungInput, CongTrinhServiceProxy,
 import { Table } from 'primeng/table';
 import { Paginator, LazyLoadEvent } from 'primeng/primeng';
 import { CreateOrEditCongTrinhModalComponent } from '../congtrinhN13/create-or-edit-congtrinh-modal.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'createOrEditKeHoachXayDungModal',
@@ -35,6 +36,7 @@ export class CreateOrEditKeHoachXayDungModalComponent extends AppComponentBase {
         injector: Injector,
         private _kehoachxaydungService: KeHoachXayDungServiceProxy,
         private _congtrinhService: CongTrinhServiceProxy,
+        private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
     }
@@ -84,9 +86,11 @@ export class CreateOrEditKeHoachXayDungModalComponent extends AppComponentBase {
         let input = this.kehoachxaydung;
         this.saving = true;
         this._kehoachxaydungService.createOrEditKeHoachXayDung(input).subscribe(result => {
+            let newID=result;
+            console.log("new Id"+newID);
             for (let item of this.dsCongtrinh) {
                 let inputCT = item;
-                inputCT.maKeHoach=this.kehoachxaydung.maKeHoach;
+                inputCT.idKeHoach=newID;
                 this._congtrinhService.createOrEditCongTrinh(inputCT).subscribe(result => {
                     this.notify.info(this.l('SavedCongTrinh'));
                 })
@@ -101,7 +105,7 @@ export class CreateOrEditKeHoachXayDungModalComponent extends AppComponentBase {
 
     saveCongTrinh(congtrinh: CongTrinhInput) {
         let input = congtrinh;
-        input.maKeHoach = this.kehoachxaydung.maKeHoach;
+        input.idKeHoach = this.kehoachxaydung.id;
         this._congtrinhService.createOrEditCongTrinh(input).subscribe(result => {
             this.notify.info(this.l('SavedCongTrinh'));
         })

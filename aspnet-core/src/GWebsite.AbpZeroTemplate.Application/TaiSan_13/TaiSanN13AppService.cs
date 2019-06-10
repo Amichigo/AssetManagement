@@ -72,9 +72,27 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Asset_13
             return ObjectMapper.Map<TaiSanN13ForViewDto>(taiSanEntity);
         }
 
-        public PagedResultDto<TaiSanDto> GetTaiSans(TaiSanN13Filter input)
+        public TaiSanN13ForViewDto GetTaiSanForViewByIdBDS(int id)
         {
-            var query = taiSanRepository.GetAll().Where(x => !x.IsDelete);    
+            var taiSanEntity = taiSanRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.IdBatDongSan == id);
+            if (taiSanEntity == null)
+            {
+                return null;
+            }
+            return ObjectMapper.Map<TaiSanN13ForViewDto>(taiSanEntity);
+        }
+        public PagedResultDto<TaiSanDto> GetTaiSans(TaiSanN13Filter input,int type=-1)
+        {
+            var query = taiSanRepository.GetAll().Where(x => !x.IsDelete);
+            if (type == 0)
+            {
+                query = query.Where(x => !x.IsDelete).Where(y => y.IdBatDongSan == null);
+            }
+            else if (type == 1)
+            {
+                query = query.Where(x => !x.IsDelete).Where(y => y.IdBatDongSan != null);
+            }
+    
             // filter by value
             if (input.MaTaiSan != null)
             {

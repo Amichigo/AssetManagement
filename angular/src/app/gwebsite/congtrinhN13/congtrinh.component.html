@@ -27,7 +27,7 @@
                             Tab Congtrinh
                             Tab Congtrinh
                              -->
-                    <tab customClass="m-tabs__item"  (select)="InitTabCongTrinh()" autofocus [active]='activeTabSuaChua'>
+                    <tab customClass="m-tabs__item" (select)="InitTabCongTrinh()" autofocus [active]='activeTabSuaChua'>
                         <ng-template tabHeading>
                             <button class="btn btn-default" type="submit" autofocus>
                                 {{l('Công trình')}}
@@ -37,12 +37,12 @@
                             <div class="m-form m-form--label-align-right" id="TextsFilterForm">
                                 <div class="row align-items-center m--margin-bottom-10">
                                     <div class="form-control">
-                                        <label  style="color: royalblue" >{{l("Tìm kiếm công trình")}} *</label>
+                                        <label style="color: royalblue">{{l("Tìm kiếm công trình")}} *</label>
                                         <div class="row m--margin-bottom-10">
                                             <div class="col-xl-6">
                                                 <label>{{l("Mã Công trình")}} *</label>
                                                 <input [(ngModel)]="macongtrinh" name="macongtrinh" autoFocus
-                                                    class="form-control" placeholder="Mã mã công trình" type="text">
+                                                    class="form-control" placeholder="Mã  công trình" type="text">
                                             </div>
                                             <div class="col-xl-6">
                                                 <label>{{l("Tên Công trình")}} *</label>
@@ -54,9 +54,11 @@
                                             <div class="col-xl-6">
                                                 <label>{{l("Mã Kế hoạch")}} *</label>
                                                 <input [(ngModel)]="maKeHoach" name="mact" autoFocus
-                                                    class="form-control" placeholder="Mã kế hoạch" type="text">
+                                                    class="form-control" placeholder="Mã kế hoạch" disabled type="text">
                                             </div>
-                                        
+                                            <div class="col-xl-6">
+                                                <button class="btn btn-primary" (click)="showSelectKH()">Chọn</button>
+                                            </div>
                                         </div>
                                         <div class="input-group">
 
@@ -64,6 +66,14 @@
                                                 <button (click)="applyFilters()" class="btn btn-primary"
                                                     type="submit"><i class="icon-refresh"></i>
                                                     {{l("Refresh")}}</button>
+                                            </span>
+                                        </div>
+                                        <div class="input-group">
+
+                                            <span class="input-group-btn">
+                                                <button (click)="resetFillter()" class="btn btn-primary"
+                                                    type="submit"><i class="icon-refresh"></i>
+                                                    {{l("Reset")}}</button>
                                             </span>
                                         </div>
 
@@ -191,9 +201,9 @@
                         Tab Create
                         Tab Create
                      -->
-                    <tab customClass="m-tabs__item"(select)="InitTabCreate()" [active]='activeTabCreate'>
+                    <tab customClass="m-tabs__item" (select)="InitTabCreate()" [active]='activeTabCreate'>
                         <ng-template tabHeading>
-                            <button class="btn btn-default" type="submit" >
+                            <button class="btn btn-default" type="submit">
                                 <i class="fa fa-plus"></i> {{l('Tạo mới')}}
                             </button>
                         </ng-template>
@@ -203,13 +213,13 @@
                         Tab Update
                         Tab Update
                      -->
-                    <tab customClass="m-tabs__item"  [disabled]="GetDisableTabUpdate()" [active]='activeTabUpdate'>
+                    <tab customClass="m-tabs__item" [disabled]="GetDisableTabUpdate()" [active]='activeTabUpdate'>
                         <ng-template tabHeading>
                             <button class="btn btn-default" type="submit" [disabled]="GetDisableTabUpdate()">
                                 <i class="fa fa-edit"></i> {{l('Cập nhật')}}
                             </button>
                         </ng-template>
-                        <editCongTrinhModal #editCongTrinhModal (modalSave)="SaveNew()" ></editCongTrinhModal>
+                        <editCongTrinhModal #editCongTrinhModal (modalSave)="SaveNew()"></editCongTrinhModal>
                     </tab>
                     <!-- 
                         Tab View
@@ -240,3 +250,4 @@
         </div>
     </div>
 </div>
+<selectKeHoachXDModal #selectKeHoachXDModal (modalSave)="setTimKiem()"></selectKeHoachXDModal>

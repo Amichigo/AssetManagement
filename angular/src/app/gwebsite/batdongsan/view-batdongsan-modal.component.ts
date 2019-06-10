@@ -1,10 +1,11 @@
-import { BatDongSanForViewDto, SuaChuaBatDongSanServiceProxy } from './../../../shared/service-proxies/service-proxies';
+import { BatDongSanForViewDto, SuaChuaBatDongSanServiceProxy, TaiSanN13ForViewDto } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild } from "@angular/core";
 import { BatDongSanServiceProxy } from "@shared/service-proxies/service-proxies";
 import { ModalDirective } from 'ngx-bootstrap';
 import { Paginator, LazyLoadEvent } from 'primeng/primeng';
 import { Table } from 'primeng/table';
+import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 
 @Component({
     selector: 'viewBatDongSanModal',
@@ -15,6 +16,7 @@ export class ViewBatDongSanModalComponent extends AppComponentBase {
 
     batdongsan : BatDongSanForViewDto = new BatDongSanForViewDto();
     mataisan:string;
+    taisan: TaiSanN13ForViewDto = new TaiSanN13ForViewDto();
     @ViewChild('viewModal') modal: ModalDirective;
     @ViewChild('paginator') paginator: Paginator;
     @ViewChild('dataTable') dataTable: Table;
@@ -22,6 +24,7 @@ export class ViewBatDongSanModalComponent extends AppComponentBase {
         injector: Injector,
         private _batdongsanService: BatDongSanServiceProxy,
         private _suachuabatdongsanService: SuaChuaBatDongSanServiceProxy,
+        private _apiService: WebApiServiceProxy,
     ) {
         super(injector);
     }
@@ -29,8 +32,10 @@ export class ViewBatDongSanModalComponent extends AppComponentBase {
     show(batdongsanId?: number | null | undefined): void {
         this._batdongsanService.getBatDongSanForView(batdongsanId).subscribe(result => {
             this.batdongsan = result;
-            this.mataisan=this.batdongsan.maTaiSan;
-            this.reloadList(this.mataisan,null,null,null);
+            this._apiService.getForEdit('api/TaiSanN13/GetTaiSanForViewByIdBDS', batdongsanId).subscribe(rs => {
+                this.taisan=rs;
+            });
+            this.reloadList(this.taisan.maTaiSan,null,null,null);
             this.modal.show();
         })
     }

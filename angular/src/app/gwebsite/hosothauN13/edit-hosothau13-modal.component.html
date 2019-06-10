@@ -61,9 +61,12 @@
                     <div class="col-xl-6">
                         <div class="form-group">
                             <label>Hình thức thầu *</label>
-                            <input #dtInput="ngModel" class="form-control" type="text" name="maHinhThucThau"
-                                [(ngModel)]="hosothau.maHinhThucThau" required maxlength="64">
-                            <validation-messages [formCtrl]="dtInput"></validation-messages>
+                            <select #trangthaiduyetCombobox name="maHinhThucThau" class="form-control"
+                                [(ngModel)]="hosothau.maHinhThucThau" [attr.data-live-search]="true"
+                                      required>
+                                <option [value]="">Đấu thầu</option>
+                                <option [value]="">Chỉ định</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -147,8 +150,16 @@
                         <div class="col-lg-2 col-md-3 col-sm-4">
                             <div class="form-group">
                                 <input #kehoachInput="ngModel" class="form-control" type="text" name="maKeHoach"
-                                    [(ngModel)]="congTrinhForView.maKeHoach" disabled required maxlength="64">
+                                    [(ngModel)]="keHoachForView.maKeHoach" disabled required maxlength="64">
                                 <validation-messages [formCtrl]="kehoachInput">
+                                </validation-messages>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <input #tenKeHoach="ngModel" class="form-control" type="text" name="tenKeHoach"
+                                    [(ngModel)]="keHoachForView.tenKeHoach" disabled required maxlength="64">
+                                <validation-messages [formCtrl]="tenKeHoach">
                                 </validation-messages>
                             </div>
                         </div>
@@ -160,8 +171,8 @@
                     <div class="form-group m-form__group row">
                         <div class="col-lg-2 col-md-3 col-sm-4">
                             <div class="form-group">
-                                <input #kpddInput="ngModel" class="form-control" type="text" name="kinhPhiDeXuat"
-                                    [(ngModel)]="congTrinhForView.kinhPhiDeXuat" disabled required maxlength="64">
+                                <input #kpddInput="ngModel" class="form-control" type="text" name="kinhPhiDuocDuyet"
+                                    [(ngModel)]="congTrinhForView.kinhPhiDuocDuyet" disabled required maxlength="64">
                                 <validation-messages [formCtrl]="kpddInput">
                                 </validation-messages>
                             </div>
@@ -300,8 +311,7 @@
                                         </button>
                                         <button
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="deleteDonViThau(record.id)"
-                                            title="{{l('Delete')}}">
+                                            (click)="deleteDonViThau(record.id)" title="{{l('Delete')}}">
                                             <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                         </button>
                                     </td>
