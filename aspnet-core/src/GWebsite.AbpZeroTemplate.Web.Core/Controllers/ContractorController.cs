@@ -27,6 +27,12 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
             return ContractorAppService.GetContractorForEdit(id);
         }
 
+        [HttpGet]
+        public ContractorInput GetContractorForEditWithMaHoSoThau(string id)
+        {
+            return ContractorAppService.GetContractorForEditWithMaHoSoThau(id);
+        }
+
         [HttpPost]
         public void CreateOrEditContractor([FromBody] ContractorInput input)
         {

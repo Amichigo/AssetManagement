@@ -1,5 +1,6 @@
 import { ConstructionPlanDetailServiceProxy, DisposalPlanServiceProxy, DisposalPlanDetailServiceProxy} from './../../shared/service-proxies/service-proxies';
 import { LoaiNhaCungCapServiceProxy, NhaCungCapHangHoaServiceProxy, SanPhamServiceProxy, ProductTypeServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { AssetController_9ServiceProxy, PlanServiceProxy, ConstructionServiceProxy, BidManagerServiceProxy, ContractorServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,9 @@ import {
     CategoryComponent, ViewCategoryModalComponent, CreateOrEditCategoryModalComponent,
     CategoryTypeComponent, CreateOrEditTypeModalComponent, ViewCategoryTypeModalComponent,
     DirectorShoppingPlanComponent, ViewDirectorShoppingPlanModalComponent, CreateOrEditDirectorShoppingPlanModalComponent,
+    CreateOrEditPlanModalComponent, PlanComponent, PlanModalComponent, SelectionConstructionInPlanModalComponent, ConstructionComponent, SelectionConstructionModalComponent, 
+    CreateOrEditConstructionModalComponent, ViewBidManagerModalComponent, ConstructionModalComponent, CreateOrEditBidManagerModalComponent, 
+    ViewConstructionModalComponent, BidManagerComponent
 } from './index';
 
 import { CategoryServiceProxy, CategoryTypeServiceProxy,
@@ -275,6 +279,7 @@ import { PieChartSectionComponent } from './asset-investment-efficiency/componen
 import { ChartsModule } from 'ng2-charts';
 import { ExcelService } from './asset-investment-efficiency/utils/excel.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateOrEditContractorModalComponent } from './bid-manager/create-or-edit-contractor-modal.component';
 
 @NgModule({
     imports: [
@@ -434,7 +439,10 @@ import { HttpClientModule } from '@angular/common/http';
         PlannedToSellAssetsDataTableComponent,
         PlannedToPurchaseAssetsDataTableComponent,
         PlannedToMaintainAssetsDataTableComponent,
-        OperatingAssetsDataTableComponent
+        OperatingAssetsDataTableComponent,
+        CreateOrEditPlanModalComponent, PlanComponent, PlanModalComponent, SelectionConstructionInPlanModalComponent,
+        ConstructionComponent, CreateOrEditConstructionModalComponent, ConstructionModalComponent, ViewConstructionModalComponent,
+        SelectionConstructionModalComponent, ViewBidManagerModalComponent, CreateOrEditBidManagerModalComponent, BidManagerComponent, CreateOrEditContractorModalComponent
     ],
     providers: [
         CategoryServiceProxy,
@@ -499,7 +507,15 @@ import { HttpClientModule } from '@angular/common/http';
         ExcelService,
         WebApiServiceProxy,
         AssetActivityServiceProxy,
-        ExcelService
+        ExcelService,
+        RealEstateServiceProxy,
+        AssetController_9ServiceProxy,
+        RealEstateTypeServiceProxy,
+        RealEstateRepairServiceProxy,
+        PlanServiceProxy,
+        ConstructionServiceProxy,
+        BidManagerServiceProxy,
+        ContractorServiceProxy,
     ]
 })
 export class GWebsiteModule {}

@@ -66,6 +66,7 @@ import { NhaCungCapHangHoaComponent } from './NhaCungCapHangHoa/NhaCungCapHangHo
 import { ProductComponent } from './Product/Product.component';
 import { ProductTypeComponent } from './ProductType/ProductType.component';
 import { SoldAssetsComponent } from './asset-investment-efficiency/pages/sold-assets/sold-assets.component';
+import { PlanComponent, ConstructionComponent, BidManagerComponent } from '.';
 
 @NgModule({
     imports: [
@@ -714,7 +715,7 @@ import { SoldAssetsComponent } from './asset-investment-efficiency/pages/sold-as
                     {
                         path: 'asset-investment-efficiency/maintained-assets', component: MaintainedAssetsComponent,
                         data: { permission: 'Pages.Administration.MaintainedAsset'}
-                    }
+                    },
                 ]
             },
             {
@@ -723,7 +724,7 @@ import { SoldAssetsComponent } from './asset-investment-efficiency/pages/sold-as
                     {
                         path: 'asset-investment-efficiency/planned-to-sell-assets', component: PlannedToSellAssetsComponent,
                         data: { permission: 'Pages.Administration.PlannedToSellAsset'}
-                    }
+                    },
                 ]
             },
             {
@@ -732,7 +733,7 @@ import { SoldAssetsComponent } from './asset-investment-efficiency/pages/sold-as
                     {
                         path: 'asset-investment-efficiency/operating-assets', component: OperatingAssetsComponent,
                         data: { permission: 'Pages.Administration.OperatingAsset'}
-                    }
+                    },
                 ]
             },
             {
@@ -751,6 +752,60 @@ import { SoldAssetsComponent } from './asset-investment-efficiency/pages/sold-as
                         path: 'asset-investment-efficiency/planned-to-maintain-assets', component: PlannedToMaintainAssetsComponent,
                         data: { permission: 'Pages.Administration.PlannedToMaintainAsset'}
                     }
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    { 
+                        path: 'real-estate-management', component: RealEstateManagementComponent,
+                        data: { permission: 'Pages.Administration.RealEstate9' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'real-estate-type', component: RealEstateTypeComponent,
+                        data: { permission: 'Pages.Administration.RealEstateType9' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'real-estate-repair', component: RealEstateRepairComponent,
+                        data: { permission: 'Pages.Administration.RealEstateRepair9' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'plan', component: PlanComponent,
+                        data: { permission: 'Pages.Administration.Plan9' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'construction', component: ConstructionComponent,
+                        data: { permission: 'Pages.Administration.Construction9' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'bid-manager', component: BidManagerComponent,
+                        data: { permission: 'Pages.Administration.BidManager9' }
+                    },
                 ]
             }
         ])

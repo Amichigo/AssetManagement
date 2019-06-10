@@ -9,6 +9,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contractors.Dto
     /// </summary>
     public class ContractorInput : Entity<int>
     {
+        public string MaHoSoThau { get; set; }
         public string MaDonViThau { get; set; }
         public string TenDonViThau { get; set; }
         public string NgayNopHS { get; set; }

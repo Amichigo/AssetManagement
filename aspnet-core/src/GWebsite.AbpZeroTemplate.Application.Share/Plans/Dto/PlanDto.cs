@@ -14,7 +14,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Plans.Dto
         public string NgayLapKeHoach { get; set; }
         public string TrangThaiDuyet { get; set; }
         public string NgayHieuLuc { get; set; }
-        public string NamThucHien { get; set; }
+        public int NamThucHien { get; set; }
         public string TongChiPhi { get; set; }
         public string TongChiPhiĐuocDuyet { get; set; }
     }

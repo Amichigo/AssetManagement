@@ -13,6 +13,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contractors
     {
         void CreateOrEditContractor(ContractorInput ContractorInput);
         ContractorInput GetContractorForEdit(int id);
+        ContractorInput GetContractorForEditWithMaHoSoThau(string ma);
         void DeleteContractor(int id);
         PagedResultDto<ContractorDto> GetContractors(ContractorFilter input);
         ContractorForViewDto GetContractorForView(int id);

@@ -15,7 +15,7 @@
                 <div class="col-sm-12">
                     <span>
                         <button *ngIf="isGranted('Pages.Administration.RealEstate9.Create')"
-                                class="btn btn-primary" (click)="createRealEstate()" title="{{l('CreateRealEstate')}}">
+                                class="btn btn-primary" (click)="createRealEstate()" title="{{l('Tạo bất động sản')}}">
                             <i class="fa fa-plus" [attr.aria-label]="l('Create')"></i>
                         </button>
                     </span>        
@@ -28,27 +28,47 @@
                     <form autocomplete="off">
                         <div class="m-form m-form--label-align-right" id="TextsFilterForm">
                             <div class="row align-items-center m--margin-bottom-10">
-                                <div class="col-sm-12">
+
+                                <div class="form-control">
+                                    <label>{{l("Tìm kiếm kế hoạch")}}:</label>
+                                    <div class="row m--margin-bottom-10">
+                                        <div class="col-xl-6">
+                                            <label>{{l("Mã tài sản")}}</label>
+                                            <input [(ngModel)]="MaTaiSan" name="MaTaiSan" autoFocus
+                                                   class="form-control" placeholder=" Nhập Mã tài sản" type="text">
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <label>{{l("Mã bất động sản")}}</label>
+                                            <input [(ngModel)]="MaBatDongSan" name="MaBatDongSan" autoFocus
+                                                   class="form-control" placeholder="Nhập tên kế hoạch" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="row m--margin-bottom-10">
+                                        <div class="col-xl-6">
+                                            <label>{{l("Loại tài sản")}}</label>
+                                            <input [(ngModel)]="MaLoaiBatDongSan" name="MaLoaiBatDongSan" autoFocus
+                                                   class="form-control" placeholder="Nhập loại tài sản" type="text">
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <label>{{l("Tình trạng sử dụng")}}</label>
+                                            <input [(ngModel)]="TinhTrangSuDung" name="TinhTrangSuDung" autoFocus
+                                                   class="form-control" placeholder="Nhập tình trạng sử dụng" type="text">
+                                        </div>
+                                    </div>
                                     <div class="input-group">
-                                        <input [(ngModel)]="MaTaiSan" name="MaTaiSan" autoFocus class="form-control"
-                                               placeholder="Nhập mã tài sản" type="text" size="10">
-                                        <input [(ngModel)]="MaBatDongSan" name="MaBatDongSan" autoFocus class="form-control"
-                                               placeholder="Nhập mã bất động sản" type="text" size="10">
-                                        <input [(ngModel)]="MaLoaiBatDongSan" name="MaLoaiBatDongSan" autoFocus class="form-control"
-                                               placeholder="Nhập loại bất động sản" type="text" size="10">
-                                        <input [(ngModel)]="TinhTrangSuDung" name="TinhTrangSuDung" autoFocus class="form-control"
-                                               placeholder="Nhập tình trạng sử dụng" type="text" size="10">
+
                                         <span class="input-group-btn">
                                             <button (click)="applyFilters()" class="btn btn-primary" type="submit">
                                                 <i class="fa fa-refresh"></i>
                                             </button>
                                         </span>
-
                                     </div>
+
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </form>            
                     <div class="row align-items-center">
                         <!--<Primeng-TurboTable-Start>-->
 
@@ -60,7 +80,7 @@
                                      [responsive]="primengTableHelper.isResponsive">
                                 <ng-template pTemplate="header">
                                     <tr>
-                                        <th pSortableColumn="sTT">
+                                        <th>
                                             STT
                                         </th>
                                         <th pSortableColumn="maTaiSan">
@@ -75,9 +95,9 @@
                                             Nguyên giá tài sản
                                             <p-sortIcon field="nguyenGia"></p-sortIcon>
                                         </th>
-                                        <th pSortableColumn="loaiBatDongSan">
+                                        <th>
                                             Loại bất động sản
-                                            <p-sortIcon field="loaiBatDongSan"></p-sortIcon>
+
                                         </th>
                                         <th pSortableColumn="hienTrang">
                                             Hiện trạng
@@ -87,9 +107,9 @@
                                             Thời hạn sử dụng
                                             <p-sortIcon field="thoiHanSuDung"></p-sortIcon>
                                         </th>
-                                        <th pSortableColumn="trangThaiSuDung">
+                                        <th>
                                             Trạng thái sử dụng
-                                            <p-sortIcon field="trangThaiSuDung"></p-sortIcon>
+
                                         </th>
                                         <th pSortableColumn="trangThaiDuyet">
                                             Trạng thái duyệt

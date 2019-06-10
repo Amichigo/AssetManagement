@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { RealEstateServiceProxy, RealEstateInput_9, AssetServiceProxy, AssetInput_9, ComboboxItemDto, RealEstateDto_9, AssetDto_9,  RealEstateTypeInput_9, RealEstateTypeServiceProxy, RealEstateTypeDto_9, } from '@shared/service-proxies/service-proxies';
+import { RealEstateServiceProxy, RealEstateInput_9, AssetController_9ServiceProxy, AssetInput_9, ComboboxItemDto, RealEstateDto_9, AssetDto_9,  RealEstateTypeInput_9, RealEstateTypeServiceProxy, RealEstateTypeDto_9, } from '@shared/service-proxies/service-proxies';
 import { Router, ActivatedRoute } from '@angular/router';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 import { finalize } from 'rxjs/operators';
@@ -47,7 +47,7 @@ export class CreateOrEditRealEstateModalComponent extends AppComponentBase {
         injector: Injector,
         private _realEstateTypeService: RealEstateTypeServiceProxy,
         private _realEstateService: RealEstateServiceProxy,
-        private _assetService: AssetServiceProxy,
+        private _assetService: AssetController_9ServiceProxy,
 
         private _router: Router,
         private _activatedRoute: ActivatedRoute,
