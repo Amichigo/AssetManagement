@@ -54,7 +54,10 @@ export class MaintainedAssetsDataTableComponent extends Component implements OnC
 
       if (timePeriod && timePeriod.currentValue !== timePeriod.previousValue) {
          this.onResetFilters();
+         this.assetTypes = [];
       }
+
+      console.log('FIRST: ', this.assetTypes);
    }
 
    loadTableData() {
@@ -120,6 +123,8 @@ export class MaintainedAssetsDataTableComponent extends Component implements OnC
             }
          }
       });
+
+      console.log('IN: ', this.assetTypes);
 
       this.assetTypes = assetTypes;
    }
