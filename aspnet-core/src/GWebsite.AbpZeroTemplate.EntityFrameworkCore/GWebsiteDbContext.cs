@@ -2,6 +2,7 @@
 using Abp.Authorization.Users;
 using Abp.MultiTenancy;
 using Abp.Zero.EntityFrameworkCore;
+using GWebsite.AbpZeroTemplate.Core;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using GWebsite.AbpZeroTemplate.Core.Models.KeHoachXayDung_N13;
 using GWebsite.AbpZeroTemplate.Core.Models.QuanLyCongTrinh_N13;
@@ -92,7 +93,6 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
 
         public virtual DbSet<FixedAsset> FixedAssets { get; set; }
         public virtual DbSet<Asset_05> Assets_05 { get; set; }
-       // public virtual DbSet<AssetDetail_05> AssetDetails_05 { get; set; }
         public virtual DbSet<AssetType_05> AssetTypes_05 { get; set; }
         public virtual DbSet<AssetGroup_05> AssetGroups_05 { get; set; }
         //public virtual DbSet<Depreciation_05> Depreciations_05 { get; set; }
@@ -129,6 +129,16 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<PlannedToMaintainAsset> PlannedToMaintainAssets { get; set; }
         public virtual DbSet<OperatingAsset> OperatingAssets { get; set; }
 
+        public virtual DbSet<Warranty_05> Warrantys_05 { get; set; }
+        public virtual DbSet<PurchaseOder_05> PurchaseOders_05 { get; set; }
+        public virtual DbSet<ExportingUsedAsset> ExportingUsedAsset { get; set; }
+        public virtual DbSet<TransferringAsset> TransferringAsset { get; set; }
+        public virtual DbSet<AssetUnitFather_05> AssetUnitFather_05 { get; set; }
+        public virtual DbSet<AssetRegion_05> AssetRegion_05 { get; set; }
+        public virtual DbSet<AssetUnit_05> AssetUnit_05 { get; set; }
+        public virtual DbSet<AssetUser_05> AssetUser_05 { get; set; }
+        public virtual DbSet<Liquidation_05> Liquidation_05 { get; set; }
+        public virtual DbSet<UsingProcess_05> UsingProcess_05 { get; set; }
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>

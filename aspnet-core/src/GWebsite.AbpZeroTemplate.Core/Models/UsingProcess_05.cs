@@ -2,13 +2,15 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
-using GWebsite.AbpZeroTemplate.Core.Models.Base;
 
 namespace GWebsite.AbpZeroTemplate.Core.Models
 {
-    public class UsingProcess_05: Entity<int>
+    public class UsingProcess_05: FullAuditModel
     {
-        public int AssetDetailId { get; set; }
-        public UsingProcessDetail_05 UsingProcessDetail_05 { get; set; }
+        public string AssetId { get; set; }
+        public DateTime UseDate { get; set; }
+        public string Unit { get; set; }
+        public string User { get; set; }
+        public string Content { get; set; }
     }
 }
