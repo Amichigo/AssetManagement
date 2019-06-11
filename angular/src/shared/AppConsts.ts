@@ -17,7 +17,7 @@ export class AppConsts {
     };
 
     static readonly localization = {
-        defaultLocalizationSourceName: 'AbpZeroTemplate'
+        defaultLocalizationSourceName: 'Quản Lý Tài Sản'
     };
 
     static readonly authorization = {
