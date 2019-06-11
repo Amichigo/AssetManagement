@@ -38,7 +38,6 @@ import { MatSelectModule, MatSlideToggleModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { FileSelectDirective } from 'ng2-file-upload';
 
-
 @NgModule({
     declarations: [
         AppComponent,

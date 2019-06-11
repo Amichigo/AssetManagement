@@ -1,14 +1,11 @@
-import { PermissionCheckerService } from '@abp/auth/permission-checker.service';
-import { Injectable } from '@angular/core';
-import { AppMenu } from './app-menu';
-import { AppMenuItem } from './app-menu-item';
+import { PermissionCheckerService } from "@abp/auth/permission-checker.service";
+import { Injectable } from "@angular/core";
+import { AppMenu } from "./app-menu";
+import { AppMenuItem } from "./app-menu-item";
 
 @Injectable()
 export class AppNavigationService {
-
-    constructor(private _permissionService: PermissionCheckerService) {
-
-    }
+    constructor(private _permissionService: PermissionCheckerService) {}
 
     getMenu(): AppMenu {
         return new AppMenu('MainMenu', 'MainMenu', [
@@ -35,9 +32,10 @@ export class AppNavigationService {
                 new AppMenuItem('Phiếu gọi hàng', 'Pages.Administration.GoodsInvoice', 'flaticon-menu-1', '/app/gwebsite/phieugoihang'),
             ]),
             new AppMenuItem('Nhóm 5 - Quản lý tài sản cố định', '', 'flaticon-interface-8', '', [
-                new AppMenuItem('FixedAsset', 'Pages.Administration.FixedAsset', 'flaticon-menu-1', '/app/gwebsite/fixed-asset'),
+                new AppMenuItem('TransferringAsset', 'Pages.Administration.TransferringAsset', 'flaticon-line-graph', '/app/gwebsite/transferring-asset'),
                 new AppMenuItem('AssetGroup', 'Pages.Administration.AssetGroup_05', 'flaticon-menu-1', '/app/gwebsite/asset-group'),
                 new AppMenuItem('Asset', 'Pages.Administration.Asset_05', 'flaticon-menu-1', '/app/gwebsite/asset'),
+                new AppMenuItem('ExportingUsedAsset', 'Pages.Administration.ExportingUsedAsset', 'flaticon-menu-1', '/app/gwebsite/exporting-used-asset'),
             ]),
             new AppMenuItem('Nhóm 6 - Administration', '', 'flaticon-interface-8', '', [
                 new AppMenuItem('Quản lý hiệu quả đầu tư TSCĐ', '', 'flaticon-menu-1', '', [
@@ -58,10 +56,41 @@ export class AppNavigationService {
                     ])
                 ]),
             ]),
+            new AppMenuItem('Nhóm 8 - Vehicle Manager', '', 'flaticon-interface-8', '', [
+                new AppMenuItem('Asset', 'Pages.QuanLyXe.Asset', 'flaticon-menu-1', '/app/gwebsite/asset'),
+                new AppMenuItem('Vehicle', 'Pages.Administration.Vehicle', 'flaticon-menu-1', '/app/gwebsite/vehicle'),
+                new AppMenuItem('TypeVehicle', 'Pages.Administration.TypeVehicle', 'flaticon-menu-1', '/app/gwebsite/typevehicle'),
+                new AppMenuItem('BrandVehicle', 'Pages.Administration.BrandVehicle', 'flaticon-menu-1', '/app/gwebsite/brandvehicle'),
+                new AppMenuItem('ModelVehicle', 'Pages.Administration.ModelVehicle', 'flaticon-menu-1', '/app/gwebsite/modelvehicle'),
+                new AppMenuItem('OperateVehicle', 'Pages.Administration.OperateVehicle', 'flaticon-menu-1', '/app/gwebsite/operatevehicle'),
+                new AppMenuItem('RoadFeeVehicle', 'Pages.Administration.RoadFeeVehicle', 'flaticon-menu-1', '/app/gwebsite/roadfeevehicle'),
+                new AppMenuItem('Insurrance Manager', '', 'flaticon-interface-8', '', [
+                    new AppMenuItem('InsurranceVehicle', 'Pages.Administration.Insurrance', 'flaticon-menu-1', '/app/gwebsite/insurrance'),
+                    new AppMenuItem('InsurranceTypeVehicle', 'Pages.Administration.InsurranceType', 'flaticon-menu-1', '/app/gwebsite/insurrancetype')
+                ]),
+            ]),
             new AppMenuItem('Nhóm 9 - Quản lý bất động sản', '', 'flaticon-interface-8', '', [
-                new AppMenuItem('RealEstate9', 'Pages.Administration.RealEstate9', 'flaticon-menu-1', '/app/gwebsite/real-estate-management'),
-                new AppMenuItem('RealEstateType', 'Pages.Administration.RealEstateType9', 'flaticon-menu-1', '/app/gwebsite/real-estate-type'),
-                new AppMenuItem('RealEstateRepair', 'Pages.Administration.RealEstateRepair9', 'flaticon-menu-1', '/app/gwebsite/real-estate-repair')
+                new AppMenuItem('RealEstateManagement', '', 'flaticon-interface-8', '', [
+                    new AppMenuItem('RealEstate', 'Pages.Administration.RealEstate9', 'flaticon-menu-1', '/app/gwebsite/real-estate-management'),
+                    new AppMenuItem('RealEstateType', 'Pages.Administration.RealEstateType9', 'flaticon-menu-1', '/app/gwebsite/real-estate-type'),
+                    new AppMenuItem('RealEstateRepair', 'Pages.Administration.RealEstateRepair9', 'flaticon-menu-1', '/app/gwebsite/real-estate-repair')
+                ]),
+                new AppMenuItem('ConstructionManagement', '', 'flaticon-interface-8', '', [
+                    new AppMenuItem('PlanManagement', 'Pages.Administration.Plan9', 'flaticon-menu-1', '/app/gwebsite/plan'),
+                    new AppMenuItem('ConstructionManager', 'Pages.Administration.Construction9', 'flaticon-menu-1', '/app/gwebsite/construction')
+                ]),
+                new AppMenuItem('BidManager', 'Pages.Administration.BidManager9', 'flaticon-menu-1', '/app/gwebsite/bid-manager')
+            ]),
+            new AppMenuItem('Nhóm 10 - Quản Lý Nhà Cung Cấp Hàng Hóa', '', 'flaticon-interface-8', '', [
+                new AppMenuItem('Loại Nhà Cung Cấp', 'Pages.Administration.LoaiNhaCungCap', 'flaticon-menu-1', '/app/gwebsite/LoaiNhaCungCap'),
+                new AppMenuItem('Nhà Cung Cấp Hàng Hóa', 'Pages.Administration.NhaCungCapHangHoa', 'flaticon-menu-1', '/app/gwebsite/NhaCungCapHangHoa'),
+                new AppMenuItem('Loại Sản Phẩm', 'Pages.Administration.ProductType', 'flaticon-menu-1', '/app/gwebsite/ProductType'),
+                new AppMenuItem('Sản Phẩm', 'Pages.Administration.Product', 'flaticon-menu-1', '/app/gwebsite/Product')
+            ]),
+            new AppMenuItem('Nhóm 11 - Quản Lý Tài Khoản Kế Toán', '', 'flaticon-interface-8', '', [
+                new AppMenuItem('Asset11', 'Pages.Administration.Asset11', 'flaticon-menu-1', '/app/gwebsite/asset11'),
+                new AppMenuItem('Debit11', 'Pages.Administration.Debit11', 'flaticon-menu-1', '/app/gwebsite/debit11'),
+                 new AppMenuItem('Credit11', 'Pages.Administration.Credit11', 'flaticon-menu-1', '/app/gwebsite/credit11')
             ]),
             new AppMenuItem('Nhóm 13 - Quản lý bất động sản', '', 'flaticon-interface-8', '', [
                 new AppMenuItem('Quản Lý Bất Động Sản N13', '', 'flaticon-interface-8', '', [
@@ -85,7 +114,7 @@ export class AppNavigationService {
                 new AppMenuItem('Computer', 'Pages.Administration.Computer', 'flaticon-menu-1', '/app/gwebsite/computer'),
                 new AppMenuItem('Software', 'Pages.Administration.Software', 'flaticon-menu-1', '/app/gwebsite/software')
             ]),
-            
+
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),
                 new AppMenuItem('Roles', 'Pages.Administration.Roles', 'flaticon-suitcase', '/app/admin/roles'),
@@ -98,7 +127,12 @@ export class AppNavigationService {
                 new AppMenuItem('Settings', 'Pages.Administration.Host.Settings', 'flaticon-settings', '/app/admin/hostSettings'),
                 new AppMenuItem('Settings', 'Pages.Administration.Tenant.Settings', 'flaticon-settings', '/app/admin/tenantSettings')
             ]),
-            new AppMenuItem('DemoUiComponents', 'Pages.DemoUiComponents', 'flaticon-shapes', '/app/admin/demo-ui-components')
+            new AppMenuItem(
+                "DemoUiComponents",
+                "Pages.DemoUiComponents",
+                "flaticon-shapes",
+                "/app/admin/demo-ui-components"
+            )
         ]);
     }
 
@@ -106,7 +140,10 @@ export class AppNavigationService {
         for (let i = 0; i < menuItem.items.length; i++) {
             let subMenuItem = menuItem.items[i];
 
-            if (subMenuItem.permissionName && this._permissionService.isGranted(subMenuItem.permissionName)) {
+            if (
+                subMenuItem.permissionName &&
+                this._permissionService.isGranted(subMenuItem.permissionName)
+            ) {
                 return true;
             }
 

@@ -1,5 +1,5 @@
-<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createOrEditModal"
-    aria-hidden="true" [config]="{backdrop: 'static'}">
+<div bsModal #createOrEditModal="bs-modal" class="modal fade category-modal" tabindex="-1" role="dialog" aria-labelledby="createOrEditModal"
+    aria-hidden="true" [config]="{backdrop: false}">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form *ngIf="active" #editForm="ngForm" novalidate (ngSubmit)="save()">

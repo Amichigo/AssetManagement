@@ -19,5 +19,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts
         ContractForViewDto GetContractForView(int id);
         Task<BidOutput> GetBidComboboxForEditAsync(NullableIdDto input);
         Task<SupplierOutput> GetSupplierComboboxForEditAsync(NullableIdDto input);
+        Task<ContractOutput> GetContractComboboxForEditAsync(NullableIdDto input);
     }
 }

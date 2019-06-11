@@ -25,7 +25,7 @@
                         <div class="row align-items-center m--margin-bottom-10">
                             <div class="col-sm-12">
                                 <div class="input-group">
-                                    <input [(ngModel)]="projectName" name="duanName" autoFocus class="form-control"
+                                    <input [(ngModel)]="duanName" name="duanName" autoFocus class="form-control"
                                            placeholder="Nhập tên dự án" type="text">
                                     <span class="input-group-btn">
                                         <button (click)="applyFilters()" class="btn btn-primary" type="submit">
@@ -46,16 +46,16 @@
                                  [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
-                                    <th pSortableColumn="name">
+                                    <th pSortableColumn="projectCode">
                                         Mã dự án
-                                        <p-sortIcon field="name"></p-sortIcon>
+                                        <p-sortIcon field="projectCode"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="address">
+                                    <th pSortableColumn="projectName">
                                         Tên dự án
                                     </th>
-                                    <th pSortableColumn="info">
+                                    <th pSortableColumn="projectDayCreate">
                                         Ngày tạo dự án
-                                        <p-sortIcon field="info"></p-sortIcon>
+                                        <p-sortIcon field="projectDayCreate"></p-sortIcon>
                                     </th>
                                     <th>{{l('Edit')}}</th>
                                 </tr>
@@ -72,7 +72,7 @@
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Ngày tạo dự án</span>
-                                        <span title="{{record.projectDayCreate}}">{{truncateString(record.projectDayCreate)}}</span>
+                                        <span title="{{record.projectDayCreate}}">{{truncateString(record.projectDayCreate) | date: 'dd/MM/yyyy'}}</span>
                                     </td>
                                     <td>
                                         <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"

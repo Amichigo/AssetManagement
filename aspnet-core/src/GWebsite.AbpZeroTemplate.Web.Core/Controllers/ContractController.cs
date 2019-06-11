@@ -48,6 +48,12 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
             return await contractAppService.GetSupplierComboboxForEditAsync(new NullableIdDto() { Id = id });
         }
 
+        [HttpGet]
+        public async Task<ContractOutput> GetContractComboboxForEditAsync(int id)
+        {
+            return await contractAppService.GetContractComboboxForEditAsync(new NullableIdDto() { Id = id });
+        }
+
         [HttpPost]
         public void CreateOrEditContract([FromBody] ContractInput input)
         {

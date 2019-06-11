@@ -5,6 +5,8 @@ import { BidServiceProxy, BidInput, BidDto, ComboboxItemDto, ProjectDto, Project
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
 
 @Component({
     selector: 'createOrEditHoSoThauModal',
@@ -46,15 +48,23 @@ export class CreateOrEditHoSoThauModalComponent extends AppComponentBase {
     donViThau: any;
     listDonViThau = [];
     donViTrungThau: any;
-
     
     constructor(
         injector: Injector,
         private _hosothauService: BidServiceProxy,
         private _duanService: ProjectServiceProxy,
         private _nhacungcapService: SupplierServiceProxy,
+        private router: ActivatedRoute,
+        private route: Router
+
     ) {
         super(injector);
+        if (this.router.snapshot.queryParamMap.get('id')) {
+            this._hosothauService.getBidForEdit(parseInt(this.router.snapshot.queryParamMap.get('id'))).subscribe(result => {
+                this.hosothau = result;
+            })
+        }
+        
     }
 
     show(hosothauId?: number | null | undefined): void {
@@ -62,7 +72,7 @@ export class CreateOrEditHoSoThauModalComponent extends AppComponentBase {
 
         this._hosothauService.getBidForEdit(hosothauId).subscribe(result => {
             this.hosothau = result;
-            this.modal.show();
+            //this.modal.show();
 
         })
 
@@ -85,7 +95,10 @@ export class CreateOrEditHoSoThauModalComponent extends AppComponentBase {
         this.saving = true;
         this._hosothauService.createOrEditBid(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));
-            this.close();
+            //this.close();
+            setTimeout(() => {
+                this.route.navigate(["/app/gwebsite/hosothau"]);
+            }, 2000);
         })
 
     }
@@ -214,14 +227,3 @@ export class CreateOrEditHoSoThauModalComponent extends AppComponentBase {
 
 }
 
-//export class DonViThau {
-//    id: string;
-//    name: string;
-//    date: string;
-
-//    constructor(id, name, date) {
-//        this.id = id;
-//        this.name = name;
-//        this.date = date;
-//    }
-//}

@@ -89,3 +89,7 @@
 .m-menu__item {
     font-family: 'Roboto', sans-serif !important;
 }
+
+.m-login__msg, .m-login__welcome {
+    font-family: 'Roboto', sans-serif !important;
+}

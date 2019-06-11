@@ -19,14 +19,14 @@
                             </span>
                         </div>
                         <div class="col-xs-6 text-right">
-                            <button (click)="createShoppingPlanDetail()" *ngIf="isGranted('Pages.Administration.ShoppingPlan.Create')"
-                                    class="btn btn-primary">
+                            <button (click)="createShoppingPlanDetail()" *ngIf="isGranted('Pages.Administration.ShoppingPlanDetail.Create')"
+                                    class="btn btn-primary" [class.hide]="selectedRow.tinhTrang == 'checked'">
                                 <i class="fa fa-plus"></i> {{l("CreateNewShopingPlanDetail")}}
                             </button>
                         </div>
                         <div class="col-xs-6 text-right">
-                            <button (click)="checkShoppingPlan()" *ngIf="isGranted('Pages.Administration.ShoppingPlan.Create')"
-                                    class="btn btn-primary">
+                            <button (click)="checkShoppingPlan()" *ngIf="isGranted('Pages.Administration.ShoppingPlanDetail.Check')"
+                                    class="btn btn-primary" [class.hide]="selectedRow.tinhTrang == 'checked'">
                                 <i class="fa fa-plus"></i> {{l("Check")}}
                             </button>
                         </div>
@@ -133,12 +133,12 @@
                                                 </td>
                                                 <td>
                                                     <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                            (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">
+                                                            (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}" [class.hide]="selectedRow.tinhTrang == 'checked'">
                                                         <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
                                                     </button>
 
                                                     <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                            (click)="deleteShoppingPlanDetail(record.id)" title="{{l('Delete')}}">
+                                                            (click)="deleteShoppingPlanDetail(record.id)" title="{{l('Delete')}}" [class.hide]="selectedRow.tinhTrang == 'checked'">
                                                         <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                                     </button>
                                                 </td>

@@ -21,8 +21,8 @@ export class ViewRealEstateRepairModalComponent extends AppComponentBase {
         super(injector);
     }
 
-    show(customerId?: number | null | undefined): void {
-        this._realEstateRepairService.getRealEstateRepairForView(customerId).subscribe(result => {
+    show(realEstateID?: number | null | undefined): void {
+        this._realEstateRepairService.getRealEstateRepairForView(realEstateID).subscribe(result => {
             this.realEstateRepair = result;
             this.modal.show();
         })

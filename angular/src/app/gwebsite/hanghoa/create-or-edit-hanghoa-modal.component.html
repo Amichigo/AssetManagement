@@ -2,7 +2,7 @@
     aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form novalidate #editForm="ngForm" (ngSubmit)="save()">
+            <form ngNativeValidate #editForm="ngForm" (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
                         <span *ngIf="hanghoa.id">Cập nhật hàng hóa: {{hanghoa.goodsName}}</span>
@@ -19,7 +19,6 @@
                                [(ngModel)]="hanghoa.goodsCode" required maxlength="64">
                         <div style="color: red;" role="alert" *ngIf="editForm.controls.maHangHoa.errors?.required &&
                          editForm.controls.maHangHoa.touched">Field is required</div>
-                        <validation-messages [formCtrl]="addressInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Tên hàng hóa *</label>
@@ -27,7 +26,6 @@
                                [(ngModel)]="hanghoa.goodsName" required maxlength="64">
                         <div style="color: red;" role="alert" *ngIf="editForm.controls.tenHangHoa.errors?.required &&
                          editForm.controls.tenHangHoa.touched">Field is required</div>
-                        <validation-messages [formCtrl]="nameInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Chủng loại *</label>
@@ -35,7 +33,6 @@
                                [(ngModel)]="hanghoa.type" required maxlength="64">
                         <div style="color: red;" role="alert" *ngIf="editForm.controls.chungLoai.errors?.required &&
                          editForm.controls.chungLoai.touched">Field is required</div>
-                        <validation-messages [formCtrl]="infoInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Đơn giá *</label>
@@ -43,7 +40,6 @@
                                [(ngModel)]="hanghoa.price" required maxlength="64">
                         <div style="color: red;" role="alert" *ngIf="editForm.controls.donGia.errors?.required &&
                          editForm.controls.donGia.touched">Field is required</div>
-                        <validation-messages [formCtrl]="infoInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Nước sản xuất *</label>
@@ -51,7 +47,6 @@
                                [(ngModel)]="hanghoa.countryOfManufacture" required maxlength="64">
                         <div style="color: red;" role="alert" *ngIf="editForm.controls.nuocSanXuat.errors?.required &&
                          editForm.controls.nuocSanXuat.touched">Field is required</div>
-                        <validation-messages [formCtrl]="infoInput"></validation-messages>
                     </div>
                 </div>
                 <div class="modal-footer">

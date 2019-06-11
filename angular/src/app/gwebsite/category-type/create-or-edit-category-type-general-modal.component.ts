@@ -7,7 +7,8 @@ import { CategoryTypeInput } from '@shared/service-proxies/service-proxies';
 
 @Component({
     selector: 'createOrEditTypeModal',
-    templateUrl: './create-or-edit-category-type-general-modal.component.html'
+    templateUrl: './create-or-edit-category-type-general-modal.component.html',
+    styleUrls: ['../category/create-or-edit-category-general-modal.component.scss'],
 })
 export class CreateOrEditTypeModalComponent extends AppComponentBase {
     @ViewChild('createOrEditModal') modal: ModalDirective;

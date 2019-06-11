@@ -25,7 +25,7 @@
                         <div class="row align-items-center m--margin-bottom-10">
                             <div class="col-sm-12">
                                 <div class="input-group">
-                                    <input [(ngModel)]="goodsName" name="hanghoaName" autoFocus class="form-control"
+                                    <input [(ngModel)]="hanghoaName" name="hanghoaName" autoFocus class="form-control"
                                            placeholder="Nhập tên hàng hóa" type="text">
                                     <span class="input-group-btn">
                                         <button (click)="applyFilters()" class="btn btn-primary" type="submit">
@@ -46,24 +46,24 @@
                                  [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
-                                    <th pSortableColumn="name">
+                                    <th pSortableColumn="goodsCode">
                                         Mã hàng hóa
-                                        <p-sortIcon field="name"></p-sortIcon>
+                                        <p-sortIcon field="goodsCode"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="address">
+                                    <th pSortableColumn="goodsName">
                                         Tên hàng hóa
                                     </th>
-                                    <th pSortableColumn="info">
+                                    <th pSortableColumn="type">
                                         Chủng loại
-                                        <p-sortIcon field="info"></p-sortIcon>
+                                        <p-sortIcon field="type"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="info">
+                                    <th pSortableColumn="price">
                                         Đơn giá
-                                        <p-sortIcon field="info"></p-sortIcon>
+                                        <p-sortIcon field="price"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="info">
+                                    <th pSortableColumn="countryOfManufacture">
                                         Nước sản xuất
-                                        <p-sortIcon field="info"></p-sortIcon>
+                                        <p-sortIcon field="countryOfManufacture"></p-sortIcon>
                                     </th>
                                     <th>{{l('Edit')}}</th>
                                 </tr>

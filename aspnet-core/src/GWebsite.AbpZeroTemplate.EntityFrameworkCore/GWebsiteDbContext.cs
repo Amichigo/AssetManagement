@@ -2,6 +2,7 @@
 using Abp.Authorization.Users;
 using Abp.MultiTenancy;
 using Abp.Zero.EntityFrameworkCore;
+using GWebsite.AbpZeroTemplate.Core;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using GWebsite.AbpZeroTemplate.Core.Models.KeHoachXayDung_N13;
 using GWebsite.AbpZeroTemplate.Core.Models.QuanLyCongTrinh_N13;
@@ -108,7 +109,28 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
 
 
         public virtual DbSet<AssetActivity> AssetActivities { get; set; }
-
+        public virtual DbSet<DisposalPlan> DisposalPlans { get; set; }
+        public virtual DbSet<DisposalPlanDetail> DisposalPlanDetails { get; set; }
+        public virtual DbSet<ContractPayment> ContractPayments { get; set; }
+        public virtual DbSet<Vehicle> Vehicles { get; set; }
+        public virtual DbSet<TypeVehicle> TypeVehicles { get; set; }
+        public virtual DbSet<ModelVehicle> ModelVehicles { get; set; }
+        public virtual DbSet<Asset_8> Assets_8 { get; set; }
+        public virtual DbSet<BrandVehicle> BrandVehicles { get; set; }
+        public virtual DbSet<OperateVehicle> OperateeVehicles { get; set; }
+        public virtual DbSet<RoadFeeVehicle> RoadFeeVehicles { get; set; }
+        public virtual DbSet<Insurrance> Insurrances { get; set; }
+        public virtual DbSet<InsurranceType> InsurranceTypes { get; set; }
+        public virtual DbSet<Warranty_05> Warrantys_05 { get; set; }
+        public virtual DbSet<PurchaseOder_05> PurchaseOders_05 { get; set; }
+        public virtual DbSet<ExportingUsedAsset> ExportingUsedAsset { get; set; }
+        public virtual DbSet<TransferringAsset> TransferringAsset { get; set; }
+        public virtual DbSet<AssetUnitFather_05> AssetUnitFather_05 { get; set; }
+        public virtual DbSet<AssetRegion_05> AssetRegion_05 { get; set; }
+        public virtual DbSet<AssetUnit_05> AssetUnit_05 { get; set; }
+        public virtual DbSet<AssetUser_05> AssetUser_05 { get; set; }
+        public virtual DbSet<Liquidation_05> Liquidation_05 { get; set; }
+        public virtual DbSet<UsingProcess_05> UsingProcess_05 { get; set; }
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>
@@ -148,6 +170,13 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<ContractGuarantee> ContractGuarantees_9 { get; set; }
         public virtual DbSet<PaymentDetails_9> PaymentDetails_9 { get; set; }
         public virtual DbSet<WarrantyGuarantee> WarrantyGuarantees_9 { get; set; }
+        public virtual DbSet<Asset11> Asset11s { get; set; }
+        public virtual DbSet<Debit11> Debit11s { get; set; }
+        public virtual DbSet<Credit11> Credit11s { get; set; }
+        public virtual DbSet<LoaiNhaCungCap> LoaiNhaCungCaps { get; set; }
+        public virtual DbSet<NhaCungCapHangHoa> NhaCungCapHangHoas { get; set; }
+        public virtual DbSet<ProductType> ProductTypes { get; set; }
+        public virtual DbSet<SanPham> SanPhams { get; set; }
 
         /// <summary>
         /// 

@@ -1,3 +1,10 @@
+import { ConstructionPlanDetailServiceProxy, DisposalPlanServiceProxy, DisposalPlanDetailServiceProxy} from './../../shared/service-proxies/service-proxies';
+import { LoaiNhaCungCapServiceProxy, NhaCungCapHangHoaServiceProxy, SanPhamServiceProxy, ProductTypeServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { RealEstateServiceProxy, AssetController_9ServiceProxy, RealEstateTypeServiceProxy, RealEstateRepairServiceProxy, PlanServiceProxy, ConstructionServiceProxy, BidManagerServiceProxy, ContractorServiceProxy } from './../../shared/service-proxies/service-proxies';
+import {
+    AssetDashboardServiceProxy,
+    AssetGroupController_05ServiceProxy, AssetController_05ServiceProxy, TransferringAssetServiceProxy, ExportingUsedAssetServiceProxy
+} from './../../shared/service-proxies/service-proxies';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -12,26 +19,18 @@ import { GWebsiteRoutingModule } from './gwebsite-routing.module';
 import {
     CategoryComponent, ViewCategoryModalComponent, CreateOrEditCategoryModalComponent,
     CategoryTypeComponent, CreateOrEditTypeModalComponent, ViewCategoryTypeModalComponent,
-    DuAnComponent, ViewDuAnModalComponent, CreateOrEditDuAnModalComponent,
-    HoSoThauComponent, ViewHoSoThauModalComponent, CreateOrEditHoSoThauModalComponent,
-    NhaCungCapComponent, ViewNhaCungCapModalComponent, CreateOrEditNhaCungCapModalComponent,
-    HopDongThauComponent, ViewHopDongThauModalComponent, CreateOrEditHopDongThauModalComponent,
-    PhieuGoiHangComponent, ViewPhieuGoiHangModalComponent, CreateOrEditPhieuGoiHangModalComponent,
-    HangHoaComponent, ViewHangHoaModalComponent, CreateOrEditHangHoaModalComponent,
-    ShoppingPlanComponent, ViewShoppingPlanModalComponent, CreateOrEditShoppingPlanModalComponent,
     DirectorShoppingPlanComponent, ViewDirectorShoppingPlanModalComponent, CreateOrEditDirectorShoppingPlanModalComponent,
-    ShoppingPlanDetailComponent, CreateOrEditShoppingPlanDetailModalComponent,
-    ConstructionPlanComponent, ViewConstructionPlanModalComponent, CreateOrEditConstructionPlanModalComponent
+    CreateOrEditPlanModalComponent, PlanComponent, PlanModalComponent, SelectionConstructionInPlanModalComponent,
+    ConstructionComponent, CreateOrEditConstructionModalComponent, ConstructionModalComponent, ViewConstructionModalComponent,
+    SelectionConstructionModalComponent, ViewBidManagerModalComponent, CreateOrEditBidManagerModalComponent, BidManagerComponent
 } from './index';
 
 import { CategoryServiceProxy, CategoryTypeServiceProxy,
-    ProjectServiceProxy, BidServiceProxy, SupplierServiceProxy, ContractServiceProxy, GoodsInvoiceServiceProxy, GoodsServiceProxy,
     ShoppingPlanServiceProxy, DirectorShoppingPlanServiceProxy, ShoppingPlanDetailServiceProxy, ConstructionPlanServiceProxy,
     LoaiBatDongSanServiceProxy, NhomTaiSanServiceProxy, LoaiSoHuuServiceProxy, MucDichSuDungDatServiceProxy, BatDongSanServiceProxy,
     HienTrangPhapLyServiceProxy, TinhTrangSuDungDatServiceProxy, TaiSanServiceProxy, SuaChuaBatDongSanServiceProxy, KeHoachXayDungServiceProxy, CongTrinhServiceProxy, HoSoThauN13ServiceProxy,
-    ComputerServiceProxy, SoftwareServiceProxy, FixedAssetServiceProxy, AssetDashboardServiceProxy,
-    AssetGroupController_05ServiceProxy, AssetController_05ServiceProxy,
-    RealEstateServiceProxy, AssetServiceProxy, RealEstateTypeServiceProxy, RealEstateRepairServiceProxy
+    ComputerServiceProxy, SoftwareServiceProxy, FixedAssetServiceProxy, 
+    AssetServiceProxy
 } from '@shared/service-proxies/service-proxies';
 
 import { LoaiBatDongSanComponent } from './loaibatdongsan/loaibatdongsan.component';
@@ -138,7 +137,7 @@ import {
     MatTreeModule,
 } from '@angular/material';
 
-import { AssetActivityServiceProxy } from '@shared/service-proxies/service-proxies';
+import { AssetActivityServiceProxy, Asset11ServiceProxy, Debit11ServiceProxy, Credit11ServiceProxy } from '@shared/service-proxies/service-proxies';
 import { PurchasedAssetsComponent } from './asset-investment-efficiency/pages/purchased-assets/purchased-assets.component';
 import { SoleAssetsComponent } from './asset-investment-efficiency/pages/sole-assets/sole-assets.component';
 import { MaintainedAssetsComponent } from './asset-investment-efficiency/pages/maintained-assets/maintained-assets.component';
@@ -147,6 +146,138 @@ import { PlannedToPurchaseAssetsComponent } from './asset-investment-efficiency/
 import { PlannedToMaintainAssetsComponent } from './asset-investment-efficiency/pages/planned-to-maintain-assets/planned-to-maintain-assets.component';
 import { OperatingAssetsComponent } from './asset-investment-efficiency/pages/operating-assets/operating-assets.component';
 import { ChartsModule } from 'ng2-charts';
+import { Asset11Component } from './asset11/asset11.component';
+import { CreateOrEditAsset11ModalComponent } from './asset11/create-or-edit-asset11-modal.component';
+import { ViewAsset11ModalComponent } from './asset11/view-asset11-modal.component';
+import { Debit11Component } from './debit11/debit11.component';
+import { Credit11Component } from './credit11/credit11.component';
+
+import { ShoppingPlanComponent } from './shoppingPlan/shoppingPlan.component';
+import { ViewShoppingPlanModalComponent } from './shoppingPlan/view-shoppingPlan-modal.component';
+import { CreateOrEditShoppingPlanModalComponent } from './shoppingPlan/create-or-edit-shoppingPlan-modal.component';
+
+import { ShoppingPlanDetailComponent } from './shoppingPlan/shoppingPlanDetail.component';
+import { CreateOrEditShoppingPlanDetailModalComponent } from './shoppingPlan/create-or-edit-shoppingPlanDetail-modal.component';
+
+import { ConstructionPlanComponent } from './constructionPlan/constructionPlan.component';
+import { ViewConstructionPlanModalComponent } from './constructionPlan/view-constructionPlan-modal.component';
+import { CreateOrEditConstructionPlanModalComponent } from './constructionPlan/create-or-edit-constructionPlan-modal.component';
+
+import { DisposalPlanComponent } from './disposalPlan/disposalPlan.component';
+import { ViewDisposalPlanModalComponent } from './disposalPlan/view-disposalPlan-modal.component';
+import { CreateOrEditDisposalPlanModalComponent } from './disposalPlan/create-or-edit-disposalPlan-modal.component';
+
+import { DisposalPlanDetailComponent } from './disposalPlan/disposalPlanDetail.component';
+import { CreateOrEditDisposalPlanDetailModalComponent } from './disposalPlan/create-or-edit-disposalPlanDetail-modal.component';
+
+import { ConstructionPlanDetailComponent } from './constructionPlan/constructionPlanDetail.component';
+import { CreateOrEditConstructionPlanDetailModalComponent } from './constructionPlan/create-or-edit-constructionPlanDetail-modal.component';
+import { DemoModelServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ProjectServiceProxy } from '@shared/service-proxies/service-proxies';
+import { BidServiceProxy } from '@shared/service-proxies/service-proxies';
+import { SupplierServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ContractServiceProxy } from '@shared/service-proxies/service-proxies';
+import { GoodsInvoiceServiceProxy } from '@shared/service-proxies/service-proxies';
+import { GoodsServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ContractPaymentServiceProxy } from '@shared/service-proxies/service-proxies';
+import { CustomerComponent } from './customer/customer.component';
+import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
+import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
+import { DuAnComponent } from './duan/duan.component';
+import { ViewDuAnModalComponent } from './duan/view-duan-modal.component';
+import { CreateOrEditDuAnModalComponent } from './duan/create-or-edit-duan-modal.component';
+import { HoSoThauComponent } from './hosothau/hosothau.component';
+import { ViewHoSoThauModalComponent } from './hosothau/view-hosothau-modal.component';
+import { CreateOrEditHoSoThauModalComponent } from './hosothau/create-or-edit-hosothau-modal.component';
+import { NhaCungCapComponent } from './nhacungcap/nhacungcap.component';
+import { ViewNhaCungCapModalComponent } from './nhacungcap/view-nhacungcap-modal.component';
+import { CreateOrEditNhaCungCapModalComponent } from './nhacungcap/create-or-edit-nhacungcap-modal.component';
+import { HopDongThauComponent } from './hopdongthau/hopdongthau.component';
+import { ViewHopDongThauModalComponent } from './hopdongthau/view-hopdongthau-modal.component';
+import { CreateOrEditHopDongThauModalComponent } from './hopdongthau/create-or-edit-hopdongthau-modal.component';
+import { PhieuGoiHangComponent } from './phieugoihang/phieugoihang.component';
+import { ViewPhieuGoiHangModalComponent } from './phieugoihang/view-phieugoihang-modal.component';
+import { CreateOrEditPhieuGoiHangModalComponent } from './phieugoihang/create-or-edit-phieugoihang-modal.component';
+import { HangHoaComponent } from './hanghoa/hanghoa.component';
+import { ViewHangHoaModalComponent } from './hanghoa/view-hanghoa-modal.component';
+import { CreateOrEditHangHoaModalComponent } from './hanghoa/create-or-edit-hanghoa-modal.component';
+
+// cubill
+import {
+    InsurranceServiceProxy,
+    InsurranceTypeServiceProxy
+} from './../../shared/service-proxies/service-proxies';
+import { VehicleServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { TypeVehicleServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { BrandVehicleServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { ModelVehicleServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { OperateVehicleServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { RoadFeeVehicleServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { Asset_8ServiceProxy } from './../../shared/service-proxies/service-proxies';
+
+import { CreateOrEditDemoModelModalComponent } from './demo-model/create-or-edit-demo-model-modal.component';
+
+import { VehicleComponent } from './vehicle/vehicle.component';
+import { ViewVehicleModalComponent } from './vehicle/view-vehicle-modal.componenent';
+import { CreateOrEditVehicleModalComponent } from './vehicle/create-or-edit-vehicle-modal.components';
+
+import { ModelVehicleComponent } from './modelvehicle/modelvehicle.component';
+import { ViewModelVehicleModalComponent } from './modelvehicle/view-modelvehicle-modal.component';
+import { CreateOrEditModelVehicleModalComponent } from './modelvehicle/create-or-edit-modelvehicle-modal.component';
+
+import { TypeVehicleComponent } from './typevehicle/typevehicle.component';
+import { ViewTypeVehicleModalComponent } from './typevehicle/view-typevehicle-modal.componenent';
+import { CreateOrEditTypeVehicleModalComponent } from './typevehicle/create-or-edit-typevehicle-modal.components';
+
+import { Asset_8Component } from './asset_8/asset_8.component';
+import { ViewAsset_8ModalComponent } from './asset_8/view-asset_8-modal.component';
+import { CreateOrEditAsset_8ModalComponent } from './asset_8/create-or-edit-asset_8-modal.component';
+import { SelectAsset_8ModalComponent } from './asset_8/select-asset_8-modal.component';
+
+import { BrandVehicleComponent } from './brandvehicle/brandvehicle.component';
+import { ViewBrandVehicleModalComponent } from './brandvehicle/view-brandvehicle-modal.component';
+import { CreateOrEditBrandVehicleModalComponent } from './brandvehicle/create-or-edit-brandvehicle-modal.component';
+
+import { OperateVehicleComponent } from './operatevehicle/operatevehicle.component';
+import { ViewOperateVehicleModalComponent } from './operatevehicle/view-operatevehicle-modal.component';
+import { CreateOrEditOperateVehicleModalComponent } from './operatevehicle/create-or-edit-operatevehicle-modal.component';
+import { RoadFeeVehicleComponent } from './roadfeevehicle/roadfeevehicle.component';
+import { ViewRoadFeeVehicleModalComponent } from './roadfeevehicle/view-roadfeevehicle-modal.component';
+import { CreateOrEditRoadFeeVehicleModalComponent } from './roadfeevehicle/create-or-edit-roadfeevehicle-modal.component';
+import { SelectVehicleModalComponent } from './vehicle/select-vehicle-modal.component';
+import { InsurranceComponent } from './insurrance/insurrance.component';
+import { ViewInsurranceModalComponent } from './insurrance/view-insurrance-modal.component';
+import { CreateOrEditInsurranceModalComponent } from './insurrance/create-or-edit-insurrance-modal.component';
+import { InsurranceTypeComponent } from './insurrancetype/insurrancetype.component';
+import { ViewInsurranceTypeModalComponent } from './insurrancetype/view-insurrancetype-modal.component';
+import { CreateOrEditInsurranceTypeModalComponent } from './insurrancetype/create-or-edit-insurrancetype-modal.component';
+import { LoaiNhaCungCapComponent } from './LoaiNhaCungCap/LoaiNhaCungCap.component';
+import { ViewLoaiNhaCungCapModalComponent } from './LoaiNhaCungCap/view-LoaiNhaCungCap-modal.component';
+import { CreateOrEditLoaiNhaCungCapModalComponent } from './LoaiNhaCungCap/create-or-edit-LoaiNhaCungCap-modal.component';
+import { NhaCungCapHangHoaComponent } from './NhaCungCapHangHoa/NhaCungCapHangHoa.component';
+import { CreateOrEditNhaCungCapHangHoaModalComponent } from './NhaCungCapHangHoa/create-or-edit-NhaCungCapHangHoa-modal.component';
+import { ViewNhaCungCapHangHoaModalComponent } from './NhaCungCapHangHoa/view-NhaCungCapHangHoa-modal.component';
+import { ProductComponent } from './Product/Product.component';
+import { CreateOrEditProductModalComponent } from './Product/create-or-edit-Product-modal.component';
+import { ViewProductModalComponent } from './Product/view-Product-modal.component';
+import { ProductTypeComponent } from './ProductType/ProductType.component';
+import { ViewProductTypeModalComponent } from './ProductType/view-ProductType-modal.component';
+import { CreateOrEditProductTypeModalComponent } from './ProductType/create-or-edit-ProductType-modal.component';
+import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ExcelService } from './services/excel.service';
+import { CreateOrEditContractorModalComponent } from './bid-manager/create-or-edit-contractor-modal.component';
+import { TransferringAssetComponent } from './transferring-asset/transferring-asset.component';
+import { ViewTransferringAssetModalComponent } from './transferring-asset/view-transferring-asset-modal.component';
+import { CreateOrEditTransferringAssetModalComponent } from './transferring-asset/create-or-edit-transferring-asset-modal.component';
+import { SearchAssetComponent } from './transferring-asset/search-asset.component';
+import { SearchUnitComponent } from './transferring-asset/search-unit.component';
+import { SearchUserComponent } from './transferring-asset/search-user.component';
+import { ExportingUsedAssetComponent } from './exporting-used-asset/exporting-used-asset.component';
+import { SearchAssetComponent2 } from './exporting-used-asset/search-asset.component';
+import { CreateOrEditExportingUsedAssetModalComponent } from './exporting-used-asset/create-or-edit-exporting-used-asset-modal.component';
+import { ViewExportingUsedAssetModalComponent } from './exporting-used-asset/view-exporting-used-asset-modal.component';
+
 
 @NgModule({
     imports: [
@@ -202,6 +333,7 @@ import { ChartsModule } from 'ng2-charts';
         MatTooltipModule,
         MatTreeModule,
         ChartsModule,
+        NgxPaginationModule
     ],
     declarations: [
         DuAnComponent, CreateOrEditDuAnModalComponent, ViewDuAnModalComponent,
@@ -238,6 +370,62 @@ import { ChartsModule } from 'ng2-charts';
         RealEstateTypeComponent, CreateOrEditRealEstateTypeModalComponent,
         RealEstateRepairComponent, CreateOrEditRealEstateRepairModalComponent, ViewRealEstateRepairModalComponent,
         RealEstateModalComponent, ApprovedRealEstateRepairModalComponent, UpdateRealEstateRepairModalComponent,
+        ShoppingPlanComponent, ViewShoppingPlanModalComponent, CreateOrEditShoppingPlanModalComponent,
+        ShoppingPlanDetailComponent, CreateOrEditShoppingPlanDetailModalComponent,
+        ConstructionPlanComponent, ViewConstructionPlanModalComponent, CreateOrEditConstructionPlanModalComponent,
+        DisposalPlanComponent, ViewDisposalPlanModalComponent, CreateOrEditDisposalPlanModalComponent,
+        DisposalPlanDetailComponent, CreateOrEditDisposalPlanDetailModalComponent,
+        ConstructionPlanDetailComponent, CreateOrEditConstructionPlanDetailModalComponent,
+        Asset11Component,
+        CreateOrEditAsset11ModalComponent,
+        ViewAsset11ModalComponent,
+        Debit11Component,
+        Credit11Component,
+        CustomerComponent,
+        CreateOrEditCustomerModalComponent,
+        ViewCustomerModalComponent,
+        VehicleComponent,
+        CreateOrEditVehicleModalComponent,
+        ViewVehicleModalComponent,
+        TypeVehicleComponent,
+        CreateOrEditTypeVehicleModalComponent,
+        ViewTypeVehicleModalComponent,
+        Asset_8Component,
+        CreateOrEditAsset_8ModalComponent,
+        ViewAsset_8ModalComponent,
+        SelectAsset_8ModalComponent,
+        BrandVehicleComponent,
+        CreateOrEditBrandVehicleModalComponent,
+        ViewBrandVehicleModalComponent,
+        ModelVehicleComponent,
+        CreateOrEditModelVehicleModalComponent,
+        ViewModelVehicleModalComponent,
+        OperateVehicleComponent,
+        CreateOrEditOperateVehicleModalComponent,
+        ViewOperateVehicleModalComponent,
+        RoadFeeVehicleComponent,
+        CreateOrEditRoadFeeVehicleModalComponent,
+        ViewRoadFeeVehicleModalComponent,
+        SelectVehicleModalComponent,
+        InsurranceComponent,
+        CreateOrEditInsurranceModalComponent,
+        ViewInsurranceModalComponent,
+        InsurranceTypeComponent,
+        CreateOrEditInsurranceTypeModalComponent,
+        ViewInsurranceTypeModalComponent,
+        LoaiNhaCungCapComponent, CreateOrEditLoaiNhaCungCapModalComponent, ViewLoaiNhaCungCapModalComponent,
+        ProductComponent,CreateOrEditProductModalComponent,ViewProductModalComponent,
+        ProductTypeComponent,CreateOrEditProductTypeModalComponent,ViewProductTypeModalComponent,
+        NhaCungCapHangHoaComponent, CreateOrEditNhaCungCapHangHoaModalComponent, ViewNhaCungCapHangHoaModalComponent,
+        CreateOrEditPlanModalComponent, PlanComponent, PlanModalComponent, SelectionConstructionInPlanModalComponent,
+        ConstructionComponent, CreateOrEditConstructionModalComponent, ConstructionModalComponent, ViewConstructionModalComponent,
+        SelectionConstructionModalComponent, ViewBidManagerModalComponent, CreateOrEditBidManagerModalComponent, BidManagerComponent, CreateOrEditContractorModalComponent,
+    
+        AssetComponent, CreateOrEditAssetModalComponent, ViewAssetModalComponent, TransferringAssetComponent, CreateOrEditTransferringAssetModalComponent, ViewTransferringAssetModalComponent,
+        SearchAssetComponent, SearchUnitComponent, SearchUserComponent,
+        SearchAssetComponent2, ExportingUsedAssetComponent, CreateOrEditExportingUsedAssetModalComponent,
+        ViewExportingUsedAssetModalComponent,
+
     ],
     providers: [
         CategoryServiceProxy,
@@ -273,7 +461,47 @@ import { ChartsModule } from 'ng2-charts';
         RealEstateServiceProxy,
         AssetServiceProxy,
         RealEstateTypeServiceProxy,
-        RealEstateRepairServiceProxy
+        RealEstateRepairServiceProxy,
+        ShoppingPlanServiceProxy,
+        ShoppingPlanDetailServiceProxy,
+        ConstructionPlanServiceProxy,
+        ConstructionPlanDetailServiceProxy,
+        ConstructionPlanServiceProxy,
+        DisposalPlanServiceProxy,
+        DisposalPlanDetailServiceProxy,
+        ContractPaymentServiceProxy,
+        Asset11ServiceProxy,
+        Debit11ServiceProxy,
+        Credit11ServiceProxy,
+        DemoModelServiceProxy,
+        VehicleServiceProxy,
+        TypeVehicleServiceProxy,
+        Asset_8ServiceProxy,
+        BrandVehicleServiceProxy,
+        ModelVehicleServiceProxy,
+        OperateVehicleServiceProxy,
+        RoadFeeVehicleServiceProxy,
+        InsurranceServiceProxy,
+        InsurranceTypeServiceProxy,
+        LoaiNhaCungCapServiceProxy,
+        NhaCungCapHangHoaServiceProxy,
+        SanPhamServiceProxy,
+        ProductTypeServiceProxy,
+        ExcelService,
+        WebApiServiceProxy,
+        RealEstateServiceProxy,
+        AssetController_9ServiceProxy,
+        RealEstateTypeServiceProxy,
+        RealEstateRepairServiceProxy,
+        PlanServiceProxy,
+        ConstructionServiceProxy,
+        BidManagerServiceProxy,
+        ContractorServiceProxy,
+        AssetDashboardServiceProxy,
+        AssetGroupController_05ServiceProxy,
+        AssetController_05ServiceProxy,
+        TransferringAssetServiceProxy,
+        ExportingUsedAssetServiceProxy
     ]
 })
-export class GWebsiteModule { }
+export class GWebsiteModule {}
