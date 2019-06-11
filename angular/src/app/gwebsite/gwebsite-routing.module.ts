@@ -65,7 +65,7 @@ import { LoaiNhaCungCapComponent } from './LoaiNhaCungCap/LoaiNhaCungCap.compone
 import { NhaCungCapHangHoaComponent } from './NhaCungCapHangHoa/NhaCungCapHangHoa.component';
 import { ProductComponent } from './Product/Product.component';
 import { ProductTypeComponent } from './ProductType/ProductType.component';
-
+import { PlanComponent, ConstructionComponent, BidManagerComponent } from '.';
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -686,6 +686,60 @@ import { ProductTypeComponent } from './ProductType/ProductType.component';
                     {
                         path: 'ProductType', component: ProductTypeComponent,
                         data: { permission: 'Pages.Administration.ProductType' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'real-estate-management', component: RealEstateManagementComponent,
+                        data: { permission: 'Pages.Administration.RealEstate9' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'real-estate-type', component: RealEstateTypeComponent,
+                        data: { permission: 'Pages.Administration.RealEstateType9' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'real-estate-repair', component: RealEstateRepairComponent,
+                        data: { permission: 'Pages.Administration.RealEstateRepair9' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'plan', component: PlanComponent,
+                        data: { permission: 'Pages.Administration.Plan9' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'construction', component: ConstructionComponent,
+                        data: { permission: 'Pages.Administration.Construction9' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'bid-manager', component: BidManagerComponent,
+                        data: { permission: 'Pages.Administration.BidManager9' }
                     },
                 ]
             }

@@ -57,6 +57,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contractors
             return ObjectMapper.Map<ContractorInput>(ContractorEntity);
         }
 
+        public ContractorInput GetContractorForEditWithMaHoSoThau(string ma)
+        {
+            var ContractorEntity = ContractorRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.MaHoSoThau == ma);
+            if (ContractorEntity == null)
+            {
+                return null;
+            }
+            return ObjectMapper.Map<ContractorInput>(ContractorEntity);
+        }
+
 
         public ContractorForViewDto GetContractorForView(int id)
         {

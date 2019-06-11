@@ -25,7 +25,7 @@ export class RealEstateTypeComponent extends AppComponentBase implements AfterVi
     /**
      * tạo các biến dể filters
      */
-    MaLoatBatDongSan: string;
+    MaLoaiBatDongSan: string;
     TenLoaiBatDongSan: string;
 
     constructor(
@@ -71,8 +71,8 @@ export class RealEstateTypeComponent extends AppComponentBase implements AfterVi
 
     }
 
-    reloadList(MaLoatBatDongSan, TenLoaiBatDongSan, event?: LazyLoadEvent) {
-        this._RealEstateTypeService.getRealEstateTypesByFilter(MaLoatBatDongSan, TenLoaiBatDongSan, this.primengTableHelper.getSorting(this.dataTable),
+    reloadList(MaLoaiBatDongSan, TenLoaiBatDongSan, event?: LazyLoadEvent) {
+        this._RealEstateTypeService.getRealEstateTypesByFilter(MaLoaiBatDongSan, TenLoaiBatDongSan, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -82,7 +82,7 @@ export class RealEstateTypeComponent extends AppComponentBase implements AfterVi
         });
     }
 
-    deleteCustomer(id): void {
+    deleteRealEstateType(id): void {
         this._RealEstateTypeService.deleteRealEstateType(id).subscribe(() => {
             this.reloadPage();
         })
@@ -91,9 +91,9 @@ export class RealEstateTypeComponent extends AppComponentBase implements AfterVi
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
-            this.MaLoatBatDongSan = params['MaLoatBatDongSan'] || '';
+            this.MaLoaiBatDongSan = params['MaLoaiBatDongSan'] || '';
             this.TenLoaiBatDongSan = params['TenLoaiBatDongSan'] || '';
-            this.reloadList(this.MaLoatBatDongSan, this.TenLoaiBatDongSan, null);
+            this.reloadList(this.MaLoaiBatDongSan, this.TenLoaiBatDongSan, null);
         });
     }
 
@@ -103,7 +103,7 @@ export class RealEstateTypeComponent extends AppComponentBase implements AfterVi
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.MaLoatBatDongSan, this.TenLoaiBatDongSan, null);
+        this.reloadList(this.MaLoaiBatDongSan, this.TenLoaiBatDongSan, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);

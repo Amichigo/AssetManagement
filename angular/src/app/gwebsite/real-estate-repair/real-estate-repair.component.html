@@ -12,7 +12,7 @@
             <div class="col-xs-6 text-right">
                 <button (click)="createRealEstateRepair()" *ngIf="isGranted('Pages.Administration.RealEstateRepair9.Create')"
                         class="btn btn-primary">
-                    <i class="fa fa-plus"></i> {{l("CreateNewRealEstateRepair")}}
+                    <i class="fa fa-plus"></i> {{l("Tạo phiếu đề xuất sửa chữa")}}
                 </button>
             </div>
         </div>
@@ -23,32 +23,65 @@
                 <form autocomplete="off">
                     <div class="m-form m-form--label-align-right" id="TextsFilterForm">
                         <div class="row align-items-center m--margin-bottom-10">
-                            <div class="col-sm-12">
-                                <div class="input-group">
-                                    <input [(ngModel)]="MaTaiSan" name="KhuVuc" autoFocus class="form-control"
-                                           placeholder="chọn mã tài sản" type="text">
-                                    <span class="input-group-btn">
-                                        <button (click)="showRealEstate()" class="btn btn-primary" type="button">Selection</button>
-                                    </span>
+                            <div class="form-control">
+                                <label>{{l("Tìm kiếm bất động sản")}}:</label>
+                                <div class="row m--margin-bottom-10">
+                                    <div class="col-xl-6">
+                                        <label>{{l("Chọn Mã tài sản")}}</label>
+                                        <input [(ngModel)]="MaTaiSan" name="KhuVuc" autoFocus class="form-control"
+                                               placeholder="Chọn mã tài sản" type="text">
+                                        <span class="input-group-btn">
+                                            <button (click)="showRealEstate()" class="btn btn-primary" type="button">...</button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row m--margin-bottom-10">
+                                    <div class="col-xl-6">
+                                        <label>{{l("tên tài sản")}}</label>
+                                        <input [(ngModel)]="TenTaiSan" name="TenTaiSan" autoFocus
+                                               class="form-control" placeholder="Nhập tên kế hoạch" type="text">
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <label>{{l("Ngày đề xuất")}}</label>
+                                        <input [(ngModel)]="NgayDeXuat" name="NgayDeXuat" autoFocus
+                                               class="form-control" placeholder="Nhập ngày đề xuất" type="date">
+
+                                    </div>
+                                </div>
+
+                                <div class="row m--margin-bottom-10">
+                                    <div class="col-xl-6">
+                                        <label>{{l("Ngày sửa chữa xong")}}</label>
+                                        <input [(ngModel)]="NgaySuaChuaXong" name="NgaySuaChuaXong" autoFocus
+                                               class="form-control" placeholder="Nhập ngày sửa xong" type="date">
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <label>{{l("Người đề xuất")}}</label>
+                                        <input [(ngModel)]="NguoiDeXuat" name="NguoiDeXuat" autoFocus
+                                               class="form-control" placeholder="Chọn người đề xuất" type="text">
+
+                                    </div>
+                                </div>
+                                <div class="row m--margin-bottom-10">
+                                    <div class="col-xl-6">
+                                        <label>{{l("Nhân viên phụ trách")}}</label>
+                                        <input [(ngModel)]="NhanVienPhuTrach" name="NhanVienPhuTrach" autoFocus
+                                               class="form-control" placeholder="Chọn nhân viên phụ trách" type="text">
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <label>{{l("Trạng thái duyệt")}}</label>
+                                        <select name="trangThaiDuyet" class="form-control" [(ngModel)]="TrangThaiDuyet"
+                                                [attr.data-live-search]="true">
+                                            <option selected disabled value="">Chọn Trạng Thái Duyệt</option>
+                                            <option [value]="">Đang chờ</option>
+                                            <option [value]="">Đã duyệt</option>
+                                            <option [value]="">Đã hủy</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="input-group">
-                                    <input [(ngModel)]="TenTaiSan" name="TenTaiSan" autoFocus class="form-control"
-                                           placeholder="Tên tài sản" type="text">
-                                    <input [(ngModel)]="NgayDeXuat" name="MaBatDongSan" autoFocus class="form-control"
-                                           title="Ngày đề xuất" type="date">
-                                    <input [(ngModel)]="NgaySuaChuaXong" name="MaDonVi" autoFocus class="form-control"
-                                           title="Ngày sửa chữa xong" type="date">
-                                    <input [(ngModel)]="NguoiDeXuat" name="NgayDuKienSuaXong" autoFocus class="form-control"
-                                           placeholder="Người đề xuất" type="text">
-                                    <input [(ngModel)]="NhanVienPhuTrach" name="PhongGiaoDich" autoFocus class="form-control"
-                                           placeholder="Select" type="">
-                                    <select name="trangThaiDuyet" class="form-control" [(ngModel)]="TrangThaiDuyet"
-                                            [attr.data-live-search]="true">
-                                        <option selected disabled value="">Chọn Trạng Thái Duyệt</option>
-                                        <option [value]="">Đang chờ</option>
-                                        <option [value]="">Đã duyệt</option>
-                                        <option [value]="">Đã hủy</option>
-                                    </select>
+
                                     <span class="input-group-btn">
                                         <button (click)="applyFilters()" class="btn btn-primary" type="submit">
                                             <i class="fa fa-refresh"></i>
@@ -73,33 +106,35 @@
                                     </th>
                                     <th pSortableColumn="ngayDeXuat">
                                         Ngày đề xuất
-                                      
+
                                     </th>
                                     <th pSortableColumn="ngaySuaChuaXong">
                                         Ngày sửa xong
-                                      
+
                                     </th>
                                     <th pSortableColumn="maTaiSan">
                                         Mã tài sản
-                                        
+
                                     </th>
                                     <th pSortableColumn="tenTaiSan">
                                         Tên tài sản
-                                        
+
                                     </th>
                                     <th pSortableColumn="nguoiDeXuat">
                                         Người đề xuất
-                                       
+
                                     </th>
                                     <th pSortableColumn="nhanVienPhuTrach">
                                         NV phụ trách
-                                        
+
                                     </th>
                                     <th pSortableColumn="trangThaiDuyet">
                                         Trạng thái
-                                      
+
                                     </th>
                                     <th>{{l('Edit')}}</th>
+                                    <th>{{l('Phê duyệt')}}</th>
+                                    <th>{{l('Cập nhật')}}</th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-record="$implicit">
@@ -149,13 +184,16 @@
                                                 (click)="viewRealEstateRepairModal.show(record.id)" title="{{l('View')}}">
                                             <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
                                         </button>
+                                    <td>
                                         <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                                 (click)="approvedRealEstateRepairModal.show(record.id)" title="{{l('Phê duyệt')}}">
-                                            <i class="fa fa-laptop" [attr.aria-label]="l('Duyệt')"></i>
+                                            <i class="fa fa-check" [attr.aria-label]="l('Duyệt')"></i>
                                         </button>
+                                    </td>
+                                    <td>
                                         <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                                 (click)="updateRealEstateRepair(record.id,record.trangThaiDuyet)" title="{{l('Update')}}">
-                                            <i class="fa fa-upload" [attr.aria-label]="l('Update')"></i>
+                                            <i class="fa fa-edit" [attr.aria-label]="l('Update')"></i>
                                         </button>
                                     </td>
                                 </tr>

@@ -1,5 +1,6 @@
 import { ConstructionPlanDetailServiceProxy, DisposalPlanServiceProxy, DisposalPlanDetailServiceProxy} from './../../shared/service-proxies/service-proxies';
 import { LoaiNhaCungCapServiceProxy, NhaCungCapHangHoaServiceProxy, SanPhamServiceProxy, ProductTypeServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { RealEstateServiceProxy, AssetController_9ServiceProxy, RealEstateTypeServiceProxy, RealEstateRepairServiceProxy, PlanServiceProxy, ConstructionServiceProxy, BidManagerServiceProxy, ContractorServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,9 @@ import {
     CategoryComponent, ViewCategoryModalComponent, CreateOrEditCategoryModalComponent,
     CategoryTypeComponent, CreateOrEditTypeModalComponent, ViewCategoryTypeModalComponent,
     DirectorShoppingPlanComponent, ViewDirectorShoppingPlanModalComponent, CreateOrEditDirectorShoppingPlanModalComponent,
+    CreateOrEditPlanModalComponent, PlanComponent, PlanModalComponent, SelectionConstructionInPlanModalComponent,
+    ConstructionComponent, CreateOrEditConstructionModalComponent, ConstructionModalComponent, ViewConstructionModalComponent,
+    SelectionConstructionModalComponent, ViewBidManagerModalComponent, CreateOrEditBidManagerModalComponent, BidManagerComponent
 } from './index';
 
 import { CategoryServiceProxy, CategoryTypeServiceProxy,
@@ -23,7 +27,7 @@ import { CategoryServiceProxy, CategoryTypeServiceProxy,
     HienTrangPhapLyServiceProxy, TinhTrangSuDungDatServiceProxy, TaiSanServiceProxy, SuaChuaBatDongSanServiceProxy, KeHoachXayDungServiceProxy, CongTrinhServiceProxy, HoSoThauN13ServiceProxy,
     ComputerServiceProxy, SoftwareServiceProxy, FixedAssetServiceProxy, AssetDashboardServiceProxy,
     AssetGroupController_05ServiceProxy, AssetController_05ServiceProxy,
-    RealEstateServiceProxy, AssetServiceProxy, RealEstateTypeServiceProxy, RealEstateRepairServiceProxy
+    AssetServiceProxy
 } from '@shared/service-proxies/service-proxies';
 
 import { LoaiBatDongSanComponent } from './loaibatdongsan/loaibatdongsan.component';
@@ -259,6 +263,7 @@ import { CreateOrEditProductTypeModalComponent } from './ProductType/create-or-e
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ExcelService } from './services/excel.service';
+import { CreateOrEditContractorModalComponent } from './bid-manager/create-or-edit-contractor-modal.component';
 
 @NgModule({
     imports: [
@@ -397,7 +402,10 @@ import { ExcelService } from './services/excel.service';
         LoaiNhaCungCapComponent, CreateOrEditLoaiNhaCungCapModalComponent, ViewLoaiNhaCungCapModalComponent,
         ProductComponent,CreateOrEditProductModalComponent,ViewProductModalComponent,
         ProductTypeComponent,CreateOrEditProductTypeModalComponent,ViewProductTypeModalComponent,
-        NhaCungCapHangHoaComponent, CreateOrEditNhaCungCapHangHoaModalComponent, ViewNhaCungCapHangHoaModalComponent
+        NhaCungCapHangHoaComponent, CreateOrEditNhaCungCapHangHoaModalComponent, ViewNhaCungCapHangHoaModalComponent,
+        CreateOrEditPlanModalComponent, PlanComponent, PlanModalComponent, SelectionConstructionInPlanModalComponent,
+        ConstructionComponent, CreateOrEditConstructionModalComponent, ConstructionModalComponent, ViewConstructionModalComponent,
+        SelectionConstructionModalComponent, ViewBidManagerModalComponent, CreateOrEditBidManagerModalComponent, BidManagerComponent, CreateOrEditContractorModalComponent
     ],
     providers: [
         CategoryServiceProxy,
@@ -460,7 +468,15 @@ import { ExcelService } from './services/excel.service';
         SanPhamServiceProxy,
         ProductTypeServiceProxy,
         ExcelService,
-        WebApiServiceProxy
+        WebApiServiceProxy,
+        RealEstateServiceProxy,
+        AssetController_9ServiceProxy,
+        RealEstateTypeServiceProxy,
+        RealEstateRepairServiceProxy,
+        PlanServiceProxy,
+        ConstructionServiceProxy,
+        BidManagerServiceProxy,
+        ContractorServiceProxy,
     ]
 })
 export class GWebsiteModule {}

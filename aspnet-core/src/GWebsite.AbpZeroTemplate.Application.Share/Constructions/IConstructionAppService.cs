@@ -13,6 +13,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Constructions
     {
         void CreateOrEditConstruction(ConstructionInput ConstructiongInput);
         ConstructionInput GetConstructionForEdit(int id);
+        ConstructionInput GetConstructionForEditWithMaCongTrinh(string ma);
         void DeleteConstruction(int id);
         PagedResultDto<ConstructionDto> GetConstructions(ConstructionFilter input);
         ConstructionForViewDto GetConstructionForView(int id);
