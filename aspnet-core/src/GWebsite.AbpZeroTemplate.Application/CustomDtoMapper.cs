@@ -86,6 +86,9 @@ using GWebsite.AbpZeroTemplate.Application.Share.Credit11s.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Insurrances.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.InsurranceTypes.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.TransferringAssets.MainDto;
+using GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Warranty_Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ExportingUsedAssets;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {
@@ -294,7 +297,6 @@ namespace GWebsite.AbpZeroTemplate.Applications
            // Asset_05
             configuration.CreateMap<Asset_05, AssetDto_05>();
             configuration.CreateMap<AssetDto_05, Asset_05>();
-            configuration.CreateMap<Asset_05, AssetDto_05>();
             configuration.CreateMap<Asset_05, AssetForViewDto_05>();
             configuration.CreateMap<Asset_05, AssetOutput_05>();//get for edit
 
@@ -507,6 +509,17 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<LoaiNhaCungCapInput, LoaiNhaCungCap>();
             configuration.CreateMap<LoaiNhaCungCap, LoaiNhaCungCapInput>();
             configuration.CreateMap<LoaiNhaCungCap, LoaiNhaCungCapForViewDto>();
+
+            configuration.CreateMap<TransferringAssetDataInput, TransferringAsset>();
+            configuration.CreateMap<TransferringAsset, TransferringAssetDataInput>();
+
+            configuration.CreateMap<Warranty_05, WarrantyDto>();
+
+            // ExportingUsedAsset
+            configuration.CreateMap<ExportingUsedAsset, ExportingUsedAssetDto>();
+            configuration.CreateMap<ExportingUsedAssetInput, ExportingUsedAsset>();
+            configuration.CreateMap<ExportingUsedAsset, ExportingUsedAssetInput>();
+            configuration.CreateMap<ExportingUsedAsset, ExportingUsedAssetForViewDto>();
 
         }
     }

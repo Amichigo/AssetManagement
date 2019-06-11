@@ -15,7 +15,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Assets_05.Dto
 
         public string Description { get; set; }//Mô tả
 
-        public DateTime DateAdded { get; set; }//Ngày nhận
+        public DateTime? DateAdded { get; set; }//Ngày nhận
 
         public int TotalMonthDepreciation { get; set; }//Số tháng khấu hao
 

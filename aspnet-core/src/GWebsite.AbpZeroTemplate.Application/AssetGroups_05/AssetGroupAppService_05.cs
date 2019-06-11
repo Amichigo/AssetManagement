@@ -62,8 +62,8 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.AssetGroups_05
             var output = new AssetGroupOutput_05();
             var selectedAssetId = 1;
             assetGroup = assetGroupRepository.GetAll()
-                                               .Where(x => !x.IsDelete)
-                                               .SingleOrDefault(x => x.AssetGroupId == id);
+                                             .Where(x => !x.IsDelete)
+                                              .SingleOrDefault(x => x.AssetGroupId == id);
 
             if (assetGroup == null)
             {
@@ -91,12 +91,15 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.AssetGroups_05
 
         public AssetGroupInput_05 GetAssetGroupForEdit(string idAssetGroup)
         {
+            AssetGroupInput_05 assetGroup = null;
             var assetGroupEntity = assetGroupRepository.GetAll()
                                                        .Where(x => !x.IsDelete)
                                                        .SingleOrDefault(x => x.AssetGroupId == idAssetGroup);
             if (assetGroupEntity == null)
             {
-                return null;
+                assetGroup = new AssetGroupInput_05();
+
+                return assetGroup;
             }
             return ObjectMapper.Map<AssetGroupInput_05>(assetGroupEntity);
         }

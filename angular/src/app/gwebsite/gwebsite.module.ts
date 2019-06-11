@@ -1,6 +1,10 @@
 import { ConstructionPlanDetailServiceProxy, DisposalPlanServiceProxy, DisposalPlanDetailServiceProxy} from './../../shared/service-proxies/service-proxies';
 import { LoaiNhaCungCapServiceProxy, NhaCungCapHangHoaServiceProxy, SanPhamServiceProxy, ProductTypeServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { RealEstateServiceProxy, AssetController_9ServiceProxy, RealEstateTypeServiceProxy, RealEstateRepairServiceProxy, PlanServiceProxy, ConstructionServiceProxy, BidManagerServiceProxy, ContractorServiceProxy } from './../../shared/service-proxies/service-proxies';
+import {
+    AssetDashboardServiceProxy,
+    AssetGroupController_05ServiceProxy, AssetController_05ServiceProxy, TransferringAssetServiceProxy, ExportingUsedAssetServiceProxy
+} from './../../shared/service-proxies/service-proxies';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -25,8 +29,7 @@ import { CategoryServiceProxy, CategoryTypeServiceProxy,
     ShoppingPlanServiceProxy, DirectorShoppingPlanServiceProxy, ShoppingPlanDetailServiceProxy, ConstructionPlanServiceProxy,
     LoaiBatDongSanServiceProxy, NhomTaiSanServiceProxy, LoaiSoHuuServiceProxy, MucDichSuDungDatServiceProxy, BatDongSanServiceProxy,
     HienTrangPhapLyServiceProxy, TinhTrangSuDungDatServiceProxy, TaiSanServiceProxy, SuaChuaBatDongSanServiceProxy, KeHoachXayDungServiceProxy, CongTrinhServiceProxy, HoSoThauN13ServiceProxy,
-    ComputerServiceProxy, SoftwareServiceProxy, FixedAssetServiceProxy, AssetDashboardServiceProxy,
-    AssetGroupController_05ServiceProxy, AssetController_05ServiceProxy,
+    ComputerServiceProxy, SoftwareServiceProxy, FixedAssetServiceProxy, 
     AssetServiceProxy
 } from '@shared/service-proxies/service-proxies';
 
@@ -264,6 +267,17 @@ import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ExcelService } from './services/excel.service';
 import { CreateOrEditContractorModalComponent } from './bid-manager/create-or-edit-contractor-modal.component';
+import { TransferringAssetComponent } from './transferring-asset/transferring-asset.component';
+import { ViewTransferringAssetModalComponent } from './transferring-asset/view-transferring-asset-modal.component';
+import { CreateOrEditTransferringAssetModalComponent } from './transferring-asset/create-or-edit-transferring-asset-modal.component';
+import { SearchAssetComponent } from './transferring-asset/search-asset.component';
+import { SearchUnitComponent } from './transferring-asset/search-unit.component';
+import { SearchUserComponent } from './transferring-asset/search-user.component';
+import { ExportingUsedAssetComponent } from './exporting-used-asset/exporting-used-asset.component';
+import { SearchAssetComponent2 } from './exporting-used-asset/search-asset.component';
+import { CreateOrEditExportingUsedAssetModalComponent } from './exporting-used-asset/create-or-edit-exporting-used-asset-modal.component';
+import { ViewExportingUsedAssetModalComponent } from './exporting-used-asset/view-exporting-used-asset-modal.component';
+
 
 @NgModule({
     imports: [
@@ -405,7 +419,13 @@ import { CreateOrEditContractorModalComponent } from './bid-manager/create-or-ed
         NhaCungCapHangHoaComponent, CreateOrEditNhaCungCapHangHoaModalComponent, ViewNhaCungCapHangHoaModalComponent,
         CreateOrEditPlanModalComponent, PlanComponent, PlanModalComponent, SelectionConstructionInPlanModalComponent,
         ConstructionComponent, CreateOrEditConstructionModalComponent, ConstructionModalComponent, ViewConstructionModalComponent,
-        SelectionConstructionModalComponent, ViewBidManagerModalComponent, CreateOrEditBidManagerModalComponent, BidManagerComponent, CreateOrEditContractorModalComponent
+        SelectionConstructionModalComponent, ViewBidManagerModalComponent, CreateOrEditBidManagerModalComponent, BidManagerComponent, CreateOrEditContractorModalComponent,
+    
+        AssetComponent, CreateOrEditAssetModalComponent, ViewAssetModalComponent, TransferringAssetComponent, CreateOrEditTransferringAssetModalComponent, ViewTransferringAssetModalComponent,
+        SearchAssetComponent, SearchUnitComponent, SearchUserComponent,
+        SearchAssetComponent2, ExportingUsedAssetComponent, CreateOrEditExportingUsedAssetModalComponent,
+        ViewExportingUsedAssetModalComponent,
+
     ],
     providers: [
         CategoryServiceProxy,
@@ -477,6 +497,11 @@ import { CreateOrEditContractorModalComponent } from './bid-manager/create-or-ed
         ConstructionServiceProxy,
         BidManagerServiceProxy,
         ContractorServiceProxy,
+        AssetDashboardServiceProxy,
+        AssetGroupController_05ServiceProxy,
+        AssetController_05ServiceProxy,
+        TransferringAssetServiceProxy,
+        ExportingUsedAssetServiceProxy
     ]
 })
 export class GWebsiteModule {}
