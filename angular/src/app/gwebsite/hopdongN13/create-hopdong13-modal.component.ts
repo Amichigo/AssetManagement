@@ -44,9 +44,13 @@ export class CreateHopDongN13ModalComponent extends AppComponentBase {
         super(injector);
     }
 
-    show(): void {
-     
+    show(idHopDong?: number | null | undefined): void {
+     this.dsThanhToan=[];
         this.saving = false;
+        this._hopDong.getHopDongForEdit(idHopDong).subscribe(result => {
+            this.hopDongInput=result;
+            this.modal.show();
+        })
     }
 
     showThanhToan(){
@@ -70,6 +74,11 @@ export class CreateHopDongN13ModalComponent extends AppComponentBase {
       
         this.saving = true;
         this.hopDongInput.maHopDong=this.hopDongInput.soHopDong;
+        this.hopDongInput.tongTienThanhToan=0;
+        for(let item of this.dsThanhToan){
+            if(item.daThanhToan==null) break;
+            this.hopDongInput.tongTienThanhToan= this.hopDongInput.tongTienThanhToan+item.daThanhToan;
+        }
          let input=this.hopDongInput;
          if(this.goiThauForView.id==null) {
             this.notify.info(this.l('Lưu không thành công'));

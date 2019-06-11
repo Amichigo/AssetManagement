@@ -4532,20 +4532,23 @@ export class HopDongN13ServiceProxy {
     /**
      * @soHopDong (optional) 
      * @soToTrinh (optional) 
-     * @maHoSoThau (optional) 
+     * @idHoSoThau (optional) 
+     * @idCongTrinh (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getHopDongsByFilter(soHopDong: string | null | undefined, soToTrinh: string | null | undefined, maHoSoThau: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfHopDongN13Dto> {
+    getHopDongsByFilter(soHopDong: string | null | undefined, soToTrinh: string | null | undefined, idHoSoThau: number | null | undefined, idCongTrinh: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfHopDongN13Dto> {
         let url_ = this.baseUrl + "/api/HopDongN13/GetHopDongsByFilter?";
         if (soHopDong !== undefined)
             url_ += "SoHopDong=" + encodeURIComponent("" + soHopDong) + "&"; 
         if (soToTrinh !== undefined)
             url_ += "SoToTrinh=" + encodeURIComponent("" + soToTrinh) + "&"; 
-        if (maHoSoThau !== undefined)
-            url_ += "MaHoSoThau=" + encodeURIComponent("" + maHoSoThau) + "&"; 
+        if (idHoSoThau !== undefined)
+            url_ += "idHoSoThau=" + encodeURIComponent("" + idHoSoThau) + "&"; 
+        if (idCongTrinh !== undefined)
+            url_ += "idCongTrinh=" + encodeURIComponent("" + idCongTrinh) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -5185,6 +5188,61 @@ export class HoSoThauN13ServiceProxy {
     }
 
     protected processGetHoSoThauForView(response: HttpResponseBase): Observable<HoSoThauN13ForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? HoSoThauN13ForViewDto.fromJS(resultData200) : new HoSoThauN13ForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<HoSoThauN13ForViewDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getHoSoThauByIdHopDongForView(id: number | null | undefined): Observable<HoSoThauN13ForViewDto> {
+        let url_ = this.baseUrl + "/api/HoSoThauN13/GetHoSoThauByIdHopDongForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetHoSoThauByIdHopDongForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetHoSoThauByIdHopDongForView(<any>response_);
+                } catch (e) {
+                    return <Observable<HoSoThauN13ForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<HoSoThauN13ForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetHoSoThauByIdHopDongForView(response: HttpResponseBase): Observable<HoSoThauN13ForViewDto> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -19470,6 +19528,8 @@ export class HopDongN13Dto implements IHopDongN13Dto {
     ngayKyTT!: string | undefined;
     chiPhiDuyetTT!: string | undefined;
     fileDinhKemTT!: string | undefined;
+    tongTienThanhToan!: number | undefined;
+    tienDoThucHien!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IHopDongN13Dto) {
@@ -19505,6 +19565,8 @@ export class HopDongN13Dto implements IHopDongN13Dto {
             this.ngayKyTT = data["ngayKyTT"];
             this.chiPhiDuyetTT = data["chiPhiDuyetTT"];
             this.fileDinhKemTT = data["fileDinhKemTT"];
+            this.tongTienThanhToan = data["tongTienThanhToan"];
+            this.tienDoThucHien = data["tienDoThucHien"];
             this.id = data["id"];
         }
     }
@@ -19540,6 +19602,8 @@ export class HopDongN13Dto implements IHopDongN13Dto {
         data["ngayKyTT"] = this.ngayKyTT;
         data["chiPhiDuyetTT"] = this.chiPhiDuyetTT;
         data["fileDinhKemTT"] = this.fileDinhKemTT;
+        data["tongTienThanhToan"] = this.tongTienThanhToan;
+        data["tienDoThucHien"] = this.tienDoThucHien;
         data["id"] = this.id;
         return data; 
     }
@@ -19568,6 +19632,8 @@ export interface IHopDongN13Dto {
     ngayKyTT: string | undefined;
     chiPhiDuyetTT: string | undefined;
     fileDinhKemTT: string | undefined;
+    tongTienThanhToan: number | undefined;
+    tienDoThucHien: string | undefined;
     id: number | undefined;
 }
 
@@ -19594,6 +19660,8 @@ export class HopDongN13Input implements IHopDongN13Input {
     ngayKyTT!: string | undefined;
     chiPhiDuyetTT!: string | undefined;
     fileDinhKemTT!: string | undefined;
+    tongTienThanhToan!: number | undefined;
+    tienDoThucHien!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IHopDongN13Input) {
@@ -19629,6 +19697,8 @@ export class HopDongN13Input implements IHopDongN13Input {
             this.ngayKyTT = data["ngayKyTT"];
             this.chiPhiDuyetTT = data["chiPhiDuyetTT"];
             this.fileDinhKemTT = data["fileDinhKemTT"];
+            this.tongTienThanhToan = data["tongTienThanhToan"];
+            this.tienDoThucHien = data["tienDoThucHien"];
             this.id = data["id"];
         }
     }
@@ -19664,6 +19734,8 @@ export class HopDongN13Input implements IHopDongN13Input {
         data["ngayKyTT"] = this.ngayKyTT;
         data["chiPhiDuyetTT"] = this.chiPhiDuyetTT;
         data["fileDinhKemTT"] = this.fileDinhKemTT;
+        data["tongTienThanhToan"] = this.tongTienThanhToan;
+        data["tienDoThucHien"] = this.tienDoThucHien;
         data["id"] = this.id;
         return data; 
     }
@@ -19692,6 +19764,8 @@ export interface IHopDongN13Input {
     ngayKyTT: string | undefined;
     chiPhiDuyetTT: string | undefined;
     fileDinhKemTT: string | undefined;
+    tongTienThanhToan: number | undefined;
+    tienDoThucHien: string | undefined;
     id: number | undefined;
 }
 
@@ -19718,6 +19792,8 @@ export class HopDongN13ForViewDto implements IHopDongN13ForViewDto {
     ngayKyTT!: string | undefined;
     chiPhiDuyetTT!: string | undefined;
     fileDinhKemTT!: string | undefined;
+    tongTienThanhToan!: number | undefined;
+    tienDoThucHien!: string | undefined;
 
     constructor(data?: IHopDongN13ForViewDto) {
         if (data) {
@@ -19752,6 +19828,8 @@ export class HopDongN13ForViewDto implements IHopDongN13ForViewDto {
             this.ngayKyTT = data["ngayKyTT"];
             this.chiPhiDuyetTT = data["chiPhiDuyetTT"];
             this.fileDinhKemTT = data["fileDinhKemTT"];
+            this.tongTienThanhToan = data["tongTienThanhToan"];
+            this.tienDoThucHien = data["tienDoThucHien"];
         }
     }
 
@@ -19786,6 +19864,8 @@ export class HopDongN13ForViewDto implements IHopDongN13ForViewDto {
         data["ngayKyTT"] = this.ngayKyTT;
         data["chiPhiDuyetTT"] = this.chiPhiDuyetTT;
         data["fileDinhKemTT"] = this.fileDinhKemTT;
+        data["tongTienThanhToan"] = this.tongTienThanhToan;
+        data["tienDoThucHien"] = this.tienDoThucHien;
         return data; 
     }
 }
@@ -19813,6 +19893,8 @@ export interface IHopDongN13ForViewDto {
     ngayKyTT: string | undefined;
     chiPhiDuyetTT: string | undefined;
     fileDinhKemTT: string | undefined;
+    tongTienThanhToan: number | undefined;
+    tienDoThucHien: string | undefined;
 }
 
 export class PagedResultDtoOfHoSoThauN13Dto implements IPagedResultDtoOfHoSoThauN13Dto {
@@ -20066,7 +20148,7 @@ export interface IHoSoThauN13Input {
 export class HoSoThauN13ForViewDto implements IHoSoThauN13ForViewDto {
     id!: number | undefined;
     maHoSoThau!: string | undefined;
-    maCongTrinh!: string | undefined;
+    idCongTrinh!: number | undefined;
     tenHoSoThau!: string | undefined;
     hangMucThau!: string | undefined;
     ngayNhapHoSoThau!: string | undefined;
@@ -20092,7 +20174,7 @@ export class HoSoThauN13ForViewDto implements IHoSoThauN13ForViewDto {
         if (data) {
             this.id = data["id"];
             this.maHoSoThau = data["maHoSoThau"];
-            this.maCongTrinh = data["maCongTrinh"];
+            this.idCongTrinh = data["idCongTrinh"];
             this.tenHoSoThau = data["tenHoSoThau"];
             this.hangMucThau = data["hangMucThau"];
             this.ngayNhapHoSoThau = data["ngayNhapHoSoThau"];
@@ -20118,7 +20200,7 @@ export class HoSoThauN13ForViewDto implements IHoSoThauN13ForViewDto {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["maHoSoThau"] = this.maHoSoThau;
-        data["maCongTrinh"] = this.maCongTrinh;
+        data["idCongTrinh"] = this.idCongTrinh;
         data["tenHoSoThau"] = this.tenHoSoThau;
         data["hangMucThau"] = this.hangMucThau;
         data["ngayNhapHoSoThau"] = this.ngayNhapHoSoThau;
@@ -20137,7 +20219,7 @@ export class HoSoThauN13ForViewDto implements IHoSoThauN13ForViewDto {
 export interface IHoSoThauN13ForViewDto {
     id: number | undefined;
     maHoSoThau: string | undefined;
-    maCongTrinh: string | undefined;
+    idCongTrinh: number | undefined;
     tenHoSoThau: string | undefined;
     hangMucThau: string | undefined;
     ngayNhapHoSoThau: string | undefined;

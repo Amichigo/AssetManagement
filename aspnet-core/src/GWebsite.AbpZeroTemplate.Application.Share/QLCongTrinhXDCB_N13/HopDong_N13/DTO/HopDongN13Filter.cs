@@ -12,6 +12,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.HopDong
 
         public string SoHopDong { set; get; }
         public string SoToTrinh { set; get; }
-        public string MaHoSoThau { set; get; }
+        public int? idHoSoThau { set; get; }
+        public int? idCongTrinh { set; get; }
     }
 }

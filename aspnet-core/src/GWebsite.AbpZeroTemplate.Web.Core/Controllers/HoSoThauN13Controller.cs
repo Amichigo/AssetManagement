@@ -54,6 +54,12 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         {
             return HoSoThauAppService.GetHoSoThauForView(id);
         }
+
+        [HttpGet]
+        public HoSoThauN13ForViewDto GetHoSoThauByIdHopDongForView(int id)
+        {
+            return HoSoThauAppService.GetHoSoThauByIdHopDongForView(id);
+        }
     }
 
 }

@@ -35,22 +35,72 @@
                                         <div class="form-control">
                                             <h3>{{l("Tìm kiếm Hợp đồng")}}</h3>
                                             <div class="row m--margin-bottom-10">
-                                            
+
                                                 <div class="col-xl-6">
                                                     <label>{{l("Số hợp đồng")}} *</label>
                                                     <input [(ngModel)]="soHopDong" name="hosothauName"
-                                                        class="form-control" placeholder="Nhập Hạng mục thầu"
+                                                        class="form-control" placeholder="Nhập số hợp  đồng"
                                                         type="text">
                                                 </div>
+                                                <div class="col-xl-6">
+                                                    <label>{{l("Số tờ trình")}} *</label>
+                                                    <input [(ngModel)]="soToTrinh" name="soToTrinh" class="form-control"
+                                                        placeholder="Nhập tờ trình" type="text">
+                                                </div>
                                             </div>
-                                           
+
+                                            <div class="row m--margin-bottom-10">
+                                                <div class="col-lg-2 col-md-3 col-sm-4">
+                                                    <label>{{l("Dự án XDCB")}} *</label>
+                                                    <div class="form-group">
+                                                        <input class="form-control" type="text" name="duAnXayDung"
+                                                            [(ngModel)]="duAnXayDung" disabled>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-lg-2 col-md-3 col-sm-4">
+                                                    <label>{{l(" ")}} *</label>
+                                                    <div class="form-group">
+                                                        <button class="btn btn-primary"
+                                                            (click)="showSelectCongTrinh()">Chọn</button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-3 col-sm-4">
+                                                    <label>{{l("Gói thầu")}} *</label>
+                                                    <div class="form-group">
+                                                        <input class="form-control" type="text" name="goiThau"
+                                                            [(ngModel)]="goiThau" required disabled>
+
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-lg-2 col-md-3 col-sm-4">
+                                                    <label>{{l(" ")}} *</label>
+                                                    <div class="form-group">
+                                                        <button class="btn btn-primary" (click)="showHoSoThau()">Chọn</button>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
 
                                             <div class="input-group">
-                                                <span class="input-group-btn">
-                                                    <button (click)="applyFilters()" class="btn btn-primary"
-                                                        type="submit"><i class="icon-refresh"></i>
-                                                        {{l("Refresh")}}</button>
-                                                </span>
+                                                <div class="col-lg-2 col-md-3 col-sm-4">
+                                                    <span class="input-group-btn">
+                                                        <button (click)="applyFilters()" class="btn btn-primary"
+                                                            type="submit"><i class="icon-refresh"></i>
+                                                            {{l("Refresh")}}</button>
+                                                    </span>
+                                                </div>
+                                                <div class="col-lg-2 col-md-3 col-sm-4">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-primary" type="submit"
+                                                            (click)="resetFilter()">
+                                                            <i class="icon-refresh"></i>
+                                                            {{l("Reset")}}</button>
+                                                    </span>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -112,10 +162,11 @@
                                                     <span title="{{i+1}}">{{truncateString(i+1)}}</span>
                                                 </td>
                                                 <td>
-                                                        <span class="ui-column-title">Mã hợp đồng</span>
-                                                        <span title="{{record.maHopDong}}">{{truncateString(record.maHopDong)}}</span>
-                                                    </td>
-                                               
+                                                    <span class="ui-column-title">Mã hợp đồng</span>
+                                                    <span
+                                                        title="{{record.maHopDong}}">{{truncateString(record.maHopDong)}}</span>
+                                                </td>
+
                                                 <td>
                                                     <span class="ui-column-title">Số hợp đồng</span>
                                                     <span
@@ -147,7 +198,7 @@
                                                 <td>
                                                     <span class="ui-column-title">Tổng giá trị đã thanh toán</span>
                                                     <span
-                                                        title="{{record.tienDoThucHien}}">{{truncateString(record.tienDoThucHien)}}</span>
+                                                        title="{{record.tongTienThanhToan}}">{{truncateString(record.tongTienThanhToan)}}</span>
                                                 </td>
 
                                                 <td>
@@ -159,22 +210,21 @@
                                                 <td>
                                                     <button
                                                         class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                        title="{{l('Edit')}}">
+                                                        (click)="InitTabUpdate(record.id)" title="{{l('Edit')}}">
                                                         <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
                                                     </button>
 
                                                     <button
                                                         class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                        (click)="deleteHopDong(record.id)"
-                                                        title="{{l('Delete')}}">
+                                                        (click)="deleteHopDong(record.id)" title="{{l('Delete')}}">
                                                         <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                                     </button>
 
-                                                    <!-- <button
+                                                    <button
                                                         class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                        (click)="viewHopDongModal.show(record.id)" title="{{l('View')}}">
+                                                        (click)="InitTabView(record.id)" title="{{l('View')}}">
                                                         <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
-                                                    </button> -->
+                                                    </button>
                                                 </td>
                                             </tr>
                                         </ng-template>
@@ -203,11 +253,12 @@
                         <tab customClass="m-tabs__item" (select)="InitTabCreate()" [active]='activeTabCreate'>
                             <ng-template tabHeading>
                                 <button class="btn btn-default" type="submit">
-                                    {{l('Tạo mới')}}
+                                    <i class="fa fa-plus"></i>{{l('Tạo mới')}}
                                 </button>
                             </ng-template>
 
-                            <createHopDongN13Modal #createHopDongN13Modal (modalSave)="SaveNew()"> </createHopDongN13Modal>
+                            <createHopDongN13Modal #createHopDongN13Modal (modalSave)="SaveNew()">
+                            </createHopDongN13Modal>
                         </tab>
                         <!-- >
                         Tab Update
@@ -216,9 +267,10 @@
                         <tab customClass="m-tabs__item" [disabled]="GetDisableTabUpdate()" [active]='activeTabUpdate'>
                             <ng-template tabHeading>
                                 <button class="btn btn-default" type="submit" [disabled]="GetDisableTabUpdate()">
-                                    {{l('Cập nhật')}}
+                                    <i class="fa fa-edit"></i>{{l('Cập nhật')}}
                                 </button>
                             </ng-template>
+                            <editHopDongN13Modal #editHopDongN13Modal (modalSave)="SaveNew()"></editHopDongN13Modal>
                         </tab>
                         <!-- 
                         Tab View
@@ -227,9 +279,10 @@
                         <tab customClass="m-tabs__item" [disabled]="GetDisableTabView()" [active]='activeTabView'>
                             <ng-template tabHeading>
                                 <button class="btn btn-default" type="submit" [disabled]="GetDisableTabView()">
-                                    {{l('View')}}
+                                    <i class="fa fa-eye"></i> {{l('Xem chi tiết')}}
                                 </button>
                             </ng-template>
+                            <viewHopDongN13Modal #viewHopDongN13Modal (modalSave)="SaveNew()"></viewHopDongN13Modal>
                         </tab>
                         <!-- 
                         Tab Duyet
@@ -248,3 +301,5 @@
             </div>
         </div>
     </div>
+    <selectCongTrinhN13Modal #selectCongTrinhN13Modal (modalSave)="setThongTin()"></selectCongTrinhN13Modal>
+    <selectHoSoThauModal #selectHoSoThauModal (modalSave)="setHoSoThau()"></selectHoSoThauModal>

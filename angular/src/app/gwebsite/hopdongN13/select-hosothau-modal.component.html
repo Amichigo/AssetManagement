@@ -33,7 +33,8 @@
                                 <div class="row m--margin-bottom-10">
                                     <div class="col-xl-6">
                                         <label>{{l("Ngày phát hồ sơ thầu")}} *</label>
-                                        <input [(ngModel)]="ngayPhat" name="ngayPhat" class="form-control" type="date">
+                                        <input [(ngModel)]="ngayPhat" name="ngayPhat" class="form-control"
+                                            type="date">
                                     </div>
                                     <div class="col-xl-6">
                                         <label>{{l("Ngày hết hạn nộp hồ sơ thầu")}} *</label>
@@ -45,9 +46,10 @@
                                     <div class="col-lg-2 col-md-3 col-sm-4">
                                         <label>{{l("Hình thức thầu")}}</label>
                                         <div class="form-group">
-                                            <select #trangthaiduyetCombobox name="hinhThucThau" class="form-control"
-                                                [(ngModel)]="hinhThucThau" [attr.data-live-search]="true"
-                                                jq-plugin="selectpicker" required>
+                                            <select #trangthaiduyetCombobox name="hinhThucThau"
+                                                class="form-control" [(ngModel)]="hinhThucThau"
+                                                [attr.data-live-search]="true" jq-plugin="selectpicker"
+                                                required>
                                                 <option selected disabled value="">---Chọn Hình Thức Thầu---
                                                 </option>
                                                 <option [value]="">Đấu thầu</option>
@@ -56,22 +58,22 @@
 
                                         </div>
                                     </div>
-
+                                    
 
 
                                 </div>
                                 <div class="input-group">
                                     <div class="col-lg-2 col-md-3 col-sm-4">
                                         <span class="input-group-btn">
-                                            <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
-                                                    class="icon-refresh"></i>
+                                            <button (click)="applyFilters()" class="btn btn-primary"
+                                                type="submit"><i class="icon-refresh"></i>
                                                 {{l("Refresh")}}</button>
                                         </span>
                                     </div>
                                     <div class="col-lg-2 col-md-3 col-sm-4">
                                         <span class="input-group-btn">
-                                            <button (click)="ResetFilter()" class="btn btn-primary" type="submit"><i
-                                                    class="icon-refresh"></i>
+                                            <button (click)="ResetFilter()" class="btn btn-primary"
+                                                type="submit"><i class="icon-refresh"></i>
                                                 {{l("Reset")}}</button>
                                         </span>
                                     </div>
@@ -87,9 +89,10 @@
                 <div class="row align-items-center">
                     <!--<Primeng-TurboTable-Start>-->
                     <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
-                        <p-table #dataTable (onLazyLoad)="getHoSoThaus($event)" [value]="primengTableHelper.records"
-                            rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
-                            [responsive]="primengTableHelper.isResponsive">
+                        <p-table #dataTable (onLazyLoad)="getHoSoThaus($event)"
+                            [value]="primengTableHelper.records"
+                            rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false"
+                            [lazy]="true" [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th>
@@ -104,31 +107,34 @@
                                         Hạng mục thầu
                                     </th>
                                     <th>
-                                        Mã công trình
+                                        Ngày phát hồ sơ thầu
+                                    </th>
+                                    <th>
+                                        Hình thức thầu
+                                    </th>
+
+                                    <th>
+                                        Số tiền bảo lãnh dự thầu
+                                    </th>
+
+                                    <th>
+                                        Dự án xây dựng cơ bản
                                     </th>
                                     <th>
                                         Tên công trình
                                     </th>
-
-                                    <th>
-                                        Mã đơn vị trúng thầu
-                                    </th>
-
-                                    <th>
-                                        Tên đơn vị trúng thầu
+                                    <!-- <th>
+                                        Tên dự án
                                     </th>
                                     <th>
-                                        Giá trúng thầu
-                                    </th>
-                                    <th>
-
-                                    </th>
-
+                                        Ghi chú
+                                    </th> -->
 
                                     <!--<th pSortableColumn="info">
                                                     Thông tin
                                                     <p-sortIcon field="info"></p-sortIcon>
                                                 </th>-->
+                                    <th>{{l('Chọn')}}</th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-record="$implicit" let-i="rowIndex">
@@ -139,7 +145,8 @@
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Mã hồ sơ thầu</span>
-                                        <span title="{{record.maHoSoThau}}">{{truncateString(record.maHoSoThau)}}</span>
+                                        <span
+                                            title="{{record.maHoSoThau}}">{{truncateString(record.maHoSoThau)}}</span>
                                     </td>
 
                                     <td>
@@ -148,36 +155,46 @@
                                             title="{{record.hangMucThau}}">{{truncateString(record.hangMucThau)}}</span>
                                     </td>
                                     <td>
-                                        <span class="ui-column-title"> Mã công trình</span>
+                                        <span class="ui-column-title">Ngày phát hồ sơ thầu</span>
+                                        <span
+                                            title="{{record.ngayNhapHoSoThau| date:'dd-MMM-yyyy'}}">{{truncateString(record.ngayNhapHoSoThau)| date:'dd-MMM-yyyy'}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Hình thức thầu</span>
+                                        <span
+                                            title="{{record.maHinhThucThau }}">{{truncateString(record.maHinhThucThau) }}</span>
+                                    </td>
+
+                                    <td>
+                                        <span class="ui-column-title">Số tiền bảo lãnh dự thầu</span>
+                                        <span
+                                            title="{{record.baoLanhDuThauBD |number}}">{{truncateString(record.baoLanhDuThauBD)|number}}</span>
+                                    </td>
+
+                                    <td>
+                                        <span class="ui-column-title">Dự án xây dựng cơ bản</span>
                                         <span
                                             title="{{record.maCongTrinh}}">{{truncateString(record.maCongTrinh)}}</span>
                                     </td>
+
+                                    
                                     <td>
                                         <span class="ui-column-title">Tên công trình</span>
                                         <span
-                                            title="{{record.tenCongTrinh }}">{{truncateString(record.tenCongTrinh) }}</span>
+                                            title="{{record.tenCongTrinh}}">{{truncateString(record.tenCongTrinh)}}</span>
                                     </td>
-
-                                    <td>
-                                        <span class="ui-column-title">Mã đơn vị trúng thầu</span>
+                                    <!-- <td>
+                                        <span class="ui-column-title">Tên dự án</span>
                                         <span
-                                            title="{{record.maDonViTrungThau}}">{{truncateString(record.maDonViTrungThau)}}</span>
+                                            title="{{record.tienDoThucHien}}">{{truncateString(record.tienDoThucHien)}}</span>
                                     </td>
-
                                     <td>
-                                        <span class="ui-column-title">Tên đơn vị trúng thầun</span>
+                                        <span class="ui-column-title">Ghi chú</span>
                                         <span
-                                            title="{{record.tenDonViTrungThau}}">{{truncateString(record.tenDonViTrungThau)}}</span>
-                                    </td>
-
+                                            title="{{record.tienDoThucHien}}">{{truncateString(record.tienDoThucHien)}}</span>
+                                    </td> -->
                                     <td>
-                                        <span class="ui-column-title">Giá trúng thầu</span>
-                                        <span
-                                            title="{{record.giaTrungThau}}">{{truncateString(record.giaTrungThau)}}</span>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-primary"
-                                            (click)="SetThongTin(record.idHoSoThau,record.idCongTrinh,record.maDonViTrungThau,record.tenDonViTrungThau)">Chọn</button>
+                                        <button class="btn btn-primary" (click)="SetThongTin(record.id)">Chọn</button>
                                     </td>
                                 </tr>
                             </ng-template>
@@ -208,5 +225,5 @@
             </div>
         </div>
     </div>
-
+  
 </div>

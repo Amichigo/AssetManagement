@@ -12,6 +12,8 @@ namespace GWebsite.AbpZeroTemplate.Core.Models.QuanLyCongTrinh_N13
         public string SoHopDong { set; get; }
         public string NoiDungHopDong { set; get; }
         public float TongGiaTriHopDong { set; get; }
+        public float? TongTienThanhToan { set; get; }
+        public string TienDoThucHien { set; get; }
         public string MaHinhThucBaoLanhBH { set; get; }
         public string SoChungTuBaoLanhBH { set; get; }
         public string NganHangBaoLanhBH { set; get; }

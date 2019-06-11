@@ -142,6 +142,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
                 query = query.Where(x => x.idKeHoach == input.idKeHoach);
             }
 
+            // filter by value
+            if (input.TenCongTrinh != null)
+            {
+                query = query.Where(x => x.TenCongTrinh == input.TenCongTrinh);
+            }
+
             var listCT = from ct in query
                          join kt in khquery
                          on ct.idKeHoach equals kt.Id
@@ -243,7 +249,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.CongTrinh_13
             congTrinhRepository.Update(congTrinhEntity);
             CurrentUnitOfWork.SaveChanges();
         }
+   
 
         #endregion
+
     }
 }

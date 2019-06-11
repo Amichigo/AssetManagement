@@ -30,5 +30,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.HopDong
         public string NgayKyTT { set; get; }
         public string ChiPhiDuyetTT { set; get; }
         public string FileDinhKemTT { set; get; }
+        public float? TongTienThanhToan { set; get; }
+        public string TienDoThucHien { set; get; }
     }
 }

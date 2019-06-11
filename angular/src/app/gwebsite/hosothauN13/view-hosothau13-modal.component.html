@@ -2,7 +2,7 @@
     <form #editForm="ngForm" novalidate>
         <div class="modal-header">
             <h4 class="modal-title">
-                <span>Cập nhật Hồ sơ thầu</span>
+                <span>Chi tiết Hồ sơ thầu</span>
             </h4>
             <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
                 <span aria-hidden="true">&times;</span>
@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <label>Hạng mục thầu *</label>
                             <input #tenctInput="ngModel" class="form-control" type="text" name="hangMucThau"
-                                [(ngModel)]="hosothau.hangMucThau" required maxlength="64">
+                                [(ngModel)]="hosothau.hangMucThau" required disabled maxlength="64">
                             <validation-messages [formCtrl]="tenctInput"></validation-messages>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <label>Ngày nhận hồ sơ thầu *</label>
                             <input #dcInput="ngModel" class="form-control" type="date" name="ngayNhapHoSoThau"
-                                [(ngModel)]="hosothau.ngayNhapHoSoThau" required maxlength="64">
+                                [(ngModel)]="hosothau.ngayNhapHoSoThau" required disabled maxlength="64">
                             <validation-messages [formCtrl]="dcInput"></validation-messages>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label>Ngày hết hạn nộp hồ sơ thầu *</label>
                             <input #loaictInput="ngModel" class="form-control" type="date" name="ngayHetHanNopHoSoThau"
-                                [(ngModel)]="hosothau.ngayHetHanNopHoSoThau" required maxlength="64">
+                                [(ngModel)]="hosothau.ngayHetHanNopHoSoThau" required disabled maxlength="64">
                             <validation-messages [formCtrl]="loaictInput"></validation-messages>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                         <div class="form-group">
                             <label>Ngày mở thầu *</label>
                             <input #makhInput="ngModel" class="form-control" type="date" name="ngayMoThau"
-                                [(ngModel)]="hosothau.ngayMoThau" required maxlength="64">
+                                [(ngModel)]="hosothau.ngayMoThau" required disabled maxlength="64">
                             <validation-messages [formCtrl]="makhInput"></validation-messages>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <label>Hình thức thầu *</label>
                             <select #trangthaiduyetCombobox name="maHinhThucThau" class="form-control"
-                                [(ngModel)]="hosothau.maHinhThucThau" [attr.data-live-search]="true" required>
+                                [(ngModel)]="hosothau.maHinhThucThau" disabled [attr.data-live-search]="true" required>
                                 <option [value]="">Đấu thầu</option>
                                 <option [value]="">Chỉ định</option>
                             </select>
@@ -74,7 +74,8 @@
                         <div class="form-group">
                             <label>Số tiền bão lãnh dự thầu *</label>
                             <input #kpddInput="ngModel" class="form-control" type="number" min="0"
-                                name="baoLanhDuThauBD" [(ngModel)]="hosothau.baoLanhDuThauBD" required maxlength="64">
+                                name="baoLanhDuThauBD" [(ngModel)]="hosothau.baoLanhDuThauBD" required disabled
+                                maxlength="64">
                             <validation-messages [formCtrl]="kpddInput"></validation-messages>
                         </div>
                     </div>
@@ -82,7 +83,7 @@
                         <div class="form-group">
                             <label>Ngày thi công *</label>
                             <input #ngayThiCong="ngModel" class="form-control" type="date" name="ngayThiCong"
-                                [(ngModel)]="hosothau.ngayThiCong" maxlength="64">
+                                [(ngModel)]="hosothau.ngayThiCong" disabled maxlength="64">
                             <validation-messages [formCtrl]="ngayThiCong"></validation-messages>
                         </div>
                     </div>
@@ -201,7 +202,7 @@
                     <label>{{l("Mô tả công trình")}} *</label>
 
                     <textarea #motaInput="ngModel" class="form-control" rows="5" name="moTaCongTrinh"
-                        class="form-control" [(ngModel)]="congTrinhForView.moTaCongTrinh" maxlength="256"
+                        class="form-control" [(ngModel)]="congTrinhForView.moTaCongTrinh" disabled maxlength="256"
                         disabled></textarea>
                     <validation-messages [formCtrl]="motaInput">
                     </validation-messages>
@@ -217,11 +218,7 @@
                 </div>
             </div>
             <div class="form-control">
-                <div class="form-group">
-                    <button class="btn btn-primary" (click)="ShowDonViThau()">
-                        Thêm DV thầu
-                    </button>
-                </div>
+
                 <div class="row align-items-center">
                     <!--<Primeng-TurboTable-Start>-->
                     <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
@@ -266,7 +263,7 @@
                                                     Thông tin
                                                     <p-sortIcon field="info"></p-sortIcon>
                                                 </th>-->
-                                    <th>{{l('Edit')}}</th>
+
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-record="$implicit" let-i="rowIndex">
@@ -319,18 +316,7 @@
                                         <span
                                             title="{{record.isTrungThau}}">{{truncateString(record.isTrungThau)}}</span>
                                     </td>
-                                    <td>
-                                        <button
-                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="UpdateDonViThau(record.id)" title="{{l('Edit')}}">
-                                            <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
-                                        </button>
-                                        <button
-                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="deleteDonViThau(record.id)" title="{{l('Delete')}}">
-                                            <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
-                                        </button>
-                                    </td>
+
                                 </tr>
                             </ng-template>
                         </p-table>
@@ -353,12 +339,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
-            <button type="submit" class="btn btn-primary" [buttonBusy]="saving" (click)="save()"
-                [disabled]="!editForm.form.valid" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
-                <span>{{l("Save")}}</span></button>
+
         </div>
     </form>
 </div>
-<selectCongTrinhN13Modal #selectCongTrinhN13Modal (modalSave)="SetThongTinCongTrinh()"></selectCongTrinhN13Modal>
-<createDonViThauN13Modal #createDonViThauN13Modal (modalSave)="reloadPage()"></createDonViThauN13Modal>

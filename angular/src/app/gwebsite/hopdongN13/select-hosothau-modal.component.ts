@@ -10,11 +10,11 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 
 @Component({
-    selector: 'selectHoSoThauN13Modal',
-    templateUrl: './select-hosothaun13-modal.component.html'
+    selector: 'selectHoSoThauModal',
+    templateUrl: './select-hosothau-modal.component.html'
 })
 
-export class SelectHoSoThauN13ModalComponent extends AppComponentBase {
+export class SelectHoSoThauModalComponent extends AppComponentBase {
 
     @ViewChild('viewModal') modal: ModalDirective;
     @ViewChild('dataTable') dataTable: Table;
@@ -22,7 +22,7 @@ export class SelectHoSoThauN13ModalComponent extends AppComponentBase {
     constructor(
         injector: Injector,
         private _hosothauService: HoSoThauN13ServiceProxy,
-        private _congtrinhService:CongTrinhServiceProxy,
+        private _congtrinhService: CongTrinhServiceProxy,
         private _activatedRoute: ActivatedRoute,
         private _apiService: WebApiServiceProxy,
     ) {
@@ -30,28 +30,28 @@ export class SelectHoSoThauN13ModalComponent extends AppComponentBase {
     }
 
 
-   /**
+    /**
    * tạo các biến dể filters
    */
-  maHoSoThau: string;
-  hangMucThau: string;
-  ngayPhat: string;
-  ngayhetHan: string;
-  hinhThucThau: string;
-  duAnXD: string;
-  idDuAn: number;
+    maHoSoThau: string;
+    hangMucThau: string;
+    ngayPhat: string;
+    ngayhetHan: string;
+    hinhThucThau: string;
+    duAnXD: string;
+    idDuAn: number;
 
-    maDVTrungThau:string;
-    tenDVTrungThau:string;
-   public selectedCongTrinh:CongTrinhForViewDto=new CongTrinhForViewDto(); 
-   public selecTedGoiThau: HoSoThauN13ForViewDto=new HoSoThauN13ForViewDto();
+    maDVTrungThau: string;
+    tenDVTrungThau: string;
+    public selectedCongTrinh: CongTrinhForViewDto = new CongTrinhForViewDto();
+    public selecTedGoiThau: HoSoThauN13ForViewDto = new HoSoThauN13ForViewDto();
 
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
 
     show(): void {
-        this.maDVTrungThau='';
-        this.tenDVTrungThau='';
+        this.maDVTrungThau = '';
+        this.tenDVTrungThau = '';
         console.log("Show");
         // this._congtrinhService.getCustomerForView(customerId).subscribe(result => {
         //     this.customer = result;
@@ -59,6 +59,7 @@ export class SelectHoSoThauN13ModalComponent extends AppComponentBase {
         // })
         //get params từ url để thực hiện filter
 
+        //get params từ url để thực hiện filter
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
             this.maHoSoThau = params['TenHoSoThau'] || '';
@@ -96,7 +97,7 @@ export class SelectHoSoThauN13ModalComponent extends AppComponentBase {
     }
 
     reloadList(mahst, mact, ngaynhap, ngayhethan, hanmuc, hinhthuc, event?: LazyLoadEvent) {
-        this._hosothauService.getDSHoSoThauChoHopDong(mahst, mact, ngaynhap, ngayhethan, hanmuc, hinhthuc, this.primengTableHelper.getSorting(this.dataTable),
+        this._hosothauService.getHoSoThausByFilter(mahst, mact, ngaynhap, ngayhethan, hanmuc, hinhthuc, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -107,23 +108,24 @@ export class SelectHoSoThauN13ModalComponent extends AppComponentBase {
     }
 
 
-
-    SetThongTin(id:number,idct:number,madktt:string,tenDVTrungThau:string):void{
-        console.log("id"+id+ "    IdCT"+idct);
+    ResetFilter() {
+        this.maHoSoThau = "";
+        this.hangMucThau = "";
+        this.ngayPhat = "";
+        this.ngayhetHan = "";
+        this.hinhThucThau = "";
+        this.duAnXD = "";
+        this.idDuAn=null;
+        this.reloadPage();
+    }
+    SetThongTin(id: number): void {
+        console.log(id);
         this._hosothauService.getHoSoThauForView(id).subscribe(result => {
             this.selecTedGoiThau = result;
-            this._congtrinhService.getCongTrinhForView(idct).subscribe(rs => {
-                this.selectedCongTrinh = rs;
-                this.maDVTrungThau=madktt;
-                this.tenDVTrungThau=tenDVTrungThau;
-                this.close();
-            })
+            this.close();
         })
-       
-     
-        // this._apiService.get('api/LoaiBatDongSan/GetLoaiBatDongSansByFilter').subscribe(result => {
-        //     this.listItems = result.items;
-        // });
+
+
     }
 
     reloadPage(): void {
@@ -139,18 +141,10 @@ export class SelectHoSoThauN13ModalComponent extends AppComponentBase {
             return;
         }
     }
+
     //hàm show view create MenuClient
 
-    ResetFilter() {
-        this.maHoSoThau = "";
-        this.hangMucThau = "";
-        this.ngayPhat = "";
-        this.ngayhetHan = "";
-        this.hinhThucThau = "";
-        this.duAnXD = "";
-        this.idDuAn=null;
-        this.reloadPage();
-    }
+
     /**
      * Tạo pipe thay vì tạo từng hàm truncate như thế này
      * @param text
@@ -158,7 +152,7 @@ export class SelectHoSoThauN13ModalComponent extends AppComponentBase {
 
 
     close(): void {
-    
+
         this.modalSave.emit(null);
         this.modal.hide();
     }

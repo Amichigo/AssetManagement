@@ -75,10 +75,21 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HoSoThau13
             }
             return ObjectMapper.Map<HoSoThauN13ForViewDto>(hoSoThauEntity);
         }
+
+        public HoSoThauN13ForViewDto GetHoSoThauByIdHopDongForView(int id)
+        {
+            var hoSoThauEntity = hoSoThauRepository.GetAll().Where(x => !x.IsDelete).FirstOrDefault(x => x.IdHopDong == id);
+            if (hoSoThauEntity == null)
+            {
+                return null;
+            }
+            return ObjectMapper.Map<HoSoThauN13ForViewDto>(hoSoThauEntity);
+        }
+
         //Lay ds ho so thau da co dv trung thau
         public PagedResultDto<HoSoThauN13Dto> GetDSHoSoThauChoHopDong(HoSoThauN13Filter input)
         {
-            var query = hoSoThauRepository.GetAll().Where(x => !x.IsDelete);
+            var query = hoSoThauRepository.GetAll().Where(x => !x.IsDelete).Where(y=>y.IdHopDong==null);
             var dvt = donvithauRepository.GetAll().Where(x => !x.IsDelete).Where(y=>y.IsTrungThau==true);
             var congTrinh = congTrinhRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.MaDuAnXayDungCoBan != null);
 
@@ -232,12 +243,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HoSoThau13
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_QuanLyCongTrinhDoDang_HoSoThau_Create)]
         private int Create(HoSoThauN13Input hoSoThauInput)
         {
-            hoSoThauInput.MaHoSoThau = hoSoThauInput.MaHoSoThau + "_" + hoSoThauInput.IdCongTrinh;
+            int nextId = hoSoThauRepository.GetAll().Count() + 1;
+            hoSoThauInput.MaHoSoThau = hoSoThauInput.MaHoSoThau + "_" + hoSoThauInput.IdCongTrinh+"_"+ nextId;
             var hoSoThauEntity = ObjectMapper.Map<HoSoThau_N13>(hoSoThauInput);
             SetAuditInsert(hoSoThauEntity);
             hoSoThauRepository.Insert(hoSoThauEntity);
             CurrentUnitOfWork.SaveChanges();
-            var newHS = hoSoThauRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.MaHoSoThau == hoSoThauEntity.MaHoSoThau);
+            var newHS = hoSoThauRepository.GetAll().Where(x => !x.IsDelete).FirstOrDefault(x => x.MaHoSoThau == hoSoThauEntity.MaHoSoThau);
             return newHS.Id;
         }
 

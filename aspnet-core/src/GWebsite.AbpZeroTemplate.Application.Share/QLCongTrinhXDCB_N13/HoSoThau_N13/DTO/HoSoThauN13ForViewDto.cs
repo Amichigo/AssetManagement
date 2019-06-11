@@ -10,7 +10,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.QLCongTrinhXDCB_N13.HoSoTha
     {
         public int Id { set; get; }
         public string MaHoSoThau { set; get; }
-        public string MaCongTrinh { set; get; }
+        public int? IdCongTrinh { set; get; }
         public string TenHoSoThau { set; get; }
         public string HangMucThau { set; get; }
         public string NgayNhapHoSoThau { set; get; }

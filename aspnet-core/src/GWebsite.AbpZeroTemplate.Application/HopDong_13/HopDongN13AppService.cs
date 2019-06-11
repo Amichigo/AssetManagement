@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Dynamic.Core;
 using Abp.Linq.Extensions;
+using GWebsite.AbpZeroTemplate.Application.Share.CongTrinh_N13.DTO;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.HopDong_13
 {
@@ -21,10 +22,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HopDong_13
     {
         private readonly IRepository<HopDong_N13> hopDongRepository;
         private readonly IRepository<HoSoThau_N13> hoSoThauRepository;
-        public HopDongN13AppService(IRepository<HopDong_N13> hopDongRepository, IRepository<HoSoThau_N13> hoSoThauRepository)
+        private readonly IRepository<CongTrinh_N13> congTrinhRepository;
+        public HopDongN13AppService(IRepository<HopDong_N13> hopDongRepository, IRepository<HoSoThau_N13> hoSoThauRepository, IRepository<CongTrinh_N13> congTrinhRepository)
         {
             this.hopDongRepository = hopDongRepository;
             this.hoSoThauRepository = hoSoThauRepository;
+            this.congTrinhRepository = congTrinhRepository;
         }
 
         #region Public Method
@@ -76,27 +79,59 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HopDong_13
         public PagedResultDto<HopDongN13Dto> GetHopDongs(HopDongN13Filter input)
         {
             var query = hopDongRepository.GetAll().Where(x => !x.IsDelete);
+            var ctquery = congTrinhRepository.GetAll().Where(x => !x.IsDelete);
+            var hstquery = hoSoThauRepository.GetAll().Where(x => !x.IsDelete);
             // filter by value
             if (input.SoHopDong != null)
             {
                 query = query.Where(x => x.SoHopDong.ToLower().Equals(input.SoHopDong));
             }
+            if (input.SoToTrinh != null)
+            {
+                query = query.Where(x => x.SoToTrinh.ToLower().Equals(input.SoToTrinh));
+            }
+            if (input.idCongTrinh != null)
+            {
+                ctquery = ctquery.Where(x => x.Id==input.idCongTrinh);
+            }
+            if (input.idHoSoThau != null)
+            {
+                hstquery = hstquery.Where(x => x.Id == input.idHoSoThau);
+            }
+            var listitem = from hd in query
+                           join hst in hstquery
+                           on hd.Id equals hst.IdHopDong
+                           join ct in ctquery
+                           on hst.IdCongTrinh equals ct.Id
+                           select new HopDongN13Dto
+                           {
+                               Id = hd.Id,
+                               MaHopDong = hd.MaHopDong,
+                               SoHopDong = hd.SoHopDong,
+                               SoToTrinh = hd.SoToTrinh,
+                               NgayKyTT = hd.NgayKyTT,
+                               NoiDungHopDong = hd.NoiDungHopDong,
+                               TongGiaTriHopDong = hd.TongGiaTriHopDong,
+                               TienDoThucHien=hd.TienDoThucHien,
+                               TongTienThanhToan=hd.TongTienThanhToan,
+                           };
 
-            var totalCount = query.Count();
+
+            var totalCount = listitem.Count();
 
             // sorting
             if (!string.IsNullOrWhiteSpace(input.Sorting))
             {
-                query = query.OrderBy(input.Sorting);
+                listitem = listitem.OrderBy(input.Sorting);
             }
 
             // paging
-            var items = query.PageBy(input).ToList();
+            var items = listitem.PageBy(input).ToList();
 
             // result
             return new PagedResultDto<HopDongN13Dto>(
                 totalCount,
-                items.Select(item => ObjectMapper.Map<HopDongN13Dto>(item)).ToList());
+                listitem.ToList());
         }
 
         #endregion
@@ -135,6 +170,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.HopDong_13
             hopDongRepository.Update(hopDongEntity);
             CurrentUnitOfWork.SaveChanges();
         }
+        private void UpdateTienCongTrinh()
+        {
+            var query = hopDongRepository.GetAll().Where(x => !x.IsDelete);
+            var ctquery = congTrinhRepository.GetAll().Where(x => !x.IsDelete);
+            var hstquery = hoSoThauRepository.GetAll().Where(x => !x.IsDelete);
+        }
+      
 
         #endregion
     }

@@ -243,11 +243,11 @@
                                                     <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                                 </button>
 
-                                                <!-- <button
+                                                 <button
                                                         class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                        (click)="viewHoSoThauModal.show(record.id)" title="{{l('View')}}">
-                                                        <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
-                                                    </button> -->
+                                                        (click)="InitTabView(record.id)" title="{{l('Xem chi tiết')}}">
+                                                        <i class="fa fa-eye" [attr.aria-label]="l('Xem chi tiết')"></i>
+                                                    </button>
                                             </td>
                                         </tr>
                                     </ng-template>
@@ -276,7 +276,7 @@
                     <tab customClass="m-tabs__item" (select)="InitTabCreate()" [active]='activeTabCreate'>
                         <ng-template tabHeading>
                             <button class="btn btn-default" type="submit">
-                                {{l('Tạo mới')}}
+                                <i class="fa fa-plus"></i> {{l('Tạo mới')}}
                             </button>
                         </ng-template>
                         <!-- <createHoSoThauN13Modal></createHoSoThauN13Modal> -->
@@ -291,7 +291,7 @@
                     <tab customClass="m-tabs__item" [disabled]="GetDisableTabUpdate()" [active]='activeTabUpdate'>
                         <ng-template tabHeading>
                             <button class="btn btn-default" type="submit" [disabled]="GetDisableTabUpdate()">
-                                {{l('Cập nhật')}}
+                                <i class="fa fa-edit"></i> {{l('Cập nhật')}}
                             </button>
                         </ng-template>
                         <editHoSoThauN13Modal #editHoSoThauN13Modal (modalSave)="SaveNew()"></editHoSoThauN13Modal>
@@ -303,9 +303,10 @@
                     <tab customClass="m-tabs__item" [disabled]="GetDisableTabView()" [active]='activeTabView'>
                         <ng-template tabHeading>
                             <button class="btn btn-default" type="submit" [disabled]="GetDisableTabView()">
-                                {{l('View')}}
+                                <i class="fa fa-eye"></i>{{l('Xem chi tiết')}}
                             </button>
                         </ng-template>
+                        <viewHoSoThauN13Modal #viewHoSoThauN13Modal (modalSave)="SaveNew()"></viewHoSoThauN13Modal>
                     </tab>
                     <!-- 
                         Tab Duyet

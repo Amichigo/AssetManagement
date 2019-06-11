@@ -40,9 +40,14 @@ export class CreateThanhToanN13Component extends AppComponentBase {
         this.saving = false;
         this._ThanhToanAppService.getThanhToanN13ForEdit(congtrinhId).subscribe(result => {
             this.ThanhToanIp = result;
-            if(this.isSaveToDatabase==true){
+             if(this.isSaveToDatabase==true){
                 this.ThanhToanIp.idHopDong=idHopDong;
             }
+            if(!this.ThanhToanIp.id)
+            {
+                this.ThanhToanIp.daThanhToan=0;
+            }
+           
             this.modal.show();
 
         })

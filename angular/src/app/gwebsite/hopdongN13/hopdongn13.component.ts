@@ -10,6 +10,10 @@ import { Table } from 'primeng/components/table/table';
 import { ModalDirective } from 'ngx-bootstrap';
 import { HopDongN13ServiceProxy, CongTrinhForViewDto, HoSoThauN13ForViewDto, HopDongN13Input } from '@shared/service-proxies/service-proxies';
 import { CreateHopDongN13ModalComponent } from './create-hopdong13-modal.component';
+import { EditHopDongN13ModalComponent } from './edit-hopdong13-modal.component';
+import { ViewHopDongN13ModalComponent } from './view-hopdong13-modal.component';
+import { SelectCongTrinhN13ModalComponent } from '../hosothauN13/select-congtrinhn13-modal.component';
+import { SelectHoSoThauModalComponent } from './select-hosothau-modal.component';
 @Component({
 
     templateUrl: './hopdongn13.component.html',
@@ -24,6 +28,11 @@ export class HopDongN13Component extends AppComponentBase implements AfterViewIn
     @ViewChild('paginator') paginator: Paginator;
     @ViewChild('HopDongN13Modal') modal: ModalDirective;
     @ViewChild('createHopDongN13Modal') createHopDongN13Modal: CreateHopDongN13ModalComponent;
+    @ViewChild('viewHopDongN13Modal') viewHopDongN13Modal: ViewHopDongN13ModalComponent;
+    @ViewChild('editHopDongN13Modal') editHopDongN13Modal: EditHopDongN13ModalComponent;
+    @ViewChild('selectCongTrinhN13Modal') selectCongTrinhN13Modal: SelectCongTrinhN13ModalComponent;
+    
+    @ViewChild('selectHoSoThauModal') selectHoSoThauModal: SelectHoSoThauModalComponent;
     /**
      * tạo các biến dể filters
      */
@@ -31,6 +40,9 @@ export class HopDongN13Component extends AppComponentBase implements AfterViewIn
     soHopDong: string;
     duAnXayDung: string;
     goiThau: string;
+
+    idDuaAn:number;
+    idGoiThau:number;
     
     /**
      * Tab values
@@ -51,6 +63,7 @@ export class HopDongN13Component extends AppComponentBase implements AfterViewIn
     ) {
         super(injector);
     }
+
     SaveNew() {
      
         this.activeTabHopDong = true;
@@ -66,7 +79,8 @@ export class HopDongN13Component extends AppComponentBase implements AfterViewIn
      */
 
     InitTabHopDong(): void {
-        this.reloadPage();
+        console.log("Init InitTabHopDong");
+        
         this.activeTabCreate = false;
         this.activeTabUpdate = false;
         this.activeTabView = false;
@@ -76,7 +90,7 @@ export class HopDongN13Component extends AppComponentBase implements AfterViewIn
         this.disableTabView = true;
         this.disableTabSetActive = true;
 
-
+        this.reloadPage();
     }
     InitTabCreate(): void {
         if(this.activeTabCreate==false)
@@ -101,16 +115,20 @@ export class HopDongN13Component extends AppComponentBase implements AfterViewIn
     }
 
     InitTabView(idRecond: number): void {
-        this.disableTabView = false;
-        this.activeTabView = true;
-
-        this.activeTabHopDong = false;
-        this.activeTabUpdate = false;
-        this.activeTabCreate = false;
-        this.activeTabSetActive = false;
-
-        this.disableTabSetActive = true;
-        this.disableTabUpdate = true;
+        if(  this.activeTabView ==false){
+            this.disableTabView = false;
+            this.activeTabView = true;
+    
+            this.activeTabHopDong = false;
+            this.activeTabUpdate = false;
+            this.activeTabCreate = false;
+            this.activeTabSetActive = false;
+    
+            this.disableTabSetActive = true;
+            this.disableTabUpdate = true;
+            this.viewHopDongN13Modal.show(idRecond);
+        }
+    
     }
 
     InitTabUpdate(idRecond: number) {
@@ -125,6 +143,7 @@ export class HopDongN13Component extends AppComponentBase implements AfterViewIn
             this.activeTabView = false;
             this.activeTabCreate = false;
             this.activeTabSetActive = false;
+            this.editHopDongN13Modal.show(idRecond);
         }
 
    
@@ -179,12 +198,32 @@ export class HopDongN13Component extends AppComponentBase implements AfterViewIn
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-        this.reloadList(null, null, null, event);
+        this.reloadList(null, null, null,null, event);
 
     }
+    showSelectCongTrinh():void{
+        this.selectCongTrinhN13Modal.show();
+    }
+    showHoSoThau():void{
+        this.selectHoSoThauModal.show();
+    }
+    setHoSoThau():void{
+        this.idGoiThau=this.selectHoSoThauModal.selecTedGoiThau.id;
+        this.goiThau=this.selectHoSoThauModal.selecTedGoiThau.maHoSoThau;
+        console.log("set ho so");
+    }
+resetFilter():void{
+    this.soToTrinh="";
+    this.soHopDong="";
+    this.duAnXayDung="";
+    this.goiThau="";
 
-    reloadList(hosothauName, mahosothau, maKeHoach, event?: LazyLoadEvent) {
-        this._hopDongServiceProxy.getHopDongsByFilter(mahosothau,null,null,this.primengTableHelper.getSorting(this.dataTable),
+    this.idDuaAn=null;
+    this.idGoiThau=null;
+    this.reloadPage();
+}
+    reloadList(sohopdong, sototrinh, idhosothau,idcongtrinh, event?: LazyLoadEvent) {
+        this._hopDongServiceProxy.getHopDongsByFilter(sohopdong,sototrinh,idhosothau,idcongtrinh,this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -207,7 +246,9 @@ export class HopDongN13Component extends AppComponentBase implements AfterViewIn
             this.soHopDong = params['MaHopDong'] || '';
             this.duAnXayDung = params['MamaKeHoach'] || '';
             this.goiThau = params['MaLoaiHopDong'] || '';
-            this.reloadList(this.soToTrinh, this.soHopDong, this.duAnXayDung, null);
+            this.idDuaAn=null;
+            this.idGoiThau=null;
+            this.reloadList(this.soHopDong, this.soToTrinh, this.idGoiThau,this.idDuaAn, null);
         });
     }
 
@@ -217,12 +258,16 @@ export class HopDongN13Component extends AppComponentBase implements AfterViewIn
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.soToTrinh, this.soHopDong, this.duAnXayDung, null);
+        this.reloadList(this.soHopDong, this.soToTrinh, this.idGoiThau,this.idDuaAn, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);
             return;
         }
+    }
+    setThongTin():void{
+        this.duAnXayDung=this.selectCongTrinhN13Modal.congtrinhForView.maCongTrinh;
+        this.idDuaAn=this.selectCongTrinhN13Modal.congtrinhForView.id;
     }
 
     //hàm show view create MenuClient

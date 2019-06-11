@@ -12,6 +12,7 @@ import { HoSoThauN13ServiceProxy } from '@shared/service-proxies/service-proxies
 import { CreateHoSoThauN13ModalComponent } from './create-hosothau13-modal.component';
 import { EditHoSoThauN13ModalComponent } from './edit-hosothau13-modal.component';
 import { SelectCongTrinhN13ModalComponent } from './select-congtrinhn13-modal.component';
+import { ViewHoSoThauN13ModalComponent } from './view-hosothau13-modal.component';
 @Component({
 
     templateUrl: './hosothaun13.component.html',
@@ -28,6 +29,7 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
     @ViewChild('createHoSoThauN13Modal') createHoSoThauN13Modal: CreateHoSoThauN13ModalComponent;
     @ViewChild('editHoSoThauN13Modal') editHoSoThauN13Modal: EditHoSoThauN13ModalComponent;
     @ViewChild('selectCongTrinhN13Modal') selectCongTrinhN13Modal: SelectCongTrinhN13ModalComponent;
+    @ViewChild('viewHoSoThauN13Modal') viewHoSoThauN13Modal: ViewHoSoThauN13ModalComponent;
     /**
      * tạo các biến dể filters
      */
@@ -104,16 +106,20 @@ export class HoSoThauN13Component extends AppComponentBase implements AfterViewI
     }
 
     InitTabView(idRecond: number): void {
-        this.disableTabView = false;
-        this.activeTabView = true;
-
-        this.activeTabHoSoThau = false;
-        this.activeTabUpdate = false;
-        this.activeTabCreate = false;
-        this.activeTabSetActive = false;
-
-        this.disableTabSetActive = true;
-        this.disableTabUpdate = true;
+        if(this.activeTabView==false){
+            this.disableTabView = false;
+            this.activeTabView = true;
+    
+            this.activeTabHoSoThau = false;
+            this.activeTabUpdate = false;
+            this.activeTabCreate = false;
+            this.activeTabSetActive = false;
+    
+            this.disableTabSetActive = true;
+            this.disableTabUpdate = true;
+            this.viewHoSoThauN13Modal.show(idRecond);
+        }
+       
     }
 
     InitTabUpdate(idRecond: number) {

@@ -107,6 +107,11 @@ export class SelectCongTrinhN13ModalComponent extends AppComponentBase {
         });
     }
     
+    resetFilter():void{
+        this.congtrinhName="";
+        this.macongtrinh="";
+        this.reloadPage();
+    }
     applyFilters(): void {
        
         //truyền params lên url thông qua router
